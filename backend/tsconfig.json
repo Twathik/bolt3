@@ -1,0 +1,41 @@
+{
+  "compilerOptions": {
+    "target": "es2018",
+    "module": "commonjs",
+    "lib": ["es2018", "esnext.asynciterable"],
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "moduleResolution": "Node",
+    "sourceMap": true,
+    "removeComments": true,
+    "allowJs": true,
+    "skipLibCheck": true,
+    "types": ["node"],
+    "forceConsistentCasingInFileNames": true,
+    "noEmit": false,
+    "esModuleInterop": true,
+    "strict": true,
+    "noImplicitAny": false,
+    "strictNullChecks": true,
+    "strictFunctionTypes": true,
+    "noImplicitThis": true,
+    "alwaysStrict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "resolveJsonModule": true,
+    "outDir": "dist",
+    "rootDir": "src",
+    "isolatedModules": true
+  },
+  "include": ["src/**/*"],
+  "exclude": [
+    "node_modules",
+    "**/examples",
+    "**/dist/**/*",
+    "**/public/**/*",
+    "**/prisma/**/*",
+    "**/next.config.js"
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "compilerOptions": {
+    "esModuleInterop": true,
+    "outDir": "dist",
+    "rootDir": "src",
+    "lib": ["esnext", "dom"],
+    "strict": true,
+    "isolatedModules": true,
+    "target": "es2019",
+    "module": "commonjs",
+    "sourceMap": true,
+    "removeComments": true,
+
+    "jsx": "preserve",
+    "baseUrl": ".",
+    "allowJs": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "moduleResolution": "node",
+    "noImplicitAny": false,
+    "strictNullChecks": true,
+    "strictFunctionTypes": true,
+    "noImplicitThis": true,
+    "alwaysStrict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "resolveJsonModule": true
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "**/examples"]
+}

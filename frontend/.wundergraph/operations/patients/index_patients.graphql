@@ -1,0 +1,3 @@
+mutation Index_Patients {
+	mainDb_indexPatients
+}

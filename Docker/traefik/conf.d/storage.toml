@@ -1,0 +1,12 @@
+[http]
+[http.routers]
+[http.routers.storage-route]
+entryPoints = ["web"]
+rule = "Host(`storage.bolt3.local`)"
+service = "storage"
+
+[http.services]
+[http.services.storage]
+[http.services.storage.loadBalancer]
+[[http.services.storage.loadBalancer.servers]]
+url = "http://host.docker.internal:9000"

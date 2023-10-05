@@ -1,0 +1,12 @@
+[http]
+[http.routers]
+[http.routers.frontend-route]
+entryPoints = ["web"]
+rule = "Host(`bolt3.local`)"
+service = "frontend"
+
+[http.services]
+[http.services.frontend]
+[http.services.frontend.loadBalancer]
+[[http.services.frontend.loadBalancer.servers]]
+url = "http://host.docker.internal:3000"

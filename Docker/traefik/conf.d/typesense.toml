@@ -1,0 +1,12 @@
+[http]
+[http.routers]
+[http.routers.search-route]
+entryPoints = ["web"]
+rule = "Host(`search.bolt3.local`)"
+service = "search"
+
+[http.services]
+[http.services.search]
+[http.services.search.loadBalancer]
+[[http.services.search.loadBalancer.servers]]
+url = "http://host.docker.internal:8108"
