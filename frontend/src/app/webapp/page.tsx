@@ -26,7 +26,7 @@ const typesenseInstantsearchAdapter = new TypesenseInstantSearchAdapter({
 
 const searchClient = typesenseInstantsearchAdapter.searchClient;
 
-const Hit = ({ hit }) => {
+const Hit = ({ hit }: { hit: any }) => {
   console.log({ hit });
   return <div></div>;
 };
