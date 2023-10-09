@@ -5,6 +5,7 @@ import "@/components/LexicalEditor/themes/PlaygroundEditorTheme.css";
 import "@/components/LexicalEditor/themes/StickyEditorTheme";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import { Toaster } from "react-hot-toast";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,7 +21,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="h-full bg-white">
-      <body className={`${inter.className} h-full`}>{children}</body>
+      <body className={`${inter.className} h-full`}>
+        {children}
+        <Toaster />
+      </body>
     </html>
   );
 }

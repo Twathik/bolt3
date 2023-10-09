@@ -1,0 +1,12 @@
+mutation add_one_patient_to_index(
+  $firstName: String!
+  $lastName: String!
+  $ddn: DateTime!
+  $sexe: mainDb_Sexe!
+) {
+  mainDb_AddOnePatientToIndex(
+    data: { firstName: $firstName, lastName: $lastName, ddn: $ddn, sexe: $sexe }
+  ) {
+    id
+  }
+}

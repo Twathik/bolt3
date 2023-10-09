@@ -58,7 +58,6 @@ model Patient {
   id        String   @id @default(uuid())
   lastName  String
   firstName String
-  fullName  String
   ddn       DateTime
   sexe      Sexe
   nTel      String[]

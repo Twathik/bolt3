@@ -8,7 +8,6 @@ const Schema: z.ZodType<Prisma.PatientMinOrderByAggregateInput> = z
     id: z.lazy(() => SortOrderSchema).optional(),
     lastName: z.lazy(() => SortOrderSchema).optional(),
     firstName: z.lazy(() => SortOrderSchema).optional(),
-    fullName: z.lazy(() => SortOrderSchema).optional(),
     ddn: z.lazy(() => SortOrderSchema).optional(),
     sexe: z.lazy(() => SortOrderSchema).optional(),
     created: z.lazy(() => SortOrderSchema).optional(),

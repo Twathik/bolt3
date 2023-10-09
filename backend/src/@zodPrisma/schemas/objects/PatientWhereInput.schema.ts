@@ -35,9 +35,6 @@ const Schema: z.ZodType<Prisma.PatientWhereInput> = z
     firstName: z
       .union([z.lazy(() => StringFilterObjectSchema), z.string()])
       .optional(),
-    fullName: z
-      .union([z.lazy(() => StringFilterObjectSchema), z.string()])
-      .optional(),
     ddn: z
       .union([z.lazy(() => DateTimeFilterObjectSchema), z.coerce.date()])
       .optional(),

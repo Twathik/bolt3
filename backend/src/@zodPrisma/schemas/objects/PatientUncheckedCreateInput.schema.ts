@@ -9,7 +9,6 @@ const Schema: z.ZodType<Prisma.PatientUncheckedCreateInput> = z
     id: z.string().optional(),
     lastName: z.string(),
     firstName: z.string(),
-    fullName: z.string(),
     ddn: z.coerce.date(),
     sexe: z.lazy(() => SexeSchema),
     nTel: z

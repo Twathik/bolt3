@@ -35,9 +35,6 @@ const Schema: z.ZodType<Prisma.PatientScalarWhereWithAggregatesInput> = z
     firstName: z
       .union([z.lazy(() => StringWithAggregatesFilterObjectSchema), z.string()])
       .optional(),
-    fullName: z
-      .union([z.lazy(() => StringWithAggregatesFilterObjectSchema), z.string()])
-      .optional(),
     ddn: z
       .union([
         z.lazy(() => DateTimeWithAggregatesFilterObjectSchema),

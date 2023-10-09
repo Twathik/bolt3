@@ -4,6 +4,8 @@ import { PrismaClient } from '@prisma/client'
 import { config } from 'dotenv'
 import { Request, Response } from 'express'
 import prisma from './Utils/api/prismaClient'
+import { Client } from 'typesense'
+import typesense from './Utils/typesense'
 
 config({
   path:
@@ -14,11 +16,13 @@ export interface Context {
   prisma: PrismaClient
   req: Request
   res: Response
+  typesense: Client
 }
 export function createContext(ctx: any) {
   return {
     ...ctx,
     prisma,
     // user,
+    typesense,
   }
 }

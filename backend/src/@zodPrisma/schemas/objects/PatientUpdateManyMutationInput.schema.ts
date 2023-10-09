@@ -28,12 +28,6 @@ const Schema: z.ZodType<Prisma.PatientUpdateManyMutationInput> = z
         z.lazy(() => StringFieldUpdateOperationsInputObjectSchema),
       ])
       .optional(),
-    fullName: z
-      .union([
-        z.string(),
-        z.lazy(() => StringFieldUpdateOperationsInputObjectSchema),
-      ])
-      .optional(),
     ddn: z
       .union([
         z.coerce.date(),

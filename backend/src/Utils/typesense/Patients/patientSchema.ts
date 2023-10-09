@@ -25,14 +25,22 @@ const patientSchema: CollectionCreateSchema = {
       facet: true,
     },
     {
+      name: 'search_ddn_year',
+      type: 'string',
+      facet: false,
+      index: true,
+      sort: true,
+    },
+    {
       name: 'ddn',
-      type: 'int32',
+      type: 'string',
       facet: true,
     },
     {
       name: 'sexe',
       type: 'string',
       facet: true,
+      sort: true,
     },
   ],
   default_sorting_field: 'lastName',

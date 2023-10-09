@@ -21,11 +21,6 @@ export class Patient {
   })
   firstName!: string;
 
-  @TypeGraphQL.Field(_type => String, {
-    nullable: false
-  })
-  fullName!: string;
-
   @TypeGraphQL.Field(_type => Date, {
     nullable: false
   })

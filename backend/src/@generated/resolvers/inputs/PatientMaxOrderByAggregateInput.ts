@@ -24,11 +24,6 @@ export class PatientMaxOrderByAggregateInput {
   @TypeGraphQL.Field(_type => SortOrder, {
     nullable: true
   })
-  fullName?: "asc" | "desc" | undefined;
-
-  @TypeGraphQL.Field(_type => SortOrder, {
-    nullable: true
-  })
   ddn?: "asc" | "desc" | undefined;
 
   @TypeGraphQL.Field(_type => SortOrder, {

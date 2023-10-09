@@ -25,8 +25,14 @@ import type {
 	CountriesResponse,
 	CountriesInput,
 	CountriesResponseData,
+	PatientsAdd_One_patient_to_indexResponse,
+	PatientsAdd_One_patient_to_indexInput,
+	PatientsAdd_One_patient_to_indexResponseData,
 	PatientsIndex_patientsResponse,
 	PatientsIndex_patientsResponseData,
+	PatientsSearchPatientsResponse,
+	PatientsSearchPatientsInput,
+	PatientsSearchPatientsResponseData,
 	UsersGetResponse,
 	UsersGetInput,
 	UsersGetResponseData,
@@ -101,7 +107,7 @@ export interface AuthProvider {
 }
 
 export const defaultClientConfig: ClientConfig = {
-	applicationHash: "426196b4",
+	applicationHash: "2f9194ec",
 	baseURL: "http://api.bolt3.local",
 	sdkVersion: "0.178.1",
 };
@@ -110,7 +116,13 @@ export const operationMetadata: OperationMetadata = {
 	Countries: {
 		requiresAuthentication: false,
 	},
+	"patients/add_One_patient_to_index": {
+		requiresAuthentication: false,
+	},
 	"patients/index_patients": {
+		requiresAuthentication: false,
+	},
+	"patients/searchPatients": {
 		requiresAuthentication: false,
 	},
 	"users/get": {
@@ -192,6 +204,12 @@ export type Queries = {
 		requiresAuthentication: false;
 		liveQuery: boolean;
 	};
+	"patients/searchPatients": {
+		input: PatientsSearchPatientsInput;
+		response: { data?: PatientsSearchPatientsResponse["data"]; error?: ClientOperationErrors };
+		requiresAuthentication: false;
+		liveQuery: boolean;
+	};
 	"users/get": {
 		input: UsersGetInput;
 		response: { data?: UsersGetResponseData; error?: OperationErrors["users/get"] };
@@ -201,6 +219,11 @@ export type Queries = {
 };
 
 export type Mutations = {
+	"patients/add_One_patient_to_index": {
+		input: PatientsAdd_One_patient_to_indexInput;
+		response: { data?: PatientsAdd_One_patient_to_indexResponse["data"]; error?: ClientOperationErrors };
+		requiresAuthentication: false;
+	};
 	"patients/index_patients": {
 		input?: undefined;
 		response: { data?: PatientsIndex_patientsResponse["data"]; error?: ClientOperationErrors };
@@ -225,6 +248,12 @@ export type Subscriptions = {
 		liveQuery: true;
 		requiresAuthentication: false;
 	};
+	"patients/searchPatients": {
+		input: PatientsSearchPatientsInput;
+		response: { data?: PatientsSearchPatientsResponse["data"]; error?: ClientOperationErrors };
+		liveQuery: true;
+		requiresAuthentication: false;
+	};
 	"users/get": {
 		input: UsersGetInput;
 		response: { data?: UsersGetResponse["data"]; error?: ClientOperationErrors };
@@ -237,6 +266,12 @@ export type LiveQueries = {
 	Countries: {
 		input: CountriesInput;
 		response: { data?: CountriesResponse["data"]; error?: ClientOperationErrors };
+		liveQuery: true;
+		requiresAuthentication: false;
+	};
+	"patients/searchPatients": {
+		input: PatientsSearchPatientsInput;
+		response: { data?: PatientsSearchPatientsResponse["data"]; error?: ClientOperationErrors };
 		liveQuery: true;
 		requiresAuthentication: false;
 	};

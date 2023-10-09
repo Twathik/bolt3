@@ -218,7 +218,7 @@ function applyTypeClassEnhanceConfig<
 
 const modelsInfo = {
   User: ["id", "email", "userId", "lastName", "firstName", "fullName", "avatarUrl", "role", "phoneNumbers", "lastConnection", "typesenseApiKey"],
-  Patient: ["id", "lastName", "firstName", "fullName", "ddn", "sexe", "nTel", "created", "updated", "deleted"]
+  Patient: ["id", "lastName", "firstName", "ddn", "sexe", "nTel", "created", "updated", "deleted"]
 };
 
 type ModelNames = keyof typeof models;
@@ -260,14 +260,14 @@ const outputsInfo = {
   AggregateUser: ["_count", "_min", "_max"],
   UserGroupBy: ["id", "email", "userId", "lastName", "firstName", "fullName", "avatarUrl", "role", "phoneNumbers", "lastConnection", "typesenseApiKey", "_count", "_min", "_max"],
   AggregatePatient: ["_count", "_min", "_max"],
-  PatientGroupBy: ["id", "lastName", "firstName", "fullName", "ddn", "sexe", "nTel", "created", "updated", "deleted", "_count", "_min", "_max"],
+  PatientGroupBy: ["id", "lastName", "firstName", "ddn", "sexe", "nTel", "created", "updated", "deleted", "_count", "_min", "_max"],
   AffectedRowsOutput: ["count"],
   UserCountAggregate: ["id", "email", "userId", "lastName", "firstName", "fullName", "avatarUrl", "role", "phoneNumbers", "lastConnection", "typesenseApiKey", "_all"],
   UserMinAggregate: ["id", "email", "userId", "lastName", "firstName", "fullName", "avatarUrl", "role", "lastConnection", "typesenseApiKey"],
   UserMaxAggregate: ["id", "email", "userId", "lastName", "firstName", "fullName", "avatarUrl", "role", "lastConnection", "typesenseApiKey"],
-  PatientCountAggregate: ["id", "lastName", "firstName", "fullName", "ddn", "sexe", "nTel", "created", "updated", "deleted", "_all"],
-  PatientMinAggregate: ["id", "lastName", "firstName", "fullName", "ddn", "sexe", "created", "updated", "deleted"],
-  PatientMaxAggregate: ["id", "lastName", "firstName", "fullName", "ddn", "sexe", "created", "updated", "deleted"]
+  PatientCountAggregate: ["id", "lastName", "firstName", "ddn", "sexe", "nTel", "created", "updated", "deleted", "_all"],
+  PatientMinAggregate: ["id", "lastName", "firstName", "ddn", "sexe", "created", "updated", "deleted"],
+  PatientMaxAggregate: ["id", "lastName", "firstName", "ddn", "sexe", "created", "updated", "deleted"]
 };
 
 type OutputTypesNames = keyof typeof outputTypes;
@@ -313,19 +313,19 @@ const inputsInfo = {
   UserWhereUniqueInput: ["id", "email", "userId", "AND", "OR", "NOT", "lastName", "firstName", "fullName", "avatarUrl", "role", "phoneNumbers", "lastConnection", "typesenseApiKey"],
   UserOrderByWithAggregationInput: ["id", "email", "userId", "lastName", "firstName", "fullName", "avatarUrl", "role", "phoneNumbers", "lastConnection", "typesenseApiKey", "_count", "_max", "_min"],
   UserScalarWhereWithAggregatesInput: ["AND", "OR", "NOT", "id", "email", "userId", "lastName", "firstName", "fullName", "avatarUrl", "role", "phoneNumbers", "lastConnection", "typesenseApiKey"],
-  PatientWhereInput: ["AND", "OR", "NOT", "id", "lastName", "firstName", "fullName", "ddn", "sexe", "nTel", "created", "updated", "deleted"],
-  PatientOrderByWithRelationInput: ["id", "lastName", "firstName", "fullName", "ddn", "sexe", "nTel", "created", "updated", "deleted"],
-  PatientWhereUniqueInput: ["id", "AND", "OR", "NOT", "lastName", "firstName", "fullName", "ddn", "sexe", "nTel", "created", "updated", "deleted"],
-  PatientOrderByWithAggregationInput: ["id", "lastName", "firstName", "fullName", "ddn", "sexe", "nTel", "created", "updated", "deleted", "_count", "_max", "_min"],
-  PatientScalarWhereWithAggregatesInput: ["AND", "OR", "NOT", "id", "lastName", "firstName", "fullName", "ddn", "sexe", "nTel", "created", "updated", "deleted"],
+  PatientWhereInput: ["AND", "OR", "NOT", "id", "lastName", "firstName", "ddn", "sexe", "nTel", "created", "updated", "deleted"],
+  PatientOrderByWithRelationInput: ["id", "lastName", "firstName", "ddn", "sexe", "nTel", "created", "updated", "deleted"],
+  PatientWhereUniqueInput: ["id", "AND", "OR", "NOT", "lastName", "firstName", "ddn", "sexe", "nTel", "created", "updated", "deleted"],
+  PatientOrderByWithAggregationInput: ["id", "lastName", "firstName", "ddn", "sexe", "nTel", "created", "updated", "deleted", "_count", "_max", "_min"],
+  PatientScalarWhereWithAggregatesInput: ["AND", "OR", "NOT", "id", "lastName", "firstName", "ddn", "sexe", "nTel", "created", "updated", "deleted"],
   UserCreateInput: ["id", "email", "userId", "lastName", "firstName", "fullName", "avatarUrl", "role", "phoneNumbers", "lastConnection", "typesenseApiKey"],
   UserUpdateInput: ["id", "email", "userId", "lastName", "firstName", "fullName", "avatarUrl", "role", "phoneNumbers", "lastConnection", "typesenseApiKey"],
   UserCreateManyInput: ["id", "email", "userId", "lastName", "firstName", "fullName", "avatarUrl", "role", "phoneNumbers", "lastConnection", "typesenseApiKey"],
   UserUpdateManyMutationInput: ["id", "email", "userId", "lastName", "firstName", "fullName", "avatarUrl", "role", "phoneNumbers", "lastConnection", "typesenseApiKey"],
-  PatientCreateInput: ["id", "lastName", "firstName", "fullName", "ddn", "sexe", "nTel", "created", "updated", "deleted"],
-  PatientUpdateInput: ["id", "lastName", "firstName", "fullName", "ddn", "sexe", "nTel", "created", "updated", "deleted"],
-  PatientCreateManyInput: ["id", "lastName", "firstName", "fullName", "ddn", "sexe", "nTel", "created", "updated", "deleted"],
-  PatientUpdateManyMutationInput: ["id", "lastName", "firstName", "fullName", "ddn", "sexe", "nTel", "created", "updated", "deleted"],
+  PatientCreateInput: ["id", "lastName", "firstName", "ddn", "sexe", "nTel", "created", "updated", "deleted"],
+  PatientUpdateInput: ["id", "lastName", "firstName", "ddn", "sexe", "nTel", "created", "updated", "deleted"],
+  PatientCreateManyInput: ["id", "lastName", "firstName", "ddn", "sexe", "nTel", "created", "updated", "deleted"],
+  PatientUpdateManyMutationInput: ["id", "lastName", "firstName", "ddn", "sexe", "nTel", "created", "updated", "deleted"],
   StringFilter: ["equals", "in", "notIn", "lt", "lte", "gt", "gte", "contains", "startsWith", "endsWith", "mode", "not"],
   StringNullableFilter: ["equals", "in", "notIn", "lt", "lte", "gt", "gte", "contains", "startsWith", "endsWith", "mode", "not"],
   EnumRoleFilter: ["equals", "in", "notIn", "not"],
@@ -341,9 +341,9 @@ const inputsInfo = {
   DateTimeWithAggregatesFilter: ["equals", "in", "notIn", "lt", "lte", "gt", "gte", "not", "_count", "_min", "_max"],
   EnumSexeFilter: ["equals", "in", "notIn", "not"],
   BoolFilter: ["equals", "not"],
-  PatientCountOrderByAggregateInput: ["id", "lastName", "firstName", "fullName", "ddn", "sexe", "nTel", "created", "updated", "deleted"],
-  PatientMaxOrderByAggregateInput: ["id", "lastName", "firstName", "fullName", "ddn", "sexe", "created", "updated", "deleted"],
-  PatientMinOrderByAggregateInput: ["id", "lastName", "firstName", "fullName", "ddn", "sexe", "created", "updated", "deleted"],
+  PatientCountOrderByAggregateInput: ["id", "lastName", "firstName", "ddn", "sexe", "nTel", "created", "updated", "deleted"],
+  PatientMaxOrderByAggregateInput: ["id", "lastName", "firstName", "ddn", "sexe", "created", "updated", "deleted"],
+  PatientMinOrderByAggregateInput: ["id", "lastName", "firstName", "ddn", "sexe", "created", "updated", "deleted"],
   EnumSexeWithAggregatesFilter: ["equals", "in", "notIn", "not", "_count", "_min", "_max"],
   BoolWithAggregatesFilter: ["equals", "not", "_count", "_min", "_max"],
   UserCreatephoneNumbersInput: ["set"],

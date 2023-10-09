@@ -7,7 +7,6 @@ const Schema: z.ZodType<Prisma.PatientCountAggregateInputType> = z
     id: z.literal(true).optional(),
     lastName: z.literal(true).optional(),
     firstName: z.literal(true).optional(),
-    fullName: z.literal(true).optional(),
     ddn: z.literal(true).optional(),
     sexe: z.literal(true).optional(),
     nTel: z.literal(true).optional(),

@@ -21,11 +21,6 @@ export class PatientMaxAggregate {
   })
   firstName!: string | null;
 
-  @TypeGraphQL.Field(_type => String, {
-    nullable: true
-  })
-  fullName!: string | null;
-
   @TypeGraphQL.Field(_type => Date, {
     nullable: true
   })
