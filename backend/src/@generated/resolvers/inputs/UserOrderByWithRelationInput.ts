@@ -61,4 +61,9 @@ export class UserOrderByWithRelationInput {
     nullable: true
   })
   typesenseApiKey?: SortOrderInput | undefined;
+
+  @TypeGraphQL.Field(_type => SortOrder, {
+    nullable: true
+  })
+  createdAt?: "asc" | "desc" | undefined;
 }

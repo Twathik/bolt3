@@ -14,7 +14,7 @@ function ErrorNotification({
   closeCallback,
 }: ErrorNotificationInterface) {
   return (
-    <div className="min-w-full rounded-md bg-red-50 p-4">
+    <div className="w-1/2 rounded-md bg-red-50 p-4">
       <div className="flex">
         <div className="flex-shrink-0">
           {icon ?? (

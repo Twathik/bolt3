@@ -26,6 +26,8 @@ node_modules
 # production
 /build
 
+tests_app
+
 # misc
 .DS_Store
 *.pem

@@ -1,0 +1,14 @@
+export { AggregateSettingArgs } from "./AggregateSettingArgs";
+export { CreateManySettingArgs } from "./CreateManySettingArgs";
+export { CreateOneSettingArgs } from "./CreateOneSettingArgs";
+export { DeleteManySettingArgs } from "./DeleteManySettingArgs";
+export { DeleteOneSettingArgs } from "./DeleteOneSettingArgs";
+export { FindFirstSettingArgs } from "./FindFirstSettingArgs";
+export { FindFirstSettingOrThrowArgs } from "./FindFirstSettingOrThrowArgs";
+export { FindManySettingArgs } from "./FindManySettingArgs";
+export { FindUniqueSettingArgs } from "./FindUniqueSettingArgs";
+export { FindUniqueSettingOrThrowArgs } from "./FindUniqueSettingOrThrowArgs";
+export { GroupBySettingArgs } from "./GroupBySettingArgs";
+export { UpdateManySettingArgs } from "./UpdateManySettingArgs";
+export { UpdateOneSettingArgs } from "./UpdateOneSettingArgs";
+export { UpsertOneSettingArgs } from "./UpsertOneSettingArgs";

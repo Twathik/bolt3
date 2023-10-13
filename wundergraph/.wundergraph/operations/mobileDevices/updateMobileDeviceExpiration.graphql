@@ -1,0 +1,3 @@
+mutation ($id: String!, $Months: Int!) {
+  mainDb_changeExpirationMobileDeviceResolver(id: $id, Months: $Months)
+}

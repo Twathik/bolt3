@@ -58,7 +58,7 @@ export class PatientScalarWhereWithAggregatesInput {
   @TypeGraphQL.Field(_type => DateTimeWithAggregatesFilter, {
     nullable: true
   })
-  created?: DateTimeWithAggregatesFilter | undefined;
+  createdAt?: DateTimeWithAggregatesFilter | undefined;
 
   @TypeGraphQL.Field(_type => DateTimeWithAggregatesFilter, {
     nullable: true

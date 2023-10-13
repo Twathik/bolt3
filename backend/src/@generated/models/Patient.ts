@@ -2,7 +2,9 @@ import * as TypeGraphQL from "type-graphql";
 import * as GraphQLScalars from "graphql-scalars";
 import { Prisma } from "@prisma/client";
 import { DecimalJSScalar } from "../scalars";
+import { ConsultationList } from "../models/ConsultationList";
 import { Sexe } from "../enums/Sexe";
+import { PatientCount } from "../resolvers/outputs/PatientCount";
 
 @TypeGraphQL.ObjectType("Patient", {})
 export class Patient {
@@ -39,7 +41,7 @@ export class Patient {
   @TypeGraphQL.Field(_type => Date, {
     nullable: false
   })
-  created!: Date;
+  createdAt!: Date;
 
   @TypeGraphQL.Field(_type => Date, {
     nullable: false
@@ -50,4 +52,11 @@ export class Patient {
     nullable: false
   })
   deleted!: boolean;
+
+  ConsultationList?: ConsultationList[];
+
+  @TypeGraphQL.Field(_type => PatientCount, {
+    nullable: true
+  })
+  _count?: PatientCount | null;
 }

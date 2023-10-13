@@ -40,7 +40,7 @@ export class PatientCreateManyInput {
   @TypeGraphQL.Field(_type => Date, {
     nullable: true
   })
-  created?: Date | undefined;
+  createdAt?: Date | undefined;
 
   @TypeGraphQL.Field(_type => Date, {
     nullable: true

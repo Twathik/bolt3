@@ -35,5 +35,5 @@ export class FindFirstPatientOrThrowArgs {
   @TypeGraphQL.Field(_type => [PatientScalarFieldEnum], {
     nullable: true
   })
-  distinct?: Array<"id" | "lastName" | "firstName" | "ddn" | "sexe" | "nTel" | "created" | "updated" | "deleted"> | undefined;
+  distinct?: Array<"id" | "lastName" | "firstName" | "ddn" | "sexe" | "nTel" | "createdAt" | "updated" | "deleted"> | undefined;
 }

@@ -17,6 +17,10 @@ const AppInputBuilder = <T extends FieldValues>({
   switch (type) {
     case "text":
       return <AppTextInput key={input.name} {...input} form={form} />;
+    case "number":
+      return (
+        <AppTextInput key={input.name} {...input} form={form} type="number" />
+      );
     case "date":
       return <AppDateInput key={input.name} {...input} form={form} />;
     case "select":

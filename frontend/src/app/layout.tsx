@@ -1,3 +1,4 @@
+import ProgressBar from "@/components/GeneralComponents/AppProgressBar/ProgressBar";
 import "./globals.css";
 import "@/components/LexicalEditor/lexical.css";
 import "@/components/LexicalEditor/themes/CommentEditorTheme";

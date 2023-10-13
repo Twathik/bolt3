@@ -61,4 +61,9 @@ export class UserCreateManyInput {
     nullable: true
   })
   typesenseApiKey?: string | undefined;
+
+  @TypeGraphQL.Field(_type => Date, {
+    nullable: true
+  })
+  createdAt?: Date | undefined;
 }

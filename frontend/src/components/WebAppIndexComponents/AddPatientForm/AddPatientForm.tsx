@@ -1,14 +1,9 @@
 import React, { useState } from "react";
 import AppFormBuilder from "@/components/GeneralComponents/FormBuilder/AppFormRoot/AppFormBuilder";
-import { useMutation, useQuery } from "../../wg-generated/nextjs";
+import { useMutation } from "../../wg-generated/nextjs";
 import AddPatientFormSchema from "./AddPatientFormSchema";
 import { z } from "zod";
-import SuccessNotification from "@/components/GeneralComponents/Notifications/SuccessNotification";
-import ErrorNotification from "@/components/GeneralComponents/Notifications/ErrorNotification";
-import toast from "react-hot-toast";
 import ConfirmAddPatientModal from "./ConfirmAddPatientModal";
-import { AppFormConfigurationInterface } from "@/components/GeneralComponents/FormBuilder/AppFormRoot/utils/AppBuilderBuilderPropsInterface";
-import { getYear } from "date-fns";
 
 function AddPatientForm() {
   const { trigger, isMutating } = useMutation({
@@ -26,22 +21,8 @@ function AddPatientForm() {
     useState<z.infer<typeof AddPatientFormSchema>>(defaultValues);
   const [isValid, setIsValid] = useState<boolean>(false);
 
-  const { data, mutate, isLoading, error } = useQuery({
-    operationName: "patients/searchPatients",
-    enabled: true,
-    input: {
-      query_string: `${patient.lastName} ${patient.firstName} ${getYear(
-        new Date(patient.ddn),
-      )}`,
-      sexe: patient.sexe,
-    },
-  });
-  console.log({ data, isLoading, error });
-
   async function onSubmit(values: z.infer<typeof AddPatientFormSchema>) {
     SetPatient(values);
-    await mutate();
-    console.log({ data });
   }
 
   return (
@@ -53,6 +34,7 @@ function AddPatientForm() {
       formSchema={AddPatientFormSchema}
       defaultValues={defaultValues}
       onSubmit={onSubmit}
+      mode="onChange"
       inputs={[
         {
           type: "text",

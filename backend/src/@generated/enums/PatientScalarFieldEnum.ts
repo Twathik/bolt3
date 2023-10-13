@@ -7,7 +7,7 @@ export enum PatientScalarFieldEnum {
   ddn = "ddn",
   sexe = "sexe",
   nTel = "nTel",
-  created = "created",
+  createdAt = "createdAt",
   updated = "updated",
   deleted = "deleted"
 }

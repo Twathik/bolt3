@@ -64,6 +64,11 @@ export class UserGroupBy {
   })
   typesenseApiKey!: string | null;
 
+  @TypeGraphQL.Field(_type => Date, {
+    nullable: false
+  })
+  createdAt!: Date;
+
   @TypeGraphQL.Field(_type => UserCountAggregate, {
     nullable: true
   })

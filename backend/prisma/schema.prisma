@@ -7,25 +7,9 @@ generator gen {
   provider = "prisma-client-js"
 }
 
-generator erd {
-  provider = "prisma-erd-generator"
-  output   = "./ERD.png"
-  theme    = "dark"
-}
-
-generator zod {
-  provider = "zod-prisma"
-  output   = "../src/@zod"
-}
-
 generator typegraphql {
   provider = "typegraphql-prisma"
   output   = "../src/@generated"
-}
-
-generator zodPrisma {
-  provider = "prisma-zod-generator"
-  output   = "../src/@zodPrisma"
 }
 
 enum Role {
@@ -36,6 +20,11 @@ enum Role {
 enum Sexe {
   M
   F
+}
+
+enum MobileDeviceType {
+  DOCTOR
+  SECRETARY
 }
 
 model User {
@@ -51,7 +40,27 @@ model User {
   lastConnection  DateTime @updatedAt
   typesenseApiKey String?
 
+  createdAt DateTime @default(now())
+
   @@index([role])
+}
+
+model Setting {
+  id                             String @id @default(uuid())
+  allowedMobileDevices_doctors   Int    @default(1)
+  allowedMobileDevices_secretary Int    @default(1)
+}
+
+model MobileDevice {
+  id          String @id @default(uuid())
+  uuid        String
+  accessToken String @unique
+
+  mobileDeviceType MobileDeviceType @default(SECRETARY)
+  expireAt         DateTime
+  connected        Boolean          @default(false)
+
+  @@unique([uuid, accessToken])
 }
 
 model Patient {
@@ -62,10 +71,34 @@ model Patient {
   sexe      Sexe
   nTel      String[]
 
-  created DateTime @default(now())
-  updated DateTime @updatedAt
+  createdAt DateTime @default(now())
+  updated   DateTime @updatedAt
 
-  deleted Boolean @default(false)
+  deleted          Boolean            @default(false)
+  ConsultationList ConsultationList[]
 
   @@index([sexe])
+}
+
+model Consultation {
+  id               String             @id @default(uuid())
+  day              Int
+  month            Int
+  year             Int
+  createdAt        DateTime           @default(now())
+  ConsultationList ConsultationList[]
+}
+
+model ConsultationList {
+  id             String       @id @default(uuid())
+  patient        Patient      @relation(fields: [patientId], references: [id])
+  patientId      String
+  consultation   Consultation @relation(fields: [consultationId], references: [id])
+  consultationId String
+  active         Boolean      @default(true)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([patientId, consultationId])
 }

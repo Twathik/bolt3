@@ -4,6 +4,7 @@ import {
   FieldValues,
   Path,
   UseFormReturn,
+  ValidationMode,
 } from "react-hook-form";
 import { ZodType, z } from "zod";
 
@@ -14,7 +15,7 @@ interface RootAppInputBuilder<T extends FieldValues> {
 }
 
 interface TextAppInput<T extends FieldValues> extends RootAppInputBuilder<T> {
-  type: "text";
+  type: "text" | "number";
   placeholder: string;
 }
 
@@ -38,8 +39,9 @@ export interface AppFormConfigurationInterface<T extends FieldValues> {
   formSchema: ZodType<T>;
   defaultValues: DefaultValues<T> | undefined;
   onSubmit: (values: z.infer<ZodType<T>>) => void;
-  liveSubmit?: boolean;
+  onChangeSubmit?: boolean;
   loading?: boolean;
   submitButton?: ReactNode;
   setIsValid?: React.Dispatch<React.SetStateAction<boolean>>;
+  mode: keyof ValidationMode;
 }

@@ -1,7 +1,12 @@
+export { ConsultationListScalarFieldEnum } from "./ConsultationListScalarFieldEnum";
+export { ConsultationScalarFieldEnum } from "./ConsultationScalarFieldEnum";
+export { MobileDeviceScalarFieldEnum } from "./MobileDeviceScalarFieldEnum";
+export { MobileDeviceType } from "./MobileDeviceType";
 export { NullsOrder } from "./NullsOrder";
 export { PatientScalarFieldEnum } from "./PatientScalarFieldEnum";
 export { QueryMode } from "./QueryMode";
 export { Role } from "./Role";
+export { SettingScalarFieldEnum } from "./SettingScalarFieldEnum";
 export { Sexe } from "./Sexe";
 export { SortOrder } from "./SortOrder";
 export { TransactionIsolationLevel } from "./TransactionIsolationLevel";

@@ -15,7 +15,7 @@
     "migrate:prod": "dotenv -e .envs/prod.env -- npx prisma migrate dev ",
     "deploy:prod": "dotenv -e .envs/prod.env -- npx prisma migrate deploy",
     "seed:prod": "dotenv -e .envs/prod.env -- npx prisma db seed",
-    "studio": "prisma studio",
+    "studio": "prisma studio -p 5333",
     "forceKill": "kill -9 $(lsof -t -i:4000)"
   },
   "prisma": {

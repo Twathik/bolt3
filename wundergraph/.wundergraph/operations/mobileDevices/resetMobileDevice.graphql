@@ -1,0 +1,8 @@
+mutation ($id: String!, $accessToken: String!) {
+  mainDb_updateOneMobileDevice(
+    where: { id: $id }
+    data: { accessToken: { set: $accessToken }, connected: { set: false } }
+  ) {
+    id
+  }
+}

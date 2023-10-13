@@ -1,0 +1,17 @@
+mutation (
+  $uuid: String!
+  $accessToken: String!
+  $expireAt: DateTime!
+  $mobileDeviceType: mainDb_MobileDeviceType!
+) {
+  mainDb_createOneMobileDevice(
+    data: {
+      uuid: $uuid
+      accessToken: $accessToken
+      expireAt: $expireAt
+      mobileDeviceType: $mobileDeviceType
+    }
+  ) {
+    id
+  }
+}

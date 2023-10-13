@@ -26,7 +26,7 @@ export const createWunderGraphNext = (options: CreateWunderGraphNextOptions) => 
 			: undefined
 	);
 
-	return createWunderGraphNextInternal<Operations>({
+	return createWunderGraphNextInternal<Operations, typeof client>({
 		client,
 		...rest,
 	});

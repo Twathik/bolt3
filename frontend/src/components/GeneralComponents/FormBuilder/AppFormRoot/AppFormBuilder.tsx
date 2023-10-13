@@ -17,13 +17,14 @@ function AppFormBuilder<T extends FieldValues>({
   inputs,
   loading,
   submitButton,
-  liveSubmit,
+  onChangeSubmit,
   setIsValid,
+  mode,
 }: AppFormConfigurationInterface<T>) {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues,
-    mode: "onChange",
+    mode,
   });
 
   const data = form.watch();
@@ -32,9 +33,12 @@ function AppFormBuilder<T extends FieldValues>({
     if (setIsValid) setIsValid(form.formState.isValid);
   }, [form.formState.isValid]);
 
-  React.useEffect(() => {
-    if (form.formState.isValid && !form.formState.isValidating && liveSubmit) {
-      console.log({ data });
+  useEffect(() => {
+    if (
+      form.formState.isValid &&
+      !form.formState.isValidating &&
+      onChangeSubmit
+    ) {
       onSubmit(data);
     }
   }, [form.formState, data, form.formState.isValidating]);

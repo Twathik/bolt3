@@ -1,10 +1,17 @@
 "use client";
 
-import { EnvelopeIcon, PhoneIcon } from "@heroicons/react/24/outline";
+import { QueueListIcon, FolderOpenIcon } from "@heroicons/react/24/outline";
 import { Highlight } from "react-instantsearch";
 import { format, parseISO } from "date-fns";
+import useConsultationStore from "@/store/consultationStore";
+import RegisterButtonWithCheck from "./RegisterButton/RegisterButtonWithCheck";
+import RegisterButtonWithoutCheck from "./RegisterButton/RegisterButtonWithoutCheck";
 
-const Hit = ({ hit }: { hit: any }) => {
+const Hit = ({ hit, highlight = true }: { hit: any; highlight?: boolean }) => {
+  const {
+    consultationState: { id },
+  } = useConsultationStore();
+
   return (
     <div
       key={hit.id}
@@ -15,10 +22,18 @@ const Hit = ({ hit }: { hit: any }) => {
           <div className="flex items-center space-x-3">
             <h3 className="truncate text-sm font-medium text-gray-900">
               <span className="mx-1">
-                <Highlight hit={hit} attribute="lastName" />
+                {highlight ? (
+                  <Highlight hit={hit} attribute="lastName" />
+                ) : (
+                  hit.lastName
+                )}
               </span>
               <span className="mx-1">
-                <Highlight hit={hit} attribute="firstName" />
+                {highlight ? (
+                  <Highlight hit={hit} attribute="firstName" />
+                ) : (
+                  hit.firstName
+                )}
               </span>
             </h3>
             <span
@@ -32,28 +47,31 @@ const Hit = ({ hit }: { hit: any }) => {
             </span>
           </div>
           <p className="mt-1 truncate text-sm text-gray-500">
-            Date de naissance : {format(parseISO(hit.ddn), "dd-MM-yyyy")}
+            Date de naissance :{" "}
+            {hit.ddn && format(parseISO(hit.ddn), "dd-MM-yyyy")}{" "}
+            {hit?.formatted_ddn}
           </p>
         </div>
 
         <div className="flex-1">
           <div className="-mt-px flex divide-x divide-gray-200">
             <div className="flex w-0 flex-1 hover:cursor-pointer hover:bg-slate-200">
-              <a className="relative -mr-px inline-flex w-0 flex-1 items-center justify-center gap-x-3 rounded-bl-lg border border-transparent py-4 text-sm font-semibold text-gray-900">
-                <EnvelopeIcon
-                  className="h-5 w-5 text-gray-400"
-                  aria-hidden="true"
+              {id ? (
+                <RegisterButtonWithCheck
+                  consultationId={id}
+                  patientId={hit.id}
                 />
-                Email
-              </a>
+              ) : (
+                <RegisterButtonWithoutCheck patientId={hit.id} />
+              )}
             </div>
             <div className="-ml-px flex w-0 flex-1 hover:cursor-pointer hover:bg-slate-200">
               <a className="relative inline-flex w-0 flex-1 items-center justify-center gap-x-3 rounded-br-lg border border-transparent py-4 text-sm font-semibold text-gray-900">
-                <PhoneIcon
+                <FolderOpenIcon
                   className="h-5 w-5 text-gray-400"
                   aria-hidden="true"
                 />
-                Call
+                Ouvrir
               </a>
             </div>
           </div>

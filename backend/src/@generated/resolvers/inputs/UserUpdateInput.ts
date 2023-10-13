@@ -64,4 +64,9 @@ export class UserUpdateInput {
     nullable: true
   })
   typesenseApiKey?: NullableStringFieldUpdateOperationsInput | undefined;
+
+  @TypeGraphQL.Field(_type => DateTimeFieldUpdateOperationsInput, {
+    nullable: true
+  })
+  createdAt?: DateTimeFieldUpdateOperationsInput | undefined;
 }

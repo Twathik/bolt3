@@ -1,0 +1,3 @@
+mutation ($patient_id: String!) {
+  mainDb_registerPatient(patient_id: $patient_id)
+}

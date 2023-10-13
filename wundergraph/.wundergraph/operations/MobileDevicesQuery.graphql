@@ -1,0 +1,9 @@
+query {
+  mainDb_mobileDevices(orderBy: { id: asc }) {
+    id
+    accessToken
+    expireAt
+    mobileDeviceType
+    connected
+  }
+}

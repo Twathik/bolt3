@@ -42,7 +42,7 @@ export class PatientGroupBy {
   @TypeGraphQL.Field(_type => Date, {
     nullable: false
   })
-  created!: Date;
+  createdAt!: Date;
 
   @TypeGraphQL.Field(_type => Date, {
     nullable: false

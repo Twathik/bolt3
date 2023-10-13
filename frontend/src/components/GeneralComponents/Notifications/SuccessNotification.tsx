@@ -14,7 +14,7 @@ function SuccessNotification({
   closeCallback,
 }: SuccessNotificationInterface) {
   return (
-    <div className="rounded-md bg-green-50 p-4">
+    <div className="w-1/2 rounded-md bg-green-50 p-4">
       <div className="flex">
         <div className="flex-shrink-0">
           {icon ? (

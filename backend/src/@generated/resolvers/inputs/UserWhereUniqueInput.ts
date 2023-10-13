@@ -79,4 +79,9 @@ export class UserWhereUniqueInput {
     nullable: true
   })
   typesenseApiKey?: StringNullableFilter | undefined;
+
+  @TypeGraphQL.Field(_type => DateTimeFilter, {
+    nullable: true
+  })
+  createdAt?: DateTimeFilter | undefined;
 }

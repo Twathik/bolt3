@@ -1,0 +1,3 @@
+mutation ($id: String!, $mobileDeviceType: mainDb_MobileDeviceType!) {
+  mainDb_switchMobileDevice(id: $id, mobileDeviceType: $mobileDeviceType)
+}

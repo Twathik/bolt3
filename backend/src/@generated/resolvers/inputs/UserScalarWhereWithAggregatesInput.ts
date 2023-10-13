@@ -79,4 +79,9 @@ export class UserScalarWhereWithAggregatesInput {
     nullable: true
   })
   typesenseApiKey?: StringNullableWithAggregatesFilter | undefined;
+
+  @TypeGraphQL.Field(_type => DateTimeWithAggregatesFilter, {
+    nullable: true
+  })
+  createdAt?: DateTimeWithAggregatesFilter | undefined;
 }

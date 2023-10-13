@@ -60,4 +60,9 @@ export class User {
     nullable: true
   })
   typesenseApiKey?: string | null;
+
+  @TypeGraphQL.Field(_type => Date, {
+    nullable: false
+  })
+  createdAt!: Date;
 }

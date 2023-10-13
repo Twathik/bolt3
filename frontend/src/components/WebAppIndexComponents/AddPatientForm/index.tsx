@@ -8,10 +8,30 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Toaster } from "react-hot-toast";
+
 import AddPatientForm from "./AddPatientForm";
+import useConsultationStore from "@/store/consultationStore";
+import { useEffect } from "react";
+import { useQuery } from "@/components/wg-generated/nextjs";
+import { getDate, getMonth, getYear } from "date-fns";
+import FormSkeleton from "@/components/GeneralComponents/AppUi/FormSkeleton";
 
 const AddPatient = () => {
+  const { consultationState, setConsultationId } = useConsultationStore();
+
+  const { data } = useQuery({
+    operationName: "consultationList/todayConsultation",
+    input: {
+      day: getDate(new Date()),
+      month: getMonth(new Date()),
+      year: getYear(new Date()),
+    },
+  });
+
+  useEffect(() => {
+    setConsultationId(data?.mainDb_findFirstConsultation?.id ?? null);
+  }, [data]);
+
   return (
     <Card className="m-20 block">
       <CardHeader>

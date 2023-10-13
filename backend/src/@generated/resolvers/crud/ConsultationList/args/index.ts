@@ -1,0 +1,14 @@
+export { AggregateConsultationListArgs } from "./AggregateConsultationListArgs";
+export { CreateManyConsultationListArgs } from "./CreateManyConsultationListArgs";
+export { CreateOneConsultationListArgs } from "./CreateOneConsultationListArgs";
+export { DeleteManyConsultationListArgs } from "./DeleteManyConsultationListArgs";
+export { DeleteOneConsultationListArgs } from "./DeleteOneConsultationListArgs";
+export { FindFirstConsultationListArgs } from "./FindFirstConsultationListArgs";
+export { FindFirstConsultationListOrThrowArgs } from "./FindFirstConsultationListOrThrowArgs";
+export { FindManyConsultationListArgs } from "./FindManyConsultationListArgs";
+export { FindUniqueConsultationListArgs } from "./FindUniqueConsultationListArgs";
+export { FindUniqueConsultationListOrThrowArgs } from "./FindUniqueConsultationListOrThrowArgs";
+export { GroupByConsultationListArgs } from "./GroupByConsultationListArgs";
+export { UpdateManyConsultationListArgs } from "./UpdateManyConsultationListArgs";
+export { UpdateOneConsultationListArgs } from "./UpdateOneConsultationListArgs";
+export { UpsertOneConsultationListArgs } from "./UpsertOneConsultationListArgs";

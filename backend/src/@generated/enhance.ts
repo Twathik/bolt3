@@ -3,6 +3,7 @@ import * as tslib from "tslib";
 import * as crudResolvers from "./resolvers/crud/resolvers-crud.index";
 import * as argsTypes from "./resolvers/crud/args.index";
 import * as actionResolvers from "./resolvers/crud/resolvers-actions.index";
+import * as relationResolvers from "./resolvers/relations/resolvers.index";
 import * as models from "./models";
 import * as outputTypes from "./resolvers/outputs";
 import * as inputTypes from "./resolvers/inputs";
@@ -11,7 +12,11 @@ export type MethodDecoratorOverrideFn = (decorators: MethodDecorator[]) => Metho
 
 const crudResolversMap = {
   User: crudResolvers.UserCrudResolver,
-  Patient: crudResolvers.PatientCrudResolver
+  Setting: crudResolvers.SettingCrudResolver,
+  MobileDevice: crudResolvers.MobileDeviceCrudResolver,
+  Patient: crudResolvers.PatientCrudResolver,
+  Consultation: crudResolvers.ConsultationCrudResolver,
+  ConsultationList: crudResolvers.ConsultationListCrudResolver
 };
 const actionResolversMap = {
   User: {
@@ -30,6 +35,38 @@ const actionResolversMap = {
     updateOneUser: actionResolvers.UpdateOneUserResolver,
     upsertOneUser: actionResolvers.UpsertOneUserResolver
   },
+  Setting: {
+    aggregateSetting: actionResolvers.AggregateSettingResolver,
+    createManySetting: actionResolvers.CreateManySettingResolver,
+    createOneSetting: actionResolvers.CreateOneSettingResolver,
+    deleteManySetting: actionResolvers.DeleteManySettingResolver,
+    deleteOneSetting: actionResolvers.DeleteOneSettingResolver,
+    findFirstSetting: actionResolvers.FindFirstSettingResolver,
+    findFirstSettingOrThrow: actionResolvers.FindFirstSettingOrThrowResolver,
+    settings: actionResolvers.FindManySettingResolver,
+    setting: actionResolvers.FindUniqueSettingResolver,
+    getSetting: actionResolvers.FindUniqueSettingOrThrowResolver,
+    groupBySetting: actionResolvers.GroupBySettingResolver,
+    updateManySetting: actionResolvers.UpdateManySettingResolver,
+    updateOneSetting: actionResolvers.UpdateOneSettingResolver,
+    upsertOneSetting: actionResolvers.UpsertOneSettingResolver
+  },
+  MobileDevice: {
+    aggregateMobileDevice: actionResolvers.AggregateMobileDeviceResolver,
+    createManyMobileDevice: actionResolvers.CreateManyMobileDeviceResolver,
+    createOneMobileDevice: actionResolvers.CreateOneMobileDeviceResolver,
+    deleteManyMobileDevice: actionResolvers.DeleteManyMobileDeviceResolver,
+    deleteOneMobileDevice: actionResolvers.DeleteOneMobileDeviceResolver,
+    findFirstMobileDevice: actionResolvers.FindFirstMobileDeviceResolver,
+    findFirstMobileDeviceOrThrow: actionResolvers.FindFirstMobileDeviceOrThrowResolver,
+    mobileDevices: actionResolvers.FindManyMobileDeviceResolver,
+    mobileDevice: actionResolvers.FindUniqueMobileDeviceResolver,
+    getMobileDevice: actionResolvers.FindUniqueMobileDeviceOrThrowResolver,
+    groupByMobileDevice: actionResolvers.GroupByMobileDeviceResolver,
+    updateManyMobileDevice: actionResolvers.UpdateManyMobileDeviceResolver,
+    updateOneMobileDevice: actionResolvers.UpdateOneMobileDeviceResolver,
+    upsertOneMobileDevice: actionResolvers.UpsertOneMobileDeviceResolver
+  },
   Patient: {
     aggregatePatient: actionResolvers.AggregatePatientResolver,
     createManyPatient: actionResolvers.CreateManyPatientResolver,
@@ -45,11 +82,47 @@ const actionResolversMap = {
     updateManyPatient: actionResolvers.UpdateManyPatientResolver,
     updateOnePatient: actionResolvers.UpdateOnePatientResolver,
     upsertOnePatient: actionResolvers.UpsertOnePatientResolver
+  },
+  Consultation: {
+    aggregateConsultation: actionResolvers.AggregateConsultationResolver,
+    createManyConsultation: actionResolvers.CreateManyConsultationResolver,
+    createOneConsultation: actionResolvers.CreateOneConsultationResolver,
+    deleteManyConsultation: actionResolvers.DeleteManyConsultationResolver,
+    deleteOneConsultation: actionResolvers.DeleteOneConsultationResolver,
+    findFirstConsultation: actionResolvers.FindFirstConsultationResolver,
+    findFirstConsultationOrThrow: actionResolvers.FindFirstConsultationOrThrowResolver,
+    consultations: actionResolvers.FindManyConsultationResolver,
+    consultation: actionResolvers.FindUniqueConsultationResolver,
+    getConsultation: actionResolvers.FindUniqueConsultationOrThrowResolver,
+    groupByConsultation: actionResolvers.GroupByConsultationResolver,
+    updateManyConsultation: actionResolvers.UpdateManyConsultationResolver,
+    updateOneConsultation: actionResolvers.UpdateOneConsultationResolver,
+    upsertOneConsultation: actionResolvers.UpsertOneConsultationResolver
+  },
+  ConsultationList: {
+    aggregateConsultationList: actionResolvers.AggregateConsultationListResolver,
+    createManyConsultationList: actionResolvers.CreateManyConsultationListResolver,
+    createOneConsultationList: actionResolvers.CreateOneConsultationListResolver,
+    deleteManyConsultationList: actionResolvers.DeleteManyConsultationListResolver,
+    deleteOneConsultationList: actionResolvers.DeleteOneConsultationListResolver,
+    findFirstConsultationList: actionResolvers.FindFirstConsultationListResolver,
+    findFirstConsultationListOrThrow: actionResolvers.FindFirstConsultationListOrThrowResolver,
+    consultationLists: actionResolvers.FindManyConsultationListResolver,
+    consultationList: actionResolvers.FindUniqueConsultationListResolver,
+    getConsultationList: actionResolvers.FindUniqueConsultationListOrThrowResolver,
+    groupByConsultationList: actionResolvers.GroupByConsultationListResolver,
+    updateManyConsultationList: actionResolvers.UpdateManyConsultationListResolver,
+    updateOneConsultationList: actionResolvers.UpdateOneConsultationListResolver,
+    upsertOneConsultationList: actionResolvers.UpsertOneConsultationListResolver
   }
 };
 const crudResolversInfo = {
   User: ["aggregateUser", "createManyUser", "createOneUser", "deleteManyUser", "deleteOneUser", "findFirstUser", "findFirstUserOrThrow", "users", "user", "getUser", "groupByUser", "updateManyUser", "updateOneUser", "upsertOneUser"],
-  Patient: ["aggregatePatient", "createManyPatient", "createOnePatient", "deleteManyPatient", "deleteOnePatient", "findFirstPatient", "findFirstPatientOrThrow", "patients", "patient", "getPatient", "groupByPatient", "updateManyPatient", "updateOnePatient", "upsertOnePatient"]
+  Setting: ["aggregateSetting", "createManySetting", "createOneSetting", "deleteManySetting", "deleteOneSetting", "findFirstSetting", "findFirstSettingOrThrow", "settings", "setting", "getSetting", "groupBySetting", "updateManySetting", "updateOneSetting", "upsertOneSetting"],
+  MobileDevice: ["aggregateMobileDevice", "createManyMobileDevice", "createOneMobileDevice", "deleteManyMobileDevice", "deleteOneMobileDevice", "findFirstMobileDevice", "findFirstMobileDeviceOrThrow", "mobileDevices", "mobileDevice", "getMobileDevice", "groupByMobileDevice", "updateManyMobileDevice", "updateOneMobileDevice", "upsertOneMobileDevice"],
+  Patient: ["aggregatePatient", "createManyPatient", "createOnePatient", "deleteManyPatient", "deleteOnePatient", "findFirstPatient", "findFirstPatientOrThrow", "patients", "patient", "getPatient", "groupByPatient", "updateManyPatient", "updateOnePatient", "upsertOnePatient"],
+  Consultation: ["aggregateConsultation", "createManyConsultation", "createOneConsultation", "deleteManyConsultation", "deleteOneConsultation", "findFirstConsultation", "findFirstConsultationOrThrow", "consultations", "consultation", "getConsultation", "groupByConsultation", "updateManyConsultation", "updateOneConsultation", "upsertOneConsultation"],
+  ConsultationList: ["aggregateConsultationList", "createManyConsultationList", "createOneConsultationList", "deleteManyConsultationList", "deleteOneConsultationList", "findFirstConsultationList", "findFirstConsultationListOrThrow", "consultationLists", "consultationList", "getConsultationList", "groupByConsultationList", "updateManyConsultationList", "updateOneConsultationList", "upsertOneConsultationList"]
 };
 const argsInfo = {
   AggregateUserArgs: ["where", "orderBy", "cursor", "take", "skip"],
@@ -66,6 +139,34 @@ const argsInfo = {
   UpdateManyUserArgs: ["data", "where"],
   UpdateOneUserArgs: ["data", "where"],
   UpsertOneUserArgs: ["where", "create", "update"],
+  AggregateSettingArgs: ["where", "orderBy", "cursor", "take", "skip"],
+  CreateManySettingArgs: ["data", "skipDuplicates"],
+  CreateOneSettingArgs: ["data"],
+  DeleteManySettingArgs: ["where"],
+  DeleteOneSettingArgs: ["where"],
+  FindFirstSettingArgs: ["where", "orderBy", "cursor", "take", "skip", "distinct"],
+  FindFirstSettingOrThrowArgs: ["where", "orderBy", "cursor", "take", "skip", "distinct"],
+  FindManySettingArgs: ["where", "orderBy", "cursor", "take", "skip", "distinct"],
+  FindUniqueSettingArgs: ["where"],
+  FindUniqueSettingOrThrowArgs: ["where"],
+  GroupBySettingArgs: ["where", "orderBy", "by", "having", "take", "skip"],
+  UpdateManySettingArgs: ["data", "where"],
+  UpdateOneSettingArgs: ["data", "where"],
+  UpsertOneSettingArgs: ["where", "create", "update"],
+  AggregateMobileDeviceArgs: ["where", "orderBy", "cursor", "take", "skip"],
+  CreateManyMobileDeviceArgs: ["data", "skipDuplicates"],
+  CreateOneMobileDeviceArgs: ["data"],
+  DeleteManyMobileDeviceArgs: ["where"],
+  DeleteOneMobileDeviceArgs: ["where"],
+  FindFirstMobileDeviceArgs: ["where", "orderBy", "cursor", "take", "skip", "distinct"],
+  FindFirstMobileDeviceOrThrowArgs: ["where", "orderBy", "cursor", "take", "skip", "distinct"],
+  FindManyMobileDeviceArgs: ["where", "orderBy", "cursor", "take", "skip", "distinct"],
+  FindUniqueMobileDeviceArgs: ["where"],
+  FindUniqueMobileDeviceOrThrowArgs: ["where"],
+  GroupByMobileDeviceArgs: ["where", "orderBy", "by", "having", "take", "skip"],
+  UpdateManyMobileDeviceArgs: ["data", "where"],
+  UpdateOneMobileDeviceArgs: ["data", "where"],
+  UpsertOneMobileDeviceArgs: ["where", "create", "update"],
   AggregatePatientArgs: ["where", "orderBy", "cursor", "take", "skip"],
   CreateManyPatientArgs: ["data", "skipDuplicates"],
   CreateOnePatientArgs: ["data"],
@@ -79,7 +180,35 @@ const argsInfo = {
   GroupByPatientArgs: ["where", "orderBy", "by", "having", "take", "skip"],
   UpdateManyPatientArgs: ["data", "where"],
   UpdateOnePatientArgs: ["data", "where"],
-  UpsertOnePatientArgs: ["where", "create", "update"]
+  UpsertOnePatientArgs: ["where", "create", "update"],
+  AggregateConsultationArgs: ["where", "orderBy", "cursor", "take", "skip"],
+  CreateManyConsultationArgs: ["data", "skipDuplicates"],
+  CreateOneConsultationArgs: ["data"],
+  DeleteManyConsultationArgs: ["where"],
+  DeleteOneConsultationArgs: ["where"],
+  FindFirstConsultationArgs: ["where", "orderBy", "cursor", "take", "skip", "distinct"],
+  FindFirstConsultationOrThrowArgs: ["where", "orderBy", "cursor", "take", "skip", "distinct"],
+  FindManyConsultationArgs: ["where", "orderBy", "cursor", "take", "skip", "distinct"],
+  FindUniqueConsultationArgs: ["where"],
+  FindUniqueConsultationOrThrowArgs: ["where"],
+  GroupByConsultationArgs: ["where", "orderBy", "by", "having", "take", "skip"],
+  UpdateManyConsultationArgs: ["data", "where"],
+  UpdateOneConsultationArgs: ["data", "where"],
+  UpsertOneConsultationArgs: ["where", "create", "update"],
+  AggregateConsultationListArgs: ["where", "orderBy", "cursor", "take", "skip"],
+  CreateManyConsultationListArgs: ["data", "skipDuplicates"],
+  CreateOneConsultationListArgs: ["data"],
+  DeleteManyConsultationListArgs: ["where"],
+  DeleteOneConsultationListArgs: ["where"],
+  FindFirstConsultationListArgs: ["where", "orderBy", "cursor", "take", "skip", "distinct"],
+  FindFirstConsultationListOrThrowArgs: ["where", "orderBy", "cursor", "take", "skip", "distinct"],
+  FindManyConsultationListArgs: ["where", "orderBy", "cursor", "take", "skip", "distinct"],
+  FindUniqueConsultationListArgs: ["where"],
+  FindUniqueConsultationListOrThrowArgs: ["where"],
+  GroupByConsultationListArgs: ["where", "orderBy", "by", "having", "take", "skip"],
+  UpdateManyConsultationListArgs: ["data", "where"],
+  UpdateOneConsultationListArgs: ["data", "where"],
+  UpsertOneConsultationListArgs: ["where", "create", "update"]
 };
 
 type ResolverModelNames = keyof typeof crudResolversMap;
@@ -176,6 +305,55 @@ export function applyArgsTypesEnhanceMap(
   }
 }
 
+const relationResolversMap = {
+  Patient: relationResolvers.PatientRelationsResolver,
+  Consultation: relationResolvers.ConsultationRelationsResolver,
+  ConsultationList: relationResolvers.ConsultationListRelationsResolver
+};
+const relationResolversInfo = {
+  Patient: ["ConsultationList"],
+  Consultation: ["ConsultationList"],
+  ConsultationList: ["patient", "consultation"]
+};
+
+type RelationResolverModelNames = keyof typeof relationResolversMap;
+
+type RelationResolverActionNames<
+  TModel extends RelationResolverModelNames
+> = keyof typeof relationResolversMap[TModel]["prototype"];
+
+export type RelationResolverActionsConfig<TModel extends RelationResolverModelNames>
+  = Partial<Record<RelationResolverActionNames<TModel>, MethodDecorator[] | MethodDecoratorOverrideFn>>
+  & { _all?: MethodDecorator[] };
+
+export type RelationResolversEnhanceMap = {
+  [TModel in RelationResolverModelNames]?: RelationResolverActionsConfig<TModel>;
+};
+
+export function applyRelationResolversEnhanceMap(
+  relationResolversEnhanceMap: RelationResolversEnhanceMap,
+) {
+  for (const relationResolversEnhanceMapKey of Object.keys(relationResolversEnhanceMap)) {
+    const modelName = relationResolversEnhanceMapKey as keyof typeof relationResolversEnhanceMap;
+    const relationResolverTarget = relationResolversMap[modelName].prototype;
+    const relationResolverActionsConfig = relationResolversEnhanceMap[modelName]!;
+    const allActionsDecorators = relationResolverActionsConfig._all ?? [];
+    const relationResolverActionNames = relationResolversInfo[modelName as keyof typeof relationResolversInfo];
+    for (const relationResolverActionName of relationResolverActionNames) {
+      const maybeDecoratorsOrFn = relationResolverActionsConfig[
+        relationResolverActionName as keyof typeof relationResolverActionsConfig
+      ] as MethodDecorator[] | MethodDecoratorOverrideFn | undefined;
+      let decorators: MethodDecorator[];
+      if (typeof maybeDecoratorsOrFn === "function") {
+        decorators = maybeDecoratorsOrFn(allActionsDecorators);
+      } else {
+        decorators = [...allActionsDecorators, ...maybeDecoratorsOrFn ?? []];
+      }
+      tslib.__decorate(decorators, relationResolverTarget, relationResolverActionName, null);
+    }
+  }
+}
+
 type TypeConfig = {
   class?: ClassDecorator[];
   fields?: FieldsConfig;
@@ -217,8 +395,12 @@ function applyTypeClassEnhanceConfig<
 }
 
 const modelsInfo = {
-  User: ["id", "email", "userId", "lastName", "firstName", "fullName", "avatarUrl", "role", "phoneNumbers", "lastConnection", "typesenseApiKey"],
-  Patient: ["id", "lastName", "firstName", "ddn", "sexe", "nTel", "created", "updated", "deleted"]
+  User: ["id", "email", "userId", "lastName", "firstName", "fullName", "avatarUrl", "role", "phoneNumbers", "lastConnection", "typesenseApiKey", "createdAt"],
+  Setting: ["id", "allowedMobileDevices_doctors", "allowedMobileDevices_secretary"],
+  MobileDevice: ["id", "uuid", "accessToken", "mobileDeviceType", "expireAt", "connected"],
+  Patient: ["id", "lastName", "firstName", "ddn", "sexe", "nTel", "createdAt", "updated", "deleted"],
+  Consultation: ["id", "day", "month", "year", "createdAt"],
+  ConsultationList: ["id", "patientId", "consultationId", "active", "createdAt", "updatedAt"]
 };
 
 type ModelNames = keyof typeof models;
@@ -258,16 +440,42 @@ export function applyModelsEnhanceMap(modelsEnhanceMap: ModelsEnhanceMap) {
 
 const outputsInfo = {
   AggregateUser: ["_count", "_min", "_max"],
-  UserGroupBy: ["id", "email", "userId", "lastName", "firstName", "fullName", "avatarUrl", "role", "phoneNumbers", "lastConnection", "typesenseApiKey", "_count", "_min", "_max"],
+  UserGroupBy: ["id", "email", "userId", "lastName", "firstName", "fullName", "avatarUrl", "role", "phoneNumbers", "lastConnection", "typesenseApiKey", "createdAt", "_count", "_min", "_max"],
+  AggregateSetting: ["_count", "_avg", "_sum", "_min", "_max"],
+  SettingGroupBy: ["id", "allowedMobileDevices_doctors", "allowedMobileDevices_secretary", "_count", "_avg", "_sum", "_min", "_max"],
+  AggregateMobileDevice: ["_count", "_min", "_max"],
+  MobileDeviceGroupBy: ["id", "uuid", "accessToken", "mobileDeviceType", "expireAt", "connected", "_count", "_min", "_max"],
   AggregatePatient: ["_count", "_min", "_max"],
-  PatientGroupBy: ["id", "lastName", "firstName", "ddn", "sexe", "nTel", "created", "updated", "deleted", "_count", "_min", "_max"],
+  PatientGroupBy: ["id", "lastName", "firstName", "ddn", "sexe", "nTel", "createdAt", "updated", "deleted", "_count", "_min", "_max"],
+  AggregateConsultation: ["_count", "_avg", "_sum", "_min", "_max"],
+  ConsultationGroupBy: ["id", "day", "month", "year", "createdAt", "_count", "_avg", "_sum", "_min", "_max"],
+  AggregateConsultationList: ["_count", "_min", "_max"],
+  ConsultationListGroupBy: ["id", "patientId", "consultationId", "active", "createdAt", "updatedAt", "_count", "_min", "_max"],
   AffectedRowsOutput: ["count"],
-  UserCountAggregate: ["id", "email", "userId", "lastName", "firstName", "fullName", "avatarUrl", "role", "phoneNumbers", "lastConnection", "typesenseApiKey", "_all"],
-  UserMinAggregate: ["id", "email", "userId", "lastName", "firstName", "fullName", "avatarUrl", "role", "lastConnection", "typesenseApiKey"],
-  UserMaxAggregate: ["id", "email", "userId", "lastName", "firstName", "fullName", "avatarUrl", "role", "lastConnection", "typesenseApiKey"],
-  PatientCountAggregate: ["id", "lastName", "firstName", "ddn", "sexe", "nTel", "created", "updated", "deleted", "_all"],
-  PatientMinAggregate: ["id", "lastName", "firstName", "ddn", "sexe", "created", "updated", "deleted"],
-  PatientMaxAggregate: ["id", "lastName", "firstName", "ddn", "sexe", "created", "updated", "deleted"]
+  UserCountAggregate: ["id", "email", "userId", "lastName", "firstName", "fullName", "avatarUrl", "role", "phoneNumbers", "lastConnection", "typesenseApiKey", "createdAt", "_all"],
+  UserMinAggregate: ["id", "email", "userId", "lastName", "firstName", "fullName", "avatarUrl", "role", "lastConnection", "typesenseApiKey", "createdAt"],
+  UserMaxAggregate: ["id", "email", "userId", "lastName", "firstName", "fullName", "avatarUrl", "role", "lastConnection", "typesenseApiKey", "createdAt"],
+  SettingCountAggregate: ["id", "allowedMobileDevices_doctors", "allowedMobileDevices_secretary", "_all"],
+  SettingAvgAggregate: ["allowedMobileDevices_doctors", "allowedMobileDevices_secretary"],
+  SettingSumAggregate: ["allowedMobileDevices_doctors", "allowedMobileDevices_secretary"],
+  SettingMinAggregate: ["id", "allowedMobileDevices_doctors", "allowedMobileDevices_secretary"],
+  SettingMaxAggregate: ["id", "allowedMobileDevices_doctors", "allowedMobileDevices_secretary"],
+  MobileDeviceCountAggregate: ["id", "uuid", "accessToken", "mobileDeviceType", "expireAt", "connected", "_all"],
+  MobileDeviceMinAggregate: ["id", "uuid", "accessToken", "mobileDeviceType", "expireAt", "connected"],
+  MobileDeviceMaxAggregate: ["id", "uuid", "accessToken", "mobileDeviceType", "expireAt", "connected"],
+  PatientCount: ["ConsultationList"],
+  PatientCountAggregate: ["id", "lastName", "firstName", "ddn", "sexe", "nTel", "createdAt", "updated", "deleted", "_all"],
+  PatientMinAggregate: ["id", "lastName", "firstName", "ddn", "sexe", "createdAt", "updated", "deleted"],
+  PatientMaxAggregate: ["id", "lastName", "firstName", "ddn", "sexe", "createdAt", "updated", "deleted"],
+  ConsultationCount: ["ConsultationList"],
+  ConsultationCountAggregate: ["id", "day", "month", "year", "createdAt", "_all"],
+  ConsultationAvgAggregate: ["day", "month", "year"],
+  ConsultationSumAggregate: ["day", "month", "year"],
+  ConsultationMinAggregate: ["id", "day", "month", "year", "createdAt"],
+  ConsultationMaxAggregate: ["id", "day", "month", "year", "createdAt"],
+  ConsultationListCountAggregate: ["id", "patientId", "consultationId", "active", "createdAt", "updatedAt", "_all"],
+  ConsultationListMinAggregate: ["id", "patientId", "consultationId", "active", "createdAt", "updatedAt"],
+  ConsultationListMaxAggregate: ["id", "patientId", "consultationId", "active", "createdAt", "updatedAt"]
 };
 
 type OutputTypesNames = keyof typeof outputTypes;
@@ -308,54 +516,126 @@ export function applyOutputTypesEnhanceMap(
 }
 
 const inputsInfo = {
-  UserWhereInput: ["AND", "OR", "NOT", "id", "email", "userId", "lastName", "firstName", "fullName", "avatarUrl", "role", "phoneNumbers", "lastConnection", "typesenseApiKey"],
-  UserOrderByWithRelationInput: ["id", "email", "userId", "lastName", "firstName", "fullName", "avatarUrl", "role", "phoneNumbers", "lastConnection", "typesenseApiKey"],
-  UserWhereUniqueInput: ["id", "email", "userId", "AND", "OR", "NOT", "lastName", "firstName", "fullName", "avatarUrl", "role", "phoneNumbers", "lastConnection", "typesenseApiKey"],
-  UserOrderByWithAggregationInput: ["id", "email", "userId", "lastName", "firstName", "fullName", "avatarUrl", "role", "phoneNumbers", "lastConnection", "typesenseApiKey", "_count", "_max", "_min"],
-  UserScalarWhereWithAggregatesInput: ["AND", "OR", "NOT", "id", "email", "userId", "lastName", "firstName", "fullName", "avatarUrl", "role", "phoneNumbers", "lastConnection", "typesenseApiKey"],
-  PatientWhereInput: ["AND", "OR", "NOT", "id", "lastName", "firstName", "ddn", "sexe", "nTel", "created", "updated", "deleted"],
-  PatientOrderByWithRelationInput: ["id", "lastName", "firstName", "ddn", "sexe", "nTel", "created", "updated", "deleted"],
-  PatientWhereUniqueInput: ["id", "AND", "OR", "NOT", "lastName", "firstName", "ddn", "sexe", "nTel", "created", "updated", "deleted"],
-  PatientOrderByWithAggregationInput: ["id", "lastName", "firstName", "ddn", "sexe", "nTel", "created", "updated", "deleted", "_count", "_max", "_min"],
-  PatientScalarWhereWithAggregatesInput: ["AND", "OR", "NOT", "id", "lastName", "firstName", "ddn", "sexe", "nTel", "created", "updated", "deleted"],
-  UserCreateInput: ["id", "email", "userId", "lastName", "firstName", "fullName", "avatarUrl", "role", "phoneNumbers", "lastConnection", "typesenseApiKey"],
-  UserUpdateInput: ["id", "email", "userId", "lastName", "firstName", "fullName", "avatarUrl", "role", "phoneNumbers", "lastConnection", "typesenseApiKey"],
-  UserCreateManyInput: ["id", "email", "userId", "lastName", "firstName", "fullName", "avatarUrl", "role", "phoneNumbers", "lastConnection", "typesenseApiKey"],
-  UserUpdateManyMutationInput: ["id", "email", "userId", "lastName", "firstName", "fullName", "avatarUrl", "role", "phoneNumbers", "lastConnection", "typesenseApiKey"],
-  PatientCreateInput: ["id", "lastName", "firstName", "ddn", "sexe", "nTel", "created", "updated", "deleted"],
-  PatientUpdateInput: ["id", "lastName", "firstName", "ddn", "sexe", "nTel", "created", "updated", "deleted"],
-  PatientCreateManyInput: ["id", "lastName", "firstName", "ddn", "sexe", "nTel", "created", "updated", "deleted"],
-  PatientUpdateManyMutationInput: ["id", "lastName", "firstName", "ddn", "sexe", "nTel", "created", "updated", "deleted"],
+  UserWhereInput: ["AND", "OR", "NOT", "id", "email", "userId", "lastName", "firstName", "fullName", "avatarUrl", "role", "phoneNumbers", "lastConnection", "typesenseApiKey", "createdAt"],
+  UserOrderByWithRelationInput: ["id", "email", "userId", "lastName", "firstName", "fullName", "avatarUrl", "role", "phoneNumbers", "lastConnection", "typesenseApiKey", "createdAt"],
+  UserWhereUniqueInput: ["id", "email", "userId", "AND", "OR", "NOT", "lastName", "firstName", "fullName", "avatarUrl", "role", "phoneNumbers", "lastConnection", "typesenseApiKey", "createdAt"],
+  UserOrderByWithAggregationInput: ["id", "email", "userId", "lastName", "firstName", "fullName", "avatarUrl", "role", "phoneNumbers", "lastConnection", "typesenseApiKey", "createdAt", "_count", "_max", "_min"],
+  UserScalarWhereWithAggregatesInput: ["AND", "OR", "NOT", "id", "email", "userId", "lastName", "firstName", "fullName", "avatarUrl", "role", "phoneNumbers", "lastConnection", "typesenseApiKey", "createdAt"],
+  SettingWhereInput: ["AND", "OR", "NOT", "id", "allowedMobileDevices_doctors", "allowedMobileDevices_secretary"],
+  SettingOrderByWithRelationInput: ["id", "allowedMobileDevices_doctors", "allowedMobileDevices_secretary"],
+  SettingWhereUniqueInput: ["id", "AND", "OR", "NOT", "allowedMobileDevices_doctors", "allowedMobileDevices_secretary"],
+  SettingOrderByWithAggregationInput: ["id", "allowedMobileDevices_doctors", "allowedMobileDevices_secretary", "_count", "_avg", "_max", "_min", "_sum"],
+  SettingScalarWhereWithAggregatesInput: ["AND", "OR", "NOT", "id", "allowedMobileDevices_doctors", "allowedMobileDevices_secretary"],
+  MobileDeviceWhereInput: ["AND", "OR", "NOT", "id", "uuid", "accessToken", "mobileDeviceType", "expireAt", "connected"],
+  MobileDeviceOrderByWithRelationInput: ["id", "uuid", "accessToken", "mobileDeviceType", "expireAt", "connected"],
+  MobileDeviceWhereUniqueInput: ["id", "accessToken", "uuid_accessToken", "AND", "OR", "NOT", "uuid", "mobileDeviceType", "expireAt", "connected"],
+  MobileDeviceOrderByWithAggregationInput: ["id", "uuid", "accessToken", "mobileDeviceType", "expireAt", "connected", "_count", "_max", "_min"],
+  MobileDeviceScalarWhereWithAggregatesInput: ["AND", "OR", "NOT", "id", "uuid", "accessToken", "mobileDeviceType", "expireAt", "connected"],
+  PatientWhereInput: ["AND", "OR", "NOT", "id", "lastName", "firstName", "ddn", "sexe", "nTel", "createdAt", "updated", "deleted", "ConsultationList"],
+  PatientOrderByWithRelationInput: ["id", "lastName", "firstName", "ddn", "sexe", "nTel", "createdAt", "updated", "deleted", "ConsultationList"],
+  PatientWhereUniqueInput: ["id", "AND", "OR", "NOT", "lastName", "firstName", "ddn", "sexe", "nTel", "createdAt", "updated", "deleted", "ConsultationList"],
+  PatientOrderByWithAggregationInput: ["id", "lastName", "firstName", "ddn", "sexe", "nTel", "createdAt", "updated", "deleted", "_count", "_max", "_min"],
+  PatientScalarWhereWithAggregatesInput: ["AND", "OR", "NOT", "id", "lastName", "firstName", "ddn", "sexe", "nTel", "createdAt", "updated", "deleted"],
+  ConsultationWhereInput: ["AND", "OR", "NOT", "id", "day", "month", "year", "createdAt", "ConsultationList"],
+  ConsultationOrderByWithRelationInput: ["id", "day", "month", "year", "createdAt", "ConsultationList"],
+  ConsultationWhereUniqueInput: ["id", "AND", "OR", "NOT", "day", "month", "year", "createdAt", "ConsultationList"],
+  ConsultationOrderByWithAggregationInput: ["id", "day", "month", "year", "createdAt", "_count", "_avg", "_max", "_min", "_sum"],
+  ConsultationScalarWhereWithAggregatesInput: ["AND", "OR", "NOT", "id", "day", "month", "year", "createdAt"],
+  ConsultationListWhereInput: ["AND", "OR", "NOT", "id", "patientId", "consultationId", "active", "createdAt", "updatedAt", "patient", "consultation"],
+  ConsultationListOrderByWithRelationInput: ["id", "patientId", "consultationId", "active", "createdAt", "updatedAt", "patient", "consultation"],
+  ConsultationListWhereUniqueInput: ["id", "patientId_consultationId", "AND", "OR", "NOT", "patientId", "consultationId", "active", "createdAt", "updatedAt", "patient", "consultation"],
+  ConsultationListOrderByWithAggregationInput: ["id", "patientId", "consultationId", "active", "createdAt", "updatedAt", "_count", "_max", "_min"],
+  ConsultationListScalarWhereWithAggregatesInput: ["AND", "OR", "NOT", "id", "patientId", "consultationId", "active", "createdAt", "updatedAt"],
+  UserCreateInput: ["id", "email", "userId", "lastName", "firstName", "fullName", "avatarUrl", "role", "phoneNumbers", "lastConnection", "typesenseApiKey", "createdAt"],
+  UserUpdateInput: ["id", "email", "userId", "lastName", "firstName", "fullName", "avatarUrl", "role", "phoneNumbers", "lastConnection", "typesenseApiKey", "createdAt"],
+  UserCreateManyInput: ["id", "email", "userId", "lastName", "firstName", "fullName", "avatarUrl", "role", "phoneNumbers", "lastConnection", "typesenseApiKey", "createdAt"],
+  UserUpdateManyMutationInput: ["id", "email", "userId", "lastName", "firstName", "fullName", "avatarUrl", "role", "phoneNumbers", "lastConnection", "typesenseApiKey", "createdAt"],
+  SettingCreateInput: ["id", "allowedMobileDevices_doctors", "allowedMobileDevices_secretary"],
+  SettingUpdateInput: ["id", "allowedMobileDevices_doctors", "allowedMobileDevices_secretary"],
+  SettingCreateManyInput: ["id", "allowedMobileDevices_doctors", "allowedMobileDevices_secretary"],
+  SettingUpdateManyMutationInput: ["id", "allowedMobileDevices_doctors", "allowedMobileDevices_secretary"],
+  MobileDeviceCreateInput: ["id", "uuid", "accessToken", "mobileDeviceType", "expireAt", "connected"],
+  MobileDeviceUpdateInput: ["id", "uuid", "accessToken", "mobileDeviceType", "expireAt", "connected"],
+  MobileDeviceCreateManyInput: ["id", "uuid", "accessToken", "mobileDeviceType", "expireAt", "connected"],
+  MobileDeviceUpdateManyMutationInput: ["id", "uuid", "accessToken", "mobileDeviceType", "expireAt", "connected"],
+  PatientCreateInput: ["id", "lastName", "firstName", "ddn", "sexe", "nTel", "createdAt", "updated", "deleted", "ConsultationList"],
+  PatientUpdateInput: ["id", "lastName", "firstName", "ddn", "sexe", "nTel", "createdAt", "updated", "deleted", "ConsultationList"],
+  PatientCreateManyInput: ["id", "lastName", "firstName", "ddn", "sexe", "nTel", "createdAt", "updated", "deleted"],
+  PatientUpdateManyMutationInput: ["id", "lastName", "firstName", "ddn", "sexe", "nTel", "createdAt", "updated", "deleted"],
+  ConsultationCreateInput: ["id", "day", "month", "year", "createdAt", "ConsultationList"],
+  ConsultationUpdateInput: ["id", "day", "month", "year", "createdAt", "ConsultationList"],
+  ConsultationCreateManyInput: ["id", "day", "month", "year", "createdAt"],
+  ConsultationUpdateManyMutationInput: ["id", "day", "month", "year", "createdAt"],
+  ConsultationListCreateInput: ["id", "active", "createdAt", "updatedAt", "patient", "consultation"],
+  ConsultationListUpdateInput: ["id", "active", "createdAt", "updatedAt", "patient", "consultation"],
+  ConsultationListCreateManyInput: ["id", "patientId", "consultationId", "active", "createdAt", "updatedAt"],
+  ConsultationListUpdateManyMutationInput: ["id", "active", "createdAt", "updatedAt"],
   StringFilter: ["equals", "in", "notIn", "lt", "lte", "gt", "gte", "contains", "startsWith", "endsWith", "mode", "not"],
   StringNullableFilter: ["equals", "in", "notIn", "lt", "lte", "gt", "gte", "contains", "startsWith", "endsWith", "mode", "not"],
   EnumRoleFilter: ["equals", "in", "notIn", "not"],
   StringNullableListFilter: ["equals", "has", "hasEvery", "hasSome", "isEmpty"],
   DateTimeFilter: ["equals", "in", "notIn", "lt", "lte", "gt", "gte", "not"],
   SortOrderInput: ["sort", "nulls"],
-  UserCountOrderByAggregateInput: ["id", "email", "userId", "lastName", "firstName", "fullName", "avatarUrl", "role", "phoneNumbers", "lastConnection", "typesenseApiKey"],
-  UserMaxOrderByAggregateInput: ["id", "email", "userId", "lastName", "firstName", "fullName", "avatarUrl", "role", "lastConnection", "typesenseApiKey"],
-  UserMinOrderByAggregateInput: ["id", "email", "userId", "lastName", "firstName", "fullName", "avatarUrl", "role", "lastConnection", "typesenseApiKey"],
+  UserCountOrderByAggregateInput: ["id", "email", "userId", "lastName", "firstName", "fullName", "avatarUrl", "role", "phoneNumbers", "lastConnection", "typesenseApiKey", "createdAt"],
+  UserMaxOrderByAggregateInput: ["id", "email", "userId", "lastName", "firstName", "fullName", "avatarUrl", "role", "lastConnection", "typesenseApiKey", "createdAt"],
+  UserMinOrderByAggregateInput: ["id", "email", "userId", "lastName", "firstName", "fullName", "avatarUrl", "role", "lastConnection", "typesenseApiKey", "createdAt"],
   StringWithAggregatesFilter: ["equals", "in", "notIn", "lt", "lte", "gt", "gte", "contains", "startsWith", "endsWith", "mode", "not", "_count", "_min", "_max"],
   StringNullableWithAggregatesFilter: ["equals", "in", "notIn", "lt", "lte", "gt", "gte", "contains", "startsWith", "endsWith", "mode", "not", "_count", "_min", "_max"],
   EnumRoleWithAggregatesFilter: ["equals", "in", "notIn", "not", "_count", "_min", "_max"],
   DateTimeWithAggregatesFilter: ["equals", "in", "notIn", "lt", "lte", "gt", "gte", "not", "_count", "_min", "_max"],
-  EnumSexeFilter: ["equals", "in", "notIn", "not"],
+  IntFilter: ["equals", "in", "notIn", "lt", "lte", "gt", "gte", "not"],
+  SettingCountOrderByAggregateInput: ["id", "allowedMobileDevices_doctors", "allowedMobileDevices_secretary"],
+  SettingAvgOrderByAggregateInput: ["allowedMobileDevices_doctors", "allowedMobileDevices_secretary"],
+  SettingMaxOrderByAggregateInput: ["id", "allowedMobileDevices_doctors", "allowedMobileDevices_secretary"],
+  SettingMinOrderByAggregateInput: ["id", "allowedMobileDevices_doctors", "allowedMobileDevices_secretary"],
+  SettingSumOrderByAggregateInput: ["allowedMobileDevices_doctors", "allowedMobileDevices_secretary"],
+  IntWithAggregatesFilter: ["equals", "in", "notIn", "lt", "lte", "gt", "gte", "not", "_count", "_avg", "_sum", "_min", "_max"],
+  EnumMobileDeviceTypeFilter: ["equals", "in", "notIn", "not"],
   BoolFilter: ["equals", "not"],
-  PatientCountOrderByAggregateInput: ["id", "lastName", "firstName", "ddn", "sexe", "nTel", "created", "updated", "deleted"],
-  PatientMaxOrderByAggregateInput: ["id", "lastName", "firstName", "ddn", "sexe", "created", "updated", "deleted"],
-  PatientMinOrderByAggregateInput: ["id", "lastName", "firstName", "ddn", "sexe", "created", "updated", "deleted"],
-  EnumSexeWithAggregatesFilter: ["equals", "in", "notIn", "not", "_count", "_min", "_max"],
+  MobileDeviceUuidAccessTokenCompoundUniqueInput: ["uuid", "accessToken"],
+  MobileDeviceCountOrderByAggregateInput: ["id", "uuid", "accessToken", "mobileDeviceType", "expireAt", "connected"],
+  MobileDeviceMaxOrderByAggregateInput: ["id", "uuid", "accessToken", "mobileDeviceType", "expireAt", "connected"],
+  MobileDeviceMinOrderByAggregateInput: ["id", "uuid", "accessToken", "mobileDeviceType", "expireAt", "connected"],
+  EnumMobileDeviceTypeWithAggregatesFilter: ["equals", "in", "notIn", "not", "_count", "_min", "_max"],
   BoolWithAggregatesFilter: ["equals", "not", "_count", "_min", "_max"],
+  EnumSexeFilter: ["equals", "in", "notIn", "not"],
+  ConsultationListListRelationFilter: ["every", "some", "none"],
+  ConsultationListOrderByRelationAggregateInput: ["_count"],
+  PatientCountOrderByAggregateInput: ["id", "lastName", "firstName", "ddn", "sexe", "nTel", "createdAt", "updated", "deleted"],
+  PatientMaxOrderByAggregateInput: ["id", "lastName", "firstName", "ddn", "sexe", "createdAt", "updated", "deleted"],
+  PatientMinOrderByAggregateInput: ["id", "lastName", "firstName", "ddn", "sexe", "createdAt", "updated", "deleted"],
+  EnumSexeWithAggregatesFilter: ["equals", "in", "notIn", "not", "_count", "_min", "_max"],
+  ConsultationCountOrderByAggregateInput: ["id", "day", "month", "year", "createdAt"],
+  ConsultationAvgOrderByAggregateInput: ["day", "month", "year"],
+  ConsultationMaxOrderByAggregateInput: ["id", "day", "month", "year", "createdAt"],
+  ConsultationMinOrderByAggregateInput: ["id", "day", "month", "year", "createdAt"],
+  ConsultationSumOrderByAggregateInput: ["day", "month", "year"],
+  PatientRelationFilter: ["is", "isNot"],
+  ConsultationRelationFilter: ["is", "isNot"],
+  ConsultationListPatientIdConsultationIdCompoundUniqueInput: ["patientId", "consultationId"],
+  ConsultationListCountOrderByAggregateInput: ["id", "patientId", "consultationId", "active", "createdAt", "updatedAt"],
+  ConsultationListMaxOrderByAggregateInput: ["id", "patientId", "consultationId", "active", "createdAt", "updatedAt"],
+  ConsultationListMinOrderByAggregateInput: ["id", "patientId", "consultationId", "active", "createdAt", "updatedAt"],
   UserCreatephoneNumbersInput: ["set"],
   StringFieldUpdateOperationsInput: ["set"],
   NullableStringFieldUpdateOperationsInput: ["set"],
   EnumRoleFieldUpdateOperationsInput: ["set"],
   UserUpdatephoneNumbersInput: ["set", "push"],
   DateTimeFieldUpdateOperationsInput: ["set"],
+  IntFieldUpdateOperationsInput: ["set", "increment", "decrement", "multiply", "divide"],
+  EnumMobileDeviceTypeFieldUpdateOperationsInput: ["set"],
+  BoolFieldUpdateOperationsInput: ["set"],
   PatientCreatenTelInput: ["set"],
+  ConsultationListCreateNestedManyWithoutPatientInput: ["create", "connectOrCreate", "createMany", "connect"],
   EnumSexeFieldUpdateOperationsInput: ["set"],
   PatientUpdatenTelInput: ["set", "push"],
-  BoolFieldUpdateOperationsInput: ["set"],
+  ConsultationListUpdateManyWithoutPatientNestedInput: ["create", "connectOrCreate", "upsert", "createMany", "set", "disconnect", "delete", "connect", "update", "updateMany", "deleteMany"],
+  ConsultationListCreateNestedManyWithoutConsultationInput: ["create", "connectOrCreate", "createMany", "connect"],
+  ConsultationListUpdateManyWithoutConsultationNestedInput: ["create", "connectOrCreate", "upsert", "createMany", "set", "disconnect", "delete", "connect", "update", "updateMany", "deleteMany"],
+  PatientCreateNestedOneWithoutConsultationListInput: ["create", "connectOrCreate", "connect"],
+  ConsultationCreateNestedOneWithoutConsultationListInput: ["create", "connectOrCreate", "connect"],
+  PatientUpdateOneRequiredWithoutConsultationListNestedInput: ["create", "connectOrCreate", "upsert", "connect", "update"],
+  ConsultationUpdateOneRequiredWithoutConsultationListNestedInput: ["create", "connectOrCreate", "upsert", "connect", "update"],
   NestedStringFilter: ["equals", "in", "notIn", "lt", "lte", "gt", "gte", "contains", "startsWith", "endsWith", "not"],
   NestedStringNullableFilter: ["equals", "in", "notIn", "lt", "lte", "gt", "gte", "contains", "startsWith", "endsWith", "not"],
   NestedEnumRoleFilter: ["equals", "in", "notIn", "not"],
@@ -366,10 +646,41 @@ const inputsInfo = {
   NestedIntNullableFilter: ["equals", "in", "notIn", "lt", "lte", "gt", "gte", "not"],
   NestedEnumRoleWithAggregatesFilter: ["equals", "in", "notIn", "not", "_count", "_min", "_max"],
   NestedDateTimeWithAggregatesFilter: ["equals", "in", "notIn", "lt", "lte", "gt", "gte", "not", "_count", "_min", "_max"],
-  NestedEnumSexeFilter: ["equals", "in", "notIn", "not"],
+  NestedIntWithAggregatesFilter: ["equals", "in", "notIn", "lt", "lte", "gt", "gte", "not", "_count", "_avg", "_sum", "_min", "_max"],
+  NestedFloatFilter: ["equals", "in", "notIn", "lt", "lte", "gt", "gte", "not"],
+  NestedEnumMobileDeviceTypeFilter: ["equals", "in", "notIn", "not"],
   NestedBoolFilter: ["equals", "not"],
+  NestedEnumMobileDeviceTypeWithAggregatesFilter: ["equals", "in", "notIn", "not", "_count", "_min", "_max"],
+  NestedBoolWithAggregatesFilter: ["equals", "not", "_count", "_min", "_max"],
+  NestedEnumSexeFilter: ["equals", "in", "notIn", "not"],
   NestedEnumSexeWithAggregatesFilter: ["equals", "in", "notIn", "not", "_count", "_min", "_max"],
-  NestedBoolWithAggregatesFilter: ["equals", "not", "_count", "_min", "_max"]
+  ConsultationListCreateWithoutPatientInput: ["id", "active", "createdAt", "updatedAt", "consultation"],
+  ConsultationListCreateOrConnectWithoutPatientInput: ["where", "create"],
+  ConsultationListCreateManyPatientInputEnvelope: ["data", "skipDuplicates"],
+  ConsultationListUpsertWithWhereUniqueWithoutPatientInput: ["where", "update", "create"],
+  ConsultationListUpdateWithWhereUniqueWithoutPatientInput: ["where", "data"],
+  ConsultationListUpdateManyWithWhereWithoutPatientInput: ["where", "data"],
+  ConsultationListScalarWhereInput: ["AND", "OR", "NOT", "id", "patientId", "consultationId", "active", "createdAt", "updatedAt"],
+  ConsultationListCreateWithoutConsultationInput: ["id", "active", "createdAt", "updatedAt", "patient"],
+  ConsultationListCreateOrConnectWithoutConsultationInput: ["where", "create"],
+  ConsultationListCreateManyConsultationInputEnvelope: ["data", "skipDuplicates"],
+  ConsultationListUpsertWithWhereUniqueWithoutConsultationInput: ["where", "update", "create"],
+  ConsultationListUpdateWithWhereUniqueWithoutConsultationInput: ["where", "data"],
+  ConsultationListUpdateManyWithWhereWithoutConsultationInput: ["where", "data"],
+  PatientCreateWithoutConsultationListInput: ["id", "lastName", "firstName", "ddn", "sexe", "nTel", "createdAt", "updated", "deleted"],
+  PatientCreateOrConnectWithoutConsultationListInput: ["where", "create"],
+  ConsultationCreateWithoutConsultationListInput: ["id", "day", "month", "year", "createdAt"],
+  ConsultationCreateOrConnectWithoutConsultationListInput: ["where", "create"],
+  PatientUpsertWithoutConsultationListInput: ["update", "create", "where"],
+  PatientUpdateToOneWithWhereWithoutConsultationListInput: ["where", "data"],
+  PatientUpdateWithoutConsultationListInput: ["id", "lastName", "firstName", "ddn", "sexe", "nTel", "createdAt", "updated", "deleted"],
+  ConsultationUpsertWithoutConsultationListInput: ["update", "create", "where"],
+  ConsultationUpdateToOneWithWhereWithoutConsultationListInput: ["where", "data"],
+  ConsultationUpdateWithoutConsultationListInput: ["id", "day", "month", "year", "createdAt"],
+  ConsultationListCreateManyPatientInput: ["id", "consultationId", "active", "createdAt", "updatedAt"],
+  ConsultationListUpdateWithoutPatientInput: ["id", "active", "createdAt", "updatedAt", "consultation"],
+  ConsultationListCreateManyConsultationInput: ["id", "patientId", "active", "createdAt", "updatedAt"],
+  ConsultationListUpdateWithoutConsultationInput: ["id", "active", "createdAt", "updatedAt", "patient"]
 };
 
 type InputTypesNames = keyof typeof inputTypes;

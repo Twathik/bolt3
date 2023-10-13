@@ -1,8 +1,8 @@
-import LogoutButton from "@/components/Logout/LogoutButton";
-import WebAppHeader from "@/components/WebAppHeader/header";
+
+import WebAppHeader from "@/components/WebAppIndexComponents/WebAppHeader/header";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import { useRouter } from "next/navigation";
+
 
 const inter = Inter({ subsets: ["latin"] });
 

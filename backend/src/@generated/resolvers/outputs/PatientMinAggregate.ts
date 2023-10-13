@@ -34,7 +34,7 @@ export class PatientMinAggregate {
   @TypeGraphQL.Field(_type => Date, {
     nullable: true
   })
-  created!: Date | null;
+  createdAt!: Date | null;
 
   @TypeGraphQL.Field(_type => Date, {
     nullable: true

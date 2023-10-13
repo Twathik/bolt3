@@ -1,0 +1,5 @@
+mutation ($accessToken: String!, $uuid: String!) {
+  mainDb_registerOneMobileDevice(accessToken: $accessToken, uuid: $uuid) {
+    uuid
+  }
+}

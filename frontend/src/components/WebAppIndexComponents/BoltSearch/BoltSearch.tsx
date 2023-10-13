@@ -8,7 +8,6 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { searchClient } from "@/components/WebAppIndexComponents/BoltSearch/utils/BoltSearchUtils";
-import CustomSortBy from "@/components/WebAppIndexComponents/BoltSearch/BoltSearchSortBySex";
 import CustomPagination from "@/components/WebAppIndexComponents/BoltSearch/BoltSearchPagination";
 import { Hits, InstantSearch, SearchBox } from "react-instantsearch";
 import Hit from "./BoltSearchHits";

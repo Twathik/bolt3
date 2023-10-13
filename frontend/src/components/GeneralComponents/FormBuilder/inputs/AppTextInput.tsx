@@ -16,6 +16,7 @@ interface TextInputProps<T extends FieldValues> {
   label: string;
   placeholder: string;
   description?: string;
+  type?: React.HTMLInputTypeAttribute;
 }
 
 function AppTextInput<T extends FieldValues>({
@@ -24,6 +25,7 @@ function AppTextInput<T extends FieldValues>({
   label,
   placeholder,
   description,
+  type = "text",
 }: TextInputProps<T>) {
   return (
     <FormField
@@ -33,7 +35,7 @@ function AppTextInput<T extends FieldValues>({
         <FormItem>
           <FormLabel>{label}</FormLabel>
           <FormControl>
-            <Input placeholder={placeholder} {...field} />
+            <Input placeholder={placeholder} type={type} {...field} />
           </FormControl>
           {description && <FormDescription>{description}</FormDescription>}
           <FormMessage />
