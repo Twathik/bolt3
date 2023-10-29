@@ -8,7 +8,7 @@ import { DateTimeFilter } from "../inputs/DateTimeFilter";
 import { EnumSexeFilter } from "../inputs/EnumSexeFilter";
 import { PatientWhereInput } from "../inputs/PatientWhereInput";
 import { StringFilter } from "../inputs/StringFilter";
-import { StringNullableListFilter } from "../inputs/StringNullableListFilter";
+import { StringNullableFilter } from "../inputs/StringNullableFilter";
 
 @TypeGraphQL.InputType("PatientWhereUniqueInput", {})
 export class PatientWhereUniqueInput {
@@ -52,10 +52,15 @@ export class PatientWhereUniqueInput {
   })
   sexe?: EnumSexeFilter | undefined;
 
-  @TypeGraphQL.Field(_type => StringNullableListFilter, {
+  @TypeGraphQL.Field(_type => StringNullableFilter, {
     nullable: true
   })
-  nTel?: StringNullableListFilter | undefined;
+  nTel?: StringNullableFilter | undefined;
+
+  @TypeGraphQL.Field(_type => StringNullableFilter, {
+    nullable: true
+  })
+  address?: StringNullableFilter | undefined;
 
   @TypeGraphQL.Field(_type => DateTimeFilter, {
     nullable: true
@@ -71,6 +76,16 @@ export class PatientWhereUniqueInput {
     nullable: true
   })
   deleted?: BoolFilter | undefined;
+
+  @TypeGraphQL.Field(_type => BoolFilter, {
+    nullable: true
+  })
+  onTrash?: BoolFilter | undefined;
+
+  @TypeGraphQL.Field(_type => BoolFilter, {
+    nullable: true
+  })
+  informationsConfirmed?: BoolFilter | undefined;
 
   @TypeGraphQL.Field(_type => ConsultationListListRelationFilter, {
     nullable: true

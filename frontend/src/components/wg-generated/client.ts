@@ -39,9 +39,16 @@ import type {
 	ConsultationListUnregisterPatientResponse,
 	ConsultationListUnregisterPatientInput,
 	ConsultationListUnregisterPatientResponseData,
+	GlobalCloseAllTabsMutationResponse,
+	GlobalCloseAllTabsMutationInput,
+	GlobalCloseAllTabsMutationResponseData,
+	GlobalCloseAllTabsSubscriptionResponse,
+	GlobalCloseAllTabsSubscriptionResponseData,
 	MobileDevicesAddMobileDeviceMutationResponse,
 	MobileDevicesAddMobileDeviceMutationInput,
 	MobileDevicesAddMobileDeviceMutationResponseData,
+	MobileDevicesGetAllDevicesSubscriptionResponse,
+	MobileDevicesGetAllDevicesSubscriptionResponseData,
 	MobileDevicesRegisterOneMobileDeviceResponse,
 	MobileDevicesRegisterOneMobileDeviceInput,
 	MobileDevicesRegisterOneMobileDeviceResponseData,
@@ -54,17 +61,33 @@ import type {
 	MobileDevicesSwitchMobileDeviceResponse,
 	MobileDevicesSwitchMobileDeviceInput,
 	MobileDevicesSwitchMobileDeviceResponseData,
+	MobileDevicesTriggerGetAllMobileDevicesSubscriptionResponse,
+	MobileDevicesTriggerGetAllMobileDevicesSubscriptionResponseData,
 	MobileDevicesUpdateMobileDeviceExpirationResponse,
 	MobileDevicesUpdateMobileDeviceExpirationInput,
 	MobileDevicesUpdateMobileDeviceExpirationResponseData,
+	PatientsMovePatientFolferToTrashResponse,
+	PatientsMovePatientFolferToTrashInput,
+	PatientsMovePatientFolferToTrashResponseData,
 	PatientsAdd_One_patient_to_indexResponse,
 	PatientsAdd_One_patient_to_indexInput,
 	PatientsAdd_One_patient_to_indexResponseData,
+	PatientsGetOnTrashPatientsResponse,
+	PatientsGetOnTrashPatientsResponseData,
+	PatientsGetOnePatientResponse,
+	PatientsGetOnePatientInput,
+	PatientsGetOnePatientResponseData,
+	PatientsGetUpdatedPatientSubscriptionResponse,
+	PatientsGetUpdatedPatientSubscriptionInput,
+	PatientsGetUpdatedPatientSubscriptionResponseData,
 	PatientsIndex_patientsResponse,
 	PatientsIndex_patientsResponseData,
 	PatientsSearchPatientsResponse,
 	PatientsSearchPatientsInput,
 	PatientsSearchPatientsResponseData,
+	PatientsUpdateOnePatientResponse,
+	PatientsUpdateOnePatientInput,
+	PatientsUpdateOnePatientResponseData,
 	UsersGetResponse,
 	UsersGetResponseData,
 	UsersSubscribeResponse,
@@ -128,7 +151,6 @@ const S3UploadProviderData: { [provider: string]: { [profile: string]: UploadVal
 };
 
 export enum AuthProviderId {
-	"github" = "github",
 	"kc" = "kc",
 }
 
@@ -138,7 +160,7 @@ export interface AuthProvider {
 }
 
 export const defaultClientConfig: ClientConfig = {
-	applicationHash: "f63b2e36",
+	applicationHash: "d8874006",
 	baseURL: "http://api.bolt3.local",
 	sdkVersion: "0.179.2",
 };
@@ -162,7 +184,16 @@ export const operationMetadata: OperationMetadata = {
 	"consultationList/unregisterPatient": {
 		requiresAuthentication: false,
 	},
+	"global/closeAllTabsMutation": {
+		requiresAuthentication: false,
+	},
+	"global/closeAllTabsSubscription": {
+		requiresAuthentication: false,
+	},
 	"mobileDevices/addMobileDeviceMutation": {
+		requiresAuthentication: false,
+	},
+	"mobileDevices/getAllDevicesSubscription": {
 		requiresAuthentication: false,
 	},
 	"mobileDevices/registerOneMobileDevice": {
@@ -177,16 +208,34 @@ export const operationMetadata: OperationMetadata = {
 	"mobileDevices/switchMobileDevice": {
 		requiresAuthentication: false,
 	},
+	"mobileDevices/triggerGetAllMobileDevicesSubscription": {
+		requiresAuthentication: false,
+	},
 	"mobileDevices/updateMobileDeviceExpiration": {
 		requiresAuthentication: false,
 	},
+	"patients/MovePatientFolferToTrash": {
+		requiresAuthentication: false,
+	},
 	"patients/add_One_patient_to_index": {
+		requiresAuthentication: false,
+	},
+	"patients/getOnTrashPatients": {
+		requiresAuthentication: false,
+	},
+	"patients/getOnePatient": {
+		requiresAuthentication: false,
+	},
+	"patients/getUpdatedPatientSubscription": {
 		requiresAuthentication: false,
 	},
 	"patients/index_patients": {
 		requiresAuthentication: false,
 	},
 	"patients/searchPatients": {
+		requiresAuthentication: false,
+	},
+	"patients/updateOnePatient": {
 		requiresAuthentication: false,
 	},
 	"users/get": {
@@ -286,6 +335,18 @@ export type Queries = {
 		requiresAuthentication: false;
 		liveQuery: boolean;
 	};
+	"patients/getOnTrashPatients": {
+		input?: undefined;
+		response: { data?: PatientsGetOnTrashPatientsResponse["data"]; error?: ClientOperationErrors };
+		requiresAuthentication: false;
+		liveQuery: boolean;
+	};
+	"patients/getOnePatient": {
+		input: PatientsGetOnePatientInput;
+		response: { data?: PatientsGetOnePatientResponse["data"]; error?: ClientOperationErrors };
+		requiresAuthentication: false;
+		liveQuery: boolean;
+	};
 	"patients/searchPatients": {
 		input: PatientsSearchPatientsInput;
 		response: { data?: PatientsSearchPatientsResponse["data"]; error?: ClientOperationErrors };
@@ -309,6 +370,11 @@ export type Mutations = {
 	"consultationList/unregisterPatient": {
 		input: ConsultationListUnregisterPatientInput;
 		response: { data?: ConsultationListUnregisterPatientResponse["data"]; error?: ClientOperationErrors };
+		requiresAuthentication: false;
+	};
+	"global/closeAllTabsMutation": {
+		input: GlobalCloseAllTabsMutationInput;
+		response: { data?: GlobalCloseAllTabsMutationResponse["data"]; error?: ClientOperationErrors };
 		requiresAuthentication: false;
 	};
 	"mobileDevices/addMobileDeviceMutation": {
@@ -336,9 +402,22 @@ export type Mutations = {
 		response: { data?: MobileDevicesSwitchMobileDeviceResponse["data"]; error?: ClientOperationErrors };
 		requiresAuthentication: false;
 	};
+	"mobileDevices/triggerGetAllMobileDevicesSubscription": {
+		input?: undefined;
+		response: {
+			data?: MobileDevicesTriggerGetAllMobileDevicesSubscriptionResponse["data"];
+			error?: ClientOperationErrors;
+		};
+		requiresAuthentication: false;
+	};
 	"mobileDevices/updateMobileDeviceExpiration": {
 		input: MobileDevicesUpdateMobileDeviceExpirationInput;
 		response: { data?: MobileDevicesUpdateMobileDeviceExpirationResponse["data"]; error?: ClientOperationErrors };
+		requiresAuthentication: false;
+	};
+	"patients/MovePatientFolferToTrash": {
+		input: PatientsMovePatientFolferToTrashInput;
+		response: { data?: PatientsMovePatientFolferToTrashResponse["data"]; error?: ClientOperationErrors };
 		requiresAuthentication: false;
 	};
 	"patients/add_One_patient_to_index": {
@@ -351,6 +430,11 @@ export type Mutations = {
 		response: { data?: PatientsIndex_patientsResponse["data"]; error?: ClientOperationErrors };
 		requiresAuthentication: false;
 	};
+	"patients/updateOnePatient": {
+		input: PatientsUpdateOnePatientInput;
+		response: { data?: PatientsUpdateOnePatientResponse["data"]; error?: ClientOperationErrors };
+		requiresAuthentication: false;
+	};
 	"users/update": {
 		input: UsersUpdateInput;
 		response: { data?: UsersUpdateResponseData; error?: OperationErrors["users/update"] };
@@ -359,6 +443,21 @@ export type Mutations = {
 };
 
 export type Subscriptions = {
+	"global/closeAllTabsSubscription": {
+		input?: undefined;
+		response: { data?: GlobalCloseAllTabsSubscriptionResponse["data"]; error?: ClientOperationErrors };
+		requiresAuthentication: false;
+	};
+	"mobileDevices/getAllDevicesSubscription": {
+		input?: undefined;
+		response: { data?: MobileDevicesGetAllDevicesSubscriptionResponse["data"]; error?: ClientOperationErrors };
+		requiresAuthentication: false;
+	};
+	"patients/getUpdatedPatientSubscription": {
+		input: PatientsGetUpdatedPatientSubscriptionInput;
+		response: { data?: PatientsGetUpdatedPatientSubscriptionResponse["data"]; error?: ClientOperationErrors };
+		requiresAuthentication: false;
+	};
 	"users/subscribe": {
 		input: UsersSubscribeInput;
 		response: { data?: UsersSubscribeResponseData; error?: OperationErrors["users/subscribe"] };
@@ -385,6 +484,18 @@ export type Subscriptions = {
 	"consultationList/todayConsultation": {
 		input: ConsultationListTodayConsultationInput;
 		response: { data?: ConsultationListTodayConsultationResponse["data"]; error?: ClientOperationErrors };
+		liveQuery: true;
+		requiresAuthentication: false;
+	};
+	"patients/getOnTrashPatients": {
+		input?: undefined;
+		response: { data?: PatientsGetOnTrashPatientsResponse["data"]; error?: ClientOperationErrors };
+		liveQuery: true;
+		requiresAuthentication: false;
+	};
+	"patients/getOnePatient": {
+		input: PatientsGetOnePatientInput;
+		response: { data?: PatientsGetOnePatientResponse["data"]; error?: ClientOperationErrors };
 		liveQuery: true;
 		requiresAuthentication: false;
 	};
@@ -424,6 +535,18 @@ export type LiveQueries = {
 	"consultationList/todayConsultation": {
 		input: ConsultationListTodayConsultationInput;
 		response: { data?: ConsultationListTodayConsultationResponse["data"]; error?: ClientOperationErrors };
+		liveQuery: true;
+		requiresAuthentication: false;
+	};
+	"patients/getOnTrashPatients": {
+		input?: undefined;
+		response: { data?: PatientsGetOnTrashPatientsResponse["data"]; error?: ClientOperationErrors };
+		liveQuery: true;
+		requiresAuthentication: false;
+	};
+	"patients/getOnePatient": {
+		input: PatientsGetOnePatientInput;
+		response: { data?: PatientsGetOnePatientResponse["data"]; error?: ClientOperationErrors };
 		liveQuery: true;
 		requiresAuthentication: false;
 	};

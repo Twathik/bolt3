@@ -6,7 +6,7 @@ import { BoolFieldUpdateOperationsInput } from "../inputs/BoolFieldUpdateOperati
 import { ConsultationListUpdateManyWithoutPatientNestedInput } from "../inputs/ConsultationListUpdateManyWithoutPatientNestedInput";
 import { DateTimeFieldUpdateOperationsInput } from "../inputs/DateTimeFieldUpdateOperationsInput";
 import { EnumSexeFieldUpdateOperationsInput } from "../inputs/EnumSexeFieldUpdateOperationsInput";
-import { PatientUpdatenTelInput } from "../inputs/PatientUpdatenTelInput";
+import { NullableStringFieldUpdateOperationsInput } from "../inputs/NullableStringFieldUpdateOperationsInput";
 import { StringFieldUpdateOperationsInput } from "../inputs/StringFieldUpdateOperationsInput";
 
 @TypeGraphQL.InputType("PatientUpdateInput", {})
@@ -36,10 +36,15 @@ export class PatientUpdateInput {
   })
   sexe?: EnumSexeFieldUpdateOperationsInput | undefined;
 
-  @TypeGraphQL.Field(_type => PatientUpdatenTelInput, {
+  @TypeGraphQL.Field(_type => NullableStringFieldUpdateOperationsInput, {
     nullable: true
   })
-  nTel?: PatientUpdatenTelInput | undefined;
+  nTel?: NullableStringFieldUpdateOperationsInput | undefined;
+
+  @TypeGraphQL.Field(_type => NullableStringFieldUpdateOperationsInput, {
+    nullable: true
+  })
+  address?: NullableStringFieldUpdateOperationsInput | undefined;
 
   @TypeGraphQL.Field(_type => DateTimeFieldUpdateOperationsInput, {
     nullable: true
@@ -55,6 +60,16 @@ export class PatientUpdateInput {
     nullable: true
   })
   deleted?: BoolFieldUpdateOperationsInput | undefined;
+
+  @TypeGraphQL.Field(_type => BoolFieldUpdateOperationsInput, {
+    nullable: true
+  })
+  onTrash?: BoolFieldUpdateOperationsInput | undefined;
+
+  @TypeGraphQL.Field(_type => BoolFieldUpdateOperationsInput, {
+    nullable: true
+  })
+  informationsConfirmed?: BoolFieldUpdateOperationsInput | undefined;
 
   @TypeGraphQL.Field(_type => ConsultationListUpdateManyWithoutPatientNestedInput, {
     nullable: true

@@ -1,8 +1,5 @@
 import AdminPanelSell from "@/components/AdminPanelComponents/AdminPanelSell";
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-
-const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Administration panel",
@@ -17,7 +14,6 @@ export default function WebappLayout({
   return (
     <main className="min-h-screen ">
       <AdminPanelSell>{children}</AdminPanelSell>
-   
     </main>
   );
 }

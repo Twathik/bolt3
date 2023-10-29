@@ -38,6 +38,11 @@ export class PatientCountAggregate {
   @TypeGraphQL.Field(_type => TypeGraphQL.Int, {
     nullable: false
   })
+  address!: number;
+
+  @TypeGraphQL.Field(_type => TypeGraphQL.Int, {
+    nullable: false
+  })
   createdAt!: number;
 
   @TypeGraphQL.Field(_type => TypeGraphQL.Int, {
@@ -49,6 +54,16 @@ export class PatientCountAggregate {
     nullable: false
   })
   deleted!: number;
+
+  @TypeGraphQL.Field(_type => TypeGraphQL.Int, {
+    nullable: false
+  })
+  onTrash!: number;
+
+  @TypeGraphQL.Field(_type => TypeGraphQL.Int, {
+    nullable: false
+  })
+  informationsConfirmed!: number;
 
   @TypeGraphQL.Field(_type => TypeGraphQL.Int, {
     nullable: false

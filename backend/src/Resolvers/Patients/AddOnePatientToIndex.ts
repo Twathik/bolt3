@@ -45,6 +45,7 @@ export class AddOnePatientToIndex {
         throw Error(error as any)
       }
     } catch (error) {
+      console.log({ error })
       throw Error(error as any)
     }
   }

@@ -1,11 +1,7 @@
 "use client";
-import { useState } from "react";
-import { Dialog, Menu, Transition } from "@headlessui/react";
-import {
-  Bars3Icon,
-  ChevronDownIcon,
-  XMarkIcon,
-} from "@heroicons/react/24/outline";
+import { useCallback, useState } from "react";
+import { Dialog } from "@headlessui/react";
+import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { useRouter } from "next/navigation";
 import { useUser } from "../../wg-generated/nextjs";
 import UserProfileButton from "@/components/GeneralComponents/UserProfileButton/UserProfileButton";
@@ -23,6 +19,10 @@ export default function WebAppHeader() {
   const { data } = useUser();
   const router = useRouter();
 
+  const webAppPAge = useCallback(() => router.push("/webapp/search"), []);
+  const mobileOpen = useCallback(() => setMobileMenuOpen(true), []);
+  const mobileClosed = useCallback(() => setMobileMenuOpen(false), []);
+
   return (
     <header className="max-w-full bg-white">
       <nav
@@ -30,7 +30,7 @@ export default function WebAppHeader() {
         aria-label="Global"
       >
         <div className="flex cursor-pointer items-center lg:flex-1">
-          <a onClick={() => router.replace("/webapp")} className="-m-1.5 p-1.5">
+          <a onClick={webAppPAge} className="-m-1.5 p-1.5">
             <img className="h-8 w-auto" src="/logo_bolt.png" alt="" />
           </a>
           <span className="mx-8 text-slate-700">Dr. {data && data.name}</span>
@@ -54,7 +54,7 @@ export default function WebAppHeader() {
           <button
             type="button"
             className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700"
-            onClick={() => setMobileMenuOpen(true)}
+            onClick={mobileOpen}
           >
             <span className="sr-only">Open main menu</span>
             <Bars3Icon className="h-6 w-6" aria-hidden="true" />
@@ -82,7 +82,7 @@ export default function WebAppHeader() {
             <button
               type="button"
               className="-m-2.5 rounded-md p-2.5 text-gray-700"
-              onClick={() => setMobileMenuOpen(false)}
+              onClick={mobileClosed}
             >
               <span className="sr-only">Close menu</span>
               <XMarkIcon className="h-6 w-6" aria-hidden="true" />

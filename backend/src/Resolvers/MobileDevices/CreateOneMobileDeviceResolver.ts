@@ -17,6 +17,8 @@ export class CreateOneMobileDeviceResolver {
     @TypeGraphQL.Ctx() ctx: any,
     @TypeGraphQL.Info() info: GraphQLResolveInfo,
     @TypeGraphQL.Args() args: CreateOneMobileDeviceArgs,
+    @TypeGraphQL.PubSub('GET_ALL_MOBILE_DEVICES')
+    publish: TypeGraphQL.Publisher<boolean>,
   ): Promise<MobileDevice> {
     const { _count } = transformInfoIntoPrismaArgs(info)
     const prisma = getPrismaFromContext(ctx) as PrismaClient
@@ -45,10 +47,14 @@ export class CreateOneMobileDeviceResolver {
         devices_count === allowedMobileDevices.allowedMobileDevices_doctors
       )
         throw Error('4')
-      return getPrismaFromContext(ctx).mobileDevice.create({
-        ...args,
-        ...(_count && transformCountFieldIntoSelectRelationsCount(_count)),
-      })
+      const mobileDevices = await getPrismaFromContext(ctx).mobileDevice.create(
+        {
+          ...args,
+          ...(_count && transformCountFieldIntoSelectRelationsCount(_count)),
+        },
+      )
+      publish(true)
+      return mobileDevices
     } catch (error) {
       console.log({ error })
       throw Error('An error has occurred, the mobile Devices was not created')

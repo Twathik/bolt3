@@ -1,0 +1,12 @@
+[http]
+[http.routers]
+[http.routers.storage-admin-route]
+entryPoints = ["web"]
+rule = "Host(`storage-admin.bolt3.local`)"
+service = "storage-admin"
+
+[http.services]
+[http.services.storage-admin]
+[http.services.storage-admin.loadBalancer]
+[[http.services.storage-admin.loadBalancer.servers]]
+url = "http://100.74.3.18:9901"

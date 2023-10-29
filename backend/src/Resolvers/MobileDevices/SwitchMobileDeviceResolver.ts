@@ -12,6 +12,8 @@ export class SwitchMobileDeviceResolver {
   async switchMobileDevice(
     @TypeGraphQL.Ctx() ctx: any,
     @TypeGraphQL.Args() { mobileDeviceType, id }: SwitchMobileDeviceArgs,
+    @TypeGraphQL.PubSub('GET_ALL_MOBILE_DEVICES')
+    publish: TypeGraphQL.Publisher<boolean>,
   ): Promise<Boolean | null> {
     const prisma = getPrismaFromContext(ctx) as PrismaClient
 
@@ -44,8 +46,9 @@ export class SwitchMobileDeviceResolver {
         throw Error('4')
       await prisma.mobileDevice.update({
         where: { id },
-        data: { mobileDeviceType },
+        data: { mobileDeviceType, connected: false },
       })
+      publish(true)
       return true
     } catch (error) {
       throw Error("an error occurred, Mobile device isn't registered!")

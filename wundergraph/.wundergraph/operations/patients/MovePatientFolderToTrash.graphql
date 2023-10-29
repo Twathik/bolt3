@@ -1,0 +1,5 @@
+mutation ($id: String!, $onTrash: Boolean!) {
+  mainDb_movePatientFolderToTrash(id: $id, onTrash: $onTrash) {
+    id
+  }
+}

@@ -31,6 +31,16 @@ export class PatientMinAggregate {
   })
   sexe!: "M" | "F" | null;
 
+  @TypeGraphQL.Field(_type => String, {
+    nullable: true
+  })
+  nTel!: string | null;
+
+  @TypeGraphQL.Field(_type => String, {
+    nullable: true
+  })
+  address!: string | null;
+
   @TypeGraphQL.Field(_type => Date, {
     nullable: true
   })
@@ -45,4 +55,14 @@ export class PatientMinAggregate {
     nullable: true
   })
   deleted!: boolean | null;
+
+  @TypeGraphQL.Field(_type => Boolean, {
+    nullable: true
+  })
+  onTrash!: boolean | null;
+
+  @TypeGraphQL.Field(_type => Boolean, {
+    nullable: true
+  })
+  informationsConfirmed!: boolean | null;
 }

@@ -50,3 +50,5 @@ yarn-error.log*
 **/typesense-data/
 **/pi-hole/
 **/.env/
+
+orthanc

@@ -69,13 +69,16 @@ model Patient {
   firstName String
   ddn       DateTime
   sexe      Sexe
-  nTel      String[]
+  nTel      String?
+  address   String?
 
   createdAt DateTime @default(now())
   updated   DateTime @updatedAt
 
-  deleted          Boolean            @default(false)
-  ConsultationList ConsultationList[]
+  deleted               Boolean            @default(false)
+  onTrash               Boolean            @default(false)
+  informationsConfirmed Boolean            @default(false)
+  ConsultationList      ConsultationList[]
 
   @@index([sexe])
 }
@@ -100,5 +103,5 @@ model ConsultationList {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  @@unique([patientId, consultationId])
+  @@unique([patientId, consultationId, active])
 }

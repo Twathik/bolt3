@@ -39,6 +39,11 @@ export class PatientCountOrderByAggregateInput {
   @TypeGraphQL.Field(_type => SortOrder, {
     nullable: true
   })
+  address?: "asc" | "desc" | undefined;
+
+  @TypeGraphQL.Field(_type => SortOrder, {
+    nullable: true
+  })
   createdAt?: "asc" | "desc" | undefined;
 
   @TypeGraphQL.Field(_type => SortOrder, {
@@ -50,4 +55,14 @@ export class PatientCountOrderByAggregateInput {
     nullable: true
   })
   deleted?: "asc" | "desc" | undefined;
+
+  @TypeGraphQL.Field(_type => SortOrder, {
+    nullable: true
+  })
+  onTrash?: "asc" | "desc" | undefined;
+
+  @TypeGraphQL.Field(_type => SortOrder, {
+    nullable: true
+  })
+  informationsConfirmed?: "asc" | "desc" | undefined;
 }

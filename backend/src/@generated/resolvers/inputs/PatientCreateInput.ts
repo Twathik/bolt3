@@ -3,7 +3,6 @@ import * as GraphQLScalars from "graphql-scalars";
 import { Prisma } from "@prisma/client";
 import { DecimalJSScalar } from "../../scalars";
 import { ConsultationListCreateNestedManyWithoutPatientInput } from "../inputs/ConsultationListCreateNestedManyWithoutPatientInput";
-import { PatientCreatenTelInput } from "../inputs/PatientCreatenTelInput";
 import { Sexe } from "../../enums/Sexe";
 
 @TypeGraphQL.InputType("PatientCreateInput", {})
@@ -33,10 +32,15 @@ export class PatientCreateInput {
   })
   sexe!: "M" | "F";
 
-  @TypeGraphQL.Field(_type => PatientCreatenTelInput, {
+  @TypeGraphQL.Field(_type => String, {
     nullable: true
   })
-  nTel?: PatientCreatenTelInput | undefined;
+  nTel?: string | undefined;
+
+  @TypeGraphQL.Field(_type => String, {
+    nullable: true
+  })
+  address?: string | undefined;
 
   @TypeGraphQL.Field(_type => Date, {
     nullable: true
@@ -52,6 +56,16 @@ export class PatientCreateInput {
     nullable: true
   })
   deleted?: boolean | undefined;
+
+  @TypeGraphQL.Field(_type => Boolean, {
+    nullable: true
+  })
+  onTrash?: boolean | undefined;
+
+  @TypeGraphQL.Field(_type => Boolean, {
+    nullable: true
+  })
+  informationsConfirmed?: boolean | undefined;
 
   @TypeGraphQL.Field(_type => ConsultationListCreateNestedManyWithoutPatientInput, {
     nullable: true

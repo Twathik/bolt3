@@ -1,0 +1,12 @@
+[http]
+[http.routers]
+[http.routers.keycloak-route]
+entryPoints = ["web"]
+rule = "Host(`keycloak.local`)"
+service = "keycloak"
+
+[http.services]
+[http.services.keycloak]
+[http.services.keycloak.loadBalancer]
+[[http.services.keycloak.loadBalancer.servers]]
+url = "http://100.74.3.18:8082"

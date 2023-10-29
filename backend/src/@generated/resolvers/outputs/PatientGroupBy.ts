@@ -34,10 +34,15 @@ export class PatientGroupBy {
   })
   sexe!: "M" | "F";
 
-  @TypeGraphQL.Field(_type => [String], {
+  @TypeGraphQL.Field(_type => String, {
     nullable: true
   })
-  nTel!: string[] | null;
+  nTel!: string | null;
+
+  @TypeGraphQL.Field(_type => String, {
+    nullable: true
+  })
+  address!: string | null;
 
   @TypeGraphQL.Field(_type => Date, {
     nullable: false
@@ -53,6 +58,16 @@ export class PatientGroupBy {
     nullable: false
   })
   deleted!: boolean;
+
+  @TypeGraphQL.Field(_type => Boolean, {
+    nullable: false
+  })
+  onTrash!: boolean;
+
+  @TypeGraphQL.Field(_type => Boolean, {
+    nullable: false
+  })
+  informationsConfirmed!: boolean;
 
   @TypeGraphQL.Field(_type => PatientCountAggregate, {
     nullable: true

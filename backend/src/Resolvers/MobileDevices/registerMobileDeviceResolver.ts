@@ -10,7 +10,7 @@ import {
 import { PrismaClient } from '@prisma/client'
 
 @TypeGraphQL.Resolver((_of) => MobileDevice)
-export class UpdateOneMobileDeviceResolver {
+export class RegisterOneMobileDeviceResolver {
   @TypeGraphQL.Mutation((_returns) => MobileDevice, {
     nullable: true,
   })
@@ -18,6 +18,8 @@ export class UpdateOneMobileDeviceResolver {
     @TypeGraphQL.Ctx() ctx: any,
     @TypeGraphQL.Info() info: GraphQLResolveInfo,
     @TypeGraphQL.Args() { accessToken, uuid }: RegisterOneMobileDeviceArgs,
+    @TypeGraphQL.PubSub('GET_ALL_MOBILE_DEVICES')
+    publish: TypeGraphQL.Publisher<boolean>,
   ): Promise<MobileDevice | null> {
     const { _count } = transformInfoIntoPrismaArgs(info)
     const prisma = getPrismaFromContext(ctx) as PrismaClient
@@ -29,13 +31,16 @@ export class UpdateOneMobileDeviceResolver {
       if (!mobileDevice) throw Error()
       if (mobileDevice.expireAt < new Date()) throw Error()
 
-      return prisma.mobileDevice.update({
+      const result = await prisma.mobileDevice.update({
         where: { accessToken: accessToken },
         data: {
           uuid,
+          connected: true,
         },
         ...(_count && transformCountFieldIntoSelectRelationsCount(_count)),
       })
+      publish(true)
+      return result
     } catch (error) {
       throw Error("an error occurred, Mobile device isn't registered!")
     }

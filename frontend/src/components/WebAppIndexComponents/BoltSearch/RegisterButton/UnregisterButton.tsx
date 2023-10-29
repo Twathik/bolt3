@@ -1,6 +1,3 @@
-import ErrorNotification from "@/components/GeneralComponents/Notifications/ErrorNotification";
-import SuccessNotification from "@/components/GeneralComponents/Notifications/SuccessNotification";
-
 import {
   AlertDialog,
   AlertDialogAction,
@@ -13,10 +10,11 @@ import {
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
 import { Button } from "@/components/ui/button";
+import { useToast } from "@/components/ui/use-toast";
 import { useMutation } from "@/components/wg-generated/nextjs";
+import useConsultationStore from "@/stores/consultationStore";
 import { QueueListIcon } from "@heroicons/react/24/outline";
-import React from "react";
-import toast from "react-hot-toast";
+import React, { useCallback } from "react";
 
 function UnregisterButton({
   listId,
@@ -25,43 +23,52 @@ function UnregisterButton({
   listId: string;
   callBack: () => Promise<void>;
 }) {
+  const {
+    consultationState: { id: consultationId },
+  } = useConsultationStore();
+
+  const { toast } = useToast();
   const { trigger } = useMutation({
     operationName: "consultationList/unregisterPatient",
     onError: () => {
-      toast.custom(
-        <ErrorNotification
-          title="Une erreur est survenue"
-          description="Le patient n'a pas pu être retiré en consultation"
-          closeCallback={() => {
-            toast.remove();
-          }}
-        />,
-        {
-          duration: 2000,
-          position: "bottom-center",
-        },
-      );
+      toast({
+        title: "Une erreur est survenue",
+        description: "Le patient n'a pas pu être retiré en consultation",
+        duration: 2000,
+        variant: "destructive",
+      });
     },
     onSuccess: async () => {
       await callBack();
-      toast.custom(
-        <SuccessNotification
-          title="Opération réussie"
-          description="Le patient a été retiré de la consultation"
-          closeCallback={() => {
-            toast.remove();
-          }}
-        />,
-        { duration: 2000, position: "bottom-center" },
-      );
+      toast({
+        title: "Opération réussie",
+        description: "Le patient a été retiré de la consultation",
+        duration: 2000,
+      });
     },
   });
+  const noCallBack = useCallback(() => {}, []);
+  const alertCallBack = useCallback(() => {
+    if (consultationId) {
+      trigger({
+        patientId: listId,
+        consultationId: consultationId,
+      });
+    } else {
+      toast({
+        title: "Une erreur est survenue",
+        description: "Le patient n'a pas pu être retiré en consultation",
+        duration: 2000,
+        variant: "destructive",
+      });
+    }
+  }, [trigger, consultationId, listId, toast]);
   return (
     <AlertDialog>
       <AlertDialogTrigger asChild>
         <Button
           className="font-semiboldntext-black relative -mr-px inline-flex w-0 flex-1 items-center justify-center gap-x-3 rounded-bl-lg border  border-transparent bg-rose-600 py-4 text-sm hover:bg-rose-700"
-          onClick={() => {}}
+          onClick={noCallBack}
           disabled={false}
         >
           <QueueListIcon className="h-5 w-5 text-black" aria-hidden="true" />
@@ -84,9 +91,7 @@ function UnregisterButton({
           <AlertDialogCancel>Annuler</AlertDialogCancel>
           <AlertDialogAction
             className="bg-rose-600 hover:bg-rose-700"
-            onClick={() => {
-              trigger({ id: listId });
-            }}
+            onClick={alertCallBack}
           >
             Valider
           </AlertDialogAction>

@@ -19,6 +19,7 @@ const AddPatientFormSchema = z.object({
     .max(50, { message: "maximum de 50 caractères" }),
   ddn: z.custom<string>((val) => {
     const parsedDate = parse(val as string, "P", new Date(), { locale: enGB });
+
     return isValid(parsedDate);
   }, "Date non valide"),
   sexe: z.enum(["M", "F"], {

@@ -2,7 +2,6 @@ import * as TypeGraphQL from "type-graphql";
 import * as GraphQLScalars from "graphql-scalars";
 import { Prisma } from "@prisma/client";
 import { DecimalJSScalar } from "../../scalars";
-import { PatientCreatenTelInput } from "../inputs/PatientCreatenTelInput";
 import { Sexe } from "../../enums/Sexe";
 
 @TypeGraphQL.InputType("PatientCreateWithoutConsultationListInput", {})
@@ -32,10 +31,15 @@ export class PatientCreateWithoutConsultationListInput {
   })
   sexe!: "M" | "F";
 
-  @TypeGraphQL.Field(_type => PatientCreatenTelInput, {
+  @TypeGraphQL.Field(_type => String, {
     nullable: true
   })
-  nTel?: PatientCreatenTelInput | undefined;
+  nTel?: string | undefined;
+
+  @TypeGraphQL.Field(_type => String, {
+    nullable: true
+  })
+  address?: string | undefined;
 
   @TypeGraphQL.Field(_type => Date, {
     nullable: true
@@ -51,4 +55,14 @@ export class PatientCreateWithoutConsultationListInput {
     nullable: true
   })
   deleted?: boolean | undefined;
+
+  @TypeGraphQL.Field(_type => Boolean, {
+    nullable: true
+  })
+  onTrash?: boolean | undefined;
+
+  @TypeGraphQL.Field(_type => Boolean, {
+    nullable: true
+  })
+  informationsConfirmed?: boolean | undefined;
 }

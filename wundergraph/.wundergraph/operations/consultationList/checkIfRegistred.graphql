@@ -2,9 +2,10 @@ query ($consultationId: String!, $patientId: String!) {
   mainDb_consultationList(
     where: {
       active: { equals: true }
-      patientId_consultationId: {
+      patientId_consultationId_active: {
         consultationId: $consultationId
         patientId: $patientId
+        active: true
       }
     }
   ) {

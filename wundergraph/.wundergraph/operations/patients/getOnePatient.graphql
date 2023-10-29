@@ -1,0 +1,14 @@
+query ($patientId: String!) {
+  mainDb_getPatient(where: { id: $patientId }) {
+    id
+    firstName
+    lastName
+    sexe
+    ddn
+    deleted
+    onTrash
+    patientFullName
+    informationsConfirmed
+    nTel
+  }
+}

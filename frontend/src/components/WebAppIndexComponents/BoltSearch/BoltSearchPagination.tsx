@@ -8,6 +8,7 @@ import {
   ChevronDoubleLeftIcon,
   ChevronDoubleRightIcon,
 } from "@heroicons/react/24/outline";
+import { useCallback } from "react";
 
 type PaginationItemProps = Omit<React.ComponentProps<"a">, "onClick"> & {
   onClick: NonNullable<React.ComponentProps<"a">["onClick"]>;
@@ -49,12 +50,25 @@ const CustomPagination = (props: UsePaginationProps) => {
   const previousPageIndex = currentRefinement - 1;
   const nextPageIndex = currentRefinement + 1;
   const lastPageIndex = nbPages - 1;
+  const firstPageIdexCallBack = useCallback(
+    () => refine(firstPageIndex),
+    [refine, firstPageIndex],
+  );
+
+  const previousPageIndexCallBack = useCallback(
+    () => refine(previousPageIndex),
+    [],
+  );
+
+  const nextPageIndexCallBack = useCallback(() => refine(nextPageIndex), []);
+
+  const lastPageIndexCallBack = useCallback(() => refine(lastPageIndex), []);
   return (
     <nav className="flex items-center justify-between border-t border-gray-200 px-4 sm:px-0">
       <div className="-mt-px flex w-0 flex-1">
         <PaginationItem
           isDisabled={isFirstPage}
-          onClick={() => refine(firstPageIndex)}
+          onClick={firstPageIdexCallBack}
           href={createURL(firstPageIndex)}
           className={`inline-flex cursor-pointer items-center border-t-2 border-transparent  pr-1 pt-4 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700`}
         >
@@ -68,7 +82,7 @@ const CustomPagination = (props: UsePaginationProps) => {
       <div className="-mt-px flex w-0 flex-1">
         <PaginationItem
           isDisabled={isFirstPage}
-          onClick={() => refine(previousPageIndex)}
+          onClick={previousPageIndexCallBack}
           href={createURL(previousPageIndex)}
           className="inline-flex cursor-pointer items-center border-t-2 border-transparent pr-1 pt-4 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700"
         >
@@ -105,7 +119,7 @@ const CustomPagination = (props: UsePaginationProps) => {
       <div className="-mt-px flex w-0 flex-1 justify-end">
         <PaginationItem
           isDisabled={isLastPage}
-          onClick={() => refine(nextPageIndex)}
+          onClick={nextPageIndexCallBack}
           href={createURL(nextPageIndex)}
           className="inline-flex cursor-pointer items-center border-t-2 border-transparent pl-1 pt-4 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700"
         >
@@ -119,7 +133,7 @@ const CustomPagination = (props: UsePaginationProps) => {
       <div className="-mt-px flex w-0 flex-1 justify-end">
         <PaginationItem
           isDisabled={isLastPage}
-          onClick={() => refine(lastPageIndex)}
+          onClick={lastPageIndexCallBack}
           href={createURL(lastPageIndex)}
           className=" inline-flex cursor-pointer items-center border-t-2 border-transparent pl-1 pt-4 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700"
         >

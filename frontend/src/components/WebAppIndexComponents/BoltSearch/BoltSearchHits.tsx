@@ -1,16 +1,21 @@
 "use client";
 
-import { QueueListIcon, FolderOpenIcon } from "@heroicons/react/24/outline";
+import { FolderOpenIcon } from "@heroicons/react/24/outline";
 import { Highlight } from "react-instantsearch";
 import { format, parseISO } from "date-fns";
-import useConsultationStore from "@/store/consultationStore";
+import useConsultationStore from "@/stores/consultationStore";
 import RegisterButtonWithCheck from "./RegisterButton/RegisterButtonWithCheck";
 import RegisterButtonWithoutCheck from "./RegisterButton/RegisterButtonWithoutCheck";
+import { useRouter } from "next/navigation";
+import { Button } from "@/components/ui/button";
+import useTabsStore from "@/stores/tabsStore";
+import { useState } from "react";
 
 const Hit = ({ hit, highlight = true }: { hit: any; highlight?: boolean }) => {
   const {
     consultationState: { id },
   } = useConsultationStore();
+  const { addTab } = useTabsStore();
 
   return (
     <div
@@ -54,26 +59,30 @@ const Hit = ({ hit, highlight = true }: { hit: any; highlight?: boolean }) => {
         </div>
 
         <div className="flex-1">
-          <div className="-mt-px flex divide-x divide-gray-200">
-            <div className="flex w-0 flex-1 hover:cursor-pointer hover:bg-slate-200">
-              {id ? (
-                <RegisterButtonWithCheck
-                  consultationId={id}
-                  patientId={hit.id}
-                />
-              ) : (
-                <RegisterButtonWithoutCheck patientId={hit.id} />
-              )}
-            </div>
-            <div className="-ml-px flex w-0 flex-1 hover:cursor-pointer hover:bg-slate-200">
-              <a className="relative inline-flex w-0 flex-1 items-center justify-center gap-x-3 rounded-br-lg border border-transparent py-4 text-sm font-semibold text-gray-900">
-                <FolderOpenIcon
-                  className="h-5 w-5 text-gray-400"
-                  aria-hidden="true"
-                />
-                Ouvrir
-              </a>
-            </div>
+          <div className="-mt-px flex items-center justify-center gap-4 divide-x divide-gray-200">
+            {id ? (
+              <RegisterButtonWithCheck consultationId={id} patientId={hit.id} />
+            ) : (
+              <RegisterButtonWithoutCheck patientId={hit.id} />
+            )}
+
+            <Button
+              className="font-semiboldntext-black relative -mr-px inline-flex w-0 flex-1 items-center justify-center gap-x-3 rounded-bl-lg border  border-transparent bg-slate-200 py-4 text-sm hover:bg-slate-300"
+              onClick={() => {
+                const newWindow = window.open(
+                  `/webapp/patient/${hit.id}`,
+                  "_blank",
+                );
+                addTab(newWindow);
+              }}
+            >
+              <FolderOpenIcon
+                className="h-5 w-5 text-gray-400"
+                aria-hidden="true"
+              />
+
+              <span className="text-black">Ouvrir</span>
+            </Button>
           </div>
         </div>
       </div>

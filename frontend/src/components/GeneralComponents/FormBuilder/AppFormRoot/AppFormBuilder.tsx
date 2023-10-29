@@ -9,6 +9,8 @@ import { z } from "zod";
 import AppInputBuilder from "./AppInputBuilder";
 import { Button } from "@/components/ui/button";
 import { PaperAirplaneIcon, ArrowPathIcon } from "@heroicons/react/24/outline";
+import { useWindowScroll } from "@mantine/hooks";
+import { ScrollArea } from "@/components/ui/scroll-area";
 
 function AppFormBuilder<T extends FieldValues>({
   formSchema,
@@ -28,6 +30,7 @@ function AppFormBuilder<T extends FieldValues>({
   });
 
   const data = form.watch();
+  const [scroll, scrollTo] = useWindowScroll();
 
   useEffect(() => {
     if (setIsValid) setIsValid(form.formState.isValid);
@@ -45,8 +48,16 @@ function AppFormBuilder<T extends FieldValues>({
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-        {inputs.map((input) => AppInputBuilder({ form, input }))}
+      <form
+        onSubmit={form.handleSubmit(onSubmit)}
+        className="relative flex max-h-[90vh] flex-col space-y-8"
+      >
+        <ScrollArea>
+          <section className="relative max-h-full flex-1 ">
+            {inputs.map((input) => AppInputBuilder({ form, input }))}
+          </section>
+        </ScrollArea>
+
         {submitButton ?? (
           <Button type="submit" className="w-full" disabled={loading}>
             {loading ? (

@@ -1,7 +1,7 @@
 mutation (
   $uuid: String!
   $accessToken: String!
-  $expireAt: DateTime!
+  $expireAt: mainDb_DateTimeISO!
   $mobileDeviceType: mainDb_MobileDeviceType!
 ) {
   mainDb_createOneMobileDevice(

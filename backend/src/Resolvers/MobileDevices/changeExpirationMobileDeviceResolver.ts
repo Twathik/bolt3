@@ -14,6 +14,8 @@ export class ChangeExpirationMobileDeviceResolver {
     @TypeGraphQL.Ctx() ctx: any,
     @TypeGraphQL.Args()
     { Months, id }: changeExpirationMobileDeviceArgs,
+    @TypeGraphQL.PubSub('GET_ALL_MOBILE_DEVICES')
+    publish: TypeGraphQL.Publisher<boolean>,
   ): Promise<Boolean | null> {
     const prisma = getPrismaFromContext(ctx) as PrismaClient
 
@@ -32,6 +34,7 @@ export class ChangeExpirationMobileDeviceResolver {
         where: { id },
         data: { expireAt },
       })
+      publish(true)
       return true
     } catch (error) {
       throw Error("an error occurred, Mobile device isn't registered!")

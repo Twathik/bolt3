@@ -33,10 +33,15 @@ export class Patient {
   })
   sexe!: "M" | "F";
 
-  @TypeGraphQL.Field(_type => [String], {
-    nullable: false
+  @TypeGraphQL.Field(_type => String, {
+    nullable: true
   })
-  nTel!: string[];
+  nTel?: string | null;
+
+  @TypeGraphQL.Field(_type => String, {
+    nullable: true
+  })
+  address?: string | null;
 
   @TypeGraphQL.Field(_type => Date, {
     nullable: false
@@ -52,6 +57,16 @@ export class Patient {
     nullable: false
   })
   deleted!: boolean;
+
+  @TypeGraphQL.Field(_type => Boolean, {
+    nullable: false
+  })
+  onTrash!: boolean;
+
+  @TypeGraphQL.Field(_type => Boolean, {
+    nullable: false
+  })
+  informationsConfirmed!: boolean;
 
   ConsultationList?: ConsultationList[];
 

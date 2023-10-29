@@ -1,27 +1,42 @@
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
 
-import { useQuery } from "@/components/wg-generated/nextjs";
-import { PropagateLoader } from "react-spinners";
+import { useMutation, useSubscription } from "@/components/wg-generated/nextjs";
+import * as reactSpinners from "react-spinners";
 import ErrorNotification from "@/components/GeneralComponents/Notifications/ErrorNotification";
 import MobileDevice from "@/components/AdminPanelComponents/MobileDevicesComponents/MobileDevice";
-import CreateMobileDeviceForm from "@/components/AdminPanelComponents/MobileDevicesComponents/CreateMobileDeviceForm";
+import CreateMobileDevice from "@/components/AdminPanelComponents/MobileDevicesComponents/CreateMobileDevice";
 
 function MobileDevicesIndex() {
-  const { data, error, isLoading } = useQuery({
-    operationName: "MobileDevicesQuery",
-    liveQuery: true,
+  const {
+    data: mut,
+    error: mutationError,
+    isMutating,
+    trigger,
+  } = useMutation({
+    operationName: "mobileDevices/triggerGetAllMobileDevicesSubscription",
   });
+  const {
+    data,
+    error: subscriptionError,
+    isLoading,
+  } = useSubscription({
+    operationName: "mobileDevices/getAllDevicesSubscription",
+  });
+  console.log({ mut, data, isLoading });
+  useEffect(() => {
+    trigger();
+  }, [trigger]);
 
-    if (isLoading) {
+  if (isMutating || isLoading) {
     return (
       <div className=" flex h-96 flex-row items-center justify-center align-middle">
-        <PropagateLoader color="#111827" className="flex" />
+        <reactSpinners.PropagateLoader color="#111827" className="flex" />
       </div>
     );
   }
 
-  if (error) {
+  if (mutationError || subscriptionError) {
     return (
       <div className=" flex h-96 flex-row items-center justify-center align-middle">
         <ErrorNotification
@@ -37,11 +52,11 @@ function MobileDevicesIndex() {
       <div className="bloc flex flex-row">
         <div className="flex-1"></div>
         <div className="flex">
-          <CreateMobileDeviceForm />
+          <CreateMobileDevice />
         </div>
       </div>
       <ul role="list" className="">
-        {data?.mainDb_mobileDevices.map((mobileDevice) => (
+        {data?.mainDb_getMobileDevicesList.map((mobileDevice) => (
           <MobileDevice mobileDevice={mobileDevice} />
         ))}
       </ul>

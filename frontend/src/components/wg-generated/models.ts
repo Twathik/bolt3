@@ -60,7 +60,12 @@ export interface ConsultationListTodayConsultationInput {
 }
 
 export interface ConsultationListUnregisterPatientInput {
-	id: string;
+	consultationId: string;
+	patientId: string;
+}
+
+export interface GlobalCloseAllTabsMutationInput {
+	message: string;
 }
 
 export interface MobileDevicesAddMobileDeviceMutationInput {
@@ -94,6 +99,11 @@ export interface MobileDevicesUpdateMobileDeviceExpirationInput {
 	Months: number;
 }
 
+export interface PatientsMovePatientFolferToTrashInput {
+	id: string;
+	onTrash: boolean;
+}
+
 export interface PatientsAdd_One_patient_to_indexInput {
 	firstName: string;
 	lastName: string;
@@ -101,9 +111,27 @@ export interface PatientsAdd_One_patient_to_indexInput {
 	sexe: mainDb_SexeValues;
 }
 
+export interface PatientsGetOnePatientInput {
+	patientId: string;
+}
+
+export interface PatientsGetUpdatedPatientSubscriptionInput {
+	id: string;
+}
+
 export interface PatientsSearchPatientsInput {
 	query_string: string;
 	sexe: mainDb_SexeValues;
+}
+
+export interface PatientsUpdateOnePatientInput {
+	id: string;
+	firstName: string;
+	lastName: string;
+	sexe: mainDb_SexeValues;
+	ddn: string;
+	address?: string;
+	nTel?: string;
 }
 
 export type UsersSubscribeInput = ExtractInput<typeof function_UsersSubscribe>;
@@ -130,7 +158,12 @@ export interface ConsultationListTodayConsultationInputInternal {
 }
 
 export interface ConsultationListUnregisterPatientInputInternal {
-	id: string;
+	consultationId: string;
+	patientId: string;
+}
+
+export interface GlobalCloseAllTabsMutationInputInternal {
+	message: string;
 }
 
 export interface MobileDevicesAddMobileDeviceMutationInputInternal {
@@ -164,6 +197,11 @@ export interface MobileDevicesUpdateMobileDeviceExpirationInputInternal {
 	Months: number;
 }
 
+export interface PatientsMovePatientFolferToTrashInputInternal {
+	id: string;
+	onTrash: boolean;
+}
+
 export interface PatientsAdd_One_patient_to_indexInputInternal {
 	firstName: string;
 	lastName: string;
@@ -171,9 +209,27 @@ export interface PatientsAdd_One_patient_to_indexInputInternal {
 	sexe: mainDb_SexeValues;
 }
 
+export interface PatientsGetOnePatientInputInternal {
+	patientId: string;
+}
+
+export interface PatientsGetUpdatedPatientSubscriptionInputInternal {
+	id: string;
+}
+
 export interface PatientsSearchPatientsInputInternal {
 	query_string: string;
 	sexe: mainDb_SexeValues;
+}
+
+export interface PatientsUpdateOnePatientInputInternal {
+	id: string;
+	firstName: string;
+	lastName: string;
+	sexe: mainDb_SexeValues;
+	ddn: string;
+	address?: string;
+	nTel?: string;
 }
 
 export interface UsersSubscribeInputInternal {
@@ -206,7 +262,12 @@ export interface ConsultationListTodayConsultationInputInjected {
 }
 
 export interface ConsultationListUnregisterPatientInputInjected {
-	id: string;
+	consultationId: string;
+	patientId: string;
+}
+
+export interface GlobalCloseAllTabsMutationInputInjected {
+	message: string;
 }
 
 export interface MobileDevicesAddMobileDeviceMutationInputInjected {
@@ -240,6 +301,11 @@ export interface MobileDevicesUpdateMobileDeviceExpirationInputInjected {
 	Months: number;
 }
 
+export interface PatientsMovePatientFolferToTrashInputInjected {
+	id: string;
+	onTrash: boolean;
+}
+
 export interface PatientsAdd_One_patient_to_indexInputInjected {
 	firstName: string;
 	lastName: string;
@@ -247,9 +313,27 @@ export interface PatientsAdd_One_patient_to_indexInputInjected {
 	sexe: mainDb_SexeValues;
 }
 
+export interface PatientsGetOnePatientInputInjected {
+	patientId: string;
+}
+
+export interface PatientsGetUpdatedPatientSubscriptionInputInjected {
+	id: string;
+}
+
 export interface PatientsSearchPatientsInputInjected {
 	query_string: string;
 	sexe: mainDb_SexeValues;
+}
+
+export interface PatientsUpdateOnePatientInputInjected {
+	id: string;
+	firstName: string;
+	lastName: string;
+	sexe: mainDb_SexeValues;
+	ddn: string;
+	address?: string;
+	nTel?: string;
 }
 
 export interface CountriesResponse {
@@ -282,8 +366,23 @@ export interface ConsultationListUnregisterPatientResponse {
 	errors?: GraphQLError[];
 }
 
+export interface GlobalCloseAllTabsMutationResponse {
+	data?: GlobalCloseAllTabsMutationResponseData;
+	errors?: GraphQLError[];
+}
+
+export interface GlobalCloseAllTabsSubscriptionResponse {
+	data?: GlobalCloseAllTabsSubscriptionResponseData;
+	errors?: GraphQLError[];
+}
+
 export interface MobileDevicesAddMobileDeviceMutationResponse {
 	data?: MobileDevicesAddMobileDeviceMutationResponseData;
+	errors?: GraphQLError[];
+}
+
+export interface MobileDevicesGetAllDevicesSubscriptionResponse {
+	data?: MobileDevicesGetAllDevicesSubscriptionResponseData;
 	errors?: GraphQLError[];
 }
 
@@ -307,13 +406,38 @@ export interface MobileDevicesSwitchMobileDeviceResponse {
 	errors?: GraphQLError[];
 }
 
+export interface MobileDevicesTriggerGetAllMobileDevicesSubscriptionResponse {
+	data?: MobileDevicesTriggerGetAllMobileDevicesSubscriptionResponseData;
+	errors?: GraphQLError[];
+}
+
 export interface MobileDevicesUpdateMobileDeviceExpirationResponse {
 	data?: MobileDevicesUpdateMobileDeviceExpirationResponseData;
 	errors?: GraphQLError[];
 }
 
+export interface PatientsMovePatientFolferToTrashResponse {
+	data?: PatientsMovePatientFolferToTrashResponseData;
+	errors?: GraphQLError[];
+}
+
 export interface PatientsAdd_One_patient_to_indexResponse {
 	data?: PatientsAdd_One_patient_to_indexResponseData;
+	errors?: GraphQLError[];
+}
+
+export interface PatientsGetOnTrashPatientsResponse {
+	data?: PatientsGetOnTrashPatientsResponseData;
+	errors?: GraphQLError[];
+}
+
+export interface PatientsGetOnePatientResponse {
+	data?: PatientsGetOnePatientResponseData;
+	errors?: GraphQLError[];
+}
+
+export interface PatientsGetUpdatedPatientSubscriptionResponse {
+	data?: PatientsGetUpdatedPatientSubscriptionResponseData;
 	errors?: GraphQLError[];
 }
 
@@ -324,6 +448,11 @@ export interface PatientsIndex_patientsResponse {
 
 export interface PatientsSearchPatientsResponse {
 	data?: PatientsSearchPatientsResponseData;
+	errors?: GraphQLError[];
+}
+
+export interface PatientsUpdateOnePatientResponse {
+	data?: PatientsUpdateOnePatientResponseData;
 	errors?: GraphQLError[];
 }
 
@@ -382,10 +511,31 @@ export interface ConsultationListUnregisterPatientResponseData {
 	};
 }
 
+export interface GlobalCloseAllTabsMutationResponseData {
+	mainDb_closeAllTabs: boolean;
+}
+
+export interface GlobalCloseAllTabsSubscriptionResponseData {
+	mainDb_closeAllTabs: {
+		message: string;
+	};
+}
+
 export interface MobileDevicesAddMobileDeviceMutationResponseData {
 	mainDb_createOneMobileDevice: {
 		id: string;
 	};
+}
+
+export interface MobileDevicesGetAllDevicesSubscriptionResponseData {
+	mainDb_getMobileDevicesList: {
+		id: string;
+		accessToken: string;
+		connected: boolean;
+		expireAt: string;
+		mobileDeviceType: "DOCTOR" | "SECRETARY";
+		uuid: string;
+	}[];
 }
 
 export interface MobileDevicesRegisterOneMobileDeviceResponseData {
@@ -410,13 +560,62 @@ export interface MobileDevicesSwitchMobileDeviceResponseData {
 	mainDb_switchMobileDevice?: boolean;
 }
 
+export interface MobileDevicesTriggerGetAllMobileDevicesSubscriptionResponseData {
+	mainDb_triggerGetAllMobileDevicesSubscription: boolean;
+}
+
 export interface MobileDevicesUpdateMobileDeviceExpirationResponseData {
 	mainDb_changeExpirationMobileDeviceResolver?: boolean;
+}
+
+export interface PatientsMovePatientFolferToTrashResponseData {
+	mainDb_movePatientFolderToTrash?: {
+		id: string;
+	};
 }
 
 export interface PatientsAdd_One_patient_to_indexResponseData {
 	mainDb_AddOnePatientToIndex: {
 		id: string;
+	};
+}
+
+export interface PatientsGetOnTrashPatientsResponseData {
+	mainDb_patients: {
+		id: string;
+		patientFullName: string;
+		sexe: "F" | "M";
+		updated: string;
+	}[];
+}
+
+export interface PatientsGetOnePatientResponseData {
+	mainDb_getPatient?: {
+		id: string;
+		firstName: string;
+		lastName: string;
+		sexe: "F" | "M";
+		ddn: string;
+		deleted: boolean;
+		onTrash: boolean;
+		patientFullName: string;
+		informationsConfirmed: boolean;
+		nTel?: string;
+	};
+}
+
+export interface PatientsGetUpdatedPatientSubscriptionResponseData {
+	mainDb_getUpdatedPatient: {
+		id: string;
+		firstName: string;
+		lastName: string;
+		sexe: "F" | "M";
+		ddn: string;
+		deleted: boolean;
+		onTrash: boolean;
+		patientFullName: string;
+		informationsConfirmed: boolean;
+		nTel?: string;
 	};
 }
 
@@ -432,6 +631,12 @@ export interface PatientsSearchPatientsResponseData {
 		formatted_ddn: string;
 		id: string;
 	}[];
+}
+
+export interface PatientsUpdateOnePatientResponseData {
+	mainDb_updateOnePatient?: {
+		id: string;
+	};
 }
 
 export type UsersGetResponseData = ExtractResponse<typeof function_UsersGet>;

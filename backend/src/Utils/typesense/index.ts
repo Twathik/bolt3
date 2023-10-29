@@ -3,8 +3,8 @@ import { Client } from 'typesense'
 const typesense = new Client({
   nodes: [
     {
-      host: 'localhost',
-      port: 8108,
+      host: 'search.bolt3.local',
+      port: 80,
       protocol: 'http',
     },
   ],

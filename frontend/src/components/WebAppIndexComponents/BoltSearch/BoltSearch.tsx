@@ -17,7 +17,11 @@ const BoltSearch = () => {
   return (
     <>
       <h2 className="text-center text-2xl text-slate-500">Bolt search</h2>
-      <InstantSearch indexName="patients" searchClient={searchClient}>
+      <InstantSearch
+        indexName="patients"
+        searchClient={searchClient}
+        future={{ preserveSharedStateOnUnmount: true }}
+      >
         <SearchBox
           placeholder="Nom - prénom - année de naissance"
           classNames={{

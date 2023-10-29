@@ -5,7 +5,7 @@ import { DecimalJSScalar } from "../../scalars";
 import { BoolWithAggregatesFilter } from "../inputs/BoolWithAggregatesFilter";
 import { DateTimeWithAggregatesFilter } from "../inputs/DateTimeWithAggregatesFilter";
 import { EnumSexeWithAggregatesFilter } from "../inputs/EnumSexeWithAggregatesFilter";
-import { StringNullableListFilter } from "../inputs/StringNullableListFilter";
+import { StringNullableWithAggregatesFilter } from "../inputs/StringNullableWithAggregatesFilter";
 import { StringWithAggregatesFilter } from "../inputs/StringWithAggregatesFilter";
 
 @TypeGraphQL.InputType("PatientScalarWhereWithAggregatesInput", {})
@@ -50,10 +50,15 @@ export class PatientScalarWhereWithAggregatesInput {
   })
   sexe?: EnumSexeWithAggregatesFilter | undefined;
 
-  @TypeGraphQL.Field(_type => StringNullableListFilter, {
+  @TypeGraphQL.Field(_type => StringNullableWithAggregatesFilter, {
     nullable: true
   })
-  nTel?: StringNullableListFilter | undefined;
+  nTel?: StringNullableWithAggregatesFilter | undefined;
+
+  @TypeGraphQL.Field(_type => StringNullableWithAggregatesFilter, {
+    nullable: true
+  })
+  address?: StringNullableWithAggregatesFilter | undefined;
 
   @TypeGraphQL.Field(_type => DateTimeWithAggregatesFilter, {
     nullable: true
@@ -69,4 +74,14 @@ export class PatientScalarWhereWithAggregatesInput {
     nullable: true
   })
   deleted?: BoolWithAggregatesFilter | undefined;
+
+  @TypeGraphQL.Field(_type => BoolWithAggregatesFilter, {
+    nullable: true
+  })
+  onTrash?: BoolWithAggregatesFilter | undefined;
+
+  @TypeGraphQL.Field(_type => BoolWithAggregatesFilter, {
+    nullable: true
+  })
+  informationsConfirmed?: BoolWithAggregatesFilter | undefined;
 }

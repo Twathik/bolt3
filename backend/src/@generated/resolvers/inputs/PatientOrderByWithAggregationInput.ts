@@ -5,6 +5,7 @@ import { DecimalJSScalar } from "../../scalars";
 import { PatientCountOrderByAggregateInput } from "../inputs/PatientCountOrderByAggregateInput";
 import { PatientMaxOrderByAggregateInput } from "../inputs/PatientMaxOrderByAggregateInput";
 import { PatientMinOrderByAggregateInput } from "../inputs/PatientMinOrderByAggregateInput";
+import { SortOrderInput } from "../inputs/SortOrderInput";
 import { SortOrder } from "../../enums/SortOrder";
 
 @TypeGraphQL.InputType("PatientOrderByWithAggregationInput", {})
@@ -34,10 +35,15 @@ export class PatientOrderByWithAggregationInput {
   })
   sexe?: "asc" | "desc" | undefined;
 
-  @TypeGraphQL.Field(_type => SortOrder, {
+  @TypeGraphQL.Field(_type => SortOrderInput, {
     nullable: true
   })
-  nTel?: "asc" | "desc" | undefined;
+  nTel?: SortOrderInput | undefined;
+
+  @TypeGraphQL.Field(_type => SortOrderInput, {
+    nullable: true
+  })
+  address?: SortOrderInput | undefined;
 
   @TypeGraphQL.Field(_type => SortOrder, {
     nullable: true
@@ -53,6 +59,16 @@ export class PatientOrderByWithAggregationInput {
     nullable: true
   })
   deleted?: "asc" | "desc" | undefined;
+
+  @TypeGraphQL.Field(_type => SortOrder, {
+    nullable: true
+  })
+  onTrash?: "asc" | "desc" | undefined;
+
+  @TypeGraphQL.Field(_type => SortOrder, {
+    nullable: true
+  })
+  informationsConfirmed?: "asc" | "desc" | undefined;
 
   @TypeGraphQL.Field(_type => PatientCountOrderByAggregateInput, {
     nullable: true

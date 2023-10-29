@@ -35,20 +35,16 @@ configureWunderGraphApplication({
   authentication: {
     cookieBased: {
       providers: [
-        authProviders.github({
-          id: "github",
-          clientId: "75c238d4dfd9db377a1c",
-          clientSecret: "b54cce9a63bf42efb0dea77082a1d964ad47cec7",
-        }),
         authProviders.openIdConnect({
           id: "kc",
           clientId: "bolt3",
-          clientSecret: "9QH92Rg4tiShK1eczONTy0uJA1ph38T1",
+          clientSecret: "1fhL2zhsYlkc44StVfV0z4UsCRWZFm7x",
           issuer: "http://keycloak.local/realms/bolt3",
         }),
       ],
       authorizedRedirectUris: [
         "http://bolt3.local/login",
+        "http://bolt3.local/search",
         "http://localhost:3000/login",
       ],
       secureCookieHashKey: new EnvironmentVariable(
@@ -74,8 +70,12 @@ configureWunderGraphApplication({
   generate: {
     codeGenerators: [
       {
-        templates: [new NextJsTemplate()],
-        path: "../../frontend/src/components/wg-generated",
+        templates: [...templates.typescript.all],
+        path: "./generated",
+      },
+      {
+        templates: [templates.typescript.client],
+        path: "../../remix/app/components/generated",
       },
       {
         templates: [templates.typescript.client],
@@ -98,7 +98,12 @@ configureWunderGraphApplication({
     enableGraphQLEndpoint:
       process.env.NODE_ENV !== "production" ||
       process.env.GITPOD_WORKSPACE_ID !== undefined,
-    allowedHosts: ["api.bolt3.local", "localhost:9991", "10.0.2.2:9991"],
+    allowedHosts: [
+      "api.bolt3.local",
+      "localhost:9991",
+      "10.0.2.2:9991",
+      "192.168.1.41:9991",
+    ],
   },
   s3UploadProvider: [
     {

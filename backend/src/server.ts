@@ -1,84 +1,120 @@
 import 'reflect-metadata'
-import express from 'express'
-
+import 'dotenv/config'
+import http from 'node:http'
+import path from 'node:path'
+import { ApolloServer } from '@apollo/server'
+import { expressMiddleware } from '@apollo/server/express4'
+import { ApolloServerPluginDrainHttpServer } from '@apollo/server/plugin/drainHttpServer'
+import { ApolloServerPluginLandingPageLocalDefault } from '@apollo/server/plugin/landingPage/default'
 import bodyParser from 'body-parser'
-import schema from './schema'
-import { createContext } from './context'
 import cors from 'cors'
-import { createHandler } from 'graphql-http/lib/use/express'
-
-// import { importTemplates } from './Utils/OpenEHR/Templates/importTemplates'
+import express from 'express'
+import { RedisPubSub } from 'graphql-redis-subscriptions'
+import { useServer } from 'graphql-ws/lib/use/ws'
+import Redis from 'ioredis'
+import { NonEmptyArray, buildSchema } from 'type-graphql'
+import { WebSocketServer } from 'ws'
+import { resolvers as GeneratedResolvers } from './@generated'
+import * as resolvers from './Resolvers'
+import { Context, createContext, createSubscriptionContext } from './context'
 
 export const port = 4000
 
-export async function server(): Promise<void> {
-  //  await importTemplates()
-  const app = express()
-
-  function addRawBody(req, _res, buf, _encoding) {
-    req.rawBody = buf.toString()
-    /*  fs.writeFileSync(`./ReqFile.json`, req.rawBody, {
-      encoding: 'utf8',
-    }) */
-    /* const json = JSON.parse(req.rawBody)
-    console.log({ json })
-
-    fs.writeFileSync(`./DebuginFile.json`, json, {
-      encoding: 'utf8',
-    }) */
-  }
-  app.use((req, res, next) => {
-    bodyParser.json({
-      verify: addRawBody,
-      limit: '50mb',
-    })(req, res, (err) => {
-      if (err) {
-        console.log({ err })
-        res.sendStatus(400)
-        return
-      }
-      next()
-    })
-  })
-
-  // app.use(bodyParser.json({ limit: '50mb' }))
-
-  app.use(
-    bodyParser.urlencoded({
-      limit: '50mb',
-      parameterLimit: 100000,
-      extended: true,
+async function bootstrap() {
+  // Create Redis-based pub-sub
+  const pubSub = new RedisPubSub({
+    publisher: new Redis(process.env.REDIS_URL!, {
+      retryStrategy: (times: number) => Math.max(times * 100, 3000),
+      password: 'eYVX7EwVmmxKPCDmwMtyKVge8oLd2t81',
     }),
-  )
-  app.use((err, _req, res, next) => {
-    // This check makes sure this is a JSON parsing issue, but it might be
-    // coming from any middleware, not just body-parser:
-
-    if (
-      err instanceof SyntaxError &&
-      (err as any).status === 400 &&
-      'body' in err
-    ) {
-      console.error(err)
-      return res.sendStatus(400) // Bad request
-    }
-
-    next()
+    subscriber: new Redis(process.env.REDIS_URL!, {
+      retryStrategy: (times: number) => Math.max(times * 100, 3000),
+      password: 'eYVX7EwVmmxKPCDmwMtyKVge8oLd2t81',
+    }),
   })
-  app.use(cors({ origin: '*' }))
+
+  const AppResolvers = Object.values(
+    resolvers,
+  ) as unknown as NonEmptyArray<Function>
+
+  // Build TypeGraphQL executable schema
+  const schema = await buildSchema({
+    // Array of resolvers
+    resolvers: [...GeneratedResolvers, ...AppResolvers],
+    // Create 'schema.graphql' file with schema definition in current directory
+    emitSchemaFile: path.resolve(__dirname, 'schema.graphql'),
+    // Provide Redis-based instance of pub-sub
+    pubSub,
+    validate: false,
+  })
+
+  // Create an Express app and HTTP server
+  // The WebSocket server and the ApolloServer will be attached to this HTTP server
+  const app = express()
+  const httpServer = http.createServer(app)
+
+  // Create WebSocket server using the HTTP server
+  const wsServer = new WebSocketServer({
+    server: httpServer,
+    path: '/graphql',
+  })
+  // Save the returned server's info so it can be shutdown later
+  const serverCleanup = useServer(
+    {
+      schema,
+      context: (ctx) => {
+        // You can define your own function for setting a dynamic context
+        // or provide a static value
+        return createSubscriptionContext(ctx)
+      },
+    },
+    wsServer,
+  )
+
+  // Create GraphQL server
+  const server = new ApolloServer<Context>({
+    schema,
+    csrfPrevention: true,
+    cache: 'bounded',
+
+    plugins: [
+      // Proper shutdown for the HTTP server.
+      ApolloServerPluginDrainHttpServer({ httpServer }),
+      // Proper shutdown for the WebSocket server
+      {
+        async serverWillStart() {
+          return {
+            async drainServer() {
+              await serverCleanup.dispose()
+            },
+          }
+        },
+      },
+      ApolloServerPluginLandingPageLocalDefault({ embed: true }),
+    ],
+  })
+
+  // Start server
+  await server.start()
   app.use(
     '/graphql',
-    createHandler({
-      schema,
-      context: async (req, res) => await createContext({ req, res }),
+    cors<cors.CorsRequest>(),
+    bodyParser.json(),
+    expressMiddleware(server, {
+      context: async ({ req, res }) => createContext({ req, res }),
     }),
   )
 
-  app.listen(port)
+  // Now that the HTTP server is fully set up, we can listen to it
+  httpServer.listen(port, () => {
+    console.log(`GraphQL server ready at http://localhost:${port}/graphql`)
+  })
 }
 
-server().then(() =>
-  console.log(`\
+bootstrap()
+  .then(() =>
+    console.log(`\
 🚀 Server ready at: http://localhost:${port}
 ⭐️ Graphql server up and ready`),
-)
+  )
+  .catch(console.error)

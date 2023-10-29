@@ -9,7 +9,7 @@ const createPatient_typesense = async ({
   typesense: Client
   documents: Patient[]
 }) => {
-  const test = await typesense
+  await typesense
     .collections('patients')
     .documents()
     .import(
@@ -29,7 +29,6 @@ const createPatient_typesense = async ({
       }),
       { action: 'create' },
     )
-  console.log({ test })
 }
 
 export default createPatient_typesense

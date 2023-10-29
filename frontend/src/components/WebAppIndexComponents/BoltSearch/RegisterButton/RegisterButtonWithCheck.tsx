@@ -17,7 +17,7 @@ function RegisterButtonWithCheck({
 
   const callBack = useCallback(async () => {
     await mutate();
-  }, []);
+  }, [mutate]);
 
   return data?.mainDb_consultationList?.id ? (
     <UnregisterButton

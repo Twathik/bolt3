@@ -17,7 +17,9 @@ export class IndexPatientsResolver {
       console.log('new collection')
     }
     try {
-      const documents = await ctx.prisma.patient.findMany()
+      const documents = await ctx.prisma.patient.findMany({
+        where: { onTrash: false, deleted: false },
+      })
       await ctx.typesense.collections().create(patientSchema)
       await createPatient_typesense({ typesense: ctx.typesense, documents })
       return true

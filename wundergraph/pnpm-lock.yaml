@@ -11,6 +11,9 @@ dependencies:
   '@wundergraph/sdk':
     specifier: ^0.179.2
     version: 0.179.2
+  date-fns:
+    specifier: ^2.30.0
+    version: 2.30.0
   graphql:
     specifier: ^16.3.0
     version: 16.8.1
@@ -26,6 +29,9 @@ dependencies:
   swr:
     specifier: ^2.2.0
     version: 2.2.4(react@18.2.0)
+  typesense:
+    specifier: ^1.7.2
+    version: 1.7.2(@babel/runtime@7.23.2)
 
 devDependencies:
   '@types/node':
@@ -555,7 +561,7 @@ packages:
     resolution: {integrity: sha512-TkSAJ9pj1zesQyDlHrEUevVGOc1s/z9IQC0AONcpMHAunb8uYGO4Yryl8JIRIvDl5DlexHt3z8kLDNCInRGWNQ==}
     engines: {node: '>=16.0.0'}
     peerDependencies:
-      graphql: ^16.8.1
+      graphql: '*'
       tslib: ^2.4.0
     dependencies:
       dayjs: 1.11.10
@@ -1116,7 +1122,7 @@ packages:
       '@graphql-mesh/types': ^0.95.6
       '@graphql-mesh/utils': ^0.95.6
       '@graphql-tools/utils': ^9.2.1 || ^10.0.0
-      graphql: ^16.8.1
+      graphql: '*'
       tslib: ^2.4.0
     dependencies:
       '@graphql-mesh/cross-helpers': 0.4.1(@graphql-tools/utils@9.2.1)(graphql@16.8.1)
@@ -2459,6 +2465,13 @@ packages:
 
   /dataloader@2.2.2:
     resolution: {integrity: sha512-8YnDaaf7N3k/q5HnTJVuzSyLETjoZjVmHc4AeKAzOvKHEFQKcn64OKBfzHYtE9zGjctNM7V9I0MfnUVLpi7M5g==}
+    dev: false
+
+  /date-fns@2.30.0:
+    resolution: {integrity: sha512-fnULvOpxnC5/Vg3NCiWelDsLiUc9bRwAPs/+LfTLNvetFCtCTN+yQz15C/fs4AwX1R9K5GLtLfn8QW+dWisaAw==}
+    engines: {node: '>=0.11'}
+    dependencies:
+      '@babel/runtime': 7.23.2
     dev: false
 
   /dayjs@1.11.10:
@@ -4296,6 +4309,11 @@ packages:
 
   /lodash@4.17.21:
     resolution: {integrity: sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==}
+    dev: false
+
+  /loglevel@1.8.1:
+    resolution: {integrity: sha512-tCRIJM51SHjAayKwC+QAg8hT8vg6z7GSgLJKGvzuPb1Wc+hLzqtuVLxp6/HzSPOozuK+8ErAhy7U/sVzw8Dgfg==}
+    engines: {node: '>= 0.6.0'}
     dev: false
 
   /long@5.2.3:
@@ -6194,6 +6212,19 @@ packages:
     engines: {node: '>=4.2.0'}
     hasBin: true
     dev: true
+
+  /typesense@1.7.2(@babel/runtime@7.23.2):
+    resolution: {integrity: sha512-hgQESOiyNJq+w2mpRJa/a1UMhWtJ/+sb0p7NoeCDSkikm9sasisJdnc7uhQchM6vTWKw2sMLWUBNbAhItR6zUQ==}
+    engines: {node: '>=14'}
+    peerDependencies:
+      '@babel/runtime': ^7.17.2
+    dependencies:
+      '@babel/runtime': 7.23.2
+      axios: 0.26.1(debug@4.3.4)
+      loglevel: 1.8.1
+    transitivePeerDependencies:
+      - debug
+    dev: false
 
   /uglify-js@3.17.4:
     resolution: {integrity: sha512-T9q82TJI9e/C1TAxYvfb16xO120tMVFZrGA3f9/P4424DNu6ypK103y0GPFVa17yotwSyZW5iYXgjYHkGrJW/g==}

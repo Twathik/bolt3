@@ -51,9 +51,10 @@ export class RegisterPatient {
       }
       await prisma.consultationList.upsert({
         where: {
-          patientId_consultationId: {
+          patientId_consultationId_active: {
             patientId: patient_id,
             consultationId: todayConsultation.id,
+            active: true,
           },
         },
         create: {

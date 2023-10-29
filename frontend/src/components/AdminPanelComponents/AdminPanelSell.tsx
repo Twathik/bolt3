@@ -1,6 +1,6 @@
 "use client";
 
-import { Fragment, useState } from "react";
+import { Fragment, useCallback, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import {
   Bars3Icon,
@@ -11,7 +11,6 @@ import {
 } from "@heroicons/react/24/outline";
 import UserProfileButton from "../GeneralComponents/UserProfileButton/UserProfileButton";
 import { usePathname } from "next/navigation";
-import { useRouter } from "next/navigation";
 import AdminPanelMenuItems from "./AdminPanelMenuItems";
 import Link from "next/link";
 import { classNames } from "@/lib/utils";
@@ -26,7 +25,9 @@ export default function AdminPanelSell({
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   const pathName = usePathname();
-  const router = useRouter();
+
+  const setSideBarOpen = useCallback(() => setSidebarOpen(true), []);
+  const setSideBarClose = useCallback(() => setSidebarOpen(false), []);
 
   const menu = AdminPanelMenuItems.map((item) => (
     <li key={item.name} className="bloc flex ">
@@ -52,7 +53,7 @@ export default function AdminPanelSell({
           <Dialog
             as="div"
             className="relative z-50 lg:hidden"
-            onClose={setSidebarOpen}
+            onClose={setSideBarClose}
           >
             <Transition.Child
               as={Fragment}
@@ -90,7 +91,7 @@ export default function AdminPanelSell({
                       <button
                         type="button"
                         className="-m-2.5 p-2.5"
-                        onClick={() => setSidebarOpen(false)}
+                        onClick={setSideBarOpen}
                       >
                         <span className="sr-only">Close sidebar</span>
                         <XMarkIcon
@@ -194,14 +195,13 @@ export default function AdminPanelSell({
             <div className="flex flex-1 gap-x-4 self-stretch lg:gap-x-6">
               <div className="relative flex flex-1"></div>
               <div className="flex items-center gap-x-4 lg:gap-x-6">
-                <button
-                  type="button"
-                  onClick={() => router.replace("/webapp")}
+                <Link
+                  href="/webapp/search"
                   className="-m-2.5 p-2.5 text-gray-400 hover:text-gray-500"
                 >
                   <span className="sr-only">Revenir à l'application</span>
                   <ComputerDesktopIcon className="h-6 w-6" aria-hidden="true" />
-                </button>
+                </Link>
                 <button
                   type="button"
                   className="-m-2.5 p-2.5 text-gray-400 hover:text-gray-500"

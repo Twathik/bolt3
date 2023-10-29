@@ -1,5 +1,7 @@
 //import dynamic from "next/dynamic";
 
+import AppFloatingActionButton from "@/components/GeneralComponents/FAB/AppFloatingActionButton";
+
 /* const Lexical = dynamic(() => import("@/components/LexicalEditor/Lexical"), {
   ssr: false,
 }); */

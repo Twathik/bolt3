@@ -3,6 +3,7 @@ import * as GraphQLScalars from "graphql-scalars";
 import { Prisma } from "@prisma/client";
 import { DecimalJSScalar } from "../../scalars";
 import { ConsultationListOrderByRelationAggregateInput } from "../inputs/ConsultationListOrderByRelationAggregateInput";
+import { SortOrderInput } from "../inputs/SortOrderInput";
 import { SortOrder } from "../../enums/SortOrder";
 
 @TypeGraphQL.InputType("PatientOrderByWithRelationInput", {})
@@ -32,10 +33,15 @@ export class PatientOrderByWithRelationInput {
   })
   sexe?: "asc" | "desc" | undefined;
 
-  @TypeGraphQL.Field(_type => SortOrder, {
+  @TypeGraphQL.Field(_type => SortOrderInput, {
     nullable: true
   })
-  nTel?: "asc" | "desc" | undefined;
+  nTel?: SortOrderInput | undefined;
+
+  @TypeGraphQL.Field(_type => SortOrderInput, {
+    nullable: true
+  })
+  address?: SortOrderInput | undefined;
 
   @TypeGraphQL.Field(_type => SortOrder, {
     nullable: true
@@ -51,6 +57,16 @@ export class PatientOrderByWithRelationInput {
     nullable: true
   })
   deleted?: "asc" | "desc" | undefined;
+
+  @TypeGraphQL.Field(_type => SortOrder, {
+    nullable: true
+  })
+  onTrash?: "asc" | "desc" | undefined;
+
+  @TypeGraphQL.Field(_type => SortOrder, {
+    nullable: true
+  })
+  informationsConfirmed?: "asc" | "desc" | undefined;
 
   @TypeGraphQL.Field(_type => ConsultationListOrderByRelationAggregateInput, {
     nullable: true

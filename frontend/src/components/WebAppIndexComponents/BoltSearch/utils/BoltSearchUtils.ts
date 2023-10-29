@@ -13,7 +13,7 @@ const typesenseInstantsearchAdapter = new TypesenseInstantsearchAdapter({
         protocol: "http",
       },
     ],
-    cacheSearchResultsForSeconds: 2 * 60, // Cache search results from server. Defaults to 2 minutes. Set to 0 to disable caching.
+    cacheSearchResultsForSeconds: 0, // Cache search results from server. Defaults to 2 minutes. Set to 0 to disable caching.
   },
 
   // The following parameters are directly passed to Typesense's search API endpoint.

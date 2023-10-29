@@ -1,0 +1,12 @@
+query {
+  mainDb_patients(
+    where: {
+      AND: [{ onTrash: { equals: true } }, { deleted: { equals: false } }]
+    }
+  ) {
+    id
+    patientFullName
+    sexe
+    updated
+  }
+}

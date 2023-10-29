@@ -27,7 +27,7 @@ export { ConsultationListMinOrderByAggregateInput } from "./ConsultationListMinO
 export { ConsultationListOrderByRelationAggregateInput } from "./ConsultationListOrderByRelationAggregateInput";
 export { ConsultationListOrderByWithAggregationInput } from "./ConsultationListOrderByWithAggregationInput";
 export { ConsultationListOrderByWithRelationInput } from "./ConsultationListOrderByWithRelationInput";
-export { ConsultationListPatientIdConsultationIdCompoundUniqueInput } from "./ConsultationListPatientIdConsultationIdCompoundUniqueInput";
+export { ConsultationListPatientIdConsultationIdActiveCompoundUniqueInput } from "./ConsultationListPatientIdConsultationIdActiveCompoundUniqueInput";
 export { ConsultationListScalarWhereInput } from "./ConsultationListScalarWhereInput";
 export { ConsultationListScalarWhereWithAggregatesInput } from "./ConsultationListScalarWhereWithAggregatesInput";
 export { ConsultationListUpdateInput } from "./ConsultationListUpdateInput";
@@ -112,7 +112,6 @@ export { PatientCreateManyInput } from "./PatientCreateManyInput";
 export { PatientCreateNestedOneWithoutConsultationListInput } from "./PatientCreateNestedOneWithoutConsultationListInput";
 export { PatientCreateOrConnectWithoutConsultationListInput } from "./PatientCreateOrConnectWithoutConsultationListInput";
 export { PatientCreateWithoutConsultationListInput } from "./PatientCreateWithoutConsultationListInput";
-export { PatientCreatenTelInput } from "./PatientCreatenTelInput";
 export { PatientMaxOrderByAggregateInput } from "./PatientMaxOrderByAggregateInput";
 export { PatientMinOrderByAggregateInput } from "./PatientMinOrderByAggregateInput";
 export { PatientOrderByWithAggregationInput } from "./PatientOrderByWithAggregationInput";
@@ -124,7 +123,6 @@ export { PatientUpdateManyMutationInput } from "./PatientUpdateManyMutationInput
 export { PatientUpdateOneRequiredWithoutConsultationListNestedInput } from "./PatientUpdateOneRequiredWithoutConsultationListNestedInput";
 export { PatientUpdateToOneWithWhereWithoutConsultationListInput } from "./PatientUpdateToOneWithWhereWithoutConsultationListInput";
 export { PatientUpdateWithoutConsultationListInput } from "./PatientUpdateWithoutConsultationListInput";
-export { PatientUpdatenTelInput } from "./PatientUpdatenTelInput";
 export { PatientUpsertWithoutConsultationListInput } from "./PatientUpsertWithoutConsultationListInput";
 export { PatientWhereInput } from "./PatientWhereInput";
 export { PatientWhereUniqueInput } from "./PatientWhereUniqueInput";

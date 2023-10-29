@@ -1,0 +1,14 @@
+subscription ($id: String!) {
+  mainDb_getUpdatedPatient(id: $id) {
+    id
+    firstName
+    lastName
+    sexe
+    ddn
+    deleted
+    onTrash
+    patientFullName
+    informationsConfirmed
+    nTel
+  }
+}

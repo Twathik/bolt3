@@ -6,6 +6,7 @@ import {
   DocumentDuplicateIcon,
   FolderIcon,
   HomeIcon,
+  TrashIcon,
 } from "@heroicons/react/24/outline";
 
 const AdminPanelMenuItems: AdminPanelShellMenuInterface[] = [
@@ -24,7 +25,7 @@ const AdminPanelMenuItems: AdminPanelShellMenuInterface[] = [
     href: "#",
     icon: DocumentDuplicateIcon,
   },
-  { id: 6, name: "Reports", href: "#", icon: ChartPieIcon },
+  { id: 6, name: "Corbeille", href: "/adminPanel/trash", icon: TrashIcon },
 ];
 
 export default AdminPanelMenuItems;

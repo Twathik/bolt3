@@ -1,4 +1,3 @@
-import ProgressBar from "@/components/GeneralComponents/AppProgressBar/ProgressBar";
 import "./globals.css";
 import "@/components/LexicalEditor/lexical.css";
 import "@/components/LexicalEditor/themes/CommentEditorTheme";
@@ -6,7 +5,11 @@ import "@/components/LexicalEditor/themes/PlaygroundEditorTheme.css";
 import "@/components/LexicalEditor/themes/StickyEditorTheme";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import { Toaster } from "react-hot-toast";
+
+import NextTopLoader from "nextjs-toploader";
+import AppFloatingActionButton from "@/components/GeneralComponents/FAB/AppFloatingActionButton";
+import { AppProgressBar as ProgressBar } from "next-nprogress-bar";
+import { Toaster } from "@/components/ui/toaster";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -21,10 +24,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="h-full bg-white">
+    <html lang="en" className="h-full bg-white ">
       <body className={`${inter.className} h-full`}>
+        <NextTopLoader showSpinner={true} easing="ease" color="#020617" />
         {children}
         <Toaster />
+        <AppFloatingActionButton />
       </body>
     </html>
   );

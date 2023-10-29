@@ -10,7 +10,7 @@ export default function Example() {
   const router = useRouter();
 
   if (isLoading === false && data !== undefined && data !== null) {
-    router.replace("/webapp");
+    router.replace("/webapp/search");
   }
   return <>{isLoading ? <Loading /> : <LoginComponent />}</>;
 }

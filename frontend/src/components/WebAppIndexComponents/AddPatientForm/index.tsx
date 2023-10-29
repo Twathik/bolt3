@@ -10,14 +10,13 @@ import {
 } from "@/components/ui/card";
 
 import AddPatientForm from "./AddPatientForm";
-import useConsultationStore from "@/store/consultationStore";
+import useConsultationStore from "@/stores/consultationStore";
 import { useEffect } from "react";
 import { useQuery } from "@/components/wg-generated/nextjs";
 import { getDate, getMonth, getYear } from "date-fns";
-import FormSkeleton from "@/components/GeneralComponents/AppUi/FormSkeleton";
 
 const AddPatient = () => {
-  const { consultationState, setConsultationId } = useConsultationStore();
+  const { setConsultationId } = useConsultationStore();
 
   const { data } = useQuery({
     operationName: "consultationList/todayConsultation",
@@ -42,7 +41,7 @@ const AddPatient = () => {
         </CardDescription>
       </CardHeader>
       <CardContent className="grid gap-4">
-        <AddPatientForm />
+        <AddPatientForm defaultValues={undefined} />
       </CardContent>
       <CardFooter></CardFooter>
     </Card>

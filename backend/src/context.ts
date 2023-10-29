@@ -18,7 +18,16 @@ export interface Context {
   res: Response
   typesense: Client
 }
-export function createContext(ctx: any) {
+export function createContext(ctx: { req: Request; res: Response }) {
+  return {
+    ...ctx,
+    prisma,
+    // user,
+    typesense,
+  }
+}
+
+export function createSubscriptionContext(ctx: any) {
   return {
     ...ctx,
     prisma,

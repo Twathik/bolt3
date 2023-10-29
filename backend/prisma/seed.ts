@@ -3,7 +3,7 @@
 /* eslint-disable no-await-in-loop */
 /* eslint-disable no-console */
 
-import { Patient, PrismaClient, Role, Setting, User } from '@prisma/client'
+import { Patient, PrismaClient, Role, User, Setting } from '@prisma/client'
 const prisma = new PrismaClient()
 
 async function main() {
@@ -22,13 +22,21 @@ async function main() {
     },
   ]
 
-  const patientData: Omit<Patient, 'createdAt' | 'updated' | 'deleted'>[] = [
+  const patientData: Omit<
+    Patient,
+    | 'createdAt'
+    | 'updated'
+    | 'deleted'
+    | 'informationsConfirmed'
+    | 'address'
+    | 'onTrash'
+  >[] = [
     {
       id: '1',
       firstName: 'Wathik',
       lastName: 'Takdemt',
       ddn: new Date(1986, 6, 27),
-      nTel: ['0557506276'],
+      nTel: '0557506276',
       sexe: 'M',
     },
     {
@@ -37,7 +45,7 @@ async function main() {
       lastName: 'Mellak',
       ddn: new Date(1989, 4, 14),
 
-      nTel: [],
+      nTel: '',
       sexe: 'F',
     },
     {
@@ -46,7 +54,7 @@ async function main() {
       lastName: 'Takdemt',
       ddn: new Date(1957, 4, 17),
 
-      nTel: [],
+      nTel: '',
       sexe: 'M',
     },
     {
@@ -55,7 +63,7 @@ async function main() {
       lastName: 'Boudjella',
       ddn: new Date(1957, 7, 27),
 
-      nTel: [],
+      nTel: '',
       sexe: 'F',
     },
     {
@@ -64,7 +72,7 @@ async function main() {
       lastName: 'Elmahri',
       ddn: new Date(1950, 7, 27),
 
-      nTel: [],
+      nTel: '',
       sexe: 'M',
     },
     {
@@ -73,7 +81,7 @@ async function main() {
       lastName: 'Bouchnafa',
       ddn: new Date(1960, 7, 27),
 
-      nTel: [],
+      nTel: '',
       sexe: 'M',
     },
     {
@@ -82,7 +90,7 @@ async function main() {
       lastName: 'Zamouchi',
       ddn: new Date(1940, 7, 27),
 
-      nTel: [],
+      nTel: '',
       sexe: 'F',
     },
     {
@@ -91,7 +99,7 @@ async function main() {
       lastName: 'Ouchene',
       ddn: new Date(1980, 7, 27),
 
-      nTel: [],
+      nTel: '',
       sexe: 'F',
     },
     {
@@ -100,7 +108,7 @@ async function main() {
       lastName: 'Rahache',
       ddn: new Date(1981, 7, 27),
 
-      nTel: [],
+      nTel: '',
       sexe: 'M',
     },
     {
@@ -109,7 +117,7 @@ async function main() {
       lastName: 'Raskin',
       ddn: new Date(1989, 7, 27),
 
-      nTel: [],
+      nTel: '',
       sexe: 'M',
     },
     {
@@ -118,7 +126,7 @@ async function main() {
       lastName: 'Zighoud',
       ddn: new Date(1991, 7, 27),
 
-      nTel: [],
+      nTel: '',
       sexe: 'F',
     },
     {
@@ -127,7 +135,7 @@ async function main() {
       lastName: 'Bedjaoui',
       ddn: new Date(1988, 7, 27),
 
-      nTel: [],
+      nTel: '',
       sexe: 'M',
     },
     {
@@ -136,7 +144,7 @@ async function main() {
       lastName: 'Bedjaoui',
       ddn: new Date(1989, 7, 27),
 
-      nTel: [],
+      nTel: '',
       sexe: 'M',
     },
     {
@@ -145,7 +153,7 @@ async function main() {
       lastName: 'Ouchene',
       ddn: new Date(1956, 7, 27),
 
-      nTel: [],
+      nTel: '',
       sexe: 'M',
     },
     {
@@ -154,7 +162,7 @@ async function main() {
       lastName: 'Bouali',
       ddn: new Date(1957, 7, 27),
 
-      nTel: [],
+      nTel: '',
       sexe: 'F',
     },
     {
@@ -163,7 +171,7 @@ async function main() {
       lastName: 'Guasmi',
       ddn: new Date(1995, 7, 27),
 
-      nTel: [],
+      nTel: '',
       sexe: 'F',
     },
     {
@@ -172,7 +180,7 @@ async function main() {
       lastName: 'Bouafia',
       ddn: new Date(1953, 7, 27),
 
-      nTel: [],
+      nTel: '',
       sexe: 'M',
     },
     {
@@ -181,7 +189,7 @@ async function main() {
       lastName: 'Chettibi',
       ddn: new Date(1970, 7, 27),
 
-      nTel: [],
+      nTel: '',
       sexe: 'M',
     },
     {
@@ -190,7 +198,7 @@ async function main() {
       lastName: 'Boudjella',
       ddn: new Date(1969, 7, 27),
 
-      nTel: [],
+      nTel: '',
       sexe: 'M',
     },
     {
@@ -199,7 +207,7 @@ async function main() {
       lastName: 'Oukid',
       ddn: new Date(1985, 7, 27),
 
-      nTel: [],
+      nTel: '',
       sexe: 'F',
     },
   ]

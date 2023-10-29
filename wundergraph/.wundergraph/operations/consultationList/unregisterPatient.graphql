@@ -1,5 +1,13 @@
-mutation ($id: String!) {
-  mainDb_deleteOneConsultationList(where: { id: $id }) {
+mutation ($consultationId: String!, $patientId: String!) {
+  mainDb_deleteOneConsultationList(
+    where: {
+      patientId_consultationId_active: {
+        consultationId: $consultationId
+        patientId: $patientId
+        active: true
+      }
+    }
+  ) {
     id
   }
 }

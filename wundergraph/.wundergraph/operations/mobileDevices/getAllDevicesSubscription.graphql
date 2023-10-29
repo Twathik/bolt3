@@ -1,0 +1,10 @@
+subscription {
+  mainDb_getMobileDevicesList {
+    id
+    accessToken
+    connected
+    expireAt
+    mobileDeviceType
+    uuid
+  }
+}

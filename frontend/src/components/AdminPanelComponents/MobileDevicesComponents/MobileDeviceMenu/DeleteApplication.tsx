@@ -2,50 +2,46 @@ import ConfirmationDialog from "@/components/GeneralComponents/ConfirmationDialo
 import ErrorNotification from "@/components/GeneralComponents/Notifications/ErrorNotification";
 import SuccessNotification from "@/components/GeneralComponents/Notifications/SuccessNotification";
 import { Button } from "@/components/ui/button";
+import { useToast } from "@/components/ui/use-toast";
 import { useMutation } from "@/components/wg-generated/nextjs";
 import { classNames } from "@/lib/utils";
 import { Menu } from "@headlessui/react";
-import React from "react";
-
-import toast from "react-hot-toast";
+import React, { useCallback } from "react";
 
 interface LogoutDevice {
   deviceId: string;
 }
 
 function DeleteApplication({ deviceId }: LogoutDevice) {
+  const { toast } = useToast();
   const { trigger, isMutating } = useMutation({
     operationName: "mobileDevices/removeMobileDevice",
     onSuccess: (data) => {
-      toast.custom(
-        <SuccessNotification
-          description="L'application mobile a été supprimée"
-          title="Succes de l'oppération"
-        />,
-        { position: "bottom-center", duration: 2000 },
-      );
+      toast({
+        description: "L'application mobile a été supprimée",
+        title: "Succes de l'oppération",
+        duration: 2000,
+      });
     },
     onError: (error) => {
       console.dir({ error }, { depth: 5, colors: true });
-      toast.custom(
-        <ErrorNotification
-          description="L'application mobile n'a pas été supprimée"
-          title="Echec de l'oppération"
-        />,
-        {
-          position: "bottom-center",
-          duration: 2000,
-        },
-      );
+      toast({
+        description: "L'application mobile n'a pas été supprimée",
+        title: "Echec de l'oppération",
+        duration: 2000,
+        variant: "destructive",
+      });
     },
   });
+
+  const confirmDialogCallback = useCallback(async () => {
+    await trigger({ id: deviceId });
+  }, [deviceId, trigger]);
   return (
     <Menu.Item>
       {({ active }) => (
         <ConfirmationDialog
-          callback={async () => {
-            await trigger({ id: deviceId });
-          }}
+          callback={confirmDialogCallback}
           description="L'application mobile ne serra plus accessible"
           triggerButton={
             <Button

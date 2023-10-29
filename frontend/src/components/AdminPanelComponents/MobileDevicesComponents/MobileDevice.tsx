@@ -2,7 +2,7 @@ import { classNames } from "@/lib/utils";
 import { Menu, Transition } from "@headlessui/react";
 import { EllipsisVerticalIcon } from "@heroicons/react/24/outline";
 import { format, parseISO } from "date-fns";
-import React, { Fragment } from "react";
+import React, { Fragment, useCallback, useMemo } from "react";
 import LogoutDevice from "./MobileDeviceMenu/LogoutDevice";
 import SwitchType from "./MobileDeviceMenu/SwitchType";
 import DeleteApplication from "./MobileDeviceMenu/DeleteApplication";
@@ -10,19 +10,19 @@ import ConfirmationDialog from "@/components/GeneralComponents/ConfirmationDialo
 import { Button } from "@/components/ui/button";
 import MobileDeviceQrCode from "./MobileDeviceMenu/MobileDeviceQrCode";
 import ChangeMobileDeviceExpireDate from "./ChangeMobileDeviceExpireDate";
+import { MobileDevicesGetAllDevicesSubscriptionResponseData } from "@/components/wg-generated/models";
 
 interface MobileDeviceInterface {
-  mobileDevice: {
-    id: string;
-    accessToken: string;
-    expireAt: string;
-    mobileDeviceType: "DOCTOR" | "SECRETARY";
-    connected: boolean;
-  };
+  mobileDevice: MobileDevicesGetAllDevicesSubscriptionResponseData["mainDb_getMobileDevicesList"][0];
 }
 function MobileDevice({
   mobileDevice: { id, accessToken, expireAt, mobileDeviceType, connected },
 }: MobileDeviceInterface) {
+  const birthDate = useMemo(
+    () => format(parseISO(expireAt), "dd / MM / yyyy"),
+    [expireAt],
+  );
+  const callBack = useCallback(() => {}, []);
   return (
     <li
       key={id}
@@ -50,7 +50,7 @@ function MobileDevice({
           <p className="whitespace-nowrap">
             Date d'expiration
             <time dateTime={expireAt} className="ml-2 font-bold">
-              {format(parseISO(expireAt), "dd / MM / yyyy")}
+              {birthDate}
             </time>
           </p>
         </div>
@@ -59,7 +59,7 @@ function MobileDevice({
         <ChangeMobileDeviceExpireDate id={id} />
 
         <ConfirmationDialog
-          callback={() => {}}
+          callback={callBack}
           cancelButtonTitle="Fermer"
           showValidationButton={false}
           titre="Veuillez scaner le QR code au niveau de l'application mobile ( Bolt companion )"
