@@ -1,6 +1,9 @@
+export { ClinicalEvent } from "./ClinicalEvent";
 export { Consultation } from "./Consultation";
 export { ConsultationList } from "./ConsultationList";
+export { DocumentTemplate } from "./DocumentTemplate";
 export { MobileDevice } from "./MobileDevice";
 export { Patient } from "./Patient";
+export { Prescription } from "./Prescription";
 export { Setting } from "./Setting";
 export { User } from "./User";

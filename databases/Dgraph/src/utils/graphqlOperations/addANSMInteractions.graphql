@@ -1,0 +1,14 @@
+mutation addANSMInteractions($input: [AddANSMInteractionsInput!]! ) {
+  addANSMInteractions(input: $input) {
+    aNSMInteractions {
+      id
+      molecules {
+        name
+      }
+      classes {
+        name
+      }
+    }
+    numUids
+  }
+}

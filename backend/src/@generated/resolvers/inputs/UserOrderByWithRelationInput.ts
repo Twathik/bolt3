@@ -2,6 +2,7 @@ import * as TypeGraphQL from "type-graphql";
 import * as GraphQLScalars from "graphql-scalars";
 import { Prisma } from "@prisma/client";
 import { DecimalJSScalar } from "../../scalars";
+import { ClinicalEventOrderByRelationAggregateInput } from "../inputs/ClinicalEventOrderByRelationAggregateInput";
 import { SortOrderInput } from "../inputs/SortOrderInput";
 import { SortOrder } from "../../enums/SortOrder";
 
@@ -66,4 +67,9 @@ export class UserOrderByWithRelationInput {
     nullable: true
   })
   createdAt?: "asc" | "desc" | undefined;
+
+  @TypeGraphQL.Field(_type => ClinicalEventOrderByRelationAggregateInput, {
+    nullable: true
+  })
+  ClinicalEvent?: ClinicalEventOrderByRelationAggregateInput | undefined;
 }

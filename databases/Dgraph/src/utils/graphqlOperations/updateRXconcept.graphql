@@ -1,0 +1,10 @@
+
+mutation updateRXConcept($input: UpdateRXConceptInput!) {
+  updateRXConcept(input: $input) {
+    rXConcept {
+      id
+      rxcui
+    }
+    numUids
+  }
+}

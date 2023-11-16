@@ -1,0 +1,13 @@
+mutation (
+  $eventType: mainDb_EventTypes!
+  $patientId: String!
+  $userId: String! @fromClaim(name: USERID)
+) {
+  mainDb_createOneClinicalEvent(
+    eventType: $eventType
+    patientId: $patientId
+    userId: $userId
+  ) {
+    id
+  }
+}

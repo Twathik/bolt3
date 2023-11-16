@@ -3,9 +3,9 @@ import {
   CalendarIcon,
   DevicePhoneMobileIcon,
   DocumentDuplicateIcon,
-  FolderIcon,
   HomeIcon,
   TrashIcon,
+  ClipboardDocumentCheckIcon,
 } from "@heroicons/react/24/outline";
 
 const AdminPanelMenuItems: AdminPanelShellMenuInterface[] = [
@@ -16,7 +16,12 @@ const AdminPanelMenuItems: AdminPanelShellMenuInterface[] = [
     href: "/admin-panel/mobile-devices",
     icon: DevicePhoneMobileIcon,
   },
-  { id: 3, name: "Projects", href: "#", icon: FolderIcon },
+  {
+    id: 3,
+    name: "Templates",
+    href: "/admin-panel/templates",
+    icon: ClipboardDocumentCheckIcon,
+  },
   { id: 4, name: "Calendar", href: "#", icon: CalendarIcon },
   {
     id: 5,

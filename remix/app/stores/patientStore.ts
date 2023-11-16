@@ -9,8 +9,8 @@ interface Store {
   ) => void;
 }
 
-const usePatientStore = create(
-  immer<Store>((set) => ({
+const usePatientStore = create<Store>()(
+  immer((set) => ({
     patient: null,
     setPatient: (patient) => {
       set((state) => {

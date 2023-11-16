@@ -1,0 +1,14 @@
+export { AggregateClinicalEventArgs } from "./AggregateClinicalEventArgs";
+export { CreateManyClinicalEventArgs } from "./CreateManyClinicalEventArgs";
+export { CreateOneClinicalEventArgs } from "./CreateOneClinicalEventArgs";
+export { DeleteManyClinicalEventArgs } from "./DeleteManyClinicalEventArgs";
+export { DeleteOneClinicalEventArgs } from "./DeleteOneClinicalEventArgs";
+export { FindFirstClinicalEventArgs } from "./FindFirstClinicalEventArgs";
+export { FindFirstClinicalEventOrThrowArgs } from "./FindFirstClinicalEventOrThrowArgs";
+export { FindManyClinicalEventArgs } from "./FindManyClinicalEventArgs";
+export { FindUniqueClinicalEventArgs } from "./FindUniqueClinicalEventArgs";
+export { FindUniqueClinicalEventOrThrowArgs } from "./FindUniqueClinicalEventOrThrowArgs";
+export { GroupByClinicalEventArgs } from "./GroupByClinicalEventArgs";
+export { UpdateManyClinicalEventArgs } from "./UpdateManyClinicalEventArgs";
+export { UpdateOneClinicalEventArgs } from "./UpdateOneClinicalEventArgs";
+export { UpsertOneClinicalEventArgs } from "./UpsertOneClinicalEventArgs";

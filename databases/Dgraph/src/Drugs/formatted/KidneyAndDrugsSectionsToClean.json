@@ -1,0 +1,1311 @@
+[
+  {
+    "drug": "Acetylcysteine",
+    "sections": " - metabolismeLines - AdministrationLines"
+  },
+  { "drug": "Aciclovir IV", "sections": " - OtherInformationLines" },
+  { "drug": "Acipimox", "sections": " - metabolismeLines" },
+  { "drug": "Acitretin", "sections": " - metabolismeLines" },
+  { "drug": "Acrivastine", "sections": " - metabolismeLines" },
+  { "drug": "Adalimumab", "sections": " - OtherInformationLines" },
+  { "drug": "Afatinib", "sections": " - OtherInformationLines" },
+  { "drug": "Aflibercept", "sections": " - metabolismeLines" },
+  {
+    "drug": "Agalsidase beta (Fabrazyme)",
+    "sections": " - OtherInformationLines"
+  },
+  { "drug": "Agomelatine", "sections": " - metabolismeLines" },
+  { "drug": "Albendazole", "sections": " - metabolismeLines" },
+  { "drug": "Albiglutide", "sections": " - metabolismeLines" },
+  { "drug": "Alfacalcidol", "sections": " - metabolismeLines" },
+  {
+    "drug": "Alfentanil",
+    "sections": " - metabolismeLines - AdministrationLines"
+  },
+  { "drug": "Almotriptan", "sections": " - OtherInformationLines" },
+  { "drug": "Alogliptin", "sections": " - metabolismeLines" },
+  {
+    "drug": "Alteplase  (Rt-Pa) (recombinant human tissue-type plasminogen activator)",
+    "sections": " - OtherInformationLines"
+  },
+  { "drug": "Ambrisentan", "sections": " - metabolismeLines" },
+  {
+    "drug": "Amikacin",
+    "sections": " - metabolismeLines - OtherInformationLines"
+  },
+  {
+    "drug": "Aminophylline",
+    "sections": " - metabolismeLines - ImportantDrugInteractionsLines - OtherInformationLines"
+  },
+  {
+    "drug": "Amiodarone hydrochloride",
+    "sections": " - ImportantDrugInteractionsLines"
+  },
+  { "drug": "Amisulpride", "sections": " - metabolismeLines" },
+  {
+    "drug": "Amitriptyline hydrochloride",
+    "sections": " - ImportantDrugInteractionsLines"
+  },
+  { "drug": "Amlodipine", "sections": " - metabolismeLines" },
+  {
+    "drug": "Amoxicillin",
+    "sections": " - metabolismeLines - ImportantDrugInteractionsLines"
+  },
+  {
+    "drug": "Amphotericin IV – Abelcet (lipid complex)",
+    "sections": " - AdministrationLines"
+  },
+  {
+    "drug": "Amphotericin IV – AmBisome (liposomal)",
+    "sections": " - AdministrationLines"
+  },
+  {
+    "drug": "Amphotericin IV – Fungizone",
+    "sections": " - AdministrationLines"
+  },
+  {
+    "drug": "Ampicillin",
+    "sections": " - metabolismeLines - OtherInformationLines"
+  },
+  { "drug": "Anagrelide", "sections": " - metabolismeLines" },
+  { "drug": "Anastrozole", "sections": " - metabolismeLines" },
+  {
+    "drug": "Anidulafungin",
+    "sections": " - metabolismeLines - OtherInformationLines"
+  },
+  {
+    "drug": "Apixaban",
+    "sections": " - metabolismeLines - AdministrationLines"
+  },
+  { "drug": "Apremilast", "sections": " - metabolismeLines" },
+  { "drug": "Aprepitant", "sections": " - metabolismeLines" },
+  {
+    "drug": "Argatroban",
+    "sections": " - metabolismeLines - AdministrationLines"
+  },
+  {
+    "drug": "Aripiprazole",
+    "sections": " - metabolismeLines - ImportantDrugInteractionsLines"
+  },
+  {
+    "drug": "Arsenic trioxide",
+    "sections": " - AdministrationLines - OtherInformationLines"
+  },
+  { "drug": "Ascorbic acid", "sections": " - metabolismeLines" },
+  {
+    "drug": "Aspirin",
+    "sections": " - ImportantDrugInteractionsLines - OtherInformationLines"
+  },
+  {
+    "drug": "Atazanavir",
+    "sections": " - metabolismeLines - ImportantDrugInteractionsLines - OtherInformationLines"
+  },
+  {
+    "drug": "Atenolol",
+    "sections": " - metabolismeLines - AdministrationLines"
+  },
+  {
+    "drug": "ATG (rabbit) (thymoglobuline)",
+    "sections": " - OtherInformationLines"
+  },
+  {
+    "drug": "Atorvastatin",
+    "sections": " - metabolismeLines - AdministrationLines"
+  },
+  {
+    "drug": "Atracurium besilate",
+    "sections": " - metabolismeLines - OtherInformationLines"
+  },
+  { "drug": "Avanafil", "sections": " - metabolismeLines" },
+  { "drug": "Axitinib", "sections": " - metabolismeLines" },
+  { "drug": "Azacitidine", "sections": " - metabolismeLines" },
+  { "drug": "Azathioprine", "sections": " - metabolismeLines" },
+  { "drug": "Azithromycin", "sections": " - metabolismeLines" },
+  {
+    "drug": "Aztreonam",
+    "sections": " - metabolismeLines - OtherInformationLines"
+  },
+  {
+    "drug": "Baclofen",
+    "sections": " - metabolismeLines - AdministrationLines - OtherInformationLines"
+  },
+  {
+    "drug": "Baricitinib",
+    "sections": " - metabolismeLines - OtherInformationLines"
+  },
+  { "drug": "Basiliximab", "sections": " - OtherInformationLines" },
+  { "drug": "Belimumab", "sections": " - metabolismeLines" },
+  {
+    "drug": "Benzbromarone",
+    "sections": " - metabolismeLines - OtherInformationLines"
+  },
+  { "drug": "Benzylpenicillin", "sections": " - metabolismeLines" },
+  { "drug": "Bevacizumab", "sections": " - OtherInformationLines" },
+  { "drug": "Bexarotene", "sections": " - metabolismeLines" },
+  { "drug": "Bezlotoxumab", "sections": " - metabolismeLines" },
+  { "drug": "Bicalutamide", "sections": " - metabolismeLines" },
+  { "drug": "Bisacodyl", "sections": " - metabolismeLines" },
+  { "drug": "Bivalirudin", "sections": " - metabolismeLines" },
+  { "drug": "Bleomycin", "sections": " - AdministrationLines" },
+  {
+    "drug": "Boceprevir",
+    "sections": " - metabolismeLines - AdministrationLines - OtherInformationLines"
+  },
+  { "drug": "Bortezomib", "sections": " - OtherInformationLines" },
+  {
+    "drug": "Bosentan",
+    "sections": " - metabolismeLines - AdministrationLines - OtherInformationLines"
+  },
+  { "drug": "Bosutinib", "sections": " - ImportantDrugInteractionsLines" },
+  { "drug": "Brentuximab vedotin", "sections": " - metabolismeLines" },
+  {
+    "drug": "Brivaracetam",
+    "sections": " - metabolismeLines - OtherInformationLines"
+  },
+  { "drug": "Brodalumab", "sections": " - metabolismeLines" },
+  { "drug": "Bromocriptine", "sections": " - metabolismeLines" },
+  { "drug": "Budesonide", "sections": " - metabolismeLines" },
+  { "drug": "Bumetanide", "sections": " - OtherInformationLines" },
+  { "drug": "Buprenorphine", "sections": " - metabolismeLines" },
+  { "drug": "Buserelin", "sections": " - OtherInformationLines" },
+  { "drug": "Busulfan", "sections": " - metabolismeLines" },
+  {
+    "drug": "Cabazitaxel",
+    "sections": " - metabolismeLines - OtherInformationLines"
+  },
+  {
+    "drug": "Cabergoline",
+    "sections": " - metabolismeLines - OtherInformationLines"
+  },
+  { "drug": "Cabozantinib", "sections": " - metabolismeLines" },
+  { "drug": "Calcitriol", "sections": " - metabolismeLines" },
+  {
+    "drug": "Cangrelor",
+    "sections": " - metabolismeLines - OtherInformationLines"
+  },
+  { "drug": "Capecitabine", "sections": " - metabolismeLines" },
+  { "drug": "Capreomycin", "sections": " - OtherInformationLines" },
+  {
+    "drug": "Captopril",
+    "sections": " - metabolismeLines - AdministrationLines"
+  },
+  {
+    "drug": "Carbamazepine",
+    "sections": " - metabolismeLines - ImportantDrugInteractionsLines"
+  },
+  { "drug": "Carbimazole", "sections": " - metabolismeLines" },
+  { "drug": "Carfilzomib", "sections": " - metabolismeLines" },
+  { "drug": "Carmustine", "sections": " - OtherInformationLines" },
+  {
+    "drug": "Carvedilol",
+    "sections": " - metabolismeLines - OtherInformationLines"
+  },
+  {
+    "drug": "Caspofungin",
+    "sections": " - metabolismeLines - AdministrationLines - OtherInformationLines"
+  },
+  {
+    "drug": "Cefaclor",
+    "sections": " - metabolismeLines - OtherInformationLines"
+  },
+  { "drug": "Cefalexin", "sections": " - metabolismeLines" },
+  { "drug": "Cefradine", "sections": " - metabolismeLines" },
+  { "drug": "Ceftaroline fosamil", "sections": " - metabolismeLines" },
+  {
+    "drug": "Ceftazidime",
+    "sections": " - metabolismeLines - OtherInformationLines"
+  },
+  {
+    "drug": "Ceftobiprole medocaril sodium",
+    "sections": " - metabolismeLines"
+  },
+  {
+    "drug": "Celecoxib",
+    "sections": " - metabolismeLines - OtherInformationLines"
+  },
+  {
+    "drug": "Celiprolol hydrochloride",
+    "sections": " - OtherInformationLines"
+  },
+  { "drug": "Ceritinib", "sections": " - ImportantDrugInteractionsLines" },
+  { "drug": "Cetuximab", "sections": " - OtherInformationLines" },
+  {
+    "drug": "Chloral hydrate",
+    "sections": " - metabolismeLines - OtherInformationLines"
+  },
+  { "drug": "Chlorambucil", "sections": " - metabolismeLines" },
+  { "drug": "Chloramphenicol", "sections": " - metabolismeLines" },
+  {
+    "drug": "Chlordiazepoxide hydrochloride",
+    "sections": " - OtherInformationLines"
+  },
+  {
+    "drug": "Chloroquine",
+    "sections": " - metabolismeLines - AdministrationLines"
+  },
+  {
+    "drug": "Chlorpromazine hydrochloride",
+    "sections": " - ImportantDrugInteractionsLines"
+  },
+  {
+    "drug": "Ciclosporin",
+    "sections": " - metabolismeLines - ImportantDrugInteractionsLines"
+  },
+  { "drug": "Cidofovir", "sections": " - metabolismeLines" },
+  {
+    "drug": "Cilostazol",
+    "sections": " - metabolismeLines - OtherInformationLines"
+  },
+  {
+    "drug": "Cimetidine",
+    "sections": " - metabolismeLines - ImportantDrugInteractionsLines"
+  },
+  { "drug": "Cinacalcet", "sections": " - metabolismeLines" },
+  {
+    "drug": "Cinnarizine",
+    "sections": " - metabolismeLines - OtherInformationLines"
+  },
+  {
+    "drug": "Ciprofloxacin",
+    "sections": " - metabolismeLines - AdministrationLines"
+  },
+  {
+    "drug": "Cisplatin",
+    "sections": " - metabolismeLines - AdministrationLines"
+  },
+  {
+    "drug": "Citalopram",
+    "sections": " - metabolismeLines - AdministrationLines"
+  },
+  { "drug": "Cladribine", "sections": " - metabolismeLines" },
+  { "drug": "Clarithromycin", "sections": " - ImportantDrugInteractionsLines" },
+  { "drug": "Clindamycin", "sections": " - metabolismeLines" },
+  { "drug": "Clobazam", "sections": " - metabolismeLines" },
+  { "drug": "Clofazimine", "sections": " - metabolismeLines" },
+  {
+    "drug": "Clomipramine hydrochloride",
+    "sections": " - ImportantDrugInteractionsLines"
+  },
+  {
+    "drug": "Clonazepam",
+    "sections": " - metabolismeLines - OtherInformationLines"
+  },
+  {
+    "drug": "Clopidogrel",
+    "sections": " - metabolismeLines - OtherInformationLines"
+  },
+  {
+    "drug": "Clozapine",
+    "sections": " - metabolismeLines - ImportantDrugInteractionsLines - OtherInformationLines"
+  },
+  {
+    "drug": "Co-amoxiclav (amoxicillin / clavulanic acid)",
+    "sections": " - OtherInformationLines"
+  },
+  {
+    "drug": "Co-trimoxazole (trimethoprim + sulfamethoxazole)",
+    "sections": " - ImportantDrugInteractionsLines"
+  },
+  {
+    "drug": "Cobicistat",
+    "sections": " - metabolismeLines - ImportantDrugInteractionsLines - OtherInformationLines"
+  },
+  {
+    "drug": "Colchicine",
+    "sections": " - AdministrationLines - OtherInformationLines"
+  },
+  { "drug": "Colecalciferol", "sections": " - OtherInformationLines" },
+  {
+    "drug": "Colesevelam hydrochloride",
+    "sections": " - OtherInformationLines"
+  },
+  {
+    "drug": "Colistimethate sodium (Colistin)",
+    "sections": " - ImportantDrugInteractionsLines"
+  },
+  { "drug": "Crisantaspase", "sections": " - OtherInformationLines" },
+  { "drug": "Crizotinib", "sections": " - OtherInformationLines" },
+  {
+    "drug": "Cyclizine",
+    "sections": " - metabolismeLines - OtherInformationLines"
+  },
+  { "drug": "Cyclopenthiazide", "sections": " - metabolismeLines" },
+  {
+    "drug": "Cyclophosphamide",
+    "sections": " - metabolismeLines - OtherInformationLines"
+  },
+  { "drug": "Cycloserine", "sections": " - metabolismeLines" },
+  {
+    "drug": "Cytarabine",
+    "sections": " - metabolismeLines - OtherInformationLines"
+  },
+  {
+    "drug": "Dabigatran etexilate",
+    "sections": " - metabolismeLines - ImportantDrugInteractionsLines"
+  },
+  { "drug": "Dacarbazine", "sections": " - metabolismeLines" },
+  {
+    "drug": "Daclatasvir",
+    "sections": " - metabolismeLines - OtherInformationLines"
+  },
+  {
+    "drug": "Daclizumab",
+    "sections": " - metabolismeLines - OtherInformationLines"
+  },
+  {
+    "drug": "Dalteparin sodium (LMWH)",
+    "sections": " - OtherInformationLines"
+  },
+  {
+    "drug": "Danaparoid sodium",
+    "sections": " - metabolismeLines - OtherInformationLines"
+  },
+  { "drug": "Dapagliflozin", "sections": " - metabolismeLines" },
+  { "drug": "Dapsone", "sections": " - metabolismeLines" },
+  {
+    "drug": "Daptomycin",
+    "sections": " - metabolismeLines - OtherInformationLines"
+  },
+  { "drug": "Daratumumab", "sections": " - OtherInformationLines" },
+  { "drug": "Darbepoetin alfa", "sections": " - OtherInformationLines" },
+  {
+    "drug": "Darifenacin",
+    "sections": " - metabolismeLines - OtherInformationLines"
+  },
+  { "drug": "Darunavir", "sections": " - metabolismeLines" },
+  {
+    "drug": "Dasabuvir",
+    "sections": " - metabolismeLines - OtherInformationLines"
+  },
+  { "drug": "Dasatinib", "sections": " - metabolismeLines" },
+  { "drug": "Daunorubicin", "sections": " - metabolismeLines" },
+  { "drug": "Deferasirox", "sections": " - OtherInformationLines" },
+  {
+    "drug": "Deferiprone",
+    "sections": " - metabolismeLines - OtherInformationLines"
+  },
+  { "drug": "Deflazacort", "sections": " - metabolismeLines" },
+  { "drug": "Degarelix", "sections": " - OtherInformationLines" },
+  { "drug": "Delamanid", "sections": " - metabolismeLines" },
+  { "drug": "Demeclocycline hydrochloride", "sections": " - metabolismeLines" },
+  { "drug": "Desferrioxamine mesilate", "sections": " - AdministrationLines" },
+  { "drug": "Desirudin", "sections": " - metabolismeLines" },
+  { "drug": "Desloratadine", "sections": " - metabolismeLines" },
+  {
+    "drug": "Dexamethasone",
+    "sections": " - AdministrationLines - OtherInformationLines"
+  },
+  {
+    "drug": "Dexibuprofen",
+    "sections": " - metabolismeLines - OtherInformationLines"
+  },
+  {
+    "drug": "Dexketoprofen",
+    "sections": " - metabolismeLines - OtherInformationLines"
+  },
+  { "drug": "Dexrazoxane", "sections": " - metabolismeLines" },
+  { "drug": "Diazepam", "sections": " - metabolismeLines" },
+  { "drug": "Diazoxide", "sections": " - metabolismeLines" },
+  { "drug": "Diclofenac sodium", "sections": " - AdministrationLines" },
+  { "drug": "Didanosine", "sections": " - metabolismeLines" },
+  {
+    "drug": "Digoxin",
+    "sections": " - metabolismeLines - ImportantDrugInteractionsLines"
+  },
+  {
+    "drug": "Diltiazem hydrochloride",
+    "sections": " - ImportantDrugInteractionsLines"
+  },
+  { "drug": "Dimethyl fumarate", "sections": " - metabolismeLines" },
+  {
+    "drug": "Dipyridamole",
+    "sections": " - metabolismeLines - OtherInformationLines"
+  },
+  {
+    "drug": "Disopyramide",
+    "sections": " - metabolismeLines - ImportantDrugInteractionsLines"
+  },
+  {
+    "drug": "Disulfiram",
+    "sections": " - metabolismeLines - OtherInformationLines"
+  },
+  { "drug": "Dobutamine", "sections": " - metabolismeLines" },
+  { "drug": "Docetaxel", "sections": " - metabolismeLines" },
+  { "drug": "Dolutegravir", "sections": " - metabolismeLines" },
+  {
+    "drug": "Domperidone",
+    "sections": " - metabolismeLines - OtherInformationLines"
+  },
+  { "drug": "Donepezil hydrochloride", "sections": " - metabolismeLines" },
+  { "drug": "Dornase alfa", "sections": " - metabolismeLines" },
+  {
+    "drug": "Dosulepin hydrochloride (dothiepin)",
+    "sections": " - ImportantDrugInteractionsLines"
+  },
+  {
+    "drug": "Doxazosin",
+    "sections": " - metabolismeLines - OtherInformationLines"
+  },
+  {
+    "drug": "Doxepin",
+    "sections": " - metabolismeLines - ImportantDrugInteractionsLines"
+  },
+  {
+    "drug": "Doxycycline",
+    "sections": " - metabolismeLines - OtherInformationLines"
+  },
+  {
+    "drug": "Dronedarone",
+    "sections": " - metabolismeLines - ImportantDrugInteractionsLines"
+  },
+  {
+    "drug": "Droperidol",
+    "sections": " - ImportantDrugInteractionsLines - OtherInformationLines"
+  },
+  {
+    "drug": "Dulaglutide",
+    "sections": " - metabolismeLines - OtherInformationLines"
+  },
+  { "drug": "Duloxetine", "sections": " - metabolismeLines" },
+  { "drug": "Dutasteride", "sections": " - metabolismeLines" },
+  { "drug": "Eculizumab", "sections": " - metabolismeLines" },
+  { "drug": "Edoxaban tosilate", "sections": " - AdministrationLines" },
+  { "drug": "Efavirenz", "sections": " - ImportantDrugInteractionsLines" },
+  { "drug": "Eluxadoline", "sections": " - metabolismeLines" },
+  { "drug": "Empagliflozin", "sections": " - OtherInformationLines" },
+  { "drug": "Emtricitabine", "sections": " - metabolismeLines" },
+  { "drug": "Enalapril maleate", "sections": " - OtherInformationLines" },
+  { "drug": "Enfuvirtide", "sections": " - OtherInformationLines" },
+  {
+    "drug": "Enoxaparin sodium (LMWH)",
+    "sections": " - OtherInformationLines"
+  },
+  { "drug": "Entacapone", "sections": " - metabolismeLines" },
+  {
+    "drug": "Entecavir",
+    "sections": " - metabolismeLines - OtherInformationLines"
+  },
+  { "drug": "Epirubicin hydrochloride", "sections": " - AdministrationLines" },
+  {
+    "drug": "Eplerenone",
+    "sections": " - metabolismeLines - ImportantDrugInteractionsLines"
+  },
+  { "drug": "Eprosartan", "sections": " - metabolismeLines" },
+  { "drug": "Eribulin", "sections": " - metabolismeLines" },
+  { "drug": "Erlotinib", "sections": " - metabolismeLines" },
+  {
+    "drug": "Erythromycin",
+    "sections": " - metabolismeLines - ImportantDrugInteractionsLines"
+  },
+  {
+    "drug": "Escitalopram",
+    "sections": " - metabolismeLines - ImportantDrugInteractionsLines - OtherInformationLines"
+  },
+  { "drug": "Eslicarbazepine acetate", "sections": " - metabolismeLines" },
+  { "drug": "Esmolol hydrochloride", "sections": " - metabolismeLines" },
+  { "drug": "Esomeprazole", "sections": " - metabolismeLines" },
+  {
+    "drug": "Etamsylate",
+    "sections": " - metabolismeLines - OtherInformationLines"
+  },
+  {
+    "drug": "Etelcalcetide",
+    "sections": " - metabolismeLines - OtherInformationLines"
+  },
+  { "drug": "Ethosuximide", "sections": " - metabolismeLines" },
+  { "drug": "Etodolac", "sections": " - OtherInformationLines" },
+  { "drug": "Etomidate", "sections": " - metabolismeLines" },
+  {
+    "drug": "Etoposide",
+    "sections": " - metabolismeLines - OtherInformationLines"
+  },
+  {
+    "drug": "Etoricoxib",
+    "sections": " - metabolismeLines - ImportantDrugInteractionsLines - OtherInformationLines"
+  },
+  {
+    "drug": "Etravirine",
+    "sections": " - metabolismeLines - OtherInformationLines"
+  },
+  {
+    "drug": "Everolimus",
+    "sections": " - metabolismeLines - ImportantDrugInteractionsLines"
+  },
+  { "drug": "Evolocumab", "sections": " - metabolismeLines" },
+  { "drug": "Exenatide", "sections": " - metabolismeLines" },
+  { "drug": "Ezetimibe", "sections": " - metabolismeLines" },
+  {
+    "drug": "Famciclovir",
+    "sections": " - metabolismeLines - ImportantDrugInteractionsLines"
+  },
+  { "drug": "Febuxostat", "sections": " - OtherInformationLines" },
+  {
+    "drug": "Felodipine",
+    "sections": " - metabolismeLines - OtherInformationLines"
+  },
+  {
+    "drug": "Fentanyl",
+    "sections": " - metabolismeLines - ImportantDrugInteractionsLines"
+  },
+  { "drug": "Ferric carboxymaltose", "sections": " - ClinicalUse" },
+  { "drug": "Filgrastim", "sections": " - metabolismeLines" },
+  { "drug": "Finasteride", "sections": " - metabolismeLines" },
+  { "drug": "Flecainide acetate", "sections": " - AdministrationLines" },
+  {
+    "drug": "Fluconazole",
+    "sections": " - metabolismeLines - ImportantDrugInteractionsLines"
+  },
+  { "drug": "Fludrocortisone acetate", "sections": " - OtherInformationLines" },
+  { "drug": "Flumazenil", "sections": " - metabolismeLines" },
+  {
+    "drug": "Fluoxetine",
+    "sections": " - metabolismeLines - ImportantDrugInteractionsLines - OtherInformationLines"
+  },
+  {
+    "drug": "Flupentixol",
+    "sections": " - metabolismeLines - AdministrationLines"
+  },
+  { "drug": "Fluphenazine decanoate", "sections": " - OtherInformationLines" },
+  {
+    "drug": "Flurbiprofen",
+    "sections": " - metabolismeLines - OtherInformationLines"
+  },
+  { "drug": "Flutamide", "sections": " - OtherInformationLines" },
+  { "drug": "Fluvastatin", "sections": " - metabolismeLines" },
+  {
+    "drug": "Fluvoxamine maleate",
+    "sections": " - ImportantDrugInteractionsLines - OtherInformationLines"
+  },
+  { "drug": "Folic acid", "sections": " - metabolismeLines" },
+  {
+    "drug": "Folinic acid  (calcium folinate)",
+    "sections": " - OtherInformationLines"
+  },
+  {
+    "drug": "Formoterol fumarate (eformoterol)",
+    "sections": " - OtherInformationLines"
+  },
+  {
+    "drug": "Fosamprenavir",
+    "sections": " - metabolismeLines - AdministrationLines"
+  },
+  { "drug": "Fosaprepitant", "sections": " - metabolismeLines" },
+  { "drug": "Foscarnet sodium", "sections": " - OtherInformationLines" },
+  {
+    "drug": "Fosfomycin",
+    "sections": " - metabolismeLines - OtherInformationLines"
+  },
+  {
+    "drug": "Fosphenytoin sodium",
+    "sections": " - ImportantDrugInteractionsLines"
+  },
+  { "drug": "Frovatriptan", "sections": " - OtherInformationLines" },
+  { "drug": "Fulvestrant", "sections": " - metabolismeLines" },
+  { "drug": "Furosemide (frusemide)", "sections": " - AdministrationLines" },
+  {
+    "drug": "Gabapentin",
+    "sections": " - metabolismeLines - OtherInformationLines"
+  },
+  { "drug": "Galantamine", "sections": " - metabolismeLines" },
+  { "drug": "Ganciclovir", "sections": " - OtherInformationLines" },
+  { "drug": "Gefitinib", "sections": " - metabolismeLines" },
+  { "drug": "Gemcitabine", "sections": " - OtherInformationLines" },
+  {
+    "drug": "Gemfibrozil",
+    "sections": " - metabolismeLines - OtherInformationLines"
+  },
+  { "drug": "Gentamicin", "sections": " - metabolismeLines" },
+  { "drug": "Glibenclamide", "sections": " - metabolismeLines" },
+  { "drug": "Gliclazide", "sections": " - metabolismeLines" },
+  { "drug": "Glyceryl trinitrate", "sections": " - metabolismeLines" },
+  { "drug": "Granisetron", "sections": " - metabolismeLines" },
+  {
+    "drug": "Griseofulvin",
+    "sections": " - metabolismeLines - OtherInformationLines"
+  },
+  {
+    "drug": "Haloperidol",
+    "sections": " - metabolismeLines - ImportantDrugInteractionsLines"
+  },
+  { "drug": "Heparin", "sections": " - metabolismeLines" },
+  { "drug": "Hyoscine hydrobromide", "sections": " - metabolismeLines" },
+  { "drug": "Ibandronic acid", "sections": " - OtherInformationLines" },
+  {
+    "drug": "Ibrutinib",
+    "sections": " - metabolismeLines - ImportantDrugInteractionsLines"
+  },
+  { "drug": "Ibuprofen", "sections": " - metabolismeLines" },
+  { "drug": "Idarubicin hydrochloride", "sections": " - AdministrationLines" },
+  { "drug": "Idarucizumab", "sections": " - OtherInformationLines" },
+  { "drug": "Idelalisib", "sections": " - metabolismeLines" },
+  { "drug": "Ifosfamide", "sections": " - OtherInformationLines" },
+  { "drug": "Iloprost", "sections": " - OtherInformationLines" },
+  {
+    "drug": "Imatinib",
+    "sections": " - metabolismeLines - AdministrationLines"
+  },
+  {
+    "drug": "Imipramine hydrochloride",
+    "sections": " - ImportantDrugInteractionsLines - OtherInformationLines"
+  },
+  {
+    "drug": "Indapamide",
+    "sections": " - metabolismeLines - AdministrationLines"
+  },
+  { "drug": "Indinavir", "sections": " - ImportantDrugInteractionsLines" },
+  {
+    "drug": "Indometacin",
+    "sections": " - metabolismeLines - ImportantDrugInteractionsLines"
+  },
+  {
+    "drug": "Inositol nicotinate",
+    "sections": " - metabolismeLines - OtherInformationLines"
+  },
+  { "drug": "Interferon alfa-2B", "sections": " - OtherInformationLines" },
+  {
+    "drug": "Interferon beta",
+    "sections": " - DoseInNormalRenalFunction - metabolismeLines"
+  },
+  { "drug": "Ipratropium bromide", "sections": " - OtherInformationLines" },
+  { "drug": "Irbesartan", "sections": " - metabolismeLines" },
+  { "drug": "Iron isomaltoside 1000", "sections": " - OtherInformationLines" },
+  { "drug": "Isosorbide dinitrate", "sections": " - metabolismeLines" },
+  { "drug": "Isosorbide mononitrate", "sections": " - metabolismeLines" },
+  { "drug": "Isotretinoin", "sections": " - metabolismeLines" },
+  { "drug": "Isradipine", "sections": " - metabolismeLines" },
+  {
+    "drug": "Itraconazole",
+    "sections": " - metabolismeLines - ImportantDrugInteractionsLines"
+  },
+  { "drug": "Ixazomib citrate", "sections": " - metabolismeLines" },
+  {
+    "drug": "Ketamine",
+    "sections": " - metabolismeLines - AdministrationLines"
+  },
+  { "drug": "Ketoconazole", "sections": " - ImportantDrugInteractionsLines" },
+  { "drug": "Ketoprofen", "sections": " - OtherInformationLines" },
+  { "drug": "Ketorolac trometamol", "sections": " - AdministrationLines" },
+  { "drug": "Labetalol hydrochloride", "sections": " - AdministrationLines" },
+  {
+    "drug": "Lacidipine",
+    "sections": " - metabolismeLines - OtherInformationLines"
+  },
+  { "drug": "Lacosamide", "sections": " - metabolismeLines" },
+  { "drug": "Lactulose", "sections": " - metabolismeLines" },
+  { "drug": "Lamivudine", "sections": " - metabolismeLines" },
+  { "drug": "Lamotrigine", "sections": " - metabolismeLines" },
+  {
+    "drug": "Lansoprazole",
+    "sections": " - metabolismeLines - OtherInformationLines"
+  },
+  { "drug": "Lanthanum carbonate", "sections": " - metabolismeLines" },
+  { "drug": "Lenalidomide", "sections": " - metabolismeLines" },
+  {
+    "drug": "Lenograstim",
+    "sections": " - metabolismeLines - OtherInformationLines"
+  },
+  {
+    "drug": "Levamisole",
+    "sections": " - metabolismeLines - OtherInformationLines"
+  },
+  { "drug": "Levetiracetam", "sections": " - metabolismeLines" },
+  {
+    "drug": "Levofloxacin",
+    "sections": " - metabolismeLines - OtherInformationLines"
+  },
+  {
+    "drug": "Levomepromazine (methotrimeprazine)",
+    "sections": " - AdministrationLines"
+  },
+  {
+    "drug": "Linezolid",
+    "sections": " - metabolismeLines - AdministrationLines - OtherInformationLines"
+  },
+  { "drug": "Lipegfilgrastim", "sections": " - metabolismeLines" },
+  {
+    "drug": "Liraglutide",
+    "sections": " - metabolismeLines - OtherInformationLines"
+  },
+  { "drug": "Lisinopril", "sections": " - metabolismeLines" },
+  { "drug": "Lithium carbonate", "sections": " - OtherInformationLines" },
+  { "drug": "Lixisenatide", "sections": " - OtherInformationLines" },
+  {
+    "drug": "Lofepramine",
+    "sections": " - metabolismeLines - ImportantDrugInteractionsLines"
+  },
+  { "drug": "Lomitapide", "sections": " - metabolismeLines" },
+  { "drug": "Lomustine", "sections": " - metabolismeLines" },
+  {
+    "drug": "Lopinavir",
+    "sections": " - metabolismeLines - ImportantDrugInteractionsLines - OtherInformationLines"
+  },
+  { "drug": "Loratadine", "sections": " - metabolismeLines" },
+  {
+    "drug": "Lorazepam",
+    "sections": " - metabolismeLines - OtherInformationLines"
+  },
+  { "drug": "Lormetazepam", "sections": " - metabolismeLines" },
+  { "drug": "Lymecycline", "sections": " - OtherInformationLines" },
+  { "drug": "Mebendazole", "sections": " - metabolismeLines" },
+  {
+    "drug": "Medroxyprogesterone acetate",
+    "sections": " - AdministrationLines"
+  },
+  { "drug": "Mefenamic acid", "sections": " - OtherInformationLines" },
+  { "drug": "Mefloquine", "sections": " - metabolismeLines" },
+  { "drug": "Melatonin", "sections": " - ClinicalUse" },
+  {
+    "drug": "Meloxicam",
+    "sections": " - metabolismeLines - OtherInformationLines"
+  },
+  { "drug": "Melphalan", "sections": " - OtherInformationLines" },
+  { "drug": "Memantine", "sections": " - metabolismeLines" },
+  { "drug": "Mepacrine hydrochloride", "sections": " - OtherInformationLines" },
+  {
+    "drug": "Mepolizumab",
+    "sections": " - metabolismeLines - OtherInformationLines"
+  },
+  { "drug": "Meptazinol", "sections": " - metabolismeLines" },
+  { "drug": "Mercaptopurine", "sections": " - OtherInformationLines" },
+  {
+    "drug": "Meropenem",
+    "sections": " - metabolismeLines - OtherInformationLines"
+  },
+  { "drug": "Mesalazine", "sections": " - OtherInformationLines" },
+  { "drug": "Mesna", "sections": " - AdministrationLines" },
+  {
+    "drug": "Methadone hydrochloride",
+    "sections": " - ImportantDrugInteractionsLines"
+  },
+  {
+    "drug": "Methotrexate",
+    "sections": " - metabolismeLines - ImportantDrugInteractionsLines"
+  },
+  { "drug": "Methyldopa", "sections": " - metabolismeLines" },
+  {
+    "drug": "Metoprolol tartrate",
+    "sections": " - ImportantDrugInteractionsLines"
+  },
+  { "drug": "Mianserin hydrochloride", "sections": " - OtherInformationLines" },
+  { "drug": "Miconazole", "sections": " - metabolismeLines" },
+  {
+    "drug": "Midazolam",
+    "sections": " - metabolismeLines - OtherInformationLines"
+  },
+  { "drug": "Minocycline", "sections": " - OtherInformationLines" },
+  {
+    "drug": "Minoxidil",
+    "sections": " - metabolismeLines - OtherInformationLines"
+  },
+  { "drug": "Mirtazapine", "sections": " - OtherInformationLines" },
+  { "drug": "Misoprostol", "sections": " - metabolismeLines" },
+  { "drug": "Mitomycin", "sections": " - metabolismeLines" },
+  { "drug": "Mivacurium", "sections": " - metabolismeLines" },
+  { "drug": "Moclobemide", "sections": " - metabolismeLines" },
+  { "drug": "Modafinil", "sections": " - OtherInformationLines" },
+  { "drug": "Montelukast", "sections": " - OtherInformationLines" },
+  { "drug": "Morphine", "sections": " - OtherInformationLines" },
+  { "drug": "Moxonidine", "sections": " - metabolismeLines" },
+  {
+    "drug": "Mycophenolate",
+    "sections": " - ClinicalUse - DoseInNormalRenalFunction - metabolismeLines - DoseInRenalImpairmentGFRLines - AdministrationLines - OtherInformationLines"
+  },
+  {
+    "drug": "Nabilone",
+    "sections": " - metabolismeLines - OtherInformationLines"
+  },
+  {
+    "drug": "Nabumetone",
+    "sections": " - metabolismeLines - OtherInformationLines"
+  },
+  { "drug": "Nalidixic acid", "sections": " - metabolismeLines" },
+  { "drug": "Naloxone hydrochloride", "sections": " - metabolismeLines" },
+  {
+    "drug": "Naproxen",
+    "sections": " - metabolismeLines - AdministrationLines"
+  },
+  { "drug": "Naratriptan", "sections": " - metabolismeLines" },
+  { "drug": "Nateglinide", "sections": " - metabolismeLines" },
+  { "drug": "Nebivolol", "sections": " - metabolismeLines" },
+  {
+    "drug": "Nelarabine",
+    "sections": " - metabolismeLines - AdministrationLines"
+  },
+  {
+    "drug": "Neostigmine",
+    "sections": " - DoseInNormalRenalFunction - metabolismeLines - AdministrationLines - OtherInformationLines"
+  },
+  {
+    "drug": "Nevirapine",
+    "sections": " - metabolismeLines - ImportantDrugInteractionsLines"
+  },
+  { "drug": "Nicardipine hydrochloride", "sections": " - AdministrationLines" },
+  { "drug": "Nicorandil", "sections": " - OtherInformationLines" },
+  {
+    "drug": "Nifedipine",
+    "sections": " - metabolismeLines - AdministrationLines"
+  },
+  {
+    "drug": "Nilotinib",
+    "sections": " - metabolismeLines - OtherInformationLines"
+  },
+  {
+    "drug": "Nimodipine",
+    "sections": " - metabolismeLines - AdministrationLines - OtherInformationLines"
+  },
+  { "drug": "Nintedanib", "sections": " - metabolismeLines" },
+  {
+    "drug": "Nitrofurantoin",
+    "sections": " - metabolismeLines - OtherInformationLines"
+  },
+  { "drug": "Nivolumab", "sections": " - OtherInformationLines" },
+  { "drug": "Norfloxacin", "sections": " - metabolismeLines" },
+  {
+    "drug": "Normal human immunoglobulin",
+    "sections": " - OtherInformationLines"
+  },
+  { "drug": "Nortriptyline", "sections": " - metabolismeLines" },
+  { "drug": "Oestrogen, conjugated", "sections": " - PharmacokineticsLines" },
+  { "drug": "Ofatumumab", "sections": " - metabolismeLines" },
+  { "drug": "Ofloxacin", "sections": " - metabolismeLines" },
+  {
+    "drug": "Olanzapine",
+    "sections": " - metabolismeLines - OtherInformationLines"
+  },
+  { "drug": "Olaratumab", "sections": " - OtherInformationLines" },
+  { "drug": "Olmesartan medoxomil", "sections": " - metabolismeLines" },
+  { "drug": "Omalizumab", "sections": " - metabolismeLines" },
+  {
+    "drug": "Ombitasvir / paritaprevir / ritonavir",
+    "sections": " - ImportantDrugInteractionsLines"
+  },
+  {
+    "drug": "Omeprazole",
+    "sections": " - metabolismeLines - OtherInformationLines"
+  },
+  {
+    "drug": "Ondansetron",
+    "sections": " - metabolismeLines - OtherInformationLines"
+  },
+  { "drug": "Oritavancin", "sections": " - OtherInformationLines" },
+  {
+    "drug": "Orlistat",
+    "sections": " - metabolismeLines - OtherInformationLines"
+  },
+  {
+    "drug": "Orphenadrine hydrochloride",
+    "sections": " - OtherInformationLines"
+  },
+  {
+    "drug": "Oseltamivir",
+    "sections": " - metabolismeLines - OtherInformationLines"
+  },
+  { "drug": "Oxaliplatin", "sections": " - metabolismeLines" },
+  { "drug": "Oxazepam", "sections": " - metabolismeLines" },
+  { "drug": "Oxcarbazepine", "sections": " - metabolismeLines" },
+  { "drug": "Paclitaxel", "sections": " - ClinicalUse - AdministrationLines" },
+  { "drug": "Palbociclib", "sections": " - metabolismeLines" },
+  { "drug": "Paliperidone", "sections": " - metabolismeLines" },
+  { "drug": "Palonosetron", "sections": " - metabolismeLines" },
+  { "drug": "Panitumumab", "sections": " - OtherInformationLines" },
+  {
+    "drug": "Panobinostat",
+    "sections": " - metabolismeLines - ImportantDrugInteractionsLines"
+  },
+  {
+    "drug": "Pantoprazole",
+    "sections": " - metabolismeLines - OtherInformationLines"
+  },
+  { "drug": "Paracetamol", "sections": " - metabolismeLines" },
+  { "drug": "Parathyroid hormone", "sections": " - metabolismeLines" },
+  {
+    "drug": "Parecoxib",
+    "sections": " - metabolismeLines - OtherInformationLines"
+  },
+  { "drug": "Paricalcitol", "sections": " - OtherInformationLines" },
+  {
+    "drug": "Paroxetine",
+    "sections": " - metabolismeLines - ImportantDrugInteractionsLines - OtherInformationLines"
+  },
+  {
+    "drug": "Pasireotide",
+    "sections": " - metabolismeLines - AdministrationLines"
+  },
+  { "drug": "Pegfilgrastim", "sections": " - OtherInformationLines" },
+  {
+    "drug": "Pembrolizumab",
+    "sections": " - metabolismeLines - OtherInformationLines"
+  },
+  { "drug": "Pemetrexed", "sections": " - metabolismeLines" },
+  { "drug": "Penicillamine", "sections": " - metabolismeLines" },
+  { "drug": "Pentamidine isetionate", "sections": " - AdministrationLines" },
+  { "drug": "Pentostatin", "sections": " - OtherInformationLines" },
+  { "drug": "Perampanel", "sections": " - metabolismeLines" },
+  {
+    "drug": "Perindopril",
+    "sections": " - metabolismeLines - OtherInformationLines"
+  },
+  {
+    "drug": "Phenelzine",
+    "sections": " - metabolismeLines - OtherInformationLines"
+  },
+  {
+    "drug": "Phenobarbital (phenobarbitone)",
+    "sections": " - ImportantDrugInteractionsLines"
+  },
+  {
+    "drug": "Phenytoin",
+    "sections": " - metabolismeLines - ImportantDrugInteractionsLines - OtherInformationLines"
+  },
+  { "drug": "Pimozide", "sections": " - metabolismeLines" },
+  {
+    "drug": "Pindolol",
+    "sections": " - metabolismeLines - OtherInformationLines"
+  },
+  {
+    "drug": "Pioglitazone",
+    "sections": " - metabolismeLines - OtherInformationLines"
+  },
+  { "drug": "Piperazine", "sections": " - metabolismeLines" },
+  {
+    "drug": "Piracetam",
+    "sections": " - metabolismeLines - OtherInformationLines"
+  },
+  { "drug": "Piroxicam", "sections": " - metabolismeLines" },
+  { "drug": "Pixantrone", "sections": " - metabolismeLines" },
+  {
+    "drug": "Pizotifen",
+    "sections": " - metabolismeLines - OtherInformationLines"
+  },
+  { "drug": "Ponatinib", "sections": " - metabolismeLines" },
+  { "drug": "Posaconazole", "sections": " - ImportantDrugInteractionsLines" },
+  { "drug": "Potassium chloride", "sections": " - OtherInformationLines" },
+  { "drug": "Pramipexole", "sections": " - metabolismeLines" },
+  { "drug": "Prasugrel", "sections": " - metabolismeLines" },
+  { "drug": "Praziquantel", "sections": " - metabolismeLines" },
+  {
+    "drug": "Prazosin",
+    "sections": " - metabolismeLines - OtherInformationLines"
+  },
+  { "drug": "Prednisolone", "sections": " - metabolismeLines" },
+  { "drug": "Pregabalin", "sections": " - metabolismeLines" },
+  {
+    "drug": "Primaxin (imipenem / cilastatin)",
+    "sections": " - OtherInformationLines"
+  },
+  { "drug": "Primidone", "sections": " - ImportantDrugInteractionsLines" },
+  { "drug": "Procarbazine", "sections": " - metabolismeLines" },
+  {
+    "drug": "Prochlorperazine",
+    "sections": " - metabolismeLines - AdministrationLines"
+  },
+  {
+    "drug": "Propiverine hydrochloride",
+    "sections": " - OtherInformationLines"
+  },
+  { "drug": "Propofol", "sections": " - OtherInformationLines" },
+  {
+    "drug": "Propranolol hydrochloride",
+    "sections": " - ImportantDrugInteractionsLines"
+  },
+  { "drug": "Propylthiouracil", "sections": " - metabolismeLines" },
+  { "drug": "Pyrazinamide", "sections": " - metabolismeLines" },
+  {
+    "drug": "Pyrimethamine",
+    "sections": " - metabolismeLines - OtherInformationLines"
+  },
+  {
+    "drug": "Quetiapine",
+    "sections": " - metabolismeLines - ImportantDrugInteractionsLines"
+  },
+  { "drug": "Quinagolide", "sections": " - metabolismeLines" },
+  { "drug": "Quinapril", "sections": " - metabolismeLines" },
+  {
+    "drug": "Quinine",
+    "sections": " - DoseInNormalRenalFunction - metabolismeLines - AdministrationLines - OtherInformationLines"
+  },
+  { "drug": "Racecadotril", "sections": " - metabolismeLines" },
+  { "drug": "Raltegravir", "sections": " - metabolismeLines" },
+  { "drug": "Raltitrexed", "sections": " - metabolismeLines" },
+  { "drug": "Ramipril", "sections": " - metabolismeLines" },
+  { "drug": "Ranitidine", "sections": " - metabolismeLines" },
+  {
+    "drug": "Rasagiline",
+    "sections": " - metabolismeLines - OtherInformationLines"
+  },
+  { "drug": "Rasburicase", "sections": " - metabolismeLines" },
+  {
+    "drug": "Reboxetine",
+    "sections": " - metabolismeLines - OtherInformationLines"
+  },
+  { "drug": "Regorafenib", "sections": " - metabolismeLines" },
+  {
+    "drug": "Remifentanil",
+    "sections": " - metabolismeLines - OtherInformationLines"
+  },
+  {
+    "drug": "Repaglinide",
+    "sections": " - metabolismeLines - OtherInformationLines"
+  },
+  {
+    "drug": "Reslizumab",
+    "sections": " - metabolismeLines - OtherInformationLines"
+  },
+  { "drug": "Ribavirin (tribavirin)", "sections": " - OtherInformationLines" },
+  { "drug": "Ribociclib", "sections": " - metabolismeLines" },
+  {
+    "drug": "Rifabutin",
+    "sections": " - metabolismeLines - ImportantDrugInteractionsLines - OtherInformationLines"
+  },
+  {
+    "drug": "Rifampicin",
+    "sections": " - metabolismeLines - ImportantDrugInteractionsLines - OtherInformationLines"
+  },
+  { "drug": "Riociguat", "sections": " - metabolismeLines" },
+  {
+    "drug": "Risperidone",
+    "sections": " - metabolismeLines - AdministrationLines"
+  },
+  {
+    "drug": "Ritonavir",
+    "sections": " - metabolismeLines - ImportantDrugInteractionsLines"
+  },
+  {
+    "drug": "Rituximab",
+    "sections": " - AdministrationLines - OtherInformationLines"
+  },
+  { "drug": "Rivastigmine", "sections": " - metabolismeLines" },
+  { "drug": "Ropinirole", "sections": " - metabolismeLines" },
+  { "drug": "Rosuvastatin", "sections": " - metabolismeLines" },
+  { "drug": "Rotigotine", "sections": " - metabolismeLines" },
+  {
+    "drug": "Ruxolitinib",
+    "sections": " - metabolismeLines - AdministrationLines"
+  },
+  { "drug": "Salbutamol", "sections": " - metabolismeLines" },
+  {
+    "drug": "Saquinavir",
+    "sections": " - metabolismeLines - ImportantDrugInteractionsLines"
+  },
+  {
+    "drug": "Saxagliptin",
+    "sections": " - metabolismeLines - OtherInformationLines"
+  },
+  { "drug": "Selexipag", "sections": " - metabolismeLines" },
+  {
+    "drug": "Sertraline",
+    "sections": " - metabolismeLines - OtherInformationLines"
+  },
+  {
+    "drug": "Sevelamer",
+    "sections": " - DoseInNormalRenalFunction - metabolismeLines"
+  },
+  {
+    "drug": "Sildenafil",
+    "sections": " - metabolismeLines - OtherInformationLines"
+  },
+  { "drug": "Simeprevir", "sections": " - OtherInformationLines" },
+  {
+    "drug": "Simvastatin",
+    "sections": " - metabolismeLines - ImportantDrugInteractionsLines"
+  },
+  {
+    "drug": "Sirolimus",
+    "sections": " - metabolismeLines - ImportantDrugInteractionsLines - OtherInformationLines"
+  },
+  { "drug": "Sitagliptin", "sections": " - metabolismeLines" },
+  { "drug": "Sodium bicarbonate", "sections": " - OtherInformationLines" },
+  { "drug": "Sodium nitroprusside", "sections": " - metabolismeLines" },
+  { "drug": "Sodium valproate", "sections": " - OtherInformationLines" },
+  {
+    "drug": "Sofosbuvir",
+    "sections": " - metabolismeLines - OtherInformationLines"
+  },
+  { "drug": "Sorafenib", "sections": " - metabolismeLines" },
+  {
+    "drug": "Sotalol hydrochloride",
+    "sections": " - ImportantDrugInteractionsLines"
+  },
+  {
+    "drug": "Spironolactone",
+    "sections": " - metabolismeLines - OtherInformationLines"
+  },
+  { "drug": "Stavudine", "sections": " - metabolismeLines" },
+  {
+    "drug": "Streptomycin (unlicensed)",
+    "sections": " - OtherInformationLines"
+  },
+  { "drug": "Strontium ranelate", "sections": " - metabolismeLines" },
+  { "drug": "Sulfadiazine", "sections": " - metabolismeLines" },
+  { "drug": "Sulfinpyrazone", "sections": " - metabolismeLines" },
+  {
+    "drug": "Sulindac",
+    "sections": " - metabolismeLines - OtherInformationLines"
+  },
+  { "drug": "Sulpiride", "sections": " - metabolismeLines" },
+  { "drug": "Sumatriptan", "sections": " - metabolismeLines" },
+  {
+    "drug": "Tacrolimus",
+    "sections": " - metabolismeLines - ImportantDrugInteractionsLines"
+  },
+  { "drug": "Tadalafil", "sections": " - metabolismeLines" },
+  {
+    "drug": "Tamoxifen",
+    "sections": " - metabolismeLines - OtherInformationLines"
+  },
+  {
+    "drug": "Tazocin (piperacillin / tazobactam)",
+    "sections": " - OtherInformationLines"
+  },
+  {
+    "drug": "Tedizolid phosphate",
+    "sections": " - metabolismeLines - ImportantDrugInteractionsLines"
+  },
+  { "drug": "Tegafur with uracil", "sections": " - OtherInformationLines" },
+  {
+    "drug": "Teicoplanin",
+    "sections": " - metabolismeLines - OtherInformationLines"
+  },
+  { "drug": "Telaprevir", "sections": " - ImportantDrugInteractionsLines" },
+  {
+    "drug": "Telavancin",
+    "sections": " - metabolismeLines - OtherInformationLines"
+  },
+  { "drug": "Telbivudine", "sections": " - metabolismeLines" },
+  { "drug": "Telmisartan", "sections": " - metabolismeLines" },
+  { "drug": "Temazepam", "sections": " - metabolismeLines" },
+  {
+    "drug": "Temocillin",
+    "sections": " - metabolismeLines - ImportantDrugInteractionsLines"
+  },
+  { "drug": "Temozolomide", "sections": " - metabolismeLines" },
+  { "drug": "Temsirolimus", "sections": " - AdministrationLines" },
+  { "drug": "Tenecteplase", "sections": " - metabolismeLines" },
+  { "drug": "Tenoxicam", "sections": " - OtherInformationLines" },
+  { "drug": "Terazosin", "sections": " - metabolismeLines" },
+  { "drug": "Terbinafine", "sections": " - metabolismeLines" },
+  { "drug": "Terbutaline sulphate", "sections": " - OtherInformationLines" },
+  { "drug": "Teriflunomide", "sections": " - metabolismeLines" },
+  { "drug": "Terlipressin", "sections": " - metabolismeLines" },
+  { "drug": "Tetracycline", "sections": " - metabolismeLines" },
+  {
+    "drug": "Thalidomide",
+    "sections": " - metabolismeLines - ImportantDrugInteractionsLines - OtherInformationLines"
+  },
+  { "drug": "Theophylline", "sections": " - metabolismeLines" },
+  { "drug": "Thiotepa", "sections": " - metabolismeLines" },
+  { "drug": "Tiagabine", "sections": " - metabolismeLines" },
+  { "drug": "Tigecycline", "sections": " - metabolismeLines" },
+  { "drug": "Tinidazole", "sections": " - metabolismeLines" },
+  {
+    "drug": "Tinzaparin sodium (LMWH)",
+    "sections": " - OtherInformationLines"
+  },
+  { "drug": "Tioguanine", "sections": " - metabolismeLines" },
+  { "drug": "Tiotropium", "sections": " - metabolismeLines" },
+  { "drug": "Tipranavir", "sections": " - metabolismeLines" },
+  { "drug": "Tirofiban", "sections": " - metabolismeLines" },
+  { "drug": "Tizanidine", "sections": " - metabolismeLines" },
+  { "drug": "Tobramycin", "sections": " - metabolismeLines" },
+  { "drug": "Tocilizumab", "sections": " - metabolismeLines" },
+  {
+    "drug": "Tolbutamide",
+    "sections": " - metabolismeLines - OtherInformationLines"
+  },
+  { "drug": "Tolfenamic acid", "sections": " - metabolismeLines" },
+  { "drug": "Tolvaptan", "sections": " - OtherInformationLines" },
+  { "drug": "Topiramate", "sections": " - metabolismeLines" },
+  {
+    "drug": "Topotecan",
+    "sections": " - metabolismeLines - OtherInformationLines"
+  },
+  {
+    "drug": "Torasemide",
+    "sections": " - metabolismeLines - OtherInformationLines"
+  },
+  { "drug": "Toremifene", "sections": " - metabolismeLines" },
+  { "drug": "Trametinib", "sections": " - metabolismeLines" },
+  { "drug": "Trandolapril", "sections": " - metabolismeLines" },
+  { "drug": "Tranexamic acid", "sections": " - metabolismeLines" },
+  {
+    "drug": "Tranylcypromine",
+    "sections": " - metabolismeLines - OtherInformationLines"
+  },
+  { "drug": "Trastuzumab", "sections": " - metabolismeLines" },
+  { "drug": "Treosulfan", "sections": " - metabolismeLines" },
+  { "drug": "Tretinoin", "sections": " - metabolismeLines" },
+  { "drug": "Triamcinolone", "sections": " - metabolismeLines" },
+  { "drug": "Triamterene", "sections": " - metabolismeLines" },
+  { "drug": "Trifluoperazine", "sections": " - metabolismeLines" },
+  { "drug": "Trimethoprim", "sections": " - metabolismeLines" },
+  {
+    "drug": "Trimipramine",
+    "sections": " - metabolismeLines - OtherInformationLines"
+  },
+  { "drug": "Triptorelin", "sections": " - OtherInformationLines" },
+  {
+    "drug": "Urokinase",
+    "sections": " - metabolismeLines - OtherInformationLines"
+  },
+  {
+    "drug": "Ursodeoxycholic acid",
+    "sections": " - metabolismeLines - OtherInformationLines"
+  },
+  {
+    "drug": "Valaciclovir",
+    "sections": " - metabolismeLines - ImportantDrugInteractionsLines"
+  },
+  {
+    "drug": "Valganciclovir",
+    "sections": " - metabolismeLines - OtherInformationLines"
+  },
+  { "drug": "Valsartan", "sections": " - metabolismeLines" },
+  { "drug": "Vancomycin", "sections": " - OtherInformationLines" },
+  { "drug": "Vandetanib", "sections": " - OtherInformationLines" },
+  { "drug": "Vardenafil", "sections": " - metabolismeLines" },
+  { "drug": "Varenicline", "sections": " - metabolismeLines" },
+  { "drug": "Venetoclax", "sections": " - OtherInformationLines" },
+  {
+    "drug": "Venlafaxine",
+    "sections": " - metabolismeLines - AdministrationLines"
+  },
+  {
+    "drug": "Verapamil hydrochloride",
+    "sections": " - ImportantDrugInteractionsLines"
+  },
+  { "drug": "Vigabatrin", "sections": " - metabolismeLines" },
+  { "drug": "Vildagliptin", "sections": " - OtherInformationLines" },
+  { "drug": "Vinblastine sulphate", "sections": " - OtherInformationLines" },
+  { "drug": "Vinflunine", "sections": " - OtherInformationLines" },
+  { "drug": "Vismodegib", "sections": " - metabolismeLines" },
+  {
+    "drug": "Voriconazole",
+    "sections": " - metabolismeLines - ImportantDrugInteractionsLines"
+  },
+  { "drug": "Vortioxetine", "sections": " - metabolismeLines" },
+  { "drug": "Xipamide", "sections": " - metabolismeLines" },
+  { "drug": "Zafirlukast", "sections": " - metabolismeLines" },
+  { "drug": "Zanamivir", "sections": " - metabolismeLines" },
+  {
+    "drug": "Zepatier (elbasvir 50 mg / grazoprevir 100 mg)",
+    "sections": " - OtherInformationLines"
+  },
+  {
+    "drug": "Zerbaxa (ceftolozane and tazobactam sodium)",
+    "sections": " - OtherInformationLines"
+  },
+  { "drug": "Zidovudine", "sections": " - metabolismeLines" },
+  { "drug": "Zoledronic acid", "sections": " - metabolismeLines" },
+  { "drug": "Zolmitriptan", "sections": " - metabolismeLines" },
+  { "drug": "Zolpidem tartrate", "sections": " - metabolismeLines" },
+  { "drug": "Zonisamide", "sections": " - metabolismeLines" },
+  { "drug": "Zopiclone", "sections": " - metabolismeLines" },
+  {
+    "drug": "Drugs for malaria prophylaxis",
+    "sections": " - ClinicalUse - DoseInNormalRenalFunction - PharmacokineticsLines - metabolismeLines - DoseInRenalImpairmentGFRLines - DoseInPatientsUndergoingRenalReplacementTherapiesLines - ImportantDrugInteractionsLines - AdministrationLines - OtherInformationLines"
+  },
+  {
+    "drug": "Vaccines",
+    "sections": " - ClinicalUse - DoseInNormalRenalFunction - PharmacokineticsLines - metabolismeLines - DoseInRenalImpairmentGFRLines - DoseInPatientsUndergoingRenalReplacementTherapiesLines - ImportantDrugInteractionsLines - AdministrationLines - OtherInformationLines"
+  }
+]

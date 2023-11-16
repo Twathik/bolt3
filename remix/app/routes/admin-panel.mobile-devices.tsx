@@ -1,11 +1,11 @@
 import MobileDevicesIndex from "@/components/AdminPanelComponents/MobileDevicesComponents/MobileDevicesIndex";
 import type { MobileDevicesMobileDevicesQueryResponseData } from "@/components/generated/models";
-import { createClientFromCookies } from "@/lib/wundergraph";
+import createClientFromCookiesAndCheckUser from "@/lib/checkUser.server";
 import type { LoaderFunctionArgs } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
 
 export async function loader({ request }: LoaderFunctionArgs) {
-  const client = createClientFromCookies(request);
+  const client = await createClientFromCookiesAndCheckUser(request);
   try {
     const getMobileDevices = await client.query({
       operationName: "mobileDevices/MobileDevicesQuery",

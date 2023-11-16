@@ -5,13 +5,14 @@ interface consultationState {
   id: null | string;
   refetch: boolean;
 }
+
 interface Store {
   consultationState: consultationState;
   setConsultationId: (consultationId: string | null) => void;
 }
 
-const useConsultationStore = create(
-  immer<Store>((set) => ({
+const useConsultationStore = create<Store>()(
+  immer((set) => ({
     consultationState: {
       id: null,
       refetch: false,
@@ -21,7 +22,7 @@ const useConsultationStore = create(
         state.consultationState.id = consultationId;
       });
     },
-  })),
+  }))
 );
 
 export default useConsultationStore;

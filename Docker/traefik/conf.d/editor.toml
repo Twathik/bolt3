@@ -1,0 +1,13 @@
+[http]
+[http.routers]
+[http.routers.editor-route]
+entryPoints = ["web"]
+priority = 5
+rule = "Host(`bolt3.local`) && PathPrefix(`/editor`)"
+service = "editor"
+
+[http.services]
+[http.services.editor]
+[http.services.editor.loadBalancer]
+[[http.services.editor.loadBalancer.servers]]
+url = "http://host.docker.internal:5173"

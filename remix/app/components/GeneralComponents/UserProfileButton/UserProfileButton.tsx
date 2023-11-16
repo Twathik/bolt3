@@ -1,3 +1,6 @@
+import { useAuth } from "@/lib/wundergraph";
+import useTabsStore from "@/stores/tabsStore";
+import { Button } from "@/ui/components/ui/button";
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -8,14 +11,19 @@ import {
 } from "@/ui/components/ui/navigation-menu";
 
 import { ChevronDownIcon } from "@heroicons/react/24/outline";
-import { Link } from "@remix-run/react";
-
-const userNavigation = [
-  { name: "Your profile", href: "#" },
-  { name: "Sign out", href: "/logout" },
-];
+import { Link, useNavigate } from "@remix-run/react";
+import { useCallback } from "react";
 
 function UserProfileButton() {
+  const navigate = useNavigate();
+  const { logout } = useAuth();
+  const { closeTabs } = useTabsStore();
+
+  const logoutUser = useCallback(() => {
+    logout({ logoutOpenidConnectProvider: true });
+    closeTabs();
+    navigate("/login");
+  }, [closeTabs, logout, navigate]);
   return (
     <NavigationMenu>
       <NavigationMenuList>
@@ -41,15 +49,21 @@ function UserProfileButton() {
           </NavigationMenuTrigger>
           <NavigationMenuContent>
             <ul className="p-4 md:w-[200px] flex flex-col">
-              {userNavigation.map((item) => (
-                <NavigationMenuLink asChild key={item.name}>
-                  <Link
-                    className="flex flex-col justify-end rounded-md p-6 no-underline outline-none hover:focus:shadow-md hover:bg-slate-100"
-                    to={item.href}>
-                    {item.name}
-                  </Link>
-                </NavigationMenuLink>
-              ))}
+              <NavigationMenuLink asChild>
+                <Link
+                  className="flex flex-col justify-end rounded-md p-6 no-underline outline-none hover:focus:shadow-md hover:bg-slate-100"
+                  to="/">
+                  Votre profile
+                </Link>
+              </NavigationMenuLink>
+              <NavigationMenuLink asChild>
+                <Button
+                  variant="destructive"
+                  onClick={logoutUser}
+                  className="flex flex-col justify-center item-center rounded-md p-6 no-underline outline-non">
+                  Se deconnecter
+                </Button>
+              </NavigationMenuLink>
             </ul>
           </NavigationMenuContent>
         </NavigationMenuItem>

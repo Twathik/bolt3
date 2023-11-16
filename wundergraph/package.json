@@ -9,10 +9,10 @@
     "check": "tsc --noEmit"
   },
   "dependencies": {
-    "@wundergraph/nextjs": "^0.14.5",
     "@wundergraph/sdk": "^0.179.2",
     "date-fns": "^2.30.0",
     "graphql": "^16.3.0",
+    "minio": "^7.1.3",
     "next": "^13.5.4",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",

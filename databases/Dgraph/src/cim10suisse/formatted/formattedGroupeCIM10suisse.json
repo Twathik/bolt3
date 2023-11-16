@@ -1,0 +1,1925 @@
+[
+  {
+    "starting_code": "A00",
+    "ending_code": "A09",
+    "chapter": "1",
+    "title": "Maladies intestinales infectieuses",
+    "StartingNumericCode": 1,
+    "EndingNumericCode": 10
+  },
+  {
+    "starting_code": "A15",
+    "ending_code": "A19",
+    "chapter": "1",
+    "title": "Tuberculose",
+    "StartingNumericCode": 11,
+    "EndingNumericCode": 15
+  },
+  {
+    "starting_code": "A20",
+    "ending_code": "A28",
+    "chapter": "1",
+    "title": "Certaines anthropozoonoses bactériennes",
+    "StartingNumericCode": 16,
+    "EndingNumericCode": 24
+  },
+  {
+    "starting_code": "A30",
+    "ending_code": "A49",
+    "chapter": "1",
+    "title": "Autres maladies bactériennes",
+    "StartingNumericCode": 25,
+    "EndingNumericCode": 42
+  },
+  {
+    "starting_code": "A50",
+    "ending_code": "A64",
+    "chapter": "1",
+    "title": "Infections dont le mode de transmission est essentiellement sexuel",
+    "StartingNumericCode": 43,
+    "EndingNumericCode": 55
+  },
+  {
+    "starting_code": "A65",
+    "ending_code": "A69",
+    "chapter": "1",
+    "title": "Autres maladies à spirochètes",
+    "StartingNumericCode": 56,
+    "EndingNumericCode": 60
+  },
+  {
+    "starting_code": "A70",
+    "ending_code": "A74",
+    "chapter": "1",
+    "title": "Autres maladies à Chlamydia",
+    "StartingNumericCode": 61,
+    "EndingNumericCode": 63
+  },
+  {
+    "starting_code": "A75",
+    "ending_code": "A79",
+    "chapter": "1",
+    "title": "Rickettsioses",
+    "StartingNumericCode": 64,
+    "EndingNumericCode": 67
+  },
+  {
+    "starting_code": "A80",
+    "ending_code": "A89",
+    "chapter": "1",
+    "title": "Infections virales du système nerveux central",
+    "StartingNumericCode": 68,
+    "EndingNumericCode": 77
+  },
+  {
+    "starting_code": "A92",
+    "ending_code": "A99",
+    "chapter": "1",
+    "title": "Fièvres virales transmises par des arthropodes et fièvres virales hémorragiques",
+    "StartingNumericCode": 78,
+    "EndingNumericCode": 85
+  },
+  {
+    "starting_code": "B00",
+    "ending_code": "B09",
+    "chapter": "1",
+    "title": "Infections virales caractérisées par des lésions cutanéo-muqueuses",
+    "StartingNumericCode": 86,
+    "EndingNumericCode": 95
+  },
+  {
+    "starting_code": "B15",
+    "ending_code": "B19",
+    "chapter": "1",
+    "title": "Hépatite virale",
+    "StartingNumericCode": 96,
+    "EndingNumericCode": 100
+  },
+  {
+    "starting_code": "B20",
+    "ending_code": "B24",
+    "chapter": "1",
+    "title": "Maladies dues au virus de l’immunodéficience humaine [VIH]",
+    "StartingNumericCode": 101,
+    "EndingNumericCode": 105
+  },
+  {
+    "starting_code": "B25",
+    "ending_code": "B34",
+    "chapter": "1",
+    "title": "Autres maladies virales",
+    "StartingNumericCode": 106,
+    "EndingNumericCode": 111
+  },
+  {
+    "starting_code": "B35",
+    "ending_code": "B49",
+    "chapter": "1",
+    "title": "Mycoses",
+    "StartingNumericCode": 112,
+    "EndingNumericCode": 126
+  },
+  {
+    "starting_code": "B50",
+    "ending_code": "B64",
+    "chapter": "1",
+    "title": "Maladies dues à des protozoaires",
+    "StartingNumericCode": 127,
+    "EndingNumericCode": 137
+  },
+  {
+    "starting_code": "B65",
+    "ending_code": "B83",
+    "chapter": "1",
+    "title": "Helminthiases",
+    "StartingNumericCode": 138,
+    "EndingNumericCode": 156
+  },
+  {
+    "starting_code": "B85",
+    "ending_code": "B89",
+    "chapter": "1",
+    "title": "Pédiculose, acariase et autres infestations",
+    "StartingNumericCode": 157,
+    "EndingNumericCode": 161
+  },
+  {
+    "starting_code": "B90",
+    "ending_code": "B94",
+    "chapter": "1",
+    "title": "Séquelles de maladies infectieuses et parasitaires",
+    "StartingNumericCode": 162,
+    "EndingNumericCode": 165
+  },
+  {
+    "starting_code": "B95",
+    "ending_code": "B98",
+    "chapter": "1",
+    "title": "Agents d’infections bactériennes, virales et autres classées dans d’autres chapitres",
+    "StartingNumericCode": 166,
+    "EndingNumericCode": 169
+  },
+  {
+    "starting_code": "B99",
+    "ending_code": "B99",
+    "chapter": "1",
+    "title": "Autres maladies infectieuses",
+    "StartingNumericCode": 170,
+    "EndingNumericCode": 170
+  },
+  {
+    "starting_code": "C00",
+    "ending_code": "C14",
+    "chapter": "2",
+    "title": "Tumeurs malignes de la lèvre, de la cavité buccale et du pharynx",
+    "StartingNumericCode": 171,
+    "EndingNumericCode": 185
+  },
+  {
+    "starting_code": "C15",
+    "ending_code": "C26",
+    "chapter": "2",
+    "title": "Tumeurs malignes des organes digestifs",
+    "StartingNumericCode": 186,
+    "EndingNumericCode": 197
+  },
+  {
+    "starting_code": "C30",
+    "ending_code": "C39",
+    "chapter": "2",
+    "title": "Tumeurs malignes des organes respiratoires et intrathoraciques",
+    "StartingNumericCode": 198,
+    "EndingNumericCode": 205
+  },
+  {
+    "starting_code": "C40",
+    "ending_code": "C41",
+    "chapter": "2",
+    "title": "Tumeurs malignes des os et du cartilage articulaire",
+    "StartingNumericCode": 206,
+    "EndingNumericCode": 207
+  },
+  {
+    "starting_code": "C43",
+    "ending_code": "C44",
+    "chapter": "2",
+    "title": "Mélanome malin et autres tumeurs malignes de la peau",
+    "StartingNumericCode": 208,
+    "EndingNumericCode": 209
+  },
+  {
+    "starting_code": "C45",
+    "ending_code": "C49",
+    "chapter": "2",
+    "title": "Tumeurs malignes du tissu mésothélial et des tissus mous",
+    "StartingNumericCode": 210,
+    "EndingNumericCode": 214
+  },
+  {
+    "starting_code": "C50",
+    "ending_code": "C50",
+    "chapter": "2",
+    "title": "Tumeurs malignes du sein",
+    "StartingNumericCode": 215,
+    "EndingNumericCode": 215
+  },
+  {
+    "starting_code": "C51",
+    "ending_code": "C58",
+    "chapter": "2",
+    "title": "Tumeurs malignes des organes génitaux de la femme",
+    "StartingNumericCode": 216,
+    "EndingNumericCode": 223
+  },
+  {
+    "starting_code": "C60",
+    "ending_code": "C63",
+    "chapter": "2",
+    "title": "Tumeurs malignes des organes génitaux de l’homme",
+    "StartingNumericCode": 224,
+    "EndingNumericCode": 227
+  },
+  {
+    "starting_code": "C64",
+    "ending_code": "C68",
+    "chapter": "2",
+    "title": "Tumeurs malignes des voies urinaires",
+    "StartingNumericCode": 228,
+    "EndingNumericCode": 232
+  },
+  {
+    "starting_code": "C69",
+    "ending_code": "C72",
+    "chapter": "2",
+    "title": "Tumeurs malignes de l’œil, de l’encéphale et d’autres parties du système nerveux central",
+    "StartingNumericCode": 233,
+    "EndingNumericCode": 236
+  },
+  {
+    "starting_code": "C73",
+    "ending_code": "C75",
+    "chapter": "2",
+    "title": "Tumeurs malignes de la thyroïde et d’autres glandes endocrines",
+    "StartingNumericCode": 237,
+    "EndingNumericCode": 239
+  },
+  {
+    "starting_code": "C76",
+    "ending_code": "C80",
+    "chapter": "2",
+    "title": "Tumeurs malignes de sièges mal définis, secondaires et non précisés",
+    "StartingNumericCode": 240,
+    "EndingNumericCode": 244
+  },
+  {
+    "starting_code": "C81",
+    "ending_code": "C96",
+    "chapter": "2",
+    "title": "Tumeurs malignes primitives ou présumées primitives des tissus lymphoïde, hématopoïétique et apparentés",
+    "StartingNumericCode": 245,
+    "EndingNumericCode": 258
+  },
+  {
+    "starting_code": "C97",
+    "ending_code": "C97",
+    "chapter": "2",
+    "title": "Tumeurs malignes de sièges multiples indépendants (primitifs)",
+    "StartingNumericCode": 259,
+    "EndingNumericCode": 259
+  },
+  {
+    "starting_code": "D00",
+    "ending_code": "D09",
+    "chapter": "2",
+    "title": "Tumeurs in situ",
+    "StartingNumericCode": 260,
+    "EndingNumericCode": 268
+  },
+  {
+    "starting_code": "D10",
+    "ending_code": "D36",
+    "chapter": "2",
+    "title": "Tumeurs bénignes",
+    "StartingNumericCode": 269,
+    "EndingNumericCode": 295
+  },
+  {
+    "starting_code": "D37",
+    "ending_code": "D48",
+    "chapter": "2",
+    "title": "Tumeurs à évolution imprévisible ou inconnue",
+    "StartingNumericCode": 296,
+    "EndingNumericCode": 307
+  },
+  {
+    "starting_code": "D50",
+    "ending_code": "D53",
+    "chapter": "3",
+    "title": "Anémies nutritionnelles",
+    "StartingNumericCode": 308,
+    "EndingNumericCode": 311
+  },
+  {
+    "starting_code": "D55",
+    "ending_code": "D59",
+    "chapter": "3",
+    "title": "Anémies hémolytiques",
+    "StartingNumericCode": 312,
+    "EndingNumericCode": 316
+  },
+  {
+    "starting_code": "D60",
+    "ending_code": "D64",
+    "chapter": "3",
+    "title": "Aplasies médullaires [anémie aplastique] et autres anémies",
+    "StartingNumericCode": 317,
+    "EndingNumericCode": 321
+  },
+  {
+    "starting_code": "D65",
+    "ending_code": "D69",
+    "chapter": "3",
+    "title": "Anomalies de la coagulation, purpura et autres affections hémorragiques",
+    "StartingNumericCode": 322,
+    "EndingNumericCode": 326
+  },
+  {
+    "starting_code": "D70",
+    "ending_code": "D77",
+    "chapter": "3",
+    "title": "Autres maladies du sang et des organes hématopoïétiques",
+    "StartingNumericCode": 327,
+    "EndingNumericCode": 334
+  },
+  {
+    "starting_code": "D80",
+    "ending_code": "D90",
+    "chapter": "3",
+    "title": "Certaines anomalies du système immunitaire",
+    "StartingNumericCode": 335,
+    "EndingNumericCode": 342
+  },
+  {
+    "starting_code": "E00",
+    "ending_code": "E07",
+    "chapter": "4",
+    "title": "Affections de la glande thyroïde",
+    "StartingNumericCode": 343,
+    "EndingNumericCode": 350
+  },
+  {
+    "starting_code": "E10",
+    "ending_code": "E14",
+    "chapter": "4",
+    "title": "Diabète sucré",
+    "StartingNumericCode": 351,
+    "EndingNumericCode": 355
+  },
+  {
+    "starting_code": "E15",
+    "ending_code": "E16",
+    "chapter": "4",
+    "title": "Autres anomalies de la régulation du glucose et de la sécrétion pancréatique interne",
+    "StartingNumericCode": 356,
+    "EndingNumericCode": 357
+  },
+  {
+    "starting_code": "E20",
+    "ending_code": "E35",
+    "chapter": "4",
+    "title": "Maladies des autres glandes endocrines",
+    "StartingNumericCode": 358,
+    "EndingNumericCode": 372
+  },
+  {
+    "starting_code": "E40",
+    "ending_code": "E46",
+    "chapter": "4",
+    "title": "Malnutrition",
+    "StartingNumericCode": 373,
+    "EndingNumericCode": 379
+  },
+  {
+    "starting_code": "E50",
+    "ending_code": "E64",
+    "chapter": "4",
+    "title": "Autres carences nutritionnelles",
+    "StartingNumericCode": 380,
+    "EndingNumericCode": 392
+  },
+  {
+    "starting_code": "E65",
+    "ending_code": "E68",
+    "chapter": "4",
+    "title": "Obésité et autres excès d’apport",
+    "StartingNumericCode": 393,
+    "EndingNumericCode": 396
+  },
+  {
+    "starting_code": "E70",
+    "ending_code": "E90",
+    "chapter": "4",
+    "title": "Anomalies du métabolisme",
+    "StartingNumericCode": 397,
+    "EndingNumericCode": 415
+  },
+  {
+    "starting_code": "F00",
+    "ending_code": "F09",
+    "chapter": "5",
+    "title": "Troubles mentaux organiques, y compris les troubles symptomatiques",
+    "StartingNumericCode": 416,
+    "EndingNumericCode": 424
+  },
+  {
+    "starting_code": "F10",
+    "ending_code": "F19",
+    "chapter": "5",
+    "title": "Troubles mentaux et du comportement liés à l’utilisation de substances psycho-actives",
+    "StartingNumericCode": 425,
+    "EndingNumericCode": 434
+  },
+  {
+    "starting_code": "F20",
+    "ending_code": "F29",
+    "chapter": "5",
+    "title": "Schizophrénie, trouble schizotypique et troubles délirants",
+    "StartingNumericCode": 435,
+    "EndingNumericCode": 442
+  },
+  {
+    "starting_code": "F30",
+    "ending_code": "F39",
+    "chapter": "5",
+    "title": "Troubles de l’humeur [affectifs]",
+    "StartingNumericCode": 443,
+    "EndingNumericCode": 449
+  },
+  {
+    "starting_code": "F40",
+    "ending_code": "F48",
+    "chapter": "5",
+    "title": "Troubles névrotiques, troubles liés à des facteurs de stress et troubles somatoformes",
+    "StartingNumericCode": 450,
+    "EndingNumericCode": 456
+  },
+  {
+    "starting_code": "F50",
+    "ending_code": "F59",
+    "chapter": "5",
+    "title": "Syndromes comportementaux associés à des perturbations physiologiques et à des facteurs physiques",
+    "StartingNumericCode": 457,
+    "EndingNumericCode": 463
+  },
+  {
+    "starting_code": "F60",
+    "ending_code": "F69",
+    "chapter": "5",
+    "title": "Troubles de la personnalité et du comportement chez l’adulte",
+    "StartingNumericCode": 464,
+    "EndingNumericCode": 472
+  },
+  {
+    "starting_code": "F70",
+    "ending_code": "F79",
+    "chapter": "5",
+    "title": "Retard mental",
+    "StartingNumericCode": 473,
+    "EndingNumericCode": 479
+  },
+  {
+    "starting_code": "F80",
+    "ending_code": "F89",
+    "chapter": "5",
+    "title": "Troubles du développement psychologique",
+    "StartingNumericCode": 480,
+    "EndingNumericCode": 486
+  },
+  {
+    "starting_code": "F90",
+    "ending_code": "F98",
+    "chapter": "5",
+    "title": "Troubles du comportement et troubles émotionnels apparaissant habituellement durant l’enfance et l’adolescence",
+    "StartingNumericCode": 487,
+    "EndingNumericCode": 493
+  },
+  {
+    "starting_code": "F99",
+    "ending_code": "F99",
+    "chapter": "5",
+    "title": "Trouble mental, sans précision",
+    "StartingNumericCode": 494,
+    "EndingNumericCode": 494
+  },
+  {
+    "starting_code": "G00",
+    "ending_code": "G09",
+    "chapter": "6",
+    "title": "Maladies inflammatoires du système nerveux central",
+    "StartingNumericCode": 495,
+    "EndingNumericCode": 504
+  },
+  {
+    "starting_code": "G10",
+    "ending_code": "G14",
+    "chapter": "6",
+    "title": "Affections dégénératives systémiques affectant principalement le système nerveux central",
+    "StartingNumericCode": 505,
+    "EndingNumericCode": 509
+  },
+  {
+    "starting_code": "G20",
+    "ending_code": "G26",
+    "chapter": "6",
+    "title": "Syndromes extrapyramidaux et troubles de la motricité",
+    "StartingNumericCode": 510,
+    "EndingNumericCode": 516
+  },
+  {
+    "starting_code": "G30",
+    "ending_code": "G32",
+    "chapter": "6",
+    "title": "Autres affections dégénératives du système nerveux",
+    "StartingNumericCode": 517,
+    "EndingNumericCode": 519
+  },
+  {
+    "starting_code": "G35",
+    "ending_code": "G37",
+    "chapter": "6",
+    "title": "Maladies démyélinisantes du système nerveux central",
+    "StartingNumericCode": 520,
+    "EndingNumericCode": 522
+  },
+  {
+    "starting_code": "G40",
+    "ending_code": "G47",
+    "chapter": "6",
+    "title": "Affections épisodiques et paroxystiques",
+    "StartingNumericCode": 523,
+    "EndingNumericCode": 529
+  },
+  {
+    "starting_code": "G50",
+    "ending_code": "G59",
+    "chapter": "6",
+    "title": "Affections des nerfs et des racines et plexus nerveux",
+    "StartingNumericCode": 530,
+    "EndingNumericCode": 539
+  },
+  {
+    "starting_code": "G60",
+    "ending_code": "G64",
+    "chapter": "6",
+    "title": "Polynévrites et autres affections du système nerveux périphérique",
+    "StartingNumericCode": 540,
+    "EndingNumericCode": 544
+  },
+  {
+    "starting_code": "G70",
+    "ending_code": "G73",
+    "chapter": "6",
+    "title": "Affections musculaires et neuromusculaires",
+    "StartingNumericCode": 545,
+    "EndingNumericCode": 548
+  },
+  {
+    "starting_code": "G80",
+    "ending_code": "G83",
+    "chapter": "6",
+    "title": "Paralysies cérébrales et autres syndromes paralytiques",
+    "StartingNumericCode": 549,
+    "EndingNumericCode": 552
+  },
+  {
+    "starting_code": "G90",
+    "ending_code": "G99",
+    "chapter": "6",
+    "title": "Autres affections du système nerveux",
+    "StartingNumericCode": 553,
+    "EndingNumericCode": 562
+  },
+  {
+    "starting_code": "H00",
+    "ending_code": "H06",
+    "chapter": "7",
+    "title": "Affections de la paupière, de l’appareil lacrymal et de l’orbite",
+    "StartingNumericCode": 563,
+    "EndingNumericCode": 569
+  },
+  {
+    "starting_code": "H10",
+    "ending_code": "H13",
+    "chapter": "7",
+    "title": "Affections de la conjonctive",
+    "StartingNumericCode": 570,
+    "EndingNumericCode": 572
+  },
+  {
+    "starting_code": "H15",
+    "ending_code": "H22",
+    "chapter": "7",
+    "title": "Affections de la sclérotique, de la cornée, de l’iris et du corps ciliaire",
+    "StartingNumericCode": 573,
+    "EndingNumericCode": 580
+  },
+  {
+    "starting_code": "H25",
+    "ending_code": "H28",
+    "chapter": "7",
+    "title": "Affections du cristallin",
+    "StartingNumericCode": 581,
+    "EndingNumericCode": 584
+  },
+  {
+    "starting_code": "H30",
+    "ending_code": "H36",
+    "chapter": "7",
+    "title": "Affections de la choroïde et de la rétine",
+    "StartingNumericCode": 585,
+    "EndingNumericCode": 591
+  },
+  {
+    "starting_code": "H40",
+    "ending_code": "H42",
+    "chapter": "7",
+    "title": "Glaucome",
+    "StartingNumericCode": 592,
+    "EndingNumericCode": 593
+  },
+  {
+    "starting_code": "H43",
+    "ending_code": "H45",
+    "chapter": "7",
+    "title": "Affections du corps vitré et du globe oculaire",
+    "StartingNumericCode": 594,
+    "EndingNumericCode": 596
+  },
+  {
+    "starting_code": "H46",
+    "ending_code": "H48",
+    "chapter": "7",
+    "title": "Affections du nerf et des voies optiques",
+    "StartingNumericCode": 597,
+    "EndingNumericCode": 599
+  },
+  {
+    "starting_code": "H49",
+    "ending_code": "H52",
+    "chapter": "7",
+    "title": "Affections des muscles oculaires, des mouvements binoculaires, de l’accommodation et de la réfraction",
+    "StartingNumericCode": 600,
+    "EndingNumericCode": 603
+  },
+  {
+    "starting_code": "H53",
+    "ending_code": "H54",
+    "chapter": "7",
+    "title": "Troubles de la vision et cécité",
+    "StartingNumericCode": 604,
+    "EndingNumericCode": 605
+  },
+  {
+    "starting_code": "H55",
+    "ending_code": "H59",
+    "chapter": "7",
+    "title": "Autres affections de l’œil et de ses annexes",
+    "StartingNumericCode": 606,
+    "EndingNumericCode": 609
+  },
+  {
+    "starting_code": "H60",
+    "ending_code": "H62",
+    "chapter": "8",
+    "title": "Maladies de l’oreille externe",
+    "StartingNumericCode": 610,
+    "EndingNumericCode": 612
+  },
+  {
+    "starting_code": "H65",
+    "ending_code": "H75",
+    "chapter": "8",
+    "title": "Maladies de l’oreille moyenne et de l’apophyse mastoïde",
+    "StartingNumericCode": 613,
+    "EndingNumericCode": 623
+  },
+  {
+    "starting_code": "H80",
+    "ending_code": "H83",
+    "chapter": "8",
+    "title": "Maladies de l’oreille interne",
+    "StartingNumericCode": 624,
+    "EndingNumericCode": 627
+  },
+  {
+    "starting_code": "H90",
+    "ending_code": "H95",
+    "chapter": "8",
+    "title": "Autres affections de l’oreille",
+    "StartingNumericCode": 628,
+    "EndingNumericCode": 633
+  },
+  {
+    "starting_code": "I00",
+    "ending_code": "I02",
+    "chapter": "9",
+    "title": "Rhumatisme articulaire aigu",
+    "StartingNumericCode": 634,
+    "EndingNumericCode": 636
+  },
+  {
+    "starting_code": "I05",
+    "ending_code": "I09",
+    "chapter": "9",
+    "title": "Cardiopathies rhumatismales chroniques",
+    "StartingNumericCode": 637,
+    "EndingNumericCode": 641
+  },
+  {
+    "starting_code": "I10",
+    "ending_code": "I15",
+    "chapter": "9",
+    "title": "Maladies hypertensives",
+    "StartingNumericCode": 642,
+    "EndingNumericCode": 646
+  },
+  {
+    "starting_code": "I20",
+    "ending_code": "I25",
+    "chapter": "9",
+    "title": "Cardiopathies ischémiques",
+    "StartingNumericCode": 647,
+    "EndingNumericCode": 652
+  },
+  {
+    "starting_code": "I26",
+    "ending_code": "I28",
+    "chapter": "9",
+    "title": "Affections cardiopulmonaires et maladies de la circulation pulmonaire",
+    "StartingNumericCode": 653,
+    "EndingNumericCode": 655
+  },
+  {
+    "starting_code": "I30",
+    "ending_code": "I52",
+    "chapter": "9",
+    "title": "Autres formes de cardiopathies",
+    "StartingNumericCode": 656,
+    "EndingNumericCode": 678
+  },
+  {
+    "starting_code": "I60",
+    "ending_code": "I69",
+    "chapter": "9",
+    "title": "Maladies cérébrovasculaires",
+    "StartingNumericCode": 679,
+    "EndingNumericCode": 688
+  },
+  {
+    "starting_code": "I70",
+    "ending_code": "I79",
+    "chapter": "9",
+    "title": "Maladies des artères, artérioles et capillaires",
+    "StartingNumericCode": 689,
+    "EndingNumericCode": 696
+  },
+  {
+    "starting_code": "I80",
+    "ending_code": "I89",
+    "chapter": "9",
+    "title": "Maladies des veines, des vaisseaux et des ganglions lymphatiques, non classées ailleurs",
+    "StartingNumericCode": 697,
+    "EndingNumericCode": 705
+  },
+  {
+    "starting_code": "I95",
+    "ending_code": "I99",
+    "chapter": "9",
+    "title": "Troubles autres et non précisés de l’appareil circulatoire",
+    "StartingNumericCode": 706,
+    "EndingNumericCode": 709
+  },
+  {
+    "starting_code": "J00",
+    "ending_code": "J06",
+    "chapter": "10",
+    "title": "Affections aiguës des voies respiratoires supérieures",
+    "StartingNumericCode": 710,
+    "EndingNumericCode": 716
+  },
+  {
+    "starting_code": "J09",
+    "ending_code": "J18",
+    "chapter": "10",
+    "title": "Grippe et pneumopathie",
+    "StartingNumericCode": 717,
+    "EndingNumericCode": 726
+  },
+  {
+    "starting_code": "J20",
+    "ending_code": "J22",
+    "chapter": "10",
+    "title": "Autres affections aiguës des voies respiratoires inférieures",
+    "StartingNumericCode": 727,
+    "EndingNumericCode": 729
+  },
+  {
+    "starting_code": "J30",
+    "ending_code": "J39",
+    "chapter": "10",
+    "title": "Autres maladies des voies respiratoires supérieures",
+    "StartingNumericCode": 730,
+    "EndingNumericCode": 739
+  },
+  {
+    "starting_code": "J40",
+    "ending_code": "J47",
+    "chapter": "10",
+    "title": "Maladies chroniques des voies respiratoires inférieures",
+    "StartingNumericCode": 740,
+    "EndingNumericCode": 747
+  },
+  {
+    "starting_code": "J60",
+    "ending_code": "J70",
+    "chapter": "10",
+    "title": "Maladies du poumon dues à des agents externes",
+    "StartingNumericCode": 748,
+    "EndingNumericCode": 758
+  },
+  {
+    "starting_code": "J80",
+    "ending_code": "J84",
+    "chapter": "10",
+    "title": "Autres maladies respiratoires touchant principalement le tissu interstitiel",
+    "StartingNumericCode": 759,
+    "EndingNumericCode": 762
+  },
+  {
+    "starting_code": "J85",
+    "ending_code": "J86",
+    "chapter": "10",
+    "title": "Maladies suppurées et nécrotiques des voies respiratoires inférieures",
+    "StartingNumericCode": 763,
+    "EndingNumericCode": 764
+  },
+  {
+    "starting_code": "J90",
+    "ending_code": "J94",
+    "chapter": "10",
+    "title": "Autres affections de la plèvre",
+    "StartingNumericCode": 765,
+    "EndingNumericCode": 769
+  },
+  {
+    "starting_code": "J95",
+    "ending_code": "J99",
+    "chapter": "10",
+    "title": "Autres maladies de l’appareil respiratoire",
+    "StartingNumericCode": 770,
+    "EndingNumericCode": 773
+  },
+  {
+    "starting_code": "K00",
+    "ending_code": "K14",
+    "chapter": "11",
+    "title": "Maladies de la cavité buccale, des glandes salivaires et des maxillaires",
+    "StartingNumericCode": 774,
+    "EndingNumericCode": 788
+  },
+  {
+    "starting_code": "K20",
+    "ending_code": "K31",
+    "chapter": "11",
+    "title": "Maladies de l’œsophage, de l’estomac et du duodénum",
+    "StartingNumericCode": 789,
+    "EndingNumericCode": 799
+  },
+  {
+    "starting_code": "K35",
+    "ending_code": "K38",
+    "chapter": "11",
+    "title": "Maladies de l’appendice",
+    "StartingNumericCode": 800,
+    "EndingNumericCode": 803
+  },
+  {
+    "starting_code": "K40",
+    "ending_code": "K46",
+    "chapter": "11",
+    "title": "Hernies",
+    "StartingNumericCode": 804,
+    "EndingNumericCode": 810
+  },
+  {
+    "starting_code": "K50",
+    "ending_code": "K52",
+    "chapter": "11",
+    "title": "Entérites et colites non infectieuses",
+    "StartingNumericCode": 811,
+    "EndingNumericCode": 813
+  },
+  {
+    "starting_code": "K55",
+    "ending_code": "K64",
+    "chapter": "11",
+    "title": "Autres maladies de l’intestin",
+    "StartingNumericCode": 814,
+    "EndingNumericCode": 823
+  },
+  {
+    "starting_code": "K65",
+    "ending_code": "K67",
+    "chapter": "11",
+    "title": "Maladies du péritoine",
+    "StartingNumericCode": 824,
+    "EndingNumericCode": 826
+  },
+  {
+    "starting_code": "K70",
+    "ending_code": "K77",
+    "chapter": "11",
+    "title": "Maladies du foie",
+    "StartingNumericCode": 827,
+    "EndingNumericCode": 834
+  },
+  {
+    "starting_code": "K80",
+    "ending_code": "K87",
+    "chapter": "11",
+    "title": "Maladies de la vésicule biliaire, des voies biliaires et du pancréas",
+    "StartingNumericCode": 835,
+    "EndingNumericCode": 841
+  },
+  {
+    "starting_code": "K90",
+    "ending_code": "K93",
+    "chapter": "11",
+    "title": "Autres maladies de l’appareil digestif",
+    "StartingNumericCode": 842,
+    "EndingNumericCode": 845
+  },
+  {
+    "starting_code": "L00",
+    "ending_code": "L08",
+    "chapter": "12",
+    "title": "Infections de la peau et du tissu cellulaire sous-cutané",
+    "StartingNumericCode": 846,
+    "EndingNumericCode": 852
+  },
+  {
+    "starting_code": "L10",
+    "ending_code": "L14",
+    "chapter": "12",
+    "title": "Dermatoses bulleuses",
+    "StartingNumericCode": 853,
+    "EndingNumericCode": 857
+  },
+  {
+    "starting_code": "L20",
+    "ending_code": "L30",
+    "chapter": "12",
+    "title": "Dermatoses et eczémas",
+    "StartingNumericCode": 858,
+    "EndingNumericCode": 868
+  },
+  {
+    "starting_code": "L40",
+    "ending_code": "L45",
+    "chapter": "12",
+    "title": "Lésions papulo-squameuses",
+    "StartingNumericCode": 869,
+    "EndingNumericCode": 874
+  },
+  {
+    "starting_code": "L50",
+    "ending_code": "L54",
+    "chapter": "12",
+    "title": "Urticaire et érythème",
+    "StartingNumericCode": 875,
+    "EndingNumericCode": 879
+  },
+  {
+    "starting_code": "L55",
+    "ending_code": "L59",
+    "chapter": "12",
+    "title": "Affections de la peau et du tissu cellulaire sous-cutané liées à une irradiation",
+    "StartingNumericCode": 880,
+    "EndingNumericCode": 884
+  },
+  {
+    "starting_code": "L60",
+    "ending_code": "L75",
+    "chapter": "12",
+    "title": "Maladies des phanères et des annexes de la peau",
+    "StartingNumericCode": 885,
+    "EndingNumericCode": 898
+  },
+  {
+    "starting_code": "L80",
+    "ending_code": "L99",
+    "chapter": "12",
+    "title": "Autres affections de la peau et du tissu cellulaire sous-cutané",
+    "StartingNumericCode": 899,
+    "EndingNumericCode": 917
+  },
+  {
+    "starting_code": "M00",
+    "ending_code": "M03",
+    "chapter": "13",
+    "title": "Arthropathies infectieuses",
+    "StartingNumericCode": 918,
+    "EndingNumericCode": 921
+  },
+  {
+    "starting_code": "M05",
+    "ending_code": "M14",
+    "chapter": "13",
+    "title": "Polyarthropathies inflammatoires",
+    "StartingNumericCode": 922,
+    "EndingNumericCode": 931
+  },
+  {
+    "starting_code": "M15",
+    "ending_code": "M19",
+    "chapter": "13",
+    "title": "Arthroses",
+    "StartingNumericCode": 932,
+    "EndingNumericCode": 936
+  },
+  {
+    "starting_code": "M20",
+    "ending_code": "M25",
+    "chapter": "13",
+    "title": "Autres affections articulaires",
+    "StartingNumericCode": 937,
+    "EndingNumericCode": 942
+  },
+  {
+    "starting_code": "M30",
+    "ending_code": "M36",
+    "chapter": "13",
+    "title": "Affections disséminées du tissu conjonctif",
+    "StartingNumericCode": 943,
+    "EndingNumericCode": 949
+  },
+  {
+    "starting_code": "M40",
+    "ending_code": "M43",
+    "chapter": "13",
+    "title": "Dorsopathies avec déformation",
+    "StartingNumericCode": 950,
+    "EndingNumericCode": 953
+  },
+  {
+    "starting_code": "M45",
+    "ending_code": "M49",
+    "chapter": "13",
+    "title": "Spondylopathies",
+    "StartingNumericCode": 954,
+    "EndingNumericCode": 958
+  },
+  {
+    "starting_code": "M50",
+    "ending_code": "M54",
+    "chapter": "13",
+    "title": "Autres dorsopathies",
+    "StartingNumericCode": 959,
+    "EndingNumericCode": 962
+  },
+  {
+    "starting_code": "M60",
+    "ending_code": "M63",
+    "chapter": "13",
+    "title": "Myopathies",
+    "StartingNumericCode": 963,
+    "EndingNumericCode": 966
+  },
+  {
+    "starting_code": "M65",
+    "ending_code": "M68",
+    "chapter": "13",
+    "title": "Atteintes des synoviales et des tendons",
+    "StartingNumericCode": 967,
+    "EndingNumericCode": 970
+  },
+  {
+    "starting_code": "M70",
+    "ending_code": "M79",
+    "chapter": "13",
+    "title": "Autres affections des tissus mous",
+    "StartingNumericCode": 971,
+    "EndingNumericCode": 978
+  },
+  {
+    "starting_code": "M80",
+    "ending_code": "M85",
+    "chapter": "13",
+    "title": "Anomalies de la densité et de la structure osseuse",
+    "StartingNumericCode": 979,
+    "EndingNumericCode": 984
+  },
+  {
+    "starting_code": "M86",
+    "ending_code": "M90",
+    "chapter": "13",
+    "title": "Autres ostéopathies",
+    "StartingNumericCode": 985,
+    "EndingNumericCode": 989
+  },
+  {
+    "starting_code": "M91",
+    "ending_code": "M94",
+    "chapter": "13",
+    "title": "Chondropathies",
+    "StartingNumericCode": 990,
+    "EndingNumericCode": 993
+  },
+  {
+    "starting_code": "M95",
+    "ending_code": "M99",
+    "chapter": "13",
+    "title": "Autres maladies du système ostéo-articulaire, des muscles et du tissu conjonctif",
+    "StartingNumericCode": 994,
+    "EndingNumericCode": 996
+  },
+  {
+    "starting_code": "N00",
+    "ending_code": "N08",
+    "chapter": "14",
+    "title": "Glomérulopathies",
+    "StartingNumericCode": 997,
+    "EndingNumericCode": 1005
+  },
+  {
+    "starting_code": "N10",
+    "ending_code": "N16",
+    "chapter": "14",
+    "title": "Maladies rénales tubulo-interstitielles",
+    "StartingNumericCode": 1006,
+    "EndingNumericCode": 1012
+  },
+  {
+    "starting_code": "N17",
+    "ending_code": "N19",
+    "chapter": "14",
+    "title": "Insuffisance rénale",
+    "StartingNumericCode": 1013,
+    "EndingNumericCode": 1015
+  },
+  {
+    "starting_code": "N20",
+    "ending_code": "N23",
+    "chapter": "14",
+    "title": "Lithiases urinaires",
+    "StartingNumericCode": 1016,
+    "EndingNumericCode": 1019
+  },
+  {
+    "starting_code": "N25",
+    "ending_code": "N29",
+    "chapter": "14",
+    "title": "Autres affections du rein et de l’uretère",
+    "StartingNumericCode": 1020,
+    "EndingNumericCode": 1024
+  },
+  {
+    "starting_code": "N30",
+    "ending_code": "N39",
+    "chapter": "14",
+    "title": "Autres maladies de l’appareil urinaire",
+    "StartingNumericCode": 1025,
+    "EndingNumericCode": 1033
+  },
+  {
+    "starting_code": "N40",
+    "ending_code": "N51",
+    "chapter": "14",
+    "title": "Maladies des organes génitaux de l’homme",
+    "StartingNumericCode": 1034,
+    "EndingNumericCode": 1045
+  },
+  {
+    "starting_code": "N60",
+    "ending_code": "N64",
+    "chapter": "14",
+    "title": "Affections du sein",
+    "StartingNumericCode": 1046,
+    "EndingNumericCode": 1050
+  },
+  {
+    "starting_code": "N70",
+    "ending_code": "N77",
+    "chapter": "14",
+    "title": "Affections inflammatoires des organes pelviens de la femme",
+    "StartingNumericCode": 1051,
+    "EndingNumericCode": 1058
+  },
+  {
+    "starting_code": "N80",
+    "ending_code": "N98",
+    "chapter": "14",
+    "title": "Affections non inflammatoires de l’appareil génital de la femme",
+    "StartingNumericCode": 1059,
+    "EndingNumericCode": 1077
+  },
+  {
+    "starting_code": "N99",
+    "ending_code": "N99",
+    "chapter": "14",
+    "title": "Autres affections de l’appareil génito-urinaire",
+    "StartingNumericCode": 1078,
+    "EndingNumericCode": 1078
+  },
+  {
+    "starting_code": "O00",
+    "ending_code": "O08",
+    "chapter": "15",
+    "title": "Grossesse se terminant par un avortement",
+    "StartingNumericCode": 1079,
+    "EndingNumericCode": 1087
+  },
+  {
+    "starting_code": "O09",
+    "ending_code": "O09",
+    "chapter": "15",
+    "title": "Durée de la grossesse",
+    "StartingNumericCode": 1088,
+    "EndingNumericCode": 1088
+  },
+  {
+    "starting_code": "O10",
+    "ending_code": "O16",
+    "chapter": "15",
+    "title": "Œdème, protéinurie et hypertension au cours de la grossesse, de l’accouchement et de la puerpéralité",
+    "StartingNumericCode": 1089,
+    "EndingNumericCode": 1095
+  },
+  {
+    "starting_code": "O20",
+    "ending_code": "O29",
+    "chapter": "15",
+    "title": "Autres affections maternelles liées principalement à la grossesse",
+    "StartingNumericCode": 1096,
+    "EndingNumericCode": 1104
+  },
+  {
+    "starting_code": "O30",
+    "ending_code": "O48",
+    "chapter": "15",
+    "title": "Soins maternels liés au fœtus et à la cavité amniotique, et problèmes possibles posés par l’accouchement",
+    "StartingNumericCode": 1105,
+    "EndingNumericCode": 1120
+  },
+  {
+    "starting_code": "O60",
+    "ending_code": "O75",
+    "chapter": "15",
+    "title": "Complications du travail et de l’accouchement",
+    "StartingNumericCode": 1121,
+    "EndingNumericCode": 1136
+  },
+  {
+    "starting_code": "O80",
+    "ending_code": "O82",
+    "chapter": "15",
+    "title": "Accouchement",
+    "StartingNumericCode": 1137,
+    "EndingNumericCode": 1139
+  },
+  {
+    "starting_code": "O85",
+    "ending_code": "O92",
+    "chapter": "15",
+    "title": "Complications principalement liées à la puerpéralité",
+    "StartingNumericCode": 1140,
+    "EndingNumericCode": 1147
+  },
+  {
+    "starting_code": "O94",
+    "ending_code": "O99",
+    "chapter": "15",
+    "title": "Autres problèmes obstétricaux, non classés ailleurs",
+    "StartingNumericCode": 1148,
+    "EndingNumericCode": 1153
+  },
+  {
+    "starting_code": "P00",
+    "ending_code": "P04",
+    "chapter": "16",
+    "title": "Fœtus et nouveau-né affectés par des troubles maternels et par des complications de la grossesse, du travail et de l’accouchement",
+    "StartingNumericCode": 1154,
+    "EndingNumericCode": 1158
+  },
+  {
+    "starting_code": "P05",
+    "ending_code": "P08",
+    "chapter": "16",
+    "title": "Anomalies liées à la durée de la gestation et à la croissance du fœtus",
+    "StartingNumericCode": 1159,
+    "EndingNumericCode": 1161
+  },
+  {
+    "starting_code": "P10",
+    "ending_code": "P15",
+    "chapter": "16",
+    "title": "Traumatismes obstétricaux",
+    "StartingNumericCode": 1162,
+    "EndingNumericCode": 1167
+  },
+  {
+    "starting_code": "P20",
+    "ending_code": "P29",
+    "chapter": "16",
+    "title": "Affections respiratoires et cardio-vasculaires spécifiques de la période périnatale",
+    "StartingNumericCode": 1168,
+    "EndingNumericCode": 1177
+  },
+  {
+    "starting_code": "P35",
+    "ending_code": "P39",
+    "chapter": "16",
+    "title": "Infections spécifiques de la période périnatale",
+    "StartingNumericCode": 1178,
+    "EndingNumericCode": 1182
+  },
+  {
+    "starting_code": "P50",
+    "ending_code": "P61",
+    "chapter": "16",
+    "title": "Affections hémorragiques et hématologiques du fœtus et du nouveau-né",
+    "StartingNumericCode": 1183,
+    "EndingNumericCode": 1194
+  },
+  {
+    "starting_code": "P70",
+    "ending_code": "P74",
+    "chapter": "16",
+    "title": "Anomalies endocriniennes et métaboliques transitoires spécifiques du fœtus et du nouveau-né",
+    "StartingNumericCode": 1195,
+    "EndingNumericCode": 1198
+  },
+  {
+    "starting_code": "P75",
+    "ending_code": "P78",
+    "chapter": "16",
+    "title": "Affections de l’appareil digestif du fœtus et du nouveau-né",
+    "StartingNumericCode": 1199,
+    "EndingNumericCode": 1202
+  },
+  {
+    "starting_code": "P80",
+    "ending_code": "P83",
+    "chapter": "16",
+    "title": "Affections intéressant les téguments et la régulation thermique du fœtus et du nouveau-né",
+    "StartingNumericCode": 1203,
+    "EndingNumericCode": 1205
+  },
+  {
+    "starting_code": "P90",
+    "ending_code": "P96",
+    "chapter": "16",
+    "title": "Autres affections dont l’origine se situe dans la période périnatale",
+    "StartingNumericCode": 1206,
+    "EndingNumericCode": 1212
+  },
+  {
+    "starting_code": "Q00",
+    "ending_code": "Q07",
+    "chapter": "17",
+    "title": "Malformations congénitales du système nerveux",
+    "StartingNumericCode": 1213,
+    "EndingNumericCode": 1220
+  },
+  {
+    "starting_code": "Q10",
+    "ending_code": "Q18",
+    "chapter": "17",
+    "title": "Malformations congénitales de l’œil, de l’oreille, de la face et du cou",
+    "StartingNumericCode": 1221,
+    "EndingNumericCode": 1229
+  },
+  {
+    "starting_code": "Q20",
+    "ending_code": "Q28",
+    "chapter": "17",
+    "title": "Malformations congénitales de l’appareil circulatoire",
+    "StartingNumericCode": 1230,
+    "EndingNumericCode": 1238
+  },
+  {
+    "starting_code": "Q30",
+    "ending_code": "Q34",
+    "chapter": "17",
+    "title": "Malformations congénitales de l’appareil respiratoire",
+    "StartingNumericCode": 1239,
+    "EndingNumericCode": 1243
+  },
+  {
+    "starting_code": "Q35",
+    "ending_code": "Q37",
+    "chapter": "17",
+    "title": "Fente labiale et fente palatine",
+    "StartingNumericCode": 1244,
+    "EndingNumericCode": 1246
+  },
+  {
+    "starting_code": "Q38",
+    "ending_code": "Q45",
+    "chapter": "17",
+    "title": "Autres malformations congénitales de l’appareil digestif",
+    "StartingNumericCode": 1247,
+    "EndingNumericCode": 1254
+  },
+  {
+    "starting_code": "Q50",
+    "ending_code": "Q56",
+    "chapter": "17",
+    "title": "Malformations congénitales des organes génitaux",
+    "StartingNumericCode": 1255,
+    "EndingNumericCode": 1261
+  },
+  {
+    "starting_code": "Q60",
+    "ending_code": "Q64",
+    "chapter": "17",
+    "title": "Malformations congénitales de l’appareil urinaire",
+    "StartingNumericCode": 1262,
+    "EndingNumericCode": 1266
+  },
+  {
+    "starting_code": "Q65",
+    "ending_code": "Q79",
+    "chapter": "17",
+    "title": "Malformations congénitales du système ostéo-articulaire et des muscles",
+    "StartingNumericCode": 1267,
+    "EndingNumericCode": 1281
+  },
+  {
+    "starting_code": "Q80",
+    "ending_code": "Q89",
+    "chapter": "17",
+    "title": "Autres malformations congénitales",
+    "StartingNumericCode": 1282,
+    "EndingNumericCode": 1290
+  },
+  {
+    "starting_code": "Q90",
+    "ending_code": "Q99",
+    "chapter": "17",
+    "title": "Anomalies chromosomiques, non classées ailleurs",
+    "StartingNumericCode": 1291,
+    "EndingNumericCode": 1299
+  },
+  {
+    "starting_code": "R00",
+    "ending_code": "R09",
+    "chapter": "18",
+    "title": "Symptômes et signes relatifs aux appareils circulatoire et respiratoire",
+    "StartingNumericCode": 1300,
+    "EndingNumericCode": 1308
+  },
+  {
+    "starting_code": "R10",
+    "ending_code": "R19",
+    "chapter": "18",
+    "title": "Symptômes et signes relatifs à l’appareil digestif et à l’abdomen",
+    "StartingNumericCode": 1309,
+    "EndingNumericCode": 1318
+  },
+  {
+    "starting_code": "R20",
+    "ending_code": "R23",
+    "chapter": "18",
+    "title": "Symptômes et signes relatifs à la peau et au tissu cellulaire sous-cutané",
+    "StartingNumericCode": 1319,
+    "EndingNumericCode": 1322
+  },
+  {
+    "starting_code": "R25",
+    "ending_code": "R29",
+    "chapter": "18",
+    "title": "Symptômes et signes relatifs aux systèmes nerveux et ostéo-musculaire",
+    "StartingNumericCode": 1323,
+    "EndingNumericCode": 1326
+  },
+  {
+    "starting_code": "R30",
+    "ending_code": "R39",
+    "chapter": "18",
+    "title": "Symptômes et signes relatifs à l’appareil urinaire",
+    "StartingNumericCode": 1327,
+    "EndingNumericCode": 1334
+  },
+  {
+    "starting_code": "R40",
+    "ending_code": "R46",
+    "chapter": "18",
+    "title": "Symptômes et signes relatifs à la connaissance, la perception, l’humeur et le comportement",
+    "StartingNumericCode": 1335,
+    "EndingNumericCode": 1341
+  },
+  {
+    "starting_code": "R47",
+    "ending_code": "R49",
+    "chapter": "18",
+    "title": "Symptômes et signes relatifs au langage et à la voix",
+    "StartingNumericCode": 1342,
+    "EndingNumericCode": 1344
+  },
+  {
+    "starting_code": "R50",
+    "ending_code": "R69",
+    "chapter": "18",
+    "title": "Symptômes et signes généraux",
+    "StartingNumericCode": 1345,
+    "EndingNumericCode": 1362
+  },
+  {
+    "starting_code": "R70",
+    "ending_code": "R79",
+    "chapter": "18",
+    "title": "Résultats anormaux de l’examen du sang, sans diagnostic",
+    "StartingNumericCode": 1363,
+    "EndingNumericCode": 1372
+  },
+  {
+    "starting_code": "R80",
+    "ending_code": "R82",
+    "chapter": "18",
+    "title": "Résultats anormaux de l’examen des urines, sans diagnostic",
+    "StartingNumericCode": 1373,
+    "EndingNumericCode": 1375
+  },
+  {
+    "starting_code": "R83",
+    "ending_code": "R89",
+    "chapter": "18",
+    "title": "Résultats anormaux de l’examen d’autres liquides, substances et tissus, sans diagnostic",
+    "StartingNumericCode": 1376,
+    "EndingNumericCode": 1381
+  },
+  {
+    "starting_code": "R90",
+    "ending_code": "R94",
+    "chapter": "18",
+    "title": "Résultats anormaux d’imagerie diagnostique et d’épreuves fonctionnelles, sans diagnostic",
+    "StartingNumericCode": 1382,
+    "EndingNumericCode": 1386
+  },
+  {
+    "starting_code": "R95",
+    "ending_code": "R99",
+    "chapter": "18",
+    "title": "Causes de mortalité mal définies et inconnues",
+    "StartingNumericCode": 1387,
+    "EndingNumericCode": 1390
+  },
+  {
+    "starting_code": "S00",
+    "ending_code": "S09",
+    "chapter": "19",
+    "title": "Lésions traumatiques de la tête",
+    "StartingNumericCode": 1391,
+    "EndingNumericCode": 1400
+  },
+  {
+    "starting_code": "S10",
+    "ending_code": "S19",
+    "chapter": "19",
+    "title": "Lésions traumatiques du cou",
+    "StartingNumericCode": 1401,
+    "EndingNumericCode": 1410
+  },
+  {
+    "starting_code": "S20",
+    "ending_code": "S29",
+    "chapter": "19",
+    "title": "Lésions traumatiques du thorax",
+    "StartingNumericCode": 1411,
+    "EndingNumericCode": 1420
+  },
+  {
+    "starting_code": "S30",
+    "ending_code": "S39",
+    "chapter": "19",
+    "title": "Lésions traumatiques de l’abdomen, des lombes, du rachis lombaire et du bassin",
+    "StartingNumericCode": 1421,
+    "EndingNumericCode": 1430
+  },
+  {
+    "starting_code": "S40",
+    "ending_code": "S49",
+    "chapter": "19",
+    "title": "Lésions traumatiques de l’épaule et du bras",
+    "StartingNumericCode": 1431,
+    "EndingNumericCode": 1440
+  },
+  {
+    "starting_code": "S50",
+    "ending_code": "S59",
+    "chapter": "19",
+    "title": "Lésions traumatiques du coude et de l’avant-bras",
+    "StartingNumericCode": 1441,
+    "EndingNumericCode": 1450
+  },
+  {
+    "starting_code": "S60",
+    "ending_code": "S69",
+    "chapter": "19",
+    "title": "Lésions traumatiques du poignet et de la main",
+    "StartingNumericCode": 1451,
+    "EndingNumericCode": 1460
+  },
+  {
+    "starting_code": "S70",
+    "ending_code": "S79",
+    "chapter": "19",
+    "title": "Lésions traumatiques de la hanche et de la cuisse",
+    "StartingNumericCode": 1461,
+    "EndingNumericCode": 1470
+  },
+  {
+    "starting_code": "S80",
+    "ending_code": "S89",
+    "chapter": "19",
+    "title": "Lésions traumatiques du genou et de la jambe",
+    "StartingNumericCode": 1471,
+    "EndingNumericCode": 1480
+  },
+  {
+    "starting_code": "S90",
+    "ending_code": "S99",
+    "chapter": "19",
+    "title": "Lésions traumatiques de la cheville et du pied",
+    "StartingNumericCode": 1481,
+    "EndingNumericCode": 1490
+  },
+  {
+    "starting_code": "T00",
+    "ending_code": "T07",
+    "chapter": "19",
+    "title": "Lésions traumatiques de plusieurs parties du corps",
+    "StartingNumericCode": 1491,
+    "EndingNumericCode": 1498
+  },
+  {
+    "starting_code": "T08",
+    "ending_code": "T14",
+    "chapter": "19",
+    "title": "Lésions traumatiques de siège non précisé du tronc, membre ou autre région du corps",
+    "StartingNumericCode": 1499,
+    "EndingNumericCode": 1505
+  },
+  {
+    "starting_code": "T15",
+    "ending_code": "T19",
+    "chapter": "19",
+    "title": "Effets dus à un corps étranger ayant pénétré dans un orifice naturel",
+    "StartingNumericCode": 1506,
+    "EndingNumericCode": 1510
+  },
+  {
+    "starting_code": "T20",
+    "ending_code": "T25",
+    "chapter": "19",
+    "title": "Brûlures et corrosions de la surface externe du corps, selon la localisation",
+    "StartingNumericCode": 1511,
+    "EndingNumericCode": 1516
+  },
+  {
+    "starting_code": "T26",
+    "ending_code": "T28",
+    "chapter": "19",
+    "title": "Brûlures et corrosions de l’œil et des organes internes",
+    "StartingNumericCode": 1517,
+    "EndingNumericCode": 1519
+  },
+  {
+    "starting_code": "T29",
+    "ending_code": "T32",
+    "chapter": "19",
+    "title": "Brûlures et corrosions de parties du corps, multiples et non précisées",
+    "StartingNumericCode": 1520,
+    "EndingNumericCode": 1523
+  },
+  {
+    "starting_code": "T33",
+    "ending_code": "T35",
+    "chapter": "19",
+    "title": "Gelures",
+    "StartingNumericCode": 1524,
+    "EndingNumericCode": 1526
+  },
+  {
+    "starting_code": "T36",
+    "ending_code": "T50",
+    "chapter": "19",
+    "title": "Intoxications par des médicaments et des substances biologiques",
+    "StartingNumericCode": 1527,
+    "EndingNumericCode": 1541
+  },
+  {
+    "starting_code": "T51",
+    "ending_code": "T65",
+    "chapter": "19",
+    "title": "Effets toxiques de substances d’origine essentiellement non médicinale",
+    "StartingNumericCode": 1542,
+    "EndingNumericCode": 1556
+  },
+  {
+    "starting_code": "T66",
+    "ending_code": "T78",
+    "chapter": "19",
+    "title": "Effets de causes externes, autres et non précisés",
+    "StartingNumericCode": 1557,
+    "EndingNumericCode": 1567
+  },
+  {
+    "starting_code": "T79",
+    "ending_code": "T79",
+    "chapter": "19",
+    "title": "Certaines complications précoces des traumatismes",
+    "StartingNumericCode": 1568,
+    "EndingNumericCode": 1568
+  },
+  {
+    "starting_code": "T80",
+    "ending_code": "T88",
+    "chapter": "19",
+    "title": "Complications de soins chirurgicaux et médicaux, non classées ailleurs",
+    "StartingNumericCode": 1569,
+    "EndingNumericCode": 1577
+  },
+  {
+    "starting_code": "T89",
+    "ending_code": "T89",
+    "chapter": "19",
+    "title": "Autres complications d’un traumatisme non classées ailleurs",
+    "StartingNumericCode": 1578,
+    "EndingNumericCode": 1578
+  },
+  {
+    "starting_code": "T90",
+    "ending_code": "T98",
+    "chapter": "19",
+    "title": "Séquelles de lésions traumatiques, d’empoisonnements et d’autres conséquences de causes externes",
+    "StartingNumericCode": 1579,
+    "EndingNumericCode": 1587
+  },
+  {
+    "starting_code": "V01",
+    "ending_code": "X59",
+    "chapter": "20",
+    "title": "Accidents",
+    "EndingNumericCode": 1599
+  },
+  {
+    "starting_code": "X60",
+    "ending_code": "X84",
+    "chapter": "20",
+    "title": "Lésion auto-infligée",
+    "EndingNumericCode": 1600
+  },
+  {
+    "starting_code": "X85",
+    "ending_code": "Y09",
+    "chapter": "20",
+    "title": "Agression",
+    "EndingNumericCode": 1601
+  },
+  {
+    "starting_code": "Y10",
+    "ending_code": "Y34",
+    "chapter": "20",
+    "title": "Événements, dont les circonstances précisés ne sont pas déterminées",
+    "EndingNumericCode": 1602
+  },
+  {
+    "starting_code": "Y35",
+    "ending_code": "Y36",
+    "chapter": "20",
+    "title": "Mesures judiciaires et faits de guerre",
+    "StartingNumericCode": 1603,
+    "EndingNumericCode": 1604
+  },
+  {
+    "starting_code": "Y40",
+    "ending_code": "Y84",
+    "chapter": "20",
+    "title": "Complications de soins médicaux et chirurgicaux",
+    "EndingNumericCode": 1609
+  },
+  {
+    "starting_code": "Z00",
+    "ending_code": "Z13",
+    "chapter": "21",
+    "title": "Sujets en contact avec les services de santé pour des examens divers",
+    "StartingNumericCode": 1610,
+    "EndingNumericCode": 1620
+  },
+  {
+    "starting_code": "Z20",
+    "ending_code": "Z29",
+    "chapter": "21",
+    "title": "Sujets pouvant courir un risque lié à des maladies transmissibles",
+    "StartingNumericCode": 1621,
+    "EndingNumericCode": 1630
+  },
+  {
+    "starting_code": "Z30",
+    "ending_code": "Z39",
+    "chapter": "21",
+    "title": "Sujets ayant recours aux services de santé pour des motifs liés à la reproduction",
+    "StartingNumericCode": 1631,
+    "EndingNumericCode": 1640
+  },
+  {
+    "starting_code": "Z40",
+    "ending_code": "Z54",
+    "chapter": "21",
+    "title": "Sujets ayant recours aux services de santé pour des actes médicaux et des soins spécifiques",
+    "StartingNumericCode": 1641,
+    "EndingNumericCode": 1655
+  },
+  {
+    "starting_code": "Z55",
+    "ending_code": "Z65",
+    "chapter": "21",
+    "title": "Sujets dont la santé peut être menacée par des conditions socio-économiques et psycho-sociales",
+    "StartingNumericCode": 1656,
+    "EndingNumericCode": 1666
+  },
+  {
+    "starting_code": "Z70",
+    "ending_code": "Z76",
+    "chapter": "21",
+    "title": "Sujets ayant recours aux services de santé pour d’autres motifs",
+    "StartingNumericCode": 1667,
+    "EndingNumericCode": 1673
+  },
+  {
+    "starting_code": "Z80",
+    "ending_code": "Z99",
+    "chapter": "21",
+    "title": "Sujets dont la santé peut être menacée en raison d’antécédents personnels et familiaux et de certaines affections",
+    "StartingNumericCode": 1674,
+    "EndingNumericCode": 1693
+  },
+  {
+    "starting_code": "U00",
+    "ending_code": "U49",
+    "chapter": "22",
+    "title": "Classement provisoire d’affections d’étiologie incertaine, codes affectés et non affectés",
+    "EndingNumericCode": 1737
+  },
+  {
+    "starting_code": "U50",
+    "ending_code": "U52",
+    "chapter": "22",
+    "title": "Limitation fonctionnelle",
+    "StartingNumericCode": 1738,
+    "EndingNumericCode": 1740
+  },
+  {
+    "starting_code": "U55",
+    "ending_code": "U55",
+    "chapter": "22",
+    "title": "Inscription pour transplantation d’organe",
+    "StartingNumericCode": 1741,
+    "EndingNumericCode": 1741
+  },
+  {
+    "starting_code": "U60",
+    "ending_code": "U61",
+    "chapter": "22",
+    "title": "Définition des stades de l’infection par le VIH",
+    "StartingNumericCode": 1742,
+    "EndingNumericCode": 1743
+  },
+  {
+    "starting_code": "U69",
+    "ending_code": "U69",
+    "chapter": "22",
+    "title": "Autres codes secondaires destinés à des usages particuliers",
+    "StartingNumericCode": 1744,
+    "EndingNumericCode": 1744
+  },
+  {
+    "starting_code": "U80",
+    "ending_code": "U85",
+    "chapter": "22",
+    "title": "Agents infectieux résistants aux antibiotiques ou aux thérapies chimiques précisés",
+    "StartingNumericCode": 1745,
+    "EndingNumericCode": 1750
+  },
+  {
+    "starting_code": "U98",
+    "ending_code": "U99",
+    "chapter": "22",
+    "title": "Codes affectés et non affectés",
+    "StartingNumericCode": 1751,
+    "EndingNumericCode": 1752
+  },
+  { "starting_code": "" }
+]

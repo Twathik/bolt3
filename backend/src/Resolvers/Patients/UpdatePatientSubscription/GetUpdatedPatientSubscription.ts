@@ -20,6 +20,7 @@ export class GetUpdatedPatientSubscription {
 
     try {
       const patient = await prisma.patient.findUnique({ where: { id } })
+
       return patient
     } catch (error) {
       throw new Error('subscription to patient update failed')

@@ -1,13 +1,13 @@
 import TrashTable from "@/components/AdminPanelComponents/TrashComponents/TrashTable";
-import { createClientFromCookies } from "@/lib/wundergraph";
 import { Alert, AlertTitle, AlertDescription } from "@/ui/components/ui/alert";
 import { ExclamationTriangleIcon } from "@heroicons/react/24/outline";
 import type { LoaderFunctionArgs } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
+import createClientFromCookiesAndCheckUser from "@/lib/checkUser.server";
 
 export async function loader({ request }: LoaderFunctionArgs) {
   try {
-    const client = createClientFromCookies(request);
+    const client = await createClientFromCookiesAndCheckUser(request);
     const { data, error } = await client.query({
       operationName: "patients/getOnTrashPatients",
     });

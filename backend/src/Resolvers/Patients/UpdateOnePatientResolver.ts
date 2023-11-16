@@ -7,8 +7,8 @@ import {
   getPrismaFromContext,
   transformCountFieldIntoSelectRelationsCount,
 } from '../../@generated/helpers'
-import updatePatient_typesense from '../../Utils/typesense/Patients/updatePatient'
 import { Context } from '../../context'
+import UpdateTypesenseDocument from '../../Utils/typesense/operations/updateDocument'
 
 @TypeGraphQL.Resolver((_of) => Patient)
 export class UpdateOnePatientResolver {
@@ -28,7 +28,8 @@ export class UpdateOnePatientResolver {
         ...args,
         ...(_count && transformCountFieldIntoSelectRelationsCount(_count)),
       })
-      await updatePatient_typesense({
+      await UpdateTypesenseDocument({
+        index: 'patients',
         document: patient,
         typesense: ctx.typesense,
       })

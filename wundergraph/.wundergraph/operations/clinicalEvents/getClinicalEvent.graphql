@@ -1,0 +1,15 @@
+query ($id: String!) {
+  mainDb_clinicalEvent(where: { id: $id }) {
+    id
+    eventType
+    updatedAt
+    createdReport
+    report
+    empty
+    dicomId
+    dicom
+    user {
+      fullName
+    }
+  }
+}

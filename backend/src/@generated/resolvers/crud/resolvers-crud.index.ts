@@ -1,6 +1,9 @@
+export { ClinicalEventCrudResolver } from "./ClinicalEvent/ClinicalEventCrudResolver";
 export { ConsultationCrudResolver } from "./Consultation/ConsultationCrudResolver";
 export { ConsultationListCrudResolver } from "./ConsultationList/ConsultationListCrudResolver";
+export { DocumentTemplateCrudResolver } from "./DocumentTemplate/DocumentTemplateCrudResolver";
 export { MobileDeviceCrudResolver } from "./MobileDevice/MobileDeviceCrudResolver";
 export { PatientCrudResolver } from "./Patient/PatientCrudResolver";
+export { PrescriptionCrudResolver } from "./Prescription/PrescriptionCrudResolver";
 export { SettingCrudResolver } from "./Setting/SettingCrudResolver";
 export { UserCrudResolver } from "./User/UserCrudResolver";

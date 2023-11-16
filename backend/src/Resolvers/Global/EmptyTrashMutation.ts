@@ -1,10 +1,6 @@
 import * as TypeGraphQL from 'type-graphql'
 import type { GraphQLResolveInfo } from 'graphql'
-import {
-  AffectedRowsOutput,
-  Patient,
-  UpdateManyPatientArgs,
-} from '../../@generated'
+import { Patient } from '../../@generated'
 import {
   getPrismaFromContext,
   transformCountFieldIntoSelectRelationsCount,
@@ -14,25 +10,29 @@ import { PrismaClient } from '@prisma/client'
 
 @TypeGraphQL.Resolver((_of) => Patient)
 export class EmptyTrashMutation {
-  @TypeGraphQL.Mutation((_returns) => AffectedRowsOutput, {
+  @TypeGraphQL.Mutation((_returns) => Boolean, {
     nullable: false,
   })
   async emptyTrashMutation(
     @TypeGraphQL.Ctx() ctx: any,
     @TypeGraphQL.Info() info: GraphQLResolveInfo,
-    @TypeGraphQL.Args() args: UpdateManyPatientArgs,
     @TypeGraphQL.PubSub('EMPTY_TRASH') publish: TypeGraphQL.Publisher<string>,
-  ): Promise<AffectedRowsOutput> {
+    @TypeGraphQL.PubSub('GET_UPDATED_PATIENT')
+    update: TypeGraphQL.Publisher<string>,
+  ): Promise<Boolean> {
     const { _count } = transformInfoIntoPrismaArgs(info)
     const prisma = getPrismaFromContext(ctx) as PrismaClient
     try {
-      const trash = await prisma.patient.updateMany({
-        ...args,
-        where: { AND: [{ id: args.where?.id }, { onTrash: true }] },
+      const doc = await prisma.patient.findMany({ where: { onTrash: true } })
+      await prisma.patient.updateMany({
+        where: { onTrash: true },
+        data: { deleted: true },
         ...(_count && transformCountFieldIntoSelectRelationsCount(_count)),
       })
-      publish('empty')
-      return trash
+      publish('update')
+      doc.forEach((d) => update(d.id))
+
+      return true
     } catch (error) {
       throw Error('Impossible to empty trash')
     }

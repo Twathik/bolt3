@@ -2,6 +2,7 @@ import * as TypeGraphQL from "type-graphql";
 import * as GraphQLScalars from "graphql-scalars";
 import { Prisma } from "@prisma/client";
 import { DecimalJSScalar } from "../../scalars";
+import { ClinicalEventListRelationFilter } from "../inputs/ClinicalEventListRelationFilter";
 import { DateTimeFilter } from "../inputs/DateTimeFilter";
 import { EnumRoleFilter } from "../inputs/EnumRoleFilter";
 import { StringNullableFilter } from "../inputs/StringNullableFilter";
@@ -84,4 +85,9 @@ export class UserWhereUniqueInput {
     nullable: true
   })
   createdAt?: DateTimeFilter | undefined;
+
+  @TypeGraphQL.Field(_type => ClinicalEventListRelationFilter, {
+    nullable: true
+  })
+  ClinicalEvent?: ClinicalEventListRelationFilter | undefined;
 }

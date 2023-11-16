@@ -1,0 +1,9 @@
+
+mutation addANSMClasses($input: [AddANSMClassesInput!]!, $upsert: Boolean) {
+  addANSMClasses(input: $input, upsert: $upsert) {
+    aNSMClasses{
+      id
+    }
+    numUids
+  }
+}

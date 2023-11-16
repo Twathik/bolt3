@@ -1,0 +1,8 @@
+mutation addRXConcept($input: [AddRXConceptInput!]!, $upsert: Boolean) {
+      addRXConcept(input: $input, upsert: $upsert) {
+        rXConcept {
+          id
+        }
+        numUids
+      }
+    }

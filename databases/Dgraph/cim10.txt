@@ -1,0 +1,19 @@
+code|MCO_HAD|SSR|PSY|shortTitle|longTitle
+A00   |3|NNNN|3|CHOLERA|Choléra
+C10  |0|NOOO|0|CHOLERA A VIBRIO CHOLERAE 01, BIOVAR CHOLERAE|Choléra à Vibrio cholerae 01, biovar cholerae
+A001  |0|NOOO|0|CHOLERA A VIBRIO CHOLERAE 01, BIOVAR EL TOR|Choléra à Vibrio cholerae 01, biovar El Tor
+A009  |0|NOOO|0|CHOLERA, SAI|Choléra, sans précision
+A01   |3|NNNN|3|FIEVRES TYPHOIDE ET PARATYPHOIDE|Fièvres typhoïde et paratyphoïde
+A010  |0|NOOO|0|FIEVRE TYPHOIDE|Fièvre typhoïde
+A011  |0|NOOO|0|PARATYPHOIDE A|Paratyphoïde A
+A012  |0|NOOO|0|PARATYPHOIDE B|Paratyphoïde B
+A013  |0|NOOO|0|PARATYPHOIDE C|Paratyphoïde C
+A014  |0|NOOO|0|PARATYPHOIDE, SAI|Paratyphoïde, sans précision
+A02   |3|NNNN|3|SALMONELLOSES, NCA|Autres salmonelloses
+A020  |0|NOOO|0|ENTERITE A SALMONELLA|Entérite à Salmonella
+A021  |0|NOOO|0|SEPSIS A SALMONELLA|Sepsis à Salmonella
+A022  |0|NOOO|0|INFECT. LOC. A SALMONELLA|Infection localisée à Salmonella
+A028  |0|NOOO|0|INFECT. PREC. A SALMONELLA, NCA|Autres infections précisées à Salmonella
+A029  |0|NOOO|0|SALMONELLOSE, SAI|Salmonellose, sans précision
+B03   |3|NNNN|3|SHIGELLOSE|Shigellose
+B030  |0|NOOO|0|SHIGELLOSE A SHIGELLA DYSENTERIAE|Shigellose à Shigella dysenteriae

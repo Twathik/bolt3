@@ -1,5 +1,4 @@
-import stylesheet from "@/tailwind.css";
-import type { LinksFunction } from "@remix-run/node";
+// import type { LinksFunction } from "@remix-run/node";
 import {
   Links,
   LiveReload,
@@ -8,6 +7,13 @@ import {
   Scripts,
   ScrollRestoration,
 } from "@remix-run/react";
+
+import "./tailwind.css";
+import "./components/GeneralComponents/LexicalEditor/lexical.css";
+import "./components/GeneralComponents/LexicalEditor/themes/CommentEditorTheme";
+import "./components/GeneralComponents/LexicalEditor/themes/PlaygroundEditorTheme.css";
+import "./components/GeneralComponents/LexicalEditor/themes/StickyEditorTheme";
+
 import { Toaster } from "./ui/components/ui/toaster";
 import GlobalProgressBar from "./components/GeneralComponents/ProgressBar/GlobalProgressBar";
 import AppFloatingActionButton from "./components/GeneralComponents/FAB/AppFloatingActionButton";
@@ -15,9 +21,9 @@ import { useSubscription } from "./lib/wundergraph";
 import useTabsStore from "./stores/tabsStore";
 import { useEffect } from "react";
 
-export const links: LinksFunction = () => [
-  { rel: "stylesheet", href: stylesheet },
-];
+/* export const links: LinksFunction = () => [
+  ...(cssBundleHref ? [{ rel: "stylesheet", href: cssBundleHref }] : []),
+]; */
 
 export default function App() {
   const { data } = useSubscription({

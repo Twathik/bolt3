@@ -1,8 +1,0 @@
-mutation ($id: mainDb_StringFilter!) {
-  mainDb_emptyTrashMutation(
-    where: { id: $id }
-    data: { deleted: { set: true } }
-  ) {
-    count
-  }
-}

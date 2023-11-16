@@ -1,0 +1,10 @@
+
+
+mutation addBFDrugsInteractions ($input: [AddBFDrugsInteractionsInput!]!, $upsert: Boolean ) {
+  addBFDrugsInteractions(input: $input, upsert: $upsert) {
+    bFDrugsInteractions {
+      id
+    }
+    numUids
+  }
+}

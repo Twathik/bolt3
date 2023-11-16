@@ -27,20 +27,25 @@ enum MobileDeviceType {
   SECRETARY
 }
 
+enum EventTypes {
+  DIAGNOSTIC
+  PRESCRIPTION
+}
+
 model User {
-  id              String   @id @default(uuid())
-  email           String   @unique
-  userId          String   @unique
+  id              String          @id @default(uuid())
+  email           String          @unique
+  userId          String          @unique
   lastName        String?
   firstName       String?
   fullName        String?
   avatarUrl       String?
-  role            Role     @default(USER)
+  role            Role            @default(USER)
   phoneNumbers    String[]
-  lastConnection  DateTime @updatedAt
+  lastConnection  DateTime        @updatedAt
   typesenseApiKey String?
-
-  createdAt DateTime @default(now())
+  createdAt       DateTime        @default(now())
+  ClinicalEvent   ClinicalEvent[]
 
   @@index([role])
 }
@@ -79,6 +84,7 @@ model Patient {
   onTrash               Boolean            @default(false)
   informationsConfirmed Boolean            @default(false)
   ConsultationList      ConsultationList[]
+  ClinicalEvent         ClinicalEvent[]
 
   @@index([sexe])
 }
@@ -104,4 +110,43 @@ model ConsultationList {
   updatedAt DateTime @updatedAt
 
   @@unique([patientId, consultationId, active])
+}
+
+model ClinicalEvent {
+  id        String     @id @default(uuid())
+  eventType EventTypes
+
+  user   User   @relation(fields: [userId], references: [id])
+  userId String
+
+  patient   Patient @relation(fields: [patientId], references: [id])
+  patientId String
+
+  createdAt            DateTime      @default(now())
+  updatedAt            DateTime      @updatedAt
+  onTrash              Boolean       @default(false)
+  deleted              Boolean       @default(false)
+  empty                Boolean       @default(true)
+  createdReport        Boolean       @default(false)
+  report               String?       @db.Text
+  dicom                Boolean       @default(false)
+  dicomId              String?
+  clinicalDiagnosticId String?
+  Prescription         Prescription?
+}
+
+model Prescription {
+  id                String        @id @default(uuid())
+  clinicalEvent     ClinicalEvent @relation(fields: [clinicalEventId], references: [id], onDelete: Cascade)
+  clinicalEventId   String        @unique
+  savedPrescription Json          @default("{}")
+  createdAt         DateTime      @default(now())
+  updatedAt         DateTime      @updatedAt
+}
+
+model DocumentTemplate {
+  id        String     @id @default(uuid())
+  eventType EventTypes @unique
+  template  String     @db.Text
+  empty     Boolean    @default(true)
 }

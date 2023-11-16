@@ -103,12 +103,11 @@ services:
   ftp-server:
     container_name: ftp
     environment:
-      - FTP_PASS=123
-      - FTP_USER=user
-    image: garethflowers/ftp-server
+      - USERS=one|1234|one two|1234
+    image: delfer/alpine-ftp-server
     ports:
-      - 20:20
       - 21:21
-      - 40000-40009:40000-40009
+      - 21000-21010:21000-21010
     volumes:
-      - ./ftp-data:/home/user
+      - ./ftp/one:/ftp/one
+      - ./ftp/two:/ftp/two

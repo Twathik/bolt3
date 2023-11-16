@@ -1,9 +1,15 @@
+export { ClinicalEventScalarFieldEnum } from "./ClinicalEventScalarFieldEnum";
 export { ConsultationListScalarFieldEnum } from "./ConsultationListScalarFieldEnum";
 export { ConsultationScalarFieldEnum } from "./ConsultationScalarFieldEnum";
+export { DocumentTemplateScalarFieldEnum } from "./DocumentTemplateScalarFieldEnum";
+export { EventTypes } from "./EventTypes";
+export { JsonNullValueFilter } from "./JsonNullValueFilter";
+export { JsonNullValueInput } from "./JsonNullValueInput";
 export { MobileDeviceScalarFieldEnum } from "./MobileDeviceScalarFieldEnum";
 export { MobileDeviceType } from "./MobileDeviceType";
 export { NullsOrder } from "./NullsOrder";
 export { PatientScalarFieldEnum } from "./PatientScalarFieldEnum";
+export { PrescriptionScalarFieldEnum } from "./PrescriptionScalarFieldEnum";
 export { QueryMode } from "./QueryMode";
 export { Role } from "./Role";
 export { SettingScalarFieldEnum } from "./SettingScalarFieldEnum";

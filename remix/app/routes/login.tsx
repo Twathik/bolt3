@@ -1,6 +1,20 @@
-import { useAuth } from "@/lib/wundergraph";
+import { createClientFromCookies, useAuth } from "@/lib/wundergraph";
 import Welcome_doctor_young_1 from "../images/Welcome_doctor_young_1.png";
 import logo_bolt from "../images/logo_bolt.png";
+import type { LoaderFunctionArgs } from "@remix-run/node";
+import { json, redirect } from "@remix-run/node";
+import type { MetaFunction } from "@remix-run/react";
+
+export const loader = async ({ request }: LoaderFunctionArgs) => {
+  const client = createClientFromCookies(request);
+  try {
+    const user = await client.fetchUser();
+    if (user) return redirect("/");
+  } catch (error) {}
+
+  return json({});
+};
+export const meta: MetaFunction = () => [{ title: "Se connecter" }];
 
 export default function Login() {
   const { login } = useAuth();

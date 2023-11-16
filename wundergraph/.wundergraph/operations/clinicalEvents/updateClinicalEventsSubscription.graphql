@@ -1,0 +1,14 @@
+subscription ($patientId: String!) {
+  mainDb_updateClinicalEventsSubscription(patientId: $patientId) {
+    id
+    eventType
+    updatedAt
+    report
+    empty
+    dicomId
+    dicom
+    user {
+      fullName
+    }
+  }
+}

@@ -1,25 +1,25 @@
 import type { ColumnDef } from "@tanstack/react-table";
 import { Checkbox } from "@/ui/components/ui/checkbox";
-import { BarsArrowDownIcon } from "@heroicons/react/24/outline";
-import { Button } from "@/ui/components/ui/button";
 import type { PatientsGetOnTrashPatientsResponseData } from "@/components/generated/models";
-import DeleteDefinitivelyElementButton from "./DeleteDefinitivelyElementButton";
+import ToggleTrashElements from "./ToggleTrashElements";
 
 export const TrashColumn: ColumnDef<
   PatientsGetOnTrashPatientsResponseData["mainDb_patients"][0]
 >[] = [
   {
     id: "select",
+    enableColumnFilter: false,
     header: ({ table }) => (
       <Checkbox
-        checked={table.getIsAllPageRowsSelected()}
-        onCheckedChange={(value) => table.toggleAllPageRowsSelected(!!value)}
+        checked={table.getIsAllRowsSelected()}
+        onCheckedChange={(value) => table.toggleAllRowsSelected(!!value)}
         aria-label="Select all"
       />
     ),
     cell: ({ row }) => (
       <Checkbox
         checked={row.getIsSelected()}
+        disabled={!row.getCanSelect()}
         onCheckedChange={(value) => row.toggleSelected(!!value)}
         aria-label="Select row"
       />
@@ -29,44 +29,26 @@ export const TrashColumn: ColumnDef<
   },
   {
     accessorKey: "patientFullName",
-
-    header: ({ column }) => {
-      return (
-        <Button
-          variant="ghost"
-          onClick={() => {
-            alert("ok");
-            return column.toggleSorting(column.getIsSorted() === "asc");
-          }}>
-          Nom et prénom
-          <BarsArrowDownIcon className="ml-2 h-4 w-4" />
-        </Button>
-      );
-    },
+    header: "Nom et prénom",
+    enableColumnFilter: true,
   },
   {
     accessorKey: "sexe",
-    header: ({ column }) => {
-      return (
-        <Button
-          variant="ghost"
-          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}>
-          Sexe
-          <BarsArrowDownIcon className="ml-2 h-4 w-4" />
-        </Button>
-      );
-    },
+    header: "Sexe",
+    enableColumnFilter: true,
   },
   {
     accessorKey: "supression_date",
     header: "Date de derniere modification",
+    enableColumnFilter: false,
   },
   {
     accessorKey: "actions",
+    enableColumnFilter: false,
     enableHiding: false,
     cell: ({ row }) => {
       const onTrash = row.original;
-      return <DeleteDefinitivelyElementButton patientId={onTrash.id} />;
+      return <ToggleTrashElements patientId={onTrash.id} />;
     },
   },
 ];

@@ -1,45 +1,51 @@
 import BottomPatientNavBar from "@/components/PatientFolder/BottomNavbar/BottomPatientNavBar";
 import PatientHeaderBar from "@/components/PatientFolder/Header/PatientHeaderBar";
-import { createClientFromCookies, useSubscription } from "@/lib/wundergraph";
+import createClientFromCookiesAndCheckUser from "@/lib/checkUser.server";
+import { useSubscription } from "@/lib/wundergraph";
 import usePatientStore from "@/stores/patientStore";
 import { useToast } from "@/ui/components/ui/use-toast";
-import type { LoaderFunctionArgs } from "@remix-run/node";
+import { type LoaderFunctionArgs } from "@remix-run/node";
 import { Outlet, useLoaderData } from "@remix-run/react";
 import { useEffect } from "react";
 
 export async function loader({ params, request }: LoaderFunctionArgs) {
+  let client = await createClientFromCookiesAndCheckUser(request);
+
   const patientId = params.patientId;
   if (!patientId) return null;
   try {
-    const client = createClientFromCookies(request);
     const { data, error } = await client.query({
       operationName: "patients/getOnePatient",
       input: { patientId },
     });
-    console.log({ data, error });
+
     if (error || !data) return null;
 
-    return data.mainDb_getPatient;
+    return { initialPatient: data.mainDb_getPatient };
   } catch (error) {
     return null;
   }
 }
 
 function PatientLayout() {
-  const initialPatient = useLoaderData<typeof loader>();
+  const loadedData = useLoaderData<typeof loader>();
   const { setPatient, patient } = usePatientStore();
   const { toast } = useToast();
   const { data, error } = useSubscription({
     operationName: "patients/getUpdatedPatientSubscription",
-    input: { id: initialPatient?.id || "" },
+    input: { id: loadedData?.initialPatient?.id || "" },
   });
 
   useEffect(() => {
-    setPatient(initialPatient);
-  }, [initialPatient, setPatient]);
+    if (loadedData?.initialPatient?.deleted == false) {
+      setPatient(loadedData?.initialPatient);
+    }
+  }, [loadedData?.initialPatient, setPatient]);
 
   useEffect(() => {
-    if (data) setPatient(data?.mainDb_getUpdatedPatient);
+    if (data) {
+      setPatient(data.mainDb_getUpdatedPatient);
+    }
   }, [data, setPatient]);
 
   useEffect(() => {
@@ -55,9 +61,11 @@ function PatientLayout() {
   return (
     <main className="h-screen overflow-auto">
       <div className="flex h-full flex-col bg-white ">
-        <PatientHeaderBar patient={patient} />
-        <Outlet />
-        <BottomPatientNavBar patient={patient} />
+        <PatientHeaderBar patient={patient ?? loadedData?.initialPatient} />
+        <Outlet
+          context={{ initialPatient: patient ?? loadedData?.initialPatient }}
+        />
+        <BottomPatientNavBar patient={patient ?? loadedData?.initialPatient} />
       </div>
     </main>
   );

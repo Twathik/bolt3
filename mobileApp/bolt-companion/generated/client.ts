@@ -25,6 +25,28 @@ import type {
 	CountriesResponse,
 	CountriesInput,
 	CountriesResponseData,
+	DrugsIndexDrugsResponse,
+	DrugsIndexDrugsResponseData,
+	ClinicalDiagnosticsIndexClinicalDiagnosticResponse,
+	ClinicalDiagnosticsIndexClinicalDiagnosticResponseData,
+	ClinicalEventsCreateOneClinicalEventResponse,
+	ClinicalEventsCreateOneClinicalEventInput,
+	ClinicalEventsCreateOneClinicalEventResponseData,
+	ClinicalEventsDeleteOneClinicalEventResponse,
+	ClinicalEventsDeleteOneClinicalEventInput,
+	ClinicalEventsDeleteOneClinicalEventResponseData,
+	ClinicalEventsGetClinicalEventResponse,
+	ClinicalEventsGetClinicalEventInput,
+	ClinicalEventsGetClinicalEventResponseData,
+	ClinicalEventsGetClinicalEventsResponse,
+	ClinicalEventsGetClinicalEventsInput,
+	ClinicalEventsGetClinicalEventsResponseData,
+	ClinicalEventsMoveOnTrashClinicalEventResponse,
+	ClinicalEventsMoveOnTrashClinicalEventInput,
+	ClinicalEventsMoveOnTrashClinicalEventResponseData,
+	ClinicalEventsUpdateClinicalEventsSubscriptionResponse,
+	ClinicalEventsUpdateClinicalEventsSubscriptionInput,
+	ClinicalEventsUpdateClinicalEventsSubscriptionResponseData,
 	ConsultationListCheckIfRegistredResponse,
 	ConsultationListCheckIfRegistredInput,
 	ConsultationListCheckIfRegistredResponseData,
@@ -72,9 +94,8 @@ import type {
 	PatientsAdd_One_patient_to_indexResponse,
 	PatientsAdd_One_patient_to_indexInput,
 	PatientsAdd_One_patient_to_indexResponseData,
-	PatientsEmptyTrashPatientResponse,
-	PatientsEmptyTrashPatientInput,
-	PatientsEmptyTrashPatientResponseData,
+	PatientsEmptyTrashResponse,
+	PatientsEmptyTrashResponseData,
 	PatientsGetOnTrashPatientsResponse,
 	PatientsGetOnTrashPatientsResponseData,
 	PatientsGetOnePatientResponse,
@@ -87,9 +108,29 @@ import type {
 	PatientsIndex_patientsResponseData,
 	PatientsOnTrashFoldersSubscriptionResponse,
 	PatientsOnTrashFoldersSubscriptionResponseData,
+	PatientsToggleSelectedTrashPatientResponse,
+	PatientsToggleSelectedTrashPatientInput,
+	PatientsToggleSelectedTrashPatientResponseData,
 	PatientsUpdateOnePatientResponse,
 	PatientsUpdateOnePatientInput,
 	PatientsUpdateOnePatientResponseData,
+	TemplatesFetchTemplateResponse,
+	TemplatesFetchTemplateInput,
+	TemplatesFetchTemplateResponseData,
+	TemplatesGetTemplatesResponse,
+	TemplatesGetTemplatesResponseData,
+	TemplatesUpdateTemplateResponse,
+	TemplatesUpdateTemplateInput,
+	TemplatesUpdateTemplateResponseData,
+	AbbreviationsSearchAbreviationResponse,
+	AbbreviationsSearchAbreviationInput,
+	AbbreviationsSearchAbreviationResponseData,
+	DrugsSearchDrugsResponse,
+	DrugsSearchDrugsInput,
+	DrugsSearchDrugsResponseData,
+	ClinicalDiagnosticsSearchClinicalDiagnosticsResponse,
+	ClinicalDiagnosticsSearchClinicalDiagnosticsInput,
+	ClinicalDiagnosticsSearchClinicalDiagnosticsResponseData,
 	PatientsSearch_patientsResponse,
 	PatientsSearch_patientsInput,
 	PatientsSearch_patientsResponseData,
@@ -165,13 +206,37 @@ export interface AuthProvider {
 }
 
 export const defaultClientConfig: ClientConfig = {
-	applicationHash: "ddcbd8a7",
+	applicationHash: "95ac1ebc",
 	baseURL: "http://api.bolt3.local",
 	sdkVersion: "0.179.2",
 };
 
 export const operationMetadata: OperationMetadata = {
 	Countries: {
+		requiresAuthentication: false,
+	},
+	"Drugs/indexDrugs": {
+		requiresAuthentication: false,
+	},
+	"clinicalDiagnostics/indexClinicalDiagnostic": {
+		requiresAuthentication: false,
+	},
+	"clinicalEvents/createOneClinicalEvent": {
+		requiresAuthentication: true,
+	},
+	"clinicalEvents/deleteOneClinicalEvent": {
+		requiresAuthentication: false,
+	},
+	"clinicalEvents/getClinicalEvent": {
+		requiresAuthentication: false,
+	},
+	"clinicalEvents/getClinicalEvents": {
+		requiresAuthentication: false,
+	},
+	"clinicalEvents/moveOnTrashClinicalEvent": {
+		requiresAuthentication: false,
+	},
+	"clinicalEvents/updateClinicalEventsSubscription": {
 		requiresAuthentication: false,
 	},
 	"consultationList/checkIfRegistred": {
@@ -225,7 +290,7 @@ export const operationMetadata: OperationMetadata = {
 	"patients/add_One_patient_to_index": {
 		requiresAuthentication: false,
 	},
-	"patients/emptyTrashPatient": {
+	"patients/emptyTrash": {
 		requiresAuthentication: false,
 	},
 	"patients/getOnTrashPatients": {
@@ -243,7 +308,28 @@ export const operationMetadata: OperationMetadata = {
 	"patients/onTrashFoldersSubscription": {
 		requiresAuthentication: false,
 	},
+	"patients/toggleSelectedTrashPatient": {
+		requiresAuthentication: false,
+	},
 	"patients/updateOnePatient": {
+		requiresAuthentication: false,
+	},
+	"templates/fetchTemplate": {
+		requiresAuthentication: false,
+	},
+	"templates/getTemplates": {
+		requiresAuthentication: false,
+	},
+	"templates/updateTemplate": {
+		requiresAuthentication: false,
+	},
+	"Abbreviations/searchAbreviation": {
+		requiresAuthentication: false,
+	},
+	"Drugs/searchDrugs": {
+		requiresAuthentication: false,
+	},
+	"clinicalDiagnostics/searchClinicalDiagnostics": {
 		requiresAuthentication: false,
 	},
 	"patients/search_patients": {
@@ -328,6 +414,18 @@ export type Queries = {
 		requiresAuthentication: false;
 		liveQuery: boolean;
 	};
+	"clinicalEvents/getClinicalEvent": {
+		input: ClinicalEventsGetClinicalEventInput;
+		response: { data?: ClinicalEventsGetClinicalEventResponse["data"]; error?: ClientOperationErrors };
+		requiresAuthentication: false;
+		liveQuery: boolean;
+	};
+	"clinicalEvents/getClinicalEvents": {
+		input: ClinicalEventsGetClinicalEventsInput;
+		response: { data?: ClinicalEventsGetClinicalEventsResponse["data"]; error?: ClientOperationErrors };
+		requiresAuthentication: false;
+		liveQuery: boolean;
+	};
 	"consultationList/checkIfRegistred": {
 		input: ConsultationListCheckIfRegistredInput;
 		response: { data?: ConsultationListCheckIfRegistredResponse["data"]; error?: ClientOperationErrors };
@@ -358,6 +456,18 @@ export type Queries = {
 		requiresAuthentication: false;
 		liveQuery: boolean;
 	};
+	"templates/fetchTemplate": {
+		input: TemplatesFetchTemplateInput;
+		response: { data?: TemplatesFetchTemplateResponse["data"]; error?: ClientOperationErrors };
+		requiresAuthentication: false;
+		liveQuery: boolean;
+	};
+	"templates/getTemplates": {
+		input?: undefined;
+		response: { data?: TemplatesGetTemplatesResponse["data"]; error?: ClientOperationErrors };
+		requiresAuthentication: false;
+		liveQuery: boolean;
+	};
 	"users/get": {
 		input?: undefined;
 		response: { data?: UsersGetResponseData; error?: OperationErrors["users/get"] };
@@ -367,6 +477,31 @@ export type Queries = {
 };
 
 export type Mutations = {
+	"Drugs/indexDrugs": {
+		input?: undefined;
+		response: { data?: DrugsIndexDrugsResponse["data"]; error?: ClientOperationErrors };
+		requiresAuthentication: false;
+	};
+	"clinicalDiagnostics/indexClinicalDiagnostic": {
+		input?: undefined;
+		response: { data?: ClinicalDiagnosticsIndexClinicalDiagnosticResponse["data"]; error?: ClientOperationErrors };
+		requiresAuthentication: false;
+	};
+	"clinicalEvents/createOneClinicalEvent": {
+		input: ClinicalEventsCreateOneClinicalEventInput;
+		response: { data?: ClinicalEventsCreateOneClinicalEventResponse["data"]; error?: ClientOperationErrors };
+		requiresAuthentication: true;
+	};
+	"clinicalEvents/deleteOneClinicalEvent": {
+		input: ClinicalEventsDeleteOneClinicalEventInput;
+		response: { data?: ClinicalEventsDeleteOneClinicalEventResponse["data"]; error?: ClientOperationErrors };
+		requiresAuthentication: false;
+	};
+	"clinicalEvents/moveOnTrashClinicalEvent": {
+		input: ClinicalEventsMoveOnTrashClinicalEventInput;
+		response: { data?: ClinicalEventsMoveOnTrashClinicalEventResponse["data"]; error?: ClientOperationErrors };
+		requiresAuthentication: false;
+	};
 	"consultationList/registerPatient": {
 		input: ConsultationListRegisterPatientInput;
 		response: { data?: ConsultationListRegisterPatientResponse["data"]; error?: ClientOperationErrors };
@@ -430,9 +565,9 @@ export type Mutations = {
 		response: { data?: PatientsAdd_One_patient_to_indexResponse["data"]; error?: ClientOperationErrors };
 		requiresAuthentication: false;
 	};
-	"patients/emptyTrashPatient": {
-		input: PatientsEmptyTrashPatientInput;
-		response: { data?: PatientsEmptyTrashPatientResponse["data"]; error?: ClientOperationErrors };
+	"patients/emptyTrash": {
+		input?: undefined;
+		response: { data?: PatientsEmptyTrashResponse["data"]; error?: ClientOperationErrors };
 		requiresAuthentication: false;
 	};
 	"patients/index_patients": {
@@ -440,9 +575,40 @@ export type Mutations = {
 		response: { data?: PatientsIndex_patientsResponse["data"]; error?: ClientOperationErrors };
 		requiresAuthentication: false;
 	};
+	"patients/toggleSelectedTrashPatient": {
+		input: PatientsToggleSelectedTrashPatientInput;
+		response: { data?: PatientsToggleSelectedTrashPatientResponse["data"]; error?: ClientOperationErrors };
+		requiresAuthentication: false;
+	};
 	"patients/updateOnePatient": {
 		input: PatientsUpdateOnePatientInput;
 		response: { data?: PatientsUpdateOnePatientResponse["data"]; error?: ClientOperationErrors };
+		requiresAuthentication: false;
+	};
+	"templates/updateTemplate": {
+		input: TemplatesUpdateTemplateInput;
+		response: { data?: TemplatesUpdateTemplateResponse["data"]; error?: ClientOperationErrors };
+		requiresAuthentication: false;
+	};
+	"Abbreviations/searchAbreviation": {
+		input: AbbreviationsSearchAbreviationInput;
+		response: {
+			data?: AbbreviationsSearchAbreviationResponseData;
+			error?: OperationErrors["Abbreviations/searchAbreviation"];
+		};
+		requiresAuthentication: false;
+	};
+	"Drugs/searchDrugs": {
+		input: DrugsSearchDrugsInput;
+		response: { data?: DrugsSearchDrugsResponseData; error?: OperationErrors["Drugs/searchDrugs"] };
+		requiresAuthentication: false;
+	};
+	"clinicalDiagnostics/searchClinicalDiagnostics": {
+		input: ClinicalDiagnosticsSearchClinicalDiagnosticsInput;
+		response: {
+			data?: ClinicalDiagnosticsSearchClinicalDiagnosticsResponseData;
+			error?: OperationErrors["clinicalDiagnostics/searchClinicalDiagnostics"];
+		};
 		requiresAuthentication: false;
 	};
 	"patients/search_patients": {
@@ -458,6 +624,11 @@ export type Mutations = {
 };
 
 export type Subscriptions = {
+	"clinicalEvents/updateClinicalEventsSubscription": {
+		input: ClinicalEventsUpdateClinicalEventsSubscriptionInput;
+		response: { data?: ClinicalEventsUpdateClinicalEventsSubscriptionResponse["data"]; error?: ClientOperationErrors };
+		requiresAuthentication: false;
+	};
 	"global/closeAllTabsSubscription": {
 		input?: undefined;
 		response: { data?: GlobalCloseAllTabsSubscriptionResponse["data"]; error?: ClientOperationErrors };
@@ -489,6 +660,18 @@ export type Subscriptions = {
 		liveQuery: true;
 		requiresAuthentication: false;
 	};
+	"clinicalEvents/getClinicalEvent": {
+		input: ClinicalEventsGetClinicalEventInput;
+		response: { data?: ClinicalEventsGetClinicalEventResponse["data"]; error?: ClientOperationErrors };
+		liveQuery: true;
+		requiresAuthentication: false;
+	};
+	"clinicalEvents/getClinicalEvents": {
+		input: ClinicalEventsGetClinicalEventsInput;
+		response: { data?: ClinicalEventsGetClinicalEventsResponse["data"]; error?: ClientOperationErrors };
+		liveQuery: true;
+		requiresAuthentication: false;
+	};
 	"consultationList/checkIfRegistred": {
 		input: ConsultationListCheckIfRegistredInput;
 		response: { data?: ConsultationListCheckIfRegistredResponse["data"]; error?: ClientOperationErrors };
@@ -516,6 +699,18 @@ export type Subscriptions = {
 	"patients/getOnePatient": {
 		input: PatientsGetOnePatientInput;
 		response: { data?: PatientsGetOnePatientResponse["data"]; error?: ClientOperationErrors };
+		liveQuery: true;
+		requiresAuthentication: false;
+	};
+	"templates/fetchTemplate": {
+		input: TemplatesFetchTemplateInput;
+		response: { data?: TemplatesFetchTemplateResponse["data"]; error?: ClientOperationErrors };
+		liveQuery: true;
+		requiresAuthentication: false;
+	};
+	"templates/getTemplates": {
+		input?: undefined;
+		response: { data?: TemplatesGetTemplatesResponse["data"]; error?: ClientOperationErrors };
 		liveQuery: true;
 		requiresAuthentication: false;
 	};
@@ -534,6 +729,18 @@ export type LiveQueries = {
 		liveQuery: true;
 		requiresAuthentication: false;
 	};
+	"clinicalEvents/getClinicalEvent": {
+		input: ClinicalEventsGetClinicalEventInput;
+		response: { data?: ClinicalEventsGetClinicalEventResponse["data"]; error?: ClientOperationErrors };
+		liveQuery: true;
+		requiresAuthentication: false;
+	};
+	"clinicalEvents/getClinicalEvents": {
+		input: ClinicalEventsGetClinicalEventsInput;
+		response: { data?: ClinicalEventsGetClinicalEventsResponse["data"]; error?: ClientOperationErrors };
+		liveQuery: true;
+		requiresAuthentication: false;
+	};
 	"consultationList/checkIfRegistred": {
 		input: ConsultationListCheckIfRegistredInput;
 		response: { data?: ConsultationListCheckIfRegistredResponse["data"]; error?: ClientOperationErrors };
@@ -561,6 +768,18 @@ export type LiveQueries = {
 	"patients/getOnePatient": {
 		input: PatientsGetOnePatientInput;
 		response: { data?: PatientsGetOnePatientResponse["data"]; error?: ClientOperationErrors };
+		liveQuery: true;
+		requiresAuthentication: false;
+	};
+	"templates/fetchTemplate": {
+		input: TemplatesFetchTemplateInput;
+		response: { data?: TemplatesFetchTemplateResponse["data"]; error?: ClientOperationErrors };
+		liveQuery: true;
+		requiresAuthentication: false;
+	};
+	"templates/getTemplates": {
+		input?: undefined;
+		response: { data?: TemplatesGetTemplatesResponse["data"]; error?: ClientOperationErrors };
 		liveQuery: true;
 		requiresAuthentication: false;
 	};

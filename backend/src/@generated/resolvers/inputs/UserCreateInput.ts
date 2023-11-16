@@ -2,6 +2,7 @@ import * as TypeGraphQL from "type-graphql";
 import * as GraphQLScalars from "graphql-scalars";
 import { Prisma } from "@prisma/client";
 import { DecimalJSScalar } from "../../scalars";
+import { ClinicalEventCreateNestedManyWithoutUserInput } from "../inputs/ClinicalEventCreateNestedManyWithoutUserInput";
 import { UserCreatephoneNumbersInput } from "../inputs/UserCreatephoneNumbersInput";
 import { Role } from "../../enums/Role";
 
@@ -66,4 +67,9 @@ export class UserCreateInput {
     nullable: true
   })
   createdAt?: Date | undefined;
+
+  @TypeGraphQL.Field(_type => ClinicalEventCreateNestedManyWithoutUserInput, {
+    nullable: true
+  })
+  ClinicalEvent?: ClinicalEventCreateNestedManyWithoutUserInput | undefined;
 }

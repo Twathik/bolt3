@@ -1,0 +1,14 @@
+export { AggregatePrescriptionArgs } from "./AggregatePrescriptionArgs";
+export { CreateManyPrescriptionArgs } from "./CreateManyPrescriptionArgs";
+export { CreateOnePrescriptionArgs } from "./CreateOnePrescriptionArgs";
+export { DeleteManyPrescriptionArgs } from "./DeleteManyPrescriptionArgs";
+export { DeleteOnePrescriptionArgs } from "./DeleteOnePrescriptionArgs";
+export { FindFirstPrescriptionArgs } from "./FindFirstPrescriptionArgs";
+export { FindFirstPrescriptionOrThrowArgs } from "./FindFirstPrescriptionOrThrowArgs";
+export { FindManyPrescriptionArgs } from "./FindManyPrescriptionArgs";
+export { FindUniquePrescriptionArgs } from "./FindUniquePrescriptionArgs";
+export { FindUniquePrescriptionOrThrowArgs } from "./FindUniquePrescriptionOrThrowArgs";
+export { GroupByPrescriptionArgs } from "./GroupByPrescriptionArgs";
+export { UpdateManyPrescriptionArgs } from "./UpdateManyPrescriptionArgs";
+export { UpdateOnePrescriptionArgs } from "./UpdateOnePrescriptionArgs";
+export { UpsertOnePrescriptionArgs } from "./UpsertOnePrescriptionArgs";

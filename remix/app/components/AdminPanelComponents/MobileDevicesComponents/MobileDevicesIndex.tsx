@@ -25,7 +25,6 @@ function MobileDevicesIndex({
   useEffect(() => {
     if (subscribedData)
       setMobileDevices(subscribedData.mainDb_getMobileDevicesList);
-    console.log({ subscribedData });
   }, [subscribedData]);
 
   if (subscriptionError) {

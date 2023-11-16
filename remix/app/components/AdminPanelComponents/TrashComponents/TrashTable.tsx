@@ -15,6 +15,7 @@ function TrashTable({
     useState<PatientsGetOnTrashPatientsResponseData["mainDb_patients"]>(
       initialOnTrash
     );
+
   const { data, error } = useSubscription({
     operationName: "patients/onTrashFoldersSubscription",
   });
@@ -29,8 +30,10 @@ function TrashTable({
       });
   }, [error, toast]);
   useEffect(() => {
-    if (data) setOnTrash(data.mainDb_emptyTrashSubscription);
-  }, [data]);
+    if (data) {
+      setOnTrash(data.mainDb_emptyTrashSubscription);
+    }
+  }, [data, setOnTrash]);
   return <DataTable columns={TrashColumn} data={onTrash} />;
 }
 

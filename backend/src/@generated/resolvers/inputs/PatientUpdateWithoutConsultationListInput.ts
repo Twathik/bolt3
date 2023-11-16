@@ -3,6 +3,7 @@ import * as GraphQLScalars from "graphql-scalars";
 import { Prisma } from "@prisma/client";
 import { DecimalJSScalar } from "../../scalars";
 import { BoolFieldUpdateOperationsInput } from "../inputs/BoolFieldUpdateOperationsInput";
+import { ClinicalEventUpdateManyWithoutPatientNestedInput } from "../inputs/ClinicalEventUpdateManyWithoutPatientNestedInput";
 import { DateTimeFieldUpdateOperationsInput } from "../inputs/DateTimeFieldUpdateOperationsInput";
 import { EnumSexeFieldUpdateOperationsInput } from "../inputs/EnumSexeFieldUpdateOperationsInput";
 import { NullableStringFieldUpdateOperationsInput } from "../inputs/NullableStringFieldUpdateOperationsInput";
@@ -69,4 +70,9 @@ export class PatientUpdateWithoutConsultationListInput {
     nullable: true
   })
   informationsConfirmed?: BoolFieldUpdateOperationsInput | undefined;
+
+  @TypeGraphQL.Field(_type => ClinicalEventUpdateManyWithoutPatientNestedInput, {
+    nullable: true
+  })
+  ClinicalEvent?: ClinicalEventUpdateManyWithoutPatientNestedInput | undefined;
 }

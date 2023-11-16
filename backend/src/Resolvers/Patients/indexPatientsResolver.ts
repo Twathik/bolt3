@@ -3,7 +3,7 @@ import { Patient } from '../../@generated'
 
 import { Context } from '../../context'
 import patientSchema from '../../Utils/typesense/Patients/patientSchema'
-import createPatient_typesense from '../../Utils/typesense/Patients/createPatient'
+import createTypesenseDocuments from '../../Utils/typesense/operations/createDocuments'
 
 @TypeGraphQL.Resolver((_of) => Patient)
 export class IndexPatientsResolver {
@@ -21,7 +21,11 @@ export class IndexPatientsResolver {
         where: { onTrash: false, deleted: false },
       })
       await ctx.typesense.collections().create(patientSchema)
-      await createPatient_typesense({ typesense: ctx.typesense, documents })
+      await createTypesenseDocuments({
+        index: 'patients',
+        typesense: ctx.typesense,
+        documents,
+      })
       return true
     } catch (error) {
       console.log({ error })

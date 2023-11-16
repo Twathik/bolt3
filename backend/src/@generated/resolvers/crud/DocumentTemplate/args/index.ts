@@ -1,0 +1,14 @@
+export { AggregateDocumentTemplateArgs } from "./AggregateDocumentTemplateArgs";
+export { CreateManyDocumentTemplateArgs } from "./CreateManyDocumentTemplateArgs";
+export { CreateOneDocumentTemplateArgs } from "./CreateOneDocumentTemplateArgs";
+export { DeleteManyDocumentTemplateArgs } from "./DeleteManyDocumentTemplateArgs";
+export { DeleteOneDocumentTemplateArgs } from "./DeleteOneDocumentTemplateArgs";
+export { FindFirstDocumentTemplateArgs } from "./FindFirstDocumentTemplateArgs";
+export { FindFirstDocumentTemplateOrThrowArgs } from "./FindFirstDocumentTemplateOrThrowArgs";
+export { FindManyDocumentTemplateArgs } from "./FindManyDocumentTemplateArgs";
+export { FindUniqueDocumentTemplateArgs } from "./FindUniqueDocumentTemplateArgs";
+export { FindUniqueDocumentTemplateOrThrowArgs } from "./FindUniqueDocumentTemplateOrThrowArgs";
+export { GroupByDocumentTemplateArgs } from "./GroupByDocumentTemplateArgs";
+export { UpdateManyDocumentTemplateArgs } from "./UpdateManyDocumentTemplateArgs";
+export { UpdateOneDocumentTemplateArgs } from "./UpdateOneDocumentTemplateArgs";
+export { UpsertOneDocumentTemplateArgs } from "./UpsertOneDocumentTemplateArgs";

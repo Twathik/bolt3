@@ -1,14 +1,14 @@
 import { create } from "zustand";
 import { immer } from "zustand/middleware/immer";
 
-interface TabStore {
+type tabStore = {
   tabs: any[];
   closeTabs: () => void;
   addTab: (tab: any) => void;
-}
+};
 
-const useTabsStore = create(
-  immer<TabStore>((set) => ({
+const useTabsStore = create<tabStore>()(
+  immer<tabStore>((set) => ({
     tabs: [],
     closeTabs: () => {
       set((state) => {
@@ -21,7 +21,7 @@ const useTabsStore = create(
         state.tabs.push(tab);
       });
     },
-  })),
+  }))
 );
 
 export default useTabsStore;

@@ -1,0 +1,7 @@
+query {
+  mainDb_documentTemplates {
+    eventType
+    id
+    empty
+  }
+}

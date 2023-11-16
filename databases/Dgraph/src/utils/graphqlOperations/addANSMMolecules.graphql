@@ -1,0 +1,9 @@
+
+mutation addANSMMolecules($input: [AddANSMMoleculesInput!]!, $upsert: Boolean ) {
+  addANSMMolecules(input: $input, upsert: $upsert) {
+    aNSMMolecules{
+      id
+    }
+    numUids
+  }
+}

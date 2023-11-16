@@ -1,0 +1,5 @@
+mutation ($id: String!) {
+  mainDb_moveClinicalEventToTrash(where: { id: $id }) {
+    id
+  }
+}

@@ -10,6 +10,8 @@ level = "INFO"
 [entryPoints]
 [entryPoints.web]
 address = ":80"
+[entryPoints.ftp]
+address = ":21"
 
 [providers.file]
 directory = "/etc/traefik/conf.d/"

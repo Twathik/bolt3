@@ -3,7 +3,13 @@
 /* eslint-disable no-await-in-loop */
 /* eslint-disable no-console */
 
-import { Patient, PrismaClient, Role, User, Setting } from '@prisma/client'
+import {
+  Patient,
+  PrismaClient,
+  Role,
+  User,
+  DocumentTemplate,
+} from '@prisma/client'
 const prisma = new PrismaClient()
 
 async function main() {
@@ -212,6 +218,17 @@ async function main() {
     },
   ]
 
+  const DocumentTemplateData: Omit<DocumentTemplate, 'id'>[] = [
+    {
+      eventType: 'DIAGNOSTIC',
+      template: '',
+    },
+    {
+      eventType: 'PRESCRIPTION',
+      template: '',
+    },
+  ]
+
   for (const u of userData) {
     const user = await prisma.user.upsert({
       where: { email: u.email },
@@ -227,6 +244,15 @@ async function main() {
       create: u,
     })
     console.log(`Created patient with id: ${patient.id}`)
+  }
+
+  for (const d of DocumentTemplateData) {
+    const template = await prisma.documentTemplate.upsert({
+      where: { eventType: d.eventType },
+      update: {},
+      create: d,
+    })
+    console.log(`Created documentTemplates with id: ${template.id}`)
   }
   console.log(`Seeding finished.`)
 }

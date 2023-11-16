@@ -1,0 +1,7 @@
+query ($id: String!) {
+  mainDb_documentTemplate(where: { id: $id }) {
+    template
+    eventType
+    id
+  }
+}

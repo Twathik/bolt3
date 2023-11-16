@@ -1,0 +1,10 @@
+mutation (
+  $create: mainDb_UserCreateInput!
+  $update: mainDb_UserUpdateInput!
+  $where: mainDb_UserWhereUniqueInput!
+) {
+  mainDb_upsertOneUser(create: $create, update: $update, where: $where) {
+    id
+    avatarUrl
+  }
+}

@@ -8,7 +8,6 @@ import {
 } from "@wundergraph/sdk";
 import server from "./wundergraph.server";
 import operations from "./wundergraph.operations";
-import { NextJsTemplate } from "@wundergraph/nextjs/dist/template";
 import { z } from "@wundergraph/sdk/operations";
 
 const countries = introspect.graphql({
@@ -31,6 +30,7 @@ const mainDb = introspect.graphql({
 
 // configureWunderGraph emits the configuration
 configureWunderGraphApplication({
+  
   apis: [countries, mainDb, spaceX],
   authentication: {
     cookieBased: {

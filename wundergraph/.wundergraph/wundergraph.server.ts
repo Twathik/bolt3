@@ -1,10 +1,8 @@
 import { configureWunderGraphServer } from "@wundergraph/sdk/server";
+import hooks from "./Hooks";
 
 export default configureWunderGraphServer(() => ({
-  hooks: {
-    queries: {},
-    mutations: {},
-  },
+  hooks,
   options: { logger: { level: "info" } },
   graphqlServers: [],
 }));

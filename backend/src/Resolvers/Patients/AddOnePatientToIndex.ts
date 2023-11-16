@@ -8,8 +8,9 @@ import {
   transformInfoIntoPrismaArgs,
 } from '../../@generated/helpers'
 import { CreateOnePatientArgs } from './Args/CreateOnePatientArgs'
-import createPatient_typesense from '../../Utils/typesense/Patients/createPatient'
+
 import { PrismaClient } from '@prisma/client'
+import createTypesenseDocuments from '../../Utils/typesense/operations/createDocuments'
 
 @TypeGraphQL.Resolver((_of) => Patient)
 export class AddOnePatientToIndex {
@@ -32,7 +33,8 @@ export class AddOnePatientToIndex {
       })
 
       try {
-        await createPatient_typesense({
+        await createTypesenseDocuments({
+          index: 'patients',
           typesense: ctx.typesense,
           documents: [patient],
         })

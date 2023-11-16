@@ -1,7 +1,14 @@
 {
-  "include": ["remix.env.d.ts", "**/*.ts", "**/*.tsx"],
+  "include": [
+    "env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "app/components/PatientFolder/BottomNavbar/ClinicalEventsComponents"
+  ],
   "compilerOptions": {
     "lib": ["DOM", "DOM.Iterable", "ES2022"],
+    "module": "ES2020",
+    "skipLibCheck": true,
     "isolatedModules": true,
     "esModuleInterop": true,
     "jsx": "react-jsx",
@@ -11,11 +18,9 @@
     "strict": true,
     "allowJs": true,
     "forceConsistentCasingInFileNames": true,
-    "baseUrl": ".",
-    "skipLibCheck": true,
-    "types": ["node"],
+    "baseUrl": "./app",
     "paths": {
-      "@/*": ["./app/*"]
+      "@/*": ["*"]
     },
 
     // Remix takes care of building everything in `remix build`.

@@ -32,7 +32,7 @@ export default function AdminPanelSell({
         to={item.href}
         prefetch="intent"
         className={classNames(
-          item.href.startsWith(pathname)
+          item.href === pathname
             ? "bg-gray-800 text-white"
             : "text-gray-400  hover:text-white",
           "bloc group flex flex-1 justify-start gap-x-3 rounded-md p-2 text-sm font-semibold leading-6  hover:bg-gray-800"
@@ -103,16 +103,14 @@ export default function AdminPanelSell({
                       />
                     </div>
                     <nav className="flex flex-1 flex-col">
-                      <ul role="list" className="flex flex-1 flex-col gap-y-7">
+                      <ul className="flex flex-1 flex-col gap-y-7">
                         <li>
-                          <ul role="list" className="-mx-2 space-y-1">
-                            {menu}
-                          </ul>
+                          <ul className="-mx-2 space-y-1">{menu}</ul>
                         </li>
 
                         <li className="mt-auto">
                           <a
-                            href="#"
+                            href="/"
                             className="group -mx-2 flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6 text-gray-400 hover:bg-gray-800 hover:text-white">
                             <Cog6ToothIcon
                               className="h-6 w-6 shrink-0"
@@ -142,16 +140,14 @@ export default function AdminPanelSell({
               />
             </div>
             <nav className="flex flex-1 flex-col">
-              <ul role="list" className="flex flex-1 flex-col gap-y-7">
+              <ul className="flex flex-1 flex-col gap-y-7">
                 <li>
-                  <ul role="list" className="-mx-2 space-y-1">
-                    {menu}
-                  </ul>
+                  <ul className="-mx-2 space-y-1">{menu}</ul>
                 </li>
 
                 <li className="mt-auto">
                   <a
-                    href="#"
+                    href="/"
                     className="group -mx-2 flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6 text-gray-400 hover:bg-gray-800 hover:text-white">
                     <Cog6ToothIcon
                       className="h-6 w-6 shrink-0"

@@ -1,0 +1,5594 @@
+[
+  {
+    "CODE": "01 A 007",
+    "DCI": "DEXCHLORPHENIRAMINE MALEATE",
+    "FORME": "SIROP",
+    "DOSAGE": "0.5MG/5ML",
+    "COND": "FL/125ML",
+    "MARQUE": "DORAMINE"
+  },
+  {
+    "CODE": "01 A 033",
+    "DCI": "LORATADINE",
+    "FORME": "COMPRIME",
+    "DOSAGE": "10MG",
+    "COND": "B/30",
+    "MARQUE": "LORATAN"
+  },
+  {
+    "CODE": "01 A 033",
+    "DCI": "LORATADINE",
+    "FORME": "COMPRIME",
+    "DOSAGE": "10MG",
+    "COND": "B/10 -  B/20",
+    "MARQUE": "RESTAMINE"
+  },
+  {
+    "CODE": "01 A 033",
+    "DCI": "LORATADINE",
+    "FORME": "COMPRIME SECABLE ",
+    "DOSAGE": "10MG",
+    "COND": "B/20",
+    "MARQUE": "RITADOLE"
+  },
+  {
+    "CODE": "01 A 033",
+    "DCI": "LORATADINE",
+    "FORME": "COMPRIME",
+    "DOSAGE": "10MG",
+    "COND": "B/20",
+    "MARQUE": "TIRLOR"
+  },
+  {
+    "CODE": "01 A 034",
+    "DCI": "LORATADINE",
+    "FORME": "SOL. BUV.",
+    "DOSAGE": "1MG/ML",
+    "COND": "FL./60ML",
+    "MARQUE": "CLARADINE"
+  },
+  {
+    "CODE": "01 A 034",
+    "DCI": "LORATADINE",
+    "FORME": "SOL. BUV.",
+    "DOSAGE": "1MG/ML",
+    "COND": "FL./60ML",
+    "MARQUE": "CLARDINE"
+  },
+  {
+    "CODE": "01 A 034",
+    "DCI": "LORATADINE",
+    "FORME": "SIROP",
+    "DOSAGE": "1MG/ML",
+    "COND": "F/125ML",
+    "MARQUE": "HOCINOR"
+  },
+  {
+    "CODE": "01 A 034",
+    "DCI": "LORATADINE",
+    "FORME": "SIROP",
+    "DOSAGE": "0.01",
+    "COND": "125 ML",
+    "MARQUE": "ALLERTINE"
+  },
+  {
+    "CODE": "01 A 034",
+    "DCI": "Loratadine",
+    "FORME": "Solution buvable",
+    "DOSAGE": "0.1g/100 ml",
+    "COND": "Flacon 100 ml",
+    "MARQUE": "Loradine"
+  },
+  {
+    "CODE": "01 A 034",
+    "DCI": "LORATADINE",
+    "FORME": "SIROP",
+    "DOSAGE": "1 MG / ML",
+    "COND": "FLACON DE 60 ML",
+    "MARQUE": "ALLERMEX"
+  },
+  {
+    "CODE": "01 A 047",
+    "DCI": "Desloratadine",
+    "FORME": "COMPRIME PELLICULE ",
+    "DOSAGE": "5MG",
+    "COND": "B/15 B/30",
+    "MARQUE": "DESLOR"
+  },
+  {
+    "CODE": "01 A 048",
+    "DCI": "Desloratadine",
+    "FORME": "SOL.BUV. ",
+    "DOSAGE": "0.5MG/ML",
+    "COND": "FL/120ML\nGOBELET DOSEUR",
+    "MARQUE": "DESLORAL"
+  },
+  {
+    "CODE": "03 A 069",
+    "DCI": "ACETYLSALICYLATE DE DL LYSINE EXPRIME EN ACIDE ACETYLSALICYLIQUE",
+    "FORME": "PDRE. SOL. BUV. EN SACH.-DOSE",
+    "DOSAGE": "1G/SACH.-DOSE",
+    "COND": "B/20 SACHETS",
+    "MARQUE": "ASPEGIC ADULTE"
+  },
+  {
+    "CODE": "03 A 104",
+    "DCI": "ACETYLSALICYLATE DE DL LYSINE EXPRIME EN ACIDE ACETYLSALICYLIQUE",
+    "FORME": "PDRE. SOL. BUV. SACHET",
+    "DOSAGE": "100MG/SACH.-DOSE",
+    "COND": "B/20 SACHETS",
+    "MARQUE": "ASPEGIC NOURRISSON"
+  },
+  {
+    "CODE": "03 B 005",
+    "DCI": "PARACETAMOL",
+    "FORME": "COMPRIME",
+    "DOSAGE": "500MG",
+    "COND": "B/20",
+    "MARQUE": "DOLICRANE"
+  },
+  {
+    "CODE": "03 B 005",
+    "DCI": "PARACETAMOL",
+    "FORME": "COMPRIME",
+    "DOSAGE": "500MG",
+    "COND": "B/20 ",
+    "MARQUE": "PAROL"
+  },
+  {
+    "CODE": "03 B 005",
+    "DCI": "Paracétamol",
+    "FORME": "Sachet ",
+    "DOSAGE": "500 mg ",
+    "COND": "Boite de 12.",
+    "MARQUE": "Sapramol "
+  },
+  {
+    "CODE": "03 B 005",
+    "DCI": "PARACETAMOL",
+    "FORME": "COMPRIME SECABLE ",
+    "DOSAGE": "500MG",
+    "COND": "B/20 ET B/100",
+    "MARQUE": "TYLENOL"
+  },
+  {
+    "CODE": "03 B 006",
+    "DCI": "PARACETAMOL",
+    "FORME": "SOL.  BUV.",
+    "DOSAGE": "100MG/5ML",
+    "COND": "F/100ML",
+    "MARQUE": "ISOMOL"
+  },
+  {
+    "CODE": "03 B 006",
+    "DCI": "Paracétamol",
+    "FORME": "Sachet ",
+    "DOSAGE": "100 mg ",
+    "COND": "Boite de 12.",
+    "MARQUE": "Sapramol "
+  },
+  {
+    "CODE": "03 B 007",
+    "DCI": "PARACETAMOL",
+    "FORME": "SUPPO.",
+    "DOSAGE": "100MG",
+    "COND": "B/10",
+    "MARQUE": "CETALGINE"
+  },
+  {
+    "CODE": "03 B 007",
+    "DCI": "PARACETAMOL",
+    "FORME": "SUPPO SEC",
+    "DOSAGE": "100MG",
+    "COND": "B/10",
+    "MARQUE": "DOLIPRANE"
+  },
+  {
+    "CODE": "03 B 007",
+    "DCI": "PARACETAMOL",
+    "FORME": "SUPPO.",
+    "DOSAGE": "100MG",
+    "COND": "B/10",
+    "MARQUE": "DOLPRIV"
+  },
+  {
+    "CODE": "03 B 026",
+    "DCI": "Paracétamol / Codéine phosphate hémihydraté",
+    "FORME": "COMPRIME",
+    "DOSAGE": "400MG/20MG",
+    "COND": "B/20",
+    "MARQUE": "COPARAMOL"
+  },
+  {
+    "CODE": "03 B 041",
+    "DCI": "PARACETAMOL",
+    "FORME": "SUPPO.",
+    "DOSAGE": "150MG",
+    "COND": "B/10",
+    "MARQUE": "CETALGINE"
+  },
+  {
+    "CODE": "03 B 041",
+    "DCI": "PARACETAMOL",
+    "FORME": "SUPPO",
+    "DOSAGE": "150MG",
+    "COND": "B/10",
+    "MARQUE": "DOLIPRANE"
+  },
+  {
+    "CODE": "03 B 041",
+    "DCI": "PARACETAMOL",
+    "FORME": "SUPPO.",
+    "DOSAGE": "150MG",
+    "COND": "B/10",
+    "MARQUE": "DOLPRIV"
+  },
+  {
+    "CODE": "03 B 042",
+    "DCI": "PARACETAMOL",
+    "FORME": "SUPP0",
+    "DOSAGE": "200MG",
+    "COND": "B/10",
+    "MARQUE": "CETALGINE"
+  },
+  {
+    "CODE": "03 B 042",
+    "DCI": "PARACETAMOL",
+    "FORME": "SUPPO. ",
+    "DOSAGE": "200MG",
+    "COND": "B/10",
+    "MARQUE": "DOLIPRANE"
+  },
+  {
+    "CODE": "03 B 042",
+    "DCI": "PARACETAMOL",
+    "FORME": "SUPPO.",
+    "DOSAGE": "200MG",
+    "COND": "B/10",
+    "MARQUE": "DOLPRIV"
+  },
+  {
+    "CODE": "03 B 043",
+    "DCI": "PARACETAMOL",
+    "FORME": "SUPP0.",
+    "DOSAGE": "300MG",
+    "COND": "B/10",
+    "MARQUE": "CETALGINE"
+  },
+  {
+    "CODE": "03 B 043",
+    "DCI": "PARACETAMOL",
+    "FORME": "SUPPO ",
+    "DOSAGE": "300MG",
+    "COND": "B/10",
+    "MARQUE": "DOLIPRANE"
+  },
+  {
+    "CODE": "03 B 043",
+    "DCI": "PARACETAMOL",
+    "FORME": "SUPPO.",
+    "DOSAGE": "300MG",
+    "COND": "B/10",
+    "MARQUE": "DOLPRIV"
+  },
+  {
+    "CODE": "03 B 044",
+    "DCI": "Paracétamol",
+    "FORME": "Sachet ",
+    "DOSAGE": "150 mg ",
+    "COND": "Boite de 12.",
+    "MARQUE": "Sapramol "
+  },
+  {
+    "CODE": "03 B 045",
+    "DCI": "PARACETAMOL",
+    "FORME": "PDRE. P. SOL. BUV. SACH.-DOSE",
+    "DOSAGE": "200MG",
+    "COND": "B/12",
+    "MARQUE": "EXPANDOL"
+  },
+  {
+    "CODE": "03 B 045",
+    "DCI": "Paracétamol",
+    "FORME": "Sachet ",
+    "DOSAGE": "200 mg ",
+    "COND": "Boite de 12.",
+    "MARQUE": "Sapramol "
+  },
+  {
+    "CODE": "03 B 046",
+    "DCI": "PARACETAMOL",
+    "FORME": "PDRE. P. SOL. BUV. SACH.-DOSE",
+    "DOSAGE": "300MG",
+    "COND": "B/12",
+    "MARQUE": "EXPANDOL"
+  },
+  {
+    "CODE": "03 B 046",
+    "DCI": "PARACÉTAMOL",
+    "FORME": "Poudre pour solution buvable en sachets",
+    "DOSAGE": "300 mg",
+    "COND": "Boite de 12 ",
+    "MARQUE": "PARALGAN®  "
+  },
+  {
+    "CODE": "03 B 046",
+    "DCI": "Paracétamol",
+    "FORME": "Sachet ",
+    "DOSAGE": "300 mg ",
+    "COND": "Boite de 12.",
+    "MARQUE": "Sapramol "
+  },
+  {
+    "CODE": "03 B 061",
+    "DCI": "PARACETAMOL",
+    "FORME": "SOL. BUV.",
+    "DOSAGE": "0.03",
+    "COND": "FL/100ML +PIPETTE GRADUéE EN KG  ",
+    "MARQUE": "DOLI-BIEN"
+  },
+  {
+    "CODE": "03 B 061",
+    "DCI": "PARACETAMOL",
+    "FORME": "SOL. BUV.",
+    "DOSAGE": "0.03",
+    "COND": "FL/100ML +PIPETTE GRADUéE EN KG  ",
+    "MARQUE": "DOLPRIV"
+  },
+  {
+    "CODE": "03 B 061",
+    "DCI": "PARACETAMOL",
+    "FORME": "SOL. BUV.",
+    "DOSAGE": "0.03",
+    "COND": "FL/90MLou FL/150 ML+ GOBLET DOSEUR  GRADUE EN KG",
+    "MARQUE": "EFFERALGAN PEDIATRIQUE"
+  },
+  {
+    "CODE": "03 B 061",
+    "DCI": "PARACETAMOL",
+    "FORME": "SOL.BUV.",
+    "DOSAGE": "0.03",
+    "COND": "FL./125ML+ SERINGUE GRADUEE EN KG-ML",
+    "MARQUE": "PEDIAMOL"
+  },
+  {
+    "CODE": "03 B 081",
+    "DCI": "PARACETAMOL",
+    "FORME": "COMPRIME",
+    "DOSAGE": "1G",
+    "COND": "B/08",
+    "MARQUE": "DOLIPRANE"
+  },
+  {
+    "CODE": "03 B 081",
+    "DCI": "PARACETAMOL",
+    "FORME": "CPR. SEC",
+    "DOSAGE": "1000 MG",
+    "COND": "BT/10",
+    "MARQUE": "PARALGAN"
+  },
+  {
+    "CODE": "03 B 081",
+    "DCI": "PARACETAMOL",
+    "FORME": "COMPRIME",
+    "DOSAGE": "1G",
+    "COND": "BOITE DE 10",
+    "MARQUE": "DOLICRANE"
+  },
+  {
+    "CODE": "03 B 100",
+    "DCI": "PARACETAMOL",
+    "FORME": "SUPPO.",
+    "DOSAGE": "80MG",
+    "COND": "B/10",
+    "MARQUE": "SUPPFADOL"
+  },
+  {
+    "CODE": "03 B 117",
+    "DCI": "PARACETAMOL",
+    "FORME": "SIROP",
+    "DOSAGE": "0.024",
+    "COND": "FLACON DE 125 ML",
+    "MARQUE": "DOLYMEX SIROP"
+  },
+  {
+    "CODE": "03 F 047",
+    "DCI": "TRAMADOL CHLORHYDRATE EXPRIME EN TRAMADOL",
+    "FORME": "GLES.",
+    "DOSAGE": "50MG",
+    "COND": "B/30",
+    "MARQUE": "DOLTRAM"
+  },
+  {
+    "CODE": "03 F 047",
+    "DCI": "TRAMADOL CHLORHYDRATE EXPRIME EN TRAMADOL",
+    "FORME": "GLES.",
+    "DOSAGE": "50MG",
+    "COND": "B/30",
+    "MARQUE": "DUOFEM"
+  },
+  {
+    "CODE": "03 F 047",
+    "DCI": "Tramadol",
+    "FORME": "Gélule",
+    "DOSAGE": "50mg/gélule",
+    "COND": "bt de 10",
+    "MARQUE": "TRAMADIS Gélule"
+  },
+  {
+    "CODE": "03 F 047",
+    "DCI": "TRAMADOL CHLORHYDRATE EXPRIME EN TRAMADOL",
+    "FORME": "GLES.",
+    "DOSAGE": "50MG",
+    "COND": "B/30",
+    "MARQUE": "ZODID"
+  },
+  {
+    "CODE": "03 F 115",
+    "DCI": "Paracétamol/ Tramadol chlorhydrate",
+    "FORME": "COMPRIME PELLICULE ",
+    "DOSAGE": "325MG / 37.5MG",
+    "COND": "B/20",
+    "MARQUE": "DI-DOLEX"
+  },
+  {
+    "CODE": "03 F 115",
+    "DCI": "PARACETAMOL/TRAMADOL",
+    "FORME": "Comprimé pelliculé",
+    "DOSAGE": "37.5 mg/325 mg",
+    "COND": "Etui de 20 comprimés",
+    "MARQUE": "DOLTRAM®PLUS"
+  },
+  {
+    "CODE": "03 F 115",
+    "DCI": "Paracétamol/ Tramadol chlorhydrate",
+    "FORME": "COMPRIME PELLICULE ",
+    "DOSAGE": "325MG / 37.5MG",
+    "COND": "B/20",
+    "MARQUE": "PRADOL"
+  },
+  {
+    "CODE": "03 F 115",
+    "DCI": "Paracétamol/ Tramadol chlorhydrate",
+    "FORME": "GLES.",
+    "DOSAGE": "325MG / 37.5MG",
+    "COND": "B/20",
+    "MARQUE": "TRAPAL"
+  },
+  {
+    "CODE": "03 F 115",
+    "DCI": "Paracétamol/tramadol",
+    "FORME": "comprimé pelliculé 325/37.5mg ",
+    "DOSAGE": "325/37.5MG",
+    "COND": "B/20",
+    "MARQUE": "APAPP TRAMADOL"
+  },
+  {
+    "CODE": "04 B 005",
+    "DCI": "Diclofénac sodique",
+    "FORME": "COMP.GASTRORESIST.",
+    "DOSAGE": "25MG",
+    "COND": "B/30",
+    "MARQUE": "VOLTUM"
+  },
+  {
+    "CODE": "04 B 006",
+    "DCI": "Diclofénac sodique",
+    "FORME": "COMP. GASTRORESIST.",
+    "DOSAGE": "50MG",
+    "COND": "B/30",
+    "MARQUE": "VOLTUM"
+  },
+  {
+    "CODE": "04 B 006",
+    "DCI": "Diclofénac sodique",
+    "FORME": "COMP. GASTRORESIST.",
+    "DOSAGE": "50MG",
+    "COND": "B/20",
+    "MARQUE": "VOTREX"
+  },
+  {
+    "CODE": "04 B 007",
+    "DCI": "Diclofénac sodique ",
+    "FORME": "comprimé pelliculé à libération prolongée",
+    "DOSAGE": "100 mg",
+    "COND": "boîte de 10",
+    "MARQUE": "ROFENAC LP 100"
+  },
+  {
+    "CODE": "04 B 007",
+    "DCI": "Diclofénac sodique",
+    "FORME": "GLES. A µGRLES. LP",
+    "DOSAGE": "100MG",
+    "COND": "B/10",
+    "MARQUE": "VOLTUM"
+  },
+  {
+    "CODE": "04 B 007",
+    "DCI": "Diclofénac sodique",
+    "FORME": "COMP. PELLI. LP",
+    "DOSAGE": "100MG",
+    "COND": "B/10",
+    "MARQUE": "VOTREX RETARD"
+  },
+  {
+    "CODE": "04 B 008",
+    "DCI": "Diclofénac sodique",
+    "FORME": "SUPPO. ENFANTS",
+    "DOSAGE": "25MG",
+    "COND": "B/10",
+    "MARQUE": "VOLTUM"
+  },
+  {
+    "CODE": "04 B 008",
+    "DCI": "DICLOFENAC",
+    "FORME": "SUP ENF",
+    "DOSAGE": "25 MG",
+    "COND": "B/10",
+    "MARQUE": "CLOFENAL"
+  },
+  {
+    "CODE": "04 B 009",
+    "DCI": "Diclofénac sodique",
+    "FORME": "SUPPO.",
+    "DOSAGE": "100MG",
+    "COND": "B/10",
+    "MARQUE": "VOLTUM"
+  },
+  {
+    "CODE": "04 B 010",
+    "DCI": "IBUPROFENE",
+    "FORME": "COMPRIME PELLICULE ",
+    "DOSAGE": "400MG",
+    "COND": "B/20",
+    "MARQUE": "ANTALFEN"
+  },
+  {
+    "CODE": "04 B 010",
+    "DCI": "IBUPROFENE",
+    "FORME": "COMPRIME PELLICULE ",
+    "DOSAGE": "400MG",
+    "COND": "B/20",
+    "MARQUE": "NEUPREN"
+  },
+  {
+    "CODE": "04 B 010",
+    "DCI": "IBUPROFENE",
+    "FORME": "COMPRIME PELLICULE ",
+    "DOSAGE": "400MG",
+    "COND": "B/30",
+    "MARQUE": "PROF"
+  },
+  {
+    "CODE": "04 B 010",
+    "DCI": "Ibuprofène",
+    "FORME": "comprimé pelliculé",
+    "DOSAGE": "400 mg",
+    "COND": "boîte de 20",
+    "MARQUE": "SAPOFEN® 400"
+  },
+  {
+    "CODE": "04 B 017",
+    "DCI": "KETOPROFENE",
+    "FORME": "SUPPO.",
+    "DOSAGE": "100MG",
+    "COND": "B/12",
+    "MARQUE": "PROFENID"
+  },
+  {
+    "CODE": "04 B 019",
+    "DCI": "NAPROXENE SODIQUE",
+    "FORME": "COMPRIME",
+    "DOSAGE": "275MG",
+    "COND": "B/20",
+    "MARQUE": "NOPAIN"
+  },
+  {
+    "CODE": "04 B 020",
+    "DCI": "NAPROXENE SODIQUE",
+    "FORME": "COMPRIME",
+    "DOSAGE": "550MG",
+    "COND": "B/10",
+    "MARQUE": "NOPAIN DS"
+  },
+  {
+    "CODE": "04 B 022",
+    "DCI": "PIROXICAM",
+    "FORME": "GLES.",
+    "DOSAGE": "20MG",
+    "COND": "B/10",
+    "MARQUE": "FELCAM"
+  },
+  {
+    "CODE": "04 B 022",
+    "DCI": "PIROXICAM",
+    "FORME": "COMP. DISPERS.",
+    "DOSAGE": "20MG",
+    "COND": "B/12",
+    "MARQUE": "PIROXEN"
+  },
+  {
+    "CODE": "04 B 023",
+    "DCI": "PIROXICAM",
+    "FORME": "SUPPO.",
+    "DOSAGE": "20MG",
+    "COND": "B/15",
+    "MARQUE": "PAINOXAM"
+  },
+  {
+    "CODE": "04 B 023",
+    "DCI": "PIROXICAM",
+    "FORME": "SUPPO",
+    "DOSAGE": "20MG",
+    "COND": "B/10",
+    "MARQUE": "PIROXAL"
+  },
+  {
+    "CODE": "04 B 030",
+    "DCI": "MORNIFLUMATE",
+    "FORME": "SUPPO.",
+    "DOSAGE": "700MG",
+    "COND": "B/08",
+    "MARQUE": "NIFLUMENE"
+  },
+  {
+    "CODE": "04 B 030",
+    "DCI": "MORNIFLUMATE",
+    "FORME": "SUPPO.",
+    "DOSAGE": "700MG",
+    "COND": "B/10",
+    "MARQUE": "NIFLURIC"
+  },
+  {
+    "CODE": "04 B 030",
+    "DCI": "MORNIFLUMATE",
+    "FORME": "SUPPO. ADULTE",
+    "DOSAGE": "700MG",
+    "COND": "B/08",
+    "MARQUE": "USENIL"
+  },
+  {
+    "CODE": "04 B 030",
+    "DCI": "NIFLUMIC ACID",
+    "FORME": "SUP AD",
+    "DOSAGE": "700 MG",
+    "COND": "BT/10",
+    "MARQUE": "NIFLUMATE"
+  },
+  {
+    "CODE": "04 B 031",
+    "DCI": "MORNIFLUMATE",
+    "FORME": "SUPPO.",
+    "DOSAGE": "400MG",
+    "COND": "B/08",
+    "MARQUE": "NIFLUMENE"
+  },
+  {
+    "CODE": "04 B 031",
+    "DCI": "MORNIFLUMATE",
+    "FORME": "SUPPO. SEC.ENFANT",
+    "DOSAGE": "400MG",
+    "COND": "B/08",
+    "MARQUE": "USENIL"
+  },
+  {
+    "CODE": "04 B 031",
+    "DCI": "NIFLUMIC ACID",
+    "FORME": "SUP ENF",
+    "DOSAGE": "400 MG",
+    "COND": "BT/10",
+    "MARQUE": "NIFLUMATE"
+  },
+  {
+    "CODE": "04 B 032",
+    "DCI": "KETOPROFENE",
+    "FORME": "GLES. LP",
+    "DOSAGE": "200MG",
+    "COND": "B/20",
+    "MARQUE": "KETOFEN LP"
+  },
+  {
+    "CODE": "04 B 034",
+    "DCI": "KETOPROFENE",
+    "FORME": "COMPRIME PELLICULE ",
+    "DOSAGE": "100MG",
+    "COND": "B/30",
+    "MARQUE": "PROFENID"
+  },
+  {
+    "CODE": "04 B 036",
+    "DCI": "Celecoxib",
+    "FORME": "Gélule",
+    "DOSAGE": "200 mg",
+    "COND": "Boite 10 et boite de 30",
+    "MARQUE": "Celecox"
+  },
+  {
+    "CODE": "04 B 040",
+    "DCI": "IBUPROFENE",
+    "FORME": "COMPRIME PELLICULE ",
+    "DOSAGE": "200MG",
+    "COND": "B/15",
+    "MARQUE": "ANTALFEN"
+  },
+  {
+    "CODE": "04 B 040",
+    "DCI": "IBUPROFENE",
+    "FORME": "COMPRIME PELLICULE ",
+    "DOSAGE": "200MG",
+    "COND": "B/20",
+    "MARQUE": "NEUPREN"
+  },
+  {
+    "CODE": "04 B 040",
+    "DCI": "IBUPROFEN",
+    "FORME": "CPR",
+    "DOSAGE": "200 MG",
+    "COND": "BT/20",
+    "MARQUE": "IBUMAL"
+  },
+  {
+    "CODE": "04 B 042",
+    "DCI": "IBUPROFENE",
+    "FORME": "SUSP. BUV.",
+    "DOSAGE": "20MG/ML (100MG/5ML)",
+    "COND": "FL./180ML+SERING DE 5ML P. ADMINIST. OR. GRADUEE EN KG DE POIDS CORPOREL ; B/01 FL. DE 200ML + PIPETTE GRADUEE EN KG ET ML",
+    "MARQUE": "ALGIFEN"
+  },
+  {
+    "CODE": "04 B 042",
+    "DCI": "IBUPROFENE",
+    "FORME": "SUSP. BUV.",
+    "DOSAGE": "20MG/ML (100MG/5ML)",
+    "COND": "FL./100ML + BOUCHON DOSEUR",
+    "MARQUE": "PROF"
+  },
+  {
+    "CODE": "04 B 042",
+    "DCI": "IBUPROFENE",
+    "FORME": "SUSP.BUV.",
+    "DOSAGE": "20 mg/ml",
+    "COND": "Boite d'un flc de 125 ml et une pipette graduée en ml et en kg",
+    "MARQUE": "PACIFENE"
+  },
+  {
+    "CODE": "04 B 044",
+    "DCI": "IBUPROFENE",
+    "FORME": "COMPRIME PELLICULE ",
+    "DOSAGE": "600MG",
+    "COND": "B/30",
+    "MARQUE": "NEUPREN"
+  },
+  {
+    "CODE": "04 B 044",
+    "DCI": "Ibuprofène",
+    "FORME": "comprimé pelliculé",
+    "DOSAGE": "600 mg",
+    "COND": "boîte de 30",
+    "MARQUE": "SAPOFEN "
+  },
+  {
+    "CODE": "04 B 049",
+    "DCI": "KETOPROFENE",
+    "FORME": "PATCH",
+    "DOSAGE": "30MG",
+    "COND": "SACHET DE 07",
+    "MARQUE": "KEFENTECH"
+  },
+  {
+    "CODE": "04 B 054 ",
+    "DCI": "PIROXICAM  (SOUS FORME COMPLEXE PIROXICAM BETA CYCLODEXTRINE)",
+    "FORME": "COMP. EFFERV.",
+    "DOSAGE": "20MG  (COMPLEXE PIROXICAM BETA CYCLODEXTRINE 191.2MG)",
+    "COND": "B/14",
+    "MARQUE": "CYCLADOL"
+  },
+  {
+    "CODE": "04 B 063",
+    "DCI": "DICLOFENAC POTASSIQUE",
+    "FORME": "COMPRIME PELLICULE ",
+    "DOSAGE": "50MG",
+    "COND": "B/20",
+    "MARQUE": "RAPIDUS 50"
+  },
+  {
+    "CODE": "04 B 064",
+    "DCI": "MORNIFLUMATE",
+    "FORME": "SUPPO.",
+    "DOSAGE": "200MG",
+    "COND": "B/08",
+    "MARQUE": "NIFLUMENE"
+  },
+  {
+    "CODE": "04 B 064",
+    "DCI": "MORNIFLUMATE",
+    "FORME": "SUPPO.",
+    "DOSAGE": "200MG",
+    "COND": "B/10",
+    "MARQUE": "NIFLURIC"
+  },
+  {
+    "CODE": "05 A 032",
+    "DCI": "METHOTREXATE",
+    "FORME": "COMPRIME",
+    "DOSAGE": "2.5MG",
+    "COND": "B/50",
+    "MARQUE": "METHOTREXAT EBEWE"
+  },
+  {
+    "CODE": "05 E 136",
+    "DCI": "TAMOXIFENE CITRATE EXPRIME EN TAMOXIFENE",
+    "FORME": "COMPRIME",
+    "DOSAGE": "20MG",
+    "COND": "B/30",
+    "MARQUE": "CYTOTAM-20"
+  },
+  {
+    "CODE": "06 B 015",
+    "DCI": "NICARDIPINE CHLORHYDRATE",
+    "FORME": "GLES. MICROGRANULES LP",
+    "DOSAGE": "50MG",
+    "COND": "B/60",
+    "MARQUE": "NICARDIL LP"
+  },
+  {
+    "CODE": "06 B 017",
+    "DCI": "NIFEDIPINE",
+    "FORME": "COMPRIME",
+    "DOSAGE": "10MG",
+    "COND": "B/30",
+    "MARQUE": "ADIPINE"
+  },
+  {
+    "CODE": "06 B 018",
+    "DCI": "NIFEDIPINE ",
+    "FORME": "GLES. A µGRLES.  LP",
+    "DOSAGE": "20MG",
+    "COND": "B/30",
+    "MARQUE": "ADIPINE"
+  },
+  {
+    "CODE": "06 B 123",
+    "DCI": "Amlodipine bésilate exprimé en amlodipine",
+    "FORME": "COMPRIME",
+    "DOSAGE": "5MG",
+    "COND": "B/30 ET  B/90",
+    "MARQUE": "AMLIBON"
+  },
+  {
+    "CODE": "06 B 123",
+    "DCI": "Amlodipine bésilate exprimé en amlodipine",
+    "FORME": "GLES.",
+    "DOSAGE": "5MG",
+    "COND": "B/30",
+    "MARQUE": "AMLOPINE"
+  },
+  {
+    "CODE": "06 B 123",
+    "DCI": "Amlodipine bésilate exprimé en amlodipine",
+    "FORME": "GLES.",
+    "DOSAGE": "5MG",
+    "COND": "B/30",
+    "MARQUE": "AMLORIDAL"
+  },
+  {
+    "CODE": "06 B 123",
+    "DCI": "Amlodipine bésilate exprimé en amlodipine",
+    "FORME": "GLES.",
+    "DOSAGE": "5MG",
+    "COND": "B/30",
+    "MARQUE": "LOTENSE"
+  },
+  {
+    "CODE": "06 B 123 ",
+    "DCI": "Amlodipine sous forme bésylate ",
+    "FORME": "Gélule ",
+    "DOSAGE": "5 mg",
+    "COND": "Boite de 30",
+    "MARQUE": "Alodipine"
+  },
+  {
+    "CODE": "06 B 243",
+    "DCI": "Amlodipine bésilate exprimé en amlodipine",
+    "FORME": "GLES.",
+    "DOSAGE": "10MG",
+    "COND": "B/30",
+    "MARQUE": "ALODIPINE"
+  },
+  {
+    "CODE": "06 C 022",
+    "DCI": "MOLSIDOMINE",
+    "FORME": "COMPRIME SECABLE ",
+    "DOSAGE": "2MG",
+    "COND": "B/30",
+    "MARQUE": "CORVASAL"
+  },
+  {
+    "CODE": "06 C 023",
+    "DCI": "MOLSIDOMINE",
+    "FORME": "COMPRIME SECABLE ",
+    "DOSAGE": "4MG",
+    "COND": "B/30",
+    "MARQUE": "CORVASAL"
+  },
+  {
+    "CODE": "06 E 053",
+    "DCI": "CAPTOPRIL",
+    "FORME": "COMPRIME SECABLE ",
+    "DOSAGE": "50MG",
+    "COND": "B/30",
+    "MARQUE": "TENSOPREL"
+  },
+  {
+    "CODE": "06 E 126",
+    "DCI": "LOSARTAN POTASSIQUE",
+    "FORME": "COMP. PELLI. SEC.",
+    "DOSAGE": "50MG",
+    "COND": "B/28 ET B/30",
+    "MARQUE": "BEKTAL "
+  },
+  {
+    "CODE": "06 E 126",
+    "DCI": "Losartan ",
+    "FORME": "comp pel séc",
+    "DOSAGE": "50mg/comp",
+    "COND": "bt de 30",
+    "MARQUE": "NORTA 50mg"
+  },
+  {
+    "CODE": "06 E 127",
+    "DCI": "Ramipril",
+    "FORME": "Gélule ",
+    "DOSAGE": "2.5 mg ",
+    "COND": "Boite de 30.",
+    "MARQUE": "Triampex 2.5mg"
+  },
+  {
+    "CODE": "06 E 128",
+    "DCI": "Ramipril",
+    "FORME": "Gélule ",
+    "DOSAGE": "5 mg ",
+    "COND": "Boite de 30.",
+    "MARQUE": "Triampex "
+  },
+  {
+    "CODE": "06 E 139",
+    "DCI": "RAMIPRIL",
+    "FORME": "COMPRIME",
+    "DOSAGE": "1.25MG",
+    "COND": "B/28 ",
+    "MARQUE": "TRIATEC "
+  },
+  {
+    "CODE": "06 E 147",
+    "DCI": "Valsartan",
+    "FORME": "Comprimé pelliculé",
+    "DOSAGE": "80mg",
+    "COND": "B 30",
+    "MARQUE": "TABUVAN"
+  },
+  {
+    "CODE": "06 E 147",
+    "DCI": "Valsartan",
+    "FORME": "Comprimé pelliculé",
+    "DOSAGE": "80 mg",
+    "COND": "Boite 30",
+    "MARQUE": "Valaclor"
+  },
+  {
+    "CODE": "06 E 147",
+    "DCI": "Valsartan ",
+    "FORME": "COMP. PELLI. SEC.",
+    "DOSAGE": "80MG",
+    "COND": "B/30",
+    "MARQUE": "VALSARTAL"
+  },
+  {
+    "CODE": "06 E 147",
+    "DCI": "Valsartan ",
+    "FORME": "COMP. PELLI. SEC.",
+    "DOSAGE": "80MG",
+    "COND": "B/28",
+    "MARQUE": "VALSIS"
+  },
+  {
+    "CODE": "06 E 156",
+    "DCI": "Irbesartan",
+    "FORME": "COMPRIME",
+    "DOSAGE": "150MG",
+    "COND": "B/30",
+    "MARQUE": "IRBEK"
+  },
+  {
+    "CODE": "06 E 156 ",
+    "DCI": "Irbésartan",
+    "FORME": "COMPRIME PELLICULE ",
+    "DOSAGE": "150MG",
+    "COND": "B/30",
+    "MARQUE": "Gizlan 150"
+  },
+  {
+    "CODE": "06 E 157",
+    "DCI": "Irbesartan",
+    "FORME": "COMPRIME PELLICULE ",
+    "DOSAGE": "300MG",
+    "COND": "B/28",
+    "MARQUE": "APROVEL"
+  },
+  {
+    "CODE": "06 E 157",
+    "DCI": "IRBESARTAN",
+    "FORME": "Comp ",
+    "DOSAGE": "300mg",
+    "COND": "Boîte de 30",
+    "MARQUE": "AROVAL"
+  },
+  {
+    "CODE": "06 E 157",
+    "DCI": "Irbesartan",
+    "FORME": "COMPRIME",
+    "DOSAGE": "300MG",
+    "COND": "B/30",
+    "MARQUE": "IRBEK"
+  },
+  {
+    "CODE": "06 E 158",
+    "DCI": "Valsartan / Hydrochlorothiazide",
+    "FORME": "COMPRIME PELLICULE ",
+    "DOSAGE": "80MG/12.5MG",
+    "COND": " B/30",
+    "MARQUE": "CO VALASTAN"
+  },
+  {
+    "CODE": "06 E 158",
+    "DCI": "Valsartan/HCTZ",
+    "FORME": "Comprimé pelliculé",
+    "DOSAGE": "80/12.5 mg",
+    "COND": "B 30",
+    "MARQUE": "CO-Tabuvan"
+  },
+  {
+    "CODE": "06 E 165",
+    "DCI": "Perindosyl",
+    "FORME": "Comprimé pelliculé sécable",
+    "DOSAGE": "4mg",
+    "COND": "B/30",
+    "MARQUE": "Périndopril erbumine"
+  },
+  {
+    "CODE": "06 E 166",
+    "DCI": "Valsartan ",
+    "FORME": "COMP. PELLI. SEC.",
+    "DOSAGE": "160MG",
+    "COND": "B/30",
+    "MARQUE": "VALSARTAL"
+  },
+  {
+    "CODE": "06 E 166",
+    "DCI": "Valsartan ",
+    "FORME": "COMP. PELLI. SEC.",
+    "DOSAGE": "160MG",
+    "COND": "B/28",
+    "MARQUE": "VALSIS"
+  },
+  {
+    "CODE": "06 E 167",
+    "DCI": "LOSARTAN POTASSIQUE /  HYDROCHLOROTHIAZIDE ",
+    "FORME": "COMPRIME PELLICULE ",
+    "DOSAGE": "50MG/12.5MG",
+    "COND": "B/30",
+    "MARQUE": "CO-NORTA"
+  },
+  {
+    "CODE": "06 E 196",
+    "DCI": "Candésartan cilexetil",
+    "FORME": "Comprimé pelliculé",
+    "DOSAGE": "4 mg",
+    "COND": "Boite 30",
+    "MARQUE": "Canderax"
+  },
+  {
+    "CODE": "06 E 197",
+    "DCI": "CANDESARTAN CILEXETIL",
+    "FORME": "COMPRIME SECABLE ",
+    "DOSAGE": "8MG",
+    "COND": "B/28",
+    "MARQUE": "BLOPRESS 8MG"
+  },
+  {
+    "CODE": "06 E 201",
+    "DCI": "RAMIPRIL",
+    "FORME": "COMP. QUADRISEC.",
+    "DOSAGE": "10MG",
+    "COND": "B/30",
+    "MARQUE": "RAMITEC"
+  },
+  {
+    "CODE": "06 E 212",
+    "DCI": "IMIDAPRIL CHLORHYDRATE",
+    "FORME": "COMPRIME SECABLE ",
+    "DOSAGE": "5MG",
+    "COND": "B/28",
+    "MARQUE": "IMINOPRIL 5"
+  },
+  {
+    "CODE": "06 E 213",
+    "DCI": "IMIDAPRIL CHLORHYDRATE",
+    "FORME": "COMPRIME SECABLE ",
+    "DOSAGE": "10MG",
+    "COND": " B/28",
+    "MARQUE": "IMINOPRIL 10"
+  },
+  {
+    "CODE": "06 E 219",
+    "DCI": "Irbesartan / Hydrochlorothiazide",
+    "FORME": "COMPRIME PELLICULE ",
+    "DOSAGE": "150MG/12.5MG",
+    "COND": "B/30 et B/90",
+    "MARQUE": "CO-IRBEK"
+  },
+  {
+    "CODE": "06 E 219",
+    "DCI": "Irbesartan / Hydrochlorothiazide",
+    "FORME": "COMPRIME PELLICULE ",
+    "DOSAGE": "150MG / 12.5MG",
+    "COND": "B/30",
+    "MARQUE": "CO-IRBEVEL"
+  },
+  {
+    "CODE": "06 E 220",
+    "DCI": "Irbesartan / Hydrochlorothiazide",
+    "FORME": "COMPRIME PELLICULE ",
+    "DOSAGE": "300MG / 12.5MG",
+    "COND": "B/30",
+    "MARQUE": "CO-IRBEVEL"
+  },
+  {
+    "CODE": "06 E 220",
+    "DCI": "Irbesartan / Hydrochlorothiazide",
+    "FORME": "Comprimé pelliculé",
+    "DOSAGE": "300 mg /  25 mg",
+    "COND": "Boite de 30",
+    "MARQUE": "Irbisart+ "
+  },
+  {
+    "CODE": "06 E 234",
+    "DCI": "CANDESARTAN CILEXETIL",
+    "FORME": "COMPRIME SECABLE ",
+    "DOSAGE": "16MG",
+    "COND": "B/28",
+    "MARQUE": "BLOPRESS 16MG"
+  },
+  {
+    "CODE": "06 E 238",
+    "DCI": "Valsartan / HCTZ",
+    "FORME": "Comprimé pelliculé",
+    "DOSAGE": "160mg/25mg",
+    "COND": "B/30",
+    "MARQUE": "Co Sarteg"
+  },
+  {
+    "CODE": "06 E 240",
+    "DCI": "LOSARTAN POTASSIQUE",
+    "FORME": "COMP. PELLI. SEC.",
+    "DOSAGE": "100MG",
+    "COND": "B/28",
+    "MARQUE": "NORTA FORT"
+  },
+  {
+    "CODE": "06 E 246",
+    "DCI": "Perindosyl",
+    "FORME": "Comprimé pelliculé ",
+    "DOSAGE": "8mg",
+    "COND": "B/30",
+    "MARQUE": "Périndopril erbumine"
+  },
+  {
+    "CODE": "06 E 256",
+    "DCI": "IRBESARTAN / HYDROCHLOROTHIAZIDE",
+    "FORME": "COMPRIME PELLICULE ",
+    "DOSAGE": "300MG / 25MG",
+    "COND": "B/30",
+    "MARQUE": "CO-IRBEVEL"
+  },
+  {
+    "CODE": "06 E 256",
+    "DCI": "IRBESARTAN / HYDROCHLOROTHIAZIDE",
+    "FORME": "COMPRIME PELLICULE ",
+    "DOSAGE": "300MG/25MG",
+    "COND": "B/30 ET B/90",
+    "MARQUE": "CO-IRBEK"
+  },
+  {
+    "CODE": "06 E 256",
+    "DCI": "IRBESARTAN / HYDROCHLOROTHIAZIDE ",
+    "FORME": "COMPRIME PELLICULE ",
+    "DOSAGE": "300MG/25MG",
+    "COND": "B/28",
+    "MARQUE": "COAPROVEL"
+  },
+  {
+    "CODE": "06 e 257",
+    "DCI": "AMLODIPINE/VALSARTAN",
+    "FORME": "COMP ",
+    "DOSAGE": "80mg/5mg",
+    "COND": "B 30",
+    "MARQUE": "LOTEVAN"
+  },
+  {
+    "CODE": "06 E 258",
+    "DCI": "AMLODIPINE/VALSARTAN",
+    "FORME": "Comp ",
+    "DOSAGE": "5mg/160mg",
+    "COND": "B 30",
+    "MARQUE": "LOTEVAN"
+  },
+  {
+    "CODE": "06 E 258",
+    "DCI": "Valsartan  / Amlodipine",
+    "FORME": "COMPRIME PELLICULE ",
+    "DOSAGE": "160MG/5MG",
+    "COND": "B/30",
+    "MARQUE": "Angiosar 160/5"
+  },
+  {
+    "CODE": "06 e 259",
+    "DCI": "AMLODIPINE/VALSARTAN",
+    "FORME": "COMP ",
+    "DOSAGE": "160mg/10mg",
+    "COND": "B 30",
+    "MARQUE": "LOTEVAN"
+  },
+  {
+    "CODE": "06 E 263",
+    "DCI": "TELMISARTAN",
+    "FORME": "comprimés ",
+    "DOSAGE": "40 mg",
+    "COND": "B/90",
+    "MARQUE": "TELMISA"
+  },
+  {
+    "CODE": "06 E 264",
+    "DCI": "TELMISARTAN",
+    "FORME": "comprimés ",
+    "DOSAGE": "80 mg",
+    "COND": " B/90",
+    "MARQUE": "TELMISA"
+  },
+  {
+    "CODE": "06 E 264",
+    "DCI": "TELMISARTAN ",
+    "FORME": "COMP ",
+    "DOSAGE": "80MG",
+    "COND": "B/28",
+    "MARQUE": "TELMISARTAN LDM"
+  },
+  {
+    "CODE": "06 E 277",
+    "DCI": "RAMIPRIL / HYDROCHLOROTHIAZIDE",
+    "FORME": "COMPRIME",
+    "DOSAGE": "5MG/12.5MG",
+    "COND": "B/28",
+    "MARQUE": "TRITAZIDE"
+  },
+  {
+    "CODE": "06 E 289",
+    "DCI": "Ramipril / Hydrochlorothiazide",
+    "FORME": "COMPRIME",
+    "DOSAGE": "10MG/12.5MG",
+    "COND": "B/28",
+    "MARQUE": "TRITAZIDE"
+  },
+  {
+    "CODE": "06 E 310",
+    "DCI": "AMLODIPINE/IRBESARTAN",
+    "FORME": "COMP ",
+    "DOSAGE": "150MG/5MG",
+    "COND": "Boite de 30 Cp",
+    "MARQUE": "AMLESAR"
+  },
+  {
+    "CODE": "06 F 067",
+    "DCI": "ACEBUTOLOL CHLORHYDRATE",
+    "FORME": "COMP. PELLI. SEC.",
+    "DOSAGE": "200MG",
+    "COND": "B/20",
+    "MARQUE": "CLOXTON"
+  },
+  {
+    "CODE": "06 F 067",
+    "DCI": "ACEBUTOLOL CHLORHYDRATE",
+    "FORME": "COMP. PELLI. SEC.",
+    "DOSAGE": "200MG",
+    "COND": "B/30",
+    "MARQUE": "SECTRAL "
+  },
+  {
+    "CODE": "06 F 068",
+    "DCI": "ACEBUTOLOL CHLORHYDRATE",
+    "FORME": "COMP. PELLI. SEC.",
+    "DOSAGE": "400MG",
+    "COND": "B/30",
+    "MARQUE": "SECTRAL "
+  },
+  {
+    "CODE": "06 F 069",
+    "DCI": "ATENOLOL",
+    "FORME": "COMPRIME SECABLE ",
+    "DOSAGE": "100MG",
+    "COND": "B/30",
+    "MARQUE": "ATENOR"
+  },
+  {
+    "CODE": "06 F 162",
+    "DCI": "BISOPROLOL FUMARATE",
+    "FORME": "COMPRIME PELLICULE ",
+    "DOSAGE": "10MG ",
+    "COND": "B/30",
+    "MARQUE": "BIPROTENS"
+  },
+  {
+    "CODE": "06 F 162",
+    "DCI": "BISOPROLOL FUMARATE",
+    "FORME": "COMP. PELLI. SEC.",
+    "DOSAGE": "10MG ",
+    "COND": "B/30",
+    "MARQUE": "BISOPROLOL HUP"
+  },
+  {
+    "CODE": "06 F 162",
+    "DCI": "BISOPROLOL FUMARATE",
+    "FORME": "COMP. PELLI SEC.",
+    "DOSAGE": "10MG ",
+    "COND": "B/30",
+    "MARQUE": "BONACOR"
+  },
+  {
+    "CODE": "06 F 208",
+    "DCI": "CARVEDILOL",
+    "FORME": "COMPRIME",
+    "DOSAGE": "6.25MG",
+    "COND": "B/30",
+    "MARQUE": "DILACARD"
+  },
+  {
+    "CODE": "06 F 209",
+    "DCI": "CARVEDILOL",
+    "FORME": "COMPRIME",
+    "DOSAGE": "25MG",
+    "COND": "B/30",
+    "MARQUE": "DILACARD"
+  },
+  {
+    "CODE": "06 F 250",
+    "DCI": "CARVEDILOL",
+    "FORME": "COMPRIME",
+    "DOSAGE": "12.5MG",
+    "COND": "B/30",
+    "MARQUE": "DILACARD"
+  },
+  {
+    "CODE": "06 F 252",
+    "DCI": "CARVEDILOL",
+    "FORME": "COMPRIME",
+    "DOSAGE": "3.125MG",
+    "COND": "B/30",
+    "MARQUE": "DILACARD"
+  },
+  {
+    "CODE": "06 F 267",
+    "DCI": "BISOPROLOL FUMARATE",
+    "FORME": "COMP PELL SEC",
+    "DOSAGE": "5MG",
+    "COND": "B/30",
+    "MARQUE": "BISOTAB"
+  },
+  {
+    "CODE": "06 F 267",
+    "DCI": "BISOPROLOL FUMARATE",
+    "FORME": "COMP. PELLI SEC.",
+    "DOSAGE": "5MG",
+    "COND": "B/30",
+    "MARQUE": "BONACOR"
+  },
+  {
+    "CODE": "06 H 094",
+    "DCI": "AMILORIDE CHLORHYDRATE / HYDROCHLOROTHIAZIDE",
+    "FORME": "COMPRIME SECABLE ",
+    "DOSAGE": "5MG/50MG",
+    "COND": "B/30",
+    "MARQUE": "DUDREX"
+  },
+  {
+    "CODE": "06 H 095",
+    "DCI": "SPIRONOLACTONE MICRONISEE",
+    "FORME": "COMP. PELLI. SEC.",
+    "DOSAGE": "75MG",
+    "COND": "B/30",
+    "MARQUE": "SPIRONOLONE"
+  },
+  {
+    "CODE": "06 H 163",
+    "DCI": "INDAPAMIDE",
+    "FORME": "COMP. PELLI. LP",
+    "DOSAGE": "1.5MG",
+    "COND": "B/30",
+    "MARQUE": "ADEX LP"
+  },
+  {
+    "CODE": "06 H 163",
+    "DCI": "Flumide LP",
+    "FORME": "Comprimé pelliculé LP",
+    "DOSAGE": "1.5mg ",
+    "COND": "B/30",
+    "MARQUE": "Indapamide "
+  },
+  {
+    "CODE": "06 J 107",
+    "DCI": "TRIMETAZIDINE DICHLORHYDRATE",
+    "FORME": "COMPRIME PELLICULE ",
+    "DOSAGE": "20MG",
+    "COND": "B/60",
+    "MARQUE": "TRIMETAZIDINE B"
+  },
+  {
+    "CODE": "06 J 107",
+    "DCI": "TRIMETAZIDINE DICHLORHYDRATE",
+    "FORME": "COMPRIME PELLICULE ",
+    "DOSAGE": "20MG",
+    "COND": "B/60",
+    "MARQUE": "VASTOR"
+  },
+  {
+    "CODE": "06 J 107",
+    "DCI": "TRIMETAZIDINE DICHLORHYDRATE",
+    "FORME": "COMPRIME PELLICULE ",
+    "DOSAGE": "20MG",
+    "COND": "B/60",
+    "MARQUE": "VEINOTREL"
+  },
+  {
+    "CODE": "06 J 159",
+    "DCI": "CLOPIDOGREL HYDROGENOSULFATE EXPRIME EN CLOPIDOGREL",
+    "FORME": "COMPRIME PELLICULE ",
+    "DOSAGE": "75MG",
+    "COND": "B/30",
+    "MARQUE": "PIDOGREL"
+  },
+  {
+    "CODE": "06 J 159",
+    "DCI": "CLOPIDOGREL HYDROGENOSULFATE EXPRIME EN CLOPIDOGREL",
+    "FORME": "COMPRIME PELLICULE ",
+    "DOSAGE": "75MG",
+    "COND": "B/28",
+    "MARQUE": "PLAGREL"
+  },
+  {
+    "CODE": "06 J 226",
+    "DCI": "TRIMETAZIDINE DICHLORHYDRATE",
+    "FORME": "COMP. PELLI. LM",
+    "DOSAGE": "35MG",
+    "COND": "B/60",
+    "MARQUE": "RIMETAZE LM"
+  },
+  {
+    "CODE": "06 M 136",
+    "DCI": "Simvastatine",
+    "FORME": "Comprimé pelliculé",
+    "DOSAGE": "20 mg",
+    "COND": "Boite 30",
+    "MARQUE": "Zostine"
+  },
+  {
+    "CODE": "06 M 136",
+    "DCI": "Simvastatine ",
+    "FORME": "Comprimé pelliculé ",
+    "DOSAGE": "20mg",
+    "COND": "B/30",
+    "MARQUE": "Vasta"
+  },
+  {
+    "CODE": "06 M 198",
+    "DCI": "Atorvastatine",
+    "FORME": "comp pel ",
+    "DOSAGE": "10mg/comp",
+    "COND": "bt de 28",
+    "MARQUE": "ATOR 10mg"
+  },
+  {
+    "CODE": "06 M 198",
+    "DCI": "Atorvastatine calcique trihydratée",
+    "FORME": "comprimé pelliculé",
+    "DOSAGE": "10 mg",
+    "COND": "boîte de 30",
+    "MARQUE": "LIPOVAST ® 10"
+  },
+  {
+    "CODE": "06 M 198",
+    "DCI": "ATORVASTATINE CALCIQUE TRIHYDRATEE EXPRIME EN ATORVASTATINE",
+    "FORME": "COMPRIME",
+    "DOSAGE": "10MG",
+    "COND": "B/30",
+    "MARQUE": "TORVAST"
+  },
+  {
+    "CODE": "06 M 203",
+    "DCI": "SIMVASTATINE",
+    "FORME": "COMPRIME PELLICULE ",
+    "DOSAGE": "40MG",
+    "COND": "B/30",
+    "MARQUE": "ZOSTINE"
+  },
+  {
+    "CODE": "06 M 225",
+    "DCI": "ATORVASTATINE CALCIQUE TRIHYDRATE EXPRIME EN ATORVASTATINE",
+    "FORME": "COMPRIME PELLICULE ",
+    "DOSAGE": "20MG",
+    "COND": "B/28",
+    "MARQUE": "ATOR 20MG"
+  },
+  {
+    "CODE": "06 M 225",
+    "DCI": "Atorvastatine calcique trihydratée",
+    "FORME": "comprimé pelliculé",
+    "DOSAGE": "20 mg",
+    "COND": "boîte de 30",
+    "MARQUE": "LIPOVAST ® 20"
+  },
+  {
+    "CODE": "06 M 225",
+    "DCI": "ATORVASTATINE CALCIQUE TRIHYDRATE EXPRIME EN ATORVASTATINE",
+    "FORME": "COMPRIME",
+    "DOSAGE": "20MG",
+    "COND": "B/30",
+    "MARQUE": "TORVAST"
+  },
+  {
+    "CODE": "06 M 232",
+    "DCI": "Atorvastatine",
+    "FORME": "comp pel",
+    "DOSAGE": "40mg/comp",
+    "COND": "bt de 28",
+    "MARQUE": "ATOR 40mg"
+  },
+  {
+    "CODE": "06 M 232",
+    "DCI": "Atorvastatine calcique trihydratée",
+    "FORME": "comprimé pelliculé",
+    "DOSAGE": "40 mg",
+    "COND": "boîte de 30",
+    "MARQUE": "LIPOVAST ® 40"
+  },
+  {
+    "CODE": "06 M 236",
+    "DCI": "Fluvastatin",
+    "FORME": "Comprimé LP",
+    "DOSAGE": "80mg",
+    "COND": "B/30",
+    "MARQUE": "Fluvacol"
+  },
+  {
+    "CODE": "06 M 269",
+    "DCI": "Rosuvastatine ",
+    "FORME": "COMPRIME PELLICULE ",
+    "DOSAGE": "10MG",
+    "COND": "B/30",
+    "MARQUE": "Rozitta 10"
+  },
+  {
+    "CODE": "06 M 270",
+    "DCI": "Rosuvastatine calcium",
+    "FORME": "Comprimé pelliculé",
+    "DOSAGE": "20 mg",
+    "COND": "B 30",
+    "MARQUE": "Rosuvastatin  "
+  },
+  {
+    "CODE": "06 M 270",
+    "DCI": "Rosuvastatine ",
+    "FORME": "COMPRIME PELLICULE ",
+    "DOSAGE": "20MG",
+    "COND": "B/30",
+    "MARQUE": "Rozitta 20"
+  },
+  {
+    "CODE": "06 M 296",
+    "DCI": "Rosuvastatine",
+    "FORME": "comp pel",
+    "DOSAGE": "05mg/comp",
+    "COND": "bt de 28",
+    "MARQUE": "Crestadis 5"
+  },
+  {
+    "CODE": "07 B 013",
+    "DCI": "PEROXYDE DE BENZOYLE",
+    "FORME": "GEL.DERM.",
+    "DOSAGE": "0.05",
+    "COND": "T/40G",
+    "MARQUE": "CUTACNYL"
+  },
+  {
+    "CODE": "07 B 014",
+    "DCI": "PEROXYDE DE BENZOYLE",
+    "FORME": "GEL. DERM.",
+    "DOSAGE": "0.1",
+    "COND": "T/40G",
+    "MARQUE": "CUTACNYL"
+  },
+  {
+    "CODE": "07 B 109",
+    "DCI": "Adapalène ",
+    "FORME": "Gel",
+    "DOSAGE": "0.001",
+    "COND": "T/30g",
+    "MARQUE": "Acnal"
+  },
+  {
+    "CODE": "07 B 113",
+    "DCI": "PEROXYDE DE BENZOYLE",
+    "FORME": "GEL. DERM.",
+    "DOSAGE": "0.025",
+    "COND": "T/40G",
+    "MARQUE": "CUTACNYL"
+  },
+  {
+    "CODE": "07 B 157",
+    "DCI": "adapalène",
+    "FORME": "gel  dermique",
+    "DOSAGE": "0.001",
+    "COND": "TUBE DE 30 G",
+    "MARQUE": "Adapalène novagenerics 0.1%"
+  },
+  {
+    "CODE": "07 B 157",
+    "DCI": "adapalène",
+    "FORME": "crème",
+    "DOSAGE": "0.001",
+    "COND": "tube de 30 g",
+    "MARQUE": "Adapalène novagenerics 0.1%"
+  },
+  {
+    "CODE": "07 B 157",
+    "DCI": "ADAPALENE",
+    "FORME": "CREME P. APPLI. CUTANEE",
+    "DOSAGE": "0.001",
+    "COND": "T/30G",
+    "MARQUE": "DIFFERINE"
+  },
+  {
+    "CODE": "07 C 016",
+    "DCI": "ACIDE FUSIDIQUE SOUS FORME DE FUSIDATE DE SODIUM",
+    "FORME": "PDE. DERM",
+    "DOSAGE": "0.02",
+    "COND": "T./15G",
+    "MARQUE": "FUCIDANE"
+  },
+  {
+    "CODE": "07 C 016",
+    "DCI": "ACIDE FUSIDIQUE SOUS FORME DE FUSIDATE DE SODIUM",
+    "FORME": "PDE.DERM.",
+    "DOSAGE": "0.02",
+    "COND": "T/15G",
+    "MARQUE": "FUCIDINE"
+  },
+  {
+    "CODE": "07 C 016",
+    "DCI": "Sodium fusidate ",
+    "FORME": "Pommade",
+    "DOSAGE": "0.02",
+    "COND": "T/15gm",
+    "MARQUE": "Zeta"
+  },
+  {
+    "CODE": "07 C 017",
+    "DCI": "ACIDE FUSIDIQUE",
+    "FORME": "CREME DERM.",
+    "DOSAGE": "0.02",
+    "COND": "T/15G",
+    "MARQUE": "ACIFUDAL"
+  },
+  {
+    "CODE": "07 C 017",
+    "DCI": "Fusidic acid ",
+    "FORME": "Crème",
+    "DOSAGE": "0.02",
+    "COND": "T/15gm",
+    "MARQUE": "Zeta"
+  },
+  {
+    "CODE": "07 C 020",
+    "DCI": "NYSTATINE / TRIAMCINOLONE ACETONIDE / NEOMYCINE SULFATE EXPRIME EN NEOMYCINE",
+    "FORME": "CREME",
+    "DOSAGE": "10MUI/100MG/250MG/100G",
+    "COND": "TUBE DE 15 G",
+    "MARQUE": "MYCOMEX"
+  },
+  {
+    "CODE": "07 C 104",
+    "DCI": "MUPIROCINE",
+    "FORME": "PDE. DERM.",
+    "DOSAGE": "0.02",
+    "COND": "T/15G",
+    "MARQUE": "INFECTOBAN"
+  },
+  {
+    "CODE": "07 C 104",
+    "DCI": "Mupirocine",
+    "FORME": "Pommade Dermique",
+    "DOSAGE": "0.02",
+    "COND": "T/15g",
+    "MARQUE": "MICROBAN"
+  },
+  {
+    "CODE": "07 D 024",
+    "DCI": "CLOTRIMAZOLE",
+    "FORME": "CREME DERM.",
+    "DOSAGE": "0.01",
+    "COND": "T/30G",
+    "MARQUE": "MYCOMAZOLE"
+  },
+  {
+    "CODE": "07 D 024",
+    "DCI": "CLOTRIMAZOLE",
+    "FORME": "CREME",
+    "DOSAGE": "0.01",
+    "COND": "TUBE DE 30 G",
+    "MARQUE": "CLOTERMEX"
+  },
+  {
+    "CODE": "07 D 028",
+    "DCI": "Ketoconazole",
+    "FORME": "CREME DERM.",
+    "DOSAGE": "0.02",
+    "COND": "T/15G",
+    "MARQUE": "KETOSKIN"
+  },
+  {
+    "CODE": "07 D 028",
+    "DCI": "Ketoconazole",
+    "FORME": "CREME DERM.",
+    "DOSAGE": "0.02",
+    "COND": "T/15G",
+    "MARQUE": "MYCOZOL"
+  },
+  {
+    "CODE": "07 D 029",
+    "DCI": "kétoconazole",
+    "FORME": "gel moussant ",
+    "DOSAGE": "0.02",
+    "COND": "tube de 20 g",
+    "MARQUE": "KETOCONAZOLE  novagenerics  2%"
+  },
+  {
+    "CODE": "07 D 092",
+    "DCI": "ketoconazole",
+    "FORME": "gel moussant en sachet-dose",
+    "DOSAGE": "0.02",
+    "COND": "BOITE DE 08",
+    "MARQUE": "KETOCONAZOLE  novagenerics 2%"
+  },
+  {
+    "CODE": "07 D 094",
+    "DCI": "TERBINAFINE CHLORHYDRATE",
+    "FORME": "CREME DERM.",
+    "DOSAGE": "0.01",
+    "COND": "B/01 TUBE DE 15G",
+    "MARQUE": "DERMAFINE"
+  },
+  {
+    "CODE": "07 D 094",
+    "DCI": "TERBINAFINE CHLORHYDRATE",
+    "FORME": "CREME DERM.",
+    "DOSAGE": "0.01",
+    "COND": "T/15G",
+    "MARQUE": "LAMIDAZ"
+  },
+  {
+    "CODE": "07 D 094",
+    "DCI": "Terbinafine Chlorhydrate",
+    "FORME": "Crème Dermique",
+    "DOSAGE": "0.15 g (1%)",
+    "COND": "Tube 15g",
+    "MARQUE": "Terbifine"
+  },
+  {
+    "CODE": "07 D 094",
+    "DCI": "TERBINAFINE CHLORHYDRATE",
+    "FORME": "CREME",
+    "DOSAGE": "0.01",
+    "COND": "T/15G",
+    "MARQUE": "TERBIL"
+  },
+  {
+    "CODE": "07 D 094",
+    "DCI": "TERBINAFINE CHLORHYDRATE",
+    "FORME": "CREME",
+    "DOSAGE": "0.01",
+    "COND": "T/15G",
+    "MARQUE": "TERBINAN"
+  },
+  {
+    "CODE": "07 D 094",
+    "DCI": "terbinafine",
+    "FORME": "crème",
+    "DOSAGE": "0.01",
+    "COND": "tube de 15g",
+    "MARQUE": "TERFINEX CREME 1%"
+  },
+  {
+    "CODE": "07 D 094",
+    "DCI": "TERBINAFINE CHLORHYDRATE",
+    "FORME": "CREME",
+    "DOSAGE": "0.01",
+    "COND": "TUBE DE 15 G",
+    "MARQUE": "TERBINAMEX"
+  },
+  {
+    "CODE": "07 D 108",
+    "DCI": "SERTACONAZOLE NITRATE",
+    "FORME": "Crème",
+    "DOSAGE": "0.02",
+    "COND": "Tube 10g",
+    "MARQUE": "DERMOFIX"
+  },
+  {
+    "CODE": "07 D 108",
+    "DCI": "Sertaconazole",
+    "FORME": "Crème ",
+    "DOSAGE": "0.02",
+    "COND": "T/20g",
+    "MARQUE": "Ovuzole"
+  },
+  {
+    "CODE": "07 D 108",
+    "DCI": "SERTACONAZOLE NITRATE",
+    "FORME": "Crème",
+    "DOSAGE": "0.02",
+    "COND": "Tube 20g",
+    "MARQUE": "DERMOX"
+  },
+  {
+    "CODE": "07 D 110",
+    "DCI": "AMOROLFINE",
+    "FORME": "vernis  a ongle ",
+    "DOSAGE": "0.05",
+    "COND": "flacon de 2.5 ml avec 10 spatules",
+    "MARQUE": "NOCIRINE"
+  },
+  {
+    "CODE": "07 D 110",
+    "DCI": "AMOROLFINE CHLORHYDRATE EXPRIME EN AMOROLFINE",
+    "FORME": "VERNIS A ONGLES MEDICAMENTEUX",
+    "DOSAGE": "0.05",
+    "COND": "B/01FL de 2.5ML + 10 SPATULES",
+    "MARQUE": "LOCERYL"
+  },
+  {
+    "CODE": "07 D 131",
+    "DCI": "NAFTIFINE CHLORHYDRATE",
+    "FORME": "SOL. DERM.",
+    "DOSAGE": "0.01",
+    "COND": "FL/10ML",
+    "MARQUE": "EXODERIL"
+  },
+  {
+    "CODE": "07 D 132",
+    "DCI": "NAFTIFINE CHLORHYDRATE",
+    "FORME": "CREME DERM.",
+    "DOSAGE": "0.01",
+    "COND": "T/15G",
+    "MARQUE": "EXODERIL"
+  },
+  {
+    "CODE": "07 D 139",
+    "DCI": "SERTACONAZOLE NITRATE",
+    "FORME": "GEL",
+    "DOSAGE": "0.02",
+    "COND": "T/100G",
+    "MARQUE": "DERMOFIX"
+  },
+  {
+    "CODE": "07 D 141",
+    "DCI": "kétoconazole",
+    "FORME": "shampoing",
+    "DOSAGE": "0.02",
+    "COND": "FLACON DE 100 ML",
+    "MARQUE": "KETOCONAZOLE  novagenerics 2%"
+  },
+  {
+    "CODE": "07 D 141",
+    "DCI": "Ketoconazole",
+    "FORME": "SHAMPOING",
+    "DOSAGE": "0.02",
+    "COND": "FL/100ML",
+    "MARQUE": "DANDREX"
+  },
+  {
+    "CODE": "07 D 148",
+    "DCI": "ciclopirox olamine",
+    "FORME": "crème ",
+    "DOSAGE": "0.01",
+    "COND": "tube de 30 g",
+    "MARQUE": "MYCODERM"
+  },
+  {
+    "CODE": "07 D 151",
+    "DCI": "CICLOPIROX",
+    "FORME": "SOL. FILMOGENE APPLI. LOCALE",
+    "DOSAGE": "0.08",
+    "COND": "F/3ML",
+    "MARQUE": "MYCOSTER"
+  },
+  {
+    "CODE": "07 D 156",
+    "DCI": "TERBINAFINE CHLORHYDRATE",
+    "FORME": "SOL P. APPLIC. LOCALE",
+    "DOSAGE": "0.01",
+    "COND": "B/01 FLACON PULVERISATEUR DE 15ML",
+    "MARQUE": "TERBIDAL 1%"
+  },
+  {
+    "CODE": "07 E 033",
+    "DCI": "Aciclovir",
+    "FORME": "Crème Dermique",
+    "DOSAGE": "0.05",
+    "COND": "Tube de 2gr",
+    "MARQUE": "Clovirax"
+  },
+  {
+    "CODE": "07 E 033",
+    "DCI": "Aciclovir",
+    "FORME": "Crème Dermique",
+    "DOSAGE": "0.05",
+    "COND": "Tube de 10gr",
+    "MARQUE": "Clovirax"
+  },
+  {
+    "CODE": "07 E 033",
+    "DCI": "aciclovir",
+    "FORME": "crème dermique ",
+    "DOSAGE": "200 mg ",
+    "COND": "TUBE DE 15 G ET DE 2 G",
+    "MARQUE": "Novaclovir 5% crème"
+  },
+  {
+    "CODE": "07 H 039",
+    "DCI": "Bétaméthasone dipropionate",
+    "FORME": "Pommade dermique",
+    "DOSAGE": "0.0005",
+    "COND": "Tube de 15g",
+    "MARQUE": "BETAMETHASONE PHYSIOPHARM"
+  },
+  {
+    "CODE": "07 H 039",
+    "DCI": "BETAMETHASONE DIPROPIONATE EXPRIME EN BETAMETHASONE",
+    "FORME": "PDE.DERM.",
+    "DOSAGE": "0.0005",
+    "COND": "T/15G",
+    "MARQUE": "BETASONE"
+  },
+  {
+    "CODE": "07 H 040",
+    "DCI": "BETAMETHASONE DIPROPIONATE EXPRIME EN BETHAMETHASONE",
+    "FORME": "LOTION DERM.",
+    "DOSAGE": "0.0005",
+    "COND": "FL./15G",
+    "MARQUE": "DERMASONE"
+  },
+  {
+    "CODE": "07 H 040",
+    "DCI": "BETAMETHASONE",
+    "FORME": "LOTION DERM.",
+    "DOSAGE": "0.0005",
+    "COND": "B/1FL. DE 15ML",
+    "MARQUE": "BETSOL"
+  },
+  {
+    "CODE": "07 H 042",
+    "DCI": "DESONIDE",
+    "FORME": "CREME DERM.",
+    "DOSAGE": "0.001",
+    "COND": "T./30G",
+    "MARQUE": "LOCATOP"
+  },
+  {
+    "CODE": "07 H 117",
+    "DCI": "HYDROCORTISONE ACEPONATE",
+    "FORME": "CREME LIPOPHILE",
+    "DOSAGE": "0.00127",
+    "COND": "T/30G",
+    "MARQUE": "ECZECORT"
+  },
+  {
+    "CODE": "07 H 126",
+    "DCI": "HYDROCORTISONE SOUS FORME DE HYDROCORTISONE 17-BUTYRATE",
+    "FORME": "CREME",
+    "DOSAGE": "0.001",
+    "COND": "TUBE/30G",
+    "MARQUE": "LOCACORT"
+  },
+  {
+    "CODE": "07 H 126",
+    "DCI": "HYDROCORTISONE (SOUS FORME D'HYDROCORTISONE 17-BUTYRATE)**",
+    "FORME": "CRÈME",
+    "DOSAGE": "0.001",
+    "COND": "T/30G",
+    "MARQUE": "LOCOID"
+  },
+  {
+    "CODE": "07 H 127",
+    "DCI": "HYDROCORTISONE (SOUS FORME D'HYDROCORTISONE 17-BUTYRATE)**",
+    "FORME": "CRÈME EPAISSE",
+    "DOSAGE": "0.001",
+    "COND": "T/30G",
+    "MARQUE": "LOCOID"
+  },
+  {
+    "CODE": "07 H 128",
+    "DCI": "HYDROCORTISONE (SOUS FORME D'HYDROCORTISONE 17-BUTYRATE)**",
+    "FORME": "LOTION",
+    "DOSAGE": "0.001",
+    "COND": "FL/30ML",
+    "MARQUE": "LOCOID"
+  },
+  {
+    "CODE": "07 H 129",
+    "DCI": "HYDROCORTISONE (SOUS FORME D'HYDROCORTISONE 17-BUTYRATE)**",
+    "FORME": "PDE.",
+    "DOSAGE": "0.001",
+    "COND": "T/30G",
+    "MARQUE": "LOCOID"
+  },
+  {
+    "CODE": "07 H 165",
+    "DCI": "BETAMETHASONE DIPROPIONATE EXPRIME EN BETAMETHASONE",
+    "FORME": "PDE.DERM.",
+    "DOSAGE": "0.001",
+    "COND": "T/15G",
+    "MARQUE": "BETASONE"
+  },
+  {
+    "CODE": "07 H 165",
+    "DCI": "Betamethasone",
+    "FORME": "Pommade",
+    "DOSAGE": "0.001",
+    "COND": "B/15gm",
+    "MARQUE": "Tabeta"
+  },
+  {
+    "CODE": "07 H 174",
+    "DCI": "clobetasol propionate ",
+    "FORME": "Crème",
+    "DOSAGE": "0.0005",
+    "COND": "B/15gm",
+    "MARQUE": "Clobecort"
+  },
+  {
+    "CODE": "07 H 174",
+    "DCI": "CLOBETASOL PROPIONATE",
+    "FORME": "CREME DERM.",
+    "DOSAGE": "0.05%",
+    "COND": "T/45G",
+    "MARQUE": "CLOTASOL"
+  },
+  {
+    "CODE": "07 H 175",
+    "DCI": "CLOBETASOL PROPIONATE",
+    "FORME": "GEL P. APPLI. CAPILLAIRE",
+    "DOSAGE": "0.05%",
+    "COND": "T/45G",
+    "MARQUE": "CLOTASOL"
+  },
+  {
+    "CODE": "07 H 176",
+    "DCI": "clobetasol propionate ",
+    "FORME": "Pommade",
+    "DOSAGE": "0.0005",
+    "COND": "B/15gm",
+    "MARQUE": "Clobecort"
+  },
+  {
+    "CODE": "07 H 176",
+    "DCI": "CLOBETASOL PROPIONATE",
+    "FORME": "PDE.DERM.",
+    "DOSAGE": "0.0005",
+    "COND": "T/45G",
+    "MARQUE": "CLOTASOL"
+  },
+  {
+    "CODE": "07 L 059",
+    "DCI": "ISOTRETINOINE",
+    "FORME": "CAPSULE MOLLE",
+    "DOSAGE": "20MG",
+    "COND": "B/30",
+    "MARQUE": "CURACNE  20MG"
+  },
+  {
+    "CODE": "07 L 099",
+    "DCI": "CALCIPOTRIOL",
+    "FORME": "pommade",
+    "DOSAGE": "50 µg/g",
+    "COND": "TUBE DE 30 G",
+    "MARQUE": "CALCIPOTRIOL novagenerics®"
+  },
+  {
+    "CODE": "07 L 099",
+    "DCI": "Calcipooaiol",
+    "FORME": "Pommade ",
+    "DOSAGE": "0.00005",
+    "COND": "T/30g",
+    "MARQUE": "Psoranex "
+  },
+  {
+    "CODE": "07 P 071",
+    "DCI": "HEXAMIDINE DI-ISETHIONATE",
+    "FORME": "SOL.DERM.",
+    "DOSAGE": "0.001",
+    "COND": "FL/50ML",
+    "MARQUE": "ISOMEDINE"
+  },
+  {
+    "CODE": "07 P 079",
+    "DCI": "SULFADIAZINE argentique",
+    "FORME": "crème",
+    "DOSAGE": "0.01",
+    "COND": "TUBE DE 50 G",
+    "MARQUE": "SULFADIAZINE novagenerics 1% "
+  },
+  {
+    "CODE": "07 P 079",
+    "DCI": "Sulfadiazine Argentique",
+    "FORME": "Crème",
+    "DOSAGE": "0.01",
+    "COND": "Tube de 40 g",
+    "MARQUE": "FLAMAZOLE"
+  },
+  {
+    "CODE": "07 P 136",
+    "DCI": "Trolamine",
+    "FORME": "émulsion ",
+    "DOSAGE": "0.0067",
+    "COND": "Tube de 93 gr",
+    "MARQUE": "BRUFINE"
+  },
+  {
+    "CODE": "08 C 017",
+    "DCI": "Iohexol",
+    "FORME": "sol. inj. ",
+    "DOSAGE": "(300 mg d'iode/ml) correspondant à 647mg/ml d'Iohexol",
+    "COND": "B/1FL de 100ml",
+    "MARQUE": "CONTRAPAQUE 300"
+  },
+  {
+    "CODE": "08 C 017",
+    "DCI": "IOHEXOL",
+    "FORME": "SOL.INJ",
+    "DOSAGE": "I =300MG/ML",
+    "COND": "FL/10 ML.50ML.100ML",
+    "MARQUE": "OMNIPAQUE"
+  },
+  {
+    "CODE": "08 C 018",
+    "DCI": "Iohexol",
+    "FORME": "Sol. Inj. ",
+    "DOSAGE": "I=350mg/ml (755mg/ml d'iohexol)",
+    "COND": "FL/100ML",
+    "MARQUE": "CONTRAPAQUE 350"
+  },
+  {
+    "CODE": "08 C 018",
+    "DCI": "IOHEXOL",
+    "FORME": "SOL.INJ",
+    "DOSAGE": "I =350MG/ML",
+    "COND": "FL/50 ML. 100ML",
+    "MARQUE": "OMNIPAQUE"
+  },
+  {
+    "CODE": "08 C 020",
+    "DCI": "Iopamidol en Iode élément",
+    "FORME": "Sol. Inj. ",
+    "DOSAGE": "300mg/ml",
+    "COND": "FL/100ml",
+    "MARQUE": "PAMIDOL 300"
+  },
+  {
+    "CODE": "08 C 021",
+    "DCI": "Iopamidol en Iode élément",
+    "FORME": "Sol. Inj. ",
+    "DOSAGE": "370mg/ml",
+    "COND": "FL/50ml",
+    "MARQUE": "PAMIDOL 370"
+  },
+  {
+    "CODE": "09 A 142",
+    "DCI": "EXEMESTANE",
+    "FORME": "COMPRIME PELLICULE ",
+    "DOSAGE": "25MG",
+    "COND": "B/30",
+    "MARQUE": "AROMASINE"
+  },
+  {
+    "CODE": "09 B 004",
+    "DCI": "TAMOXIFENE",
+    "FORME": "COMPRIME PELLICULE ",
+    "DOSAGE": "10MG",
+    "COND": "B/30 ",
+    "MARQUE": "NOLVADEX"
+  },
+  {
+    "CODE": "09 B 075",
+    "DCI": "TAMOXIFENE",
+    "FORME": "COMPRIME",
+    "DOSAGE": "20MG",
+    "COND": "B/30",
+    "MARQUE": "NOLVADEX"
+  },
+  {
+    "CODE": "09 D 168",
+    "DCI": "econazole ",
+    "FORME": "émulsion fluide ",
+    "DOSAGE": "0.01",
+    "COND": "flacon de 30 ml",
+    "MARQUE": "ECONAZOLE novagenerics"
+  },
+  {
+    "CODE": "09 E 007",
+    "DCI": "CARBIMAZOLE",
+    "FORME": "COMPRIME SECABLE ",
+    "DOSAGE": "5MG",
+    "COND": "B/50",
+    "MARQUE": "CARBIMAZOLE GS"
+  },
+  {
+    "CODE": "09 G 014",
+    "DCI": "ESTRADIOL (VALERATE) ",
+    "FORME": "COMPRIME PELLICULE ",
+    "DOSAGE": "2MG",
+    "COND": "B/20",
+    "MARQUE": "PROGYNOVA 2"
+  },
+  {
+    "CODE": "09 H 017",
+    "DCI": "BETAMETHASONE",
+    "FORME": "SOL INJ ",
+    "DOSAGE": "7MG/500MG/2.00MG",
+    "COND": "12:00 AM",
+    "MARQUE": "DIPRONAD"
+  },
+  {
+    "CODE": "09 H 020",
+    "DCI": "BETAMETHASONE",
+    "FORME": "SOL. BUV. GTTES.",
+    "DOSAGE": "0.5MG/ML (0.05%)",
+    "COND": "B/1FL DE 30ML +SERINGUE GRADUEE",
+    "MARQUE": "BETAMETHASONE  INPHA MEDIS"
+  },
+  {
+    "CODE": "09 H 020",
+    "DCI": "BETAMETHASONE",
+    "FORME": "SOL. BUV. GTTES.",
+    "DOSAGE": "0.5MG/ML (0.05%)",
+    "COND": "F/30ML + PIPETTE GRADUEE",
+    "MARQUE": "TABETA"
+  },
+  {
+    "CODE": "09 H 021 ",
+    "DCI": "DEXAMETHASONE",
+    "FORME": "SOL. INJ.",
+    "DOSAGE": "4MG/ML",
+    "COND": "B/5AMP./1ML",
+    "MARQUE": "DEXASONE"
+  },
+  {
+    "CODE": "09 H 143",
+    "DCI": "Prednisolone",
+    "FORME": "comp orodispersible",
+    "DOSAGE": "5mg/comp",
+    "COND": "bt de 30",
+    "MARQUE": "Oropred 5mg"
+  },
+  {
+    "CODE": "09 H 143",
+    "DCI": "PREDNISOLONE METASULFOBENZOATE SODIQUE EXPRIME EN PREDNISOLONE",
+    "FORME": "COMP. ORODISPERS.",
+    "DOSAGE": "5MG",
+    "COND": "B/30",
+    "MARQUE": "SOLUPRED ORO"
+  },
+  {
+    "CODE": "09 H 144",
+    "DCI": "Prednisolone",
+    "FORME": "comp orodispersible",
+    "DOSAGE": "20mg/comp",
+    "COND": "bt de 20",
+    "MARQUE": "Oropred 20mg"
+  },
+  {
+    "CODE": "09 H 144",
+    "DCI": "Prednisolone",
+    "FORME": "comp orodispersible",
+    "DOSAGE": "20mg/comp",
+    "COND": "bt de 20",
+    "MARQUE": "Oropred 20mg"
+  },
+  {
+    "CODE": "09 H 144",
+    "DCI": "PREDNISOLONE METASULFOBENZOATE SODIQUE EXPRIME EN PREDNISOLONE",
+    "FORME": "COMP. ORODISPERS.",
+    "DOSAGE": "20MG",
+    "COND": "B/20",
+    "MARQUE": "SOLUPRED ORO"
+  },
+  {
+    "CODE": "09 J 152",
+    "DCI": "FOLLITROPINE ALFA (HORMONE FOLLICULOSTIMULATE HUMAINE RECOMBINANTE (FSH RECOMBINANTE)",
+    "FORME": "SOL. INJ SC  EN MULTIDOSE",
+    "DOSAGE": "300UI/0.5ML (22µG/0.5ML)",
+    "COND": "B/1STYLO PREREMPLI DE 0.5ML + 05AIGUILLES POUR STYLO",
+    "MARQUE": "GONAL-F"
+  },
+  {
+    "CODE": "09 J 153",
+    "DCI": "FOLLITROPINE ALFA (OU HORMONE FOLLICULOSTIMULATE HUMAINE RECOMBINANTE - FSH RECOMBINANTE)",
+    "FORME": "SOL. INJ SC  EN MULTIDOSE",
+    "DOSAGE": "450UI/0.75ML (33µG/0.75ML)",
+    "COND": "B/1STYLO PREREMPLI DE 0.75ML + 07AIGUILLES POUR STYLO",
+    "MARQUE": "GONAL-F"
+  },
+  {
+    "CODE": "09 L 058",
+    "DCI": "CLOMIFÈNE CITRATE",
+    "FORME": "COMPRIME SECABLE",
+    "DOSAGE": "·  50mg",
+    "COND": "-Boite de 5 comprimés sécables.",
+    "MARQUE": "BIOMID BR"
+  },
+  {
+    "CODE": "09 N 060",
+    "DCI": "DYDROGESTERONE",
+    "FORME": "COMPRIME PELLICULE ",
+    "DOSAGE": "10MG",
+    "COND": "B/10",
+    "MARQUE": "DUPHASTON"
+  },
+  {
+    "CODE": "09 N 062",
+    "DCI": "HYDROXYPROGESTERONE CAPROATE ",
+    "FORME": "SOL.INJ. IM",
+    "DOSAGE": "500MG/2/ML",
+    "COND": "B/3AMP. ",
+    "MARQUE": "PROGESTERONE RETARD PHARLON"
+  },
+  {
+    "CODE": "09 N 066",
+    "DCI": "ACETATE DE NOMEGESTROL",
+    "FORME": "COMP.SEC.",
+    "DOSAGE": "5mg",
+    "COND": "B/10",
+    "MARQUE": "NOMEGESTROL "
+  },
+  {
+    "CODE": "09 N 155",
+    "DCI": "PROGESTERONE MICRONISEE",
+    "FORME": "CAPSULE MOLLE ORALE OU VAGINALE",
+    "DOSAGE": "200MG",
+    "COND": "B/15",
+    "MARQUE": "UTROGESTAN"
+  },
+  {
+    "CODE": "10 A  113",
+    "DCI": "Oméprazole",
+    "FORME": "Gélule gasto-résistante",
+    "DOSAGE": "10 mg",
+    "COND": "Pilulier 28",
+    "MARQUE": "Proton"
+  },
+  {
+    "CODE": "10 A 001",
+    "DCI": "OMEPRAZOLE",
+    "FORME": "GLES. A MICROG. GASTRORESIST.",
+    "DOSAGE": "20MG",
+    "COND": "PILULIER DE 15",
+    "MARQUE": "LOMAC"
+  },
+  {
+    "CODE": "10 A 001",
+    "DCI": "Oméprazole",
+    "FORME": "Gélule gasto-résistante",
+    "DOSAGE": "20 mg",
+    "COND": "Pilulier 14",
+    "MARQUE": "Proton"
+  },
+  {
+    "CODE": "10 A 001",
+    "DCI": "Oméprazole",
+    "FORME": "Gélule gasto-résistante",
+    "DOSAGE": "20 mg",
+    "COND": "Pilulier 28",
+    "MARQUE": "Proton"
+  },
+  {
+    "CODE": "10 A 001",
+    "DCI": "OMEPRAZOLE",
+    "FORME": "GLES. A MICROG. GASTRORESIST.",
+    "DOSAGE": "20MG",
+    "COND": "B/28",
+    "MARQUE": "ZIMOR"
+  },
+  {
+    "CODE": "10 A 001",
+    "DCI": "Omeprazole",
+    "FORME": "COMPRIME PELLICULE ",
+    "DOSAGE": "20MG",
+    "COND": "B/30",
+    "MARQUE": "Omedar 20"
+  },
+  {
+    "CODE": "10 A 134",
+    "DCI": "PANTOPRAZOLE",
+    "FORME": "COMP A ENROBAGE ENTERIQUE",
+    "DOSAGE": "40MG",
+    "COND": "B/14 & 28",
+    "MARQUE": "POTONEX"
+  },
+  {
+    "CODE": "10 A 167",
+    "DCI": "LANSOPRAZOLE",
+    "FORME": "GELULE A MICRO GRANULES",
+    "DOSAGE": "·  30mg",
+    "COND": "B/15",
+    "MARQUE": "LANZOREM"
+  },
+  {
+    "CODE": "10 A 167",
+    "DCI": "LANSOPRAZOLE",
+    "FORME": "GELULE A MICRO GRANULES",
+    "DOSAGE": "·  30mg",
+    "COND": "B/30",
+    "MARQUE": "LANZOREM"
+  },
+  {
+    "CODE": "10 A 180",
+    "DCI": "Esomeprazol",
+    "FORME": "Gélule",
+    "DOSAGE": "20mg/comp",
+    "COND": "B/16   ET    B/28",
+    "MARQUE": "ESORAL 20 mg Bte 16"
+  },
+  {
+    "CODE": "10 A 180",
+    "DCI": "Esoméprazole",
+    "FORME": "Comprimé pelliculé gastro-résistant",
+    "DOSAGE": "20 mg",
+    "COND": "Boite 28",
+    "MARQUE": "Lisinox"
+  },
+  {
+    "CODE": "10 A 181",
+    "DCI": "Esomeprazol",
+    "FORME": "Gélule",
+    "DOSAGE": "40mg/comp",
+    "COND": "B/16 ET B/28",
+    "MARQUE": "ESORAL 40 mg Bte 16"
+  },
+  {
+    "CODE": "10 A 181",
+    "DCI": "Esoméprazole",
+    "FORME": "comprimé pelliculé gastro-résistant",
+    "DOSAGE": "40 mg",
+    "COND": "Boite 28",
+    "MARQUE": "Lisinox"
+  },
+  {
+    "CODE": "10 A 181",
+    "DCI": "Esoméprazole",
+    "FORME": "Gélule à microgranule gastro-résistante ",
+    "DOSAGE": "40mg",
+    "COND": "B/14 ET b/28",
+    "MARQUE": "esomac"
+  },
+  {
+    "CODE": "10 B 010",
+    "DCI": "HYDROXIDE ALUMINIUM/HYDROXIDE DE MAGNESIUM",
+    "FORME": "SUSP BUV",
+    "DOSAGE": "125mg/1600 mg",
+    "COND": "Fl/200 ml",
+    "MARQUE": "MAALOX"
+  },
+  {
+    "CODE": "10 C 017",
+    "DCI": "NIFUROXAZIDE",
+    "FORME": "GLES.",
+    "DOSAGE": "200MG",
+    "COND": "B/28",
+    "MARQUE": "XEFURYL"
+  },
+  {
+    "CODE": "10 C 018",
+    "DCI": "NIFUROXAZIDE",
+    "FORME": "SUSP.BUV.",
+    "DOSAGE": "0.04",
+    "COND": "FL /90ML",
+    "MARQUE": "NIFUROXAZIDE PHYSIOPHARM"
+  },
+  {
+    "CODE": "10 D 031",
+    "DCI": "TIEMONIUM METHYLSULFATE",
+    "FORME": "SUPPO.",
+    "DOSAGE": "20MG",
+    "COND": "B/10",
+    "MARQUE": "VISCERAL"
+  },
+  {
+    "CODE": "10 D 032",
+    "DCI": "TIEMONIUM METHYLSULFATE ",
+    "FORME": "SIROP",
+    "DOSAGE": "10MG/5ML",
+    "COND": "FL/125ML",
+    "MARQUE": "TIMADLINE"
+  },
+  {
+    "CODE": "10 D 032",
+    "DCI": "TIEMONIUM METHYLSULFATE",
+    "FORME": "SIROP",
+    "DOSAGE": "10MG/5ML",
+    "COND": "FL/150ML",
+    "MARQUE": "ISOSPALGINE"
+  },
+  {
+    "CODE": "10 D 032",
+    "DCI": "TIEMONIUM METHYLSULFATE",
+    "FORME": "SOL BUV",
+    "DOSAGE": "10 MG / 5 ML",
+    "COND": "FLACON DE 150 ML",
+    "MARQUE": "TIMONEX"
+  },
+  {
+    "CODE": "10 D 135",
+    "DCI": "PRIFINIUM BROMURE",
+    "FORME": "COMPRIME PELLICULE ",
+    "DOSAGE": "30MG",
+    "COND": "B/20",
+    "MARQUE": "RIABAL"
+  },
+  {
+    "CODE": "10 E 035",
+    "DCI": "Mebeverine chlorhydrate",
+    "FORME": "COMPRIME PELLICULE ",
+    "DOSAGE": "100MG",
+    "COND": "B/30",
+    "MARQUE": "DESPAVINE"
+  },
+  {
+    "CODE": "10 E 039",
+    "DCI": "PHLOROGLUCINOL / TRIMETHYLPHLOROGLUCINOL",
+    "FORME": "SUPPO.",
+    "DOSAGE": "150MG/150MG",
+    "COND": "B/10",
+    "MARQUE": "SPASMINE"
+  },
+  {
+    "CODE": "10 E 108",
+    "DCI": "Phloroglucinol dihydraté",
+    "FORME": "comprimé orodispersible",
+    "DOSAGE": "80 mg",
+    "COND": "boîte de 20",
+    "MARQUE": "PHLOSPAM 80 "
+  },
+  {
+    "CODE": "10 E 108",
+    "DCI": "Phloroglucinol dihydraté",
+    "FORME": "COMP. ORODISPERS.",
+    "DOSAGE": "80MG",
+    "COND": " B/20",
+    "MARQUE": "SPACYL"
+  },
+  {
+    "CODE": "10 E 207",
+    "DCI": "Phloroglucinol dihydraté",
+    "FORME": "comprimé orodispersible",
+    "DOSAGE": "160 mg",
+    "COND": "boîte de 20",
+    "MARQUE": "PHLOSPAM 160 "
+  },
+  {
+    "CODE": "10 F 044",
+    "DCI": "METOCLOPRAMIDE CHLORHYDRATE ANHYDRE",
+    "FORME": "SOL.BUV",
+    "DOSAGE": "0.001",
+    "COND": "FL/125ML",
+    "MARQUE": "CLOPRAMID"
+  },
+  {
+    "CODE": "10 F 044",
+    "DCI": "METOCLOPRAMIDE",
+    "FORME": "SOL. BUV.",
+    "DOSAGE": "0.001",
+    "COND": "F/200ML",
+    "MARQUE": "METOCLAM"
+  },
+  {
+    "CODE": "10 F 046",
+    "DCI": "DOMPERIDONE",
+    "FORME": "COMPRIME SECABLE ",
+    "DOSAGE": "10MG",
+    "COND": "B/30",
+    "MARQUE": "PERIDIUM"
+  },
+  {
+    "CODE": "10 F 046",
+    "DCI": "Dompéridone",
+    "FORME": "Comprimé",
+    "DOSAGE": "10 mg",
+    "COND": "Boite 30",
+    "MARQUE": "Dompermex"
+  },
+  {
+    "CODE": "10 F 046",
+    "DCI": "Dompéridone",
+    "FORME": "Comprimé",
+    "DOSAGE": "10 mg",
+    "COND": "Boite 40",
+    "MARQUE": "Domperone"
+  },
+  {
+    "CODE": "10 F 047",
+    "DCI": "Domperidone",
+    "FORME": "susp buv",
+    "DOSAGE": "1mg/ml",
+    "COND": "flacon 200ml",
+    "MARQUE": "Medilium 1mg/ml"
+  },
+  {
+    "CODE": "10 F 047",
+    "DCI": "DOMPERIDONE",
+    "FORME": "SUSP. BUV.",
+    "DOSAGE": "1MG/ML",
+    "COND": "FL./200ML + PIPETTE DOSEUSE",
+    "MARQUE": "NAUSEDIUM"
+  },
+  {
+    "CODE": "10 F 047",
+    "DCI": "Dompéridone",
+    "FORME": "Suspension buvable",
+    "DOSAGE": "1 mg/ml",
+    "COND": "Flacon 200 ml",
+    "MARQUE": "Domperidone BGL"
+  },
+  {
+    "CODE": "10 F 047",
+    "DCI": "DOMPERIDONE",
+    "FORME": "SUSP BUV",
+    "DOSAGE": "1 MG / ML",
+    "COND": "B/1FL. DE 200ML + 1SERING. P. ADMINIST. OR. GRADUE EN KG",
+    "MARQUE": "DOMPERIMEX "
+  },
+  {
+    "CODE": "10 F 051",
+    "DCI": "TRIMEBUTINE MALEATE",
+    "FORME": "COMPRIME",
+    "DOSAGE": "100MG",
+    "COND": "B/20",
+    "MARQUE": "COLOSTOP"
+  },
+  {
+    "CODE": "10 F 051",
+    "DCI": "TRIMEBUTINE MALEATE",
+    "FORME": "COMPRIME",
+    "DOSAGE": "100MG",
+    "COND": "B/30",
+    "MARQUE": "TRIMEBUTINE HUP"
+  },
+  {
+    "CODE": "10 F 052",
+    "DCI": "TRIMEBUTINE MALEATE",
+    "FORME": "GRLES. SUSP. BUV.",
+    "DOSAGE": "0.787G/100G",
+    "COND": "FL./250ML CONTENANT 152.5G DE GRLES. + GOBELET DOSEUR",
+    "MARQUE": "TRIMEBUTINE B"
+  },
+  {
+    "CODE": "10 F 093",
+    "DCI": "Ondansetron",
+    "FORME": "comp pel",
+    "DOSAGE": "4mg/comp",
+    "COND": "bt de 10",
+    "MARQUE": "ONDANSETRON-INPHA-MédiS 4mg"
+  },
+  {
+    "CODE": "10 F 093",
+    "DCI": "ONDANSETRON CHLORHYDRATE DIHYDRATE EXPRIME EN ONDANSETRON",
+    "FORME": "COMPRIME PELLICULE ",
+    "DOSAGE": "4MG",
+    "COND": "B/28",
+    "MARQUE": "SETREME"
+  },
+  {
+    "CODE": "10 F 093",
+    "DCI": "ONDANSETRON CHLORHYDRATE DIHYDRATE EXPRIME EN ONDANSETRON",
+    "FORME": "COMPRIME PELLICULE ",
+    "DOSAGE": "4MG",
+    "COND": "B/7",
+    "MARQUE": "SETREME"
+  },
+  {
+    "CODE": "10 F 094",
+    "DCI": "Ondansetron",
+    "FORME": "comp pel",
+    "DOSAGE": "8 mg/comp",
+    "COND": "bt de 10",
+    "MARQUE": "ONDANSETRON-INPHA-MédiS 8mg"
+  },
+  {
+    "CODE": "10 F 094",
+    "DCI": "ONDANSETRON CHLORHYDRATE DIHYDRATE EXPRIME EN ONDANSETRON",
+    "FORME": "COMPRIME PELLICULE ",
+    "DOSAGE": "8MG",
+    "COND": "B/28",
+    "MARQUE": "SETREME"
+  },
+  {
+    "CODE": "10 F 094",
+    "DCI": "ONDANSETRON CHLORHYDRATE DIHYDRATE EXPRIME EN ONDANSETRON",
+    "FORME": "COMPRIME PELLICULE ",
+    "DOSAGE": "8MG",
+    "COND": "B/7",
+    "MARQUE": "SETREME"
+  },
+  {
+    "CODE": "10 F 157",
+    "DCI": "DOMPERIDONE",
+    "FORME": "COMP. ORODISPERS.",
+    "DOSAGE": "10MG",
+    "COND": "B/30",
+    "MARQUE": "NAUSEDIUM"
+  },
+  {
+    "CODE": "10 G 054",
+    "DCI": "ALGINATE DE SODIUM / BICARBONATE DE SODIUM",
+    "FORME": "SUSP. BUV.",
+    "DOSAGE": "50MG/26.7MG/ML",
+    "COND": "B/1FL. DE 250ML (ADULTE)  ",
+    "MARQUE": "NOBAC ADULTE  "
+  },
+  {
+    "CODE": "10 G 054",
+    "DCI": "Alginate de sodium / bicarbonate de sodium",
+    "FORME": "Suspension buvable",
+    "DOSAGE": "250mg/ 133.5mg/5ml",
+    "COND": "Flacon 200 ml + goblet doseur 15ml",
+    "MARQUE": "Peptidac"
+  },
+  {
+    "CODE": "10 G 054",
+    "DCI": "ALGINATE DE SODIUM/BICARBONATE DE SODIUM",
+    "FORME": "SUSP BUV",
+    "DOSAGE": "50MG/26.7MG/ML",
+    "COND": "Flacon 150mg",
+    "MARQUE": "NOBAC"
+  },
+  {
+    "CODE": "10 G 054",
+    "DCI": "ALGINATE DE SODIUM/BICARBONATE DE SODIUM",
+    "FORME": "susp buv en sachet",
+    "DOSAGE": "50MG/26.7MG/ML",
+    "COND": "B/24",
+    "MARQUE": "NOBAC Goût menthe"
+  },
+  {
+    "CODE": "10 G 054",
+    "DCI": "ALGINATE DE SODIUM/BICARBONATE DE SODIUM",
+    "FORME": "susp buv en sachet",
+    "DOSAGE": "50MG/26.7MG/ML",
+    "COND": "B/24",
+    "MARQUE": "NOBAC Goût Fraise"
+  },
+  {
+    "CODE": "10 G 054",
+    "DCI": "ALGINATE DE SODIUM/BICARBONATE DE SODIUM",
+    "FORME": "susp buv en sachet",
+    "DOSAGE": "50MG/26.7MG/ML",
+    "COND": "B/24",
+    "MARQUE": "NOBAC Goût anis"
+  },
+  {
+    "CODE": "10 H 056",
+    "DCI": "Lopéramide Chlorhydrate",
+    "FORME": "GLES.",
+    "DOSAGE": "2MG",
+    "COND": "B/20",
+    "MARQUE": "DIARYL"
+  },
+  {
+    "CODE": "10 H 056",
+    "DCI": "Lopéramide Chlorhydrate",
+    "FORME": "GLES",
+    "DOSAGE": "2MG",
+    "COND": "B/20",
+    "MARQUE": "DYAREX"
+  },
+  {
+    "CODE": "10 H 177",
+    "DCI": "RACECADOTRIL",
+    "FORME": "PDRE. ORALE EN SACHET DOSE",
+    "DOSAGE": "10MG/SACH.",
+    "COND": "B/16",
+    "MARQUE": "TIOTRIL"
+  },
+  {
+    "CODE": "10 H 178",
+    "DCI": "RACECADOTRIL",
+    "FORME": "PDRE. ORALE EN SACHET DOSE",
+    "DOSAGE": "30MG/SACH.",
+    "COND": "B/30",
+    "MARQUE": "TIOTRIL"
+  },
+  {
+    "CODE": "10 H 178",
+    "DCI": "RACECADOTRIL",
+    "FORME": "PDRE. ORALE EN SACHET DOSE",
+    "DOSAGE": "30MG/SACH.",
+    "COND": "B/30",
+    "MARQUE": "CELOFON Enfant"
+  },
+  {
+    "CODE": "10 L 062",
+    "DCI": "Lactulose",
+    "FORME": "Sirop",
+    "DOSAGE": "10mg/15ml ",
+    "COND": "B/300ml",
+    "MARQUE": "Ezilax"
+  },
+  {
+    "CODE": "10 L 062",
+    "DCI": "Lactulose",
+    "FORME": "Sirop ",
+    "DOSAGE": "0.606",
+    "COND": "Flacon 200ml",
+    "MARQUE": "INPHALAC "
+  },
+  {
+    "CODE": "10 L 062",
+    "DCI": "LACTULOSE",
+    "FORME": "SOL. BUV. SANS SUCRE",
+    "DOSAGE": "0.665",
+    "COND": "FL/150ML",
+    "MARQUE": "LACTUMEX"
+  },
+  {
+    "CODE": "10 L 097",
+    "DCI": "LACTULOSE",
+    "FORME": "SOL BUV",
+    "DOSAGE": "0.665",
+    "COND": "B/20 SACHETS DOSE DE 15ML",
+    "MARQUE": "ISOLACT"
+  },
+  {
+    "CODE": "10 L 097",
+    "DCI": "LACTULOSE",
+    "FORME": "SOL. BUV. EN SACHET-DOSE",
+    "DOSAGE": "10G/15ML",
+    "COND": "B/20 SACHETS-DOSE DE 15 ML",
+    "MARQUE": "DUPHALOSE"
+  },
+  {
+    "CODE": "10 L 097",
+    "DCI": "LACTULOSE",
+    "FORME": "SOL. BUV. EN SACHET-DOSE",
+    "DOSAGE": "10G/15ML",
+    "COND": "B/20 SACHETS-DOSE DE 15 ML",
+    "MARQUE": "ISOLACT"
+  },
+  {
+    "CODE": "10 L 098",
+    "DCI": "MACROGOL 4000**  (POLYETHYLENE GLYCOL 4000) ",
+    "FORME": "PRDE SOL BUV",
+    "DOSAGE": "10G/SACHET**",
+    "COND": "B/20 SACHETS DOSE ",
+    "MARQUE": "FORLAX"
+  },
+  {
+    "CODE": "10 L 098",
+    "DCI": "MACROGOL 4000",
+    "FORME": "PDRE P/SOL BUV EN SACHET-DOSE",
+    "DOSAGE": "10G/SACHET",
+    "COND": "B/20 SACHETS",
+    "MARQUE": "OROLAX"
+  },
+  {
+    "CODE": "10 L 106",
+    "DCI": "Calcipotriol",
+    "FORME": "Crème  ",
+    "DOSAGE": "50µg/g",
+    "COND": "T/ 30 g",
+    "MARQUE": "DAIVONEX"
+  },
+  {
+    "CODE": "10 L 189",
+    "DCI": "MACROGOL 4000 (OU PEG=POLYETHYLENE GLYCOL 4000)",
+    "FORME": "PDRE. SOL. BUV. EN SACH.-DOSE",
+    "DOSAGE": "4G/SACH.",
+    "COND": "B/20SACH-DOSE",
+    "MARQUE": "OROLAX"
+  },
+  {
+    "CODE": "10 L 189",
+    "DCI": "MACROGOL 4000 (OU PEG=POLYETHYLENE GLYCOL 4000)",
+    "FORME": "PDRE. SOL. BUV. EN SACH.-DOSE",
+    "DOSAGE": "4G/SACH.",
+    "COND": "B/20SACH-DOSE",
+    "MARQUE": "FORLAX 4G"
+  },
+  {
+    "CODE": "10 L 191",
+    "DCI": "PICOSULFATE DE SODIUM",
+    "FORME": "SOL. BUV.",
+    "DOSAGE": "0.75G/100ML",
+    "COND": "B/1FL. COMPT.-GTTES. DE 30ML",
+    "MARQUE": "PONCTUEL"
+  },
+  {
+    "CODE": "10 N 076",
+    "DCI": "MESALAZINE",
+    "FORME": "SUPPO.",
+    "DOSAGE": "500MG",
+    "COND": "B/30",
+    "MARQUE": "ROVAZINE"
+  },
+  {
+    "CODE": "10 N 078",
+    "DCI": "SALAZOSULFAPYRIDINE",
+    "FORME": "COMPRIME",
+    "DOSAGE": "500MG",
+    "COND": "B/100",
+    "MARQUE": "SALAZOPYRINE"
+  },
+  {
+    "CODE": "10 N 176",
+    "DCI": "Mesalamine ",
+    "FORME": "Sachet ",
+    "DOSAGE": "1 G",
+    "COND": "Boite de 120.",
+    "MARQUE": "PENTAZINE"
+  },
+  {
+    "CODE": "10 N 202",
+    "DCI": "Mesalamine ",
+    "FORME": "Sachet ",
+    "DOSAGE": "500 mg ",
+    "COND": "Boite de 60.",
+    "MARQUE": "PENTAZINE "
+  },
+  {
+    "CODE": "11 A 001",
+    "DCI": "ECONAZOLE NITRATE",
+    "FORME": "OVULES GYNECO.",
+    "DOSAGE": "150MG",
+    "COND": "B/03",
+    "MARQUE": "ECOVAR"
+  },
+  {
+    "CODE": "11 A 001",
+    "DCI": "ECONAZOLE NITRATE",
+    "FORME": "OVULES",
+    "DOSAGE": "150MG",
+    "COND": "B/03",
+    "MARQUE": "GYNOVASOL"
+  },
+  {
+    "CODE": "11 A 002",
+    "DCI": "METRONIDAZOLE",
+    "FORME": "OVULES GYNECO.",
+    "DOSAGE": "500MG",
+    "COND": "B/10",
+    "MARQUE": "FONGYNE"
+  },
+  {
+    "CODE": "11 A 071",
+    "DCI": "ECONAZOLE NITRATE",
+    "FORME": "OVULE  GYNECO. LP.",
+    "DOSAGE": "150MG",
+    "COND": "B/01",
+    "MARQUE": "ECOVAR LP"
+  },
+  {
+    "CODE": "11 A 071",
+    "DCI": "ECONAZOLE NITRATE",
+    "FORME": "OVULE LP.",
+    "DOSAGE": "150MG",
+    "COND": "B/01",
+    "MARQUE": "GYNOVASOL LP"
+  },
+  {
+    "CODE": "11 A 083",
+    "DCI": "CLOTRIMAZOLE",
+    "FORME": "COMP. VAG.",
+    "DOSAGE": "500MG",
+    "COND": "B/01 + 01APPLICATEUR",
+    "MARQUE": "MYCOTEN 1"
+  },
+  {
+    "CODE": "11 A 085",
+    "DCI": "SERTACONAZOLE NITRATE",
+    "FORME": "OVULE ",
+    "DOSAGE": "300MG",
+    "COND": "B/01",
+    "MARQUE": "GYNODERMOFIX"
+  },
+  {
+    "CODE": "11 D 061",
+    "DCI": "ESTRADIOL/DYDROGESTERONE",
+    "FORME": "COMPRIME PELLICULE ",
+    "DOSAGE": "2MG/10MG",
+    "COND": "B/28",
+    "MARQUE": "CLIMASTON"
+  },
+  {
+    "CODE": "11 D 065",
+    "DCI": "ESTRADIOL /DYDROGESTERONE",
+    "FORME": "COMPRIME PELLICULE ",
+    "DOSAGE": "1MG/10MG",
+    "COND": "B/28",
+    "MARQUE": "CLIMASTON"
+  },
+  {
+    "CODE": "11 D 066",
+    "DCI": "ESTRADIOL/DYDROGESTERONE",
+    "FORME": "COMPRIME PELLICULE ",
+    "DOSAGE": "1MG/5MG",
+    "COND": "B/28",
+    "MARQUE": "CLIMASTON"
+  },
+  {
+    "CODE": "11 G 024",
+    "DCI": "BENZALKONIUM CHLORURE",
+    "FORME": "CREME VAG.",
+    "DOSAGE": "1.2%",
+    "COND": "T/72G",
+    "MARQUE": "PHARMATEX"
+  },
+  {
+    "CODE": "11 H 040",
+    "DCI": "LEVONORGESTREL/ETHINYLESTRADIOL",
+    "FORME": "COMPRIME PELLICULE ",
+    "DOSAGE": "0.15MG/0.03MG",
+    "COND": "B/ 63 ",
+    "MARQUE": "MICROGYNON"
+  },
+  {
+    "CODE": "11 H 049",
+    "DCI": "ETHINYLESTRADIOL/DESOGESTREL ",
+    "FORME": "COMPRIME",
+    "DOSAGE": "0.02MG/0.15MG",
+    "COND": "B/21",
+    "MARQUE": "MERCILON"
+  },
+  {
+    "CODE": "11 H 049",
+    "DCI": "Désogestrel/Ethinylestradiol ",
+    "FORME": "Comprimé ",
+    "DOSAGE": "150/20 ug",
+    "COND": "B/21",
+    "MARQUE": "MARILON"
+  },
+  {
+    "CODE": "11 H 050",
+    "DCI": "ETHINYLESTRADIOL / LEVONORGESTREL",
+    "FORME": "COMPRIME PELLICULE ",
+    "DOSAGE": "30µG/0.05MG/6JRS - 40µG/0.075MG/5JRS - 30µG/0.125MG/10JRS",
+    "COND": "B/21",
+    "MARQUE": "LOGYNON"
+  },
+  {
+    "CODE": "11 H 062",
+    "DCI": "ETHINYLESTRADIOL / GESTODENE",
+    "FORME": "Comprimé enrobé",
+    "DOSAGE": "20/75 ug",
+    "COND": "Boite de 21",
+    "MARQUE": "SUNYA®"
+  },
+  {
+    "CODE": "11 H 063",
+    "DCI": "ESTRADIOL VALERATE / CYPROTERONE ACETATE",
+    "FORME": "COMPRIME PELLICULE ",
+    "DOSAGE": "2MG/1MG",
+    "COND": "B/21",
+    "MARQUE": "CLIMENE"
+  },
+  {
+    "CODE": "11 H 069",
+    "DCI": "ETHINYL ESTRADIOL /  GESTODENE",
+    "FORME": "COMPRIME PELLICULE ",
+    "DOSAGE": "15µG/60µG",
+    "COND": "B/28",
+    "MARQUE": "MINESSE"
+  },
+  {
+    "CODE": "11 H 072",
+    "DCI": "DESOGESTREL",
+    "FORME": "Comprimé pelliculé ",
+    "DOSAGE": "75 ug",
+    "COND": "Boite de 28 ",
+    "MARQUE": "DESOGESTREL PHARBIL®"
+  },
+  {
+    "CODE": "11 H 072",
+    "DCI": "DESOGESTREL",
+    "FORME": "Comp ",
+    "DOSAGE": "75MCG",
+    "COND": "Boite de 28 ",
+    "MARQUE": "DESONETTE"
+  },
+  {
+    "CODE": "11 N 079",
+    "DCI": "GANIRELIX",
+    "FORME": "SOL. INJ. SC EN SERING. PREREMPL.",
+    "DOSAGE": "0.5MG/ML (0.25MG/0.5ML)",
+    "COND": "B/1SERING. PREREMPLIES DE 5ML ET B/5SERING. PREREMPLIES DE 5ML",
+    "MARQUE": "ORGALUTRAN"
+  },
+  {
+    "CODE": "12 A 131",
+    "DCI": "ACIDE ACETYLSALICYLIQUE ",
+    "FORME": "comprimé",
+    "DOSAGE": "100 mg",
+    "COND": "BOITE DE 30",
+    "MARQUE": "ASPICARD"
+  },
+  {
+    "CODE": "12 A 131",
+    "DCI": "ACIDE ACETYLSALICYLIQUE",
+    "FORME": "GELULE",
+    "DOSAGE": "100MG",
+    "COND": "B/10",
+    "MARQUE": "GEASPERIQUE"
+  },
+  {
+    "CODE": "12 B 082",
+    "DCI": "ENOXAPARINE SODIQUE",
+    "FORME": "SOL INJ S/C ET I/V EN SERINGUE PRE REMPLIE",
+    "DOSAGE": "4000UI ANTI-XA/0.4ML",
+    "COND": "B/02 SERINGUES",
+    "MARQUE": "THERANOX"
+  },
+  {
+    "CODE": "12 B 083",
+    "DCI": "ENOXAPARINE SODIQUE",
+    "FORME": "SOL INJ S/C ET I/V EN SERINGUE PRE REMPLIE",
+    "DOSAGE": "6000UI ANTI-XA/0.6ML",
+    "COND": "B/02 SERINGUES",
+    "MARQUE": "THERANOX"
+  },
+  {
+    "CODE": "12 E 020",
+    "DCI": "FOLIC ACID",
+    "FORME": "CPR",
+    "DOSAGE": "5 MG",
+    "COND": "BT/60",
+    "MARQUE": "ZANITRA"
+  },
+  {
+    "CODE": "12 E 021",
+    "DCI": "CYANOCOBALAMINE",
+    "FORME": "SOL INJ",
+    "DOSAGE": "1000µG/ML",
+    "COND": "B/05 AMPS DE 1ML",
+    "MARQUE": "VIT B12"
+  },
+  {
+    "CODE": "12 E 026",
+    "DCI": "FUMARATE FERREUX",
+    "FORME": "COMPRIME",
+    "DOSAGE": "200MG",
+    "COND": "B/80",
+    "MARQUE": "FUMACUR"
+  },
+  {
+    "CODE": "12 E 106",
+    "DCI": "COMPLEXE HYDROXYDE POLYMALTOSE",
+    "FORME": "SOL Buv ",
+    "DOSAGE": "100mg/5ml",
+    "COND": "Boite de 10 flacons de 5ml ",
+    "MARQUE": "TRIFER"
+  },
+  {
+    "CODE": "12 E 109",
+    "DCI": "HYDROXYDE FERRIQUE POLYMALTOSE EXPRIME EN FER FERRIQUE",
+    "FORME": "SIROP",
+    "DOSAGE": "10MG/ML (50MG/5ML)",
+    "COND": "FL./100ML + GOBELET DOSEUR ",
+    "MARQUE": "OROFER"
+  },
+  {
+    "CODE": "12 E 125",
+    "DCI": "IRON FERROUS / FOLIC ACID",
+    "FORME": "GELULE",
+    "DOSAGE": "49.297MG/ 0.50MG ",
+    "COND": "BT/30",
+    "MARQUE": "ZANITRA PLUS"
+  },
+  {
+    "CODE": "12 E 128",
+    "DCI": "FER FERREUX (DCI)   (SOUS FORME DE SULFATE FERREUX)",
+    "FORME": "COMPRIME PELLICULE ",
+    "DOSAGE": "80MG",
+    "COND": "B/30",
+    "MARQUE": "TARDYFERON"
+  },
+  {
+    "CODE": "12 E 134",
+    "DCI": "HYDORXIDE FERRIQUE POLYMALTOSE",
+    "FORME": "Gttes buv ",
+    "DOSAGE": "50mg/ml",
+    "COND": "Boite de un flacon de 30  ml",
+    "MARQUE": "FERRUM HAUSMAN GOUTTE"
+  },
+  {
+    "CODE": "12 E 152",
+    "DCI": "HYDROXYDE FERRIQUE POLYMALTOSE EXPRIME EN FER FERRIQUE",
+    "FORME": "SIROP",
+    "DOSAGE": "20MG/ML (100MG/5ML)",
+    "COND": "FL./100ML + GOBELET DOSEUR  DE 15ML",
+    "MARQUE": "OROFER PLUS"
+  },
+  {
+    "CODE": "13 B 013",
+    "DCI": "Cefazoline",
+    "FORME": "Pdre. Sol. Inj. ",
+    "DOSAGE": "1g",
+    "COND": "B/1",
+    "MARQUE": "Zepilen"
+  },
+  {
+    "CODE": "13 B 156",
+    "DCI": "Cefalexine monohydrate exprimé en cefalexine anhydre",
+    "FORME": "Poudre suspension buvable",
+    "DOSAGE": "250mg/5ml",
+    "COND": "Flacon 60 ml",
+    "MARQUE": "Ancefal"
+  },
+  {
+    "CODE": "13 B 197",
+    "DCI": "Cefixime trihydraté exprimé en cefixime anhydre",
+    "FORME": "Poudre suspension buvable",
+    "DOSAGE": "40mg/5ml",
+    "COND": "Flacon 40 ml",
+    "MARQUE": "Cefimax"
+  },
+  {
+    "CODE": "13 B 198",
+    "DCI": "Cefixime trihydraté exprimé en cefixime anhydre",
+    "FORME": "Poudre suspension buvable",
+    "DOSAGE": "100mg/5ml",
+    "COND": "Flacon 40 ml",
+    "MARQUE": "Cefimax"
+  },
+  {
+    "CODE": "13 B 201",
+    "DCI": "Cefixime trihydraté exprimé en cefixime anhydre",
+    "FORME": "Comprimé pelliculé",
+    "DOSAGE": "200 mg",
+    "COND": "Boite 08",
+    "MARQUE": "Cefimax"
+  },
+  {
+    "CODE": "13 B 208",
+    "DCI": "Cefuroxime axétil exprimé en cefuroxime",
+    "FORME": "Comprimé pelliculé",
+    "DOSAGE": "250 mg",
+    "COND": "Boite 08",
+    "MARQUE": "Zynax"
+  },
+  {
+    "CODE": "13 B 208",
+    "DCI": "Cefuroxime Axetil",
+    "FORME": "Comprimés pélliculés",
+    "DOSAGE": "250 mg/5ml",
+    "COND": "B/14",
+    "MARQUE": "ZINOXIMOR "
+  },
+  {
+    "CODE": "13 B 224",
+    "DCI": "Cefuroxime axétil exprimé en cefuroxime",
+    "FORME": "granulé pour suspension buvable",
+    "DOSAGE": "125 mg / 5 ml",
+    "COND": "Flacon de 200 ml contenant 70 ml de suspension",
+    "MARQUE": "Zynax"
+  },
+  {
+    "CODE": "13 B 259",
+    "DCI": "Céfaclor",
+    "FORME": "SUSPENSION BUVABLE",
+    "DOSAGE": "125mg/5ml",
+    "COND": "flacon de 60ml ",
+    "MARQUE": "Orocef"
+  },
+  {
+    "CODE": "13 B 262",
+    "DCI": "CEFACLOR MONOHYDRATE EXPRIME EN CAFACLOR",
+    "FORME": "GLES",
+    "DOSAGE": "500MG",
+    "COND": "B/15",
+    "MARQUE": "DICEF 500 MG "
+  },
+  {
+    "CODE": "13 B 296",
+    "DCI": "Cefuroxime axétil exprimé en cefuroxime",
+    "FORME": "Comprimé pelliculé",
+    "DOSAGE": "500 mg",
+    "COND": "Boite 08",
+    "MARQUE": "Zynax"
+  },
+  {
+    "CODE": "13 C 020",
+    "DCI": "DOXYCYCLINE**(SOUS FOPME D'HYCLATE)",
+    "FORME": "COMPRIME SECABLE ",
+    "DOSAGE": "100MG",
+    "COND": "B/10",
+    "MARQUE": "DOTUR"
+  },
+  {
+    "CODE": "13 E 031",
+    "DCI": "SPIRAMYCINE",
+    "FORME": "COMPRIME",
+    "DOSAGE": "1 500 000UI",
+    "COND": "B/16",
+    "MARQUE": "ROVADAL"
+  },
+  {
+    "CODE": "13 E 031",
+    "DCI": "SPIRAMYCINE",
+    "FORME": "COMPRIME PELLICULE ",
+    "DOSAGE": "1 500 000UI",
+    "COND": "B/16",
+    "MARQUE": "ROVAMYCINE"
+  },
+  {
+    "CODE": "13 E 031",
+    "DCI": "SPIRAMYCINE",
+    "FORME": "COMPRIME PELLICULE ",
+    "DOSAGE": "1 500 000UI",
+    "COND": "B/16",
+    "MARQUE": "SPIRA "
+  },
+  {
+    "CODE": "13 E 031",
+    "DCI": "Spiramycine",
+    "FORME": " Comprimés ",
+    "DOSAGE": "1.5 MUI",
+    "COND": "Boite de  16",
+    "MARQUE": "SPIRACARE"
+  },
+  {
+    "CODE": "13 E 031",
+    "DCI": "SPIRAMYCINE",
+    "FORME": "COMPRIME PELLICULE",
+    "DOSAGE": "1.5 MUI",
+    "COND": "BOITE DE 16",
+    "MARQUE": "SPIRAMEX"
+  },
+  {
+    "CODE": "13 E 032",
+    "DCI": "SPIRAMYCINE",
+    "FORME": "COMPRIME PELLICULE ",
+    "DOSAGE": "3 000 000UI",
+    "COND": "B/10",
+    "MARQUE": "SPIRA"
+  },
+  {
+    "CODE": "13 E 032",
+    "DCI": "SPIRAMYCINE",
+    "FORME": "COMPRIME PELLICULE",
+    "DOSAGE": "3 MUI",
+    "COND": "BOITE DE 10",
+    "MARQUE": "SPIRAMEX"
+  },
+  {
+    "CODE": "13 E 154",
+    "DCI": "SPIRAMYCINE",
+    "FORME": "SIROP",
+    "DOSAGE": "0.375MUI/5ML",
+    "COND": "FL./150ML",
+    "MARQUE": "ROVADAL"
+  },
+  {
+    "CODE": "13 E 176",
+    "DCI": "AZITHROMYCINE DIHYDRATEE EXPRIMEE EN AZITHROMYCINE",
+    "FORME": "GLES.",
+    "DOSAGE": "250MG",
+    "COND": "B/06",
+    "MARQUE": "BINOZYT"
+  },
+  {
+    "CODE": "13 E 177",
+    "DCI": "AZITHROMYCINE DIHYDRATEE EXPRIMEE EN AZITHROMYCINE",
+    "FORME": "PDRE. SOL. BUV.",
+    "DOSAGE": "40MG/ML (200MG/5ML)",
+    "COND": "FL/15ML ",
+    "MARQUE": "BINOZYT"
+  },
+  {
+    "CODE": "13 E 185",
+    "DCI": "Roxithromycine",
+    "FORME": "Comprimé",
+    "DOSAGE": "150 mg",
+    "COND": "Boite 10",
+    "MARQUE": "Roxid"
+  },
+  {
+    "CODE": "13 E 215",
+    "DCI": "CLARITHROMYCINE",
+    "FORME": "COMP PELL",
+    "DOSAGE": "500MG",
+    "COND": "B/10",
+    "MARQUE": "RITOCINE"
+  },
+  {
+    "CODE": "13 E 244",
+    "DCI": "Clarithromycine",
+    "FORME": "PDRE SUSP BUV",
+    "DOSAGE": "250MG/5ML",
+    "COND": "FL/100ML",
+    "MARQUE": "Claridar 250"
+  },
+  {
+    "CODE": "13 E 297",
+    "DCI": "CLARITHROMYCINE",
+    "FORME": "PDRE. P. SUSP. BUV. EN FLACON",
+    "DOSAGE": "250MG/5ML  (OU 50MG)",
+    "COND": "B/1FL. DE 100ML DE SUSP. BUV. APRES RECONST+  SEREINGUE ",
+    "MARQUE": "HUCLAR"
+  },
+  {
+    "CODE": "13 E 299",
+    "DCI": "AZITHROMYCINE DIHYDRATEE EXPRIMEE EN AZITHROMYCINE",
+    "FORME": "COMPRIME PELLICULE ",
+    "DOSAGE": "500MG",
+    "COND": "B/03",
+    "MARQUE": "BINOZYT"
+  },
+  {
+    "CODE": "13 E 299",
+    "DCI": "AZITHROMYCINE DIHYDRATEE EXPRIMEE EN AZITHROMYCINE",
+    "FORME": "COMPRIME",
+    "DOSAGE": "500MG",
+    "COND": "B/03 ",
+    "MARQUE": "ZOMAX"
+  },
+  {
+    "CODE": "13 E 300",
+    "DCI": "Spiramycine+ Métronidazole",
+    "FORME": "Comprimés",
+    "DOSAGE": "750.000ui+125mg",
+    "COND": "Boite de  20",
+    "MARQUE": "OROGYL"
+  },
+  {
+    "CODE": "13 E 307",
+    "DCI": "Spiramycine+ mertonidazole",
+    "FORME": "comprimés 1.5MUI+ 250mg",
+    "DOSAGE": "1.5MUI+ 250mg",
+    "COND": "Boite de 10",
+    "MARQUE": "BI-OROGYL"
+  },
+  {
+    "CODE": "13 E 323",
+    "DCI": "CLARITHROMYCINE",
+    "FORME": "GRLES. P. SUSP. BUV. EN FLACON",
+    "DOSAGE": "125MG/5ML (OU 25MG)",
+    "COND": "B/1FL. DE 100 ML DE SUSP. BUV. APRES RECONST.+ SERINGUE",
+    "MARQUE": "HUCLAR"
+  },
+  {
+    "CODE": "13 F 039",
+    "DCI": "METRONIDAZOLE",
+    "FORME": "COMPRIME PELLICULE ",
+    "DOSAGE": "250MG",
+    "COND": "B/20",
+    "MARQUE": "IMUZOLE"
+  },
+  {
+    "CODE": "13 F 040",
+    "DCI": "METRONIDAZOLE BENZOATE EXPRIME EN METRONIDAZOLE",
+    "FORME": "SUSP.BUV.",
+    "DOSAGE": "125MG/5ML",
+    "COND": "FL/120 ML + CUILLERE MESURE DE 5ML",
+    "MARQUE": "FLAGYL "
+  },
+  {
+    "CODE": "13 F 040",
+    "DCI": "METRONIDAZOLE BENZOATE EXPRIME EN METRONIDAZOLE",
+    "FORME": "SUSP. BUV.",
+    "DOSAGE": "125MG/5ML",
+    "COND": "FL/120ML + BOUCHON DOSEUR",
+    "MARQUE": "FLAZOL"
+  },
+  {
+    "CODE": "13 F 199",
+    "DCI": "METRONIDAZOLE",
+    "FORME": "COMPRIME PELLICULE ",
+    "DOSAGE": "500MG",
+    "COND": "B/20",
+    "MARQUE": "FLAZOL"
+  },
+  {
+    "CODE": "13 F 199",
+    "DCI": "METRONIDAZOLE",
+    "FORME": "COMPRIME PELLICULE ",
+    "DOSAGE": "500MG",
+    "COND": "B/20",
+    "MARQUE": "IMUZOLE"
+  },
+  {
+    "CODE": "13 G 043",
+    "DCI": "AMOXICILLINE SODIQUE EXPRIME EN AMOXICILLINE",
+    "FORME": "PDRE. P. SOL. INJ. IM",
+    "DOSAGE": "1G/FL. DE PDRE.",
+    "COND": "B/01 FL. DE PDRE. + 01 AMP. DE 5ML DE SOLV. (ALCOOL BENZYLIQUE+EPPI) ET B/50 FL. DE PDRE.",
+    "MARQUE": "BIOPAMOX"
+  },
+  {
+    "CODE": "13 G 045",
+    "DCI": "AMOXICILLINE TRIHYDRATEE EXPRIME EN AMOXICILLINE",
+    "FORME": "GLES.",
+    "DOSAGE": "500MG",
+    "COND": "B/12",
+    "MARQUE": "AMOXIMEX"
+  },
+  {
+    "CODE": "13 G 045",
+    "DCI": "AMOXICILLINE TRIHYDRATEE EXPRIME EN AMOXICILLINE",
+    "FORME": "GLES.",
+    "DOSAGE": "500MG",
+    "COND": "B/12",
+    "MARQUE": "BIOPAMOX"
+  },
+  {
+    "CODE": "13 G 046",
+    "DCI": "AMOXICILLINE TRIHYDRATE EXPRIME EN AMOXICILLINE",
+    "FORME": "PDRE. P. SUSP. BUV.",
+    "DOSAGE": "125MG/5ML",
+    "COND": "B/1FL. DE 60ML DE SUSP. BUV. APRES RECONST.+UNE CUILLERE MESURE DE 5ML",
+    "MARQUE": "AMOXIMEX"
+  },
+  {
+    "CODE": "13 G 046",
+    "DCI": "AMOXICILLINE TRIHYDRATE EXPRIME EN AMOXICILLINE",
+    "FORME": "PDRE. SUSP. BUV.",
+    "DOSAGE": "125MG/5ML",
+    "COND": "FL./60ML",
+    "MARQUE": "AMOXYPEN"
+  },
+  {
+    "CODE": "13 G 053",
+    "DCI": "AMPICILLINE SODIQUE EXPRIME EN AMPICILLINE",
+    "FORME": "PDRE. P. SOL. INJ.",
+    "DOSAGE": "500MG/FL. DE PDRE",
+    "COND": "B/1FL. DE PDRE + 1AMP. DE 5ML DE SOLV.(E.P.P.I)  ET  B/50FL. DE PDRE SANS SOLV.",
+    "MARQUE": "AMPILINE"
+  },
+  {
+    "CODE": "13 G 054",
+    "DCI": "AMPICILLINE SODIQUE EXPRIME EN AMPICILLINE",
+    "FORME": "PDRE. ET SOLV. P. SOL. INJ. IM/IV",
+    "DOSAGE": "1G/FL. DE PDRE.",
+    "COND": "B/1FL. DE PDRE. + 1AMP. DE 5ML DE SOLV. (EPPI) ET B/50FL. DE PDRE.",
+    "MARQUE": "AMPINAX"
+  },
+  {
+    "CODE": "13 G 056",
+    "DCI": "AMPICILLINE TRIHYDRATE EXPRIME EN AMPICILLINE",
+    "FORME": "PDRE. P. SUSP. BUV.",
+    "DOSAGE": "250MG/5ML",
+    "COND": "FL./60ML  ET  FL./100ML  (DE SUSP. BUV. APRES RECONSTITUTION)",
+    "MARQUE": "AMPINAX"
+  },
+  {
+    "CODE": "13 G 058",
+    "DCI": "AMPICILLINE TRIHYDRATE EXPRIME EN AMPICILLINE",
+    "FORME": "GLES.",
+    "DOSAGE": "500MG",
+    "COND": "B/12",
+    "MARQUE": "AMPIMEX"
+  },
+  {
+    "CODE": "13 G 061",
+    "DCI": "BENZATHINE BENZYLPENICILLINE",
+    "FORME": "PDRE. P. SUSP. INJ. IM",
+    "DOSAGE": "1 200 000UI/FL. DE PDRE.",
+    "COND": "B/01FL. DE PDRE. + 01AMP. DE 5ML DE SOLV.(EPPI) ",
+    "MARQUE": "EXTENCINE"
+  },
+  {
+    "CODE": "13 G 062",
+    "DCI": "BENZYLPENICILLINE SODIQUE",
+    "FORME": "PDRE. ET SOLV. P. SOL. INJ. IM/IV  ET  PDRE. P. SOL.INJ. IM/IV    ",
+    "DOSAGE": "500 000UI/FL. DE PDRE.",
+    "COND": "B/01FL. DE PDRE. + 01AMP. DE 5ML DE SOLV. (EPPI)  ",
+    "MARQUE": "GECTAPEN"
+  },
+  {
+    "CODE": "13 G 063",
+    "DCI": "BENZYLPENICILLINE SODIQUE",
+    "FORME": "PDRE. P. SOL. INJ. IM/IV",
+    "DOSAGE": "1 000 000UI/FL.DE PDRE.",
+    "COND": "B/01FL. DE PDRE. + 01AMP. DE 5ML DE SOLV.(EPPI) ",
+    "MARQUE": "PENI G BIOCARE"
+  },
+  {
+    "CODE": "13 G 072",
+    "DCI": "PHENOXYMETHYLPENICILLINE POTASSIQUE EXPRIME EN PHENOXYMETHYLPENICILLINE",
+    "FORME": "COMPRIME PELLICULE ",
+    "DOSAGE": "1 000 000UI**",
+    "COND": "B/12",
+    "MARQUE": "PENICILLINE-CIMEX"
+  },
+  {
+    "CODE": "13 G 181",
+    "DCI": "Amoxicilline/Acide clavulanique",
+    "FORME": "PDR SUS BUV ",
+    "DOSAGE": "100mg / 125 mg/1ml",
+    "COND": "Boite de 1Flde60 ml",
+    "MARQUE": "BIOCLAV SIROP ENF"
+  },
+  {
+    "CODE": "13 G 220",
+    "DCI": "AMOXICILLINE TRIHYDRATEE EXPRIME EN AMOXICILLINE",
+    "FORME": "PDRE. P. SUSP. BUV.",
+    "DOSAGE": "500MG/5ML",
+    "COND": "B/1FL. DE 60ML DE SUSP.  BUV. APRES RECONST.+UNE CUILLERE MESURE DE 5ML",
+    "MARQUE": "AMOXIMEX"
+  },
+  {
+    "CODE": "13 G 220",
+    "DCI": "AMOXICILLINE TRIHYDRATEE EXPRIME EN AMOXICILLINE",
+    "FORME": "PDRE. SUSP. BUV.",
+    "DOSAGE": "500MG/5ML",
+    "COND": "FL./60ML",
+    "MARQUE": "AMOXYPEN"
+  },
+  {
+    "CODE": "13 G 230",
+    "DCI": "AMOXICILLINE TRIHYDRATEE EXPRIME EN AMOXICILLINE",
+    "FORME": "COMP. DISPERS.",
+    "DOSAGE": "1G",
+    "COND": "B/06 ET B/14",
+    "MARQUE": "AMOXIMEX"
+  },
+  {
+    "CODE": "13 G 301",
+    "DCI": "AMOXICILLINE TRIHYDRATEE EXPRIME EN AMOXICILLINE",
+    "FORME": "COMP. DISPERS.",
+    "DOSAGE": "500MG",
+    "COND": "B/12",
+    "MARQUE": "AMOXYPEN"
+  },
+  {
+    "CODE": "13 K 252",
+    "DCI": "CIPROFLOXACINE CHLORHYDRATE EXPRIME EN CIPROFLOXACINE",
+    "FORME": "COMPRIME",
+    "DOSAGE": "250MG",
+    "COND": "B/10",
+    "MARQUE": "CIPROLON"
+  },
+  {
+    "CODE": "13 K 252",
+    "DCI": "Ciprofloxacine ",
+    "FORME": "Comprimé pelliculé",
+    "DOSAGE": "250 mg",
+    "COND": "Boite de 10",
+    "MARQUE": "Proflox®"
+  },
+  {
+    "CODE": "13 K 253",
+    "DCI": "CIPROFLOXACINE CHLORHYRATE MONOHYDRATE EXPRIME EN CIPROFLOXACINE",
+    "FORME": "COMPRIME PELLICULE ",
+    "DOSAGE": "500MG",
+    "COND": "B/14",
+    "MARQUE": "CIPRO 500"
+  },
+  {
+    "CODE": "13 K 253",
+    "DCI": "Ciprofloxacine",
+    "FORME": "Comp",
+    "DOSAGE": "500mg",
+    "COND": "12:00 AM",
+    "MARQUE": "CIPRODAR 500"
+  },
+  {
+    "CODE": "13 K 253",
+    "DCI": "CIPROFLOXACINE CHLORHYDRATE EXPRIME EN CIPROFLOXACINE",
+    "FORME": "COMPRIME",
+    "DOSAGE": "500MG",
+    "COND": "B/10",
+    "MARQUE": "CIPROLON"
+  },
+  {
+    "CODE": "13 K 253",
+    "DCI": "Ciprofloxacine s/f chloryhydrate monohydratée",
+    "FORME": "Comprimé enrobé",
+    "DOSAGE": "500 mg",
+    "COND": "Boite 10",
+    "MARQUE": "Proflox"
+  },
+  {
+    "CODE": "13 K 253",
+    "DCI": "CIPROFLOXACINE CHLORHYRATE MONOHYDRATE EXPRIME EN CIPROFLOXACINE",
+    "FORME": "COMPRIME PELLICULE ",
+    "DOSAGE": "500MG",
+    "COND": "B/10",
+    "MARQUE": "QUINOX"
+  },
+  {
+    "CODE": "13 K 254",
+    "DCI": "CIPROFLOXACINE CHLORHYRATE MONOHYDRATE EXPRIME EN CIPROFLOXACINE",
+    "FORME": "COMPRIME PELLICULE ",
+    "DOSAGE": "750MG",
+    "COND": "B/14",
+    "MARQUE": "CIPRO 750"
+  },
+  {
+    "CODE": "13 M 090",
+    "DCI": "SULFAMETHOXAZOLE / TRIMETHOPRIME",
+    "FORME": "SUSP.BUV.",
+    "DOSAGE": "200MG/40MG/5ML",
+    "COND": "FL/100ML",
+    "MARQUE": "COTRIMOXAZOLE"
+  },
+  {
+    "CODE": "13 M 090",
+    "DCI": "SULFAMETHOXAZOLE / TRIMETHOPRIME",
+    "FORME": "SUSP. BUV.",
+    "DOSAGE": "200MG/40MG/5ML",
+    "COND": "B/1FL. DE 100ML+UN BOUCHON DOSEUR",
+    "MARQUE": "DIPRIM"
+  },
+  {
+    "CODE": "13 M 092",
+    "DCI": "SULFAMETHOXAZOLE / TRIMETHOPRIME",
+    "FORME": "COMP.",
+    "DOSAGE": "400MG/80MG",
+    "COND": "B/20",
+    "MARQUE": "SULPRIM "
+  },
+  {
+    "CODE": "13 M 092",
+    "DCI": "SULFAMETHOXAZOLE/TRIMETHOPRIME ",
+    "FORME": "CPR",
+    "DOSAGE": "480 MG",
+    "COND": "BT/20",
+    "MARQUE": "PRIMAZOL"
+  },
+  {
+    "CODE": "13 N 179",
+    "DCI": "Acide Fusidique",
+    "FORME": "Comprimé",
+    "DOSAGE": "250 mg",
+    "COND": "Boite de 10",
+    "MARQUE": "ACFUSID"
+  },
+  {
+    "CODE": "13 P 097",
+    "DCI": "aciclovir",
+    "FORME": "comprimé ",
+    "DOSAGE": "200 mg ",
+    "COND": "BOITE DE 20 ",
+    "MARQUE": "Novaclovir 200 mg comprimé"
+  },
+  {
+    "CODE": "13 R 106",
+    "DCI": "AMPHOTERICINE",
+    "FORME": "SOL BUV ",
+    "DOSAGE": "0.1",
+    "COND": "flacon de 40 m",
+    "MARQUE": "MYTRICINE"
+  },
+  {
+    "CODE": "13 R 108",
+    "DCI": "FLUCONAZOLE",
+    "FORME": "GLES.",
+    "DOSAGE": "100MG",
+    "COND": "B/07",
+    "MARQUE": "VIRCET"
+  },
+  {
+    "CODE": "13 R 155",
+    "DCI": "FLUCONAZOLE",
+    "FORME": "GLES.",
+    "DOSAGE": "50MG",
+    "COND": "B/03 ET B/07",
+    "MARQUE": "FLUCAND"
+  },
+  {
+    "CODE": "13 R 155",
+    "DCI": "FLUCONAZOLE",
+    "FORME": "GLES.",
+    "DOSAGE": "150MG",
+    "COND": "B/4",
+    "MARQUE": "FLUCAZOLE "
+  },
+  {
+    "CODE": "13 R 155",
+    "DCI": "FLUCONAZOLE",
+    "FORME": "GLES.",
+    "DOSAGE": "50MG",
+    "COND": "B/03",
+    "MARQUE": "MYCOFLUCON"
+  },
+  {
+    "CODE": "13 R 155",
+    "DCI": "FLUCONAZOLE",
+    "FORME": "GLES.",
+    "DOSAGE": "50MG",
+    "COND": "B/03 ",
+    "MARQUE": "MYCOZAN"
+  },
+  {
+    "CODE": "13 R 155",
+    "DCI": "FLUCONAZOLE",
+    "FORME": "GLES.",
+    "DOSAGE": "50MG",
+    "COND": "B/03",
+    "MARQUE": "VEFLAT"
+  },
+  {
+    "CODE": "13 R 155",
+    "DCI": "FLUCONAZOLE",
+    "FORME": "GLES.",
+    "DOSAGE": "50MG",
+    "COND": "B/07",
+    "MARQUE": "VIRCET"
+  },
+  {
+    "CODE": "13 R 170",
+    "DCI": "FLUCONAZOLE",
+    "FORME": "GLES.",
+    "DOSAGE": "200MG",
+    "COND": "B/07",
+    "MARQUE": "VIRCET"
+  },
+  {
+    "CODE": "13 R 172",
+    "DCI": "Terbinafine Chlorhydrate",
+    "FORME": "Comprimé sécable",
+    "DOSAGE": "  250 mg",
+    "COND": "B/14",
+    "MARQUE": "TENASIL"
+  },
+  {
+    "CODE": "13 R 172",
+    "DCI": "terbinafine",
+    "FORME": "comp ",
+    "DOSAGE": "250 mg ",
+    "COND": "boite de 20",
+    "MARQUE": "TERFINEX comp 250 mg"
+  },
+  {
+    "CODE": "13 R 258",
+    "DCI": "FLUCONAZOLE",
+    "FORME": "GLES.",
+    "DOSAGE": "150MG",
+    "COND": "B/01",
+    "MARQUE": "FLUCAND"
+  },
+  {
+    "CODE": "13 R 258",
+    "DCI": "FLUCONAZOLE",
+    "FORME": "GELULE",
+    "DOSAGE": "150MG",
+    "COND": "BOITE 01",
+    "MARQUE": "FLUCONALE"
+  },
+  {
+    "CODE": "13 R 258",
+    "DCI": "FLUCONAZOLE",
+    "FORME": "GLES.",
+    "DOSAGE": "150MG",
+    "COND": "B/01",
+    "MARQUE": "VEFLAT"
+  },
+  {
+    "CODE": "13 R 258",
+    "DCI": "FLUCONAZOLE",
+    "FORME": "GLES.",
+    "DOSAGE": "150MG",
+    "COND": "B/01",
+    "MARQUE": "VIRCET"
+  },
+  {
+    "CODE": "14 A 003",
+    "DCI": "GLIBENCLAMIDE",
+    "FORME": "COMPRIME",
+    "DOSAGE": "5MG",
+    "COND": " B/100",
+    "MARQUE": "GLIBIL"
+  },
+  {
+    "CODE": "14 A 006",
+    "DCI": "METFORMINE CHLORHYDRATE",
+    "FORME": "COMPRIME PELLICULE ",
+    "DOSAGE": "500MG",
+    "COND": "B/28 - B/98",
+    "MARQUE": "NEXECOR"
+  },
+  {
+    "CODE": "14 A 007",
+    "DCI": "METFORMINE CHLORHYDRATE",
+    "FORME": "COMPRIME PELLICULE ",
+    "DOSAGE": "850MG",
+    "COND": "B/30 - B/90",
+    "MARQUE": "NEXECOR"
+  },
+  {
+    "CODE": "14 A 007",
+    "DCI": "METFORMINE CHLORHYDRATE",
+    "FORME": "COMPRIME PELLICULE ",
+    "DOSAGE": "850MG",
+    "COND": "B/30. B/90 ET B/120 ",
+    "MARQUE": "PHYSIOPHORMINE"
+  },
+  {
+    "CODE": "14 A 136",
+    "DCI": "acarbose",
+    "FORME": "comprimé ",
+    "DOSAGE": "50 mg",
+    "COND": "BOITE DE 30",
+    "MARQUE": "GLUCONOVA 50 mg"
+  },
+  {
+    "CODE": "14 A 136",
+    "DCI": "Acarbose",
+    "FORME": "Comprimé",
+    "DOSAGE": "50  mg",
+    "COND": "Boite 90",
+    "MARQUE": "Larimel"
+  },
+  {
+    "CODE": "14 A 187",
+    "DCI": "GLIMEPIRIDE",
+    "FORME": "COMPRIME SECABLE ",
+    "DOSAGE": "1MG",
+    "COND": "B/30",
+    "MARQUE": "AMAPIRIDE HUP"
+  },
+  {
+    "CODE": "14 A 187",
+    "DCI": "GLIMEPIRIDE",
+    "FORME": "COMPRIME",
+    "DOSAGE": "1MG",
+    "COND": "B/30",
+    "MARQUE": "AMAREL"
+  },
+  {
+    "CODE": "14 A 187",
+    "DCI": "GLIMEPIRIDE",
+    "FORME": "COMPRIME SECABLE ",
+    "DOSAGE": "1MG",
+    "COND": "B/30",
+    "MARQUE": "GLIMEPIRIDE BEKER"
+  },
+  {
+    "CODE": "14 A 187",
+    "DCI": "GLIMEPIRIDE",
+    "FORME": "COMP. PELLI. SEC.",
+    "DOSAGE": "1MG",
+    "COND": "B/30",
+    "MARQUE": "IRYS 1MG"
+  },
+  {
+    "CODE": "14 A 187",
+    "DCI": "GLIMEPIRIDE",
+    "FORME": "COMPRIME SECABLE ",
+    "DOSAGE": "1MG",
+    "COND": "B/30",
+    "MARQUE": "ROZEMIDE"
+  },
+  {
+    "CODE": "14 A 188",
+    "DCI": "GLIMEPIRIDE",
+    "FORME": "COMPRIME SECABLE ",
+    "DOSAGE": "2MG",
+    "COND": "B/30",
+    "MARQUE": "AMAPIRIDE HUP"
+  },
+  {
+    "CODE": "14 A 188",
+    "DCI": "GLIMEPIRIDE",
+    "FORME": "COMPRIME",
+    "DOSAGE": "2MG",
+    "COND": "B/30",
+    "MARQUE": "AMAREL"
+  },
+  {
+    "CODE": "14 A 188",
+    "DCI": "GLIMEPIRIDE",
+    "FORME": "COMP. PELLI. SEC.",
+    "DOSAGE": "2MG",
+    "COND": "B/30",
+    "MARQUE": "IRYS 2MG"
+  },
+  {
+    "CODE": "14 A 188",
+    "DCI": "GLIMEPIRIDE",
+    "FORME": "COMPRIME SECABLE ",
+    "DOSAGE": "2MG",
+    "COND": "B/30",
+    "MARQUE": "ROZEMIDE"
+  },
+  {
+    "CODE": "14 A 189",
+    "DCI": "GLIMEPIRIDE",
+    "FORME": "COMPRIME SECABLE ",
+    "DOSAGE": "3MG",
+    "COND": "B/30",
+    "MARQUE": "AMAPIRIDE HUP"
+  },
+  {
+    "CODE": "14 A 189",
+    "DCI": "GLIMEPIRIDE",
+    "FORME": "COMPRIME",
+    "DOSAGE": "3MG",
+    "COND": "B/30",
+    "MARQUE": "AMAREL"
+  },
+  {
+    "CODE": "14 A 189",
+    "DCI": "GLIMEPIRIDE",
+    "FORME": "COMP. PELLI. SEC.",
+    "DOSAGE": "3MG",
+    "COND": "B/30",
+    "MARQUE": "IRYS 3MG"
+  },
+  {
+    "CODE": "14 A 189",
+    "DCI": "GLIMEPIRIDE",
+    "FORME": "COMPRIME SECABLE ",
+    "DOSAGE": "3MG",
+    "COND": "B/30",
+    "MARQUE": "ROZEMIDE"
+  },
+  {
+    "CODE": "14 A 190",
+    "DCI": "GLIMEPIRIDE",
+    "FORME": "COMPRIME SECABLE ",
+    "DOSAGE": "4MG",
+    "COND": "B/30",
+    "MARQUE": "AMAPIRIDE HUP"
+  },
+  {
+    "CODE": "14 A 190",
+    "DCI": "GLIMEPIRIDE",
+    "FORME": "COMPRIME",
+    "DOSAGE": "4MG",
+    "COND": "B/30",
+    "MARQUE": "AMAREL"
+  },
+  {
+    "CODE": "14 A 190",
+    "DCI": "GLIMEPIRIDE",
+    "FORME": "COMP. PELLI. SEC.",
+    "DOSAGE": "4MG",
+    "COND": "B/30",
+    "MARQUE": "IRYS 4MG"
+  },
+  {
+    "CODE": "14 A 190",
+    "DCI": "Glimépiride",
+    "FORME": "Comprimé sécable",
+    "DOSAGE": "4 mg",
+    "COND": "Boite 30",
+    "MARQUE": "Rozemide"
+  },
+  {
+    "CODE": "14 A 200",
+    "DCI": "Repaglinide",
+    "FORME": "comp",
+    "DOSAGE": "0.5mg/comp",
+    "COND": "bt de 30",
+    "MARQUE": "Glycenorm 0.5mg"
+  },
+  {
+    "CODE": "14 A 200 ",
+    "DCI": "REPAGLINIDE",
+    "FORME": "CPR",
+    "DOSAGE": "0.5 MG",
+    "COND": "B/30",
+    "MARQUE": "DIABENORM"
+  },
+  {
+    "CODE": "14 A 201",
+    "DCI": "Répaglinide",
+    "FORME": " Comprimés ",
+    "DOSAGE": "01 mg",
+    "COND": "Boite de 30",
+    "MARQUE": "DIAGLINIDE"
+  },
+  {
+    "CODE": "14 A 201",
+    "DCI": "Repaglinide",
+    "FORME": "comp",
+    "DOSAGE": "1mg/comp",
+    "COND": "bt de 30",
+    "MARQUE": "Glycenorm 1mg"
+  },
+  {
+    "CODE": "14 A 201",
+    "DCI": "REPAGLINIDE",
+    "FORME": "CPR",
+    "DOSAGE": "1 MG",
+    "COND": "B/30",
+    "MARQUE": "DIABENORM"
+  },
+  {
+    "CODE": "14 A 202",
+    "DCI": "Répaglinide",
+    "FORME": " Comprimés ",
+    "DOSAGE": "02 mg",
+    "COND": "Boite de 30",
+    "MARQUE": "DIAGLINIDE"
+  },
+  {
+    "CODE": "14 A 202",
+    "DCI": "Repaglinide",
+    "FORME": "comp",
+    "DOSAGE": "2mg/comp",
+    "COND": "bt de 30",
+    "MARQUE": "Glycenorm 2mg"
+  },
+  {
+    "CODE": "14 A 202 ",
+    "DCI": "REPAGLINIDE",
+    "FORME": "CPR",
+    "DOSAGE": "2 MG",
+    "COND": "B/30",
+    "MARQUE": "DIABENORM"
+  },
+  {
+    "CODE": "14 A 324",
+    "DCI": "GLIMEPIRIDE",
+    "FORME": "COMPRIME SECABLE ",
+    "DOSAGE": "6MG",
+    "COND": "B/30",
+    "MARQUE": "AMAREL"
+  },
+  {
+    "CODE": "14 B 155",
+    "DCI": "INSULINE HUMAINE INTERMEDIAIRE MONOPHASIQUE",
+    "FORME": "SUSP INJ ",
+    "DOSAGE": "100UI/ML",
+    "COND": "B/5 CART. DE 1.5 ML ET B/5CART DE 3ML",
+    "MARQUE": "INSULATARD HM PENFILL"
+  },
+  {
+    "CODE": "14 B 157",
+    "DCI": "INSULINE HUMAINE INTERMEDIAIRE BIPHASIQUE",
+    "FORME": "SUSP INJ ",
+    "DOSAGE": "100UI/ML",
+    "COND": "B/5 CART. DE 1.5 ML ET B/5CART DE 3ML",
+    "MARQUE": "MIXTARD 30 HM PENFILL"
+  },
+  {
+    "CODE": "14 B 192",
+    "DCI": "INSULINE HUMAINE/INSULINE ISOPHANE 30%/70%",
+    "FORME": "SUSP INJ ",
+    "DOSAGE": "100UI/ML",
+    "COND": "FL/10ML",
+    "MARQUE": "MIXTARD 30HM"
+  },
+  {
+    "CODE": "14 B 193",
+    "DCI": "INSULINE ISOPHANE",
+    "FORME": "SUSP INJ ",
+    "DOSAGE": "100UI/ML",
+    "COND": "FL/10ML",
+    "MARQUE": "INSULATARD HM"
+  },
+  {
+    "CODE": "14 B 194",
+    "DCI": "INSULINE HUMAINE MONOCOMPOSEE",
+    "FORME": "SOL INJ",
+    "DOSAGE": "100UI/ML",
+    "COND": "FL/10ML",
+    "MARQUE": "ACTRAPID HM"
+  },
+  {
+    "CODE": "14 B 195",
+    "DCI": "INSULINE LISPRO",
+    "FORME": "SOL. INJ. SC/IV EN CARTOUCHE POUR STYLO",
+    "DOSAGE": "100UI/ML (3.5MG/ML)",
+    "COND": "B/05 CARTOUCHES DE 3ML",
+    "MARQUE": "HUMALOG 100"
+  },
+  {
+    "CODE": "14 B 223",
+    "DCI": "INSULINE ASPARTE",
+    "FORME": "SOL. INJ.",
+    "DOSAGE": "100UI/ML ",
+    "COND": "B/05 STYLOS MULTIDOSES PRE-REMPLIS JETABLES DE 3ML",
+    "MARQUE": "NOVORAPID FLEXPEN"
+  },
+  {
+    "CODE": "14 B 225",
+    "DCI": "INSULINE ASPARTE / INSULINE ASPARTE PROTAMINE 30/70%",
+    "FORME": "SUSP. INJ.",
+    "DOSAGE": "100UI/ML ",
+    "COND": "B/05 STYLOS MULTIDOSES PRE-REMPLIS JETABLES DE 3ML",
+    "MARQUE": "NOVOMIX 30 FLEXPEN"
+  },
+  {
+    "CODE": "14 B 332",
+    "DCI": "INSULINE GLULISINE",
+    "FORME": "SOL. INJ. EN STYLO PREREMPLI",
+    "DOSAGE": "100UI/ML (3.49MG/ML)",
+    "COND": "B/05 STYLOS PREREMPLIS SOLOSTAR DE 3ML",
+    "MARQUE": "APIDRA SOLOSTAR"
+  },
+  {
+    "CODE": "14 B 337",
+    "DCI": "INSULINE LISPRO",
+    "FORME": "SOL. INJ. SC EN STYLO PREREMPLI",
+    "DOSAGE": "100UI/ML (3.5MG/ML)",
+    "COND": "B/05 STYLOS PREREMPLIS DE 3ML",
+    "MARQUE": "HUMALOG KIWIKPEN"
+  },
+  {
+    "CODE": "14 B 338",
+    "DCI": "INSULINE LISPRO 25% / INSULINE LISPRO PROTAMINE 75%",
+    "FORME": "SUSP. INJ. SC EN STYLO PREREMPLI",
+    "DOSAGE": "100UI/ML (3.5MG/ML)",
+    "COND": "B/05 STYLOS PREREMPLIS DE 3ML",
+    "MARQUE": "HUMALOG MIX 25 KIWIKPEN"
+  },
+  {
+    "CODE": "14 B 339",
+    "DCI": "INSULINE LISPRO 50% / INSULINE LISPRO PROTAMINE 50%",
+    "FORME": "SUSP. INJ. SC EN STYLO PREREMPLI",
+    "DOSAGE": "100UI/ML (3.5MG/ML)",
+    "COND": "B/05 STYLOS PREREMPLIS DE 3ML",
+    "MARQUE": "HUMALOG MIX 50 KIWIKPEN"
+  },
+  {
+    "CODE": "14 G 038",
+    "DCI": "LEVOCARNITINE",
+    "FORME": "SOL. BUV.",
+    "DOSAGE": "10% (10G/100ML)",
+    "COND": "B/1FL. DE 100ML",
+    "MARQUE": "LEVOTYNE"
+  },
+  {
+    "CODE": "14 G 054 ",
+    "DCI": "MAGNESIUM",
+    "FORME": " AMP.BUV",
+    "DOSAGE": "1.5 G",
+    "COND": "B/20",
+    "MARQUE": "ENERMAG"
+  },
+  {
+    "CODE": "14 G 061",
+    "DCI": "POTASSIUM GLUCONATE",
+    "FORME": "SIROP",
+    "DOSAGE": "0.15",
+    "COND": "FL/120ML",
+    "MARQUE": "KALIGON"
+  },
+  {
+    "CODE": "14 G 061",
+    "DCI": "gluconate de potassium",
+    "FORME": "sirop",
+    "DOSAGE": "0.15",
+    "COND": "Flacon de 200 ml",
+    "MARQUE": "K-Plus"
+  },
+  {
+    "CODE": "14 G 065",
+    "DCI": "CHLORURE DE SODIUM/CHLORURE DE POTASSIUM/CITRATE DE SODIUM SOUS FORME TRISODIQUE DIHYDRATEE /GLUCOSE ANHYDRE",
+    "FORME": "PDRE.OR.SACH.",
+    "DOSAGE": "2.6G/ 1.5G /2.9G/ 13.5G / SACH. DE 20.5G",
+    "COND": "B/100SACH. DE 20.5G",
+    "MARQUE": "REHYDRAX"
+  },
+  {
+    "CODE": "14 G 162",
+    "DCI": "MAGNESIUM PIDOLATE",
+    "FORME": "SOL.BUV.",
+    "DOSAGE": "0.15",
+    "COND": "FL/150ML",
+    "MARQUE": "ISOMAG"
+  },
+  {
+    "CODE": "14 G 175",
+    "DCI": "calcium-cholecarciferol",
+    "FORME": "comp a sucer",
+    "DOSAGE": "500 mg-400 UI",
+    "COND": " boite de 60",
+    "MARQUE": "CALCIUM D3"
+  },
+  {
+    "CODE": "14 G 175",
+    "DCI": "calcium-cholecarciferol",
+    "FORME": "comp a sucer",
+    "DOSAGE": "500 mg-400 UI",
+    "COND": " boite de 60",
+    "MARQUE": "CALCIUM D3 NOVAGENERICS"
+  },
+  {
+    "CODE": "14 H 097",
+    "DCI": "MULTIVITAMINES ",
+    "FORME": "SIROP",
+    "DOSAGE": "50 ML",
+    "COND": "50 ML",
+    "MARQUE": "VITAFORM"
+  },
+  {
+    "CODE": "14 H 112",
+    "DCI": "THIAMINE/PYRIDOXINE",
+    "FORME": "COMPRIME",
+    "DOSAGE": "250MG/250MG",
+    "COND": "B/20 ",
+    "MARQUE": "NEUROVIT"
+  },
+  {
+    "CODE": "14 H 112",
+    "DCI": "B1B6",
+    "FORME": "comp pel",
+    "DOSAGE": "250-250mg/comp",
+    "COND": "bt de 20",
+    "MARQUE": "Vitazyme Cp 250mg/250mg "
+  },
+  {
+    "CODE": "15 A 003",
+    "DCI": "Valproate de Na",
+    "FORME": "sol buv",
+    "DOSAGE": "200mg/ml",
+    "COND": "flacon 40ml",
+    "MARQUE": "Ipakine Sol Buv"
+  },
+  {
+    "CODE": "15 A 003",
+    "DCI": "VALPROATE DE SODIUM",
+    "FORME": "SOL.BUV.",
+    "DOSAGE": "200MG/ML",
+    "COND": "FL/100 ML +SERINGUE DOSEUSE",
+    "MARQUE": "PHYSIOPINE"
+  },
+  {
+    "CODE": "15 A 003",
+    "DCI": "Valproate de sodium",
+    "FORME": "Solution buvable",
+    "DOSAGE": "200mg/ml",
+    "COND": "flacon de 100 ml",
+    "MARQUE": "MEVAKINE"
+  },
+  {
+    "CODE": "15 A 003",
+    "DCI": "Valproate de sodium",
+    "FORME": "Solution buvable",
+    "DOSAGE": "200mg/ml",
+    "COND": "Flacon de 100ml",
+    "MARQUE": "PHYSIOPINE"
+  },
+  {
+    "CODE": "15 A 003",
+    "DCI": "Acide valproique",
+    "FORME": "Sol buv",
+    "DOSAGE": "200mg/ml",
+    "COND": "flacon 50ml",
+    "MARQUE": "Isolep"
+  },
+  {
+    "CODE": "15 A 043",
+    "DCI": "VALPROATE DE SODIUM",
+    "FORME": "COMP.PELLI. SEC. LP",
+    "DOSAGE": "500MG",
+    "COND": "B/30",
+    "MARQUE": "DEPAKINE CHRONO"
+  },
+  {
+    "CODE": "15 A 063",
+    "DCI": "LAMOTRIGINE",
+    "FORME": "COMPRIME SECABLE ",
+    "DOSAGE": "25MG",
+    "COND": "B/30",
+    "MARQUE": "LAMOGINE"
+  },
+  {
+    "CODE": "15 A 064",
+    "DCI": "LAMOTRIGINE",
+    "FORME": "Comprimé   ",
+    "DOSAGE": "50 mg",
+    "COND": "Boite de  40 Cp",
+    "MARQUE": "LAMITOR"
+  },
+  {
+    "CODE": "15 A 064",
+    "DCI": "LAMOTRIGINE",
+    "FORME": "Comp ",
+    "DOSAGE": "50mg",
+    "COND": "30 Cps",
+    "MARQUE": "LAMITRIGINE"
+  },
+  {
+    "CODE": "15 A 064",
+    "DCI": "LAMOTRIGINE",
+    "FORME": "COMPRIME SECABLE ",
+    "DOSAGE": "50MG",
+    "COND": "B/30",
+    "MARQUE": "LAMOGINE"
+  },
+  {
+    "CODE": "15 A 068",
+    "DCI": "PREGABALINE",
+    "FORME": "gelule ",
+    "DOSAGE": "150 mg",
+    "COND": "BOITE DE 60",
+    "MARQUE": "PRERICA 150 mg"
+  },
+  {
+    "CODE": "15 A 072",
+    "DCI": "LEVETIRACETAM",
+    "FORME": "COMP PELLICULE",
+    "DOSAGE": "250MG",
+    "COND": "B/30",
+    "MARQUE": "EPIXX"
+  },
+  {
+    "CODE": "15 A 081",
+    "DCI": "TOPIRAMATE",
+    "FORME": "COMPRIME PELLICULE ",
+    "DOSAGE": "25MG",
+    "COND": "B/30",
+    "MARQUE": "REPANIDE"
+  },
+  {
+    "CODE": "15 A 082",
+    "DCI": "TOPIRAMATE",
+    "FORME": "COMPRIME PELLICULE ",
+    "DOSAGE": "50MG",
+    "COND": "B/30",
+    "MARQUE": "REPANIDE"
+  },
+  {
+    "CODE": "15 A 083",
+    "DCI": "TOPIRAMATE",
+    "FORME": "COMPRIME PELLICULE ",
+    "DOSAGE": "100MG",
+    "COND": "B/30",
+    "MARQUE": "REPANIDE"
+  },
+  {
+    "CODE": "15 A 087",
+    "DCI": " Gabapentine",
+    "FORME": "gélule",
+    "DOSAGE": "400 mg",
+    "COND": " boite de 50",
+    "MARQUE": "GABAMAX® "
+  },
+  {
+    "CODE": "15 A 090",
+    "DCI": "LAMOTRIGINE",
+    "FORME": "COMPRIME SECABLE ",
+    "DOSAGE": "100MG",
+    "COND": "B/30",
+    "MARQUE": "LAMOGINE"
+  },
+  {
+    "CODE": "15 B 022",
+    "DCI": "PIZOTIFENE (SOUS FORME DE MALATE)",
+    "FORME": "COMPRIME PELLICULE ",
+    "DOSAGE": "0.5MG DE PIZOTIFENE (0.73MG DE MALATE)",
+    "COND": "B/50",
+    "MARQUE": "MIGRAZEN"
+  },
+  {
+    "CODE": "15 D 031",
+    "DCI": "LEVODOPA/CARBIDOPA",
+    "FORME": "COMP",
+    "DOSAGE": "100MG/10MG",
+    "COND": "B/100",
+    "MARQUE": "LEVOCARB"
+  },
+  {
+    "CODE": "15 F 117",
+    "DCI": "Chlorhydrate de Mémantine",
+    "FORME": "Comprimé pelliculé 20mg. ",
+    "DOSAGE": "20MG",
+    "COND": "B/30",
+    "MARQUE": "Mémantine BEKER"
+  },
+  {
+    "CODE": "16 A 003",
+    "DCI": "Amitriptyline",
+    "FORME": "GOUTTE BUVABLE",
+    "DOSAGE": "0.04",
+    "COND": "FLACON DE 20 ml",
+    "MARQUE": "GEROXYL"
+  },
+  {
+    "CODE": "16 A 014",
+    "DCI": "MIANSERINE CHLORHYDRATE",
+    "FORME": "COMPRIME",
+    "DOSAGE": "30MG",
+    "COND": "B/20",
+    "MARQUE": "TOLVON (ATHYMIL)"
+  },
+  {
+    "CODE": "16 A 018",
+    "DCI": "TRIMIPRAMINE MESILATE EXPRIME EN TRIMIPRAMINE",
+    "FORME": "SOL.BUV.GTTES.",
+    "DOSAGE": "0.04",
+    "COND": "FL.COMPTE GTTES./30ML",
+    "MARQUE": "SURMONTIL"
+  },
+  {
+    "CODE": "16 A 078",
+    "DCI": "FLUOXETINE",
+    "FORME": "GLES ",
+    "DOSAGE": "20MG",
+    "COND": "B/30",
+    "MARQUE": "FLUOXAC"
+  },
+  {
+    "CODE": "16 A 095",
+    "DCI": "PAROXETINE CHLORHYDRATE HEMIHYDRATE EXPRIME EN PAROXETINE",
+    "FORME": "COMP. PELLI. SEC.",
+    "DOSAGE": "20MG",
+    "COND": " B/30",
+    "MARQUE": "PAROXETINE GL "
+  },
+  {
+    "CODE": "16 A 095",
+    "DCI": "PAROXETINE ",
+    "FORME": "comprimé pelliculé sécable",
+    "DOSAGE": "20 mg",
+    "COND": "boîte de 30",
+    "MARQUE": "PAROXAT ® 20"
+  },
+  {
+    "CODE": "16 A 099",
+    "DCI": "Sertraline",
+    "FORME": "Gélule",
+    "DOSAGE": "50mg/gélule",
+    "COND": "bt de 30",
+    "MARQUE": "Serval 50"
+  },
+  {
+    "CODE": "16 A 099",
+    "DCI": "SERTRALINE CHLORHYDRATE EXPRIME EN SERTRALINE",
+    "FORME": "COMPRIME SECABLE ",
+    "DOSAGE": "50MG ",
+    "COND": "PILULIER/15",
+    "MARQUE": "SOLOTIK"
+  },
+  {
+    "CODE": "16 A 099",
+    "DCI": "SERTRALINE CHLORHYDRATE EXPRIME EN SERTRALINE",
+    "FORME": "GLES.",
+    "DOSAGE": "50MG",
+    "COND": "B/30",
+    "MARQUE": "ZEXIL"
+  },
+  {
+    "CODE": "16 A 105",
+    "DCI": "ESCITALOPRAM OXALATE",
+    "FORME": "Comprimés pelliculé scecable",
+    "DOSAGE": "10mg",
+    "COND": "boite de 28",
+    "MARQUE": "SCIPRAL "
+  },
+  {
+    "CODE": "16 A 105",
+    "DCI": "Escitaloprame oxalate",
+    "FORME": "Comprimé pélliculé sécable ",
+    "DOSAGE": "10mg",
+    "COND": "boite de 30",
+    "MARQUE": "IBINOR 10 MG "
+  },
+  {
+    "CODE": "16 A 107",
+    "DCI": "Duloxetine",
+    "FORME": "Gélule",
+    "DOSAGE": "60mg",
+    "COND": "B/30",
+    "MARQUE": "Baltaxine"
+  },
+  {
+    "CODE": "16 A 115",
+    "DCI": "SERTRALINE** (SOUS FORME DE CHLORHYDRATE)",
+    "FORME": "COMPRIME SECABLE ",
+    "DOSAGE": "100MG** ",
+    "COND": "PILULIER/15",
+    "MARQUE": "SOLOTIK"
+  },
+  {
+    "CODE": "16 A 125",
+    "DCI": "VENLAFAXINE CHLORHYDRATE EXPRIME EN VENLAFAXINE",
+    "FORME": "GLES.LP",
+    "DOSAGE": "37.5MG",
+    "COND": "B/30",
+    "MARQUE": "FLAXYNE"
+  },
+  {
+    "CODE": "16 A 125",
+    "DCI": "Venlafaxine",
+    "FORME": "Gélule",
+    "DOSAGE": "37.5mg/gélule",
+    "COND": "bt de 30",
+    "MARQUE": "Tedema LP 37.5mg"
+  },
+  {
+    "CODE": "16 A 125",
+    "DCI": "Venlafaxine Chlorhydrate ",
+    "FORME": "Gélule ",
+    "DOSAGE": "37.5 mg",
+    "COND": "Boite de 30.",
+    "MARQUE": "VENLAXOR L.P 37.50MG"
+  },
+  {
+    "CODE": "16 A 126",
+    "DCI": "VENLAFAXINE CHLORHYDRATE EXPRIME EN VENLAFAXINE",
+    "FORME": "GLES. LP",
+    "DOSAGE": "75MG ",
+    "COND": "B/30",
+    "MARQUE": "FLAXYNE"
+  },
+  {
+    "CODE": "16 A 126",
+    "DCI": "Venlafaxine Chlorhydrate ",
+    "FORME": "Gélule ",
+    "DOSAGE": "75 mg ",
+    "COND": "Boite de 30.",
+    "MARQUE": "VENLAXOR L.P 75MG"
+  },
+  {
+    "CODE": "16 A 154",
+    "DCI": "PAROXETINE ",
+    "FORME": "COMPRIME PELLICULE",
+    "DOSAGE": "10 MG",
+    "COND": "B/30 ",
+    "MARQUE": "PAROLYX "
+  },
+  {
+    "CODE": "16 D 055",
+    "DCI": "CHLORPROMAZINE CHLORHYDRATE EXPRIME EN CHLORPROMAZINE",
+    "FORME": "SOL.BUV.GTTES.",
+    "DOSAGE": "0.04",
+    "COND": "FL/30ML",
+    "MARQUE": "LARGACTIL"
+  },
+  {
+    "CODE": "16 D 055",
+    "DCI": "CHLORPROMAZINE",
+    "FORME": "SUSP.BUV. GTTES",
+    "DOSAGE": "0.04",
+    "COND": "FL/30ML",
+    "MARQUE": "DORMAZINE"
+  },
+  {
+    "CODE": "16 D 055",
+    "DCI": "CHLORPROMAZINE CHLORHYDRATE EXPRIME EN CHLORPROMAZINE",
+    "FORME": "SOL BUV GTTES",
+    "DOSAGE": "0.04",
+    "COND": "FL. COMPT.GTTES DE  30 ML",
+    "MARQUE": "LAROMEX"
+  },
+  {
+    "CODE": "16 D 058",
+    "DCI": "LEVOMEPROMAZINE MALEATE",
+    "FORME": "COMPRIME PELLICULE",
+    "DOSAGE": "·  100mg",
+    "COND": "-Boite de 20 comprimés pelliculés.",
+    "MARQUE": "BIOZINAN BR"
+  },
+  {
+    "CODE": "16 D 059",
+    "DCI": "LEVOMEPROMAZINE CHLORHYDRATE EXPRIME EN LEVOMEPROMAZINE",
+    "FORME": "SOL.BUV.GTTES.",
+    "DOSAGE": "0.04",
+    "COND": "FL./30ML",
+    "MARQUE": "NOZINAN"
+  },
+  {
+    "CODE": "16 D 066",
+    "DCI": "Sulpiride",
+    "FORME": "Gélule",
+    "DOSAGE": "50 mg",
+    "COND": "boîte de 30",
+    "MARQUE": "SULAN 50 "
+  },
+  {
+    "CODE": "16 D 066",
+    "DCI": "SULPIRIDE",
+    "FORME": "GLES.",
+    "DOSAGE": "50MG",
+    "COND": "B/30",
+    "MARQUE": "SULRID"
+  },
+  {
+    "CODE": "16 D 067",
+    "DCI": "SULPIRIDE",
+    "FORME": "SOL. BUV.",
+    "DOSAGE": "0.5G/100ML",
+    "COND": "FL./200ML",
+    "MARQUE": "SULRID"
+  },
+  {
+    "CODE": "16 D 067",
+    "DCI": "Sulpiride",
+    "FORME": "sol buv",
+    "DOSAGE": "0.5g/100ml",
+    "COND": "flaconn 200ml",
+    "MARQUE": "Sunadil Sol Buv"
+  },
+  {
+    "CODE": "16 D 067",
+    "DCI": "SULPIRIDE",
+    "FORME": "SOLUTION BUVABLE",
+    "DOSAGE": "0.005",
+    "COND": "FLACON DE 130 ml",
+    "MARQUE": "SULMATIL"
+  },
+  {
+    "CODE": "16 D 067",
+    "DCI": "SULPIDE",
+    "FORME": "SOL BUV ",
+    "DOSAGE": "5 MG / ML",
+    "COND": "FL/180ML",
+    "MARQUE": "SULPIRIDE"
+  },
+  {
+    "CODE": "16 D 067",
+    "DCI": "SULPIRIDE",
+    "FORME": "SOL BUV",
+    "DOSAGE": "25MG/5ML (OU 0.5G/100ML)",
+    "COND": "FLACON DE 200 ML",
+    "MARQUE": "SULPIMEX"
+  },
+  {
+    "CODE": "16 D 085",
+    "DCI": "HALOPERIDOL",
+    "FORME": "SOL BUV GTTES",
+    "DOSAGE": "2 MG / ML",
+    "COND": "B/01 FL COMPTE GTTES DE 20ML ",
+    "MARQUE": "HALDOMEX"
+  },
+  {
+    "CODE": "16 D 089",
+    "DCI": "RISPERIDONE",
+    "FORME": "COMP. PELLI. SEC.",
+    "DOSAGE": "1MG",
+    "COND": "B/30",
+    "MARQUE": "RIPSYZEN"
+  },
+  {
+    "CODE": "16 D 089",
+    "DCI": "Risperidone ",
+    "FORME": "Comprimé  Orodispersible",
+    "DOSAGE": "1mg",
+    "COND": "Boite de 60",
+    "MARQUE": "PSYDAL ODT"
+  },
+  {
+    "CODE": "16 D 090",
+    "DCI": "RISPERIDONE",
+    "FORME": "COMP. ENRO. SEC.",
+    "DOSAGE": "2MG",
+    "COND": "B/30",
+    "MARQUE": "RIPSYZEN"
+  },
+  {
+    "CODE": "16 D 090",
+    "DCI": "RISPERIDONE",
+    "FORME": "Comp Sec ",
+    "DOSAGE": "2mg ",
+    "COND": "b/60",
+    "MARQUE": "RISPERDAL"
+  },
+  {
+    "CODE": "16 D 090",
+    "DCI": "Risperidone ",
+    "FORME": "Comprimé  Orodispersible",
+    "DOSAGE": "2mg",
+    "COND": "Boite de 60",
+    "MARQUE": "PSYDAL ODT"
+  },
+  {
+    "CODE": "16 D 091",
+    "DCI": "RISPERIDONE",
+    "FORME": "COMP. ENRO. SEC.",
+    "DOSAGE": "4MG",
+    "COND": "B/30",
+    "MARQUE": "RIPSYZEN"
+  },
+  {
+    "CODE": "16 D 091",
+    "DCI": "Risperidone ",
+    "FORME": "Comprimé  Orodispersible",
+    "DOSAGE": "4mg",
+    "COND": "Boite de 40",
+    "MARQUE": "PSYDAL ODT"
+  },
+  {
+    "CODE": "16 D 092",
+    "DCI": "Resperidone",
+    "FORME": "sol buv",
+    "DOSAGE": "1mg/ml",
+    "COND": "Flacon 60ml",
+    "MARQUE": "Resdone Sol Buv"
+  },
+  {
+    "CODE": "16 D 092",
+    "DCI": "Risperidone ",
+    "FORME": "Gouttes buvables",
+    "DOSAGE": "1mg/ml",
+    "COND": "B/120ml",
+    "MARQUE": "Riperal"
+  },
+  {
+    "CODE": "16 D 099",
+    "DCI": "Olanzapine",
+    "FORME": "Comprimé pelliculé ",
+    "DOSAGE": "5 mg",
+    "COND": "Boite de 28 comprimé",
+    "MARQUE": "REXAPIN"
+  },
+  {
+    "CODE": "16 D 100",
+    "DCI": "Olanzapine",
+    "FORME": "Comprimé pelliculé ",
+    "DOSAGE": "10 mg",
+    "COND": "Boite de 28 comprimé",
+    "MARQUE": "REXAPIN"
+  },
+  {
+    "CODE": "16 D 111",
+    "DCI": "ATOMOXETINE CHLORHYDRATE EXPRIME EN ATOMOXETINE",
+    "FORME": "GLES. GASTRO-RESIST.",
+    "DOSAGE": "18MG** (ATOMOXETINE HYDROCHLORIDE 20.57MG)",
+    "COND": "B/28",
+    "MARQUE": "STRATTERA"
+  },
+  {
+    "CODE": "16 D 113",
+    "DCI": "ATOMOXETINE CHLORHYDRATE EXPRIME EN ATOMOXETINE",
+    "FORME": "GLES. GASTRO-RESIST.",
+    "DOSAGE": "40MG** (ATOMOXETINE HYDROCHLORIDE 45.71MG)",
+    "COND": "B/28",
+    "MARQUE": "STRATTERA"
+  },
+  {
+    "CODE": "16 D 155",
+    "DCI": "OLANZAPINE",
+    "FORME": "COMP. ORODISPERS.",
+    "DOSAGE": "5MG",
+    "COND": "B/30",
+    "MARQUE": "SCHIZOPIN "
+  },
+  {
+    "CODE": "16 D 169",
+    "DCI": "Quétiapine fumarate",
+    "FORME": "Comprimé pelliculé à libération prolongée 300 mg. B/30 et B/60",
+    "DOSAGE": "300MG",
+    "COND": "B/30",
+    "MARQUE": "Quétiapine BEKER LP"
+  },
+  {
+    "CODE": "16 D 170",
+    "DCI": "ARIPIPRAZOLE",
+    "FORME": "COMP ORODISPERSIBLE",
+    "DOSAGE": "10MG",
+    "COND": "B/28",
+    "MARQUE": "ABDIFLY OD"
+  },
+  {
+    "CODE": "17 A 001",
+    "DCI": "OXYBUPROCAINE",
+    "FORME": "COLLYRE EN SOLUTION",
+    "DOSAGE": "0.004",
+    "COND": "FL/10ML",
+    "MARQUE": "CEBESINE"
+  },
+  {
+    "CODE": "17 B 100",
+    "DCI": "ACIDE N-ACETYL ASPARTYL GLUTAMIQUE (SOUS FORME DE SEL DE SODIUM)**",
+    "FORME": "COLLYRE ",
+    "DOSAGE": "4.9G/100ML**",
+    "COND": "FL/5ML",
+    "MARQUE": "NAAXIA"
+  },
+  {
+    "CODE": "17 B 109",
+    "DCI": "LEVOCABASTINE",
+    "FORME": "COLLYRE ",
+    "DOSAGE": "0.0005",
+    "COND": "FL/5ML",
+    "MARQUE": "LEVOPHTA"
+  },
+  {
+    "CODE": "17 B 109",
+    "DCI": "LEVOCABASTINE HCL",
+    "FORME": "collyre en solution\n sterile",
+    "DOSAGE": "0.05% ",
+    "COND": "Boite d'un flacon de 5 ml",
+    "MARQUE": "BIOCABASTINE COLLYRE 0.05% "
+  },
+  {
+    "CODE": "17 C 012",
+    "DCI": "Timolol maléate",
+    "FORME": "collyre en sol",
+    "DOSAGE": "0.0025",
+    "COND": "flacon 05ml",
+    "MARQUE": "Normoptic"
+  },
+  {
+    "CODE": "17 C 013",
+    "DCI": "Timolol maléate",
+    "FORME": "collyre en sol",
+    "DOSAGE": "0.005",
+    "COND": "flacon 05ml",
+    "MARQUE": "Normoptic"
+  },
+  {
+    "CODE": "17 C 013",
+    "DCI": "TIMOLOL MALEATE",
+    "FORME": "COLLYRE EN SOLUTIO STERILE",
+    "DOSAGE": "0.005",
+    "COND": "FL/5ML",
+    "MARQUE": "TIMODROP"
+  },
+  {
+    "CODE": "17 C 139",
+    "DCI": "TRAVOPROST ",
+    "FORME": "COLLYRE EN SOLUTION",
+    "DOSAGE": "40µG/ML",
+    "COND": "FL 2.5ML",
+    "MARQUE": "TRAVATAN"
+  },
+  {
+    "CODE": "17 C 146",
+    "DCI": "CARTEOLOL",
+    "FORME": "COLLYRE EN SOLUTION A LIBERATION PROLONGEE ",
+    "DOSAGE": "0.01",
+    "COND": "FL./3ML",
+    "MARQUE": "CARTEOL LP"
+  },
+  {
+    "CODE": "17 C 147",
+    "DCI": "CARTEOLOL",
+    "FORME": "COLLYRE EN SOLUTION A LIBERATION PROLONGEE ",
+    "DOSAGE": "0.02",
+    "COND": "FL./3ML",
+    "MARQUE": "CARTEOL LP"
+  },
+  {
+    "CODE": "17 D 017",
+    "DCI": "CHLORTETRACYCLINE",
+    "FORME": "PDE.OPHT.",
+    "DOSAGE": "0.01",
+    "COND": "T/5G",
+    "MARQUE": "CLOMYCINE"
+  },
+  {
+    "CODE": "17 D 029",
+    "DCI": "NORFLOXACINE",
+    "FORME": "COLLYRE EN SOLUTION",
+    "DOSAGE": "0.3% (300 MG/100ML)",
+    "COND": "BOITE DE 1 FLACON DE 5 ML",
+    "MARQUE": "NOROFLOX"
+  },
+  {
+    "CODE": "17 D 122",
+    "DCI": "TOBRAMYCINE",
+    "FORME": "COLLYRE ",
+    "DOSAGE": "0.003",
+    "COND": "FL COMPTE GOUTTE DE 5 ML",
+    "MARQUE": "OBRAX"
+  },
+  {
+    "CODE": "17 D 131",
+    "DCI": "CIPROFLOXACINE CHLORHYDRATE EXPRIME EN CIPROFLOXACINE",
+    "FORME": "COLLYRE ",
+    "DOSAGE": "0.003",
+    "COND": "FL COMPTE GOUTTE DE 5 ML",
+    "MARQUE": "CIPROTEK"
+  },
+  {
+    "CODE": "17 D 131",
+    "DCI": "Ciprofloxacine",
+    "FORME": "Collyre",
+    "DOSAGE": " 0.3 %",
+    "COND": "Flacon de 5 ml",
+    "MARQUE": "CIPRO® 0.3 %"
+  },
+  {
+    "CODE": "17 F 130",
+    "DCI": "GANCICLOVIR",
+    "FORME": "GEL.OPHT",
+    "DOSAGE": "0.15%.",
+    "COND": "T/5G",
+    "MARQUE": "VIRGAN"
+  },
+  {
+    "CODE": "17 G 134",
+    "DCI": "FLUOROMETHOLONE",
+    "FORME": "COLLYRE EN SOLUTION",
+    "DOSAGE": "0.001",
+    "COND": "FL/5ML",
+    "MARQUE": "OPTIF JAM"
+  },
+  {
+    "CODE": "17 G 167",
+    "DCI": "PREDNISOLONE (SOUS FORME D'ACETATE)**",
+    "FORME": "COLLYRE EN SUSPENSION ",
+    "DOSAGE": "0.01",
+    "COND": "FL/5ML",
+    "MARQUE": "OPTIPRED"
+  },
+  {
+    "CODE": "17 H 057",
+    "DCI": "ATROPINE (SULFATE) EXPRIME EN ATROPINE",
+    "FORME": "COLLYRE ",
+    "DOSAGE": "0.005",
+    "COND": "FL/15ML",
+    "MARQUE": "CROPINE"
+  },
+  {
+    "CODE": "17 H 058",
+    "DCI": "ATROPINE (SULFATE) EXPRIME EN ATROPINE",
+    "FORME": "COLLYRE ",
+    "DOSAGE": "0.01",
+    "COND": "FL/15ML",
+    "MARQUE": "CROPINE"
+  },
+  {
+    "CODE": "17 H 062",
+    "DCI": "TROPICAMIDE",
+    "FORME": "COLLYRE EN SOLUTION",
+    "DOSAGE": "0.005",
+    "COND": "FL./10ML",
+    "MARQUE": "MYDRIATICUM"
+  },
+  {
+    "CODE": "17 J 066",
+    "DCI": "Indométacine",
+    "FORME": "COLLYRE ",
+    "DOSAGE": "0.001",
+    "COND": "B/01 FL DE 5ML",
+    "MARQUE": "INDOCOLLYRE"
+  },
+  {
+    "CODE": "17 J 118",
+    "DCI": "Diclofénac sodique",
+    "FORME": "COLLYRE ",
+    "DOSAGE": "0.001",
+    "COND": "FL/5ML",
+    "MARQUE": "XINAC"
+  },
+  {
+    "CODE": "17 J 118",
+    "DCI": "Diclofenac sodium",
+    "FORME": "COLLYRE",
+    "DOSAGE": "0.001",
+    "COND": "Fl/5ML",
+    "MARQUE": "Diclogesic 0.1% "
+  },
+  {
+    "CODE": "17 K 078",
+    "DCI": "RETINOL",
+    "FORME": "COLLYRE ",
+    "DOSAGE": "150 000UI",
+    "COND": "FL/10ML",
+    "MARQUE": "VITAMINE A "
+  },
+  {
+    "CODE": "17 N 145",
+    "DCI": "CARBOMERE 974P",
+    "FORME": "GEL OPHT.",
+    "DOSAGE": "2.5MG/G",
+    "COND": "FL. COMPT. GTTES. 10G",
+    "MARQUE": "SICCAFLUID"
+  },
+  {
+    "CODE": "17 N 169",
+    "DCI": "POVIDONE",
+    "FORME": "COLLYRE EN SOLUTION",
+    "DOSAGE": "0.015",
+    "COND": "FL./10ML",
+    "MARQUE": "FLUIDABAK"
+  },
+  {
+    "CODE": "18 C 024",
+    "DCI": "betahistine dihydrochloride",
+    "FORME": "comprimé",
+    "DOSAGE": "24 MG",
+    "COND": "BOITE DE 60",
+    "MARQUE": "BETAHISTINE 24 MG "
+  },
+  {
+    "CODE": "19 B 005",
+    "DCI": "Flubendazole",
+    "FORME": "Suspension buvable",
+    "DOSAGE": "20 mg/ml",
+    "COND": "Flacon de 30 ml",
+    "MARQUE": "Flubene"
+  },
+  {
+    "CODE": "19 B 005",
+    "DCI": "FLUBENDAZOLE",
+    "FORME": "SUSP.BUV.",
+    "DOSAGE": "100MG/5ML (20MG/ML)",
+    "COND": "FL/30ML",
+    "MARQUE": "FLUMOX"
+  },
+  {
+    "CODE": "19 B 005",
+    "DCI": "Flubendazole ",
+    "FORME": "Suspension  Buvable ",
+    "DOSAGE": "0.002",
+    "COND": "Flacon de 30 ml ",
+    "MARQUE": "VEROFLUD "
+  },
+  {
+    "CODE": "20 A 004",
+    "DCI": "Béclométasone dipropionate",
+    "FORME": "Suspension",
+    "DOSAGE": "0.0005",
+    "COND": "12:00 AM",
+    "MARQUE": "BECANOS"
+  },
+  {
+    "CODE": "20 A 012",
+    "DCI": "KETOTIFENE** (SOUS FORME DE FUMARATE)",
+    "FORME": "COMPRIME",
+    "DOSAGE": "1MG",
+    "COND": "B/30",
+    "MARQUE": "TIFEN"
+  },
+  {
+    "CODE": "20 A 012",
+    "DCI": "KETOTIFENE** (SOUS FORME DE FUMARATE)",
+    "FORME": "COMPRIME",
+    "DOSAGE": "1MG",
+    "COND": "B/30",
+    "MARQUE": "TOTINAL"
+  },
+  {
+    "CODE": "20 A 013",
+    "DCI": "KETOTIFENE",
+    "FORME": "SIROP",
+    "DOSAGE": "1MG/5ML",
+    "COND": "FL/100 ML",
+    "MARQUE": "TIFEN"
+  },
+  {
+    "CODE": "20 A 013",
+    "DCI": "KETOTIFEN",
+    "FORME": "SIROP",
+    "DOSAGE": "1 MG /5ML",
+    "COND": "125 ML",
+    "MARQUE": "ALERFENE"
+  },
+  {
+    "CODE": "20 A 016",
+    "DCI": "SALBUTAMOL** (SOUS FORME DE SULFATE)",
+    "FORME": "SIROP",
+    "DOSAGE": "2MG/5ML**",
+    "COND": "FL/150ML",
+    "MARQUE": "SALBUTAMOL SAIDAL"
+  },
+  {
+    "CODE": "20 A 077",
+    "DCI": " FLUTICASONE PROPIONATE",
+    "FORME": "\n Suspension nasale ",
+    "DOSAGE": "50µG/DOSE",
+    "COND": " Flacon pulvérisateur avec pompe doseuse. Flacon de 120 doses",
+    "MARQUE": "FLEXODOZ "
+  },
+  {
+    "CODE": "20 A 077",
+    "DCI": "Fluticasone propionate",
+    "FORME": "Spray nasal",
+    "DOSAGE": "50µg/dose",
+    "COND": "boite de 01 flacon de 120 doses",
+    "MARQUE": "Flutinase 50µg/dose"
+  },
+  {
+    "CODE": "20 A 211",
+    "DCI": "Montelukast sodique exprimé en montelukast",
+    "FORME": "Comprimé pelliculé",
+    "DOSAGE": "10 mg",
+    "COND": "Boite de 30",
+    "MARQUE": "Temost"
+  },
+  {
+    "CODE": "20 C 034",
+    "DCI": "OXELADINE",
+    "FORME": "SIROP ADLT",
+    "DOSAGE": "10 MG/5ML",
+    "COND": "180 ML",
+    "MARQUE": "EUPNEX"
+  },
+  {
+    "CODE": "20 C 206",
+    "DCI": "Dextromethorphane",
+    "FORME": "Solution buvable",
+    "DOSAGE": "0.2 %",
+    "COND": "Flacon de 125ml",
+    "MARQUE": "TUSSIDEX 0.2 %"
+  },
+  {
+    "CODE": "20 C 206",
+    "DCI": "DEXTROMETHORPHANE BROMHYDRATE. MEPYRAMINE MALEATE",
+    "FORME": "Sirop",
+    "DOSAGE": "0.2/0.2 g/100 mL",
+    "COND": "Fl 125 mL",
+    "MARQUE": "Atussine Adultes"
+  },
+  {
+    "CODE": "20 C 207",
+    "DCI": "Dextromethorphane",
+    "FORME": "Solution buvable",
+    "DOSAGE": "0.1 %",
+    "COND": "Flacon de 125ml",
+    "MARQUE": "TUSSIDEX 0.1 %"
+  },
+  {
+    "CODE": "20 C 207",
+    "DCI": "DEXTROMETHORPHANE BROMHYDRATE. MEPYRAMINE MALEATE. GUAIFENESINE",
+    "FORME": "Sirop",
+    "DOSAGE": "0.1/0.1/0.4 g/100 mL",
+    "COND": "Fl 125 mL",
+    "MARQUE": "Atussine Enfants"
+  },
+  {
+    "CODE": "20 F 106",
+    "DCI": "FLUTICASONE (SOUS FORME DE PROPIONATE)** / SALMETEROL**(SOUS FORME DE XINAFOATE)",
+    "FORME": "CAPSULES CONTENANT PDRE.PR INHAL.",
+    "DOSAGE": "500µG**/50µG*",
+    "COND": "B/60 +INHALATEUR DE QHALER",
+    "MARQUE": "BREQUAL"
+  },
+  {
+    "CODE": "21 A 001",
+    "DCI": "ACIDE NIFLUMIQUE",
+    "FORME": "PDE.DERM.",
+    "DOSAGE": "0.03",
+    "COND": "T/40G",
+    "MARQUE": "NIFLURIC"
+  },
+  {
+    "CODE": "21 A 004",
+    "DCI": "DICLOFENAC DIETHYLAMINE EXPRIME EN DICLOFENAC SODIQUE",
+    "FORME": "GEL DERM.",
+    "DOSAGE": "0.01",
+    "COND": "T/50G",
+    "MARQUE": "BIOFENAC"
+  },
+  {
+    "CODE": "21 A 004",
+    "DCI": "DICLOFENAC DIETHYLAMINE EXPRIME EN DICLOFENAC SODIQUE",
+    "FORME": "GEL DERM.",
+    "DOSAGE": "0.01",
+    "COND": "T/30G",
+    "MARQUE": "CLOGEL"
+  },
+  {
+    "CODE": "21 A 004",
+    "DCI": "DICLOFENAC DIETHYLAMINE EXPRIME EN DICLOFENAC SODIQUE",
+    "FORME": "GEL DERM.",
+    "DOSAGE": "0.01",
+    "COND": "T/50G",
+    "MARQUE": "DEFLAMAC"
+  },
+  {
+    "CODE": "21 A 004",
+    "DCI": "DICLOFENAC DIETHYLAMINE EXPRIME EN DICLOFENAC SODIQUE",
+    "FORME": "GEL  EMULSION DERM.",
+    "DOSAGE": "0.01",
+    "COND": "B/01 TUBE DE 50G",
+    "MARQUE": "TABIFLEX COOL"
+  },
+  {
+    "CODE": "21 A 004",
+    "DCI": "DICLOFENAC DIETHYLAMINE EXPRIME EN DICLOFENAC SODIQUE",
+    "FORME": "GEL DERM.",
+    "DOSAGE": "0.01",
+    "COND": "T/50G",
+    "MARQUE": "VOLTARENE EMULGEL"
+  },
+  {
+    "CODE": "21 A 004",
+    "DCI": "Diclofénac sodique",
+    "FORME": "GEL DERM.",
+    "DOSAGE": "0.01",
+    "COND": "T/50G",
+    "MARQUE": "VOLTENAC"
+  },
+  {
+    "CODE": "21 A 004",
+    "DCI": "Diclofenac diéthylamine exprimé en diclofenac sodique",
+    "FORME": "Gel",
+    "DOSAGE": "0.01",
+    "COND": "Tube 50 gr",
+    "MARQUE": "Voltum"
+  },
+  {
+    "CODE": "21 A 004",
+    "DCI": "Diclofénac ",
+    "FORME": "Emulsion gel",
+    "DOSAGE": "0.01",
+    "COND": "Tube de 50g",
+    "MARQUE": "Voltum"
+  },
+  {
+    "CODE": "21 A 004",
+    "DCI": "DICLOFENAC DE SODIUM",
+    "FORME": "GEL",
+    "DOSAGE": "0.01",
+    "COND": "TUBE DE 50 g",
+    "MARQUE": "PHLOGOREN "
+  },
+  {
+    "CODE": "21 A 004",
+    "DCI": "DICLOFENAC",
+    "FORME": "GEL DERMIQUE",
+    "DOSAGE": "0.01",
+    "COND": "TUBE DE 50 G",
+    "MARQUE": "VOLTAMEX"
+  },
+  {
+    "CODE": "21 A 005",
+    "DCI": "PIROXICAM",
+    "FORME": "GEL ",
+    "DOSAGE": "0.005",
+    "COND": "T/50G",
+    "MARQUE": "FELCAM"
+  },
+  {
+    "CODE": "21 A 005",
+    "DCI": "PIROXICAM",
+    "FORME": "GEL DERM.",
+    "DOSAGE": "0.005",
+    "COND": "T/50G",
+    "MARQUE": "FENOXAM"
+  },
+  {
+    "CODE": "21 A 005",
+    "DCI": "Piroxicam",
+    "FORME": "Gel",
+    "DOSAGE": "0.005",
+    "COND": "B/25gm",
+    "MARQUE": "Orthocam"
+  },
+  {
+    "CODE": "21 A 031",
+    "DCI": "ACIDE NIFLUMIQUE",
+    "FORME": "GEL DERM.",
+    "DOSAGE": "0.025",
+    "COND": "T/40G",
+    "MARQUE": "NIFLURIC"
+  },
+  {
+    "CODE": "21 A 031",
+    "DCI": "Acide niflumique",
+    "FORME": "GEL",
+    "DOSAGE": "0.025",
+    "COND": "T/50G",
+    "MARQUE": "NIFLUMEX"
+  },
+  {
+    "CODE": "21 A 031",
+    "DCI": "ACIDE NIFLUMIQUE",
+    "FORME": "GEL",
+    "DOSAGE": "0.025",
+    "COND": "TUBE DE 60g",
+    "MARQUE": "GEMATE"
+  },
+  {
+    "CODE": "21 A 032",
+    "DCI": "KETOPROFENE",
+    "FORME": "GEL DERMIQUE",
+    "DOSAGE": "0.025",
+    "COND": "TUBE DE 50 G",
+    "MARQUE": "KETOMEX "
+  },
+  {
+    "CODE": "21 A 069",
+    "DCI": "ibuprofene-levomenthol",
+    "FORME": "gel",
+    "DOSAGE": "5%-3% ",
+    "COND": "tube de 50 g",
+    "MARQUE": "IBUTHOL"
+  },
+  {
+    "CODE": "21 C 041",
+    "DCI": "Risedronate monosodique",
+    "FORME": "comp pel",
+    "DOSAGE": "30mg/comp",
+    "COND": "bt de 30",
+    "MARQUE": "Osteos 30 mg"
+  },
+  {
+    "CODE": "21 D 040",
+    "DCI": "Risedronate monosodique",
+    "FORME": "comp pel",
+    "DOSAGE": "5mg/comp",
+    "COND": "bt de 30",
+    "MARQUE": "Osteos 5 mg"
+  },
+  {
+    "CODE": "21 D 046",
+    "DCI": "Risedronate monosodique",
+    "FORME": "comp pel",
+    "DOSAGE": "35mg/comp",
+    "COND": "bt de 04",
+    "MARQUE": "Osteos 35 mg"
+  },
+  {
+    "CODE": "21 E 025",
+    "DCI": "Baclofene",
+    "FORME": "comprimé sécable",
+    "DOSAGE": "10mg",
+    "COND": "B/50",
+    "MARQUE": "cloresal 10mg"
+  },
+  {
+    "CODE": "21 E 060",
+    "DCI": "Tolperisone",
+    "FORME": "Comprimé Pelliculé",
+    "DOSAGE": "150 mg",
+    "COND": "Boite de 30",
+    "MARQUE": "MEYORELAX"
+  },
+  {
+    "CODE": "21 G 050",
+    "DCI": "Acide alendronique sous forme d'alendronate monosodique trihydraté",
+    "FORME": "Comprimé",
+    "DOSAGE": "70 mg",
+    "COND": "Boîte de 04",
+    "MARQUE": "ALENDRONATE LDM"
+  },
+  {
+    "CODE": "21 J 042",
+    "DCI": "LEFLUNOMIDE",
+    "FORME": "Comprimé Pelliculé",
+    "DOSAGE": "10 mg",
+    "COND": "boite de 30",
+    "MARQUE": "BIORAVA"
+  },
+  {
+    "CODE": "21 J 043",
+    "DCI": "LEFLUNOMIDE",
+    "FORME": "Comprimé Pelliculé",
+    "DOSAGE": "20 mg",
+    "COND": "boite de 30",
+    "MARQUE": "BIORAVA"
+  },
+  {
+    "CODE": "22 E 027",
+    "DCI": "FLUTICASONE",
+    "FORME": "Susp Pulv ",
+    "DOSAGE": "50mcg/dose",
+    "COND": "01 flacon de 15 ml",
+    "MARQUE": "FLIXONE"
+  },
+  {
+    "CODE": "22 E 028",
+    "DCI": "TRIAMCINOLONE ACETONIDE",
+    "FORME": "SUSP. P. PULV. NAS.",
+    "DOSAGE": "55µG/DOSE",
+    "COND": "FL/120DOSES",
+    "MARQUE": "nasadoze"
+  },
+  {
+    "CODE": "22 E 028",
+    "DCI": "Triamcinolone acétonide",
+    "FORME": "Susp p pulvérisation nasale",
+    "DOSAGE": "55µg/dose",
+    "COND": "Flacon de 120 doses",
+    "MARQUE": "NASODIS"
+  },
+  {
+    "CODE": "22 E 036",
+    "DCI": "MOMETASONE",
+    "FORME": "SUSP PULV NASALE ",
+    "DOSAGE": " 50MCG/DOSE",
+    "COND": "flacon 120 doses",
+    "MARQUE": "NASAMEX"
+  },
+  {
+    "CODE": "22 E 036",
+    "DCI": "MOMETASONE",
+    "FORME": "SUSP. P. PULV. NAS.",
+    "DOSAGE": "50µG/DOSE",
+    "COND": "FL/120DOSES",
+    "MARQUE": "NOVASPRAY"
+  },
+  {
+    "CODE": "22 E 036",
+    "DCI": "Mometasone Furoate monohydraté ",
+    "FORME": "supsension pour pulverisation nasale",
+    "DOSAGE": "50µg",
+    "COND": "Flacon de 120 doses",
+    "MARQUE": "MOMENEX"
+  },
+  {
+    "CODE": "22 E 036",
+    "DCI": "mométasone furoate",
+    "FORME": "suspension pour pulvérisation \nnasale",
+    "DOSAGE": "50ug par dose",
+    "COND": "flacon de 120dose",
+    "MARQUE": "Rhinonex "
+  },
+  {
+    "CODE": "22 F 039",
+    "DCI": "BUDESONIDE",
+    "FORME": "SUSP. P. PULV. NAS.",
+    "DOSAGE": "64µG/DOSE",
+    "COND": "FLACON DE 120 DOSES",
+    "MARQUE": "RHINODOZE"
+  },
+  {
+    "CODE": "22 F 039",
+    "DCI": "Budésonide",
+    "FORME": "suspension pour pulvérisation \nnasale",
+    "DOSAGE": "64μg/dose",
+    "COND": "flacon de 120dose",
+    "MARQUE": "Respicort"
+  },
+  {
+    "CODE": "23 D 037",
+    "DCI": "Miconazole",
+    "FORME": "GEL BUCCAL",
+    "DOSAGE": "0.02",
+    "COND": "B/40gm",
+    "MARQUE": "Daktazol"
+  },
+  {
+    "CODE": "23 D 037",
+    "DCI": "miconazole",
+    "FORME": " gel buccal",
+    "DOSAGE": "0.02",
+    "COND": "TUBE DE 50 G",
+    "MARQUE": "MICONAZOLE novagenerics"
+  },
+  {
+    "CODE": "23 D 037",
+    "DCI": "Miconazole",
+    "FORME": "Gel buccal",
+    "DOSAGE": "0.02",
+    "COND": "T/50g",
+    "MARQUE": "ULCEGO"
+  },
+  {
+    "CODE": "25 B 047",
+    "DCI": "Tamsulosin ",
+    "FORME": "Gélule LP",
+    "DOSAGE": "0.4mg",
+    "COND": "B/30",
+    "MARQUE": "Tamsir"
+  },
+  {
+    "CODE": "25 B 047",
+    "DCI": "TAMSULOSINE CHLORHYDRATE",
+    "FORME": "Comp",
+    "DOSAGE": "0.4 mg",
+    "COND": "12:00 AM",
+    "MARQUE": "GAMCET 0.4"
+  },
+  {
+    "CODE": "25 B 057",
+    "DCI": "ALFUZOSINE",
+    "FORME": "COMP LP ",
+    "DOSAGE": "10MG",
+    "COND": "Boite de 30",
+    "MARQUE": "ALFUZOX LP"
+  },
+  {
+    "CODE": "25 B 057",
+    "DCI": "Alfuzosine chlorhydrate ",
+    "FORME": "comprimé pelliculé a LP",
+    "DOSAGE": "10 mg",
+    "COND": " 30 comprimés  ",
+    "MARQUE": "XAPROST "
+  }
+]

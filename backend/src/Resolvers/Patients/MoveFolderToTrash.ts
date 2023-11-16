@@ -2,7 +2,8 @@ import * as TypeGraphQL from 'type-graphql'
 import { Patient } from '../../@generated'
 import { Context } from '../../context'
 import { MovePatientFolderToTrash } from './Args/MovePatientFolderToTrash'
-import createPatient_typesense from '../../Utils/typesense/Patients/createPatient'
+import createTypesenseDocuments from '../../Utils/typesense/operations/createDocuments'
+import RemoveTypesenseDocument from '../../Utils/typesense/operations/removeDocument'
 
 @TypeGraphQL.Resolver((_of) => Patient)
 export class MoveFolderToTrash {
@@ -24,12 +25,14 @@ export class MoveFolderToTrash {
       })
 
       if (args.onTrash) {
-        await ctx.typesense
-          .collections('patients')
-          .documents(patient.id)
-          .delete()
+        await RemoveTypesenseDocument({
+          index: 'patients',
+          id: patient.id,
+          typesense: ctx.typesense,
+        })
       } else {
-        await createPatient_typesense({
+        await createTypesenseDocuments({
+          index: 'patients',
           typesense: ctx.typesense,
           documents: [patient],
         })

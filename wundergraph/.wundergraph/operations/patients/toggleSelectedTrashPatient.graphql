@@ -1,0 +1,8 @@
+mutation ($id: mainDb_StringFilter!, $delete: Boolean!, $onTrash: Boolean!) {
+  mainDb_toggleSelectedTrashMutation(
+    where: { id: $id }
+    data: { deleted: { set: $delete }, onTrash: { set: $onTrash } }
+  ) {
+    count
+  }
+}

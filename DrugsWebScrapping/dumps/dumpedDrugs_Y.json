@@ -1,0 +1,70 @@
+[
+  {
+    "link": "m-5878-yrical-150mg-gles-b-56",
+    "fullName": "YRICAL 150MG GLES. B/56",
+    "miniatureImageLink": "img/medic.png",
+    "type": "Générique",
+    "prodLocal": "Oui",
+    "comercialisé": "Oui",
+    "noticeLink": "/medic.aspx?id=5878",
+    "vignette": {
+      "labo": "NEOMEDIC",
+      "nomCommercial": "YRICAL 150MG GLES. B/56",
+      "DCI": "PREGABALINE",
+      "PPA": "P.P.A :  d.a",
+      "TR": "Tarif référence : 4015 d.a",
+      "background": "lineGreen"
+    },
+    "infos": {
+      "labo": "NEOMEDIC",
+      "classPharmaco": "ANTI-EPILEPTIQUES & ANTI-CONVULSIVANTS",
+      "classTherapeutique": "NEUROLOGIE",
+      "nomCommercial": "YRICAL",
+      "codeDCI": "15A068",
+      "forme": "GLES.",
+      "dosage": "150MG",
+      "conditionnement": "B/56",
+      "liste": "Liste I",
+      "pays": "ALGERIE",
+      "remboursable": "oui",
+      "TTR": "4015 DA",
+      "PPA": "DA",
+      "NumEnregistrement": "418/15A068/17"
+    },
+    "img": "ImageHandler.ashx?imageurl=/img/medic.png"
+  },
+  {
+    "link": "m-5876-yrical-50mg-gles-b-56",
+    "fullName": "YRICAL 50MG GLES. B/56",
+    "miniatureImageLink": "img/medic.png",
+    "type": "Générique",
+    "prodLocal": "Oui",
+    "comercialisé": "Oui",
+    "noticeLink": "/medic.aspx?id=5876",
+    "vignette": {
+      "labo": "NEOMEDIC",
+      "nomCommercial": "YRICAL 50MG GLES. B/56",
+      "DCI": "PREGABALINE",
+      "PPA": "P.P.A :  d.a",
+      "TR": "Tarif référence : 1866 d.a",
+      "background": "lineGreen"
+    },
+    "infos": {
+      "labo": "NEOMEDIC",
+      "classPharmaco": "ANTI-EPILEPTIQUES & ANTI-CONVULSIVANTS",
+      "classTherapeutique": "NEUROLOGIE",
+      "nomCommercial": "YRICAL",
+      "codeDCI": "15A066",
+      "forme": "GLES.",
+      "dosage": "50MG",
+      "conditionnement": "B/56",
+      "liste": "Liste I",
+      "pays": "ALGERIE",
+      "remboursable": "oui",
+      "TTR": "1866 DA",
+      "PPA": "DA",
+      "NumEnregistrement": "418/15A066/17"
+    },
+    "img": "ImageHandler.ashx?imageurl=/img/medic.png"
+  }
+]

@@ -1,0 +1,9 @@
+
+mutation updateRXClassConcept($input: UpdateRXClassConceptInput!) {
+  updateRXClassConcept(input: $input) {
+    rXClassConcept {
+      id
+    }
+    numUids
+  }
+}

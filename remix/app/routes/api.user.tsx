@@ -40,7 +40,7 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
         accessToken: parse![1],
       }
     );
-    console.log({ auth_result });
+    //
     if (!auth_result.authMobileApp)
       throw new Response("unauthorized", {
         status: 403,

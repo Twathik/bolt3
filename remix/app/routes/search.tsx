@@ -2,7 +2,7 @@ import AddPatient from "@/components/WebAppIndexComponents/AddPatientForm";
 import BoltSearch from "@/components/WebAppIndexComponents/BoltSearch/BoltSearch";
 import WebAppHeader from "@/components/WebAppIndexComponents/WebAppHeader/header";
 import type { PublicUser } from "@/components/generated/client";
-import { createClientFromCookies } from "@/lib/wundergraph";
+import createClientFromCookiesAndCheckUser from "@/lib/checkUser.server";
 import type { LoaderFunctionArgs } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
 import { getDate, getMonth, getYear } from "date-fns";
@@ -14,7 +14,7 @@ interface searchPageSSRInterface {
 
 export async function loader({ request }: LoaderFunctionArgs) {
   try {
-    const client = createClientFromCookies(request);
+    const client = await createClientFromCookiesAndCheckUser(request);
     const userPromise = client.fetchUser();
     const today = new Date();
     let consultationId: string | null = null;

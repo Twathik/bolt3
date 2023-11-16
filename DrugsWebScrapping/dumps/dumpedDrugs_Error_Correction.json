@@ -1,0 +1,172 @@
+[
+  {
+    "link": "m-4489-ertivix-0-5-mg-comp-seca-b-30",
+    "fullName": "ERTIVIX 0,5 MG COMP,SECA B/30",
+    "miniatureImageLink": "img/medics.png",
+    "type": "Générique",
+    "prodLocal": "Non",
+    "comercialisé": "Oui",
+    "noticeLink": "",
+    "vignette": {
+      "labo": "RANBAXY",
+      "nomCommercial": "ERTIVIX",
+      "DCI": "ENTECAVIR",
+      "PPA": "",
+      "TR": "",
+      "background": ""
+    },
+    "infos": {
+      "labo": "RANBAXY",
+      "classPharmaco": "ANTIVIRAUX",
+      "classTherapeutique": "PNEUMOLOGIE",
+      "nomCommercial": "ERTIVIX",
+      "codeDCI": "13P313",
+      "forme": "COMP. SEC.",
+      "dosage": "0,5 MG",
+      "conditionnement": "B/30",
+      "liste": "Liste I",
+      "pays": "",
+      "remboursable": "Non",
+      "TTR": "",
+      "PPA": "",
+      "NumEnregistrement": ""
+    },
+    "img": "img/medics.png"
+  },
+  {
+    "link": "m-4490-ertivix-1mg-comp-pell-b-30",
+    "fullName": "ERTIVIX 1MG COMP.PELL",
+    "miniatureImageLink": "img/medics.png",
+    "type": "Générique",
+    "prodLocal": "Non",
+    "comercialisé": "Oui",
+    "noticeLink": "",
+    "vignette": {
+      "labo": "RANBAXY",
+      "nomCommercial": "ERTIVIX",
+      "DCI": "ENTECAVIR",
+      "PPA": "",
+      "TR": "",
+      "background": ""
+    },
+    "infos": {
+      "labo": "RANBAXY",
+      "classPharmaco": "ANTIVIRAUX",
+      "classTherapeutique": "PNEUMOLOGIE",
+      "nomCommercial": "ERTIVIX",
+      "codeDCI": "13P314",
+      "forme": "COMP. SEC.",
+      "dosage": "1 MG",
+      "conditionnement": "B/30",
+      "liste": "Liste I",
+      "pays": "",
+      "remboursable": "Non",
+      "TTR": "",
+      "PPA": "",
+      "NumEnregistrement": ""
+    },
+    "img": "img/medics.png"
+  },
+  {
+    "link": "m-5713-kaptofer-500mg-comp-dispers-b-30-et-b-90",
+    "fullName": "KAPTOFER 500MG COMP. DISPERS. B/30 ET B/90",
+    "miniatureImageLink": "img/medics/5713.png",
+    "type": "Générique",
+    "prodLocal": "Oui",
+    "comercialisé": "Oui",
+    "noticeLink": "",
+    "vignette": {
+      "labo": "BEKER Laboratoires",
+      "nomCommercial": "KAPTOFER 500MG COMP. DISPERS. B/30 ET B/90",
+      "DCI": "DEFERASIROX",
+      "PPA": "P.P.A : 0 d.a",
+      "TR": "Tarif référence : 0 d.a",
+      "background": "lineGreen"
+    },
+    "infos": {
+      "labo": "BEKER Laboratoires",
+      "classPharmaco": "CHELATEURS",
+      "classTherapeutique": "TOXICOLOGIE",
+      "nomCommercial": "KAPTOFER",
+      "codeDCI": "24D018",
+      "forme": "COMP. DISPERS.",
+      "dosage": "500MG",
+      "conditionnement": "B/30 ET B/90",
+      "liste": "Liste I",
+      "pays": "ALGERIE",
+      "remboursable": "oui",
+      "TTR": "0 DA",
+      "PPA": "0 DA",
+      "NumEnregistrement": ""
+    },
+    "img": "ImageHandler.ashx?imageurl=/img/medics/5713.png"
+  },
+  {
+    "link": "m-6333-lanzomed-30-mg--",
+    "fullName": "LANZOMED 30 mg",
+    "miniatureImageLink": "img/medics/6333.png",
+    "type": "Générique",
+    "prodLocal": "Oui",
+    "comercialisé": "Oui",
+    "noticeLink": "",
+    "vignette": {
+      "labo": "WORLD MEDICINE",
+      "nomCommercial": "LANZOMED",
+      "DCI": "LANSOPRAZOLE",
+      "PPA": "P.P.A : 420.00 da",
+      "TR": "Tarif référence : 210.00 da",
+      "background": "lineGreen"
+    },
+    "infos": {
+      "labo": "WORLD MEDICINE",
+      "classPharmaco": "GASTRO-ENTEROLOGIE",
+      "classTherapeutique": "ANTI-ULCEREUX & ANTI-H2",
+      "nomCommercial": "LANZOMED",
+      "codeDCI": "10A167",
+      "forme": "GLES.",
+      "dosage": "30 mg",
+      "conditionnement": "15",
+      "liste": "Liste II",
+      "pays": "ALGERIE",
+      "remboursable": "oui",
+      "TTR": "210.00 DA",
+      "PPA": "420.00 DA",
+      "NumEnregistrement": "19/09/10 A 167/544"
+    },
+    "img": "ImageHandler.ashx?imageurl=/img/medics/5713.png"
+  },
+  {
+    "link": "m-2794-niflumate-400mg-suppo-b-10",
+    "fullName": "NIFLUMATE 400MG SUPPO. B/10",
+    "miniatureImageLink": "img/medics.png",
+    "type": "Générique",
+    "prodLocal": "Oui",
+    "comercialisé": "Oui",
+    "noticeLink": "",
+    "vignette": {
+      "labo": "WORLD MEDICINE",
+      "nomCommercial": "NIFLUMATE",
+      "DCI": "MORNIFLUMATE",
+      "PPA": "P.P.A : 135.00 da",
+      "TR": "Tarif référence : 136.00 da",
+      "background": ""
+    },
+    "infos": {
+      "labo": "WORLD MEDICINE",
+      "classPharmaco": "ANTI-INFLAMMATOIRES NON STEROIDIENS",
+      "classTherapeutique": "ANTI-INFLAMMATOIRES",
+      "nomCommercial": "NIFLUMATE",
+      "codeDCI": "04B031",
+      "forme": "SUPPO.",
+      "dosage": "400 mg",
+      "conditionnement": "15",
+      "liste": "Liste II",
+      "pays": "ALGERIE",
+      "remboursable": "Non",
+      "TTR": "136 DA",
+      "PPA": "135.00 DA",
+      "NumEnregistrement": "B/10"
+    },
+    "img": "ImageHandler.ashx?imageurl=/img/medics.png"
+  }
+]

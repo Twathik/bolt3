@@ -1,0 +1,12 @@
+mutation addRXNavMedicalInteraction ($input:[AddRXNavMedicalInteractionInput!]!) {
+  addRXNavMedicalInteraction(input: $input) {
+    rXNavMedicalInteraction {
+      id
+      concepts {
+        name
+        rxcui
+      }
+    }
+    numUids
+  }
+}

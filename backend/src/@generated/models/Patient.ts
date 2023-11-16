@@ -2,6 +2,7 @@ import * as TypeGraphQL from "type-graphql";
 import * as GraphQLScalars from "graphql-scalars";
 import { Prisma } from "@prisma/client";
 import { DecimalJSScalar } from "../scalars";
+import { ClinicalEvent } from "../models/ClinicalEvent";
 import { ConsultationList } from "../models/ConsultationList";
 import { Sexe } from "../enums/Sexe";
 import { PatientCount } from "../resolvers/outputs/PatientCount";
@@ -69,6 +70,8 @@ export class Patient {
   informationsConfirmed!: boolean;
 
   ConsultationList?: ConsultationList[];
+
+  ClinicalEvent?: ClinicalEvent[];
 
   @TypeGraphQL.Field(_type => PatientCount, {
     nullable: true
