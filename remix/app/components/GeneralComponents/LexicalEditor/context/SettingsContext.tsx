@@ -9,9 +9,9 @@
 import type { SettingName } from "../appSettings";
 
 import * as React from "react";
+import type { ReactNode } from "react";
 import {
   createContext,
-  ReactNode,
   useCallback,
   useContext,
   useMemo,
@@ -44,11 +44,11 @@ export const SettingsContext = ({
       ...options,
       [setting as string]: value,
     }));
-    /* if (DEFAULT_SETTINGS[setting] === value) {
+    if (DEFAULT_SETTINGS[setting] === value) {
       setURLParam(setting, null);
     } else {
       setURLParam(setting, value);
-    } */
+    }
   }, []);
 
   const contextValue = useMemo(() => {

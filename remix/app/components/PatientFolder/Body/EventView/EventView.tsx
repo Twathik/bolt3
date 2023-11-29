@@ -8,6 +8,7 @@ import { Link } from "@remix-run/react";
 const clinicalTypes: { [k: string]: string } = {
   DIAGNOSTIC: "bg-cyan-900 hover:bg-cyan-700",
   PRESCRIPTION: "bg-orange-400 hover:bg-orange-700",
+  GENERAL_SONO: "bg-teal-700 hover:bg-teal-300 hover:text-slate-800",
 };
 
 export default function EventView({

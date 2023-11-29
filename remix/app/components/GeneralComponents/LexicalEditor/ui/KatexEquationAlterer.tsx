@@ -6,15 +6,15 @@
  *
  */
 
-import "./KatexEquationAlterer.css";
+import './KatexEquationAlterer.css';
 
-import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext";
-import * as React from "react";
-import { useCallback, useState } from "react";
-import { ErrorBoundary } from "react-error-boundary";
+import {useLexicalComposerContext} from '@lexical/react/LexicalComposerContext';
+import * as React from 'react';
+import {useCallback, useState} from 'react';
+import {ErrorBoundary} from 'react-error-boundary';
 
-import Button from "../ui/Button";
-import KatexRenderer from "./KatexRenderer";
+import Button from '../ui/Button';
+import KatexRenderer from './KatexRenderer';
 
 type Props = {
   initialEquation?: string;
@@ -23,7 +23,7 @@ type Props = {
 
 export default function KatexEquationAlterer({
   onConfirm,
-  initialEquation = "",
+  initialEquation = '',
 }: Props): JSX.Element {
   const [editor] = useLexicalComposerContext();
   const [equation, setEquation] = useState<string>(initialEquation);
@@ -46,25 +46,21 @@ export default function KatexEquationAlterer({
       <div className="KatexEquationAlterer_defaultRow">Equation </div>
       <div className="KatexEquationAlterer_centerRow">
         {inline ? (
-          <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
-            <input
-              onChange={(event) => {
-                setEquation(event.target.value);
-              }}
-              value={equation}
-              className="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
-            />
-          </div>
+          <input
+            onChange={(event) => {
+              setEquation(event.target.value);
+            }}
+            value={equation}
+            className="KatexEquationAlterer_textArea"
+          />
         ) : (
-          <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 sm:max-w-lg">
-            <textarea
-              onChange={(event) => {
-                setEquation(event.target.value);
-              }}
-              value={equation}
-              className="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
-            />
-          </div>
+          <textarea
+            onChange={(event) => {
+              setEquation(event.target.value);
+            }}
+            value={equation}
+            className="KatexEquationAlterer_textArea"
+          />
         )}
       </div>
       <div className="KatexEquationAlterer_defaultRow">Visualization </div>
@@ -78,7 +74,7 @@ export default function KatexEquationAlterer({
         </ErrorBoundary>
       </div>
       <div className="KatexEquationAlterer_dialogActions">
-        <Button onClick={onClick}>Insérer</Button>
+        <Button onClick={onClick}>Confirm</Button>
       </div>
     </>
   );

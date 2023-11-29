@@ -1,28 +1,20 @@
-import { create } from "zustand";
-import { immer } from "zustand/middleware/immer";
+import type { StateCreator } from "zustand";
+import type { ConsultationStoreSlice, boltStoreType } from "./boltStoreType";
 
-interface consultationState {
-  id: null | string;
-  refetch: boolean;
-}
+const createConsultationSlice: StateCreator<
+  boltStoreType,
+  [["zustand/immer", never], never],
+  [],
+  ConsultationStoreSlice
+> = (set) => ({
+  consultationState: {
+    id: null,
+    refetch: false,
+  },
+  setConsultationId: (consultationId: any) =>
+    set((state) => {
+      state.consultationState.id = consultationId;
+    }),
+});
 
-interface Store {
-  consultationState: consultationState;
-  setConsultationId: (consultationId: string | null) => void;
-}
-
-const useConsultationStore = create<Store>()(
-  immer((set) => ({
-    consultationState: {
-      id: null,
-      refetch: false,
-    },
-    setConsultationId: (consultationId) => {
-      set((state) => {
-        state.consultationState.id = consultationId;
-      });
-    },
-  }))
-);
-
-export default useConsultationStore;
+export default createConsultationSlice;

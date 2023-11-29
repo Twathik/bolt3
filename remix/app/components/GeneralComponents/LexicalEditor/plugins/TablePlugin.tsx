@@ -91,7 +91,7 @@ export function InsertTableDialog({
   activeEditor: LexicalEditor;
   onClose: () => void;
 }): JSX.Element {
-  const [rows, setRows] = useState("2");
+  const [rows, setRows] = useState("5");
   const [columns, setColumns] = useState("5");
   const [isDisabled, setIsDisabled] = useState(true);
 
@@ -118,24 +118,23 @@ export function InsertTableDialog({
     <>
       <TextInput
         placeholder={"# of rows (1-500)"}
-        label="Lignes"
+        label="Rows"
         onChange={setRows}
         value={rows}
         data-test-id="table-modal-rows"
         type="number"
       />
-
       <TextInput
         placeholder={"# of columns (1-50)"}
-        label="Colonnes"
+        label="Columns"
         onChange={setColumns}
         value={columns}
         data-test-id="table-modal-columns"
         type="number"
       />
       <DialogActions data-test-id="table-model-confirm-insert">
-        <Button disabled={isDisabled} onClick={onClick} className="">
-          Confirmer
+        <Button disabled={isDisabled} onClick={onClick}>
+          Confirm
         </Button>
       </DialogActions>
     </>
@@ -172,7 +171,7 @@ export function InsertNewTableDialog({
     <>
       <TextInput
         placeholder={"# of rows (1-500)"}
-        label="Lignes"
+        label="Rows"
         onChange={setRows}
         value={rows}
         data-test-id="table-modal-rows"
@@ -180,7 +179,7 @@ export function InsertNewTableDialog({
       />
       <TextInput
         placeholder={"# of columns (1-50)"}
-        label="Colonnes"
+        label="Columns"
         onChange={setColumns}
         value={columns}
         data-test-id="table-modal-columns"
@@ -188,7 +187,7 @@ export function InsertNewTableDialog({
       />
       <DialogActions data-test-id="table-model-confirm-insert">
         <Button disabled={isDisabled} onClick={onClick}>
-          Confirmer
+          Confirm
         </Button>
       </DialogActions>
     </>

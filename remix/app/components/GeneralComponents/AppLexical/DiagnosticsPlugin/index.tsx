@@ -154,11 +154,11 @@ function checkForAtSignDiagnostics(
   return null;
 }
 
-function getPossibleQueryMatch(text: string): MenuTextMatch | null {
+function getPossibleMenuTextMatch(text: string): MenuTextMatch | null {
   return checkForAtSignDiagnostics(text, 1);
 }
 
-class DiagnosticTypeaheadOption extends MenuOption {
+class DiagnosticMenuOption extends MenuOption {
   name: string;
 
   constructor(name: string) {
@@ -178,7 +178,7 @@ function DiagnosticsTypeaheadMenuItem({
   isSelected: boolean;
   onClick: () => void;
   onMouseEnter: () => void;
-  option: DiagnosticTypeaheadOption;
+  option: DiagnosticMenuOption;
 }) {
   let className = "item";
   if (isSelected) {
@@ -214,14 +214,14 @@ export default function DiagnosticsPlugin(): JSX.Element | null {
   const options = useMemo(
     () =>
       results
-        .map((result) => new DiagnosticTypeaheadOption(result))
+        .map((result) => new DiagnosticMenuOption(result))
         .slice(0, SUGGESTION_LIST_LENGTH_LIMIT),
     [results]
   );
 
   const onSelectOption = useCallback(
     (
-      selectedOption: DiagnosticTypeaheadOption,
+      selectedOption: DiagnosticMenuOption,
       nodeToReplace: TextNode | null,
       closeMenu: () => void
     ) => {
@@ -243,13 +243,13 @@ export default function DiagnosticsPlugin(): JSX.Element | null {
       if (slashMatch !== null) {
         return null;
       }
-      return getPossibleQueryMatch(text);
+      return getPossibleMenuTextMatch(text);
     },
     [checkForSlashTriggerMatch, editor]
   );
 
   return (
-    <LexicalTypeaheadMenuPlugin<DiagnosticTypeaheadOption>
+    <LexicalTypeaheadMenuPlugin<DiagnosticMenuOption>
       onQueryChange={setQueryString}
       onSelectOption={onSelectOption}
       triggerFn={checkForDiagnosticMatch}

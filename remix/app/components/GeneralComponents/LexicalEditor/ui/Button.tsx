@@ -9,7 +9,7 @@
 import "./Button.css";
 
 import * as React from "react";
-import { ReactNode } from "react";
+import type { ReactNode } from "react";
 
 import joinClasses from "../utils/joinClasses";
 
@@ -34,16 +34,15 @@ export default function Button({
     <button
       disabled={disabled}
       className={joinClasses(
-        "rounded-md bg-indigo-600 px-2.5 py-1.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600",
+        "Button__root",
         disabled && "Button__disabled",
         small && "Button__small",
-        className,
+        className
       )}
       onClick={onClick}
       title={title}
       aria-label={title}
-      {...(dataTestId && { "data-test-id": dataTestId })}
-    >
+      {...(dataTestId && { "data-test-id": dataTestId })}>
       {children}
     </button>
   );

@@ -1,34 +1,33 @@
 import _ from 'lodash'
 import dump from '../../pharmaNetDumps/manuel/dumpedDrugsNotFoundRx.json'
+import dcirx from '../../pharmaNetDumps/manuel/NOTFoundDCI.json'
+import final from '../../pharmaNetDumps/manuel/DrugList_final.json'
 import fs from 'fs'
+export interface DCIWITHRX {
+  DCI: string
+  rx:
+    | {
+        rxcui: string
+        name: string
+        tty?: string
+      }[]
+}
 
-export function addRxNavManually(
-  DCI: string,
-  rx: {
-    rxcui: string
-    name: string
-    tty?: string
-  },
-) {
-  let i = 0
-  const ajusted = dump.map((e) => {
-    const { rx: old, vignette, ...rest } = e
-    if (e.vignette.DCI.includes(DCI)) {
-      const rx_ajusted = old
-      rx_ajusted.push(rx)
-      i++
-
-      return { ...rest, vignette, rx: _.uniqBy(rx_ajusted, 'rxcui') }
-    }
-    return { ...rest, vignette, rx: old }
+export function chainaddRxNavManually() {
+  let result: typeof dump = []
+  dump.forEach((e) => {
+    const dci = dcirx.find((d) => d.DCI === e.vignette.DCI)
+    if (dci)
+      result.push({
+        ...e,
+        rx: dci.rx.map((l) => ({ rxcui: l.rxcui, name: l.name.toLowerCase() })),
+      })
   })
-
   fs.writeFileSync(
-    './src/pharmaNetDumps/manuel/dumpedDrugsNotFoundRx.json',
-    JSON.stringify(ajusted),
+    './src/pharmaNetDumps/formatted/dumpedDrugsNotFoundRx.json',
+    JSON.stringify(result),
     'utf-8',
   )
-  console.log({ i })
 }
 
 export function getDCIWithRx() {
@@ -38,6 +37,42 @@ export function getDCIWithRx() {
   fs.writeFileSync(
     './src/pharmaNetDumps/manuel/NOTFoundDCI.json',
     JSON.stringify(_.sortBy(_.uniqBy(dci, 'DCI'), 'DCI')),
+    'utf-8',
+  )
+}
+
+export function sortFinalPharmaList() {
+  const result: any[] = (final as typeof dump).map((e) => {
+    const {
+      comercialisé,
+      fullName,
+      img,
+      infos,
+      link,
+      miniatureImageLink,
+      noticeLink,
+      prodLocal,
+      rx,
+      type,
+      vignette,
+    } = e
+    return {
+      fullName,
+      rx,
+      type,
+      vignette,
+      infos,
+      img,
+      miniatureImageLink,
+      link,
+      noticeLink,
+      prodLocal,
+      comercialisé,
+    }
+  })
+  fs.writeFileSync(
+    './src/pharmaNetDumps/formatted/DrugList_final_sorted.json',
+    JSON.stringify(_.sortBy(result, 'fullName')),
     'utf-8',
   )
 }

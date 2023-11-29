@@ -17,26 +17,7 @@ services:
       - "./traefik/conf.d:/etc/traefik/conf.d"
       - "./traefik/traefik.toml:/etc/traefik/traefik.toml"
       - "/var/run/docker.sock:/var/run/docker.sock:ro"
-  pihole:
-    container_name: pihole
-    image: pihole/pihole:latest
-    # For DHCP it is recommended to remove these ports and instead add: network_mode: "host"
-    ports:
-      - "53:53/tcp"
-      - "53:53/udp"
-      - "67:67/udp" # Only required if you are using Pi-hole as your DHCP server
-      - "8081:80/tcp"
-    environment:
-      TZ: "America/Chicago"
-      # WEBPASSWORD: 'set a secure password here or it will be random'
-    # Volumes store your data between container upgrades
-    volumes:
-      - "./pi-hole/etc-pihole:/etc/pihole"
-      - "./pi-hole/etc-dnsmasq.d:/etc/dnsmasq.d"
-    #   https://github.com/pi-hole/docker-pi-hole#note-on-capabilities
-    cap_add:
-      - NET_ADMIN # Required if you are using Pi-hole as your DHCP server, else not needed
-    restart: unless-stopped
+
   postgres_orthanc:
     image: postgres:13-alpine
     container_name: "postgres_orthanc"
@@ -100,14 +81,18 @@ services:
     volumes:
       - ./orthanc/db:/var/lib/orthanc/db/
       - ./orthanc/worklists:/var/lib/orthanc/worklists
-  ftp-server:
-    container_name: ftp
-    environment:
-      - USERS=one|1234|one two|1234
-    image: delfer/alpine-ftp-server
+  typesense:
+    image: typesense/typesense:0.25.1
+    restart: on-failure
     ports:
-      - 21:21
-      - 21000-21010:21000-21010
+      - "8108:8108"
+    environment:
+      KC_URL: "http://keycloak.local"
+      KC_REALM: "bolt3"
+      KC_CLIENT_ID: "bolt3"
+      KC_CLIENT_SECRET: "1fhL2zhsYlkc44StVfV0z4UsCRWZFm7x"
+
     volumes:
-      - ./ftp/one:/ftp/one
-      - ./ftp/two:/ftp/two
+      - ./typesense-data:/data
+      - ./typesense-config/typesense-server.ini:/etc/typesense/typesense-server.ini
+    command: "--config=/etc/typesense/typesense-server.ini"

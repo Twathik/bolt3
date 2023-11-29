@@ -44,6 +44,9 @@ import type {
 	ClinicalEventsMoveOnTrashClinicalEventResponse,
 	ClinicalEventsMoveOnTrashClinicalEventInput,
 	ClinicalEventsMoveOnTrashClinicalEventResponseData,
+	ClinicalEventsUpdateClinicalEventReportResponse,
+	ClinicalEventsUpdateClinicalEventReportInput,
+	ClinicalEventsUpdateClinicalEventReportResponseData,
 	ClinicalEventsUpdateClinicalEventsSubscriptionResponse,
 	ClinicalEventsUpdateClinicalEventsSubscriptionInput,
 	ClinicalEventsUpdateClinicalEventsSubscriptionResponseData,
@@ -206,7 +209,7 @@ export interface AuthProvider {
 }
 
 export const defaultClientConfig: ClientConfig = {
-	applicationHash: "95ac1ebc",
+	applicationHash: "20db8a2f",
 	baseURL: "http://api.bolt3.local",
 	sdkVersion: "0.179.2",
 };
@@ -234,6 +237,9 @@ export const operationMetadata: OperationMetadata = {
 		requiresAuthentication: false,
 	},
 	"clinicalEvents/moveOnTrashClinicalEvent": {
+		requiresAuthentication: false,
+	},
+	"clinicalEvents/updateClinicalEventReport": {
 		requiresAuthentication: false,
 	},
 	"clinicalEvents/updateClinicalEventsSubscription": {
@@ -500,6 +506,11 @@ export type Mutations = {
 	"clinicalEvents/moveOnTrashClinicalEvent": {
 		input: ClinicalEventsMoveOnTrashClinicalEventInput;
 		response: { data?: ClinicalEventsMoveOnTrashClinicalEventResponse["data"]; error?: ClientOperationErrors };
+		requiresAuthentication: false;
+	};
+	"clinicalEvents/updateClinicalEventReport": {
+		input: ClinicalEventsUpdateClinicalEventReportInput;
+		response: { data?: ClinicalEventsUpdateClinicalEventReportResponse["data"]; error?: ClientOperationErrors };
 		requiresAuthentication: false;
 	};
 	"consultationList/registerPatient": {

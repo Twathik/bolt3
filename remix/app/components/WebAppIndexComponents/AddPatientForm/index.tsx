@@ -8,11 +8,11 @@ import {
 } from "@/ui/components/ui/card";
 
 import AddPatientForm from "./AddPatientForm";
-import useConsultationStore from "@/stores/consultationStore";
 import { useEffect } from "react";
+import { useBoltStore } from "@/stores/boltStore";
 
 const AddPatient = ({ consultationId }: { consultationId: string }) => {
-  const { setConsultationId } = useConsultationStore();
+  const setConsultationId = useBoltStore((store) => store.setConsultationId);
 
   useEffect(() => {
     setConsultationId(consultationId);

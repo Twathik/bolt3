@@ -1,5 +1,4 @@
 import PatientFolderBody from "@/components/PatientFolder/Body/PatientFolderBody";
-import usePatientStore from "@/stores/patientStore";
 import { useLoaderData, useOutletContext, useParams } from "@remix-run/react";
 import type {
   ClinicalEventsGetClinicalEventsResponseData,
@@ -10,6 +9,7 @@ import { useSubscription } from "@/lib/wundergraph";
 import { useEffect, useState } from "react";
 import { useToast } from "@/ui/components/ui/use-toast";
 import createClientFromCookiesAndCheckUser from "@/lib/checkUser.server";
+import { useBoltStore } from "@/stores/boltStore";
 interface patientContextInterface {
   initialPatient: PatientsGetOnePatientResponseData["mainDb_getPatient"] | null;
 }
@@ -35,7 +35,7 @@ function PatientFolder() {
   const { patientId } = useParams();
   const loaderData = useLoaderData<typeof loader>();
   const contextData = useOutletContext() as patientContextInterface;
-  const { patient } = usePatientStore();
+  const patient = useBoltStore((store) => store.patient);
   const { toast } = useToast();
   const [clinicalEvents, setClinicalEvents] = useState<
     ClinicalEventsGetClinicalEventsResponseData["mainDb_clinicalEvents"] | null

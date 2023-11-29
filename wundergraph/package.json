@@ -5,8 +5,9 @@
   "scripts": {
     "dev": "wunderctl up",
     "dev:debug": "wunderctl up --debug",
-    "build:wundergraph": "wunderctl generate",
-    "check": "tsc --noEmit"
+    "build": "wunderctl generate",
+    "check": "tsc --noEmit",
+    "start": "wunderctl start"
   },
   "dependencies": {
     "@wundergraph/sdk": "^0.179.2",

@@ -907,6 +907,7 @@ export type JSONObject = { [key: string]: JSONValue };
 
 export const mainDb_EventTypes = {
 	DIAGNOSTIC: "DIAGNOSTIC",
+	GENERAL_SONO: "GENERAL_SONO",
 	PRESCRIPTION: "PRESCRIPTION",
 } as const;
 
@@ -963,6 +964,11 @@ export interface ClinicalEventsGetClinicalEventsInput {
 
 export interface ClinicalEventsMoveOnTrashClinicalEventInput {
 	id: string;
+}
+
+export interface ClinicalEventsUpdateClinicalEventReportInput {
+	id: string;
+	report: string;
 }
 
 export interface ClinicalEventsUpdateClinicalEventsSubscriptionInput {
@@ -1113,6 +1119,11 @@ export interface ClinicalEventsGetClinicalEventsInputInternal {
 
 export interface ClinicalEventsMoveOnTrashClinicalEventInputInternal {
 	id: string;
+}
+
+export interface ClinicalEventsUpdateClinicalEventReportInputInternal {
+	id: string;
+	report: string;
 }
 
 export interface ClinicalEventsUpdateClinicalEventsSubscriptionInputInternal {
@@ -1281,6 +1292,11 @@ export interface ClinicalEventsMoveOnTrashClinicalEventInputInjected {
 	id: string;
 }
 
+export interface ClinicalEventsUpdateClinicalEventReportInputInjected {
+	id: string;
+	report: string;
+}
+
 export interface ClinicalEventsUpdateClinicalEventsSubscriptionInputInjected {
 	patientId: string;
 }
@@ -1428,6 +1444,11 @@ export interface ClinicalEventsGetClinicalEventsResponse {
 
 export interface ClinicalEventsMoveOnTrashClinicalEventResponse {
 	data?: ClinicalEventsMoveOnTrashClinicalEventResponseData;
+	errors?: GraphQLError[];
+}
+
+export interface ClinicalEventsUpdateClinicalEventReportResponse {
+	data?: ClinicalEventsUpdateClinicalEventReportResponseData;
 	errors?: GraphQLError[];
 }
 
@@ -1647,7 +1668,7 @@ export interface ClinicalEventsDeleteOneClinicalEventResponseData {
 export interface ClinicalEventsGetClinicalEventResponseData {
 	mainDb_clinicalEvent?: {
 		id: string;
-		eventType: "DIAGNOSTIC" | "PRESCRIPTION";
+		eventType: "DIAGNOSTIC" | "GENERAL_SONO" | "PRESCRIPTION";
 		updatedAt: string;
 		createdReport: boolean;
 		report?: string;
@@ -1663,7 +1684,7 @@ export interface ClinicalEventsGetClinicalEventResponseData {
 export interface ClinicalEventsGetClinicalEventsResponseData {
 	mainDb_clinicalEvents: {
 		id: string;
-		eventType: "DIAGNOSTIC" | "PRESCRIPTION";
+		eventType: "DIAGNOSTIC" | "GENERAL_SONO" | "PRESCRIPTION";
 		updatedAt: string;
 		createdReport: boolean;
 		report?: string;
@@ -1682,11 +1703,18 @@ export interface ClinicalEventsMoveOnTrashClinicalEventResponseData {
 	};
 }
 
+export interface ClinicalEventsUpdateClinicalEventReportResponseData {
+	mainDb_updateOneClinicalEvent?: {
+		id: string;
+	};
+}
+
 export interface ClinicalEventsUpdateClinicalEventsSubscriptionResponseData {
 	mainDb_updateClinicalEventsSubscription: {
 		id: string;
-		eventType: "DIAGNOSTIC" | "PRESCRIPTION";
+		eventType: "DIAGNOSTIC" | "GENERAL_SONO" | "PRESCRIPTION";
 		updatedAt: string;
+		createdReport: boolean;
 		report?: string;
 		empty: boolean;
 		dicomId?: string;
@@ -1870,14 +1898,14 @@ export interface PatientsUpdateOnePatientResponseData {
 export interface TemplatesFetchTemplateResponseData {
 	mainDb_documentTemplate?: {
 		template: string;
-		eventType: "DIAGNOSTIC" | "PRESCRIPTION";
+		eventType: "DIAGNOSTIC" | "GENERAL_SONO" | "PRESCRIPTION";
 		id: string;
 	};
 }
 
 export interface TemplatesGetTemplatesResponseData {
 	mainDb_documentTemplates: {
-		eventType: "DIAGNOSTIC" | "PRESCRIPTION";
+		eventType: "DIAGNOSTIC" | "GENERAL_SONO" | "PRESCRIPTION";
 		id: string;
 		empty: boolean;
 	}[];

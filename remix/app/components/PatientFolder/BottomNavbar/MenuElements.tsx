@@ -23,6 +23,18 @@ export const patientFolderBottomMenuElements = ({
         />
       ),
     },
+    {
+      id: "new_Sono",
+      button: (
+        <RootMenuButton
+          buttonTitle="Echographie"
+          className="bg-teal-700 hover:bg-teal-300 hover:text-slate-800"
+          errorMessage="Une nouvelle echocardiographie n'a pas pu être crée!"
+          eventType="GENERAL_SONO"
+          patientId={patientId}
+        />
+      ),
+    },
   ],
   [
     {

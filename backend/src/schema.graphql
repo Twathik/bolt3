@@ -1580,6 +1580,7 @@ input EnumSexeWithAggregatesFilter {
 
 enum EventTypes {
   DIAGNOSTIC
+  GENERAL_SONO
   PRESCRIPTION
 }
 

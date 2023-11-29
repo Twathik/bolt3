@@ -2,7 +2,7 @@ import BottomPatientNavBar from "@/components/PatientFolder/BottomNavbar/BottomP
 import PatientHeaderBar from "@/components/PatientFolder/Header/PatientHeaderBar";
 import createClientFromCookiesAndCheckUser from "@/lib/checkUser.server";
 import { useSubscription } from "@/lib/wundergraph";
-import usePatientStore from "@/stores/patientStore";
+import { useBoltStore } from "@/stores/boltStore";
 import { useToast } from "@/ui/components/ui/use-toast";
 import { type LoaderFunctionArgs } from "@remix-run/node";
 import { Outlet, useLoaderData } from "@remix-run/react";
@@ -29,7 +29,8 @@ export async function loader({ params, request }: LoaderFunctionArgs) {
 
 function PatientLayout() {
   const loadedData = useLoaderData<typeof loader>();
-  const { setPatient, patient } = usePatientStore();
+  const setPatient = useBoltStore((store) => store.setPatient);
+  const patient = useBoltStore((store) => store.patient);
   const { toast } = useToast();
   const { data, error } = useSubscription({
     operationName: "patients/getUpdatedPatientSubscription",

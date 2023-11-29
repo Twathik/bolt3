@@ -1,4 +1,7 @@
-import { addRxNavManually, getDCIWithRx } from './utils/Drugs/AddRxNavMannually'
+import {
+  chainaddRxNavManually,
+  sortFinalPharmaList,
+} from './utils/Drugs/AddRxNavMannually'
 
 const main = async () => {
   // generateJSON_CIM10_and_CHOP_suisse()
@@ -17,7 +20,8 @@ const main = async () => {
   //generateAbbreviations()
   //DedupeDrugs()
   // DedupeDrugPropreties()
-  getDCIWithRx()
+  //chainaddRxNavManually()
+  sortFinalPharmaList()
 
   // await WrapUp()
   console.log('all done !!')

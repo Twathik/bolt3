@@ -6,26 +6,24 @@
  *
  */
 
-import type { InitialConfigType } from "@lexical/react/LexicalComposer";
 import { LexicalComposer } from "@lexical/react/LexicalComposer";
-import type { EditorState } from "lexical";
-import { isDevPlayground } from "@/components/GeneralComponents/LexicalEditor/appSettings";
-import { SharedAutocompleteContext } from "@/components/GeneralComponents/LexicalEditor/context/SharedAutocompleteContext";
-import { SharedHistoryContext } from "@/components/GeneralComponents/LexicalEditor/context/SharedHistoryContext";
-import PlaygroundNodes from "@/components/GeneralComponents/LexicalEditor/nodes/PlaygroundNodes";
-import PasteLogPlugin from "@/components/GeneralComponents/LexicalEditor/plugins/PasteLogPlugin";
-import { TableContext } from "@/components/GeneralComponents/LexicalEditor/plugins/TablePlugin";
-import PlaygroundEditorTheme from "@/components/GeneralComponents/LexicalEditor/themes/PlaygroundEditorTheme";
-import { useCallback } from "react";
-import { OnChangePlugin } from "@lexical/react/LexicalOnChangePlugin";
+import { SharedHistoryContext } from "../LexicalEditor/context/SharedHistoryContext";
+import { TableContext } from "../LexicalEditor/plugins/TablePlugin";
+import { SharedAutocompleteContext } from "../LexicalEditor/context/SharedAutocompleteContext";
 import AppEditor from "./AppEditor";
+import { OnChangePlugin } from "@lexical/react/LexicalOnChangePlugin";
+import PlaygroundEditorTheme from "@/components/GeneralComponents/LexicalEditor/themes/PlaygroundEditorTheme";
+import type { ComponentProps } from "react";
+import { useCallback } from "react";
 import CustomNodes from "./CustomNodes";
+import type { EditorState } from "lexical";
+import CommonNodes from "./CommonNodes";
 
 console.warn(
   "If you are profiling the playground app, please ensure you turn off the debug view. You can disable it by pressing on the settings control in the bottom-left of your screen and toggling the debug view setting."
 );
 
-export default function AppLexical({
+function AppLexical({
   onErrorCallback,
   children,
   onChangeCallback,
@@ -34,7 +32,7 @@ export default function AppLexical({
   onErrorCallback?: (error: Error) => void;
   onChangeCallback?: (editorState: EditorState) => void;
   children?: React.ReactNode | null;
-  initialState?: string;
+  initialState?: string | undefined;
 }): JSX.Element {
   const onError = useCallback(
     (error: Error) => {
@@ -51,13 +49,14 @@ export default function AppLexical({
     [onChangeCallback]
   );
 
-  const initialConfig: InitialConfigType = {
-    editorState: initialState,
-    namespace: "Playground",
-    nodes: [...PlaygroundNodes, ...CustomNodes],
-    onError,
-    theme: PlaygroundEditorTheme,
-  };
+  const initialConfig: ComponentProps<typeof LexicalComposer>["initialConfig"] =
+    {
+      editorState: initialState,
+      namespace: "Playground",
+      nodes: [...CommonNodes, ...CustomNodes],
+      onError,
+      theme: PlaygroundEditorTheme,
+    };
 
   return (
     <LexicalComposer initialConfig={initialConfig}>
@@ -69,10 +68,11 @@ export default function AppLexical({
               <OnChangePlugin onChange={onChange} />
               {children}
             </div>
-            {isDevPlayground ? <PasteLogPlugin /> : null}
           </SharedAutocompleteContext>
         </TableContext>
       </SharedHistoryContext>
     </LexicalComposer>
   );
 }
+
+export default AppLexical;

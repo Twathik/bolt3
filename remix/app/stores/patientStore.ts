@@ -1,23 +1,18 @@
-import type { PatientsGetOnePatientResponseData } from "@/components/generated/models";
-import { create } from "zustand";
-import { immer } from "zustand/middleware/immer";
+import type { StateCreator } from "zustand";
+import type { PatientStoreSlice, boltStoreType } from "./boltStoreType";
 
-interface Store {
-  patient: PatientsGetOnePatientResponseData["mainDb_getPatient"] | null;
-  setPatient: (
-    patient: PatientsGetOnePatientResponseData["mainDb_getPatient"] | null
-  ) => void;
-}
+const createPatientSlice: StateCreator<
+  boltStoreType,
+  [["zustand/immer", never], never],
+  [],
+  PatientStoreSlice
+> = (set) => ({
+  patient: null,
+  setPatient: (patient) => {
+    set((state) => {
+      state.patient = patient;
+    });
+  },
+});
 
-const usePatientStore = create<Store>()(
-  immer((set) => ({
-    patient: null,
-    setPatient: (patient) => {
-      set((state) => {
-        state.patient = patient;
-      });
-    },
-  }))
-);
-
-export default usePatientStore;
+export default createPatientSlice;

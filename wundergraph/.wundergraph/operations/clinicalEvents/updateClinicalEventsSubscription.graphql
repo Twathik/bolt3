@@ -3,6 +3,7 @@ subscription ($patientId: String!) {
     id
     eventType
     updatedAt
+    createdReport
     report
     empty
     dicomId

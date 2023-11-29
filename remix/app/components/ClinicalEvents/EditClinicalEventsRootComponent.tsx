@@ -16,7 +16,7 @@ function EditClinicalEventsRootComponent({
     router(-1);
   }, [router]);
   return (
-    <div>
+    <div className="bg-white">
       <div className="grid grid-cols-12">
         <div className="col-span-1 flex justify-start">
           <Button onClick={navigate}>

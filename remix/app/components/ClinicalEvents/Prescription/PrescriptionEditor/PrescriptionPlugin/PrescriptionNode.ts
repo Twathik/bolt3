@@ -6,7 +6,8 @@
  *
  */
 
-import { $applyNodeReplacement, TextNode } from "lexical";
+import type { DrugHitInterface } from "@/lib/interfaces/DrugsInterfaces";
+import { $applyNodeReplacement, $createTextNode, TextNode } from "lexical";
 import type {
   Spread,
   DOMConversionMap,
@@ -21,6 +22,7 @@ import type {
 export type SerializedPrescriptionNode = Spread<
   {
     prescriptionName: string;
+    drug: DrugHitInterface;
   },
   SerializedTextNode
 >;
@@ -31,7 +33,7 @@ function convertPrescriptionElement(
   const textContent = domNode.textContent;
 
   if (textContent !== null) {
-    const node = $createPrescriptionNode(textContent);
+    const node = $createTextNode(textContent);
     return {
       node,
     };
@@ -42,21 +44,30 @@ function convertPrescriptionElement(
 
 // const prescriptionStyle = "background-color: rgba(24, 119, 232, 0.2)";
 
-const prescriptionStyle = "font-weight: bold;";
+const prescriptionStyle = "";
 export class PrescriptionNode extends TextNode {
-  __prescription: string;
+  __prescriptionName: string;
+  __drug: DrugHitInterface;
 
   static getType(): string {
     return "prescription";
   }
 
   static clone(node: PrescriptionNode): PrescriptionNode {
-    return new PrescriptionNode(node.__prescription, node.__text, node.__key);
+    return new PrescriptionNode(
+      node.__prescriptionName,
+      node.__drug,
+      node.__text,
+      node.__key
+    );
   }
   static importJSON(
     serializedNode: SerializedPrescriptionNode
   ): PrescriptionNode {
-    const node = $createPrescriptionNode(serializedNode.prescriptionName);
+    const node = $createPrescriptionNode(
+      serializedNode.prescriptionName,
+      serializedNode.drug
+    );
     node.setTextContent(serializedNode.text);
     node.setFormat(serializedNode.format);
     node.setDetail(serializedNode.detail);
@@ -65,15 +76,22 @@ export class PrescriptionNode extends TextNode {
     return node;
   }
 
-  constructor(prescriptionName: string, text?: string, key?: NodeKey) {
+  constructor(
+    prescriptionName: string,
+    drug: DrugHitInterface,
+    text?: string,
+    key?: NodeKey
+  ) {
     super(text ?? prescriptionName, key);
-    this.__prescription = prescriptionName;
+    this.__prescriptionName = prescriptionName;
+    this.__drug = drug;
   }
 
   exportJSON(): SerializedPrescriptionNode {
     return {
       ...super.exportJSON(),
-      prescriptionName: this.__prescription,
+      prescriptionName: this.__prescriptionName,
+      drug: this.__drug,
       type: "prescription",
       version: 1,
     };
@@ -82,7 +100,7 @@ export class PrescriptionNode extends TextNode {
   createDOM(config: EditorConfig): HTMLElement {
     const dom = super.createDOM(config);
     dom.style.cssText = prescriptionStyle;
-    dom.className = "mention";
+    dom.className = "mention prescription";
     return dom;
   }
 
@@ -118,12 +136,21 @@ export class PrescriptionNode extends TextNode {
   canInsertTextAfter(): boolean {
     return false;
   }
+
+  /* collapseAtStart(_selection: RangeSelection): boolean {
+    const parent = this.getParent().this.getParent().this.getParent();
+    console.log({ parent });
+    this.replace($createParagraphNode());
+
+    return true;
+  } */
 }
 
 export function $createPrescriptionNode(
-  prescriptionName: string
+  prescriptionName: string,
+  drug: DrugHitInterface
 ): PrescriptionNode {
-  const prescriptionNode = new PrescriptionNode(prescriptionName);
+  const prescriptionNode = new PrescriptionNode(prescriptionName, drug);
   prescriptionNode.setMode("segmented").toggleDirectionless();
   return $applyNodeReplacement(prescriptionNode);
 }

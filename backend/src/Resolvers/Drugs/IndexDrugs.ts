@@ -3,10 +3,11 @@ import { Context } from '../../context'
 import { sleep } from '../../Utils/typesense'
 import createTypesenseDocuments from '../../Utils/typesense/operations/createDocuments'
 import { ClinicalEvent } from '../../@generated'
-import AlgerianDrugsWithRx from '../../Utils/typesense/Drugs/AlgerianWithRx.json'
-import { AlgerianDrugsWithRxInterface } from '../../Utils/typesense/Drugs/AlgerianDrugsWithRxInterface'
+import formattedDrugs from '../../Utils/typesense/Drugs/DrugList_final_sorted.json'
+import { RawDruGInterface } from '../../Utils/typesense/Drugs/RawDrugsInterface'
 import DrugsSchema from '../../Utils/typesense/Drugs/DrugsSchema'
 import { v4 as uuidV4 } from 'uuid'
+import { DrugsInterface } from '../../Utils/typesense/Drugs/DrugsInterface'
 
 @TypeGraphQL.Resolver((_of) => ClinicalEvent)
 export class IndexDrugs {
@@ -24,14 +25,66 @@ export class IndexDrugs {
     }
     await sleep(10000)
     try {
-      const documents = (
-        AlgerianDrugsWithRx as AlgerianDrugsWithRxInterface[]
-      ).map((drug) => ({
-        ...drug,
-        rx: JSON.stringify(drug.rx),
-        id: uuidV4(),
-        drugTemplate: `${drug.NOM_COMMERCIALE} ${drug.FORME} ${drug.DOSAGE}`,
-      }))
+      const documents: DrugsInterface[] = (
+        formattedDrugs as RawDruGInterface[]
+      ).map((drug) => {
+        const {
+          fullName,
+          comercialisé,
+          img,
+          link,
+          miniatureImageLink,
+          noticeLink,
+          prodLocal,
+          type,
+          rx,
+          infos: {
+            NumEnregistrement,
+            classPharmaco,
+            classTherapeutique,
+            codeDCI,
+            dosage,
+            forme,
+            labo,
+            liste,
+            pays,
+            remboursable,
+            nomCommercial,
+            conditionnement,
+          },
+          vignette: { DCI, PPA, TR, background },
+        } = drug
+
+        return {
+          id: uuidV4(),
+          fullName,
+          drugTemplate: `${nomCommercial} ${forme} ${dosage}`,
+          rx: JSON.stringify(rx),
+          type,
+          labo,
+          nomCommercial,
+          DCI,
+          PPA,
+          TR,
+          vignetteColor: background,
+          classPharmaco,
+          classTherapeutique,
+          codeDCI,
+          forme,
+          dosage,
+          conditionnement,
+          liste,
+          pays,
+          remboursable: remboursable === 'oui',
+          NumEnregistrement,
+          img,
+          miniatureImageLink,
+          link,
+          noticeLink,
+          prodLocal: prodLocal === 'Oui',
+          comercialisé: comercialisé === 'Oui',
+        }
+      })
 
       await createTypesenseDocuments({
         index: 'drugs',

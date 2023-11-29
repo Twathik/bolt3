@@ -1,21 +1,18 @@
 import { FolderOpenIcon } from "@heroicons/react/24/outline";
-import useConsultationStore from "@/stores/consultationStore";
 import RegisterButtonWithCheck from "./RegisterButton/RegisterButtonWithCheck";
 import RegisterButtonWithoutCheck from "./RegisterButton/RegisterButtonWithoutCheck";
 import { Button } from "@/ui/components/ui/button";
-import useTabsStore from "@/stores/tabsStore";
 import parser from "html-react-parser";
 import type { PatientsSearch_patientsResponseData } from "@/components/generated/models";
+import { useBoltStore } from "@/stores/boltStore";
 
 const Hit = ({
   hit,
 }: {
   hit: PatientsSearch_patientsResponseData["hits"][0];
 }) => {
-  const {
-    consultationState: { id },
-  } = useConsultationStore();
-  const { addTab } = useTabsStore();
+  const { id } = useBoltStore((store) => store.consultationState);
+  const addTab = useBoltStore((store) => store.addTab);
 
   return (
     <div

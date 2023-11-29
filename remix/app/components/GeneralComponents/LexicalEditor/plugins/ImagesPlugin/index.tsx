@@ -1,5 +1,3 @@
-"use client";
-
 /**
  * Copyright (c) Meta Platforms, Inc. and affiliates.
  *
@@ -9,6 +7,7 @@
  */
 import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext";
 import { $wrapNodeInElement, mergeRegister } from "@lexical/utils";
+import type { LexicalCommand, LexicalEditor } from "lexical";
 import {
   $createParagraphNode,
   $createRangeSelection,
@@ -24,8 +23,6 @@ import {
   DRAGOVER_COMMAND,
   DRAGSTART_COMMAND,
   DROP_COMMAND,
-  LexicalCommand,
-  LexicalEditor,
 } from "lexical";
 import { useEffect, useRef, useState } from "react";
 import * as React from "react";
@@ -33,11 +30,11 @@ import { CAN_USE_DOM } from "../../shared/src/canUseDOM";
 
 import landscapeImage from "../../images/landscape.jpg";
 import yellowFlowerImage from "../../images/yellow-flower.jpg";
+import type { ImagePayload } from "../../nodes/ImageNode";
 import {
   $createImageNode,
   $isImageNode,
   ImageNode,
-  ImagePayload,
 } from "../../nodes/ImageNode";
 import Button from "../../ui/Button";
 import { DialogActions, DialogButtonsList } from "../../ui/Dialog";
@@ -82,8 +79,7 @@ export function InsertImageUriDialogBody({
         <Button
           data-test-id="image-modal-confirm-btn"
           disabled={isDisabled}
-          onClick={() => onClick({ altText, src })}
-        >
+          onClick={() => onClick({ altText, src })}>
           Confirm
         </Button>
       </DialogActions>
@@ -133,8 +129,7 @@ export function InsertImageUploadedDialogBody({
         <Button
           data-test-id="image-modal-file-upload-btn"
           disabled={isDisabled}
-          onClick={() => onClick({ altText, src })}
-        >
+          onClick={() => onClick({ altText, src })}>
           Confirm
         </Button>
       </DialogActions>
@@ -176,7 +171,6 @@ export function InsertImageDialog({
             data-test-id="image-modal-option-sample"
             onClick={() =>
               onClick(
-                // @ts-ignore
                 hasModifier.current
                   ? {
                       altText:
@@ -186,22 +180,19 @@ export function InsertImageDialog({
                   : {
                       altText: "Yellow flower in tilt shift lens",
                       src: yellowFlowerImage,
-                    },
+                    }
               )
-            }
-          >
+            }>
             Sample
           </Button>
           <Button
             data-test-id="image-modal-option-url"
-            onClick={() => setMode("url")}
-          >
+            onClick={() => setMode("url")}>
             URL
           </Button>
           <Button
             data-test-id="image-modal-option-file"
-            onClick={() => setMode("file")}
-          >
+            onClick={() => setMode("file")}>
             File
           </Button>
         </DialogButtonsList>
@@ -236,29 +227,29 @@ export default function ImagesPlugin({
 
           return true;
         },
-        COMMAND_PRIORITY_EDITOR,
+        COMMAND_PRIORITY_EDITOR
       ),
       editor.registerCommand<DragEvent>(
         DRAGSTART_COMMAND,
         (event) => {
           return onDragStart(event);
         },
-        COMMAND_PRIORITY_HIGH,
+        COMMAND_PRIORITY_HIGH
       ),
       editor.registerCommand<DragEvent>(
         DRAGOVER_COMMAND,
         (event) => {
           return onDragover(event);
         },
-        COMMAND_PRIORITY_LOW,
+        COMMAND_PRIORITY_LOW
       ),
       editor.registerCommand<DragEvent>(
         DROP_COMMAND,
         (event) => {
           return onDrop(event, editor);
         },
-        COMMAND_PRIORITY_HIGH,
-      ),
+        COMMAND_PRIORITY_HIGH
+      )
     );
   }, [captionsEnabled, editor]);
 
@@ -267,8 +258,9 @@ export default function ImagesPlugin({
 
 const TRANSPARENT_IMAGE =
   "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7";
+
 const img =
-  typeof window !== "undefined" ? document?.createElement("img") : null;
+  typeof window !== "undefined" ? document.createElement("img") : null;
 if (img) img.src = TRANSPARENT_IMAGE;
 
 function onDragStart(event: DragEvent): boolean {
@@ -297,7 +289,7 @@ function onDragStart(event: DragEvent): boolean {
         width: node.__width,
       },
       type: "image",
-    }),
+    })
   );
 
   return true;

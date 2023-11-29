@@ -1,5 +1,5 @@
 import { useAuth } from "@/lib/wundergraph";
-import useTabsStore from "@/stores/tabsStore";
+import { useBoltStore } from "@/stores/boltStore";
 import { Button } from "@/ui/components/ui/button";
 import {
   NavigationMenu,
@@ -17,7 +17,7 @@ import { useCallback } from "react";
 function UserProfileButton() {
   const navigate = useNavigate();
   const { logout } = useAuth();
-  const { closeTabs } = useTabsStore();
+  const closeTabs = useBoltStore((store) => store.closeTabs);
 
   const logoutUser = useCallback(() => {
     logout({ logoutOpenidConnectProvider: true });

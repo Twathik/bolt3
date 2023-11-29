@@ -1,14 +1,14 @@
-import useConsultationStore from "@/stores/consultationStore";
-import React, { useCallback } from "react";
+import { useCallback } from "react";
 import RegisterButton from "./RegisterButton";
+import { useBoltStore } from "@/stores/boltStore";
 
 function RegisterButtonWithoutCheck({ patientId }: { patientId: string }) {
-  const { setConsultationId } = useConsultationStore();
+  const setConsultationId = useBoltStore((store) => store.setConsultationId);
   const callBack = useCallback(
     async (consultationId?: string) => {
       setConsultationId(consultationId ?? null);
     },
-    [setConsultationId],
+    [setConsultationId]
   );
 
   return (

@@ -4,7 +4,7 @@ import type { z } from "zod";
 import { Button } from "@/ui/components/ui/button";
 import { PaperAirplaneIcon } from "@heroicons/react/24/outline";
 import { parse } from "date-fns";
-import { enGB } from "date-fns/locale";
+import enGB from "date-fns/locale/en-GB/index.js";
 import { EditPatientInfoFormInputs } from "./EditPatientInfoFormInputs";
 import EditPatientInfoFormSchema from "./EditPatientInfoFormSchema";
 import { useMutation } from "@/lib/wundergraph";

@@ -30,6 +30,7 @@ enum MobileDeviceType {
 enum EventTypes {
   DIAGNOSTIC
   PRESCRIPTION
+  GENERAL_SONO
 }
 
 model User {

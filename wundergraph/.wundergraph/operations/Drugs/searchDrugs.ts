@@ -4,11 +4,25 @@ import {
   SearchParamsWithPreset,
 } from "typesense/lib/Typesense/Documents";
 import typesenseClient from "../../typesense/client";
-import { AlgerianDrugsWithRxInterface } from "../../typesense/AlgerianDrugsWithRxInterface";
+import { DrugsInterface } from "../../typesense/AlgerianDrugsWithRxInterface";
 
 interface hit {
   id: string;
   drugTemplate: string;
+  labo: string;
+  DCI: string;
+  PPA: string;
+  TR: string;
+  vignetteColor: string;
+  classPharmaco: string;
+  classTherapeutique: string;
+  conditionnement: string;
+  liste: string;
+  pays: string;
+  remboursable: boolean;
+  prodLocal: boolean;
+  comercialisé: boolean;
+  img: string;
 }
 
 interface searchResponse {
@@ -28,12 +42,14 @@ export default createOperation.mutation({
     const { query_string } = input;
     const params: SearchParams | SearchParamsWithPreset = {
       q: query_string,
-      query_by:
-        "NOM_COMMERCIALE,DCI,DOSAGE,LABORATOIRES_DETENTEUR_DE_LA_DECISION_D_ENREGISTREMENT",
+      query_by: "nomCommercial,DCI,dosage,labo,classPharmaco",
+      include_fields:
+        "id,drugTemplate,labo,DCI,PPA,TR,vignetteColor,classPharmaco,classTherapeutique,conditionnement,liste,pays,remboursable,prodLocal,comercialisé,img",
       // sort_by: "priority:desc,charCount:asc",
-      limit_hits: 15,
+      limit_hits: 10,
       page: 1,
-      per_page: 15,
+      per_page: 10,
+      search_cutoff_ms: 100,
     };
 
     const search_result = await typesenseClient
@@ -43,9 +59,42 @@ export default createOperation.mutation({
 
     const hits: hit[] =
       search_result.hits?.map((hit) => {
-        const { id, drugTemplate } =
-          hit.document as AlgerianDrugsWithRxInterface;
-        return { drugTemplate, id };
+        const {
+          id,
+          drugTemplate,
+          labo,
+          DCI,
+          PPA,
+          TR,
+          vignetteColor,
+          classPharmaco,
+          classTherapeutique,
+          conditionnement,
+          liste,
+          pays,
+          remboursable,
+          prodLocal,
+          comercialisé,
+          img,
+        } = hit.document as DrugsInterface;
+        return {
+          id,
+          drugTemplate,
+          labo,
+          DCI,
+          PPA,
+          TR,
+          vignetteColor,
+          classPharmaco,
+          classTherapeutique,
+          conditionnement,
+          liste,
+          pays,
+          remboursable,
+          prodLocal,
+          comercialisé,
+          img,
+        };
       }) ?? [];
     const searchResponse: searchResponse = {
       hits,

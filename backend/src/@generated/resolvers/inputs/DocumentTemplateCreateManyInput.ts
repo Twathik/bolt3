@@ -14,7 +14,7 @@ export class DocumentTemplateCreateManyInput {
   @TypeGraphQL.Field(_type => EventTypes, {
     nullable: false
   })
-  eventType!: "DIAGNOSTIC" | "PRESCRIPTION";
+  eventType!: "DIAGNOSTIC" | "PRESCRIPTION" | "GENERAL_SONO";
 
   @TypeGraphQL.Field(_type => String, {
     nullable: false

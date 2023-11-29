@@ -5,12 +5,13 @@
  * LICENSE file in the root directory of this source tree.
  *
  */
-import type { Position } from "../../nodes/InlineImageNode";
+import type { Position, InlineImagePayload } from "../../nodes/InlineImageNode";
 
 import "../../ui/Checkbox.css";
 
 import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext";
 import { $wrapNodeInElement, mergeRegister } from "@lexical/utils";
+import type { LexicalCommand, LexicalEditor } from "lexical";
 import {
   $createParagraphNode,
   $createRangeSelection,
@@ -26,8 +27,6 @@ import {
   DRAGOVER_COMMAND,
   DRAGSTART_COMMAND,
   DROP_COMMAND,
-  LexicalCommand,
-  LexicalEditor,
 } from "lexical";
 import * as React from "react";
 import { useEffect, useRef, useState } from "react";
@@ -37,7 +36,6 @@ import {
   $createInlineImageNode,
   $isInlineImageNode,
   InlineImageNode,
-  InlineImagePayload,
 } from "../../nodes/InlineImageNode";
 import Button from "../../ui/Button";
 import { DialogActions } from "../../ui/Dialog";
@@ -132,8 +130,7 @@ export function InsertInlineImageDialog({
         label="Position"
         name="position"
         id="position-select"
-        onChange={handlePositionChange}
-      >
+        onChange={handlePositionChange}>
         <option value="left">Left</option>
         <option value="right">Right</option>
         <option value="full">Full Width</option>
@@ -153,8 +150,7 @@ export function InsertInlineImageDialog({
         <Button
           data-test-id="image-modal-file-upload-btn"
           disabled={isDisabled}
-          onClick={() => handleOnClick()}
-        >
+          onClick={() => handleOnClick()}>
           Confirm
         </Button>
       </DialogActions>
@@ -182,29 +178,29 @@ export default function InlineImagePlugin(): JSX.Element | null {
 
           return true;
         },
-        COMMAND_PRIORITY_EDITOR,
+        COMMAND_PRIORITY_EDITOR
       ),
       editor.registerCommand<DragEvent>(
         DRAGSTART_COMMAND,
         (event) => {
           return onDragStart(event);
         },
-        COMMAND_PRIORITY_HIGH,
+        COMMAND_PRIORITY_HIGH
       ),
       editor.registerCommand<DragEvent>(
         DRAGOVER_COMMAND,
         (event) => {
           return onDragover(event);
         },
-        COMMAND_PRIORITY_LOW,
+        COMMAND_PRIORITY_LOW
       ),
       editor.registerCommand<DragEvent>(
         DROP_COMMAND,
         (event) => {
           return onDrop(event, editor);
         },
-        COMMAND_PRIORITY_HIGH,
-      ),
+        COMMAND_PRIORITY_HIGH
+      )
     );
   }, [editor]);
 
@@ -242,7 +238,7 @@ function onDragStart(event: DragEvent): boolean {
         width: node.__width,
       },
       type: "image",
-    }),
+    })
   );
 
   return true;

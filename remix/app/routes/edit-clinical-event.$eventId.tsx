@@ -26,7 +26,7 @@ function ClinicalDiagnostic() {
   const loadedData = useLoaderData<typeof loader>();
   if (!loadedData)
     return (
-      <div className="w-1/2 mx-auto">
+      <div className="w-1/2 mx-aut">
         <Alert variant="destructive">
           <ExclamationTriangleIcon className="h-4 w-4" />
           <AlertTitle>Erreur</AlertTitle>

@@ -1,4 +1,3 @@
-"use client";
 /**
  * Copyright (c) Meta Platforms, Inc. and affiliates.
  *
@@ -7,13 +6,11 @@
  *
  */
 
-import { DEFAULT_SETTINGS, Settings } from "./appSettings";
+import type { Settings } from "./appSettings";
+import { DEFAULT_SETTINGS } from "./appSettings";
 
 // override default options with query parameters if any
-const urlSearchParams =
-  typeof window !== "undefined"
-    ? new URLSearchParams(window.location.search)
-    : new URLSearchParams();
+const urlSearchParams = new URLSearchParams(window.location.search);
 
 for (const param of Object.keys(DEFAULT_SETTINGS)) {
   if (urlSearchParams.has(param)) {
@@ -27,7 +24,6 @@ for (const param of Object.keys(DEFAULT_SETTINGS)) {
 }
 
 if (DEFAULT_SETTINGS.disableBeforeInput) {
-  if (typeof window !== "undefined")
-    // @ts-expect-error
-    delete window.InputEvent.prototype.getTargetRanges;
+  // @ts-expect-error
+  delete window.InputEvent.prototype.getTargetRanges;
 }

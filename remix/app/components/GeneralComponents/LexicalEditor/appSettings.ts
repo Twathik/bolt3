@@ -5,31 +5,20 @@
  * LICENSE file in the root directory of this source tree.
  *
  */
+let isDevPlayground_test = true;
 
-export type SettingName =
-  | "disableBeforeInput"
-  | "measureTypingPerf"
-  | "isRichText"
-  | "isCollab"
-  | "isCharLimit"
-  | "isMaxLength"
-  | "isCharLimitUtf8"
-  | "isAutocomplete"
-  | "shouldUseLexicalContextMenu"
-  | "showTreeView"
-  | "showNestedEditorTreeView"
-  | "emptyEditor"
-  | "showTableOfContents"
-  | "tableCellMerge"
-  | "tableCellBackgroundColor";
+if (typeof window !== "undefined") {
+  const hostName = window.location.hostname;
+  isDevPlayground_test =
+    hostName !== "playground.lexical.dev" &&
+    hostName !== "lexical-playground.vercel.app";
+}
 
-export type Settings = Record<SettingName, boolean>;
+export const isDevPlayground = isDevPlayground_test;
 
-export const isDevPlayground: boolean = false;
-
-export const DEFAULT_SETTINGS: Settings = {
+export const DEFAULT_SETTINGS = {
   disableBeforeInput: false,
-  emptyEditor: false,
+  emptyEditor: isDevPlayground,
   isAutocomplete: false,
   isCharLimit: false,
   isCharLimitUtf8: false,
@@ -37,10 +26,14 @@ export const DEFAULT_SETTINGS: Settings = {
   isMaxLength: false,
   isRichText: true,
   measureTypingPerf: false,
-  shouldUseLexicalContextMenu: true,
+  shouldUseLexicalContextMenu: false,
   showNestedEditorTreeView: false,
   showTableOfContents: false,
-  showTreeView: false,
+  showTreeView: true,
   tableCellBackgroundColor: true,
   tableCellMerge: true,
 };
+
+export type SettingName = keyof typeof DEFAULT_SETTINGS;
+
+export type Settings = typeof DEFAULT_SETTINGS;

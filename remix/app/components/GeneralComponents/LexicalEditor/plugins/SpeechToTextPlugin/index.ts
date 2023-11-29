@@ -1,4 +1,3 @@
-"use client";
 /**
  * Copyright (c) Meta Platforms, Inc. and affiliates.
  *
@@ -23,7 +22,7 @@ import { useEffect, useRef, useState } from "react";
 import useReport from "../../hooks/useReport";
 
 export const SPEECH_TO_TEXT_COMMAND: LexicalCommand<boolean> = createCommand(
-  "SPEECH_TO_TEXT_COMMAND",
+  "SPEECH_TO_TEXT_COMMAND"
 );
 
 const VOICE_COMMANDS: Readonly<
@@ -42,6 +41,7 @@ const VOICE_COMMANDS: Readonly<
     editor.dispatchCommand(UNDO_COMMAND, undefined);
   },
 };
+
 let SUPPORT_SPEECH_RECOGNITION_test: boolean = false;
 if (typeof window !== "undefined") {
   SUPPORT_SPEECH_RECOGNITION_test =
@@ -92,7 +92,7 @@ function SpeechToTextPlugin(): null {
               }
             }
           });
-        },
+        }
       );
     }
 
@@ -117,7 +117,7 @@ function SpeechToTextPlugin(): null {
         setIsEnabled(_isEnabled);
         return true;
       },
-      COMMAND_PRIORITY_EDITOR,
+      COMMAND_PRIORITY_EDITOR
     );
   }, [editor]);
 

@@ -13,9 +13,9 @@
   overflow: hidden;
   position: absolute;
   text-overflow: ellipsis;
-  top: 4.4rem;
-  left: 4rem;
-  right: 4rem;
+  top: 8px;
+  left: 28px;
+  right: 28px;
   user-select: none;
   white-space: nowrap;
   display: inline-block;

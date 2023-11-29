@@ -6,20 +6,25 @@
  *
  */
 
-import type { InitialConfigType } from "@lexical/react/LexicalComposer";
 import { LexicalComposer } from "@lexical/react/LexicalComposer";
 import type { EditorState } from "lexical";
 import { SharedHistoryContext } from "@/components/GeneralComponents/LexicalEditor/context/SharedHistoryContext";
-import PlaygroundNodes from "@/components/GeneralComponents/LexicalEditor/nodes/PlaygroundNodes";
 import { TableContext } from "@/components/GeneralComponents/LexicalEditor/plugins/TablePlugin";
 import PlaygroundEditorTheme from "@/components/GeneralComponents/LexicalEditor/themes/PlaygroundEditorTheme";
+import type { ComponentProps } from "react";
 import { useCallback } from "react";
 import { OnChangePlugin } from "@lexical/react/LexicalOnChangePlugin";
 import CustomNodes from "./CustomNodes";
-import PrescriptionFormContainer from "./PrescriptionForm/PrescriptionFormContainer";
+import PrescriptionPanelContainer from "./PrescriptionPanel/PrescriptionPanelContainer";
 import PrescriptionEditor from "./PrescriptionEditor";
-import AddPrescriptionButton from "./PrescriptionForm/AddPrescriptionButton";
 import PrescriptionsPlugin from "./PrescriptionPlugin/PrescriptionPlugin";
+import { PrescriptionLayoutPlugin } from "./PrescriptionLayout/PrescriptionLayoutPlugin";
+import PrescriptionToPDF from "./PrescriptionPdf/PrescriptionToPDF";
+import { ClientOnly } from "remix-utils/client-only";
+import { SharedAutocompleteContext } from "@/components/GeneralComponents/LexicalEditor/context/SharedAutocompleteContext";
+import SaveEditorStateButton from "../../../GeneralComponents/AppLexical/SaveEditorStateButton";
+import type { ClinicalEventsGetClinicalEventResponseData } from "@/components/generated/models";
+import CommonNodes from "@/components/GeneralComponents/AppLexical/CommonNodes";
 
 console.warn(
   "If you are profiling the playground app, please ensure you turn off the debug view. You can disable it by pressing on the settings control in the bottom-left of your screen and toggling the debug view setting."
@@ -29,12 +34,12 @@ export default function PrescriptionLexical({
   onErrorCallback,
   children,
   onChangeCallback,
-  initialState,
+  clinicalEvent,
 }: {
   onErrorCallback?: (error: Error) => void;
   onChangeCallback?: (editorState: EditorState) => void;
   children?: React.ReactNode | null;
-  initialState?: string;
+  clinicalEvent: ClinicalEventsGetClinicalEventResponseData["mainDb_clinicalEvent"];
 }): JSX.Element {
   const onError = useCallback(
     (error: Error) => {
@@ -51,32 +56,40 @@ export default function PrescriptionLexical({
     [onChangeCallback]
   );
 
-  const initialConfig: InitialConfigType = {
-    editorState: initialState,
-    namespace: "Prescription",
-    nodes: [...PlaygroundNodes, ...CustomNodes],
-    onError,
-    theme: PlaygroundEditorTheme,
-  };
+  const initialConfig: ComponentProps<typeof LexicalComposer>["initialConfig"] =
+    {
+      editorState: clinicalEvent?.report ?? undefined,
+      namespace: "Prescription",
+      nodes: [...CommonNodes, ...CustomNodes],
+      onError,
+      theme: PlaygroundEditorTheme,
+    };
 
   return (
     <LexicalComposer initialConfig={initialConfig}>
       <SharedHistoryContext>
         <TableContext>
-          <div className="grid grid-cols-12">
-            <div className="col-span-12">
-              <AddPrescriptionButton />
-            </div>
-            <div className="col-span-5">
-              <PrescriptionFormContainer />
-            </div>
-            <div className=" col-span-7 m-4 rounded-lg border-y-2 border-slate-400 px-4 py-5 shadow-xl sm:p-6 relative">
-              <PrescriptionEditor />
-              <PrescriptionsPlugin />
-              <OnChangePlugin onChange={onChange} />
-              {children}
-            </div>
-          </div>
+          <SharedAutocompleteContext>
+            <>
+              <div className="w-screen">
+                <ClientOnly>{() => <PrescriptionToPDF />}</ClientOnly>
+              </div>
+              <div className="grid grid-cols-12">
+                <div className="col-span-12 flex justify-end"></div>
+                <div className="col-span-5">
+                  <PrescriptionPanelContainer />
+                </div>
+                <div className="col-span-7 bg-white">
+                  <PrescriptionEditor />
+                  <PrescriptionsPlugin />
+                  <PrescriptionLayoutPlugin />
+                  <OnChangePlugin onChange={onChange} />
+                  {children}
+                </div>
+                <SaveEditorStateButton clinicalEvent={clinicalEvent} />
+              </div>
+            </>
+          </SharedAutocompleteContext>
         </TableContext>
       </SharedHistoryContext>
     </LexicalComposer>

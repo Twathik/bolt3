@@ -1,4 +1,3 @@
-"use client";
 /**
  * Copyright (c) Meta Platforms, Inc. and affiliates.
  *
@@ -23,7 +22,8 @@ import { TabIndentationPlugin } from "@lexical/react/LexicalTabIndentationPlugin
 import { TablePlugin } from "@lexical/react/LexicalTablePlugin";
 import useLexicalEditable from "@lexical/react/useLexicalEditable";
 import { useEffect, useState } from "react";
-import { CAN_USE_DOM } from "@/components/GeneralComponents/LexicalEditor/canUseDOM";
+import { CAN_USE_DOM } from "@/components/GeneralComponents/LexicalEditor/shared/src/canUseDOM";
+
 import { useSettings } from "@/components/GeneralComponents/LexicalEditor/context/SettingsContext";
 import { useSharedHistoryContext } from "@/components/GeneralComponents/LexicalEditor/context/SharedHistoryContext";
 import TableCellNodes from "@/components/GeneralComponents/LexicalEditor/nodes/TableCellNodes";
@@ -32,20 +32,30 @@ import AutocompletePlugin from "@/components/GeneralComponents/LexicalEditor/plu
 import AutoEmbedPlugin from "@/components/GeneralComponents/LexicalEditor/plugins/AutoEmbedPlugin";
 import AutoLinkPlugin from "@/components/GeneralComponents/LexicalEditor/plugins/AutoLinkPlugin";
 import CodeActionMenuPlugin from "@/components/GeneralComponents/LexicalEditor/plugins/CodeActionMenuPlugin";
+import CodeHighlightPlugin from "@/components/GeneralComponents/LexicalEditor/plugins/CodeHighlightPlugin";
 import CollapsiblePlugin from "@/components/GeneralComponents/LexicalEditor/plugins/CollapsiblePlugin";
 import ComponentPickerPlugin from "@/components/GeneralComponents/LexicalEditor/plugins/ComponentPickerPlugin";
 import ContextMenuPlugin from "@/components/GeneralComponents/LexicalEditor/plugins/ContextMenuPlugin";
 import DragDropPaste from "@/components/GeneralComponents/LexicalEditor/plugins/DragDropPastePlugin";
 import DraggableBlockPlugin from "@/components/GeneralComponents/LexicalEditor/plugins/DraggableBlockPlugin";
+import EmojiPickerPlugin from "@/components/GeneralComponents/LexicalEditor/plugins/EmojiPickerPlugin";
+import EmojisPlugin from "@/components/GeneralComponents/LexicalEditor/plugins/EmojisPlugin";
+import EquationsPlugin from "@/components/GeneralComponents/LexicalEditor/plugins/EquationsPlugin";
+import ExcalidrawPlugin from "@/components/GeneralComponents/LexicalEditor/plugins/ExcalidrawPlugin";
+import FigmaPlugin from "@/components/GeneralComponents/LexicalEditor/plugins/FigmaPlugin";
 import FloatingLinkEditorPlugin from "@/components/GeneralComponents/LexicalEditor/plugins/FloatingLinkEditorPlugin";
 import FloatingTextFormatToolbarPlugin from "@/components/GeneralComponents/LexicalEditor/plugins/FloatingTextFormatToolbarPlugin";
 import ImagesPlugin from "@/components/GeneralComponents/LexicalEditor/plugins/ImagesPlugin";
 import InlineImagePlugin from "@/components/GeneralComponents/LexicalEditor/plugins/InlineImagePlugin";
+import KeywordsPlugin from "@/components/GeneralComponents/LexicalEditor/plugins/KeywordsPlugin";
 import { LayoutPlugin } from "@/components/GeneralComponents/LexicalEditor/plugins/LayoutPlugin/LayoutPlugin";
 import LinkPlugin from "@/components/GeneralComponents/LexicalEditor/plugins/LinkPlugin";
 import ListMaxIndentLevelPlugin from "@/components/GeneralComponents/LexicalEditor/plugins/ListMaxIndentLevelPlugin";
+import MarkdownShortcutPlugin from "@/components/GeneralComponents/LexicalEditor/plugins/MarkdownShortcutPlugin";
 import { MaxLengthPlugin } from "@/components/GeneralComponents/LexicalEditor/plugins/MaxLengthPlugin";
+import MentionsPlugin from "@/components/GeneralComponents/LexicalEditor/plugins/MentionsPlugin";
 import PageBreakPlugin from "@/components/GeneralComponents/LexicalEditor/plugins/PageBreakPlugin";
+import PollPlugin from "@/components/GeneralComponents/LexicalEditor/plugins/PollPlugin";
 import SpeechToTextPlugin from "@/components/GeneralComponents/LexicalEditor/plugins/SpeechToTextPlugin";
 import TabFocusPlugin from "@/components/GeneralComponents/LexicalEditor/plugins/TabFocusPlugin";
 import TableCellActionMenuPlugin from "@/components/GeneralComponents/LexicalEditor/plugins/TableActionMenuPlugin";
@@ -54,11 +64,13 @@ import TableOfContentsPlugin from "@/components/GeneralComponents/LexicalEditor/
 import { TablePlugin as NewTablePlugin } from "@/components/GeneralComponents/LexicalEditor/plugins/TablePlugin";
 import ToolbarPlugin from "@/components/GeneralComponents/LexicalEditor/plugins/ToolbarPlugin";
 import TreeViewPlugin from "@/components/GeneralComponents/LexicalEditor/plugins/TreeViewPlugin";
+import TwitterPlugin from "@/components/GeneralComponents/LexicalEditor/plugins/TwitterPlugin";
+import YouTubePlugin from "@/components/GeneralComponents/LexicalEditor/plugins/YouTubePlugin";
 import PlaygroundEditorTheme from "@/components/GeneralComponents/LexicalEditor/themes/PlaygroundEditorTheme";
 import ContentEditable from "@/components/GeneralComponents/LexicalEditor/ui/ContentEditable";
 import Placeholder from "@/components/GeneralComponents/LexicalEditor/ui/Placeholder";
 
-export default function AppEditor(): JSX.Element {
+export default function Editor(): JSX.Element {
   const { historyState } = useSharedHistoryContext();
   const {
     settings: {
@@ -74,10 +86,11 @@ export default function AppEditor(): JSX.Element {
       tableCellBackgroundColor,
     },
   } = useSettings();
-
   const isEditable = useLexicalEditable();
-
-  const placeholder = <Placeholder>{""}</Placeholder>;
+  const text = isRichText
+    ? "Enter some rich text..."
+    : "Enter some plain text...";
+  const placeholder = <Placeholder>{text}</Placeholder>;
   const [floatingAnchorElem, setFloatingAnchorElem] =
     useState<HTMLDivElement | null>(null);
   const [isSmallWidthViewport, setIsSmallWidthViewport] =
@@ -128,17 +141,16 @@ export default function AppEditor(): JSX.Element {
         <AutoFocusPlugin />
         <ClearEditorPlugin />
         <ComponentPickerPlugin />
-
+        <EmojiPickerPlugin />
         <AutoEmbedPlugin />
 
+        <MentionsPlugin />
+        <EmojisPlugin />
         <HashtagPlugin />
-        {/* <KeywordsPlugin /> */}
+        <KeywordsPlugin />
         <SpeechToTextPlugin />
         <AutoLinkPlugin />
 
-        {/* <CommentPlugin
-          providerFactory={isCollab ? createWebsocketProvider : undefined}
-        /> */}
         {isRichText ? (
           <>
             <HistoryPlugin externalHistoryState={historyState} />
@@ -146,7 +158,7 @@ export default function AppEditor(): JSX.Element {
             <RichTextPlugin
               contentEditable={
                 <div className="editor-scroller">
-                  <div className="editor px-3 pb-14" ref={onRef}>
+                  <div className="editor" ref={onRef}>
                     <ContentEditable />
                   </div>
                 </div>
@@ -154,8 +166,8 @@ export default function AppEditor(): JSX.Element {
               placeholder={placeholder}
               ErrorBoundary={LexicalErrorBoundary}
             />
-            {/* <MarkdownShortcutPlugin /> */}
-            {/* <CodeHighlightPlugin /> */}
+            <MarkdownShortcutPlugin />
+            <CodeHighlightPlugin />
             <ListPlugin />
             <CheckListPlugin />
             <ListMaxIndentLevelPlugin maxDepth={7} />
@@ -173,7 +185,7 @@ export default function AppEditor(): JSX.Element {
                 placeholder={null}
                 ErrorBoundary={LexicalErrorBoundary}
               />
-
+              <MentionsPlugin />
               <HistoryPlugin />
               <ImagesPlugin captionsEnabled={false} />
               <LinkPlugin />
@@ -183,14 +195,14 @@ export default function AppEditor(): JSX.Element {
             <ImagesPlugin />
             <InlineImagePlugin />
             <LinkPlugin />
-            {/* <PollPlugin />
+            <PollPlugin />
             <TwitterPlugin />
             <YouTubePlugin />
-            <FigmaPlugin /> */}
+            <FigmaPlugin />
             {!isEditable && <LexicalClickableLinkPlugin />}
             <HorizontalRulePlugin />
-            {/*  <EquationsPlugin />
-            <ExcalidrawPlugin /> */}
+            <EquationsPlugin />
+            <ExcalidrawPlugin />
             <TabFocusPlugin />
             <TabIndentationPlugin />
             <CollapsiblePlugin />

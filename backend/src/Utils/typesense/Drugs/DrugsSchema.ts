@@ -9,130 +9,145 @@ const DrugsSchema: CollectionCreateSchema = {
       facet: false,
     },
     {
-      name: 'rx',
-      type: 'string',
-      facet: false,
-    },
-    {
-      name: 'PregnancyIndexLink',
-      type: 'string[]',
-      facet: false,
-    },
-    {
-      name: 'InteractionIndexLink',
-      type: 'string[]',
-      facet: false,
-    },
-
-    {
-      name: 'N_ENREGISTREMENT',
-      type: 'string',
-      facet: false,
-    },
-    {
-      name: 'CODE_DCI',
-      type: 'string',
-      facet: false,
-    },
-    {
-      name: 'DCI',
-      type: 'string',
-      facet: false,
-    },
-    {
-      name: 'NOM_COMMERCIALE',
-      type: 'string',
-      sort: true,
-    },
-    {
-      name: 'FORME',
+      name: 'fullName',
       type: 'string',
       index: true,
-    },
-    {
-      name: 'DOSAGE',
-      type: 'string',
-      index: true,
-      sort: true,
-    },
-    {
-      name: 'COND',
-      type: 'string',
-      facet: false,
-    },
-    {
-      name: 'LISTE',
-      type: 'string',
-      facet: false,
-    },
-    {
-      name: 'P1',
-      type: 'string',
-      facet: false,
-    },
-    {
-      name: 'P2',
-      type: 'string',
-      facet: false,
-    },
-    {
-      name: 'OBS',
-      type: 'string',
-      facet: false,
-    },
-    {
-      name: 'LABORATOIRES_DETENTEUR_DE_LA_DECISION_D_ENREGISTREMENT',
-      type: 'string',
-      sort: true,
-    },
-    {
-      name: 'PAYS_DU_LABORATOIRE_DETENTEUR_DE_LA_DECISION_D_ENREGISTREMENT',
-      type: 'string',
-      facet: false,
-    },
-    {
-      name: 'DATE_D_ENREGISTREMENT_INITIAL',
-      type: 'string',
-      facet: false,
-    },
-    {
-      name: 'DATE_D_ENREGISTREMENT_FINAL',
-      type: 'string',
-      facet: false,
-    },
-    {
-      name: 'TYPE',
-      type: 'string',
-      index: true,
-      sort: true,
-    },
-    {
-      name: 'STATUT',
-      type: 'string',
-      facet: false,
-    },
-    {
-      name: 'DUREE_DE_STABILITE',
-      type: 'string',
-      facet: false,
-    },
-    {
-      name: 'availableInAlgeria',
-      type: 'bool',
-      facet: false,
-    },
-    {
-      name: 'DrugCategories',
-      type: 'string[]',
-      facet: false,
     },
     {
       name: 'drugTemplate',
       type: 'string',
       index: true,
     },
+    {
+      name: 'rx',
+      type: 'string',
+    },
+    {
+      name: 'type',
+      type: 'string',
+      index: true,
+      sort: true,
+      facet: true,
+    },
+    {
+      name: 'labo',
+      type: 'string',
+      index: true,
+      sort: true,
+    },
+    {
+      name: 'nomCommercial',
+      type: 'string',
+      index: true,
+      sort: true,
+    },
+    {
+      name: 'DCI',
+      type: 'string',
+      index: true,
+      sort: true,
+    },
+
+    {
+      name: 'PPA',
+      type: 'string',
+    },
+    {
+      name: 'TR',
+      type: 'string',
+    },
+
+    {
+      name: 'vignetteColor',
+      type: 'string',
+      index: true,
+      sort: true,
+      facet: true,
+    },
+    {
+      name: 'classPharmaco',
+      type: 'string',
+      index: true,
+      sort: true,
+    },
+    {
+      name: 'classTherapeutique',
+      type: 'string',
+      index: true,
+      sort: true,
+    },
+    {
+      name: 'codeDCI',
+      type: 'string',
+    },
+    {
+      name: 'forme',
+      type: 'string',
+      sort: true,
+      index: true,
+    },
+    {
+      name: 'dosage',
+      type: 'string',
+      index: true,
+    },
+    {
+      name: 'conditionnement',
+      type: 'string',
+      index: true,
+    },
+    {
+      name: 'liste',
+      type: 'string',
+      index: true,
+      facet: true,
+    },
+    {
+      name: 'pays',
+      type: 'string',
+      index: true,
+      facet: true,
+    },
+    {
+      name: 'remboursable',
+      type: 'bool',
+      index: true,
+      facet: true,
+    },
+    {
+      name: 'NumEnregistrement',
+      type: 'string',
+    },
+    {
+      name: 'img',
+      type: 'string',
+    },
+    {
+      name: 'miniatureImageLink',
+      type: 'string',
+    },
+    {
+      name: 'link',
+      type: 'string',
+    },
+    {
+      name: 'noticeLink',
+      type: 'string',
+    },
+    {
+      name: 'prodLocal',
+      type: 'bool',
+      index: true,
+      facet: true,
+    },
+    {
+      name: 'comercialisé',
+      type: 'bool',
+      index: true,
+      facet: true,
+    },
   ],
-  default_sorting_field: 'NOM_COMMERCIALE',
+  default_sorting_field: 'nomCommercial',
 }
 
 export default DrugsSchema

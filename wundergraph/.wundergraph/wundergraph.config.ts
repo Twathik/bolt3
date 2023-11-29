@@ -30,7 +30,6 @@ const mainDb = introspect.graphql({
 
 // configureWunderGraph emits the configuration
 configureWunderGraphApplication({
-  
   apis: [countries, mainDb, spaceX],
   authentication: {
     cookieBased: {
@@ -42,6 +41,7 @@ configureWunderGraphApplication({
           issuer: "http://keycloak.local/realms/bolt3",
         }),
       ],
+
       authorizedRedirectUris: [
         "http://bolt3.local/login",
         "http://bolt3.local/search",

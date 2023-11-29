@@ -129,6 +129,7 @@ export class CommentStore {
   ): void {
     const nextComments = Array.from(this._comments);
     // The YJS types explicitly use `any` as well.
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const sharedCommentsArray: YArray<any> | null = this._getCollabComments();
 
     if (thread !== undefined && commentOrThread.type === 'comment') {

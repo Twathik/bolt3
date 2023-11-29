@@ -1,39 +1,33 @@
-import { create } from "zustand";
-import { immer } from "zustand/middleware/immer";
+import type { DrugHitInterface } from "@/lib/interfaces/DrugsInterfaces";
+import type { StateCreator } from "zustand";
+import type { PrescriptionStoreSlice, boltStoreType } from "./boltStoreType";
 
-export interface PrescriptionInterface {
-  id: string;
-  prescription?: string;
-  quantity?: number;
-  quantity_string?: string;
-  frequency?: number;
-  frequency_string?: string;
-}
+const createPrescriptionSlice: StateCreator<
+  boltStoreType,
+  [["zustand/immer", never], never],
+  [],
+  PrescriptionStoreSlice
+> = (set) => ({
+  loadingPrescription: false,
+  prescriptions: [],
+  setInitialPrescriptions: (prescriptions: DrugHitInterface[]) =>
+    set((state) => {
+      state.prescriptions = prescriptions;
+    }),
+  addPrescription: (prescription: DrugHitInterface) =>
+    set((state) => {
+      state.prescriptions.push(prescription);
+    }),
+  removePrescription: (prescriptionId: string) =>
+    set((state) => {
+      state.prescriptions = state.prescriptions.filter(
+        (p) => p.prescriptionId !== prescriptionId
+      );
+    }),
+  setLoadingPrescription: (loading: boolean) =>
+    set((state) => {
+      state.loadingPrescription = loading;
+    }),
+});
 
-type State = {
-  prescriptions: PrescriptionInterface[];
-};
-
-type Actions = {
-  setInitialPrescriptions: (prescriptions: PrescriptionInterface[]) => void;
-  addPrescription: (prescription: PrescriptionInterface) => void;
-  removePrescription: (id: string) => void;
-};
-
-export const usePrescriptionStore = create<State & Actions>()(
-  immer((set) => ({
-    prescriptions: [],
-    setInitialPrescriptions: (prescriptions: PrescriptionInterface[]) =>
-      set((state) => {
-        state.prescriptions = prescriptions;
-      }),
-    addPrescription: (prescription: PrescriptionInterface) =>
-      set((state) => {
-        state.prescriptions.push(prescription);
-      }),
-    removePrescription: (id: string) =>
-      set((state) => {
-        state.prescriptions = state.prescriptions.filter((p) => p.id !== id);
-      }),
-  }))
-);
+export default createPrescriptionSlice;

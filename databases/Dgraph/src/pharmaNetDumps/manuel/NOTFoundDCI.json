@@ -57,7 +57,7 @@
   },
   {
     "DCI": "ACIDE BORIQUE/BORATE DE SODIUM",
-    "rx": [{ "rxcui": "", "name": "" }]
+    "rx": []
   },
   {
     "DCI": "ACIDE MEFENAMIQUE",
@@ -73,7 +73,7 @@
   },
   {
     "DCI": "ACIDE RISEDRONIQUE MONOSODIQUE HEMIPENTAHYDRATE EXPRIME EN ACIDE RIDEDRONIQUE MONOSODIQUE",
-    "rx": [{ "rxcui": "", "name": "" }]
+    "rx": []
   },
   {
     "DCI": "ACIDE SALICYLIQUE",
@@ -92,7 +92,7 @@
   },
   {
     "DCI": "ACIDE TRETINOIQUE AVEC ECRANS SOLAIRES",
-    "rx": [{ "rxcui": "", "name": "" }]
+    "rx": []
   },
   {
     "DCI": "ACIDE VALPROIQUE (SOUS FORME DE VALPROATE DE SODIUM)**",
@@ -249,7 +249,7 @@
     "DCI": "BECLOMETASONE DIPROPIONATE",
     "rx": [{ "rxcui": "1348", "name": "beclomethasone dipropionate" }]
   },
-  { "DCI": "BEMIPARINE SODIQUE", "rx": [{ "rxcui": "", "name": "" }] },
+  { "DCI": "BEMIPARINE SODIQUE", "rx": [] },
   {
     "DCI": "BENZALKONIUM CHLORURE/LIDOCAINE CHLORHYDRATE",
     "rx": [
@@ -472,8 +472,8 @@
   },
   { "DCI": "CELECOXIB", "rx": [{ "rxcui": "140587", "name": "celecoxib" }] },
   { "DCI": "CETRIMIDE", "rx": [{ "rxcui": "288088", "name": "cetrimide" }] },
-  { "DCI": "CHARBON ACTIF COMPOSE", "rx": [{ "rxcui": "", "name": "" }] },
-  { "DCI": "CHARBON ACTIVE", "rx": [{ "rxcui": "", "name": "" }] },
+  { "DCI": "CHARBON ACTIF COMPOSE", "rx": [] },
+  { "DCI": "CHARBON ACTIVE", "rx": [] },
   {
     "DCI": "CHLORAMPHENICOL",
     "rx": [{ "rxcui": "2348", "name": "chloramphenicol" }]
@@ -526,7 +526,7 @@
   },
   {
     "DCI": "CHORIOGONADOTROPINE ALFA (HCG RECOMBINANTE)",
-    "rx": [{ "rxcui": "", "name": "" }]
+    "rx": []
   },
   {
     "DCI": "CHYMOTRYPSINE",
@@ -626,16 +626,16 @@
   },
   {
     "DCI": "COMPLEXE HUMAIN PLASMATIQUE PROTHROMBINIQUE",
-    "rx": [{ "rxcui": "", "name": "" }]
+    "rx": []
   },
-  { "DCI": "COMPLEXE VITAMINIQUE", "rx": [{ "rxcui": "", "name": "" }] },
+  { "DCI": "COMPLEXE VITAMINIQUE", "rx": [] },
   {
     "DCI": "CONCENTRE ACIDE POUR HEMODIALYSE AU BICARBONATE  POUDRE",
-    "rx": [{ "rxcui": "", "name": "" }]
+    "rx": []
   },
   {
     "DCI": "CONCENTRE ACIDE POUR HEMODIALYSE AU BICARBONATE LIQUIDE",
-    "rx": [{ "rxcui": "", "name": "" }]
+    "rx": []
   },
   { "DCI": "CROTAMITON", "rx": [{ "rxcui": "21766", "name": "crotamiton" }] },
   {
@@ -679,7 +679,7 @@
     "DCI": "DEFERASIROX",
     "rx": [{ "rxcui": "614373", "name": "deferasirox" }]
   },
-  { "DCI": "DELAPRIL", "rx": [{ "rxcui": "", "name": "" }] },
+  { "DCI": "DELAPRIL", "rx": [] },
   {
     "DCI": "DESMOPRESSINE (ACETATE)",
     "rx": [{ "rxcui": "3251", "name": "desmopressin" }]
@@ -754,7 +754,7 @@
   },
   {
     "DCI": "DIHYDROGENOPHOSPHATE DE SODIUM HYDRATE / HYDROGENOPHOSPHATE DE SODIUM DODECAHYDRATE",
-    "rx": [{ "rxcui": "", "name": "" }]
+    "rx": []
   },
   {
     "DCI": "DILTIAZEM CHLORHYDRATE",
@@ -764,7 +764,7 @@
     "DCI": "DIMETICONE ACTIVEE/GOMME DE CAROUBE",
     "rx": [{ "rxcui": "324072", "name": "dimethicone" }]
   },
-  { "DCI": "DIOSMECTITE", "rx": [{ "rxcui": "", "name": "" }] },
+  { "DCI": "DIOSMECTITE", "rx": [] },
   { "DCI": "DIOSMINE", "rx": [{ "rxcui": "3489", "name": "diosmin" }] },
   {
     "DCI": "DIPYRIDAMOLE",
@@ -808,15 +808,15 @@
       { "rxcui": "11636", "name": "drospirenone" }
     ]
   },
-  { "DCI": "EAU DISTILLEE STERILE", "rx": [{ "rxcui": "", "name": "" }] },
-  { "DCI": "EAU OXYGENEE", "rx": [{ "rxcui": "", "name": "" }] },
+  { "DCI": "EAU DISTILLEE STERILE", "rx": [] },
+  { "DCI": "EAU OXYGENEE", "rx": [] },
   {
     "DCI": "EAU POUR PREPARATION INJECTABLE",
-    "rx": [{ "rxcui": "", "name": "" }]
+    "rx": []
   },
   {
     "DCI": "EAU POUR PREPARATION INJECTABLE IM/IV",
-    "rx": [{ "rxcui": "", "name": "" }]
+    "rx": []
   },
   { "DCI": "ECONAZOLE", "rx": [{ "rxcui": "3743", "name": "econazole" }] },
   {
@@ -835,7 +835,7 @@
       { "rxcui": "5487", "name": "hydrochlorothiazide" }
     ]
   },
-  { "DCI": "EOSINE AQUEUSE", "rx": [{ "rxcui": "", "name": "" }] },
+  { "DCI": "EOSINE AQUEUSE", "rx": [] },
   { "DCI": "EPIRUBICINE", "rx": [{ "rxcui": "3995", "name": "epirubicin" }] },
   {
     "DCI": "EPOETINE ALFA",
@@ -886,7 +886,7 @@
     "rx": [{ "rxcui": "4083", "name": "estradiol" }]
   },
   { "DCI": "ETAMSYLATE", "rx": [{ "rxcui": "4112", "name": "ethamsylate" }] },
-  { "DCI": "ETHER DIETHYLIQUE", "rx": [{ "rxcui": "", "name": "" }] },
+  { "DCI": "ETHER DIETHYLIQUE", "rx": [] },
   {
     "DCI": "ETHINYLESTRADIOL / DESOGESTREL",
     "rx": [
@@ -926,11 +926,11 @@
   },
   {
     "DCI": "EXTRAITS ALLERGENIQUES DERMATOPHAGOIDES PTERONYSSINUS",
-    "rx": [{ "rxcui": "", "name": "" }]
+    "rx": []
   },
   {
     "DCI": "EXTRAITS ALLERGENIQUES DERMATOPHAGOIDES PTERONYSSINUS 100%",
-    "rx": [{ "rxcui": "", "name": "" }]
+    "rx": []
   },
   {
     "DCI": "FACTEUR HUMAIN VIII  ANTI HEMOPHILIQUE",
@@ -1006,7 +1006,7 @@
       { "rxcui": "1191", "name": "aspirin" }
     ]
   },
-  { "DCI": "FLUOR", "rx": [{ "rxcui": "", "name": "" }] },
+  { "DCI": "FLUOR", "rx": [] },
   {
     "DCI": "FLUORESCEINE",
     "rx": [{ "rxcui": "25138", "name": "fluorescein" }]
@@ -1040,7 +1040,7 @@
     "DCI": "FOLINATE DE CALCIUM EXPRIME EN ACIDE FOLINIQUE",
     "rx": [{ "rxcui": "6313", "name": "leucovorin" }]
   },
-  { "DCI": "FOLINATE DE SODIUM", "rx": [{ "rxcui": "", "name": "" }] },
+  { "DCI": "FOLINATE DE SODIUM", "rx": [] },
   {
     "DCI": "FORMOTEROL FUMARATE",
     "rx": [{ "rxcui": "25255", "name": "formoterol" }]
@@ -1048,7 +1048,7 @@
   { "DCI": "FOSFOMYCINE", "rx": [{ "rxcui": "4550", "name": "fosfomycin" }] },
   {
     "DCI": "FRACTIONS RIBOSOMALES/FRACTIONS MEMBRANAIRES",
-    "rx": [{ "rxcui": "", "name": "" }]
+    "rx": []
   },
   { "DCI": "FRAMYCETINE", "rx": [{ "rxcui": "4556", "name": "framycetin" }] },
   { "DCI": "FUMARATE FERREUX", "rx": [{ "rxcui": "90176", "name": "iron" }] },
@@ -1070,7 +1070,7 @@
       { "rxcui": "9863", "name": "sodium chloride" }
     ]
   },
-  { "DCI": "GELATINE FLUIDE MODIFIEE", "rx": [{ "rxcui": "", "name": "" }] },
+  { "DCI": "GELATINE FLUIDE MODIFIEE", "rx": [] },
   { "DCI": "GEMCITABINE", "rx": [{ "rxcui": "12574", "name": "gemcitabine" }] },
   {
     "DCI": "GEMCITABINE CHLORHYDRATE EXPRIME EN GEMCITABINE",
@@ -1088,7 +1088,7 @@
   { "DCI": "GLIMEPIRIDE", "rx": [{ "rxcui": "25789", "name": "glimepiride" }] },
   { "DCI": "GLIPIZIDE", "rx": [{ "rxcui": "4821", "name": "glipizide" }] },
   { "DCI": "GLUCAGON", "rx": [{ "rxcui": "4832", "name": "glucagon" }] },
-  { "DCI": "GLUCOSE", "rx": [{ "rxcui": "", "name": "" }] },
+  { "DCI": "GLUCOSE", "rx": [] },
   {
     "DCI": "GLUCOSE ANHYDRE (SOUS FORME MONOHYDRATEE) / SODIUM CHLORURE / CALCIUM CHLORURE DIHYDRATE / MAGNESIUM CHLORURE HEXAHYDRATE / SODIUM LACTATE",
     "rx": [
@@ -1112,10 +1112,10 @@
     "DCI": "GLYCERYL TRINITRATE",
     "rx": [{ "rxcui": "4910", "name": "glycerin" }]
   },
-  { "DCI": "GOMME DE STERCULIA", "rx": [{ "rxcui": "", "name": "" }] },
+  { "DCI": "GOMME DE STERCULIA", "rx": [] },
   {
     "DCI": "GONADOTROPHINE CHORIONIQUE HUMAINE",
-    "rx": [{ "rxcui": "", "name": "" }]
+    "rx": []
   },
   { "DCI": "HALOPERIDOL", "rx": [{ "rxcui": "5093", "name": "haloperidol" }] },
   { "DCI": "HALOTHANE", "rx": [{ "rxcui": "5095", "name": "halothane" }] },
@@ -1232,7 +1232,7 @@
   },
   {
     "DCI": "IMMUNOGLOBULINE HUMAINE  (ANTI D)",
-    "rx": [{ "rxcui": "", "name": "" }]
+    "rx": []
   },
   { "DCI": "INDAPAMIDE", "rx": [{ "rxcui": "5764", "name": "indapamide" }] },
   {
@@ -1297,7 +1297,7 @@
     "DCI": "INTERFERON ALPHA 2B",
     "rx": [{ "rxcui": "5880", "name": "interferon alfa-2b" }]
   },
-  { "DCI": "IODE", "rx": [{ "rxcui": "", "name": "" }] },
+  { "DCI": "IODE", "rx": [] },
   {
     "DCI": "IODE BISUBLIME / ALCOOL ETHYLIQUE",
     "rx": [{ "rxcui": "448", "name": "ethanol" }]
@@ -1346,16 +1346,16 @@
   { "DCI": "LACTULOSE", "rx": [{ "rxcui": "6218", "name": "lactulose" }] },
   {
     "DCI": "LAIT POUR NOURRISSON A LA FARINE DE GRAINES DE CAROUBE",
-    "rx": [{ "rxcui": "", "name": "" }]
+    "rx": []
   },
-  { "DCI": "LAIT SPECIAL PREMATURES", "rx": [{ "rxcui": "", "name": "" }] },
+  { "DCI": "LAIT SPECIAL PREMATURES", "rx": [] },
   { "DCI": "LAMIVUDINE", "rx": [{ "rxcui": "68244", "name": "lamivudine" }] },
   { "DCI": "LAMOTRIGINE", "rx": [{ "rxcui": "28439", "name": "lamotrigine" }] },
   {
     "DCI": "LANSOPRAZOLE",
     "rx": [{ "rxcui": "17128", "name": "lansoprazole" }]
   },
-  { "DCI": "LARMES ARTIFICIELLES", "rx": [{ "rxcui": "", "name": "" }] },
+  { "DCI": "LARMES ARTIFICIELLES", "rx": [] },
   {
     "DCI": "LAURYL SULFATE DE MYRTECAINE / AMINOACETATE D'ALUMINIUM / SULFATE DE GALACTONE",
     "rx": [{ "rxcui": "59082", "name": "myrtecaine" }]
@@ -1433,7 +1433,7 @@
   },
   {
     "DCI": "MACROGOL 3350 (POLYETHYLENE GLYCOL 3350) / BICARBONATE SODIUM / CHLORURE SODIUM / CHLORURE POTASSIUM",
-    "rx": [{ "rxcui": "", "name": "" }]
+    "rx": []
   },
   {
     "DCI": "MACROGOL 3350 (POLYETHYLENE GLYCOL 3350) / SULFATE SODIUM ANHYDRE / BICARBONATE SODIUM / CHLORURE SODIUM / CHLORURE POTASSIUM",
@@ -1495,7 +1495,7 @@
     "DCI": "MERCAPTOPURINE",
     "rx": [{ "rxcui": "103", "name": "mercaptopurine" }]
   },
-  { "DCI": "MERCUROCHROME", "rx": [{ "rxcui": "", "name": "" }] },
+  { "DCI": "MERCUROCHROME", "rx": [] },
   {
     "DCI": "METFORMINE / GLIBENCLAMIDE",
     "rx": [
@@ -1622,7 +1622,7 @@
     "rx": [{ "rxcui": "31782", "name": "nifuroxazide" }]
   },
   { "DCI": "NIMESULIDE", "rx": [{ "rxcui": "53694", "name": "nimesulide" }] },
-  { "DCI": "NIMOTUZUMAB", "rx": [{ "rxcui": "", "name": "" }] },
+  { "DCI": "NIMOTUZUMAB", "rx": [] },
   { "DCI": "NITRAZEPAM", "rx": [{ "rxcui": "7440", "name": "nitrazepam" }] },
   {
     "DCI": "NITRENDIPINE",
@@ -1690,7 +1690,7 @@
   },
   {
     "DCI": "OXYGENE  PURETE 99,50 %  SOUS PRESSION DE 10 BAR A 15 BAR  DE -155° C A -145 ° C",
-    "rx": [{ "rxcui": "", "name": "" }]
+    "rx": []
   },
   {
     "DCI": "OXYQUINOLEINE/ACIDE SALICYLIQUE/ LAURYLSULFATE DE SODIUM/ACIDE TARTRIQUE",
@@ -1789,7 +1789,7 @@
     "DCI": "PEROXYDE D' HYDROGENE",
     "rx": [{ "rxcui": "5499", "name": "hydrogen peroxide" }]
   },
-  { "DCI": "PEROXYDE DE BENZOYLE", "rx": [{ "rxcui": "", "name": "" }] },
+  { "DCI": "PEROXYDE DE BENZOYLE", "rx": [] },
   {
     "DCI": "PHENOBARBITAL",
     "rx": [{ "rxcui": "8134", "name": "phenobarbital" }]
@@ -1858,7 +1858,7 @@
     "DCI": "POTASSIUM GLUCONATE",
     "rx": [{ "rxcui": "89903", "name": "potassium gluconate" }]
   },
-  { "DCI": "POUDRE DE PANCREAS", "rx": [{ "rxcui": "", "name": "" }] },
+  { "DCI": "POUDRE DE PANCREAS", "rx": [] },
   {
     "DCI": "PRAMOCAINE CHLORHYDRATE",
     "rx": [{ "rxcui": "34347", "name": "pramoxine" }]
@@ -1898,7 +1898,7 @@
     "DCI": "PROPAFENONE CHLORHYDRATE",
     "rx": [{ "rxcui": "203135", "name": "propafenone hydrochloride" }]
   },
-  { "DCI": "PROPIONATE DE SODIUM", "rx": [{ "rxcui": "", "name": "" }] },
+  { "DCI": "PROPIONATE DE SODIUM", "rx": [] },
   { "DCI": "PROPOFOL", "rx": [{ "rxcui": "8782", "name": "propofol" }] },
   { "DCI": "PROPRANOLOL", "rx": [{ "rxcui": "8787", "name": "propranolol" }] },
   {
@@ -1909,10 +1909,10 @@
     "DCI": "PROPRANOLOL CHLORHYDRATE MONOHYDRATE",
     "rx": [{ "rxcui": "82084", "name": "propranolol hydrochloride" }]
   },
-  { "DCI": "PROTOXYDE D'AZOTE", "rx": [{ "rxcui": "", "name": "" }] },
+  { "DCI": "PROTOXYDE D'AZOTE", "rx": [] },
   {
     "DCI": "PURIFIED ANTIGEN FRACTIONS OF INACTIVATED SPLIT VIRIONS A / CALIFORNIA / 7/ 2009 (H1N1)v NYMCX - 179A                        (VACCIN GRIPPAL)",
-    "rx": [{ "rxcui": "", "name": "" }]
+    "rx": []
   },
   { "DCI": "PYRIDOXINE", "rx": [{ "rxcui": "684879", "name": "pyridoxine" }] },
   {
@@ -1979,7 +1979,7 @@
   },
   {
     "DCI": "RUPATADINE FUMARATE EXPRIME EN RUPATADINE",
-    "rx": [{ "rxcui": "", "name": "" }]
+    "rx": []
   },
   {
     "DCI": "RUSCUS/HESPERIDINE METHYLCHALCONE/ACIDE ASCORBIQUE",
@@ -1998,7 +1998,7 @@
     "DCI": "SECNIDAZOLE ANHYDRE",
     "rx": [{ "rxcui": "36314", "name": "secnidazole" }]
   },
-  { "DCI": "SERENOA REPENS", "rx": [{ "rxcui": "", "name": "" }] },
+  { "DCI": "SERENOA REPENS", "rx": [] },
   {
     "DCI": "SERTACONAZOLE NITRATE",
     "rx": [{ "rxcui": "236601", "name": "sertaconazole nitrate" }]
@@ -2045,7 +2045,7 @@
   },
   {
     "DCI": "STERILET EN FORME D'ANCRE AVEC STERILET ANCRE 375",
-    "rx": [{ "rxcui": "", "name": "" }]
+    "rx": []
   },
   {
     "DCI": "STREPTOKINASE RECOMBINANT",
@@ -2109,14 +2109,14 @@
     "DCI": "TENECTEPLASE",
     "rx": [{ "rxcui": "259280", "name": "tenecteplase" }]
   },
-  { "DCI": "TENOATE DE SODIUM", "rx": [{ "rxcui": "", "name": "" }] },
+  { "DCI": "TENOATE DE SODIUM", "rx": [] },
   {
     "DCI": "TENOATE DE SODIUM / HUILE ESSENTIELLE D'EUCALYPTUS",
-    "rx": [{ "rxcui": "", "name": "" }]
+    "rx": []
   },
   {
     "DCI": "TENOATE DE SODIUM/HUILE ESSENTIELLE D'EUCALYPTUS/PARACETAMOL",
-    "rx": [{ "rxcui": "", "name": "" }]
+    "rx": []
   },
   { "DCI": "TERBINAFINE", "rx": [{ "rxcui": "37801", "name": "terbinafine" }] },
   {
@@ -2195,7 +2195,7 @@
   { "DCI": "TOPIRAMATE", "rx": [{ "rxcui": "38404", "name": "topiramate" }] },
   {
     "DCI": "TOXINE BOTULINIQUE TYPE  A : COMPLEXE TOXINE - HEMAGLUTININE Bo TX-A",
-    "rx": [{ "rxcui": "", "name": "" }]
+    "rx": []
   },
   {
     "DCI": "TRAMADOL CHLORHYDRATE EXPRIME EN TRAMADOL",
@@ -2252,17 +2252,17 @@
   },
   {
     "DCI": "VACCIN ANTI ROUGEOLEUX VIVANT ATTENUE LYOPHILISE",
-    "rx": [{ "rxcui": "", "name": "" }]
+    "rx": []
   },
   {
     "DCI": "VACCIN ANTI-HEPATITE B = ANTIGENE DE SURFACE RECOMBINANT DE  L' l'HEPATITE B (Ag Hbs)",
-    "rx": [{ "rxcui": "", "name": "" }]
+    "rx": []
   },
   {
     "DCI": "VACCIN GRIPPAL INACTIVE A VIRION FRAGMENTE",
-    "rx": [{ "rxcui": "", "name": "" }]
+    "rx": []
   },
-  { "DCI": "VALPROATE DE SODIUM", "rx": [{ "rxcui": "", "name": "" }] },
+  { "DCI": "VALPROATE DE SODIUM", "rx": [] },
   { "DCI": "VALSARTAN", "rx": [{ "rxcui": "69749", "name": "valsartan" }] },
   { "DCI": "VANCOMYCINE", "rx": [{ "rxcui": "11124", "name": "vancomycin" }] },
   {

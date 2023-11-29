@@ -52,10 +52,10 @@
   height: 30px;
   text-align: center;
   cursor: pointer;
-  background-color: rgb(79 70 229);
+  background-color: #eee;
 }
 .Modal__closeButton:hover {
-  background-color: rgba(78, 70, 229, 0.644);
+  background-color: #ddd;
 }
 .Modal__content {
   padding-top: 20px;

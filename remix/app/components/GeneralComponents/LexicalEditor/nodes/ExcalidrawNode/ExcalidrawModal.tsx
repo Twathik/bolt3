@@ -6,20 +6,21 @@
  *
  */
 
-import './ExcalidrawModal.css';
+import "./ExcalidrawModal.css";
 
-import {Excalidraw} from '@excalidraw/excalidraw';
-import {
+import { Excalidraw } from "@excalidraw/excalidraw";
+import type {
   AppState,
   BinaryFiles,
   ExcalidrawImperativeAPI,
-} from '@excalidraw/excalidraw/types/types';
-import * as React from 'react';
-import {ReactPortal, useEffect, useLayoutEffect, useRef, useState} from 'react';
-import {createPortal} from 'react-dom';
+} from "@excalidraw/excalidraw/types/types";
+import * as React from "react";
+import type { ReactPortal } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 
-import Button from '../../ui/Button';
-import Modal from '../../ui/Modal';
+import Button from "../../ui/Button";
+import Modal from "../../ui/Modal";
 
 export type ExcalidrawElementFragment = {
   isDeleted?: boolean;
@@ -57,8 +58,18 @@ type Props = {
   onSave: (
     elements: ReadonlyArray<ExcalidrawElementFragment>,
     appState: Partial<AppState>,
-    files: BinaryFiles,
+    files: BinaryFiles
   ) => void;
+};
+
+export const useCallbackRefState = () => {
+  const [refValue, setRefValue] =
+    React.useState<ExcalidrawImperativeAPI | null>(null);
+  const refCallback = React.useCallback(
+    (value: ExcalidrawImperativeAPI | null) => setRefValue(value),
+    []
+  );
+  return [refValue, refCallback] as const;
 };
 
 /**
@@ -77,7 +88,7 @@ export default function ExcalidrawModal({
   onClose,
 }: Props): ReactPortal | null {
   const excaliDrawModelRef = useRef<HTMLDivElement | null>(null);
-  const excaliDrawSceneRef = useRef<ExcalidrawImperativeAPI>(null);
+  const [excalidrawAPI, excalidrawAPIRefCallback] = useCallbackRefState();
   const [discardModalOpen, setDiscardModalOpen] = useState(false);
   const [elements, setElements] =
     useState<ReadonlyArray<ExcalidrawElementFragment>>(initialElements);
@@ -106,13 +117,13 @@ export default function ExcalidrawModal({
     if (excaliDrawModelRef.current !== null) {
       modalOverlayElement = excaliDrawModelRef.current?.parentElement;
       if (modalOverlayElement !== null) {
-        modalOverlayElement?.addEventListener('click', clickOutsideHandler);
+        modalOverlayElement?.addEventListener("click", clickOutsideHandler);
       }
     }
 
     return () => {
       if (modalOverlayElement !== null) {
-        modalOverlayElement?.removeEventListener('click', clickOutsideHandler);
+        modalOverlayElement?.removeEventListener("click", clickOutsideHandler);
       }
     };
   }, [closeOnClickOutside, onDelete]);
@@ -121,40 +132,44 @@ export default function ExcalidrawModal({
     const currentModalRef = excaliDrawModelRef.current;
 
     const onKeyDown = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') {
+      if (event.key === "Escape") {
         onDelete();
       }
     };
 
     if (currentModalRef !== null) {
-      currentModalRef.addEventListener('keydown', onKeyDown);
+      currentModalRef.addEventListener("keydown", onKeyDown);
     }
 
     return () => {
       if (currentModalRef !== null) {
-        currentModalRef.removeEventListener('keydown', onKeyDown);
+        currentModalRef.removeEventListener("keydown", onKeyDown);
       }
     };
   }, [elements, files, onDelete]);
 
   const save = () => {
     if (elements.filter((el) => !el.isDeleted).length > 0) {
-      const appState = excaliDrawSceneRef?.current?.getAppState();
+      const appState = excalidrawAPI?.getAppState();
       // We only need a subset of the state
-      const partialState: Partial<AppState> = {
-        exportBackground: appState.exportBackground,
-        exportScale: appState.exportScale,
-        exportWithDarkMode: appState.theme === 'dark',
-        isBindingEnabled: appState.isBindingEnabled,
-        isLoading: appState.isLoading,
-        name: appState.name,
-        theme: appState.theme,
-        viewBackgroundColor: appState.viewBackgroundColor,
-        viewModeEnabled: appState.viewModeEnabled,
-        zenModeEnabled: appState.zenModeEnabled,
-        zoom: appState.zoom,
-      };
-      onSave(elements, partialState, files);
+      if (appState) {
+        const partialState: Partial<AppState> = {
+          exportBackground: appState.exportBackground,
+          exportScale: appState.exportScale,
+          exportWithDarkMode: appState.theme === "dark",
+          isBindingEnabled: appState.isBindingEnabled,
+          isLoading: appState.isLoading,
+          name: appState.name,
+          theme: appState.theme,
+          viewBackgroundColor: appState.viewBackgroundColor,
+          viewModeEnabled: appState.viewModeEnabled,
+          zenModeEnabled: appState.zenModeEnabled,
+          zoom: appState.zoom,
+        };
+        onSave(elements, partialState, files);
+      } else {
+        throw Error("appState is undefined");
+      }
     } else {
       // delete node if the scene is clear
       onDelete();
@@ -187,7 +202,7 @@ export default function ExcalidrawModal({
               onClose();
             }}>
             Discard
-          </Button>{' '}
+          </Button>{" "}
           <Button
             onClick={() => {
               setDiscardModalOpen(false);
@@ -206,17 +221,11 @@ export default function ExcalidrawModal({
   const onChange = (
     els: ReadonlyArray<ExcalidrawElementFragment>,
     _: AppState,
-    fls: BinaryFiles,
+    fls: BinaryFiles
   ) => {
     setElements(els);
     setFiles(fls);
   };
-
-  // This is a hacky work-around for Excalidraw + Vite.
-  // In DEV, Vite pulls this in fine, in prod it doesn't. It seems
-  // like a module resolution issue with ESM vs CJS?
-  const _Excalidraw =
-    Excalidraw.$$typeof != null ? Excalidraw : Excalidraw.default;
 
   return createPortal(
     <div className="ExcalidrawModal__overlay" role="dialog">
@@ -226,11 +235,12 @@ export default function ExcalidrawModal({
         tabIndex={-1}>
         <div className="ExcalidrawModal__row">
           {discardModalOpen && <ShowDiscardDialog />}
-          <_Excalidraw
+          <Excalidraw
             onChange={onChange}
-            ref={excaliDrawSceneRef}
+            excalidrawAPI={excalidrawAPIRefCallback}
             initialData={{
-              appState: initialAppState || {isLoading: false},
+              appState: initialAppState || { isLoading: false },
+              // @ts-ignore
               elements: initialElements,
               files: initialFiles,
             }}
@@ -246,6 +256,6 @@ export default function ExcalidrawModal({
         </div>
       </div>
     </div>,
-    document.body,
+    document.body
   );
 }

@@ -11,10 +11,10 @@ import {
 } from "@/ui/components/ui/alert-dialog";
 import { Button } from "@/ui/components/ui/button";
 import { useToast } from "@/ui/components/ui/use-toast";
-import useConsultationStore from "@/stores/consultationStore";
 import { QueueListIcon } from "@heroicons/react/24/outline";
 import { useCallback } from "react";
 import { useMutation } from "@/lib/wundergraph";
+import { useBoltStore } from "@/stores/boltStore";
 
 function UnregisterButton({
   listId,
@@ -23,9 +23,9 @@ function UnregisterButton({
   listId: string;
   callBack: () => Promise<void>;
 }) {
-  const {
-    consultationState: { id: consultationId },
-  } = useConsultationStore();
+  const { id: consultationId } = useBoltStore(
+    (store) => store.consultationState
+  );
 
   const { toast } = useToast();
   const { trigger } = useMutation({

@@ -14,7 +14,7 @@ export class DocumentTemplateMinAggregate {
   @TypeGraphQL.Field(_type => EventTypes, {
     nullable: true
   })
-  eventType!: "DIAGNOSTIC" | "PRESCRIPTION" | null;
+  eventType!: "DIAGNOSTIC" | "PRESCRIPTION" | "GENERAL_SONO" | null;
 
   @TypeGraphQL.Field(_type => String, {
     nullable: true

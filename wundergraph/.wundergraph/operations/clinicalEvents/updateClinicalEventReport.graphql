@@ -1,0 +1,8 @@
+mutation ($id: String!, $report: String!) {
+  mainDb_updateOneClinicalEvent(
+    where: { id: $id }
+    data: { report: { set: $report } }
+  ) {
+    id
+  }
+}

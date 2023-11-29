@@ -9,7 +9,7 @@
 import "./Input.css";
 
 import * as React from "react";
-import { HTMLInputTypeAttribute } from "react";
+import type { HTMLInputTypeAttribute } from "react";
 
 type Props = Readonly<{
   "data-test-id"?: string;
@@ -18,7 +18,6 @@ type Props = Readonly<{
   placeholder?: string;
   value: string;
   type?: HTMLInputTypeAttribute;
-  className?: string;
 }>;
 
 export default function TextInput({
@@ -28,33 +27,20 @@ export default function TextInput({
   placeholder = "",
   "data-test-id": dataTestId,
   type = "text",
-  className,
 }: Props): JSX.Element {
   return (
-    <div className="sm:grid sm:grid-cols-3 sm:items-start sm:gap-2 sm:py-6">
-      <label
-        htmlFor="username"
-        className="block text-sm font-medium leading-8 text-gray-900 sm:pt-1.5"
-      >
-        {label}
-      </label>
-      <div className="mt-2 sm:col-span-2 sm:mt-0">
-        <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-200 sm:max-w-md">
-          <input
-            type={type}
-            className={
-              "block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" +
-              className
-            }
-            placeholder={placeholder}
-            value={value}
-            onChange={(e) => {
-              onChange(e.target.value);
-            }}
-            data-test-id={dataTestId}
-          />
-        </div>
-      </div>
+    <div className="Input__wrapper">
+      <label className="Input__label">{label}</label>
+      <input
+        type={type}
+        className="Input__input"
+        placeholder={placeholder}
+        value={value}
+        onChange={(e) => {
+          onChange(e.target.value);
+        }}
+        data-test-id={dataTestId}
+      />
     </div>
   );
 }

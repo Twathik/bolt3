@@ -14,7 +14,6 @@
   margin-bottom: 10px;
   justify-content: space-between;
   overflow: hidden;
-  color: black
 }
 
 .KatexEquationAlterer_dialogActions {
@@ -39,5 +38,4 @@
   width: 100%;
   resize: none;
   padding: 7px;
-  border: grey;
 }

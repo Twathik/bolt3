@@ -7,14 +7,8 @@
  */
 
 import * as React from "react";
-import {
-  ReactNode,
-  useCallback,
-  useEffect,
-  useMemo,
-  useRef,
-  useState,
-} from "react";
+import type { ReactNode } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 
 type DropDownContextType = {
@@ -58,8 +52,7 @@ export function DropDownItem({
       onClick={onClick}
       ref={ref}
       title={title}
-      type="button"
-    >
+      type="button">
       {children}
     </button>
   );
@@ -82,7 +75,7 @@ function DropDownItems({
     (itemRef: React.RefObject<HTMLButtonElement>) => {
       setItems((prev) => (prev ? [...prev, itemRef] : [itemRef]));
     },
-    [setItems],
+    [setItems]
   );
 
   const handleKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
@@ -114,7 +107,7 @@ function DropDownItems({
     () => ({
       registerItem,
     }),
-    [registerItem],
+    [registerItem]
   );
 
   useEffect(() => {
@@ -173,7 +166,7 @@ export default function DropDown({
       dropDown.style.top = `${top + button.offsetHeight + dropDownPadding}px`;
       dropDown.style.left = `${Math.min(
         left,
-        window.innerWidth - dropDown.offsetWidth - 20,
+        window.innerWidth - dropDown.offsetWidth - 20
       )}px`;
     }
   }, [dropDownRef, buttonRef, showDropDown]);
@@ -233,8 +226,7 @@ export default function DropDown({
         aria-label={buttonAriaLabel || buttonLabel}
         className={buttonClassName}
         onClick={() => setShowDropDown(!showDropDown)}
-        ref={buttonRef}
-      >
+        ref={buttonRef}>
         {buttonIconClassName && <span className={buttonIconClassName} />}
         {buttonLabel && (
           <span className="text dropdown-button-text">{buttonLabel}</span>
@@ -247,7 +239,7 @@ export default function DropDown({
           <DropDownItems dropDownRef={dropDownRef} onClose={handleClose}>
             {children}
           </DropDownItems>,
-          document.body,
+          document.body
         )}
     </>
   );

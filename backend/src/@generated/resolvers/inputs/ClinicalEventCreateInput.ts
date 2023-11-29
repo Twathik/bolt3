@@ -17,7 +17,7 @@ export class ClinicalEventCreateInput {
   @TypeGraphQL.Field(_type => EventTypes, {
     nullable: false
   })
-  eventType!: "DIAGNOSTIC" | "PRESCRIPTION";
+  eventType!: "DIAGNOSTIC" | "PRESCRIPTION" | "GENERAL_SONO";
 
   @TypeGraphQL.Field(_type => Date, {
     nullable: true

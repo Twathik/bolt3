@@ -1,4 +1,3 @@
-"use client";
 /**
  * Copyright (c) Meta Platforms, Inc. and affiliates.
  *
@@ -23,7 +22,8 @@ import { TabIndentationPlugin } from "@lexical/react/LexicalTabIndentationPlugin
 import { TablePlugin } from "@lexical/react/LexicalTablePlugin";
 import useLexicalEditable from "@lexical/react/useLexicalEditable";
 import { useEffect, useState } from "react";
-import { CAN_USE_DOM } from "./canUseDOM";
+import { CAN_USE_DOM } from "./shared/src/canUseDOM";
+
 import { useSettings } from "./context/SettingsContext";
 import { useSharedHistoryContext } from "./context/SharedHistoryContext";
 import TableCellNodes from "./nodes/TableCellNodes";
@@ -74,7 +74,6 @@ export default function Editor(): JSX.Element {
   const { historyState } = useSharedHistoryContext();
   const {
     settings: {
-      isCollab,
       isAutocomplete,
       isMaxLength,
       isCharLimit,
@@ -87,11 +86,8 @@ export default function Editor(): JSX.Element {
       tableCellBackgroundColor,
     },
   } = useSettings();
-
   const isEditable = useLexicalEditable();
-  const text = isCollab
-    ? "Enter some collaborative rich text..."
-    : isRichText
+  const text = isRichText
     ? "Enter some rich text..."
     : "Enter some plain text...";
   const placeholder = <Placeholder>{text}</Placeholder>;
@@ -139,23 +135,22 @@ export default function Editor(): JSX.Element {
       <div
         className={`editor-container ${showTreeView ? "tree-view" : ""} ${
           !isRichText ? "plain-text" : ""
-        } mx-auto`}>
+        }`}>
         {isMaxLength && <MaxLengthPlugin maxLength={30} />}
         <DragDropPaste />
         <AutoFocusPlugin />
         <ClearEditorPlugin />
         <ComponentPickerPlugin />
-        <AutoEmbedPlugin />
-        <MentionsPlugin />
         <EmojiPickerPlugin />
+        <AutoEmbedPlugin />
+
+        <MentionsPlugin />
         <EmojisPlugin />
         <HashtagPlugin />
         <KeywordsPlugin />
         <SpeechToTextPlugin />
         <AutoLinkPlugin />
-        {/* <CommentPlugin
-          providerFactory={isCollab ? createWebsocketProvider : undefined}
-        /> */}
+
         {isRichText ? (
           <>
             <HistoryPlugin externalHistoryState={historyState} />

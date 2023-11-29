@@ -7,6 +7,7 @@
  */
 
 export default function warnOnlyOnce(message: string) {
+  // @ts-ignore
   if (!__DEV__) {
     return;
   }

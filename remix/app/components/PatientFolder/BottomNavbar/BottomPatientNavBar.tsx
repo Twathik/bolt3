@@ -45,7 +45,7 @@ function BottomPatientNavBar({
                   onClick={previous}>
                   <ChevronDoubleLeftIcon className="w-6 h-6" />
                 </Button>
-                <div className="col-span-10 mx-2">
+                <div className="col-span-10 mx-2 flex flex-row gap-4">
                   {patientBottomMenu[menuPage].map((el) => (
                     <div key={el.id}>{el.button}</div>
                   ))}

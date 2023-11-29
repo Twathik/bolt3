@@ -18,8 +18,8 @@ import { Toaster } from "./ui/components/ui/toaster";
 import GlobalProgressBar from "./components/GeneralComponents/ProgressBar/GlobalProgressBar";
 import AppFloatingActionButton from "./components/GeneralComponents/FAB/AppFloatingActionButton";
 import { useSubscription } from "./lib/wundergraph";
-import useTabsStore from "./stores/tabsStore";
 import { useEffect } from "react";
+import { useBoltStore } from "./stores/boltStore";
 
 /* export const links: LinksFunction = () => [
   ...(cssBundleHref ? [{ rel: "stylesheet", href: cssBundleHref }] : []),
@@ -29,7 +29,7 @@ export default function App() {
   const { data } = useSubscription({
     operationName: "global/closeAllTabsSubscription",
   });
-  const { closeTabs } = useTabsStore();
+  const closeTabs = useBoltStore((store) => store.closeTabs);
 
   useEffect(() => {
     if (data) closeTabs();

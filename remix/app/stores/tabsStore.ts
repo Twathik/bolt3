@@ -1,27 +1,24 @@
-import { create } from "zustand";
-import { immer } from "zustand/middleware/immer";
+import type { StateCreator } from "zustand";
+import type { TabStoreSlice, boltStoreType } from "./boltStoreType";
 
-type tabStore = {
-  tabs: any[];
-  closeTabs: () => void;
-  addTab: (tab: any) => void;
-};
+const createTabSlice: StateCreator<
+  boltStoreType,
+  [["zustand/immer", never], never],
+  [],
+  TabStoreSlice
+> = (set) => ({
+  tabs: [],
+  closeTabs: () => {
+    set((state) => {
+      state.tabs.forEach((tab) => tab.close());
+      state.tabs = [];
+    });
+  },
+  addTab: (tab) => {
+    set((state) => {
+      state.tabs.push(tab);
+    });
+  },
+});
 
-const useTabsStore = create<tabStore>()(
-  immer<tabStore>((set) => ({
-    tabs: [],
-    closeTabs: () => {
-      set((state) => {
-        state.tabs.forEach((tab) => tab.close());
-        state.tabs = [];
-      });
-    },
-    addTab: (tab) => {
-      set((state) => {
-        state.tabs.push(tab);
-      });
-    },
-  }))
-);
-
-export default useTabsStore;
+export default createTabSlice;

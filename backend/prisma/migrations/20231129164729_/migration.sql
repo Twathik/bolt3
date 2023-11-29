@@ -1,0 +1,2 @@
+-- AlterEnum
+ALTER TYPE "EventTypes" ADD VALUE 'GENERAL_SONO';

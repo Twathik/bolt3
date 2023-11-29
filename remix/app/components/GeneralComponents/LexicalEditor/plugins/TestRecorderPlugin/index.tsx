@@ -1,4 +1,3 @@
-"use client";
 /**
  * Copyright (c) Meta Platforms, Inc. and affiliates.
  *
@@ -43,7 +42,7 @@ const download = (filename: string, text: string | null) => {
   const a = document.createElement("a");
   a.setAttribute(
     "href",
-    "data:text/plain;charset=utf-8," + encodeURIComponent(text || ""),
+    "data:text/plain;charset=utf-8," + encodeURIComponent(text || "")
   );
   a.setAttribute("download", filename);
   a.style.display = "none";
@@ -124,8 +123,8 @@ function getPathFromNodeToEditor(node: Node, rootElement: HTMLElement | null) {
     if (currentNode !== null && currentNode !== undefined) {
       path.unshift(
         Array.from(currentNode?.parentNode?.childNodes ?? []).indexOf(
-          currentNode as ChildNode,
-        ),
+          currentNode as ChildNode
+        )
       );
     }
     currentNode = currentNode?.parentNode;
@@ -145,6 +144,7 @@ const keyPresses = new Set([
 ]);
 
 type Step = {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   value: any;
   count: number;
   name: string;
@@ -153,7 +153,7 @@ type Step = {
 type Steps = Step[];
 
 function useTestRecorder(
-  editor: LexicalEditor,
+  editor: LexicalEditor
 ): [JSX.Element, JSX.Element | null] {
   const [steps, setSteps] = useState<Steps>([]);
   const [isRecording, setIsRecording] = useState(false);
@@ -246,7 +246,7 @@ ${steps.map(formatStep).join(`\n`)}
         return [...currentSteps, { count: 1, name, value }];
       });
     },
-    [steps, setSteps],
+    [steps, setSteps]
   );
 
   useLayoutEffect(() => {
@@ -279,7 +279,7 @@ ${steps.map(formatStep).join(`\n`)}
     return editor.registerRootListener(
       (
         rootElement: null | HTMLElement,
-        prevRootElement: null | HTMLElement,
+        prevRootElement: null | HTMLElement
       ) => {
         if (prevRootElement !== null) {
           prevRootElement.removeEventListener("keydown", onKeyDown);
@@ -289,7 +289,7 @@ ${steps.map(formatStep).join(`\n`)}
           rootElement.addEventListener("keydown", onKeyDown);
           rootElement.addEventListener("keyup", onKeyUp);
         }
-      },
+      }
     );
   }, [editor, isRecording, pushStep]);
 
@@ -342,7 +342,7 @@ ${steps.map(formatStep).join(`\n`)}
         if (testContent !== null) {
           setTemplatedTest(testContent);
         }
-      },
+      }
     );
     return removeUpdateListener;
   }, [editor, generateTestContent, isRecording, pushStep]);
@@ -376,7 +376,7 @@ ${steps.map(formatStep).join(`\n`)}
       }
       setIsRecording((currentIsRecording) => !currentIsRecording);
     },
-    [isRecording],
+    [isRecording]
   );
 
   const onSnapshotClick = useCallback(() => {

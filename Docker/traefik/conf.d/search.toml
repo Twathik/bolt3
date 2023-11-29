@@ -9,4 +9,4 @@ service = "search"
 [http.services.search]
 [http.services.search.loadBalancer]
 [[http.services.search.loadBalancer.servers]]
-url = "http://100.74.3.18:8108"
+url = "http://host.docker.internal:8108"
