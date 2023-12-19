@@ -14,4 +14,9 @@ export class SettingAvgAggregate {
     nullable: true
   })
   allowedMobileDevices_secretary!: number | null;
+
+  @TypeGraphQL.Field(_type => TypeGraphQL.Float, {
+    nullable: true
+  })
+  allowedDICOMmodalities!: number | null;
 }

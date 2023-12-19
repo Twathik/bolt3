@@ -13,8 +13,6 @@ export class MoveFolderToTrash {
   async movePatientFolderToTrash(
     @TypeGraphQL.Ctx() ctx: Context,
     @TypeGraphQL.Args() args: MovePatientFolderToTrash,
-    @TypeGraphQL.PubSub('GET_UPDATED_PATIENT')
-    publish: TypeGraphQL.Publisher<string>,
     @TypeGraphQL.PubSub('EMPTY_TRASH')
     notify: TypeGraphQL.Publisher<string>,
   ): Promise<Patient | null> {
@@ -25,20 +23,25 @@ export class MoveFolderToTrash {
       })
 
       if (args.onTrash) {
-        await RemoveTypesenseDocument({
-          index: 'patients',
-          id: patient.id,
-          typesense: ctx.typesense,
-        })
+        await Promise.all([
+          RemoveTypesenseDocument({
+            index: 'patients',
+            id: patient.id,
+            typesense: ctx.typesense,
+          }),
+          notify('empty'),
+        ])
       } else {
-        await createTypesenseDocuments({
-          index: 'patients',
-          typesense: ctx.typesense,
-          documents: [patient],
-        })
+        Promise.all([
+          createTypesenseDocuments({
+            index: 'patients',
+            typesense: ctx.typesense,
+            documents: [patient],
+          }),
+          notify('empty'),
+        ])
       }
-      publish(args.id)
-      notify('empty')
+
       return patient
     } catch (error) {
       console.log({ error })

@@ -1,0 +1,5 @@
+mutation ($id: String!) {
+  mainDb_deleteOneWorkingList(where: { id: $id }) {
+    id
+  }
+}

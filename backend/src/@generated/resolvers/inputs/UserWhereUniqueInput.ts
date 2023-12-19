@@ -5,9 +5,12 @@ import { DecimalJSScalar } from "../../scalars";
 import { ClinicalEventListRelationFilter } from "../inputs/ClinicalEventListRelationFilter";
 import { DateTimeFilter } from "../inputs/DateTimeFilter";
 import { EnumRoleFilter } from "../inputs/EnumRoleFilter";
+import { IntNullableFilter } from "../inputs/IntNullableFilter";
+import { StringFilter } from "../inputs/StringFilter";
 import { StringNullableFilter } from "../inputs/StringNullableFilter";
 import { StringNullableListFilter } from "../inputs/StringNullableListFilter";
 import { UserWhereInput } from "../inputs/UserWhereInput";
+import { WorkingListListRelationFilter } from "../inputs/WorkingListListRelationFilter";
 
 @TypeGraphQL.InputType("UserWhereUniqueInput", {})
 export class UserWhereUniqueInput {
@@ -76,10 +79,15 @@ export class UserWhereUniqueInput {
   })
   lastConnection?: DateTimeFilter | undefined;
 
-  @TypeGraphQL.Field(_type => StringNullableFilter, {
+  @TypeGraphQL.Field(_type => IntNullableFilter, {
     nullable: true
   })
-  typesenseApiKey?: StringNullableFilter | undefined;
+  searchApiKeyId?: IntNullableFilter | undefined;
+
+  @TypeGraphQL.Field(_type => StringFilter, {
+    nullable: true
+  })
+  searchApiKey?: StringFilter | undefined;
 
   @TypeGraphQL.Field(_type => DateTimeFilter, {
     nullable: true
@@ -90,4 +98,9 @@ export class UserWhereUniqueInput {
     nullable: true
   })
   ClinicalEvent?: ClinicalEventListRelationFilter | undefined;
+
+  @TypeGraphQL.Field(_type => WorkingListListRelationFilter, {
+    nullable: true
+  })
+  WorkingList?: WorkingListListRelationFilter | undefined;
 }

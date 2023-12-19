@@ -5,7 +5,7 @@ export default configureWunderGraphOperations<OperationsConfiguration>({
   operations: {
     defaultConfig: {
       authentication: {
-        required: false,
+        required: true,
       },
     },
     queries: (config) => ({
@@ -17,8 +17,8 @@ export default configureWunderGraphOperations<OperationsConfiguration>({
         public: true,
       },
       liveQuery: {
-        enable: true,
-        pollingIntervalSeconds: 1,
+        enable: false,
+        pollingIntervalSeconds: 5,
       },
     }),
     mutations: (config) => ({
@@ -30,7 +30,7 @@ export default configureWunderGraphOperations<OperationsConfiguration>({
     custom: {
       MobileDevicesRegisterOneMobileDevice: (config) => ({
         ...config,
-        authentication: { required: false },
+        authentication: { required: true },
       }),
     },
   },

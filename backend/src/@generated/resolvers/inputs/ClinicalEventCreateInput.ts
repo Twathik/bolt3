@@ -5,6 +5,7 @@ import { DecimalJSScalar } from "../../scalars";
 import { PatientCreateNestedOneWithoutClinicalEventInput } from "../inputs/PatientCreateNestedOneWithoutClinicalEventInput";
 import { PrescriptionCreateNestedOneWithoutClinicalEventInput } from "../inputs/PrescriptionCreateNestedOneWithoutClinicalEventInput";
 import { UserCreateNestedOneWithoutClinicalEventInput } from "../inputs/UserCreateNestedOneWithoutClinicalEventInput";
+import { WorkingListCreateNestedManyWithoutClinicalEventInput } from "../inputs/WorkingListCreateNestedManyWithoutClinicalEventInput";
 import { EventTypes } from "../../enums/EventTypes";
 
 @TypeGraphQL.InputType("ClinicalEventCreateInput", {})
@@ -83,4 +84,9 @@ export class ClinicalEventCreateInput {
     nullable: true
   })
   Prescription?: PrescriptionCreateNestedOneWithoutClinicalEventInput | undefined;
+
+  @TypeGraphQL.Field(_type => WorkingListCreateNestedManyWithoutClinicalEventInput, {
+    nullable: true
+  })
+  WorkingList?: WorkingListCreateNestedManyWithoutClinicalEventInput | undefined;
 }

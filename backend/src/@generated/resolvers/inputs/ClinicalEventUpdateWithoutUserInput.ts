@@ -9,6 +9,7 @@ import { NullableStringFieldUpdateOperationsInput } from "../inputs/NullableStri
 import { PatientUpdateOneRequiredWithoutClinicalEventNestedInput } from "../inputs/PatientUpdateOneRequiredWithoutClinicalEventNestedInput";
 import { PrescriptionUpdateOneWithoutClinicalEventNestedInput } from "../inputs/PrescriptionUpdateOneWithoutClinicalEventNestedInput";
 import { StringFieldUpdateOperationsInput } from "../inputs/StringFieldUpdateOperationsInput";
+import { WorkingListUpdateManyWithoutClinicalEventNestedInput } from "../inputs/WorkingListUpdateManyWithoutClinicalEventNestedInput";
 
 @TypeGraphQL.InputType("ClinicalEventUpdateWithoutUserInput", {})
 export class ClinicalEventUpdateWithoutUserInput {
@@ -81,4 +82,9 @@ export class ClinicalEventUpdateWithoutUserInput {
     nullable: true
   })
   Prescription?: PrescriptionUpdateOneWithoutClinicalEventNestedInput | undefined;
+
+  @TypeGraphQL.Field(_type => WorkingListUpdateManyWithoutClinicalEventNestedInput, {
+    nullable: true
+  })
+  WorkingList?: WorkingListUpdateManyWithoutClinicalEventNestedInput | undefined;
 }

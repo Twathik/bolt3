@@ -1,11 +1,12 @@
 import MobileDevicesIndex from "@/components/AdminPanelComponents/MobileDevicesComponents/MobileDevicesIndex";
+import InitialLoadingError from "@/components/GeneralComponents/InitialLoadingError/InitialLoadingError";
 import type { MobileDevicesMobileDevicesQueryResponseData } from "@/components/generated/models";
-import createClientFromCookiesAndCheckUser from "@/lib/checkUser.server";
-import type { LoaderFunctionArgs } from "@remix-run/node";
+import createClient from "@/lib/createClient";
+import { redirect, type LoaderFunctionArgs } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
 
 export async function loader({ request }: LoaderFunctionArgs) {
-  const client = await createClientFromCookiesAndCheckUser(request);
+  const client = await createClient(request);
   try {
     const getMobileDevices = await client.query({
       operationName: "mobileDevices/MobileDevicesQuery",
@@ -14,6 +15,7 @@ export async function loader({ request }: LoaderFunctionArgs) {
 
     return getMobileDevices.data?.mainDb_mobileDevices;
   } catch (error) {
+    if ((error as any).code === "NoUserError") throw redirect("/login");
     return null;
   }
 }
@@ -23,5 +25,13 @@ export default function MobileDevices() {
     useLoaderData<
       MobileDevicesMobileDevicesQueryResponseData["mainDb_mobileDevices"]
     >();
-  return <MobileDevicesIndex data={data} />;
+  if (!data)
+    return (
+      <InitialLoadingError msg="La liste des appareils mobiles n'a pas pu être réccupérée" />
+    );
+  return (
+    <main className="min-h-screen">
+      <MobileDevicesIndex data={data} />
+    </main>
+  );
 }

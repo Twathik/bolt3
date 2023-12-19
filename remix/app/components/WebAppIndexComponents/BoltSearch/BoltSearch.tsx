@@ -1,5 +1,4 @@
 import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
-import { useMutation } from "@/lib/wundergraph";
 import { useCallback, useEffect, useState } from "react";
 import { Input } from "@/ui/components/ui/input";
 import BoltSearchSkeleton from "@/components/GeneralComponents/AppUi/BoltSearchSkeleton";
@@ -13,42 +12,62 @@ import {
 } from "@/ui/components/ui/accordion";
 import { Label } from "@/ui/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/ui/components/ui/radio-group";
-
-interface searchInput {
-  query_string: string;
-  limit_hits?: number;
-  page?: number;
-  per_page?: number;
-  sexe?: "M" | "F";
-}
+import { useBoltStore } from "@/stores/boltStore";
+import createTypesenseClient from "@/lib/typesense/typesense";
+import type {
+  patientSearchInput,
+  patientSearchResponse,
+} from "@/lib/typesense/searchPatient";
+import searchPatient from "@/lib/typesense/searchPatient";
+import { useToast } from "@/ui/components/ui/use-toast";
 
 const BoltSearch = () => {
-  const { data, trigger, isMutating } = useMutation({
-    operationName: "patients/search_patients",
-  });
+  const user = useBoltStore((store) => store.user);
   const [page, setPage] = useState(1);
   const [queryString, setQueryString] = useState<string | null>(null);
   const [sex, setSex] = useState<"M" | "F" | null>(null);
+  const [loading, setLoading] = useState(false);
+  const [searchData, setSearchData] = useState<
+    patientSearchResponse | undefined
+  >();
+  const { toast } = useToast();
 
   useEffect(() => {
     let req = true;
 
     if (queryString !== null) {
+      setLoading(true);
+      const client = createTypesenseClient(user.searchApiKey);
+
       const search = async () => {
-        const inputs: searchInput = {
+        const searchParams: patientSearchInput = {
           query_string: queryString,
           page,
           limit_hits: 100,
         };
-        if (sex !== null) inputs.sexe = sex;
-        if (req) await trigger(inputs);
+        if (sex !== null) searchParams.sexe = sex;
+        if (req) {
+          const data = await searchPatient({ client, searchParams });
+          setSearchData(data);
+        }
+        setLoading(false);
       };
-      search();
+      try {
+        search();
+      } catch (error) {
+        toast({
+          title: "Une erreur a survenue",
+          description:
+            "La recherche n'a pa pu s'effectuer, veuillez rafraichir la page puis recommancer",
+          variant: "destructive",
+        });
+        setLoading(false);
+      }
     }
     return () => {
       req = false;
     };
-  }, [page, queryString, sex, trigger]);
+  }, [page, queryString, sex, toast, user.searchApiKey]);
 
   const onChange = useCallback(
     async (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -95,10 +114,14 @@ const BoltSearch = () => {
       </Accordion>
 
       <div className="w-full flex flex-col">
-        {isMutating ? (
+        {loading ? (
           <BoltSearchSkeleton />
-        ) : data !== undefined ? (
-          <BoltSearchPagination data={data} setPage={setPage} page={page} />
+        ) : searchData !== undefined ? (
+          <BoltSearchPagination
+            data={searchData}
+            setPage={setPage}
+            page={page}
+          />
         ) : (
           <></>
         )}

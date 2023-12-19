@@ -1,0 +1,21 @@
+mutation (
+  $id: String!
+  $modalityPseudo: String!
+  $modalityAETitle: String!
+  $modalityIpAddress: String!
+  $modalityPort: Int!
+  $modalityType: mainDb_ModalityType!
+) {
+  mainDb_updateOneModality(
+    where: { id: $id, deleted: { equals: false }, activated: { equals: true } }
+    data: {
+      modalityAETitle: { set: $modalityAETitle }
+      modalityPseudo: { set: $modalityPseudo }
+      modalityIpAddress: { set: $modalityIpAddress }
+      modalityPort: { set: $modalityPort }
+      modalityType: { set: $modalityType }
+    }
+  ) {
+    ...ModalityFragment
+  }
+}

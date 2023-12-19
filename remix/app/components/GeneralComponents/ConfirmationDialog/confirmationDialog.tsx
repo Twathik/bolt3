@@ -20,6 +20,7 @@ interface confirmationDialogProps {
   confirmButtonTitle?: string;
   showValidationButton?: boolean;
   cancelButtonTitle?: string;
+  disableConfirmation?: boolean;
 }
 function ConfirmationDialog({
   triggerButton,
@@ -29,6 +30,7 @@ function ConfirmationDialog({
   callback,
   showValidationButton = true,
   cancelButtonTitle = "Annuler",
+  disableConfirmation = false,
 }: confirmationDialogProps) {
   return (
     <AlertDialog>
@@ -41,7 +43,9 @@ function ConfirmationDialog({
         <AlertDialogFooter>
           <AlertDialogCancel>{cancelButtonTitle}</AlertDialogCancel>
           {showValidationButton && (
-            <AlertDialogAction onClick={callback}>
+            <AlertDialogAction
+              disabled={disableConfirmation}
+              onClick={callback}>
               {confirmButtonTitle}
             </AlertDialogAction>
           )}

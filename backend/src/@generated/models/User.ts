@@ -3,6 +3,7 @@ import * as GraphQLScalars from "graphql-scalars";
 import { Prisma } from "@prisma/client";
 import { DecimalJSScalar } from "../scalars";
 import { ClinicalEvent } from "../models/ClinicalEvent";
+import { WorkingList } from "../models/WorkingList";
 import { Role } from "../enums/Role";
 import { UserCount } from "../resolvers/outputs/UserCount";
 
@@ -58,10 +59,15 @@ export class User {
   })
   lastConnection!: Date;
 
-  @TypeGraphQL.Field(_type => String, {
+  @TypeGraphQL.Field(_type => TypeGraphQL.Int, {
     nullable: true
   })
-  typesenseApiKey?: string | null;
+  searchApiKeyId?: number | null;
+
+  @TypeGraphQL.Field(_type => String, {
+    nullable: false
+  })
+  searchApiKey!: string;
 
   @TypeGraphQL.Field(_type => Date, {
     nullable: false
@@ -69,6 +75,8 @@ export class User {
   createdAt!: Date;
 
   ClinicalEvent?: ClinicalEvent[];
+
+  WorkingList?: WorkingList[];
 
   @TypeGraphQL.Field(_type => UserCount, {
     nullable: true

@@ -1,0 +1,14 @@
+export { AggregateEconomizerArgs } from "./AggregateEconomizerArgs";
+export { CreateManyEconomizerArgs } from "./CreateManyEconomizerArgs";
+export { CreateOneEconomizerArgs } from "./CreateOneEconomizerArgs";
+export { DeleteManyEconomizerArgs } from "./DeleteManyEconomizerArgs";
+export { DeleteOneEconomizerArgs } from "./DeleteOneEconomizerArgs";
+export { FindFirstEconomizerArgs } from "./FindFirstEconomizerArgs";
+export { FindFirstEconomizerOrThrowArgs } from "./FindFirstEconomizerOrThrowArgs";
+export { FindManyEconomizerArgs } from "./FindManyEconomizerArgs";
+export { FindUniqueEconomizerArgs } from "./FindUniqueEconomizerArgs";
+export { FindUniqueEconomizerOrThrowArgs } from "./FindUniqueEconomizerOrThrowArgs";
+export { GroupByEconomizerArgs } from "./GroupByEconomizerArgs";
+export { UpdateManyEconomizerArgs } from "./UpdateManyEconomizerArgs";
+export { UpdateOneEconomizerArgs } from "./UpdateOneEconomizerArgs";
+export { UpsertOneEconomizerArgs } from "./UpsertOneEconomizerArgs";

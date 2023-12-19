@@ -19,4 +19,9 @@ export class Setting {
     nullable: false
   })
   allowedMobileDevices_secretary!: number;
+
+  @TypeGraphQL.Field(_type => TypeGraphQL.Int, {
+    nullable: false
+  })
+  allowedDICOMmodalities!: number;
 }

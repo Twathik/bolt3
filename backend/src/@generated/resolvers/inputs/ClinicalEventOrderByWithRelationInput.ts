@@ -6,6 +6,7 @@ import { PatientOrderByWithRelationInput } from "../inputs/PatientOrderByWithRel
 import { PrescriptionOrderByWithRelationInput } from "../inputs/PrescriptionOrderByWithRelationInput";
 import { SortOrderInput } from "../inputs/SortOrderInput";
 import { UserOrderByWithRelationInput } from "../inputs/UserOrderByWithRelationInput";
+import { WorkingListOrderByRelationAggregateInput } from "../inputs/WorkingListOrderByRelationAggregateInput";
 import { SortOrder } from "../../enums/SortOrder";
 
 @TypeGraphQL.InputType("ClinicalEventOrderByWithRelationInput", {})
@@ -94,4 +95,9 @@ export class ClinicalEventOrderByWithRelationInput {
     nullable: true
   })
   Prescription?: PrescriptionOrderByWithRelationInput | undefined;
+
+  @TypeGraphQL.Field(_type => WorkingListOrderByRelationAggregateInput, {
+    nullable: true
+  })
+  WorkingList?: WorkingListOrderByRelationAggregateInput | undefined;
 }

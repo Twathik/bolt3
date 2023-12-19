@@ -57,10 +57,15 @@ export class UserCreateManyInput {
   })
   lastConnection?: Date | undefined;
 
+  @TypeGraphQL.Field(_type => TypeGraphQL.Int, {
+    nullable: true
+  })
+  searchApiKeyId?: number | undefined;
+
   @TypeGraphQL.Field(_type => String, {
     nullable: true
   })
-  typesenseApiKey?: string | undefined;
+  searchApiKey?: string | undefined;
 
   @TypeGraphQL.Field(_type => Date, {
     nullable: true

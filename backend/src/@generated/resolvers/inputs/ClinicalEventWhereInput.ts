@@ -10,6 +10,7 @@ import { PrescriptionNullableRelationFilter } from "../inputs/PrescriptionNullab
 import { StringFilter } from "../inputs/StringFilter";
 import { StringNullableFilter } from "../inputs/StringNullableFilter";
 import { UserRelationFilter } from "../inputs/UserRelationFilter";
+import { WorkingListListRelationFilter } from "../inputs/WorkingListListRelationFilter";
 
 @TypeGraphQL.InputType("ClinicalEventWhereInput", {})
 export class ClinicalEventWhereInput {
@@ -112,4 +113,9 @@ export class ClinicalEventWhereInput {
     nullable: true
   })
   Prescription?: PrescriptionNullableRelationFilter | undefined;
+
+  @TypeGraphQL.Field(_type => WorkingListListRelationFilter, {
+    nullable: true
+  })
+  WorkingList?: WorkingListListRelationFilter | undefined;
 }

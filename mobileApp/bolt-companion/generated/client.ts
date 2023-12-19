@@ -22,11 +22,69 @@ import type { OperationErrors } from "./ts-operation-errors";
 
 import type { PublicCustomClaims } from "./claims";
 import type {
+	AppSubscriptionGlobalSubscriptionResponse,
+	AppSubscriptionGlobalSubscriptionResponseData,
+	AppSubscriptionTriggerAppSubscriptionResponse,
+	AppSubscriptionTriggerAppSubscriptionInput,
+	AppSubscriptionTriggerAppSubscriptionResponseData,
 	CountriesResponse,
 	CountriesInput,
 	CountriesResponseData,
+	DataTableGetDataTableConfigurationsResponse,
+	DataTableGetDataTableConfigurationsInput,
+	DataTableGetDataTableConfigurationsResponseData,
+	DataTableInsertDataSubscriptionResponse,
+	DataTableInsertDataSubscriptionInput,
+	DataTableInsertDataSubscriptionResponseData,
+	DataTableTriggerInsertDataSubscriptionResponse,
+	DataTableTriggerInsertDataSubscriptionInput,
+	DataTableTriggerInsertDataSubscriptionResponseData,
 	DrugsIndexDrugsResponse,
 	DrugsIndexDrugsResponseData,
+	EconomizersCreateEconomizerResponse,
+	EconomizersCreateEconomizerInput,
+	EconomizersCreateEconomizerResponseData,
+	EconomizersDeleteEconomizerResponse,
+	EconomizersDeleteEconomizerInput,
+	EconomizersDeleteEconomizerResponseData,
+	EconomizersEconomizerTemplateResponse,
+	EconomizersEconomizerTemplateInput,
+	EconomizersEconomizerTemplateResponseData,
+	EconomizersEconomizersResponse,
+	EconomizersEconomizersInput,
+	EconomizersEconomizersResponseData,
+	EconomizersUpdateEconomizerResponse,
+	EconomizersUpdateEconomizerInput,
+	EconomizersUpdateEconomizerResponseData,
+	ModalityGetOneModalityResponse,
+	ModalityGetOneModalityInput,
+	ModalityGetOneModalityResponseData,
+	ModalityGetSpecificModalitiesResponse,
+	ModalityGetSpecificModalitiesInput,
+	ModalityGetSpecificModalitiesResponseData,
+	ModalityModalitiesResponse,
+	ModalityModalitiesResponseData,
+	ModalitySwitchModalityResponse,
+	ModalitySwitchModalityInput,
+	ModalitySwitchModalityResponseData,
+	ModalityUpdateOneModalityResponse,
+	ModalityUpdateOneModalityInput,
+	ModalityUpdateOneModalityResponseData,
+	WorkingListsCreateOneWorkingListResponse,
+	WorkingListsCreateOneWorkingListInput,
+	WorkingListsCreateOneWorkingListResponseData,
+	WorkingListsDeleteOneWorkingListResponse,
+	WorkingListsDeleteOneWorkingListInput,
+	WorkingListsDeleteOneWorkingListResponseData,
+	WorkingListsLinkWorkingListResponse,
+	WorkingListsLinkWorkingListInput,
+	WorkingListsLinkWorkingListResponseData,
+	WorkingListsToggleLockWorkingListResponse,
+	WorkingListsToggleLockWorkingListInput,
+	WorkingListsToggleLockWorkingListResponseData,
+	WorkingListsWorkingListsResponse,
+	WorkingListsWorkingListsInput,
+	WorkingListsWorkingListsResponseData,
 	ClinicalDiagnosticsIndexClinicalDiagnosticResponse,
 	ClinicalDiagnosticsIndexClinicalDiagnosticResponseData,
 	ClinicalEventsCreateOneClinicalEventResponse,
@@ -38,6 +96,9 @@ import type {
 	ClinicalEventsGetClinicalEventResponse,
 	ClinicalEventsGetClinicalEventInput,
 	ClinicalEventsGetClinicalEventResponseData,
+	ClinicalEventsGetClinicalEventWithConfigurationResponse,
+	ClinicalEventsGetClinicalEventWithConfigurationInput,
+	ClinicalEventsGetClinicalEventWithConfigurationResponseData,
 	ClinicalEventsGetClinicalEventsResponse,
 	ClinicalEventsGetClinicalEventsInput,
 	ClinicalEventsGetClinicalEventsResponseData,
@@ -47,9 +108,6 @@ import type {
 	ClinicalEventsUpdateClinicalEventReportResponse,
 	ClinicalEventsUpdateClinicalEventReportInput,
 	ClinicalEventsUpdateClinicalEventReportResponseData,
-	ClinicalEventsUpdateClinicalEventsSubscriptionResponse,
-	ClinicalEventsUpdateClinicalEventsSubscriptionInput,
-	ClinicalEventsUpdateClinicalEventsSubscriptionResponseData,
 	ConsultationListCheckIfRegistredResponse,
 	ConsultationListCheckIfRegistredInput,
 	ConsultationListCheckIfRegistredResponseData,
@@ -62,18 +120,11 @@ import type {
 	ConsultationListUnregisterPatientResponse,
 	ConsultationListUnregisterPatientInput,
 	ConsultationListUnregisterPatientResponseData,
-	GlobalCloseAllTabsMutationResponse,
-	GlobalCloseAllTabsMutationInput,
-	GlobalCloseAllTabsMutationResponseData,
-	GlobalCloseAllTabsSubscriptionResponse,
-	GlobalCloseAllTabsSubscriptionResponseData,
 	MobileDevicesMobileDevicesQueryResponse,
 	MobileDevicesMobileDevicesQueryResponseData,
 	MobileDevicesAddMobileDeviceMutationResponse,
 	MobileDevicesAddMobileDeviceMutationInput,
 	MobileDevicesAddMobileDeviceMutationResponseData,
-	MobileDevicesGetAllDevicesSubscriptionResponse,
-	MobileDevicesGetAllDevicesSubscriptionResponseData,
 	MobileDevicesRegisterOneMobileDeviceResponse,
 	MobileDevicesRegisterOneMobileDeviceInput,
 	MobileDevicesRegisterOneMobileDeviceResponseData,
@@ -86,8 +137,6 @@ import type {
 	MobileDevicesSwitchMobileDeviceResponse,
 	MobileDevicesSwitchMobileDeviceInput,
 	MobileDevicesSwitchMobileDeviceResponseData,
-	MobileDevicesTriggerGetAllMobileDevicesSubscriptionResponse,
-	MobileDevicesTriggerGetAllMobileDevicesSubscriptionResponseData,
 	MobileDevicesUpdateMobileDeviceExpirationResponse,
 	MobileDevicesUpdateMobileDeviceExpirationInput,
 	MobileDevicesUpdateMobileDeviceExpirationResponseData,
@@ -97,20 +146,13 @@ import type {
 	PatientsAdd_One_patient_to_indexResponse,
 	PatientsAdd_One_patient_to_indexInput,
 	PatientsAdd_One_patient_to_indexResponseData,
-	PatientsEmptyTrashResponse,
-	PatientsEmptyTrashResponseData,
 	PatientsGetOnTrashPatientsResponse,
 	PatientsGetOnTrashPatientsResponseData,
 	PatientsGetOnePatientResponse,
 	PatientsGetOnePatientInput,
 	PatientsGetOnePatientResponseData,
-	PatientsGetUpdatedPatientSubscriptionResponse,
-	PatientsGetUpdatedPatientSubscriptionInput,
-	PatientsGetUpdatedPatientSubscriptionResponseData,
 	PatientsIndex_patientsResponse,
 	PatientsIndex_patientsResponseData,
-	PatientsOnTrashFoldersSubscriptionResponse,
-	PatientsOnTrashFoldersSubscriptionResponseData,
 	PatientsToggleSelectedTrashPatientResponse,
 	PatientsToggleSelectedTrashPatientInput,
 	PatientsToggleSelectedTrashPatientResponseData,
@@ -125,18 +167,14 @@ import type {
 	TemplatesUpdateTemplateResponse,
 	TemplatesUpdateTemplateInput,
 	TemplatesUpdateTemplateResponseData,
-	AbbreviationsSearchAbreviationResponse,
-	AbbreviationsSearchAbreviationInput,
-	AbbreviationsSearchAbreviationResponseData,
-	DrugsSearchDrugsResponse,
-	DrugsSearchDrugsInput,
-	DrugsSearchDrugsResponseData,
-	ClinicalDiagnosticsSearchClinicalDiagnosticsResponse,
-	ClinicalDiagnosticsSearchClinicalDiagnosticsInput,
-	ClinicalDiagnosticsSearchClinicalDiagnosticsResponseData,
-	PatientsSearch_patientsResponse,
-	PatientsSearch_patientsInput,
-	PatientsSearch_patientsResponseData,
+	UsersGetUserResponse,
+	UsersGetUserResponseData,
+	WorkingListsLinkExamResponse,
+	WorkingListsLinkExamInput,
+	WorkingListsLinkExamResponseData,
+	WorkingListsRefreshLinkExamResponse,
+	WorkingListsRefreshLinkExamInput,
+	WorkingListsRefreshLinkExamResponseData,
 	UsersGetResponse,
 	UsersGetResponseData,
 	UsersSubscribeResponse,
@@ -209,146 +247,182 @@ export interface AuthProvider {
 }
 
 export const defaultClientConfig: ClientConfig = {
-	applicationHash: "20db8a2f",
+	applicationHash: "a84681ef",
 	baseURL: "http://api.bolt3.local",
-	sdkVersion: "0.179.2",
+	sdkVersion: "0.181.5",
 };
 
 export const operationMetadata: OperationMetadata = {
+	"AppSubscription/globalSubscription": {
+		requiresAuthentication: true,
+	},
+	"AppSubscription/triggerAppSubscription": {
+		requiresAuthentication: true,
+	},
 	Countries: {
-		requiresAuthentication: false,
+		requiresAuthentication: true,
+	},
+	"DataTable/getDataTableConfigurations": {
+		requiresAuthentication: true,
+	},
+	"DataTable/insertDataSubscription": {
+		requiresAuthentication: true,
+	},
+	"DataTable/triggerInsertDataSubscription": {
+		requiresAuthentication: true,
 	},
 	"Drugs/indexDrugs": {
-		requiresAuthentication: false,
+		requiresAuthentication: true,
+	},
+	"Economizers/createEconomizer": {
+		requiresAuthentication: true,
+	},
+	"Economizers/deleteEconomizer": {
+		requiresAuthentication: true,
+	},
+	"Economizers/economizerTemplate": {
+		requiresAuthentication: true,
+	},
+	"Economizers/economizers": {
+		requiresAuthentication: true,
+	},
+	"Economizers/updateEconomizer": {
+		requiresAuthentication: true,
+	},
+	"Modality/getOneModality": {
+		requiresAuthentication: true,
+	},
+	"Modality/getSpecificModalities": {
+		requiresAuthentication: true,
+	},
+	"Modality/modalities": {
+		requiresAuthentication: true,
+	},
+	"Modality/switchModality": {
+		requiresAuthentication: true,
+	},
+	"Modality/updateOneModality": {
+		requiresAuthentication: true,
+	},
+	"WorkingLists/createOneWorkingList": {
+		requiresAuthentication: true,
+	},
+	"WorkingLists/deleteOneWorkingList": {
+		requiresAuthentication: true,
+	},
+	"WorkingLists/linkWorkingList": {
+		requiresAuthentication: true,
+	},
+	"WorkingLists/toggleLockWorkingList": {
+		requiresAuthentication: true,
+	},
+	"WorkingLists/workingLists": {
+		requiresAuthentication: true,
 	},
 	"clinicalDiagnostics/indexClinicalDiagnostic": {
-		requiresAuthentication: false,
+		requiresAuthentication: true,
 	},
 	"clinicalEvents/createOneClinicalEvent": {
 		requiresAuthentication: true,
 	},
 	"clinicalEvents/deleteOneClinicalEvent": {
-		requiresAuthentication: false,
+		requiresAuthentication: true,
 	},
 	"clinicalEvents/getClinicalEvent": {
-		requiresAuthentication: false,
+		requiresAuthentication: true,
+	},
+	"clinicalEvents/getClinicalEventWithConfiguration": {
+		requiresAuthentication: true,
 	},
 	"clinicalEvents/getClinicalEvents": {
-		requiresAuthentication: false,
+		requiresAuthentication: true,
 	},
 	"clinicalEvents/moveOnTrashClinicalEvent": {
-		requiresAuthentication: false,
+		requiresAuthentication: true,
 	},
 	"clinicalEvents/updateClinicalEventReport": {
-		requiresAuthentication: false,
-	},
-	"clinicalEvents/updateClinicalEventsSubscription": {
-		requiresAuthentication: false,
+		requiresAuthentication: true,
 	},
 	"consultationList/checkIfRegistred": {
-		requiresAuthentication: false,
+		requiresAuthentication: true,
 	},
 	"consultationList/registerPatient": {
-		requiresAuthentication: false,
+		requiresAuthentication: true,
 	},
 	"consultationList/todayConsultation": {
-		requiresAuthentication: false,
+		requiresAuthentication: true,
 	},
 	"consultationList/unregisterPatient": {
-		requiresAuthentication: false,
-	},
-	"global/closeAllTabsMutation": {
-		requiresAuthentication: false,
-	},
-	"global/closeAllTabsSubscription": {
-		requiresAuthentication: false,
+		requiresAuthentication: true,
 	},
 	"mobileDevices/MobileDevicesQuery": {
-		requiresAuthentication: false,
+		requiresAuthentication: true,
 	},
 	"mobileDevices/addMobileDeviceMutation": {
-		requiresAuthentication: false,
-	},
-	"mobileDevices/getAllDevicesSubscription": {
-		requiresAuthentication: false,
+		requiresAuthentication: true,
 	},
 	"mobileDevices/registerOneMobileDevice": {
-		requiresAuthentication: false,
+		requiresAuthentication: true,
 	},
 	"mobileDevices/removeMobileDevice": {
-		requiresAuthentication: false,
+		requiresAuthentication: true,
 	},
 	"mobileDevices/resetMobileDevice": {
-		requiresAuthentication: false,
+		requiresAuthentication: true,
 	},
 	"mobileDevices/switchMobileDevice": {
-		requiresAuthentication: false,
-	},
-	"mobileDevices/triggerGetAllMobileDevicesSubscription": {
-		requiresAuthentication: false,
+		requiresAuthentication: true,
 	},
 	"mobileDevices/updateMobileDeviceExpiration": {
-		requiresAuthentication: false,
+		requiresAuthentication: true,
 	},
 	"patients/MovePatientFolderToTrash": {
-		requiresAuthentication: false,
+		requiresAuthentication: true,
 	},
 	"patients/add_One_patient_to_index": {
-		requiresAuthentication: false,
-	},
-	"patients/emptyTrash": {
-		requiresAuthentication: false,
+		requiresAuthentication: true,
 	},
 	"patients/getOnTrashPatients": {
-		requiresAuthentication: false,
+		requiresAuthentication: true,
 	},
 	"patients/getOnePatient": {
-		requiresAuthentication: false,
-	},
-	"patients/getUpdatedPatientSubscription": {
-		requiresAuthentication: false,
+		requiresAuthentication: true,
 	},
 	"patients/index_patients": {
-		requiresAuthentication: false,
-	},
-	"patients/onTrashFoldersSubscription": {
-		requiresAuthentication: false,
+		requiresAuthentication: true,
 	},
 	"patients/toggleSelectedTrashPatient": {
-		requiresAuthentication: false,
+		requiresAuthentication: true,
 	},
 	"patients/updateOnePatient": {
-		requiresAuthentication: false,
+		requiresAuthentication: true,
 	},
 	"templates/fetchTemplate": {
-		requiresAuthentication: false,
+		requiresAuthentication: true,
 	},
 	"templates/getTemplates": {
-		requiresAuthentication: false,
+		requiresAuthentication: true,
 	},
 	"templates/updateTemplate": {
-		requiresAuthentication: false,
+		requiresAuthentication: true,
 	},
-	"Abbreviations/searchAbreviation": {
-		requiresAuthentication: false,
+	"users/getUser": {
+		requiresAuthentication: true,
 	},
-	"Drugs/searchDrugs": {
-		requiresAuthentication: false,
+	"WorkingLists/linkExam": {
+		requiresAuthentication: true,
 	},
-	"clinicalDiagnostics/searchClinicalDiagnostics": {
-		requiresAuthentication: false,
-	},
-	"patients/search_patients": {
-		requiresAuthentication: false,
+	"WorkingLists/refreshLinkExam": {
+		requiresAuthentication: true,
 	},
 	"users/get": {
-		requiresAuthentication: false,
+		requiresAuthentication: true,
 	},
 	"users/subscribe": {
-		requiresAuthentication: false,
+		requiresAuthentication: true,
 	},
 	"users/update": {
-		requiresAuthentication: false,
+		requiresAuthentication: true,
 	},
 };
 
@@ -417,81 +491,177 @@ export type Queries = {
 	Countries: {
 		input: CountriesInput;
 		response: { data?: CountriesResponse["data"]; error?: ClientOperationErrors };
-		requiresAuthentication: false;
-		liveQuery: boolean;
+		requiresAuthentication: true;
+	};
+	"DataTable/getDataTableConfigurations": {
+		input: DataTableGetDataTableConfigurationsInput;
+		response: { data?: DataTableGetDataTableConfigurationsResponse["data"]; error?: ClientOperationErrors };
+		requiresAuthentication: true;
+	};
+	"Economizers/economizerTemplate": {
+		input: EconomizersEconomizerTemplateInput;
+		response: { data?: EconomizersEconomizerTemplateResponse["data"]; error?: ClientOperationErrors };
+		requiresAuthentication: true;
+	};
+	"Economizers/economizers": {
+		input: EconomizersEconomizersInput;
+		response: { data?: EconomizersEconomizersResponse["data"]; error?: ClientOperationErrors };
+		requiresAuthentication: true;
+	};
+	"Modality/getOneModality": {
+		input: ModalityGetOneModalityInput;
+		response: { data?: ModalityGetOneModalityResponse["data"]; error?: ClientOperationErrors };
+		requiresAuthentication: true;
+	};
+	"Modality/getSpecificModalities": {
+		input: ModalityGetSpecificModalitiesInput;
+		response: { data?: ModalityGetSpecificModalitiesResponse["data"]; error?: ClientOperationErrors };
+		requiresAuthentication: true;
+	};
+	"Modality/modalities": {
+		input?: undefined;
+		response: { data?: ModalityModalitiesResponse["data"]; error?: ClientOperationErrors };
+		requiresAuthentication: true;
+	};
+	"WorkingLists/workingLists": {
+		input: WorkingListsWorkingListsInput;
+		response: { data?: WorkingListsWorkingListsResponse["data"]; error?: ClientOperationErrors };
+		requiresAuthentication: true;
 	};
 	"clinicalEvents/getClinicalEvent": {
 		input: ClinicalEventsGetClinicalEventInput;
 		response: { data?: ClinicalEventsGetClinicalEventResponse["data"]; error?: ClientOperationErrors };
-		requiresAuthentication: false;
-		liveQuery: boolean;
+		requiresAuthentication: true;
+	};
+	"clinicalEvents/getClinicalEventWithConfiguration": {
+		input: ClinicalEventsGetClinicalEventWithConfigurationInput;
+		response: { data?: ClinicalEventsGetClinicalEventWithConfigurationResponse["data"]; error?: ClientOperationErrors };
+		requiresAuthentication: true;
 	};
 	"clinicalEvents/getClinicalEvents": {
 		input: ClinicalEventsGetClinicalEventsInput;
 		response: { data?: ClinicalEventsGetClinicalEventsResponse["data"]; error?: ClientOperationErrors };
-		requiresAuthentication: false;
-		liveQuery: boolean;
+		requiresAuthentication: true;
 	};
 	"consultationList/checkIfRegistred": {
 		input: ConsultationListCheckIfRegistredInput;
 		response: { data?: ConsultationListCheckIfRegistredResponse["data"]; error?: ClientOperationErrors };
-		requiresAuthentication: false;
-		liveQuery: boolean;
+		requiresAuthentication: true;
 	};
 	"consultationList/todayConsultation": {
 		input: ConsultationListTodayConsultationInput;
 		response: { data?: ConsultationListTodayConsultationResponse["data"]; error?: ClientOperationErrors };
-		requiresAuthentication: false;
-		liveQuery: boolean;
+		requiresAuthentication: true;
 	};
 	"mobileDevices/MobileDevicesQuery": {
 		input?: undefined;
 		response: { data?: MobileDevicesMobileDevicesQueryResponse["data"]; error?: ClientOperationErrors };
-		requiresAuthentication: false;
-		liveQuery: boolean;
+		requiresAuthentication: true;
 	};
 	"patients/getOnTrashPatients": {
 		input?: undefined;
 		response: { data?: PatientsGetOnTrashPatientsResponse["data"]; error?: ClientOperationErrors };
-		requiresAuthentication: false;
-		liveQuery: boolean;
+		requiresAuthentication: true;
 	};
 	"patients/getOnePatient": {
 		input: PatientsGetOnePatientInput;
 		response: { data?: PatientsGetOnePatientResponse["data"]; error?: ClientOperationErrors };
-		requiresAuthentication: false;
-		liveQuery: boolean;
+		requiresAuthentication: true;
 	};
 	"templates/fetchTemplate": {
 		input: TemplatesFetchTemplateInput;
 		response: { data?: TemplatesFetchTemplateResponse["data"]; error?: ClientOperationErrors };
-		requiresAuthentication: false;
-		liveQuery: boolean;
+		requiresAuthentication: true;
 	};
 	"templates/getTemplates": {
 		input?: undefined;
 		response: { data?: TemplatesGetTemplatesResponse["data"]; error?: ClientOperationErrors };
-		requiresAuthentication: false;
+		requiresAuthentication: true;
+	};
+	"users/getUser": {
+		input?: undefined;
+		response: { data?: UsersGetUserResponse["data"]; error?: ClientOperationErrors };
+		requiresAuthentication: true;
+	};
+	"WorkingLists/linkExam": {
+		input: WorkingListsLinkExamInput;
+		response: { data?: WorkingListsLinkExamResponseData; error?: OperationErrors["WorkingLists/linkExam"] };
+		requiresAuthentication: true;
 		liveQuery: boolean;
 	};
 	"users/get": {
 		input?: undefined;
 		response: { data?: UsersGetResponseData; error?: OperationErrors["users/get"] };
-		requiresAuthentication: false;
+		requiresAuthentication: true;
 		liveQuery: boolean;
 	};
 };
 
 export type Mutations = {
+	"AppSubscription/triggerAppSubscription": {
+		input: AppSubscriptionTriggerAppSubscriptionInput;
+		response: { data?: AppSubscriptionTriggerAppSubscriptionResponse["data"]; error?: ClientOperationErrors };
+		requiresAuthentication: true;
+	};
+	"DataTable/triggerInsertDataSubscription": {
+		input: DataTableTriggerInsertDataSubscriptionInput;
+		response: { data?: DataTableTriggerInsertDataSubscriptionResponse["data"]; error?: ClientOperationErrors };
+		requiresAuthentication: true;
+	};
 	"Drugs/indexDrugs": {
 		input?: undefined;
 		response: { data?: DrugsIndexDrugsResponse["data"]; error?: ClientOperationErrors };
-		requiresAuthentication: false;
+		requiresAuthentication: true;
+	};
+	"Economizers/createEconomizer": {
+		input: EconomizersCreateEconomizerInput;
+		response: { data?: EconomizersCreateEconomizerResponse["data"]; error?: ClientOperationErrors };
+		requiresAuthentication: true;
+	};
+	"Economizers/deleteEconomizer": {
+		input: EconomizersDeleteEconomizerInput;
+		response: { data?: EconomizersDeleteEconomizerResponse["data"]; error?: ClientOperationErrors };
+		requiresAuthentication: true;
+	};
+	"Economizers/updateEconomizer": {
+		input: EconomizersUpdateEconomizerInput;
+		response: { data?: EconomizersUpdateEconomizerResponse["data"]; error?: ClientOperationErrors };
+		requiresAuthentication: true;
+	};
+	"Modality/switchModality": {
+		input: ModalitySwitchModalityInput;
+		response: { data?: ModalitySwitchModalityResponse["data"]; error?: ClientOperationErrors };
+		requiresAuthentication: true;
+	};
+	"Modality/updateOneModality": {
+		input: ModalityUpdateOneModalityInput;
+		response: { data?: ModalityUpdateOneModalityResponse["data"]; error?: ClientOperationErrors };
+		requiresAuthentication: true;
+	};
+	"WorkingLists/createOneWorkingList": {
+		input: WorkingListsCreateOneWorkingListInput;
+		response: { data?: WorkingListsCreateOneWorkingListResponse["data"]; error?: ClientOperationErrors };
+		requiresAuthentication: true;
+	};
+	"WorkingLists/deleteOneWorkingList": {
+		input: WorkingListsDeleteOneWorkingListInput;
+		response: { data?: WorkingListsDeleteOneWorkingListResponse["data"]; error?: ClientOperationErrors };
+		requiresAuthentication: true;
+	};
+	"WorkingLists/linkWorkingList": {
+		input: WorkingListsLinkWorkingListInput;
+		response: { data?: WorkingListsLinkWorkingListResponse["data"]; error?: ClientOperationErrors };
+		requiresAuthentication: true;
+	};
+	"WorkingLists/toggleLockWorkingList": {
+		input: WorkingListsToggleLockWorkingListInput;
+		response: { data?: WorkingListsToggleLockWorkingListResponse["data"]; error?: ClientOperationErrors };
+		requiresAuthentication: true;
 	};
 	"clinicalDiagnostics/indexClinicalDiagnostic": {
 		input?: undefined;
 		response: { data?: ClinicalDiagnosticsIndexClinicalDiagnosticResponse["data"]; error?: ClientOperationErrors };
-		requiresAuthentication: false;
+		requiresAuthentication: true;
 	};
 	"clinicalEvents/createOneClinicalEvent": {
 		input: ClinicalEventsCreateOneClinicalEventInput;
@@ -501,304 +671,145 @@ export type Mutations = {
 	"clinicalEvents/deleteOneClinicalEvent": {
 		input: ClinicalEventsDeleteOneClinicalEventInput;
 		response: { data?: ClinicalEventsDeleteOneClinicalEventResponse["data"]; error?: ClientOperationErrors };
-		requiresAuthentication: false;
+		requiresAuthentication: true;
 	};
 	"clinicalEvents/moveOnTrashClinicalEvent": {
 		input: ClinicalEventsMoveOnTrashClinicalEventInput;
 		response: { data?: ClinicalEventsMoveOnTrashClinicalEventResponse["data"]; error?: ClientOperationErrors };
-		requiresAuthentication: false;
+		requiresAuthentication: true;
 	};
 	"clinicalEvents/updateClinicalEventReport": {
 		input: ClinicalEventsUpdateClinicalEventReportInput;
 		response: { data?: ClinicalEventsUpdateClinicalEventReportResponse["data"]; error?: ClientOperationErrors };
-		requiresAuthentication: false;
+		requiresAuthentication: true;
 	};
 	"consultationList/registerPatient": {
 		input: ConsultationListRegisterPatientInput;
 		response: { data?: ConsultationListRegisterPatientResponse["data"]; error?: ClientOperationErrors };
-		requiresAuthentication: false;
+		requiresAuthentication: true;
 	};
 	"consultationList/unregisterPatient": {
 		input: ConsultationListUnregisterPatientInput;
 		response: { data?: ConsultationListUnregisterPatientResponse["data"]; error?: ClientOperationErrors };
-		requiresAuthentication: false;
-	};
-	"global/closeAllTabsMutation": {
-		input: GlobalCloseAllTabsMutationInput;
-		response: { data?: GlobalCloseAllTabsMutationResponse["data"]; error?: ClientOperationErrors };
-		requiresAuthentication: false;
+		requiresAuthentication: true;
 	};
 	"mobileDevices/addMobileDeviceMutation": {
 		input: MobileDevicesAddMobileDeviceMutationInput;
 		response: { data?: MobileDevicesAddMobileDeviceMutationResponse["data"]; error?: ClientOperationErrors };
-		requiresAuthentication: false;
+		requiresAuthentication: true;
 	};
 	"mobileDevices/registerOneMobileDevice": {
 		input: MobileDevicesRegisterOneMobileDeviceInput;
 		response: { data?: MobileDevicesRegisterOneMobileDeviceResponse["data"]; error?: ClientOperationErrors };
-		requiresAuthentication: false;
+		requiresAuthentication: true;
 	};
 	"mobileDevices/removeMobileDevice": {
 		input: MobileDevicesRemoveMobileDeviceInput;
 		response: { data?: MobileDevicesRemoveMobileDeviceResponse["data"]; error?: ClientOperationErrors };
-		requiresAuthentication: false;
+		requiresAuthentication: true;
 	};
 	"mobileDevices/resetMobileDevice": {
 		input: MobileDevicesResetMobileDeviceInput;
 		response: { data?: MobileDevicesResetMobileDeviceResponse["data"]; error?: ClientOperationErrors };
-		requiresAuthentication: false;
+		requiresAuthentication: true;
 	};
 	"mobileDevices/switchMobileDevice": {
 		input: MobileDevicesSwitchMobileDeviceInput;
 		response: { data?: MobileDevicesSwitchMobileDeviceResponse["data"]; error?: ClientOperationErrors };
-		requiresAuthentication: false;
-	};
-	"mobileDevices/triggerGetAllMobileDevicesSubscription": {
-		input?: undefined;
-		response: {
-			data?: MobileDevicesTriggerGetAllMobileDevicesSubscriptionResponse["data"];
-			error?: ClientOperationErrors;
-		};
-		requiresAuthentication: false;
+		requiresAuthentication: true;
 	};
 	"mobileDevices/updateMobileDeviceExpiration": {
 		input: MobileDevicesUpdateMobileDeviceExpirationInput;
 		response: { data?: MobileDevicesUpdateMobileDeviceExpirationResponse["data"]; error?: ClientOperationErrors };
-		requiresAuthentication: false;
+		requiresAuthentication: true;
 	};
 	"patients/MovePatientFolderToTrash": {
 		input: PatientsMovePatientFolderToTrashInput;
 		response: { data?: PatientsMovePatientFolderToTrashResponse["data"]; error?: ClientOperationErrors };
-		requiresAuthentication: false;
+		requiresAuthentication: true;
 	};
 	"patients/add_One_patient_to_index": {
 		input: PatientsAdd_One_patient_to_indexInput;
 		response: { data?: PatientsAdd_One_patient_to_indexResponse["data"]; error?: ClientOperationErrors };
-		requiresAuthentication: false;
-	};
-	"patients/emptyTrash": {
-		input?: undefined;
-		response: { data?: PatientsEmptyTrashResponse["data"]; error?: ClientOperationErrors };
-		requiresAuthentication: false;
+		requiresAuthentication: true;
 	};
 	"patients/index_patients": {
 		input?: undefined;
 		response: { data?: PatientsIndex_patientsResponse["data"]; error?: ClientOperationErrors };
-		requiresAuthentication: false;
+		requiresAuthentication: true;
 	};
 	"patients/toggleSelectedTrashPatient": {
 		input: PatientsToggleSelectedTrashPatientInput;
 		response: { data?: PatientsToggleSelectedTrashPatientResponse["data"]; error?: ClientOperationErrors };
-		requiresAuthentication: false;
+		requiresAuthentication: true;
 	};
 	"patients/updateOnePatient": {
 		input: PatientsUpdateOnePatientInput;
 		response: { data?: PatientsUpdateOnePatientResponse["data"]; error?: ClientOperationErrors };
-		requiresAuthentication: false;
+		requiresAuthentication: true;
 	};
 	"templates/updateTemplate": {
 		input: TemplatesUpdateTemplateInput;
 		response: { data?: TemplatesUpdateTemplateResponse["data"]; error?: ClientOperationErrors };
-		requiresAuthentication: false;
+		requiresAuthentication: true;
 	};
-	"Abbreviations/searchAbreviation": {
-		input: AbbreviationsSearchAbreviationInput;
+	"WorkingLists/refreshLinkExam": {
+		input: WorkingListsRefreshLinkExamInput;
 		response: {
-			data?: AbbreviationsSearchAbreviationResponseData;
-			error?: OperationErrors["Abbreviations/searchAbreviation"];
+			data?: WorkingListsRefreshLinkExamResponseData;
+			error?: OperationErrors["WorkingLists/refreshLinkExam"];
 		};
-		requiresAuthentication: false;
-	};
-	"Drugs/searchDrugs": {
-		input: DrugsSearchDrugsInput;
-		response: { data?: DrugsSearchDrugsResponseData; error?: OperationErrors["Drugs/searchDrugs"] };
-		requiresAuthentication: false;
-	};
-	"clinicalDiagnostics/searchClinicalDiagnostics": {
-		input: ClinicalDiagnosticsSearchClinicalDiagnosticsInput;
-		response: {
-			data?: ClinicalDiagnosticsSearchClinicalDiagnosticsResponseData;
-			error?: OperationErrors["clinicalDiagnostics/searchClinicalDiagnostics"];
-		};
-		requiresAuthentication: false;
-	};
-	"patients/search_patients": {
-		input: PatientsSearch_patientsInput;
-		response: { data?: PatientsSearch_patientsResponseData; error?: OperationErrors["patients/search_patients"] };
-		requiresAuthentication: false;
+		requiresAuthentication: true;
 	};
 	"users/update": {
 		input: UsersUpdateInput;
 		response: { data?: UsersUpdateResponseData; error?: OperationErrors["users/update"] };
-		requiresAuthentication: false;
+		requiresAuthentication: true;
 	};
 };
 
 export type Subscriptions = {
-	"clinicalEvents/updateClinicalEventsSubscription": {
-		input: ClinicalEventsUpdateClinicalEventsSubscriptionInput;
-		response: { data?: ClinicalEventsUpdateClinicalEventsSubscriptionResponse["data"]; error?: ClientOperationErrors };
-		requiresAuthentication: false;
-	};
-	"global/closeAllTabsSubscription": {
+	"AppSubscription/globalSubscription": {
 		input?: undefined;
-		response: { data?: GlobalCloseAllTabsSubscriptionResponse["data"]; error?: ClientOperationErrors };
-		requiresAuthentication: false;
+		response: { data?: AppSubscriptionGlobalSubscriptionResponse["data"]; error?: ClientOperationErrors };
+		requiresAuthentication: true;
 	};
-	"mobileDevices/getAllDevicesSubscription": {
-		input?: undefined;
-		response: { data?: MobileDevicesGetAllDevicesSubscriptionResponse["data"]; error?: ClientOperationErrors };
-		requiresAuthentication: false;
-	};
-	"patients/getUpdatedPatientSubscription": {
-		input: PatientsGetUpdatedPatientSubscriptionInput;
-		response: { data?: PatientsGetUpdatedPatientSubscriptionResponse["data"]; error?: ClientOperationErrors };
-		requiresAuthentication: false;
-	};
-	"patients/onTrashFoldersSubscription": {
-		input?: undefined;
-		response: { data?: PatientsOnTrashFoldersSubscriptionResponse["data"]; error?: ClientOperationErrors };
-		requiresAuthentication: false;
+	"DataTable/insertDataSubscription": {
+		input: DataTableInsertDataSubscriptionInput;
+		response: { data?: DataTableInsertDataSubscriptionResponse["data"]; error?: ClientOperationErrors };
+		requiresAuthentication: true;
 	};
 	"users/subscribe": {
 		input: UsersSubscribeInput;
 		response: { data?: UsersSubscribeResponseData; error?: OperationErrors["users/subscribe"] };
-		requiresAuthentication: false;
+		requiresAuthentication: true;
 	};
-	Countries: {
-		input: CountriesInput;
-		response: { data?: CountriesResponse["data"]; error?: ClientOperationErrors };
+	"WorkingLists/linkExam": {
+		input: WorkingListsLinkExamInput;
+		response: { data?: WorkingListsLinkExamResponse["data"]; error?: ClientOperationErrors };
 		liveQuery: true;
-		requiresAuthentication: false;
-	};
-	"clinicalEvents/getClinicalEvent": {
-		input: ClinicalEventsGetClinicalEventInput;
-		response: { data?: ClinicalEventsGetClinicalEventResponse["data"]; error?: ClientOperationErrors };
-		liveQuery: true;
-		requiresAuthentication: false;
-	};
-	"clinicalEvents/getClinicalEvents": {
-		input: ClinicalEventsGetClinicalEventsInput;
-		response: { data?: ClinicalEventsGetClinicalEventsResponse["data"]; error?: ClientOperationErrors };
-		liveQuery: true;
-		requiresAuthentication: false;
-	};
-	"consultationList/checkIfRegistred": {
-		input: ConsultationListCheckIfRegistredInput;
-		response: { data?: ConsultationListCheckIfRegistredResponse["data"]; error?: ClientOperationErrors };
-		liveQuery: true;
-		requiresAuthentication: false;
-	};
-	"consultationList/todayConsultation": {
-		input: ConsultationListTodayConsultationInput;
-		response: { data?: ConsultationListTodayConsultationResponse["data"]; error?: ClientOperationErrors };
-		liveQuery: true;
-		requiresAuthentication: false;
-	};
-	"mobileDevices/MobileDevicesQuery": {
-		input?: undefined;
-		response: { data?: MobileDevicesMobileDevicesQueryResponse["data"]; error?: ClientOperationErrors };
-		liveQuery: true;
-		requiresAuthentication: false;
-	};
-	"patients/getOnTrashPatients": {
-		input?: undefined;
-		response: { data?: PatientsGetOnTrashPatientsResponse["data"]; error?: ClientOperationErrors };
-		liveQuery: true;
-		requiresAuthentication: false;
-	};
-	"patients/getOnePatient": {
-		input: PatientsGetOnePatientInput;
-		response: { data?: PatientsGetOnePatientResponse["data"]; error?: ClientOperationErrors };
-		liveQuery: true;
-		requiresAuthentication: false;
-	};
-	"templates/fetchTemplate": {
-		input: TemplatesFetchTemplateInput;
-		response: { data?: TemplatesFetchTemplateResponse["data"]; error?: ClientOperationErrors };
-		liveQuery: true;
-		requiresAuthentication: false;
-	};
-	"templates/getTemplates": {
-		input?: undefined;
-		response: { data?: TemplatesGetTemplatesResponse["data"]; error?: ClientOperationErrors };
-		liveQuery: true;
-		requiresAuthentication: false;
+		requiresAuthentication: true;
 	};
 	"users/get": {
 		input?: undefined;
 		response: { data?: UsersGetResponse["data"]; error?: ClientOperationErrors };
 		liveQuery: true;
-		requiresAuthentication: false;
+		requiresAuthentication: true;
 	};
 };
 
 export type LiveQueries = {
-	Countries: {
-		input: CountriesInput;
-		response: { data?: CountriesResponse["data"]; error?: ClientOperationErrors };
+	"WorkingLists/linkExam": {
+		input: WorkingListsLinkExamInput;
+		response: { data?: WorkingListsLinkExamResponse["data"]; error?: ClientOperationErrors };
 		liveQuery: true;
-		requiresAuthentication: false;
-	};
-	"clinicalEvents/getClinicalEvent": {
-		input: ClinicalEventsGetClinicalEventInput;
-		response: { data?: ClinicalEventsGetClinicalEventResponse["data"]; error?: ClientOperationErrors };
-		liveQuery: true;
-		requiresAuthentication: false;
-	};
-	"clinicalEvents/getClinicalEvents": {
-		input: ClinicalEventsGetClinicalEventsInput;
-		response: { data?: ClinicalEventsGetClinicalEventsResponse["data"]; error?: ClientOperationErrors };
-		liveQuery: true;
-		requiresAuthentication: false;
-	};
-	"consultationList/checkIfRegistred": {
-		input: ConsultationListCheckIfRegistredInput;
-		response: { data?: ConsultationListCheckIfRegistredResponse["data"]; error?: ClientOperationErrors };
-		liveQuery: true;
-		requiresAuthentication: false;
-	};
-	"consultationList/todayConsultation": {
-		input: ConsultationListTodayConsultationInput;
-		response: { data?: ConsultationListTodayConsultationResponse["data"]; error?: ClientOperationErrors };
-		liveQuery: true;
-		requiresAuthentication: false;
-	};
-	"mobileDevices/MobileDevicesQuery": {
-		input?: undefined;
-		response: { data?: MobileDevicesMobileDevicesQueryResponse["data"]; error?: ClientOperationErrors };
-		liveQuery: true;
-		requiresAuthentication: false;
-	};
-	"patients/getOnTrashPatients": {
-		input?: undefined;
-		response: { data?: PatientsGetOnTrashPatientsResponse["data"]; error?: ClientOperationErrors };
-		liveQuery: true;
-		requiresAuthentication: false;
-	};
-	"patients/getOnePatient": {
-		input: PatientsGetOnePatientInput;
-		response: { data?: PatientsGetOnePatientResponse["data"]; error?: ClientOperationErrors };
-		liveQuery: true;
-		requiresAuthentication: false;
-	};
-	"templates/fetchTemplate": {
-		input: TemplatesFetchTemplateInput;
-		response: { data?: TemplatesFetchTemplateResponse["data"]; error?: ClientOperationErrors };
-		liveQuery: true;
-		requiresAuthentication: false;
-	};
-	"templates/getTemplates": {
-		input?: undefined;
-		response: { data?: TemplatesGetTemplatesResponse["data"]; error?: ClientOperationErrors };
-		liveQuery: true;
-		requiresAuthentication: false;
+		requiresAuthentication: true;
 	};
 	"users/get": {
 		input?: undefined;
 		response: { data?: UsersGetResponse["data"]; error?: ClientOperationErrors };
 		liveQuery: true;
-		requiresAuthentication: false;
+		requiresAuthentication: true;
 	};
 };
 

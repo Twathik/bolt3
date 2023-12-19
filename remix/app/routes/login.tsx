@@ -19,7 +19,7 @@ export const meta: MetaFunction = () => [{ title: "Se connecter" }];
 export default function Login() {
   const { login } = useAuth();
   return (
-    <div className="flex min-h-screen flex-grow justify-center">
+    <main className="flex min-h-screen flex-grow justify-center">
       <div className="flex flex-col justify-center px-2 py-12 sm:px-4 lg:px-20 xl:px-24">
         <div className="mx-auto max-w-sm lg:w-96">
           <div className="flex flex-col items-center">
@@ -49,6 +49,6 @@ export default function Login() {
           alt=""
         />
       </div>
-    </div>
+    </main>
   );
 }

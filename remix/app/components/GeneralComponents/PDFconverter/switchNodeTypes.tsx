@@ -268,7 +268,7 @@ const formatHorizontalRule = () => (
       }}></Text>
   </View>
 );
-const formatPageBreak = () => <View break />;
+const formatPageBreak = () => <View key={Math.random()} break />;
 
 const formatCell = (jsonCell: string): ReactNode => {
   const nodes = JSON.parse(jsonCell);
@@ -406,7 +406,7 @@ export const formatPDFContainer = (
 
     default:
       return (
-        <View>
+        <View key={Math.random()}>
           <Text>{node.type}</Text>
         </View>
       );

@@ -2,7 +2,7 @@ import * as TypeGraphQL from 'type-graphql'
 
 import { Patient } from '../../@generated'
 import { Context } from '../../context'
-import { GetUpdatedPatientArgs } from './UpdatePatientSubscription/Args/GetUpdatedPatientArgs'
+import { MarkPatientFolderDeletedArgs } from './Args/MarkPatientFolderDeletedArgs'
 
 @TypeGraphQL.Resolver((_of) => Patient)
 export class MarkPatientFolderDeleted {
@@ -11,9 +11,7 @@ export class MarkPatientFolderDeleted {
   })
   async markPatientFolderDeleted(
     @TypeGraphQL.Ctx() ctx: Context,
-    @TypeGraphQL.Args() args: GetUpdatedPatientArgs,
-    @TypeGraphQL.PubSub('GET_UPDATED_PATIENT')
-    publish: TypeGraphQL.Publisher<string>,
+    @TypeGraphQL.Args() args: MarkPatientFolderDeletedArgs,
   ): Promise<Patient | null> {
     try {
       const prisma = ctx.prisma
@@ -21,7 +19,6 @@ export class MarkPatientFolderDeleted {
         where: { id: args.id },
         data: { deleted: true },
       })
-      publish(args.id)
       return patient
     } catch (error) {
       console.log({ error })

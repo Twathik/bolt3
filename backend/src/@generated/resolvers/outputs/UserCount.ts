@@ -3,10 +3,12 @@ import * as GraphQLScalars from "graphql-scalars";
 import { Prisma } from "@prisma/client";
 import { DecimalJSScalar } from "../../scalars";
 import { UserCountClinicalEventArgs } from "./args/UserCountClinicalEventArgs";
+import { UserCountWorkingListArgs } from "./args/UserCountWorkingListArgs";
 
 @TypeGraphQL.ObjectType("UserCount", {})
 export class UserCount {
   ClinicalEvent!: number;
+  WorkingList!: number;
 
   @TypeGraphQL.Field(_type => TypeGraphQL.Int, {
     name: "ClinicalEvent",
@@ -14,5 +16,13 @@ export class UserCount {
   })
   getClinicalEvent(@TypeGraphQL.Root() root: UserCount, @TypeGraphQL.Args() args: UserCountClinicalEventArgs): number {
     return root.ClinicalEvent;
+  }
+
+  @TypeGraphQL.Field(_type => TypeGraphQL.Int, {
+    name: "WorkingList",
+    nullable: false
+  })
+  getWorkingList(@TypeGraphQL.Root() root: UserCount, @TypeGraphQL.Args() args: UserCountWorkingListArgs): number {
+    return root.WorkingList;
   }
 }

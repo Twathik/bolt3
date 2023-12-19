@@ -13,14 +13,11 @@ import ConfirmationDialog from "../ConfirmationDialog/confirmationDialog";
 function AppFloatingActionButton() {
   const { toast } = useToast();
   const { trigger } = useMutation({
-    operationName: "global/closeAllTabsMutation",
-  });
-  const { trigger: emptyTrash } = useMutation({
-    operationName: "patients/emptyTrash",
+    operationName: "AppSubscription/triggerAppSubscription",
   });
 
   const closeAllTabs = useCallback(async () => {
-    await trigger({ message: new Date().toISOString() });
+    await trigger({ appPayload: JSON.stringify({}), appType: "closeAllTabs" });
   }, [trigger]);
   useHotkeys([
     [HotKeysMapping.closeAllWindows, async () => await closeAllTabs()],
@@ -28,7 +25,7 @@ function AppFloatingActionButton() {
 
   const triggerEmptyTrash = useCallback(async () => {
     try {
-      await emptyTrash();
+      await trigger({ appPayload: JSON.stringify({}), appType: "emptyTrash" });
     } catch (error) {
       console.log({ error });
       toast({
@@ -37,7 +34,7 @@ function AppFloatingActionButton() {
         variant: "destructive",
       });
     }
-  }, [emptyTrash, toast]);
+  }, [toast, trigger]);
 
   return (
     <div className="group fixed bottom-0 right-0 flex  h-24 w-24 items-end justify-end p-2 ">

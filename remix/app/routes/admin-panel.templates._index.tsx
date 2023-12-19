@@ -3,6 +3,7 @@ import { useOutletContext } from "@remix-run/react";
 import createClientFromCookiesAndCheckUser from "@/lib/checkUser.server";
 import DocumentTemplates from "@/components/AdminPanelComponents/DocumentTemplates/DocumentTemplates";
 import type { TemplatesGetTemplatesResponseData } from "@/components/generated/models";
+import InitialLoadingError from "@/components/GeneralComponents/InitialLoadingError/InitialLoadingError";
 
 interface TemplatesContextInterface {
   templates: TemplatesGetTemplatesResponseData["mainDb_documentTemplates"];
@@ -17,6 +18,13 @@ export async function loader({ request }: LoaderFunctionArgs) {
 }
 export default function Templates() {
   const loadedData = useOutletContext<TemplatesContextInterface>();
-
-  return <DocumentTemplates templates={loadedData.templates} />;
+  if (!loadedData)
+    return (
+      <InitialLoadingError msg="La liste des templates n'a pas pu être réccupérée!" />
+    );
+  return (
+    <main className="min-h-screen">
+      <DocumentTemplates templates={loadedData.templates} />
+    </main>
+  );
 }

@@ -17,6 +17,8 @@ import { WebSocketServer } from 'ws'
 import { resolvers as GeneratedResolvers } from './@generated'
 import * as resolvers from './Resolvers'
 import { Context, createContext, createSubscriptionContext } from './context'
+import prisma from './Utils/api/prismaClient'
+import { axiosOrthancInstance } from './Utils/api/axiosConfig'
 
 export const port = 4000
 
@@ -95,6 +97,36 @@ async function bootstrap() {
   })
 
   // Start server
+  if (process.env.NODE_ENV === 'production') {
+    try {
+      const modalities = await prisma.modality.findMany({
+        where: { activated: true, deleted: false },
+      })
+      modalities.forEach(async (modality) => {
+        const res = await axiosOrthancInstance.put(
+          `/modalities/${modality.modalityName}`,
+          {
+            AET: modality.modalityAETitle,
+            AllowEcho: true,
+            AllowFind: true,
+            AllowFindWorklist: true,
+            AllowGet: true,
+            AllowMove: true,
+            AllowStorageCommitment: true,
+            AllowStore: true,
+            AllowTranscoding: true,
+            Host: modality.modalityIpAddress,
+            Port: modality.modalityPort,
+            UseDicomTls: true,
+          },
+        )
+        if (res.status !== 200) throw Error()
+      })
+    } catch (error) {
+      console.log({ error })
+    }
+  }
+
   await server.start()
   app.use(
     '/graphql',

@@ -9,4 +9,4 @@ service = "storage-admin"
 [http.services.storage-admin]
 [http.services.storage-admin.loadBalancer]
 [[http.services.storage-admin.loadBalancer.servers]]
-url = "http://100.74.3.18:9901"
+url = "http://host.docker.internal:9001"

@@ -1,0 +1,18 @@
+mutation (
+  $clinicalEventId: String!
+  $modalityId: String!
+  $patientId: String!
+  $userId: String! @fromClaim(name: USERID)
+) {
+  mainDb_createOneWorkingList(
+    data: {
+      clinicalEvent: { connect: { id: $clinicalEventId } }
+      modality: { connect: { id: $modalityId } }
+      patient: { connect: { id: $patientId } }
+      user: { connect: { userId: $userId } }
+      modalityExamStatus: CREATED
+    }
+  ) {
+    id
+  }
+}

@@ -11,7 +11,8 @@ export enum UserScalarFieldEnum {
   role = "role",
   phoneNumbers = "phoneNumbers",
   lastConnection = "lastConnection",
-  typesenseApiKey = "typesenseApiKey",
+  searchApiKeyId = "searchApiKeyId",
+  searchApiKey = "searchApiKey",
   createdAt = "createdAt"
 }
 TypeGraphQL.registerEnumType(UserScalarFieldEnum, {

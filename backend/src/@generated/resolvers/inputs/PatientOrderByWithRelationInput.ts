@@ -5,6 +5,7 @@ import { DecimalJSScalar } from "../../scalars";
 import { ClinicalEventOrderByRelationAggregateInput } from "../inputs/ClinicalEventOrderByRelationAggregateInput";
 import { ConsultationListOrderByRelationAggregateInput } from "../inputs/ConsultationListOrderByRelationAggregateInput";
 import { SortOrderInput } from "../inputs/SortOrderInput";
+import { WorkingListOrderByRelationAggregateInput } from "../inputs/WorkingListOrderByRelationAggregateInput";
 import { SortOrder } from "../../enums/SortOrder";
 
 @TypeGraphQL.InputType("PatientOrderByWithRelationInput", {})
@@ -44,6 +45,16 @@ export class PatientOrderByWithRelationInput {
   })
   address?: SortOrderInput | undefined;
 
+  @TypeGraphQL.Field(_type => SortOrderInput, {
+    nullable: true
+  })
+  height?: SortOrderInput | undefined;
+
+  @TypeGraphQL.Field(_type => SortOrderInput, {
+    nullable: true
+  })
+  weight?: SortOrderInput | undefined;
+
   @TypeGraphQL.Field(_type => SortOrder, {
     nullable: true
   })
@@ -78,4 +89,9 @@ export class PatientOrderByWithRelationInput {
     nullable: true
   })
   ClinicalEvent?: ClinicalEventOrderByRelationAggregateInput | undefined;
+
+  @TypeGraphQL.Field(_type => WorkingListOrderByRelationAggregateInput, {
+    nullable: true
+  })
+  WorkingList?: WorkingListOrderByRelationAggregateInput | undefined;
 }

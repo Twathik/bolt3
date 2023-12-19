@@ -18,8 +18,6 @@ export class RegisterOneMobileDeviceResolver {
     @TypeGraphQL.Ctx() ctx: any,
     @TypeGraphQL.Info() info: GraphQLResolveInfo,
     @TypeGraphQL.Args() { accessToken, uuid }: RegisterOneMobileDeviceArgs,
-    @TypeGraphQL.PubSub('GET_ALL_MOBILE_DEVICES')
-    publish: TypeGraphQL.Publisher<boolean>,
   ): Promise<MobileDevice | null> {
     const { _count } = transformInfoIntoPrismaArgs(info)
     const prisma = getPrismaFromContext(ctx) as PrismaClient
@@ -39,7 +37,7 @@ export class RegisterOneMobileDeviceResolver {
         },
         ...(_count && transformCountFieldIntoSelectRelationsCount(_count)),
       })
-      publish(true)
+
       return result
     } catch (error) {
       throw Error("an error occurred, Mobile device isn't registered!")

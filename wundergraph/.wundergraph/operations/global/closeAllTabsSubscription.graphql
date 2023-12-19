@@ -1,5 +1,0 @@
-subscription {
-  mainDb_closeAllTabs {
-    message
-  }
-}

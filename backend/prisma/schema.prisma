@@ -33,20 +33,103 @@ enum EventTypes {
   GENERAL_SONO
 }
 
+enum ModalityType {
+  AR
+  ASMT
+  AU
+  BDUS
+  BI
+  BMD
+  CR
+  CT
+  CTPROTOCOL
+  DG
+  DOC
+  DX
+  ECG
+  EPS
+  ES
+  FID
+  GM
+  HC
+  HD
+  IO
+  IOL
+  IVOCT
+  IVUS
+  KER
+  KO
+  LEN
+  LS
+  MG
+  MR
+  M3D
+  NM
+  OAM
+  OCT
+  OP
+  OPM
+  OPT
+  OPTBSV
+  OPTENF
+  OPV
+  OSS
+  OT
+  PLAN
+  PR
+  PT
+  PX
+  REG
+  RESP
+  RF
+  RG
+  RTDOSE
+  RTIMAGE
+  RTINTENT
+  RTPLAN
+  RTRAD
+  RTRECORD
+  RTSEGANN
+  RTSTRUCT
+  RWV
+  SEG
+  SM
+  SMR
+  SR
+  SRF
+  STAIN
+  TEXTUREMAP
+  TG
+  US
+  VA
+  XA
+  XC
+}
+
+enum ModalityExamStatus {
+  CREATED
+  INPROGRESS
+  REALIZED
+  REPORT_DONE
+  CLOSED
+}
+
 model User {
-  id              String          @id @default(uuid())
-  email           String          @unique
-  userId          String          @unique
-  lastName        String?
-  firstName       String?
-  fullName        String?
-  avatarUrl       String?
-  role            Role            @default(USER)
-  phoneNumbers    String[]
-  lastConnection  DateTime        @updatedAt
-  typesenseApiKey String?
-  createdAt       DateTime        @default(now())
-  ClinicalEvent   ClinicalEvent[]
+  id             String          @id @default(uuid())
+  email          String          @unique
+  userId         String          @unique
+  lastName       String?
+  firstName      String?
+  fullName       String?
+  avatarUrl      String?
+  role           Role            @default(USER)
+  phoneNumbers   String[]
+  lastConnection DateTime        @updatedAt
+  searchApiKeyId Int?
+  searchApiKey   String          @default("")
+  createdAt      DateTime        @default(now())
+  ClinicalEvent  ClinicalEvent[]
+  WorkingList    WorkingList[]
 
   @@index([role])
 }
@@ -55,6 +138,7 @@ model Setting {
   id                             String @id @default(uuid())
   allowedMobileDevices_doctors   Int    @default(1)
   allowedMobileDevices_secretary Int    @default(1)
+  allowedDICOMmodalities         Int    @default(2)
 }
 
 model MobileDevice {
@@ -77,6 +161,8 @@ model Patient {
   sexe      Sexe
   nTel      String?
   address   String?
+  height    Float?
+  weight    Float?
 
   createdAt DateTime @default(now())
   updated   DateTime @updatedAt
@@ -86,6 +172,7 @@ model Patient {
   informationsConfirmed Boolean            @default(false)
   ConsultationList      ConsultationList[]
   ClinicalEvent         ClinicalEvent[]
+  WorkingList           WorkingList[]
 
   @@index([sexe])
 }
@@ -134,6 +221,7 @@ model ClinicalEvent {
   dicomId              String?
   clinicalDiagnosticId String?
   Prescription         Prescription?
+  WorkingList          WorkingList[]
 }
 
 model Prescription {
@@ -150,4 +238,43 @@ model DocumentTemplate {
   eventType EventTypes @unique
   template  String     @db.Text
   empty     Boolean    @default(true)
+}
+
+model Economizer {
+  id        String     @id @default(uuid())
+  name      String
+  eventType EventTypes @unique
+  template  String     @db.Text
+}
+
+model Modality {
+  id                String        @id @default(uuid())
+  modalityName      String        @unique
+  modalityPseudo    String?
+  modalityAETitle   String
+  modalityIpAddress String
+  modalityType      ModalityType
+  modalityPort      Int
+  deleted           Boolean       @default(false)
+  WorkingList       WorkingList[]
+  activated         Boolean       @default(false)
+  enabled           Boolean       @default(true)
+}
+
+model WorkingList {
+  id                 String             @id @default(uuid())
+  patient            Patient            @relation(fields: [patientId], references: [id])
+  patientId          String
+  modality           Modality           @relation(fields: [modalityId], references: [id])
+  modalityId         String
+  user               User               @relation(fields: [userId], references: [id])
+  userId             String
+  clinicalEvent      ClinicalEvent      @relation(fields: [clinicalEventId], references: [id])
+  clinicalEventId    String
+  modalityExamStatus ModalityExamStatus @default(CREATED)
+  createdAt          DateTime           @default(now())
+  updatedAt          DateTime           @updatedAt
+  linked             Boolean            @default(false)
+  linkId             String?
+  locked             Boolean            @default(false)
 }

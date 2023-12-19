@@ -1,0 +1,5 @@
+query ($id: String!) {
+  mainDb_economizer(where: { id: $id }) {
+    template
+  }
+}

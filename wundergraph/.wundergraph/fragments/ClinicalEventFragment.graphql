@@ -1,0 +1,15 @@
+fragment ClinicalEventFragment on mainDb_ClinicalEvent {
+  id
+  eventType
+  updatedAt
+  createdReport
+  report
+  empty
+  dicomId
+  dicom
+  user {
+    id
+    fullName
+  }
+  patientId
+}

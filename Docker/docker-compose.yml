@@ -1,5 +1,21 @@
 version: "3.9"
 
+x-minio-common: &minio-common
+  build: .
+  command: server --console-address ":9001" http://minio{1...2}/data{1...2}
+  expose:
+    - "9000"
+    - "9001"
+  environment:
+    MINIO_ROOT_USER: minio
+    MINIO_ROOT_PASSWORD: minio123
+    MINIO_API_CORS_ALLOW_ORIGIN: ${MINIO_HOSTNAMES}
+  healthcheck:
+    test: ["CMD", "curl", "-f", "http://localhost:9000/minio/health/live"]
+    interval: 30s
+    timeout: 20s
+    retries: 3
+
 # starts 2 docker containers running minio server instances.
 # using nginx reverse proxy, load balancing, you can access
 # it through port 9000.
@@ -17,6 +33,106 @@ services:
       - "./traefik/conf.d:/etc/traefik/conf.d"
       - "./traefik/traefik.toml:/etc/traefik/traefik.toml"
       - "/var/run/docker.sock:/var/run/docker.sock:ro"
+  minio1:
+    <<: *minio-common
+    hostname: minio1
+    restart: unless-stopped
+    volumes:
+      - ./minio/data1-1:/data1
+      - ./minio/data1-2:/data2
+
+  minio2:
+    <<: *minio-common
+    hostname: minio2
+    restart: unless-stopped
+    volumes:
+      - ./minio/data2-1:/data1
+      - ./minio/data2-2:/data2
+
+  nginx:
+    image: nginx:1.19.2-alpine
+    hostname: nginx
+    restart: unless-stopped
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+    depends_on:
+      - minio1
+      - minio2
+    labels:
+      - traefik.enable=true
+      - "traefik.http.routers.minio-storage.entrypoints=web"
+      - "traefik.http.routers.minio-storage.service=nginx-docker"
+      - "traefik.http.routers.minio-storage.rule=Host(`storage.endosales.local`)"
+      - "traefik.http.services.nginx-docker.loadbalancer.server.port=9000"
+
+  postgres:
+    image: postgres:13-alpine
+    container_name: "postgres"
+    ports:
+      - "5432:5432"
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ${POSTGRESQL_DB}
+      POSTGRES_USER: ${POSTGRESQL_USER}
+      POSTGRES_PASSWORD: ${POSTGRESQL_PASS}
+      POSTGRES_HOST: postgres
+    volumes:
+      - ./database:/var/lib/postgresql/data
+    healthcheck:
+      test: "exit 0"
+
+  keycloak:
+    image: "quay.io/keycloak/keycloak:${KC_VERSION}"
+    command: ["start-dev"]
+    healthcheck:
+      test: ["CMD", "curl", "--fail", "http://localhost:8080/health/ready"]
+    depends_on:
+      postgres:
+        condition: service_healthy
+    container_name: "keycloak"
+    environment:
+      KC_METRICS_ENABLED: false
+      KC_HEALTH_ENABLED: true
+      KEYCLOAK_ADMIN: ${KEYCLOAK_ADMIN}
+      KEYCLOAK_ADMIN_PASSWORD: ${KEYCLOAK_ADMIN_PASSWORD}
+      AUTH_CLIENT_SECRET: ${AUTH_CLIENT_SECRET}
+      REDIRECT_URI: ${REDIRECT_URI}
+      KEYCLOAK_LOGLEVEL: DEBUG
+      #GITHUB_APP_CLIENT_SECRET: ${GITHUB_APP_CLIENT_SECRET}
+      #GITHUB_APP_CLIENT_ID: ${GITHUB_APP_CLIENT_ID}
+      KEYCLOAK_PATH_PREFIX: keycloak
+      PROXY_ADDRESS_FORWARDING: true
+      KC_DB: postgres
+      KC_DB_URL_HOST: postgres
+      KC_DB_URL_DATABASE: keycloak
+      KC_DB_USERNAME: ${POSTGRESQL_USER}
+      KC_DB_PASSWORD: ${POSTGRESQL_PASS}
+      KC_DB_SCHEMA: public
+
+    volumes:
+      - ./keycloakTheme:/opt/jboss/keycloak/standalone/deployments/
+      - ./keycloak/realm.json:/opt/keycloak/data/import/realm.json:ro
+    ports:
+      - "8082:8080"
+      - "9990:9990"
+    restart: unless-stopped
+    labels:
+      - traefik.enable=true
+      - "traefik.http.routers.keycloak-admin.entrypoints=web"
+      - "traefik.http.routers.keycloak-admin.service=keycloak-docker"
+      - "traefik.http.routers.keycloak-admin.rule=Host(`keycloak.local`)"
+      - "traefik.http.services.keycloak-docker.loadbalancer.server.port=8080"
+    security_opt:
+      - no-new-privileges:true
+  redis:
+    image: redis:6.2-alpine
+    restart: always
+    ports:
+      - "6379:6379"
+    command: redis-server --loglevel warning --requirepass eYVX7EwVmmxKPCDmwMtyKVge8oLd2t81
 
   postgres_orthanc:
     image: postgres:13-alpine
@@ -69,18 +185,23 @@ services:
           "DicomModalities" : {
             "horos" : [ "HOROS", "192.168.0.8", 11112 ],
             "findscu" : [ "FINDSCU", "127.0.0.1", 1234 ],
-            "modality" : [ "MODALITY", "192.168.1.37", 104 ],
+            "modality" : [ "MODALITY", "192.168.175.209", 104 ],
+            "echopac" : ["ADEL-PC", "192.168.1.10", 104],
             "inova730" : ["IGS730", "3.3.3.3", 4002],
             "inova730_sub1" : ["IGS730", "192.168.65.1", 4002],
-            "echopac" : ["ADEL-PC", "192.168.1.10", 104],
             "vividE92" : ["VIVIDE9", "192.168.1.120", 104],
-            "vividE91" : ["VIVIDE9-006630", "192.168.1.100", 104]
+            "vividE91" : ["VIVIDE9-006630", "192.168.1.100", 104],
+            "modality1" : ["AET", "0.0.0.0", 104],
+            "modality2" : ["AET", "0.0.0.0", 104],
+            "modality3" : ["AET", "0.0.0.0", 104],
+            "modality4" : ["AET", "0.0.0.0", 104]
           }
         }
-
+    #
     volumes:
       - ./orthanc/db:/var/lib/orthanc/db/
-      - ./orthanc/worklists:/var/lib/orthanc/worklists
+      - ./worklists:/var/lib/orthanc/worklists
+
   typesense:
     image: typesense/typesense:0.25.1
     restart: on-failure
@@ -96,3 +217,8 @@ services:
       - ./typesense-data:/data
       - ./typesense-config/typesense-server.ini:/etc/typesense/typesense-server.ini
     command: "--config=/etc/typesense/typesense-server.ini"
+volumes:
+  data1-1:
+  data1-2:
+  data2-1:
+  data2-2:

@@ -3,7 +3,7 @@
 import UserProfileButton from "@/components/GeneralComponents/UserProfileButton/UserProfileButton";
 import { Link } from "@remix-run/react";
 import bolt_logo from "@/images/logo_bolt.png";
-import type { PublicUser } from "@/components/generated/client";
+import type { UsersGetUserResponseData } from "@/components/generated/models";
 
 const navigation: { name: string; href: string }[] = [
   { name: "Product", href: "#" },
@@ -12,7 +12,11 @@ const navigation: { name: string; href: string }[] = [
   { name: "Panneau d'administration", href: "/admin-panel" },
 ];
 
-export default function WebAppHeader({ user }: { user: PublicUser }) {
+export default function WebAppHeader({
+  user,
+}: {
+  user: UsersGetUserResponseData["mainDb_user"];
+}) {
   return (
     <header className="max-w-full bg-white">
       <nav
@@ -22,7 +26,9 @@ export default function WebAppHeader({ user }: { user: PublicUser }) {
           <a onClick={() => {}} className="-m-1.5 p-1.5">
             <img className="h-8 w-auto" src={bolt_logo} alt="" />
           </a>
-          <span className="mx-8 text-slate-700">Dr. {user && user.name}</span>
+          <span className="mx-8 text-slate-700">
+            Dr. {user && user.fullName}
+          </span>
         </div>
 
         <div className="hidden flex-row items-center justify-center lg:flex lg:gap-x-12">

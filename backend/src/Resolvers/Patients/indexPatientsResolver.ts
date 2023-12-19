@@ -28,7 +28,6 @@ export class IndexPatientsResolver {
       })
       return true
     } catch (error) {
-      console.log({ error })
       console.log({ error: (error as any).importResults })
       return false
     }

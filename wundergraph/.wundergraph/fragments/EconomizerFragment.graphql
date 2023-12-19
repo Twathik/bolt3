@@ -1,0 +1,6 @@
+fragment EconomizerFragment on mainDb_Economizer {
+  id
+  name
+  eventType
+  template
+}

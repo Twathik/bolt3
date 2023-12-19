@@ -19,4 +19,9 @@ export class SettingMaxAggregate {
     nullable: true
   })
   allowedMobileDevices_secretary!: number | null;
+
+  @TypeGraphQL.Field(_type => TypeGraphQL.Int, {
+    nullable: true
+  })
+  allowedDICOMmodalities!: number | null;
 }

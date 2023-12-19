@@ -1,0 +1,6 @@
+query ($eventType: mainDb_EventTypes) {
+  mainDb_economizers(where: { eventType: { equals: $eventType } }) {
+    id
+    name
+  }
+}

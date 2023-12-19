@@ -1,15 +1,5 @@
 query ($patientId: String!) {
   mainDb_clinicalEvents(where: { patientId: { equals: $patientId } }) {
-    id
-    eventType
-    updatedAt
-    createdReport
-    report
-    empty
-    dicomId
-    dicom
-    user {
-      fullName
-    }
+    ...ClinicalEventFragment
   }
 }

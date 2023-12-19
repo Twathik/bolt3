@@ -35,5 +35,5 @@ export class FindFirstSettingArgs {
   @TypeGraphQL.Field(_type => [SettingScalarFieldEnum], {
     nullable: true
   })
-  distinct?: Array<"id" | "allowedMobileDevices_doctors" | "allowedMobileDevices_secretary"> | undefined;
+  distinct?: Array<"id" | "allowedMobileDevices_doctors" | "allowedMobileDevices_secretary" | "allowedDICOMmodalities"> | undefined;
 }

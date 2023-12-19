@@ -4,6 +4,7 @@ import { Prisma } from "@prisma/client";
 import { DecimalJSScalar } from "../scalars";
 import { ClinicalEvent } from "../models/ClinicalEvent";
 import { ConsultationList } from "../models/ConsultationList";
+import { WorkingList } from "../models/WorkingList";
 import { Sexe } from "../enums/Sexe";
 import { PatientCount } from "../resolvers/outputs/PatientCount";
 
@@ -44,6 +45,16 @@ export class Patient {
   })
   address?: string | null;
 
+  @TypeGraphQL.Field(_type => TypeGraphQL.Float, {
+    nullable: true
+  })
+  height?: number | null;
+
+  @TypeGraphQL.Field(_type => TypeGraphQL.Float, {
+    nullable: true
+  })
+  weight?: number | null;
+
   @TypeGraphQL.Field(_type => Date, {
     nullable: false
   })
@@ -72,6 +83,8 @@ export class Patient {
   ConsultationList?: ConsultationList[];
 
   ClinicalEvent?: ClinicalEvent[];
+
+  WorkingList?: WorkingList[];
 
   @TypeGraphQL.Field(_type => PatientCount, {
     nullable: true

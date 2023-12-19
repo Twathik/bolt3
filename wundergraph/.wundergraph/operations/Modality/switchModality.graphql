@@ -1,0 +1,8 @@
+mutation ($id: String!, $enabled: Boolean!) {
+  mainDb_updateOneModality(
+    where: { id: $id }
+    data: { enabled: { set: $enabled } }
+  ) {
+    id
+  }
+}

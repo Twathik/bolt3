@@ -9,6 +9,7 @@ import {
   Role,
   User,
   DocumentTemplate,
+  Modality,
 } from '@prisma/client'
 const prisma = new PrismaClient()
 
@@ -222,10 +223,55 @@ async function main() {
     {
       eventType: 'DIAGNOSTIC',
       template: '',
+      empty: true,
     },
     {
       eventType: 'PRESCRIPTION',
       template: '',
+      empty: true,
+    },
+  ]
+
+  const ModalityData: Omit<Modality, 'id' | 'modalityPseudo'>[] = [
+    {
+      modalityName: 'modality1',
+      modalityAETitle: 'AET',
+      modalityIpAddress: '0.0.0.0',
+      modalityPort: 104,
+      modalityType: 'US',
+      deleted: false,
+      activated: true,
+      enabled: true,
+    },
+    {
+      modalityName: 'modality2',
+      modalityAETitle: 'AET',
+      modalityIpAddress: '0.0.0.0',
+      modalityPort: 104,
+      modalityType: 'US',
+      deleted: false,
+      activated: false,
+      enabled: true,
+    },
+    {
+      modalityName: 'modality3',
+      modalityAETitle: 'AET',
+      modalityIpAddress: '0.0.0.0',
+      modalityPort: 104,
+      modalityType: 'US',
+      deleted: false,
+      activated: false,
+      enabled: true,
+    },
+    {
+      modalityName: 'modality4',
+      modalityAETitle: 'AET',
+      modalityIpAddress: '0.0.0.0',
+      modalityPort: 104,
+      modalityType: 'US',
+      deleted: false,
+      activated: false,
+      enabled: true,
     },
   ]
 
@@ -253,6 +299,14 @@ async function main() {
       create: d,
     })
     console.log(`Created documentTemplates with id: ${template.id}`)
+  }
+  for (const d of ModalityData) {
+    const modality = await prisma.modality.upsert({
+      where: { modalityName: d.modalityName },
+      update: {},
+      create: d,
+    })
+    console.log(`Created modalities with id: ${modality.id}`)
   }
   console.log(`Seeding finished.`)
 }

@@ -1,3 +1,0 @@
-mutation ($message: String!) {
-  mainDb_closeAllTabs(message: $message)
-}

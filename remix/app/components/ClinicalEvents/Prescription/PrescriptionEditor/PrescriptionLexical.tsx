@@ -19,10 +19,9 @@ import PrescriptionPanelContainer from "./PrescriptionPanel/PrescriptionPanelCon
 import PrescriptionEditor from "./PrescriptionEditor";
 import PrescriptionsPlugin from "./PrescriptionPlugin/PrescriptionPlugin";
 import { PrescriptionLayoutPlugin } from "./PrescriptionLayout/PrescriptionLayoutPlugin";
-import PrescriptionToPDF from "./PrescriptionPdf/PrescriptionToPDF";
+import PrescriptionToPDF from "../../../GeneralComponents/AppLexical/TopPanel/EditorToPDF/EditorToPdf";
 import { ClientOnly } from "remix-utils/client-only";
 import { SharedAutocompleteContext } from "@/components/GeneralComponents/LexicalEditor/context/SharedAutocompleteContext";
-import SaveEditorStateButton from "../../../GeneralComponents/AppLexical/SaveEditorStateButton";
 import type { ClinicalEventsGetClinicalEventResponseData } from "@/components/generated/models";
 import CommonNodes from "@/components/GeneralComponents/AppLexical/CommonNodes";
 
@@ -72,7 +71,7 @@ export default function PrescriptionLexical({
           <SharedAutocompleteContext>
             <>
               <div className="w-screen">
-                <ClientOnly>{() => <PrescriptionToPDF />}</ClientOnly>
+                <ClientOnly>{() => <PrescriptionToPDF size="A5" />}</ClientOnly>
               </div>
               <div className="grid grid-cols-12">
                 <div className="col-span-12 flex justify-end"></div>
@@ -86,7 +85,6 @@ export default function PrescriptionLexical({
                   <OnChangePlugin onChange={onChange} />
                   {children}
                 </div>
-                <SaveEditorStateButton clinicalEvent={clinicalEvent} />
               </div>
             </>
           </SharedAutocompleteContext>

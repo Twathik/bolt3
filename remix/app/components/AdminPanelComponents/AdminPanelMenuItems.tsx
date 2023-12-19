@@ -1,11 +1,11 @@
 import type { AdminPanelShellMenuInterface } from "@/lib/interfaces/AdminPanelShellMenuInterface";
 import {
-  CalendarIcon,
   DevicePhoneMobileIcon,
   DocumentDuplicateIcon,
   HomeIcon,
   TrashIcon,
   ClipboardDocumentCheckIcon,
+  SignalIcon,
 } from "@heroicons/react/24/outline";
 
 const AdminPanelMenuItems: AdminPanelShellMenuInterface[] = [
@@ -22,7 +22,12 @@ const AdminPanelMenuItems: AdminPanelShellMenuInterface[] = [
     href: "/admin-panel/templates",
     icon: ClipboardDocumentCheckIcon,
   },
-  { id: 4, name: "Calendar", href: "#", icon: CalendarIcon },
+  {
+    id: 4,
+    name: "Imagerie",
+    href: "/admin-panel/modalities",
+    icon: SignalIcon,
+  },
   {
     id: 5,
     name: "Documents",

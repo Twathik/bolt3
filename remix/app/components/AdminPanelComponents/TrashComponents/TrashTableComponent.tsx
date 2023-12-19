@@ -4,9 +4,9 @@ import { useCallback, useEffect, useState } from "react";
 import { useMutation } from "@/lib/wundergraph";
 import { useToast } from "@/ui/components/ui/use-toast";
 import { Button } from "@/ui/components/ui/button";
-import type { PatientsOnTrashFoldersSubscriptionResponseData } from "@/components/generated/models";
 import ConfirmationDialog from "@/components/GeneralComponents/ConfirmationDialog/confirmationDialog";
 import { AppDataTable } from "@/components/GeneralComponents/DataTable/AppDataTable";
+import type { PatientsGetOnTrashPatientsResponseData } from "@/components/generated/models";
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
@@ -37,7 +37,7 @@ export function DataTable<TData, TValue>({
   useEffect(() => {
     const selected = data.filter((_value, index) =>
       Object.keys(rowSelection).includes(index.toString())
-    ) as PatientsOnTrashFoldersSubscriptionResponseData["mainDb_emptyTrashSubscription"];
+    ) as PatientsGetOnTrashPatientsResponseData["mainDb_patients"];
 
     setSelectedIds(selected.map((s) => s.id));
   }, [data, rowSelection, setSelectedIds]);

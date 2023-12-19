@@ -51,10 +51,15 @@ export class UserMinAggregate {
   })
   lastConnection!: Date | null;
 
+  @TypeGraphQL.Field(_type => TypeGraphQL.Int, {
+    nullable: true
+  })
+  searchApiKeyId!: number | null;
+
   @TypeGraphQL.Field(_type => String, {
     nullable: true
   })
-  typesenseApiKey!: string | null;
+  searchApiKey!: string | null;
 
   @TypeGraphQL.Field(_type => Date, {
     nullable: true

@@ -41,6 +41,16 @@ export class PatientCreateManyInput {
   })
   address?: string | undefined;
 
+  @TypeGraphQL.Field(_type => TypeGraphQL.Float, {
+    nullable: true
+  })
+  height?: number | undefined;
+
+  @TypeGraphQL.Field(_type => TypeGraphQL.Float, {
+    nullable: true
+  })
+  weight?: number | undefined;
+
   @TypeGraphQL.Field(_type => Date, {
     nullable: true
   })

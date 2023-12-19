@@ -17,8 +17,6 @@ export class DeleteOneClinicalEventResolver {
     @TypeGraphQL.Ctx() ctx: any,
     @TypeGraphQL.Info() info: GraphQLResolveInfo,
     @TypeGraphQL.Args() args: DeleteOneClinicalEventArgs,
-    @TypeGraphQL.PubSub('UPDATE_CLINICAL_EVENT')
-    publish: TypeGraphQL.Publisher<string>,
   ): Promise<ClinicalEvent | null> {
     const { _count } = transformInfoIntoPrismaArgs(info)
     const prisma = getPrismaFromContext(ctx) as PrismaClient
@@ -28,7 +26,6 @@ export class DeleteOneClinicalEventResolver {
         data: { deleted: true },
         ...(_count && transformCountFieldIntoSelectRelationsCount(_count)),
       })
-      publish(clinicalEvent.patientId)
       return clinicalEvent
     } catch (error) {
       throw Error('The clinical event was not created')

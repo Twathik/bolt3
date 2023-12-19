@@ -1,13 +1,13 @@
-import type { PatientsSearch_patientsResponseData } from "@/components/generated/models";
 import React, { useCallback } from "react";
 import Hit from "./BoltSearchHits";
+import type { patientSearchResponse } from "@/lib/typesense/searchPatient";
 
 function BoltSearchPagination({
   data,
   page,
   setPage,
 }: {
-  data: PatientsSearch_patientsResponseData;
+  data: patientSearchResponse;
   page: number;
   setPage: React.Dispatch<React.SetStateAction<number>>;
 }) {

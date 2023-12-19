@@ -20,8 +20,6 @@ export class CreateOneClinicalEventResolver {
     @TypeGraphQL.Info() info: GraphQLResolveInfo,
     @TypeGraphQL.Args()
     { eventType, patientId, userId }: createOneClinicalEventArgs,
-    @TypeGraphQL.PubSub('UPDATE_CLINICAL_EVENT')
-    publish: TypeGraphQL.Publisher<string>,
   ): Promise<ClinicalEvent> {
     const { _count } = transformInfoIntoPrismaArgs(info)
     const prisma = getPrismaFromContext(ctx) as PrismaClient
@@ -36,7 +34,7 @@ export class CreateOneClinicalEventResolver {
         },
         ...(_count && transformCountFieldIntoSelectRelationsCount(_count)),
       })
-      publish(clinicalEvent.patientId)
+
       return clinicalEvent
     } catch (error) {
       console.log({ error })

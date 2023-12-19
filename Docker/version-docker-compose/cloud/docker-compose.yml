@@ -1,0 +1,103 @@
+version: "3.9"
+
+# starts 2 docker containers running minio server instances.
+# using nginx reverse proxy, load balancing, you can access
+# it through port 9000.
+
+# More info at https://github.com/pi-hole/docker-pi-hole/ and https://docs.pi-hole.net/
+services:
+  traefik:
+    image: "traefik:v2.6"
+    container_name: "traefik"
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "8080:8080"
+    volumes:
+      - "./traefik/conf.d:/etc/traefik/conf.d"
+      - "./traefik/traefik.toml:/etc/traefik/traefik.toml"
+      - "/var/run/docker.sock:/var/run/docker.sock:ro"
+
+  postgres_orthanc:
+    image: postgres:13-alpine
+    container_name: "postgres_orthanc"
+    ports:
+      - "5433:5432"
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: orthanc
+      POSTGRES_USER: ${POSTGRESQL_USER}
+      POSTGRES_PASSWORD: ${POSTGRESQL_PASS}
+      POSTGRES_HOST: postgres
+    volumes:
+      - ./orthanc/postgres_database:/var/lib/postgresql/data
+    healthcheck:
+      test: "exit 0"
+
+  orthanc:
+    image: osimis/orthanc
+    restart: always
+    ports:
+      - 4242:4242
+      - 8042:8042
+    depends_on:
+      postgres_orthanc:
+        condition: service_healthy
+    environment:
+      OSIMIS_WEB_VIEWER1_PLUGIN_ENABLED: "true"
+      VERBOSE_ENABLED: "true"
+      ORTHANC__REGISTERED_USERS: |
+        {"admin": "admin"}
+      OHIF_PLUGIN_ENABLED: "true"
+      ORTHANC_JSON: |
+        {
+          "PostgreSQL": {
+            "EnableIndex": true,
+            "EnableStorage": false,
+            "Port": 5432,
+            "Host": "postgres_orthanc",
+            "Database": "orthanc",
+            "Username": "${POSTGRESQL_USER}",
+            "Password": "${POSTGRESQL_PASS}",
+            "EnableSsl": false,
+            "Lock": false
+          },
+          "Worklists": {
+            "Enable": true,
+            "Database": "/var/lib/orthanc/worklists"
+          },
+          "DicomModalities" : {
+            "horos" : [ "HOROS", "192.168.0.8", 11112 ],
+            "findscu" : [ "FINDSCU", "127.0.0.1", 1234 ],
+            "modality" : [ "MODALITY", "192.168.175.209", 104 ],
+            "echopac" : ["ADEL-PC", "192.168.1.10", 104],
+            "inova730" : ["IGS730", "3.3.3.3", 4002],
+            "inova730_sub1" : ["IGS730", "192.168.65.1", 4002],
+            "vividE92" : ["VIVIDE9", "192.168.1.120", 104],
+            "vividE91" : ["VIVIDE9-006630", "192.168.1.100", 104],
+            "modality1" : ["AET", "0.0.0.0", 104],
+            "modality2" : ["AET", "0.0.0.0", 104],
+            "modality3" : ["AET", "0.0.0.0", 104],
+            "modality4" : ["AET", "0.0.0.0", 104]
+          }
+        }
+    #
+    volumes:
+      - ./orthanc/db:/var/lib/orthanc/db/
+      - ./worklists:/var/lib/orthanc/worklists
+
+  typesense:
+    image: typesense/typesense:0.25.1
+    restart: on-failure
+    ports:
+      - "8108:8108"
+    environment:
+      KC_URL: "http://keycloak.local"
+      KC_REALM: "bolt3"
+      KC_CLIENT_ID: "bolt3"
+      KC_CLIENT_SECRET: "1fhL2zhsYlkc44StVfV0z4UsCRWZFm7x"
+
+    volumes:
+      - ./typesense-data:/data
+      - ./typesense-config/typesense-server.ini:/etc/typesense/typesense-server.ini
+    command: "--config=/etc/typesense/typesense-server.ini"

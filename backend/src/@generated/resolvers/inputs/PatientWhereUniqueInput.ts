@@ -7,9 +7,11 @@ import { ClinicalEventListRelationFilter } from "../inputs/ClinicalEventListRela
 import { ConsultationListListRelationFilter } from "../inputs/ConsultationListListRelationFilter";
 import { DateTimeFilter } from "../inputs/DateTimeFilter";
 import { EnumSexeFilter } from "../inputs/EnumSexeFilter";
+import { FloatNullableFilter } from "../inputs/FloatNullableFilter";
 import { PatientWhereInput } from "../inputs/PatientWhereInput";
 import { StringFilter } from "../inputs/StringFilter";
 import { StringNullableFilter } from "../inputs/StringNullableFilter";
+import { WorkingListListRelationFilter } from "../inputs/WorkingListListRelationFilter";
 
 @TypeGraphQL.InputType("PatientWhereUniqueInput", {})
 export class PatientWhereUniqueInput {
@@ -63,6 +65,16 @@ export class PatientWhereUniqueInput {
   })
   address?: StringNullableFilter | undefined;
 
+  @TypeGraphQL.Field(_type => FloatNullableFilter, {
+    nullable: true
+  })
+  height?: FloatNullableFilter | undefined;
+
+  @TypeGraphQL.Field(_type => FloatNullableFilter, {
+    nullable: true
+  })
+  weight?: FloatNullableFilter | undefined;
+
   @TypeGraphQL.Field(_type => DateTimeFilter, {
     nullable: true
   })
@@ -97,4 +109,9 @@ export class PatientWhereUniqueInput {
     nullable: true
   })
   ClinicalEvent?: ClinicalEventListRelationFilter | undefined;
+
+  @TypeGraphQL.Field(_type => WorkingListListRelationFilter, {
+    nullable: true
+  })
+  WorkingList?: WorkingListListRelationFilter | undefined;
 }

@@ -10,8 +10,10 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
 
 export default function AdminPanel() {
   return (
-    <AdminPanelSell>
-      <Outlet />
-    </AdminPanelSell>
+    <main className="min-h-screen">
+      <AdminPanelSell>
+        <Outlet />
+      </AdminPanelSell>
+    </main>
   );
 }

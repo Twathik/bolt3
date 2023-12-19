@@ -1,0 +1,7 @@
+query {
+  mainDb_modalities(
+    where: { deleted: { equals: false }, activated: { equals: true } }
+  ) {
+    ...ModalityFragment
+  }
+}

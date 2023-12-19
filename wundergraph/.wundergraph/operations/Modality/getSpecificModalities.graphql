@@ -1,0 +1,11 @@
+query ($modalityType: mainDb_ModalityType!) {
+  mainDb_modalities(
+    where: {
+      deleted: { equals: false }
+      activated: { equals: true }
+      modalityType: { equals: $modalityType }
+    }
+  ) {
+    ...ModalityFragment
+  }
+}

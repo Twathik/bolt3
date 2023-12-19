@@ -17,8 +17,6 @@ export class CreateOneMobileDeviceResolver {
     @TypeGraphQL.Ctx() ctx: any,
     @TypeGraphQL.Info() info: GraphQLResolveInfo,
     @TypeGraphQL.Args() args: CreateOneMobileDeviceArgs,
-    @TypeGraphQL.PubSub('GET_ALL_MOBILE_DEVICES')
-    publish: TypeGraphQL.Publisher<boolean>,
   ): Promise<MobileDevice> {
     const { _count } = transformInfoIntoPrismaArgs(info)
     const prisma = getPrismaFromContext(ctx) as PrismaClient
@@ -53,7 +51,6 @@ export class CreateOneMobileDeviceResolver {
           ...(_count && transformCountFieldIntoSelectRelationsCount(_count)),
         },
       )
-      publish(true)
       return mobileDevices
     } catch (error) {
       console.log({ error })

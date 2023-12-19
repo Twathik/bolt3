@@ -36,4 +36,9 @@ export class SettingWhereUniqueInput {
     nullable: true
   })
   allowedMobileDevices_secretary?: IntFilter | undefined;
+
+  @TypeGraphQL.Field(_type => IntFilter, {
+    nullable: true
+  })
+  allowedDICOMmodalities?: IntFilter | undefined;
 }

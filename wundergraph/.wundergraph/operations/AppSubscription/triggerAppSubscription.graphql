@@ -1,0 +1,11 @@
+mutation (
+  $appPayload: String!
+  $appType: mainDb_AppSubscriptionPayloadType!
+  $userId: String! @fromClaim(name: USERID)
+) {
+  mainDb_triggerAppSubscription(
+    appPayload: $appPayload
+    type: $appType
+    userId: $userId
+  )
+}

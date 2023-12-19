@@ -1,0 +1,7 @@
+query ($id: String!) {
+  mainDb_modality(
+    where: { id: $id, deleted: { equals: false }, activated: { equals: true } }
+  ) {
+    ...ModalityFragment
+  }
+}

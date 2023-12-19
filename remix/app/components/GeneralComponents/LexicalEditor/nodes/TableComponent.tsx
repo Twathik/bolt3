@@ -546,7 +546,7 @@ function TableActionMenu({
           updateTableNode((tableNode) => {
             $addUpdateTag("history-push");
             tableNode.selectNext();
-            tableNode.remove();
+            tableNode.replace($createParagraphNode());
           });
           onClose();
         }}>

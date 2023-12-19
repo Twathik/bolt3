@@ -9,4 +9,4 @@ service = "keycloak"
 [http.services.keycloak]
 [http.services.keycloak.loadBalancer]
 [[http.services.keycloak.loadBalancer.servers]]
-url = "http://100.74.3.18:8082"
+url = "http://host.docker.internal:8082"

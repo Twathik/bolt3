@@ -3,7 +3,7 @@ import ClinicalDiagnosticRootComponent from "../ClinicalEvents/ClinicalDiagnosti
 import PrescriptionRootComponent from "../ClinicalEvents/Prescription/PrescriptionRootComponent";
 import SonoRootComponent from "../ClinicalEvents/Sonography/SonoRootComponent";
 
-export const getRootComponent = ({
+export const getEditorRootComponent = ({
   clinicalEvent,
 }: {
   clinicalEvent: ClinicalEventsGetClinicalEventResponseData["mainDb_clinicalEvent"];

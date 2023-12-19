@@ -1,17 +1,10 @@
-import typesenseClient from "@/lib/typesense";
 import { useCallback, useEffect, useRef, useState } from "react";
-import type {
-  SearchParams,
-  SearchParamsWithPreset,
-} from "typesense/lib/Typesense/Documents";
 import { debounce } from "lodash-es";
-import type {
-  DrugHitInterface,
-  DrugsInterface,
-  DrugsSearchResponseInterface,
-} from "@/lib/interfaces/DrugsInterfaces";
+import type { DrugsSearchResponseInterface } from "@/lib/interfaces/DrugsInterfaces";
 import { useBoltStore } from "@/stores/boltStore";
-import { v4 as uuid } from "uuid";
+import searchPrescription from "@/lib/typesense/serachPrescription";
+import createTypesenseClient from "@/lib/typesense/typesense";
+import { useToast } from "@/ui/components/ui/use-toast";
 
 export function usePrescriptionLookupService(
   prescriptionString: string | null
@@ -22,83 +15,37 @@ export function usePrescriptionLookupService(
   const setLoadingPrescription = useBoltStore(
     (store) => store.setLoadingPrescription
   );
+  const user = useBoltStore((store) => store.user);
+  const { toast } = useToast();
 
   const searchDrug = useCallback(
     async (prescriptionString: string | null) => {
-      setLoadingPrescription(true);
-      const params: SearchParams | SearchParamsWithPreset = {
-        q: prescriptionString || "",
-        query_by: "nomCommercial,DCI,dosage,labo,classPharmaco",
-        include_fields:
-          "id,nomCommercial,drugTemplate,labo,DCI,PPA,TR,vignetteColor,classPharmaco,classTherapeutique,conditionnement,liste,pays,remboursable,prodLocal,comercialisé,img,miniatureImageLink,dosage,forme",
-        // sort_by: "priority:desc,charCount:asc",
-        limit_hits: 10,
-        page: 1,
-        per_page: 10,
-        search_cutoff_ms: 100,
-      };
-      const search_result = await typesenseClient
-        .collections("drugs")
-        .documents()
-        .search(params);
+      if (prescriptionString) {
+        setLoadingPrescription(true);
+        const client = createTypesenseClient(user.searchApiKey);
+        const search_result = await searchPrescription({
+          client,
+          searchParams: { query_string: prescriptionString },
+        });
+        if (search_result) {
+          setResults({
+            hits: search_result?.hits,
+            found: search_result.found,
+            page: search_result.page,
+            search_time_ms: search_result.search_time_ms,
+          });
+        } else {
+          toast({
+            title: "erreur réseau",
+            description: "Veuillez rafraichir la page",
+            variant: "destructive",
+          });
+        }
 
-      const hits: DrugHitInterface[] =
-        search_result.hits?.map((hit) => {
-          const {
-            id,
-            drugTemplate,
-            labo,
-            DCI,
-            PPA,
-            TR,
-            nomCommercial,
-            vignetteColor,
-            classPharmaco,
-            classTherapeutique,
-            conditionnement,
-            liste,
-            pays,
-            remboursable,
-            prodLocal,
-            comercialisé,
-            img,
-            miniatureImageLink,
-            dosage,
-            forme,
-          } = hit.document as DrugsInterface;
-          return {
-            id,
-            prescriptionId: uuid(),
-            drugTemplate,
-            labo,
-            nomCommercial,
-            DCI,
-            PPA,
-            TR,
-            vignetteColor,
-            classPharmaco,
-            classTherapeutique,
-            conditionnement,
-            liste,
-            pays,
-            remboursable,
-            prodLocal,
-            comercialisé,
-            img,
-            miniatureImageLink,
-            dosage,
-            forme,
-          };
-        }) ?? [];
-      setResults({
-        hits,
-        found: search_result.found,
-        page: search_result.page,
-        search_time_ms: search_result.search_time_ms,
-      });
-      setLoadingPrescription(false);
+        setLoadingPrescription(false);
+      }
     },
-    [setLoadingPrescription]
+    [setLoadingPrescription, toast, user.searchApiKey]
   );
   const debouncedSearch = useRef(debounce(searchDrug, 500));
 

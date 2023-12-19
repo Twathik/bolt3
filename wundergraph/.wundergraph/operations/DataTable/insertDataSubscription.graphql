@@ -1,0 +1,14 @@
+subscription ($clinicalEventId: String!) {
+  mainDb_insertDataSubscription(clinicalEventId: $clinicalEventId) {
+    paramData {
+      paramName
+      paramType
+    }
+    columnWidth
+    tableContentType
+    value
+    widget {
+      ...WidgetConfigFragment
+    }
+  }
+}

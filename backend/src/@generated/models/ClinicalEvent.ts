@@ -5,7 +5,9 @@ import { DecimalJSScalar } from "../scalars";
 import { Patient } from "../models/Patient";
 import { Prescription } from "../models/Prescription";
 import { User } from "../models/User";
+import { WorkingList } from "../models/WorkingList";
 import { EventTypes } from "../enums/EventTypes";
+import { ClinicalEventCount } from "../resolvers/outputs/ClinicalEventCount";
 
 @TypeGraphQL.ObjectType("ClinicalEvent", {})
 export class ClinicalEvent {
@@ -84,4 +86,11 @@ export class ClinicalEvent {
   clinicalDiagnosticId?: string | null;
 
   Prescription?: Prescription | null;
+
+  WorkingList?: WorkingList[];
+
+  @TypeGraphQL.Field(_type => ClinicalEventCount, {
+    nullable: true
+  })
+  _count?: ClinicalEventCount | null;
 }

@@ -1,0 +1,13 @@
+mutation (
+  $clinicalEventId: String!
+  $tableContentType: String!
+  $paramData: mainDb_ParamDataInputType!
+  $value: String!
+) {
+  mainDb_triggerInsertDataSubscription(
+    clinicalEventId: $clinicalEventId
+    tableContentType: $tableContentType
+    paramData: $paramData
+    value: $value
+  )
+}

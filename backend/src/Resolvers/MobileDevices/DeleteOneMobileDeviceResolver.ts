@@ -16,8 +16,6 @@ export class DeleteOneMobileDeviceResolver {
     @TypeGraphQL.Ctx() ctx: any,
     @TypeGraphQL.Info() info: GraphQLResolveInfo,
     @TypeGraphQL.Args() args: DeleteOneMobileDeviceArgs,
-    @TypeGraphQL.PubSub('GET_ALL_MOBILE_DEVICES')
-    publish: TypeGraphQL.Publisher<boolean>,
   ): Promise<MobileDevice | null> {
     const { _count } = transformInfoIntoPrismaArgs(info)
     try {
@@ -25,7 +23,6 @@ export class DeleteOneMobileDeviceResolver {
         ...args,
         ...(_count && transformCountFieldIntoSelectRelationsCount(_count)),
       })
-      publish(true)
 
       return result
     } catch (error) {

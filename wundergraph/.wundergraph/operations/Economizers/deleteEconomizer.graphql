@@ -1,0 +1,5 @@
+mutation ($id: String!) {
+  mainDb_deleteOneEconomizer(where: { id: $id }) {
+    id
+  }
+}

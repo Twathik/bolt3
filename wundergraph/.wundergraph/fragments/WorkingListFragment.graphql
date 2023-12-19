@@ -1,0 +1,21 @@
+fragment WorkingListFragment on mainDb_WorkingList {
+  id
+  modality {
+    id
+    modalityPseudo
+    modalityType
+    modalityAETitle
+  }
+  patient {
+    patientFullName
+  }
+  user {
+    fullName
+  }
+  clinicalEventId
+  createdAt
+  modalityExamStatus
+  linkId
+  linked
+  locked
+}

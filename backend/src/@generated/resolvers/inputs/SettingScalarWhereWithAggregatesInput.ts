@@ -36,4 +36,9 @@ export class SettingScalarWhereWithAggregatesInput {
     nullable: true
   })
   allowedMobileDevices_secretary?: IntWithAggregatesFilter | undefined;
+
+  @TypeGraphQL.Field(_type => IntWithAggregatesFilter, {
+    nullable: true
+  })
+  allowedDICOMmodalities?: IntWithAggregatesFilter | undefined;
 }

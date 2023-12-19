@@ -6,6 +6,8 @@ import { Request, Response } from 'express'
 import prisma from './Utils/api/prismaClient'
 import { Client } from 'typesense'
 import typesense from './Utils/typesense'
+import { axiosOrthancInstance as orthanc } from './Utils/api/axiosConfig'
+import { AxiosInstance } from 'axios'
 
 config({
   path:
@@ -17,6 +19,7 @@ export interface Context {
   req: Request
   res: Response
   typesense: Client
+  orthanc: AxiosInstance
 }
 export function createContext(ctx: { req: Request; res: Response }) {
   return {
@@ -24,6 +27,7 @@ export function createContext(ctx: { req: Request; res: Response }) {
     prisma,
     // user,
     typesense,
+    orthanc,
   }
 }
 

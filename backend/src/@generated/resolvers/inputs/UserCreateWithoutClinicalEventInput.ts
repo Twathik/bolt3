@@ -3,6 +3,7 @@ import * as GraphQLScalars from "graphql-scalars";
 import { Prisma } from "@prisma/client";
 import { DecimalJSScalar } from "../../scalars";
 import { UserCreatephoneNumbersInput } from "../inputs/UserCreatephoneNumbersInput";
+import { WorkingListCreateNestedManyWithoutUserInput } from "../inputs/WorkingListCreateNestedManyWithoutUserInput";
 import { Role } from "../../enums/Role";
 
 @TypeGraphQL.InputType("UserCreateWithoutClinicalEventInput", {})
@@ -57,13 +58,23 @@ export class UserCreateWithoutClinicalEventInput {
   })
   lastConnection?: Date | undefined;
 
+  @TypeGraphQL.Field(_type => TypeGraphQL.Int, {
+    nullable: true
+  })
+  searchApiKeyId?: number | undefined;
+
   @TypeGraphQL.Field(_type => String, {
     nullable: true
   })
-  typesenseApiKey?: string | undefined;
+  searchApiKey?: string | undefined;
 
   @TypeGraphQL.Field(_type => Date, {
     nullable: true
   })
   createdAt?: Date | undefined;
+
+  @TypeGraphQL.Field(_type => WorkingListCreateNestedManyWithoutUserInput, {
+    nullable: true
+  })
+  WorkingList?: WorkingListCreateNestedManyWithoutUserInput | undefined;
 }

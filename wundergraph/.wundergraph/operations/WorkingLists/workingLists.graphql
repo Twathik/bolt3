@@ -1,0 +1,7 @@
+query ($clinicalEventId: String!) {
+  mainDb_workingLists(
+    where: { clinicalEventId: { equals: $clinicalEventId } }
+  ) {
+    ...WorkingListFragment
+  }
+}

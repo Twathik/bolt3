@@ -1,0 +1,8 @@
+mutation ($id: String!, $template: String!) {
+  mainDb_updateOneEconomizer(
+    where: { id: $id }
+    data: { template: { set: $template } }
+  ) {
+    ...EconomizerFragment
+  }
+}

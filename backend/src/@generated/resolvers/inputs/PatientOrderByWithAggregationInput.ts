@@ -2,9 +2,11 @@ import * as TypeGraphQL from "type-graphql";
 import * as GraphQLScalars from "graphql-scalars";
 import { Prisma } from "@prisma/client";
 import { DecimalJSScalar } from "../../scalars";
+import { PatientAvgOrderByAggregateInput } from "../inputs/PatientAvgOrderByAggregateInput";
 import { PatientCountOrderByAggregateInput } from "../inputs/PatientCountOrderByAggregateInput";
 import { PatientMaxOrderByAggregateInput } from "../inputs/PatientMaxOrderByAggregateInput";
 import { PatientMinOrderByAggregateInput } from "../inputs/PatientMinOrderByAggregateInput";
+import { PatientSumOrderByAggregateInput } from "../inputs/PatientSumOrderByAggregateInput";
 import { SortOrderInput } from "../inputs/SortOrderInput";
 import { SortOrder } from "../../enums/SortOrder";
 
@@ -45,6 +47,16 @@ export class PatientOrderByWithAggregationInput {
   })
   address?: SortOrderInput | undefined;
 
+  @TypeGraphQL.Field(_type => SortOrderInput, {
+    nullable: true
+  })
+  height?: SortOrderInput | undefined;
+
+  @TypeGraphQL.Field(_type => SortOrderInput, {
+    nullable: true
+  })
+  weight?: SortOrderInput | undefined;
+
   @TypeGraphQL.Field(_type => SortOrder, {
     nullable: true
   })
@@ -75,6 +87,11 @@ export class PatientOrderByWithAggregationInput {
   })
   _count?: PatientCountOrderByAggregateInput | undefined;
 
+  @TypeGraphQL.Field(_type => PatientAvgOrderByAggregateInput, {
+    nullable: true
+  })
+  _avg?: PatientAvgOrderByAggregateInput | undefined;
+
   @TypeGraphQL.Field(_type => PatientMaxOrderByAggregateInput, {
     nullable: true
   })
@@ -84,4 +101,9 @@ export class PatientOrderByWithAggregationInput {
     nullable: true
   })
   _min?: PatientMinOrderByAggregateInput | undefined;
+
+  @TypeGraphQL.Field(_type => PatientSumOrderByAggregateInput, {
+    nullable: true
+  })
+  _sum?: PatientSumOrderByAggregateInput | undefined;
 }

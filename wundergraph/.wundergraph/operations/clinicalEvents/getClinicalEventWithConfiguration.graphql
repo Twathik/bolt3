@@ -1,0 +1,18 @@
+query ($id: String!) {
+  mainDb_clinicalEvent(where: { id: $id }) {
+    ...ClinicalEventFragment
+    getConfigurationFile {
+      ...DataTableSectionFragment
+    }
+    getModalities {
+      ...ModalityFragment
+    }
+    WorkingList {
+      ...WorkingListFragment
+    }
+    getEconomizers {
+      id
+      name
+    }
+  }
+}

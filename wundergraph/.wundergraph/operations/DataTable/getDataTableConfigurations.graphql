@@ -1,0 +1,5 @@
+query ($eventType: mainDb_EventTypes!) {
+  mainDb_getDataTableConfiguration(eventType: $eventType) {
+    ...DataTableSectionFragment
+  }
+}

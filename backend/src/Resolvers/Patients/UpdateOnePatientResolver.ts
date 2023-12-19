@@ -19,8 +19,6 @@ export class UpdateOnePatientResolver {
     @TypeGraphQL.Ctx() ctx: Context,
     @TypeGraphQL.Info() info: GraphQLResolveInfo,
     @TypeGraphQL.Args() args: UpdateOnePatientArgs,
-    @TypeGraphQL.PubSub('GET_UPDATED_PATIENT')
-    publish: TypeGraphQL.Publisher<string>,
   ): Promise<Patient | null> {
     const { _count } = transformInfoIntoPrismaArgs(info)
     try {
@@ -34,7 +32,6 @@ export class UpdateOnePatientResolver {
         typesense: ctx.typesense,
       })
 
-      if (args?.where?.id) publish(args.where.id)
       return patient
     } catch (error) {
       console.log({ error })

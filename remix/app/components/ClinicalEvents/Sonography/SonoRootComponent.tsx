@@ -6,7 +6,9 @@ import { DotLoader } from "react-spinners";
 import { ClientOnly } from "remix-utils/client-only";
 import { useMutation } from "@/lib/wundergraph";
 import type { ClinicalEventsGetClinicalEventResponseData } from "@/components/generated/models";
-import SonoLexical from "./SonographyEditor/SonographyLexical";
+import ClinicalEventsLexical from "../ClinicalEventsLexical";
+import SonoEditor from "./SonographyEditor/SonoEditor";
+import TopPanel from "@/components/GeneralComponents/AppLexical/TopPanel/TopPanel";
 // import Lexical from "@/components/GeneralComponents/LexicalEditor/Lexical";
 
 function SonoRootComponent({
@@ -43,11 +45,14 @@ function SonoRootComponent({
             </div>
           }>
           {() => (
-            <SonoLexical
+            <ClinicalEventsLexical
               clinicalEvent={clinicalEvent}
-              onChangeCallback={onChange}
-              //initialState={template?.template}
-            />
+              onChangeCallback={onChange}>
+              <>
+                <TopPanel clinicalEvent={clinicalEvent} size="A4" />
+                <SonoEditor />
+              </>
+            </ClinicalEventsLexical>
           )}
         </ClientOnly>
 

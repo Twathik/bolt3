@@ -5,9 +5,11 @@ import { DecimalJSScalar } from "../../scalars";
 import { ClinicalEventUpdateManyWithoutUserNestedInput } from "../inputs/ClinicalEventUpdateManyWithoutUserNestedInput";
 import { DateTimeFieldUpdateOperationsInput } from "../inputs/DateTimeFieldUpdateOperationsInput";
 import { EnumRoleFieldUpdateOperationsInput } from "../inputs/EnumRoleFieldUpdateOperationsInput";
+import { NullableIntFieldUpdateOperationsInput } from "../inputs/NullableIntFieldUpdateOperationsInput";
 import { NullableStringFieldUpdateOperationsInput } from "../inputs/NullableStringFieldUpdateOperationsInput";
 import { StringFieldUpdateOperationsInput } from "../inputs/StringFieldUpdateOperationsInput";
 import { UserUpdatephoneNumbersInput } from "../inputs/UserUpdatephoneNumbersInput";
+import { WorkingListUpdateManyWithoutUserNestedInput } from "../inputs/WorkingListUpdateManyWithoutUserNestedInput";
 
 @TypeGraphQL.InputType("UserUpdateInput", {})
 export class UserUpdateInput {
@@ -61,10 +63,15 @@ export class UserUpdateInput {
   })
   lastConnection?: DateTimeFieldUpdateOperationsInput | undefined;
 
-  @TypeGraphQL.Field(_type => NullableStringFieldUpdateOperationsInput, {
+  @TypeGraphQL.Field(_type => NullableIntFieldUpdateOperationsInput, {
     nullable: true
   })
-  typesenseApiKey?: NullableStringFieldUpdateOperationsInput | undefined;
+  searchApiKeyId?: NullableIntFieldUpdateOperationsInput | undefined;
+
+  @TypeGraphQL.Field(_type => StringFieldUpdateOperationsInput, {
+    nullable: true
+  })
+  searchApiKey?: StringFieldUpdateOperationsInput | undefined;
 
   @TypeGraphQL.Field(_type => DateTimeFieldUpdateOperationsInput, {
     nullable: true
@@ -75,4 +82,9 @@ export class UserUpdateInput {
     nullable: true
   })
   ClinicalEvent?: ClinicalEventUpdateManyWithoutUserNestedInput | undefined;
+
+  @TypeGraphQL.Field(_type => WorkingListUpdateManyWithoutUserNestedInput, {
+    nullable: true
+  })
+  WorkingList?: WorkingListUpdateManyWithoutUserNestedInput | undefined;
 }

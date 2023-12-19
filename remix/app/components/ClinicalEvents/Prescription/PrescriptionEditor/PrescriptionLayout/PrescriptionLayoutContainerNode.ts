@@ -66,7 +66,6 @@ export class PrescriptionLayoutContainerNode extends ParagraphNode {
     return false;
   }
   collapseAtStart(): boolean {
-    console.log("layout at start");
     this.replace($createParagraphNode());
 
     return true;

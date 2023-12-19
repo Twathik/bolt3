@@ -21,4 +21,9 @@ export class SettingUpdateInput {
     nullable: true
   })
   allowedMobileDevices_secretary?: IntFieldUpdateOperationsInput | undefined;
+
+  @TypeGraphQL.Field(_type => IntFieldUpdateOperationsInput, {
+    nullable: true
+  })
+  allowedDICOMmodalities?: IntFieldUpdateOperationsInput | undefined;
 }

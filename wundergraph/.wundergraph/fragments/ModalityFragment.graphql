@@ -1,0 +1,9 @@
+fragment ModalityFragment on mainDb_Modality {
+  id
+  modalityAETitle
+  modalityIpAddress
+  modalityPseudo
+  modalityPort
+  modalityType
+  enabled
+}

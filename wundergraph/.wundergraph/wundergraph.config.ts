@@ -37,7 +37,7 @@ configureWunderGraphApplication({
         authProviders.openIdConnect({
           id: "kc",
           clientId: "bolt3",
-          clientSecret: "1fhL2zhsYlkc44StVfV0z4UsCRWZFm7x",
+          clientSecret: "6fzXbI7bjgcZqfCJXeRxBQG30dxSBVvi",
           issuer: "http://keycloak.local/realms/bolt3",
         }),
       ],

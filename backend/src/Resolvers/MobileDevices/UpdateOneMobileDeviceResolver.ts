@@ -16,8 +16,6 @@ export class UpdateOneMobileDeviceResolver {
     @TypeGraphQL.Ctx() ctx: any,
     @TypeGraphQL.Info() info: GraphQLResolveInfo,
     @TypeGraphQL.Args() args: UpdateOneMobileDeviceArgs,
-    @TypeGraphQL.PubSub('GET_ALL_MOBILE_DEVICES')
-    publish: TypeGraphQL.Publisher<boolean>,
   ): Promise<MobileDevice | null> {
     try {
       const { _count } = transformInfoIntoPrismaArgs(info)
@@ -25,7 +23,7 @@ export class UpdateOneMobileDeviceResolver {
         ...args,
         ...(_count && transformCountFieldIntoSelectRelationsCount(_count)),
       })
-      publish(true)
+
       return result
     } catch (error) {
       throw Error('Mobile Device : failed update')

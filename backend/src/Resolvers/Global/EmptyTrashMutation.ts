@@ -7,6 +7,8 @@ import {
   transformInfoIntoPrismaArgs,
 } from '../../@generated/helpers'
 import { PrismaClient } from '@prisma/client'
+import { AppSubscriptionArgs } from './AppSubscription/args/AppSubscriptionTriggerArgs'
+import { EmptyTrashArgs } from './args/EmptyTrashArgs'
 
 @TypeGraphQL.Resolver((_of) => Patient)
 export class EmptyTrashMutation {
@@ -16,7 +18,9 @@ export class EmptyTrashMutation {
   async emptyTrashMutation(
     @TypeGraphQL.Ctx() ctx: any,
     @TypeGraphQL.Info() info: GraphQLResolveInfo,
-    @TypeGraphQL.PubSub('EMPTY_TRASH') publish: TypeGraphQL.Publisher<string>,
+    @TypeGraphQL.Args() { userId }: EmptyTrashArgs,
+    @TypeGraphQL.PubSub('APP_SUBSCRIPTION')
+    publish: TypeGraphQL.Publisher<AppSubscriptionArgs>,
     @TypeGraphQL.PubSub('GET_UPDATED_PATIENT')
     update: TypeGraphQL.Publisher<string>,
   ): Promise<Boolean> {
@@ -29,7 +33,7 @@ export class EmptyTrashMutation {
         data: { deleted: true },
         ...(_count && transformCountFieldIntoSelectRelationsCount(_count)),
       })
-      publish('update')
+      await publish({ appPayload: '', userId, type: 'emptyTrash' })
       doc.forEach((d) => update(d.id))
 
       return true

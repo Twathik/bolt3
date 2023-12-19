@@ -1,0 +1,21 @@
+fragment WidgetConfigFragment on mainDb_WidgetUnion {
+  ... on mainDb_DataTableConfigModel {
+    id
+    widgetType
+    tableName
+    config {
+      columnWidth
+      paramHeader
+      data {
+        paramName
+        paramType
+      }
+      value
+    }
+  }
+  ... on mainDb_pictureGeneratorConfigModel {
+    id
+    widgetName
+    widgetType
+  }
+}

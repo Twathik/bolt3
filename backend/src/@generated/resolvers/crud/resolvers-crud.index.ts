@@ -2,8 +2,11 @@ export { ClinicalEventCrudResolver } from "./ClinicalEvent/ClinicalEventCrudReso
 export { ConsultationCrudResolver } from "./Consultation/ConsultationCrudResolver";
 export { ConsultationListCrudResolver } from "./ConsultationList/ConsultationListCrudResolver";
 export { DocumentTemplateCrudResolver } from "./DocumentTemplate/DocumentTemplateCrudResolver";
+export { EconomizerCrudResolver } from "./Economizer/EconomizerCrudResolver";
 export { MobileDeviceCrudResolver } from "./MobileDevice/MobileDeviceCrudResolver";
+export { ModalityCrudResolver } from "./Modality/ModalityCrudResolver";
 export { PatientCrudResolver } from "./Patient/PatientCrudResolver";
 export { PrescriptionCrudResolver } from "./Prescription/PrescriptionCrudResolver";
 export { SettingCrudResolver } from "./Setting/SettingCrudResolver";
 export { UserCrudResolver } from "./User/UserCrudResolver";
+export { WorkingListCrudResolver } from "./WorkingList/WorkingListCrudResolver";

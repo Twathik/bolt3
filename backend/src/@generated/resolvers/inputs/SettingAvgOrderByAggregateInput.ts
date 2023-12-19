@@ -15,4 +15,9 @@ export class SettingAvgOrderByAggregateInput {
     nullable: true
   })
   allowedMobileDevices_secretary?: "asc" | "desc" | undefined;
+
+  @TypeGraphQL.Field(_type => SortOrder, {
+    nullable: true
+  })
+  allowedDICOMmodalities?: "asc" | "desc" | undefined;
 }

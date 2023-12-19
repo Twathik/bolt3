@@ -1,20 +1,61 @@
 import { Button } from "@/ui/components/ui/button";
-import type { ClinicalEventsGetClinicalEventResponseData } from "../generated/models";
-import { getRootComponent } from "../PatientFolder/utils";
+import type {
+  ClinicalEventsGetClinicalEventResponseData,
+  DataTableGetDataTableConfigurationsResponseData,
+  EconomizersEconomizersResponseData,
+  ModalityGetSpecificModalitiesResponseData,
+  WorkingListsWorkingListsResponseData,
+} from "../generated/models";
+import { getEditorRootComponent } from "../PatientFolder/utils";
 import { ChevronLeftIcon } from "@heroicons/react/24/outline";
 import { useNavigate } from "@remix-run/react";
-import { useCallback } from "react";
+import { useCallback, useEffect } from "react";
+import { useBoltStore } from "@/stores/boltStore";
 
 function EditClinicalEventsRootComponent({
   clinicalEvent,
+  modalities,
+  workingLists,
+  editorConfigurationFiles,
+  economizers,
 }: {
   clinicalEvent: ClinicalEventsGetClinicalEventResponseData["mainDb_clinicalEvent"];
+  modalities: ModalityGetSpecificModalitiesResponseData["mainDb_modalities"];
+  workingLists: WorkingListsWorkingListsResponseData["mainDb_workingLists"];
+  editorConfigurationFiles: DataTableGetDataTableConfigurationsResponseData["mainDb_getDataTableConfiguration"];
+  economizers: EconomizersEconomizersResponseData["mainDb_economizers"];
 }) {
   const router = useNavigate();
 
   const navigate = useCallback(() => {
     router(-1);
   }, [router]);
+  const setClinicalEvent = useBoltStore((store) => store.setClinicalEvent);
+  const setModalities = useBoltStore((store) => store.setModalities);
+  const setWorkingLists = useBoltStore((store) => store.setWorkingLists);
+  const setEditorConfiguration = useBoltStore(
+    (store) => store.setEditorConfiguration
+  );
+  const setEconomizers = useBoltStore((store) => store.setEconomizers);
+
+  useEffect(() => {
+    setClinicalEvent(clinicalEvent);
+    setModalities(modalities);
+    setWorkingLists(workingLists);
+    setEditorConfiguration(editorConfigurationFiles);
+    setEconomizers(economizers);
+  }, [
+    clinicalEvent,
+    economizers,
+    editorConfigurationFiles,
+    modalities,
+    setClinicalEvent,
+    setEconomizers,
+    setEditorConfiguration,
+    setModalities,
+    setWorkingLists,
+    workingLists,
+  ]);
   return (
     <div className="bg-white">
       <div className="grid grid-cols-12">
@@ -24,7 +65,7 @@ function EditClinicalEventsRootComponent({
           </Button>
         </div>
       </div>
-      {getRootComponent({ clinicalEvent })}
+      {getEditorRootComponent({ clinicalEvent })}
     </div>
   );
 }

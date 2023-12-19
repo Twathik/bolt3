@@ -21,13 +21,15 @@ import { MarkNode } from "@lexical/mark";
 import { OverflowNode } from "@lexical/overflow";
 import { HorizontalRuleNode } from "@lexical/react/LexicalHorizontalRuleNode";
 import { HeadingNode, QuoteNode } from "@lexical/rich-text";
-import { TableNode, TableCellNode, TableRowNode } from "@lexical/table";
-import { TableNode as NewTableNode } from "@/components/GeneralComponents/LexicalEditor/nodes/TableNode";
 import { LayoutContainerNode } from "@/components/GeneralComponents/LexicalEditor/nodes/LayoutContainerNode";
 import { LayoutItemNode } from "@/components/GeneralComponents/LexicalEditor/nodes/LayoutItemNode";
 import { InlineImageNode } from "../LexicalEditor/nodes/InlineImageNode";
 import { ExcalidrawNode } from "../LexicalEditor/nodes/ExcalidrawNode";
 import { PageBreakNode } from "../LexicalEditor/nodes/PageBreakNode";
+
+import { TableCellNode, TableRowNode } from "@lexical/table";
+import { TableNode } from "../LexicalEditor/nodes/TableNode";
+import { DataTableNode } from "./Datatable/DataTableNode";
 
 const CommonNodes: Array<Klass<LexicalNode>> = [
   HeadingNode,
@@ -35,7 +37,6 @@ const CommonNodes: Array<Klass<LexicalNode>> = [
   ListItemNode,
   QuoteNode,
   CodeNode,
-  NewTableNode,
   TableNode,
   TableCellNode,
   TableRowNode,
@@ -65,6 +66,7 @@ const CommonNodes: Array<Klass<LexicalNode>> = [
   PageBreakNode,
   LayoutContainerNode,
   LayoutItemNode,
+  DataTableNode,
 ];
 
 export default CommonNodes;

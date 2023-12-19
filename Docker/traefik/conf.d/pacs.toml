@@ -9,4 +9,4 @@ service = "pacs"
 [http.services.pacs]
 [http.services.pacs.loadBalancer]
 [[http.services.pacs.loadBalancer.servers]]
-url = "http://100.74.3.18:8042"
+url = "http://host.docker.internal:8042"

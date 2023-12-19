@@ -5,10 +5,9 @@ import { createClientFromCookies } from "./wundergraph";
 const createClientFromCookiesAndCheckUser = async (
   request: Request
 ): Promise<WunderGraphClient> => {
-  const client = createClientFromCookies(request);
   try {
+    const client = createClientFromCookies(request);
     await client.fetchUser();
-
     return client;
   } catch (error) {
     throw redirect("/login");

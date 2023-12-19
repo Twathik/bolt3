@@ -3,19 +3,15 @@
 import type { ClientOperationErrors, GraphQLError } from "@wundergraph/sdk/client";
 
 export type OperationErrors = {
-	"Abbreviations/searchAbreviation": AbbreviationsSearchAbreviationErrors;
-	"Drugs/searchDrugs": DrugsSearchDrugsErrors;
-	"clinicalDiagnostics/searchClinicalDiagnostics": ClinicalDiagnosticsSearchClinicalDiagnosticsErrors;
-	"patients/search_patients": PatientsSearch_patientsErrors;
+	"WorkingLists/linkExam": WorkingListsLinkExamErrors;
+	"WorkingLists/refreshLinkExam": WorkingListsRefreshLinkExamErrors;
 	"users/get": UsersGetErrors;
 	"users/subscribe": UsersSubscribeErrors;
 	"users/update": UsersUpdateErrors;
 };
 
-export type AbbreviationsSearchAbreviationErrors = ClientOperationErrors;
-export type DrugsSearchDrugsErrors = ClientOperationErrors;
-export type ClinicalDiagnosticsSearchClinicalDiagnosticsErrors = ClientOperationErrors;
-export type PatientsSearch_patientsErrors = ClientOperationErrors;
+export type WorkingListsLinkExamErrors = ClientOperationErrors;
+export type WorkingListsRefreshLinkExamErrors = ClientOperationErrors;
 export type UsersGetErrors = ClientOperationErrors;
 export type UsersSubscribeErrors = ClientOperationErrors;
 export type UsersUpdateErrors = ClientOperationErrors;

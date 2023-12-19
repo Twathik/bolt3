@@ -4,6 +4,7 @@ import { Prisma } from "@prisma/client";
 import { DecimalJSScalar } from "../../scalars";
 import { ClinicalEventOrderByRelationAggregateInput } from "../inputs/ClinicalEventOrderByRelationAggregateInput";
 import { SortOrderInput } from "../inputs/SortOrderInput";
+import { WorkingListOrderByRelationAggregateInput } from "../inputs/WorkingListOrderByRelationAggregateInput";
 import { SortOrder } from "../../enums/SortOrder";
 
 @TypeGraphQL.InputType("UserOrderByWithRelationInput", {})
@@ -61,7 +62,12 @@ export class UserOrderByWithRelationInput {
   @TypeGraphQL.Field(_type => SortOrderInput, {
     nullable: true
   })
-  typesenseApiKey?: SortOrderInput | undefined;
+  searchApiKeyId?: SortOrderInput | undefined;
+
+  @TypeGraphQL.Field(_type => SortOrder, {
+    nullable: true
+  })
+  searchApiKey?: "asc" | "desc" | undefined;
 
   @TypeGraphQL.Field(_type => SortOrder, {
     nullable: true
@@ -72,4 +78,9 @@ export class UserOrderByWithRelationInput {
     nullable: true
   })
   ClinicalEvent?: ClinicalEventOrderByRelationAggregateInput | undefined;
+
+  @TypeGraphQL.Field(_type => WorkingListOrderByRelationAggregateInput, {
+    nullable: true
+  })
+  WorkingList?: WorkingListOrderByRelationAggregateInput | undefined;
 }

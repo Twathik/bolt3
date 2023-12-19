@@ -41,6 +41,16 @@ export class PatientMinAggregate {
   })
   address!: string | null;
 
+  @TypeGraphQL.Field(_type => TypeGraphQL.Float, {
+    nullable: true
+  })
+  height!: number | null;
+
+  @TypeGraphQL.Field(_type => TypeGraphQL.Float, {
+    nullable: true
+  })
+  weight!: number | null;
+
   @TypeGraphQL.Field(_type => Date, {
     nullable: true
   })

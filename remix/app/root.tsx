@@ -16,24 +16,12 @@ import "./components/GeneralComponents/LexicalEditor/themes/StickyEditorTheme";
 
 import { Toaster } from "./ui/components/ui/toaster";
 import GlobalProgressBar from "./components/GeneralComponents/ProgressBar/GlobalProgressBar";
-import AppFloatingActionButton from "./components/GeneralComponents/FAB/AppFloatingActionButton";
-import { useSubscription } from "./lib/wundergraph";
-import { useEffect } from "react";
-import { useBoltStore } from "./stores/boltStore";
 
 /* export const links: LinksFunction = () => [
   ...(cssBundleHref ? [{ rel: "stylesheet", href: cssBundleHref }] : []),
 ]; */
 
 export default function App() {
-  const { data } = useSubscription({
-    operationName: "global/closeAllTabsSubscription",
-  });
-  const closeTabs = useBoltStore((store) => store.closeTabs);
-
-  useEffect(() => {
-    if (data) closeTabs();
-  }, [closeTabs, data]);
   return (
     <html lang="en">
       <head>
@@ -45,7 +33,6 @@ export default function App() {
       <body>
         <GlobalProgressBar />
         <Outlet />
-        <AppFloatingActionButton />
         <ScrollRestoration />
         <Scripts />
         <LiveReload />

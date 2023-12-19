@@ -18,9 +18,11 @@ import { useCallback, useEffect, useMemo, useState } from "react";
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 
-import { useMutation } from "@/lib/wundergraph";
 import { debounce } from "lodash-es";
 import { $createDiagnosticNode } from "./DiagnosticNode";
+import searchDiagnostic from "@/lib/typesense/searchDiagnostic";
+import { useBoltStore } from "@/stores/boltStore";
+import createTypesenseClient from "@/lib/typesense/typesense";
 
 const PUNCTUATION =
   "\\.,\\+\\*\\?\\$\\@\\|#{}\\(\\)\\^\\-\\[\\]\\\\/!%'\"~=<>_:;";
@@ -89,20 +91,25 @@ const diagnosticsCache = new Map();
 
 function useDiagnosticLookupService(diagnosticString: string | null) {
   const [results, setResults] = useState<Array<string>>([]);
-  const { trigger } = useMutation({
-    operationName: "clinicalDiagnostics/searchClinicalDiagnostics",
-  });
+  const user = useBoltStore((store) => store.user);
+
   const search = useCallback(
     (diagnosticString: string | null) => {
-      trigger({ query_string: diagnosticString }).then((data) => {
-        if (data) {
-          const result = data.hits.map((e) => e.FormattedTitle);
-          diagnosticsCache.set(diagnosticString, result);
-          setResults(result);
-        }
-      });
+      if (diagnosticString) {
+        const client = createTypesenseClient(user.searchApiKey);
+        searchDiagnostic({
+          client,
+          searchParams: { query_string: diagnosticString },
+        }).then((data) => {
+          if (data) {
+            const result = data.hits.map((e) => e.FormattedTitle);
+            diagnosticsCache.set(diagnosticString, result);
+            setResults(result);
+          }
+        });
+      }
     },
-    [trigger]
+    [user.searchApiKey]
   );
   const debouncedSearch = React.useRef(debounce(search, 500));
 
@@ -123,7 +130,7 @@ function useDiagnosticLookupService(diagnosticString: string | null) {
 
     diagnosticsCache.set(diagnosticString, null);
     debouncedSearch.current(diagnosticString);
-  }, [diagnosticString, trigger]);
+  }, [diagnosticString]);
 
   return results;
 }

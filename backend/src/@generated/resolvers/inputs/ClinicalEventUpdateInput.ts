@@ -10,6 +10,7 @@ import { PatientUpdateOneRequiredWithoutClinicalEventNestedInput } from "../inpu
 import { PrescriptionUpdateOneWithoutClinicalEventNestedInput } from "../inputs/PrescriptionUpdateOneWithoutClinicalEventNestedInput";
 import { StringFieldUpdateOperationsInput } from "../inputs/StringFieldUpdateOperationsInput";
 import { UserUpdateOneRequiredWithoutClinicalEventNestedInput } from "../inputs/UserUpdateOneRequiredWithoutClinicalEventNestedInput";
+import { WorkingListUpdateManyWithoutClinicalEventNestedInput } from "../inputs/WorkingListUpdateManyWithoutClinicalEventNestedInput";
 
 @TypeGraphQL.InputType("ClinicalEventUpdateInput", {})
 export class ClinicalEventUpdateInput {
@@ -87,4 +88,9 @@ export class ClinicalEventUpdateInput {
     nullable: true
   })
   Prescription?: PrescriptionUpdateOneWithoutClinicalEventNestedInput | undefined;
+
+  @TypeGraphQL.Field(_type => WorkingListUpdateManyWithoutClinicalEventNestedInput, {
+    nullable: true
+  })
+  WorkingList?: WorkingListUpdateManyWithoutClinicalEventNestedInput | undefined;
 }

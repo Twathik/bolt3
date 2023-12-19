@@ -1,6 +1,7 @@
 import { Fragment, useCallback, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import {
+  ArrowTopRightOnSquareIcon,
   Bars3Icon,
   BellIcon,
   Cog6ToothIcon,
@@ -146,6 +147,16 @@ export default function AdminPanelSell({
                 </li>
 
                 <li className="mt-auto">
+                  <a
+                    href="/secondary-display"
+                    target="_blank"
+                    className="group -mx-2 flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6 text-gray-400 hover:bg-gray-800 hover:text-white">
+                    <ArrowTopRightOnSquareIcon
+                      className="h-6 w-6 shrink-0"
+                      aria-hidden="true"
+                    />
+                    Ecran secondaire
+                  </a>
                   <a
                     href="/"
                     className="group -mx-2 flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6 text-gray-400 hover:bg-gray-800 hover:text-white">

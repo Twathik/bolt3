@@ -1,0 +1,7 @@
+subscription ($userId: String! @fromClaim(name: USERID)) {
+  mainDb_appSubscription(userId: $userId) {
+    appPayload
+    messageId
+    type
+  }
+}

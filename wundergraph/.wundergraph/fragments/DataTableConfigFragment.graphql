@@ -1,0 +1,8 @@
+fragment DataTableSectionFragment on mainDb_DataTableSectionModel {
+  id
+  sectionName
+  tableContentType
+  widgets {
+    ...WidgetConfigFragment
+  }
+}

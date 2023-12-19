@@ -25,6 +25,11 @@ export class SettingGroupBy {
   })
   allowedMobileDevices_secretary!: number;
 
+  @TypeGraphQL.Field(_type => TypeGraphQL.Int, {
+    nullable: false
+  })
+  allowedDICOMmodalities!: number;
+
   @TypeGraphQL.Field(_type => SettingCountAggregate, {
     nullable: true
   })

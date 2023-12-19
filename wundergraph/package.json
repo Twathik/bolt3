@@ -10,7 +10,8 @@
     "start": "wunderctl start"
   },
   "dependencies": {
-    "@wundergraph/sdk": "^0.179.2",
+    "@wundergraph/sdk": "^0.181.5",
+    "axios": "^1.6.2",
     "date-fns": "^2.30.0",
     "graphql": "^16.3.0",
     "minio": "^7.1.3",

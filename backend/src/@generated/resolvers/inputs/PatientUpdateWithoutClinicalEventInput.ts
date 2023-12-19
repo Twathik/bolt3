@@ -6,8 +6,10 @@ import { BoolFieldUpdateOperationsInput } from "../inputs/BoolFieldUpdateOperati
 import { ConsultationListUpdateManyWithoutPatientNestedInput } from "../inputs/ConsultationListUpdateManyWithoutPatientNestedInput";
 import { DateTimeFieldUpdateOperationsInput } from "../inputs/DateTimeFieldUpdateOperationsInput";
 import { EnumSexeFieldUpdateOperationsInput } from "../inputs/EnumSexeFieldUpdateOperationsInput";
+import { NullableFloatFieldUpdateOperationsInput } from "../inputs/NullableFloatFieldUpdateOperationsInput";
 import { NullableStringFieldUpdateOperationsInput } from "../inputs/NullableStringFieldUpdateOperationsInput";
 import { StringFieldUpdateOperationsInput } from "../inputs/StringFieldUpdateOperationsInput";
+import { WorkingListUpdateManyWithoutPatientNestedInput } from "../inputs/WorkingListUpdateManyWithoutPatientNestedInput";
 
 @TypeGraphQL.InputType("PatientUpdateWithoutClinicalEventInput", {})
 export class PatientUpdateWithoutClinicalEventInput {
@@ -46,6 +48,16 @@ export class PatientUpdateWithoutClinicalEventInput {
   })
   address?: NullableStringFieldUpdateOperationsInput | undefined;
 
+  @TypeGraphQL.Field(_type => NullableFloatFieldUpdateOperationsInput, {
+    nullable: true
+  })
+  height?: NullableFloatFieldUpdateOperationsInput | undefined;
+
+  @TypeGraphQL.Field(_type => NullableFloatFieldUpdateOperationsInput, {
+    nullable: true
+  })
+  weight?: NullableFloatFieldUpdateOperationsInput | undefined;
+
   @TypeGraphQL.Field(_type => DateTimeFieldUpdateOperationsInput, {
     nullable: true
   })
@@ -75,4 +87,9 @@ export class PatientUpdateWithoutClinicalEventInput {
     nullable: true
   })
   ConsultationList?: ConsultationListUpdateManyWithoutPatientNestedInput | undefined;
+
+  @TypeGraphQL.Field(_type => WorkingListUpdateManyWithoutPatientNestedInput, {
+    nullable: true
+  })
+  WorkingList?: WorkingListUpdateManyWithoutPatientNestedInput | undefined;
 }

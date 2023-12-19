@@ -1,18 +1,18 @@
-import { Alert, AlertTitle, AlertDescription } from "@/ui/components/ui/alert";
-import { ExclamationTriangleIcon } from "@heroicons/react/24/outline";
-import type { LoaderFunctionArgs } from "@remix-run/node";
+import { redirect, type LoaderFunctionArgs } from "@remix-run/node";
 import { Outlet, useLoaderData } from "@remix-run/react";
-import createClientFromCookiesAndCheckUser from "@/lib/checkUser.server";
+import InitialLoadingError from "@/components/GeneralComponents/InitialLoadingError/InitialLoadingError";
+import createClient from "@/lib/createClient";
 
 export async function loader({ request }: LoaderFunctionArgs) {
   try {
-    const client = await createClientFromCookiesAndCheckUser(request);
+    const client = await createClient(request);
     const { data, error } = await client.query({
       operationName: "templates/getTemplates",
     });
     if (error) return null;
     return { templates: data?.mainDb_documentTemplates };
   } catch (error) {
+    if ((error as any).code === "NoUserError") throw redirect("/login");
     return null;
   }
 }
@@ -20,15 +20,12 @@ export default function Templates() {
   const loadedData = useLoaderData<typeof loader>();
   if (!loadedData)
     return (
-      <div className="w-1/2 mx-auto">
-        <Alert variant="destructive">
-          <ExclamationTriangleIcon className="h-4 w-4" />
-          <AlertTitle>Erreur</AlertTitle>
-          <AlertDescription>
-            La liste des templates n'a pas pu être réccupérée
-          </AlertDescription>
-        </Alert>
-      </div>
+      <InitialLoadingError msg="La liste des templates n'a pas pu être réccupérée" />
     );
-  return <Outlet context={{ templates: loadedData.templates }} />;
+
+  return (
+    <main className="min-h-screen">
+      <Outlet context={{ templates: loadedData.templates }} />
+    </main>
+  );
 }

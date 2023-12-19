@@ -24,6 +24,9 @@ import { $createTableNodeWithDimensions, TableNode } from "../nodes/TableNode";
 import Button from "../ui/Button";
 import { DialogActions } from "../ui/Dialog";
 import TextInput from "../ui/TextInput";
+import { mergeRegister } from "@lexical/utils";
+import { dataTablesCommands } from "../../AppLexical/DataTablesCommands";
+import { DataTableNode } from "../../AppLexical/Datatable/DataTableNode";
 
 export type InsertTableCommandPayload = Readonly<{
   columns: string;
@@ -208,21 +211,30 @@ export function TablePlugin({
     if (!editor.hasNodes([TableNode])) {
       invariant(false, "TablePlugin: TableNode is not registered on editor");
     }
+    if (!editor.hasNodes([DataTableNode])) {
+      invariant(
+        false,
+        "TablePlugin: DataTableNode is not registered on editor"
+      );
+    }
 
     cellContext.set(cellEditorConfig, children);
 
-    return editor.registerCommand<InsertTableCommandPayload>(
-      INSERT_NEW_TABLE_COMMAND,
-      ({ columns, rows, includeHeaders }) => {
-        const tableNode = $createTableNodeWithDimensions(
-          Number(rows),
-          Number(columns),
-          includeHeaders
-        );
-        $insertNodes([tableNode]);
-        return true;
-      },
-      COMMAND_PRIORITY_EDITOR
+    return mergeRegister(
+      editor.registerCommand<InsertTableCommandPayload>(
+        INSERT_NEW_TABLE_COMMAND,
+        ({ columns, rows, includeHeaders }) => {
+          const tableNode = $createTableNodeWithDimensions(
+            Number(rows),
+            Number(columns),
+            includeHeaders
+          );
+          $insertNodes([tableNode]);
+          return true;
+        },
+        COMMAND_PRIORITY_EDITOR
+      ),
+      ...dataTablesCommands(editor)
     );
   }, [cellContext, cellEditorConfig, children, editor]);
 

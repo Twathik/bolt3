@@ -1,0 +1,7 @@
+mutation ($name: String!, $eventType: mainDb_EventTypes!, $template: String!) {
+  mainDb_createOneEconomizer(
+    data: { eventType: $eventType, name: $name, template: $template }
+  ) {
+    ...EconomizerFragment
+  }
+}

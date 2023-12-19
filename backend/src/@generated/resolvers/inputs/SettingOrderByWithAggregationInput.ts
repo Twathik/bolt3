@@ -26,6 +26,11 @@ export class SettingOrderByWithAggregationInput {
   })
   allowedMobileDevices_secretary?: "asc" | "desc" | undefined;
 
+  @TypeGraphQL.Field(_type => SortOrder, {
+    nullable: true
+  })
+  allowedDICOMmodalities?: "asc" | "desc" | undefined;
+
   @TypeGraphQL.Field(_type => SettingCountOrderByAggregateInput, {
     nullable: true
   })

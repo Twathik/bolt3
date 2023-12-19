@@ -1,6 +1,7 @@
 import fs from 'fs'
 import http from 'http'
 import https from 'https'
+import axios from 'axios'
 
 export type templateNameType =
   | 'Gap_patient_report'
@@ -22,6 +23,23 @@ export interface createSimpleReport<T> {
   templateName: templateNameType
   payload: T
 }
+
+export const axiosOrthancInstance = axios.create({
+  baseURL:
+    process.env.NODE_ENV === 'production'
+      ? 'http://orthanc:8042'
+      : 'http://localhost:8042',
+  auth: {
+    password:
+      process.env.NODE_ENV === 'production'
+        ? process.env.ORTHANC_PASSWORD ?? ''
+        : 'admin',
+    username:
+      process.env.NODE_ENV === 'production'
+        ? process.env.ORTHANC_USERNAME ?? ''
+        : 'admin',
+  },
+})
 const httpsAgent =
   process.env.NODE_ENV === 'production'
     ? new https.Agent({

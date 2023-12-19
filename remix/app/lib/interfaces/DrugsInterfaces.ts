@@ -1,4 +1,4 @@
-import type { SearchResponseInterface } from "@/lib/typesense";
+import type { SearchResponseInterface } from "@/lib/typesense/typesense";
 
 export interface DrugHitInterface {
   id: string;

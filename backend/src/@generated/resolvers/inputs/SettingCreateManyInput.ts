@@ -19,4 +19,9 @@ export class SettingCreateManyInput {
     nullable: true
   })
   allowedMobileDevices_secretary?: number | undefined;
+
+  @TypeGraphQL.Field(_type => TypeGraphQL.Int, {
+    nullable: true
+  })
+  allowedDICOMmodalities?: number | undefined;
 }
