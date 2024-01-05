@@ -6,9 +6,11 @@ mutation (
   $ddn: mainDb_DateTimeISO!
   $address: String
   $nTel: String
+  $userId: String! @fromClaim(name: USERID)
 ) {
   mainDb_updateOnePatient(
     where: { id: $id }
+    userId: $userId
     data: {
       firstName: { set: $firstName }
       lastName: { set: $lastName }

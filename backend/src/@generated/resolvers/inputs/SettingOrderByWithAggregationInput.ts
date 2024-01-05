@@ -31,6 +31,11 @@ export class SettingOrderByWithAggregationInput {
   })
   allowedDICOMmodalities?: "asc" | "desc" | undefined;
 
+  @TypeGraphQL.Field(_type => SortOrder, {
+    nullable: true
+  })
+  allowedEventTypes?: "asc" | "desc" | undefined;
+
   @TypeGraphQL.Field(_type => SettingCountOrderByAggregateInput, {
     nullable: true
   })

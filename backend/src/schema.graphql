@@ -97,9 +97,15 @@ type AppSubscriptionModel {
 
 """"""
 enum AppSubscriptionPayloadType {
+  clinicalEvents
   closeAllTabs
+  consultationLists
   emptyTrash
+  mobileDeviceUpdate
+  modalityUpdate
+  patientUpdate
   secondaryDisplay
+  workingLists
 }
 
 input BoolFieldUpdateOperationsInput {
@@ -835,6 +841,7 @@ input ClinicalEventWhereUniqueInput {
 type Consultation {
   ConsultationList(cursor: ConsultationListWhereUniqueInput, distinct: [ConsultationListScalarFieldEnum!], orderBy: [ConsultationListOrderByWithRelationInput!], skip: Int, take: Int, where: ConsultationListWhereInput): [ConsultationList!]!
   _count: ConsultationCount
+  allowedEventTypes: [EventTypes!]!
   createdAt: DateTimeISO!
   day: Int!
   id: String!
@@ -907,6 +914,12 @@ input ConsultationCreateWithoutConsultationListInput {
   createdAt: DateTimeISO
   day: Int!
   id: String
+  month: Int!
+  year: Int!
+}
+
+input ConsultationDayMonthYearCompoundUniqueInput {
+  day: Int!
   month: Int!
   year: Int!
 }
@@ -1119,8 +1132,7 @@ input ConsultationListOrderByWithRelationInput {
   updatedAt: SortOrder
 }
 
-input ConsultationListPatientIdConsultationIdActiveCompoundUniqueInput {
-  active: Boolean!
+input ConsultationListPatientIdConsultationIdCompoundUniqueInput {
   consultationId: String!
   patientId: String!
 }
@@ -1275,7 +1287,7 @@ input ConsultationListWhereUniqueInput {
   id: String
   patient: PatientRelationFilter
   patientId: StringFilter
-  patientId_consultationId_active: ConsultationListPatientIdConsultationIdActiveCompoundUniqueInput
+  patientId_consultationId: ConsultationListPatientIdConsultationIdCompoundUniqueInput
   updatedAt: DateTimeFilter
 }
 
@@ -1432,6 +1444,7 @@ input ConsultationWhereUniqueInput {
   OR: [ConsultationWhereInput!]
   createdAt: DateTimeFilter
   day: IntFilter
+  day_month_year: ConsultationDayMonthYearCompoundUniqueInput
   id: String
   month: IntFilter
   year: IntFilter
@@ -1798,6 +1811,14 @@ input EnumEventTypesFilter {
   notIn: [EventTypes!]
 }
 
+input EnumEventTypesNullableListFilter {
+  equals: [EventTypes!]
+  has: EventTypes
+  hasEvery: [EventTypes!]
+  hasSome: [EventTypes!]
+  isEmpty: Boolean
+}
+
 input EnumEventTypesWithAggregatesFilter {
   _count: NestedIntFilter
   _max: NestedEnumEventTypesFilter
@@ -1914,7 +1935,7 @@ input EnumSexeWithAggregatesFilter {
 }
 
 enum EventTypes {
-  DIAGNOSTIC
+  CLINICAL_VISIT
   GENERAL_SONO
   PRESCRIPTION
 }
@@ -2670,7 +2691,7 @@ input ModalityWhereUniqueInput {
 
 type Mutation {
   AddOnePatientToIndex(data: PatientCreateInput!): Patient!
-  changeExpirationMobileDeviceResolver(Months: Int!, id: String!): Boolean
+  changeExpirationMobileDeviceResolver(Months: Int!, id: String!, userId: String!): Boolean
   createManyClinicalEvent(data: [ClinicalEventCreateManyInput!]!, skipDuplicates: Boolean): AffectedRowsOutput!
   createManyConsultation(data: [ConsultationCreateManyInput!]!, skipDuplicates: Boolean): AffectedRowsOutput!
   createManyConsultationList(data: [ConsultationListCreateManyInput!]!, skipDuplicates: Boolean): AffectedRowsOutput!
@@ -2688,13 +2709,13 @@ type Mutation {
   createOneConsultationList(data: ConsultationListCreateInput!): ConsultationList!
   createOneDocumentTemplate(data: DocumentTemplateCreateInput!): DocumentTemplate!
   createOneEconomizer(data: EconomizerCreateInput!): Economizer!
-  createOneMobileDevice(data: MobileDeviceCreateInput!): MobileDevice!
+  createOneMobileDevice(data: MobileDeviceCreateInput!, userId: String!): MobileDevice!
   createOneModality(data: ModalityCreateInput!): Modality!
   createOnePatient(data: PatientCreateInput!): Patient!
   createOnePrescription(data: PrescriptionCreateInput!): Prescription!
   createOneSetting(data: SettingCreateInput): Setting!
   createOneUser(data: UserCreateInput!): User!
-  createOneWorkingList(data: WorkingListCreateInput!): WorkingList!
+  createOneWorkingList(data: WorkingListCreateInput!, userId: String!): WorkingList!
   deleteManyClinicalEvent(where: ClinicalEventWhereInput): AffectedRowsOutput!
   deleteManyConsultation(where: ConsultationWhereInput): AffectedRowsOutput!
   deleteManyConsultationList(where: ConsultationListWhereInput): AffectedRowsOutput!
@@ -2707,30 +2728,30 @@ type Mutation {
   deleteManySetting(where: SettingWhereInput): AffectedRowsOutput!
   deleteManyUser(where: UserWhereInput): AffectedRowsOutput!
   deleteManyWorkingList(where: WorkingListWhereInput): AffectedRowsOutput!
-  deleteOneClinicalEvent(where: ClinicalEventWhereUniqueInput!): ClinicalEvent
+  deleteOneClinicalEvent(userId: String!, where: ClinicalEventWhereUniqueInput!): ClinicalEvent
   deleteOneConsultation(where: ConsultationWhereUniqueInput!): Consultation
-  deleteOneConsultationList(where: ConsultationListWhereUniqueInput!): ConsultationList
+  deleteOneConsultationList(userId: String!, where: ConsultationListWhereUniqueInput!): ConsultationList
   deleteOneDocumentTemplate(where: DocumentTemplateWhereUniqueInput!): DocumentTemplate
   deleteOneEconomizer(where: EconomizerWhereUniqueInput!): Economizer
-  deleteOneMobileDevice(where: MobileDeviceWhereUniqueInput!): MobileDevice
+  deleteOneMobileDevice(userId: String!, where: MobileDeviceWhereUniqueInput!): MobileDevice
   deleteOneModality(where: ModalityWhereUniqueInput!): Modality
   deleteOnePatient(where: PatientWhereUniqueInput!): Patient
   deleteOnePrescription(where: PrescriptionWhereUniqueInput!): Prescription
   deleteOneSetting(where: SettingWhereUniqueInput!): Setting
   deleteOneUser(where: UserWhereUniqueInput!): User
-  deleteOneWorkingList(where: WorkingListWhereUniqueInput!): WorkingList
+  deleteOneWorkingList(userId: String!, where: WorkingListWhereUniqueInput!): WorkingList
   emptyTrashMutation(userId: String!): Boolean!
   indexClinicalDiagnostics: Boolean
   indexDrugs: Boolean
   indexPatients: Boolean
-  moveClinicalEventToTrash(where: ClinicalEventWhereUniqueInput!): ClinicalEvent
-  movePatientFolderToTrash(id: String!, onTrash: Boolean!): Patient
-  registerOneMobileDevice(accessToken: String!, uuid: String!): MobileDevice
-  registerPatient(patient_id: String!): String!
-  switchMobileDevice(id: String!, mobileDeviceType: MobileDeviceType!): Boolean
-  toggleLockWorkingList(id: String!): WorkingList!
+  moveClinicalEventToTrash(userId: String!, where: ClinicalEventWhereUniqueInput!): ClinicalEvent
+  movePatientFolderToTrash(id: String!, onTrash: Boolean!, userId: String!): Patient
+  registerOneMobileDevice(accessToken: String!, userId: String!, uuid: String!): MobileDevice
+  registerPatient(patient_id: String!, userId: String!): String!
+  switchMobileDevice(id: String!, mobileDeviceType: MobileDeviceType!, userId: String!): Boolean
+  toggleLockWorkingList(id: String!, userId: String!): WorkingList!
   toggleSelectedTrashMutation(data: PatientUpdateManyMutationInput!, where: PatientWhereInput): AffectedRowsOutput!
-  triggerAppSubscription(appPayload: String!, type: AppSubscriptionPayloadType!, userId: String!): Boolean!
+  triggerAppSubscription(appPayload: String!, global: Boolean!, subscriptionSpecificId: String, type: AppSubscriptionPayloadType!, userId: String!): Boolean!
   triggerInsertDataSubscription(clinicalEventId: String!, paramData: ParamDataInputType!, tableContentType: String!, value: String!): Boolean!
   updateManyClinicalEvent(data: ClinicalEventUpdateManyMutationInput!, where: ClinicalEventWhereInput): AffectedRowsOutput!
   updateManyConsultation(data: ConsultationUpdateManyMutationInput!, where: ConsultationWhereInput): AffectedRowsOutput!
@@ -2744,18 +2765,18 @@ type Mutation {
   updateManySetting(data: SettingUpdateManyMutationInput!, where: SettingWhereInput): AffectedRowsOutput!
   updateManyUser(data: UserUpdateManyMutationInput!, where: UserWhereInput): AffectedRowsOutput!
   updateManyWorkingList(data: WorkingListUpdateManyMutationInput!, where: WorkingListWhereInput): AffectedRowsOutput!
-  updateOneClinicalEvent(data: ClinicalEventUpdateInput!, where: ClinicalEventWhereUniqueInput!): ClinicalEvent
+  updateOneClinicalEvent(data: ClinicalEventUpdateInput!, userId: String!, where: ClinicalEventWhereUniqueInput!): ClinicalEvent
   updateOneConsultation(data: ConsultationUpdateInput!, where: ConsultationWhereUniqueInput!): Consultation
-  updateOneConsultationList(data: ConsultationListUpdateInput!, where: ConsultationListWhereUniqueInput!): ConsultationList
+  updateOneConsultationList(data: ConsultationListUpdateInput!, userId: String!, where: ConsultationListWhereUniqueInput!): ConsultationList
   updateOneDocumentTemplate(data: DocumentTemplateUpdateInput!, where: DocumentTemplateWhereUniqueInput!): DocumentTemplate
   updateOneEconomizer(data: EconomizerUpdateInput!, where: EconomizerWhereUniqueInput!): Economizer
-  updateOneMobileDevice(data: MobileDeviceUpdateInput!, where: MobileDeviceWhereUniqueInput!): MobileDevice
-  updateOneModality(data: ModalityUpdateInput!, where: ModalityWhereUniqueInput!): Modality
-  updateOnePatient(data: PatientUpdateInput!, where: PatientWhereUniqueInput!): Patient
+  updateOneMobileDevice(data: MobileDeviceUpdateInput!, userId: String!, where: MobileDeviceWhereUniqueInput!): MobileDevice
+  updateOneModality(data: ModalityUpdateInput!, userId: String!, where: ModalityWhereUniqueInput!): Modality
+  updateOnePatient(data: PatientUpdateInput!, userId: String!, where: PatientWhereUniqueInput!): Patient
   updateOnePrescription(data: PrescriptionUpdateInput!, where: PrescriptionWhereUniqueInput!): Prescription
   updateOneSetting(data: SettingUpdateInput!, where: SettingWhereUniqueInput!): Setting
   updateOneUser(data: UserUpdateInput!, where: UserWhereUniqueInput!): User
-  updateOneWorkingList(data: WorkingListUpdateInput!, where: WorkingListWhereUniqueInput!): WorkingList
+  updateOneWorkingList(data: WorkingListUpdateInput!, userId: String!, where: WorkingListWhereUniqueInput!): WorkingList
   upsertOneClinicalEvent(create: ClinicalEventCreateInput!, update: ClinicalEventUpdateInput!, where: ClinicalEventWhereUniqueInput!): ClinicalEvent!
   upsertOneConsultation(create: ConsultationCreateInput!, update: ConsultationUpdateInput!, where: ConsultationWhereUniqueInput!): Consultation!
   upsertOneConsultationList(create: ConsultationListCreateInput!, update: ConsultationListUpdateInput!, where: ConsultationListWhereUniqueInput!): ConsultationList!
@@ -3914,7 +3935,7 @@ type Query {
   aggregateSetting(cursor: SettingWhereUniqueInput, orderBy: [SettingOrderByWithRelationInput!], skip: Int, take: Int, where: SettingWhereInput): AggregateSetting!
   aggregateUser(cursor: UserWhereUniqueInput, orderBy: [UserOrderByWithRelationInput!], skip: Int, take: Int, where: UserWhereInput): AggregateUser!
   aggregateWorkingList(cursor: WorkingListWhereUniqueInput, orderBy: [WorkingListOrderByWithRelationInput!], skip: Int, take: Int, where: WorkingListWhereInput): AggregateWorkingList!
-  authMobileApp(accessToken: String!, uuid: String!): MobileDevice!
+  authMobileApp(accessToken: String!, userId: String!, uuid: String!): MobileDevice!
   clinicalEvent(where: ClinicalEventWhereUniqueInput!): ClinicalEvent
   clinicalEvents(cursor: ClinicalEventWhereUniqueInput, distinct: [ClinicalEventScalarFieldEnum!], orderBy: [ClinicalEventOrderByWithRelationInput!], skip: Int, take: Int, where: ClinicalEventWhereInput): [ClinicalEvent!]!
   consultation(where: ConsultationWhereUniqueInput!): Consultation
@@ -3927,7 +3948,7 @@ type Query {
   economizers(cursor: EconomizerWhereUniqueInput, distinct: [EconomizerScalarFieldEnum!], orderBy: [EconomizerOrderByWithRelationInput!], skip: Int, take: Int, where: EconomizerWhereInput): [Economizer!]!
   findFirstClinicalEvent(cursor: ClinicalEventWhereUniqueInput, distinct: [ClinicalEventScalarFieldEnum!], orderBy: [ClinicalEventOrderByWithRelationInput!], skip: Int, take: Int, where: ClinicalEventWhereInput): ClinicalEvent
   findFirstClinicalEventOrThrow(cursor: ClinicalEventWhereUniqueInput, distinct: [ClinicalEventScalarFieldEnum!], orderBy: [ClinicalEventOrderByWithRelationInput!], skip: Int, take: Int, where: ClinicalEventWhereInput): ClinicalEvent
-  findFirstConsultation(cursor: ConsultationWhereUniqueInput, distinct: [ConsultationScalarFieldEnum!], orderBy: [ConsultationOrderByWithRelationInput!], skip: Int, take: Int, where: ConsultationWhereInput): Consultation
+  findFirstConsultation(day: Int!, month: Int!, year: Int!): Consultation
   findFirstConsultationList(cursor: ConsultationListWhereUniqueInput, distinct: [ConsultationListScalarFieldEnum!], orderBy: [ConsultationListOrderByWithRelationInput!], skip: Int, take: Int, where: ConsultationListWhereInput): ConsultationList
   findFirstConsultationListOrThrow(cursor: ConsultationListWhereUniqueInput, distinct: [ConsultationListScalarFieldEnum!], orderBy: [ConsultationListOrderByWithRelationInput!], skip: Int, take: Int, where: ConsultationListWhereInput): ConsultationList
   findFirstConsultationOrThrow(cursor: ConsultationWhereUniqueInput, distinct: [ConsultationScalarFieldEnum!], orderBy: [ConsultationOrderByWithRelationInput!], skip: Int, take: Int, where: ConsultationWhereInput): Consultation
@@ -4002,6 +4023,7 @@ enum Role {
 
 type Setting {
   allowedDICOMmodalities: Int!
+  allowedEventTypes: [EventTypes!]!
   allowedMobileDevices_doctors: Int!
   allowedMobileDevices_secretary: Int!
   id: String!
@@ -4022,6 +4044,7 @@ input SettingAvgOrderByAggregateInput {
 type SettingCountAggregate {
   _all: Int!
   allowedDICOMmodalities: Int!
+  allowedEventTypes: Int!
   allowedMobileDevices_doctors: Int!
   allowedMobileDevices_secretary: Int!
   id: Int!
@@ -4029,6 +4052,7 @@ type SettingCountAggregate {
 
 input SettingCountOrderByAggregateInput {
   allowedDICOMmodalities: SortOrder
+  allowedEventTypes: SortOrder
   allowedMobileDevices_doctors: SortOrder
   allowedMobileDevices_secretary: SortOrder
   id: SortOrder
@@ -4036,6 +4060,7 @@ input SettingCountOrderByAggregateInput {
 
 input SettingCreateInput {
   allowedDICOMmodalities: Int
+  allowedEventTypes: SettingCreateallowedEventTypesInput
   allowedMobileDevices_doctors: Int
   allowedMobileDevices_secretary: Int
   id: String
@@ -4043,9 +4068,14 @@ input SettingCreateInput {
 
 input SettingCreateManyInput {
   allowedDICOMmodalities: Int
+  allowedEventTypes: SettingCreateallowedEventTypesInput
   allowedMobileDevices_doctors: Int
   allowedMobileDevices_secretary: Int
   id: String
+}
+
+input SettingCreateallowedEventTypesInput {
+  set: [EventTypes!]!
 }
 
 type SettingGroupBy {
@@ -4055,6 +4085,7 @@ type SettingGroupBy {
   _min: SettingMinAggregate
   _sum: SettingSumAggregate
   allowedDICOMmodalities: Int!
+  allowedEventTypes: [EventTypes!]
   allowedMobileDevices_doctors: Int!
   allowedMobileDevices_secretary: Int!
   id: String!
@@ -4095,6 +4126,7 @@ input SettingOrderByWithAggregationInput {
   _min: SettingMinOrderByAggregateInput
   _sum: SettingSumOrderByAggregateInput
   allowedDICOMmodalities: SortOrder
+  allowedEventTypes: SortOrder
   allowedMobileDevices_doctors: SortOrder
   allowedMobileDevices_secretary: SortOrder
   id: SortOrder
@@ -4102,6 +4134,7 @@ input SettingOrderByWithAggregationInput {
 
 input SettingOrderByWithRelationInput {
   allowedDICOMmodalities: SortOrder
+  allowedEventTypes: SortOrder
   allowedMobileDevices_doctors: SortOrder
   allowedMobileDevices_secretary: SortOrder
   id: SortOrder
@@ -4109,6 +4142,7 @@ input SettingOrderByWithRelationInput {
 
 enum SettingScalarFieldEnum {
   allowedDICOMmodalities
+  allowedEventTypes
   allowedMobileDevices_doctors
   allowedMobileDevices_secretary
   id
@@ -4119,6 +4153,7 @@ input SettingScalarWhereWithAggregatesInput {
   NOT: [SettingScalarWhereWithAggregatesInput!]
   OR: [SettingScalarWhereWithAggregatesInput!]
   allowedDICOMmodalities: IntWithAggregatesFilter
+  allowedEventTypes: EnumEventTypesNullableListFilter
   allowedMobileDevices_doctors: IntWithAggregatesFilter
   allowedMobileDevices_secretary: IntWithAggregatesFilter
   id: StringWithAggregatesFilter
@@ -4138,6 +4173,7 @@ input SettingSumOrderByAggregateInput {
 
 input SettingUpdateInput {
   allowedDICOMmodalities: IntFieldUpdateOperationsInput
+  allowedEventTypes: SettingUpdateallowedEventTypesInput
   allowedMobileDevices_doctors: IntFieldUpdateOperationsInput
   allowedMobileDevices_secretary: IntFieldUpdateOperationsInput
   id: StringFieldUpdateOperationsInput
@@ -4145,9 +4181,15 @@ input SettingUpdateInput {
 
 input SettingUpdateManyMutationInput {
   allowedDICOMmodalities: IntFieldUpdateOperationsInput
+  allowedEventTypes: SettingUpdateallowedEventTypesInput
   allowedMobileDevices_doctors: IntFieldUpdateOperationsInput
   allowedMobileDevices_secretary: IntFieldUpdateOperationsInput
   id: StringFieldUpdateOperationsInput
+}
+
+input SettingUpdateallowedEventTypesInput {
+  push: [EventTypes!]
+  set: [EventTypes!]
 }
 
 input SettingWhereInput {
@@ -4155,6 +4197,7 @@ input SettingWhereInput {
   NOT: [SettingWhereInput!]
   OR: [SettingWhereInput!]
   allowedDICOMmodalities: IntFilter
+  allowedEventTypes: EnumEventTypesNullableListFilter
   allowedMobileDevices_doctors: IntFilter
   allowedMobileDevices_secretary: IntFilter
   id: StringFilter
@@ -4165,6 +4208,7 @@ input SettingWhereUniqueInput {
   NOT: [SettingWhereInput!]
   OR: [SettingWhereInput!]
   allowedDICOMmodalities: IntFilter
+  allowedEventTypes: EnumEventTypesNullableListFilter
   allowedMobileDevices_doctors: IntFilter
   allowedMobileDevices_secretary: IntFilter
   id: String
@@ -4264,7 +4308,7 @@ input StringWithAggregatesFilter {
 }
 
 type Subscription {
-  appSubscription(userId: String!): AppSubscriptionModel!
+  appSubscription(subscriptionSpecificId: [String!]!, userId: String!): AppSubscriptionModel!
   insertDataSubscription(clinicalEventId: String!): InsertDataModel!
 }
 

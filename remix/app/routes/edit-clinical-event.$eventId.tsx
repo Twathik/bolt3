@@ -8,10 +8,13 @@ export const loader = async ({ request, params }: LoaderFunctionArgs) => {
   const { eventId } = params;
   const client = await createClient(request);
   try {
-    const clinicalEvent = await client.query({
-      operationName: "clinicalEvents/getClinicalEventWithConfiguration",
-      input: { id: eventId || "" },
-    });
+    const [clinicalEvent, user] = await Promise.all([
+      client.query({
+        operationName: "clinicalEvents/getClinicalEventWithConfiguration",
+        input: { id: eventId || "" },
+      }),
+      client.fetchUser({ revalidate: true }),
+    ]);
 
     if (clinicalEvent.error || !clinicalEvent.data) return null;
 
@@ -29,6 +32,7 @@ export const loader = async ({ request, params }: LoaderFunctionArgs) => {
       workingLists: WorkingList,
       editorConfigurationFiles: getConfigurationFile,
       economizers: getEconomizers,
+      user,
     };
   } catch (error) {
     if ((error as any).code === "NoUserError") throw redirect("/login");
@@ -45,7 +49,8 @@ function ClinicalDiagnostic() {
     !loadedData.modalities ||
     !loadedData.workingLists ||
     !loadedData.editorConfigurationFiles ||
-    !loadedData.economizers
+    !loadedData.economizers ||
+    !loadedData.user
   )
     return (
       <InitialLoadingError msg="Une erreure est survenue. L'évenement clinique n'a pa pu être réccupéré!" />
@@ -59,6 +64,10 @@ function ClinicalDiagnostic() {
         workingLists={loadedData.workingLists}
         editorConfigurationFiles={loadedData.editorConfigurationFiles}
         economizers={loadedData.economizers}
+        user={{
+          searchApiKey: loadedData.user.customClaims?.searchApiKey ?? "",
+          avatarUrl: loadedData.user.customClaims?.avatarUrl ?? "",
+        }}
       />
     </main>
   );

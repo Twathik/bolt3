@@ -23,6 +23,7 @@ import type { OperationErrors } from "./ts-operation-errors";
 import type { PublicCustomClaims } from "./claims";
 import type {
 	AppSubscriptionGlobalSubscriptionResponse,
+	AppSubscriptionGlobalSubscriptionInput,
 	AppSubscriptionGlobalSubscriptionResponseData,
 	AppSubscriptionTriggerAppSubscriptionResponse,
 	AppSubscriptionTriggerAppSubscriptionInput,
@@ -111,12 +112,21 @@ import type {
 	ConsultationListCheckIfRegistredResponse,
 	ConsultationListCheckIfRegistredInput,
 	ConsultationListCheckIfRegistredResponseData,
+	ConsultationListCloseConsultationResponse,
+	ConsultationListCloseConsultationInput,
+	ConsultationListCloseConsultationResponseData,
 	ConsultationListRegisterPatientResponse,
 	ConsultationListRegisterPatientInput,
 	ConsultationListRegisterPatientResponseData,
 	ConsultationListTodayConsultationResponse,
 	ConsultationListTodayConsultationInput,
 	ConsultationListTodayConsultationResponseData,
+	ConsultationListTodayListsResponse,
+	ConsultationListTodayListsInput,
+	ConsultationListTodayListsResponseData,
+	ConsultationListToggleActivePatientResponse,
+	ConsultationListToggleActivePatientInput,
+	ConsultationListToggleActivePatientResponseData,
 	ConsultationListUnregisterPatientResponse,
 	ConsultationListUnregisterPatientInput,
 	ConsultationListUnregisterPatientResponseData,
@@ -247,7 +257,7 @@ export interface AuthProvider {
 }
 
 export const defaultClientConfig: ClientConfig = {
-	applicationHash: "a84681ef",
+	applicationHash: "edf441d1",
 	baseURL: "http://api.bolt3.local",
 	sdkVersion: "0.181.5",
 };
@@ -346,10 +356,19 @@ export const operationMetadata: OperationMetadata = {
 	"consultationList/checkIfRegistred": {
 		requiresAuthentication: true,
 	},
+	"consultationList/closeConsultation": {
+		requiresAuthentication: true,
+	},
 	"consultationList/registerPatient": {
 		requiresAuthentication: true,
 	},
 	"consultationList/todayConsultation": {
+		requiresAuthentication: true,
+	},
+	"consultationList/todayLists": {
+		requiresAuthentication: true,
+	},
+	"consultationList/toggleActivePatient": {
 		requiresAuthentication: true,
 	},
 	"consultationList/unregisterPatient": {
@@ -553,6 +572,11 @@ export type Queries = {
 		response: { data?: ConsultationListTodayConsultationResponse["data"]; error?: ClientOperationErrors };
 		requiresAuthentication: true;
 	};
+	"consultationList/todayLists": {
+		input: ConsultationListTodayListsInput;
+		response: { data?: ConsultationListTodayListsResponse["data"]; error?: ClientOperationErrors };
+		requiresAuthentication: true;
+	};
 	"mobileDevices/MobileDevicesQuery": {
 		input?: undefined;
 		response: { data?: MobileDevicesMobileDevicesQueryResponse["data"]; error?: ClientOperationErrors };
@@ -683,9 +707,19 @@ export type Mutations = {
 		response: { data?: ClinicalEventsUpdateClinicalEventReportResponse["data"]; error?: ClientOperationErrors };
 		requiresAuthentication: true;
 	};
+	"consultationList/closeConsultation": {
+		input: ConsultationListCloseConsultationInput;
+		response: { data?: ConsultationListCloseConsultationResponse["data"]; error?: ClientOperationErrors };
+		requiresAuthentication: true;
+	};
 	"consultationList/registerPatient": {
 		input: ConsultationListRegisterPatientInput;
 		response: { data?: ConsultationListRegisterPatientResponse["data"]; error?: ClientOperationErrors };
+		requiresAuthentication: true;
+	};
+	"consultationList/toggleActivePatient": {
+		input: ConsultationListToggleActivePatientInput;
+		response: { data?: ConsultationListToggleActivePatientResponse["data"]; error?: ClientOperationErrors };
 		requiresAuthentication: true;
 	};
 	"consultationList/unregisterPatient": {
@@ -770,7 +804,7 @@ export type Mutations = {
 
 export type Subscriptions = {
 	"AppSubscription/globalSubscription": {
-		input?: undefined;
+		input: AppSubscriptionGlobalSubscriptionInput;
 		response: { data?: AppSubscriptionGlobalSubscriptionResponse["data"]; error?: ClientOperationErrors };
 		requiresAuthentication: true;
 	};

@@ -1,13 +1,9 @@
 query ($day: Int!, $month: Int!, $year: Int!) {
-  mainDb_findFirstConsultation(
-    where: {
-      AND: [
-        { day: { equals: $day } }
-        { month: { equals: $month } }
-        { year: { equals: $year } }
-      ]
-    }
-  ) {
+  mainDb_findFirstConsultation(day: $day, month: $month, year: $year) {
     id
+    allowedEventTypes
+    ConsultationList(where: { active: { equals: true } }) {
+      ...ConsultationListFragment
+    }
   }
 }

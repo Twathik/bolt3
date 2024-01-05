@@ -1,0 +1,12 @@
+fragment ConsultationListFragment on mainDb_ConsultationList {
+  id
+  active
+  consultationId
+  patientId
+  patient {
+    lastName
+    firstName
+    sexe
+    ddn
+  }
+}

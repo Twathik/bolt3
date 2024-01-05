@@ -9,8 +9,30 @@ import { AppSubscriptionArgs } from './args/AppSubscriptionArgs'
 export class AppSubscription {
   @TypeGraphQL.Subscription((_returns) => AppSubscriptionModel, {
     topics: 'APP_SUBSCRIPTION',
-    filter: ({ payload, args }) => {
-      return args.userId === payload.userId
+    filter: ({
+      payload,
+      args,
+    }: {
+      payload: AppSubscriptionTriggerArgs
+      args: AppSubscriptionArgs
+    }) => {
+      if (payload.global) {
+        if (payload.subscriptionSpecificId) {
+          return args.subscriptionSpecificId.includes(
+            payload.subscriptionSpecificId,
+          )
+        }
+        return payload.global
+      } else {
+        if (payload.subscriptionSpecificId) {
+          return (
+            args.subscriptionSpecificId.includes(
+              payload.subscriptionSpecificId,
+            ) && args.userId === payload.userId
+          )
+        }
+        return args.userId === payload.userId
+      }
     },
   })
   appSubscription(

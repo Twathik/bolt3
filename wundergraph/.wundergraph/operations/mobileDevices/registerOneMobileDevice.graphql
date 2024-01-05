@@ -1,5 +1,13 @@
-mutation ($accessToken: String!, $uuid: String!) {
-  mainDb_registerOneMobileDevice(accessToken: $accessToken, uuid: $uuid) {
+mutation (
+  $accessToken: String!
+  $uuid: String!
+  $userId: String! @fromClaim(name: USERID)
+) {
+  mainDb_registerOneMobileDevice(
+    accessToken: $accessToken
+    uuid: $uuid
+    userId: $userId
+  ) {
     uuid
   }
 }

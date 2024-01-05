@@ -1,5 +1,11 @@
-subscription ($userId: String! @fromClaim(name: USERID)) {
-  mainDb_appSubscription(userId: $userId) {
+subscription (
+  $subscriptionSpecificId: [String!]!
+  $userId: String! @fromClaim(name: USERID)
+) {
+  mainDb_appSubscription(
+    userId: $userId
+    subscriptionSpecificId: $subscriptionSpecificId
+  ) {
     appPayload
     messageId
     type

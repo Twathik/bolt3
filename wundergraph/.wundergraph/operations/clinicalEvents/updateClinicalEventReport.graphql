@@ -1,7 +1,12 @@
-mutation ($id: String!, $report: String!) {
+mutation (
+  $id: String!
+  $report: String!
+  $userId: String! @fromClaim(name: USERID)
+) {
   mainDb_updateOneClinicalEvent(
     where: { id: $id }
     data: { report: { set: $report } }
+    userId: $userId
   ) {
     id
   }

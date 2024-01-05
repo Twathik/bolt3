@@ -1,0 +1,9 @@
+mutation ($id: String!, $userId: String! @fromClaim(name: USERID)) {
+  mainDb_updateOneConsultationList(
+    where: { id: $id }
+    userId: $userId
+    data: { active: { set: false } }
+  ) {
+    ...ConsultationListFragment
+  }
+}

@@ -18,7 +18,6 @@ function PatientInformation({
         <>
           <div className="col-span-3">
             <strong className="p-2">{patient.patientFullName}</strong>
-
             <strong className="p-2">
               {format(parseISO(patient.ddn), "dd/MM/yyyy")}
             </strong>

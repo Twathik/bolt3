@@ -2,6 +2,7 @@ import * as TypeGraphQL from "type-graphql";
 import * as GraphQLScalars from "graphql-scalars";
 import { Prisma } from "@prisma/client";
 import { DecimalJSScalar } from "../scalars";
+import { EventTypes } from "../enums/EventTypes";
 
 @TypeGraphQL.ObjectType("Setting", {})
 export class Setting {
@@ -24,4 +25,9 @@ export class Setting {
     nullable: false
   })
   allowedDICOMmodalities!: number;
+
+  @TypeGraphQL.Field(_type => [EventTypes], {
+    nullable: false
+  })
+  allowedEventTypes!: Array<"CLINICAL_VISIT" | "PRESCRIPTION" | "GENERAL_SONO">;
 }

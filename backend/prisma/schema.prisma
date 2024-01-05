@@ -28,7 +28,7 @@ enum MobileDeviceType {
 }
 
 enum EventTypes {
-  DIAGNOSTIC
+  CLINICAL_VISIT
   PRESCRIPTION
   GENERAL_SONO
 }
@@ -135,10 +135,11 @@ model User {
 }
 
 model Setting {
-  id                             String @id @default(uuid())
-  allowedMobileDevices_doctors   Int    @default(1)
-  allowedMobileDevices_secretary Int    @default(1)
-  allowedDICOMmodalities         Int    @default(2)
+  id                             String       @id @default(uuid())
+  allowedMobileDevices_doctors   Int          @default(1)
+  allowedMobileDevices_secretary Int          @default(1)
+  allowedDICOMmodalities         Int          @default(2)
+  allowedEventTypes              EventTypes[]
 }
 
 model MobileDevice {
@@ -184,6 +185,8 @@ model Consultation {
   year             Int
   createdAt        DateTime           @default(now())
   ConsultationList ConsultationList[]
+
+  @@unique([day, month, year])
 }
 
 model ConsultationList {
@@ -197,7 +200,7 @@ model ConsultationList {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  @@unique([patientId, consultationId, active])
+  @@unique([patientId, consultationId])
 }
 
 model ClinicalEvent {

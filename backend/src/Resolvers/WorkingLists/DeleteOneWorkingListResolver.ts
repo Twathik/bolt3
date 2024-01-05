@@ -1,6 +1,6 @@
 import * as TypeGraphQL from 'type-graphql'
 import type { GraphQLResolveInfo } from 'graphql'
-import { DeleteOneWorkingListArgs, WorkingList } from '../../@generated'
+import { WorkingList } from '../../@generated'
 import {
   getPrismaFromContext,
   transformCountFieldIntoSelectRelationsCount,
@@ -8,6 +8,8 @@ import {
 } from '../../@generated/helpers'
 import { PrismaClient } from '@prisma/client'
 import { rmSync } from 'fs'
+import { AppSubscriptionTriggerArgs } from '../Global/AppSubscription/args/AppSubscriptionTriggerArgs'
+import { DeleteOneWorkingListArgs } from './args/DeleteOneWorkingListArgs'
 
 @TypeGraphQL.Resolver((_of) => WorkingList)
 export class DeleteOneWorkingListResolver {
@@ -17,7 +19,9 @@ export class DeleteOneWorkingListResolver {
   async deleteOneWorkingList(
     @TypeGraphQL.Ctx() ctx: any,
     @TypeGraphQL.Info() info: GraphQLResolveInfo,
-    @TypeGraphQL.Args() args: DeleteOneWorkingListArgs,
+    @TypeGraphQL.Args() { userId, ...args }: DeleteOneWorkingListArgs,
+    @TypeGraphQL.PubSub('APP_SUBSCRIPTION')
+    notify: TypeGraphQL.Publisher<AppSubscriptionTriggerArgs>,
   ): Promise<WorkingList | null> {
     const { _count } = transformInfoIntoPrismaArgs(info)
     const prisma = getPrismaFromContext(ctx) as PrismaClient
@@ -28,6 +32,33 @@ export class DeleteOneWorkingListResolver {
       })
       rmSync(`./worklists/${workingList.id}.wl`)
       rmSync(`./worklists/${workingList.id}.txt`)
+      const {
+        id,
+        clinicalEventId,
+        createdAt,
+        modalityExamStatus,
+        linkId,
+        linked,
+        locked,
+      } = workingList
+
+      await notify({
+        type: 'workingLists',
+        global: true,
+        userId,
+        appPayload: JSON.stringify({
+          operation: 'delete',
+          workingList: {
+            id,
+            clinicalEventId,
+            createdAt,
+            modalityExamStatus,
+            linkId,
+            linked,
+            locked,
+          },
+        }),
+      })
       return workingList
     } catch (error) {
       throw Error('The workingList has not been deleted')

@@ -17,7 +17,7 @@ export class DocumentTemplateWhereUniqueInput {
   @TypeGraphQL.Field(_type => EventTypes, {
     nullable: true
   })
-  eventType?: "DIAGNOSTIC" | "PRESCRIPTION" | "GENERAL_SONO" | undefined;
+  eventType?: "CLINICAL_VISIT" | "PRESCRIPTION" | "GENERAL_SONO" | undefined;
 
   @TypeGraphQL.Field(_type => [DocumentTemplateWhereInput], {
     nullable: true

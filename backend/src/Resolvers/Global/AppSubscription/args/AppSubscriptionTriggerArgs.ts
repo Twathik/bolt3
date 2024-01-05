@@ -1,12 +1,15 @@
 import * as TypeGraphQL from 'type-graphql'
-import { AppSubscriptionPayloadType } from '../enums/SecondaryDisplayEnum'
+import {
+  AppSubscriptionPayloadEnumType,
+  AppSubscriptionPayloadType,
+} from '../enums/AppSubscriptionPayloadType'
 
 @TypeGraphQL.ArgsType()
 export class AppSubscriptionTriggerArgs {
   @TypeGraphQL.Field((_type) => AppSubscriptionPayloadType, {
     nullable: false,
   })
-  type!: 'closeAllTabs' | 'secondaryDisplay' | 'emptyTrash'
+  type!: AppSubscriptionPayloadEnumType
 
   @TypeGraphQL.Field((_type) => String, {
     nullable: false,
@@ -17,4 +20,14 @@ export class AppSubscriptionTriggerArgs {
     nullable: false,
   })
   userId!: string
+
+  @TypeGraphQL.Field((_type) => Boolean, {
+    nullable: false,
+  })
+  global!: boolean
+
+  @TypeGraphQL.Field((_type) => String, {
+    nullable: true,
+  })
+  subscriptionSpecificId?: string
 }

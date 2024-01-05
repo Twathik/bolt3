@@ -42,8 +42,10 @@ const authentication: HooksConfig["authentication"] = {
         });
         const cookieUser = {
           ...user,
-          avatarUrl: data?.mainDb_upsertOneUser.avatarUrl ?? "",
-          searchApiKey: apiKey.value,
+          customClaims: {
+            avatarUrl: data?.mainDb_upsertOneUser.avatarUrl ?? "",
+            searchApiKey: apiKey.value,
+          },
         };
 
         return {

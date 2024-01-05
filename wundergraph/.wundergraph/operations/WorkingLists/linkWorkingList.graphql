@@ -1,6 +1,11 @@
-mutation ($id: String!, $linkId: String!) {
+mutation (
+  $id: String!
+  $linkId: String!
+  $userId: String! @fromClaim(name: USERID)
+) {
   mainDb_updateOneWorkingList(
     where: { id: $id }
+    userId: $userId
     data: {
       linked: { set: true }
       linkId: { set: $linkId }

@@ -2,6 +2,7 @@ import * as TypeGraphQL from "type-graphql";
 import * as GraphQLScalars from "graphql-scalars";
 import { Prisma } from "@prisma/client";
 import { DecimalJSScalar } from "../../scalars";
+import { SettingCreateallowedEventTypesInput } from "../inputs/SettingCreateallowedEventTypesInput";
 
 @TypeGraphQL.InputType("SettingCreateManyInput", {})
 export class SettingCreateManyInput {
@@ -24,4 +25,9 @@ export class SettingCreateManyInput {
     nullable: true
   })
   allowedDICOMmodalities?: number | undefined;
+
+  @TypeGraphQL.Field(_type => SettingCreateallowedEventTypesInput, {
+    nullable: true
+  })
+  allowedEventTypes?: SettingCreateallowedEventTypesInput | undefined;
 }

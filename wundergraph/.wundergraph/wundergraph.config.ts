@@ -63,6 +63,14 @@ configureWunderGraphApplication({
     tokenBased: {
       providers: [{ userInfoEndpoint: "http://localhost:3000/api/user" }],
     },
+    customClaims: {
+      avatarUrl: { jsonPath: "avatarUrl", type: "string", required: false },
+      searchApiKey: {
+        jsonPath: "searchApiKey",
+        type: "string",
+        required: true,
+      },
+    },
   },
 
   server,

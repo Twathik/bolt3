@@ -1,8 +1,8 @@
-import SonoDicom from "@/components/ClinicalEvents/Sonography/SonoLateralPanel/SonoDicom";
-import SonoEconomizers from "@/components/ClinicalEvents/Sonography/SonoLateralPanel/SonoEconomizers";
-import SonoWidgets from "@/components/ClinicalEvents/Sonography/SonoLateralPanel/SonoWidgets";
 import type { ClinicalEventsGetClinicalEventResponseData } from "@/components/generated/models";
 import type { ReactNode } from "react";
+import EconomizersIndex from "./Economizers/EconomizersIndex";
+import WidgetsIndex from "./Widgets/WidgetsIndex";
+import DicomIndex from "./Dicoms/DicomIndex";
 
 type generatedLateralPanelWidgets = {
   widget: ReactNode;
@@ -18,11 +18,17 @@ export const getLateralPanelCardWidgets = ({
   switch (clinicalEvent?.eventType) {
     case "GENERAL_SONO":
       return {
-        widget: <SonoWidgets />,
-        economizer: <SonoEconomizers />,
-        dicom: <SonoDicom />,
+        widget: <WidgetsIndex />,
+        economizer: <EconomizersIndex />,
+        dicom: <DicomIndex />,
       };
 
+    case "DIAGNOSTIC":
+      return {
+        widget: <WidgetsIndex />,
+        economizer: <EconomizersIndex />,
+        dicom: <DicomIndex notApplicable />,
+      };
     default:
       throw Error(
         "Not recognized clinicalEvent Type, lateral panel could not be generated"

@@ -1,4 +1,3 @@
-import type { PatientsGetOnePatientResponseData } from "@/components/generated/models";
 import HistoricOverview from "./HistoricOverview";
 import {
   ChevronDoubleLeftIcon,
@@ -7,19 +6,18 @@ import {
 import { Button } from "@/ui/components/ui/button";
 import { useCallback, useMemo, useState } from "react";
 import { patientFolderBottomMenuElements } from "./MenuElements";
+import { useBoltStore } from "@/stores/boltStore";
 
-function BottomPatientNavBar({
-  patient,
-}: {
-  patient: PatientsGetOnePatientResponseData["mainDb_getPatient"] | null;
-}) {
+function BottomPatientNavBar() {
   const [menuPage, setMenuPage] = useState<number>(0);
+  const patient = useBoltStore((store) => store.patient);
+
   const patientBottomMenu = useMemo(
     () =>
       patientFolderBottomMenuElements({
         patientId: patient?.id ?? "",
       }),
-    [patient?.id]
+    [patient]
   );
 
   const isFirst = menuPage == 0;
@@ -36,34 +34,29 @@ function BottomPatientNavBar({
       <div className="mx-auto mb-5 grid h-20 w-4/5 grid-cols-12 justify-center rounded-xl border-y-2 border-slate-800 py-4 shadow-lg sm:px-6">
         <div className="col-span-10 min-w-max">
           <div className="justify-center">
-            {patient ? (
-              <div className="grid grid-cols-12 items-center">
-                <Button
-                  disabled={isFirst}
-                  className="col-span-1"
-                  variant="secondary"
-                  onClick={previous}>
-                  <ChevronDoubleLeftIcon className="w-6 h-6" />
-                </Button>
-                <div className="col-span-10 mx-2 flex flex-row gap-4">
-                  {patientBottomMenu[menuPage].map((el) => (
+            <div className="grid grid-cols-12 items-center">
+              <Button
+                disabled={isFirst}
+                className="col-span-1"
+                variant="secondary"
+                onClick={previous}>
+                <ChevronDoubleLeftIcon className="w-6 h-6" />
+              </Button>
+              <div className="col-span-10 mx-2 flex flex-row gap-4">
+                {patient &&
+                  !patient.onTrash &&
+                  patientBottomMenu[menuPage].map((el) => (
                     <div key={el.id}>{el.button}</div>
                   ))}
-                </div>
-                <Button
-                  disabled={isLast}
-                  className="col-span-1"
-                  variant="secondary"
-                  onClick={next}>
-                  <ChevronDoubleRightIcon className="w-6 h-6" />
-                </Button>
               </div>
-            ) : (
-              <span>
-                Une erreur est survenue le dossier du patient n'a pas pu être
-                réccupéré
-              </span>
-            )}
+              <Button
+                disabled={isLast}
+                className="col-span-1"
+                variant="secondary"
+                onClick={next}>
+                <ChevronDoubleRightIcon className="w-6 h-6" />
+              </Button>
+            </div>
           </div>
         </div>
         <div className="col-span-2 flex justify-center">

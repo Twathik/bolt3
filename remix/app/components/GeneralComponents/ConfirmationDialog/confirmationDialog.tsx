@@ -35,7 +35,7 @@ function ConfirmationDialog({
   return (
     <AlertDialog>
       <AlertDialogTrigger asChild>{triggerButton}</AlertDialogTrigger>
-      <AlertDialogContent>
+      <AlertDialogContent className="z-[100000]">
         <AlertDialogHeader>
           <AlertDialogTitle>{titre}</AlertDialogTitle>
           <AlertDialogDescription>{description}</AlertDialogDescription>

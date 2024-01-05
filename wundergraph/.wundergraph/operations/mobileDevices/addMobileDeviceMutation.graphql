@@ -3,6 +3,7 @@ mutation (
   $accessToken: String!
   $expireAt: mainDb_DateTimeISO!
   $mobileDeviceType: mainDb_MobileDeviceType!
+  $userId: String! @fromClaim(name: USERID)
 ) {
   mainDb_createOneMobileDevice(
     data: {
@@ -11,6 +12,7 @@ mutation (
       expireAt: $expireAt
       mobileDeviceType: $mobileDeviceType
     }
+    userId: $userId
   ) {
     id
   }

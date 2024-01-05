@@ -84,6 +84,7 @@ const searchPatient = async ({
 
     return searchResponse;
   } catch (error) {
+    console.log({ error });
     throw Error("Patient search error");
   }
 };

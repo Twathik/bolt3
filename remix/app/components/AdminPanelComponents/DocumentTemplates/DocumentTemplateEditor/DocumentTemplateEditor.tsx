@@ -11,7 +11,7 @@ import type { EditorState } from "lexical";
 import { useMutation } from "@/lib/wundergraph";
 import { debounce } from "lodash-es";
 import { Badge } from "@/ui/components/ui/badge";
-import DiagnosticsPlugin from "@/components/GeneralComponents/AppLexical/DiagnosticsPlugin";
+import DiagnosticsPlugin from "@/components/ClinicalEvents/ClinicalDiagnostic/DiagnosticsPlugin/DiagnosticsPlugin";
 
 function DocumentTemplateEditor({
   template,

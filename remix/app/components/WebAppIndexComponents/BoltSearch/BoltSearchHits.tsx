@@ -3,14 +3,10 @@ import RegisterButtonWithCheck from "./RegisterButton/RegisterButtonWithCheck";
 import RegisterButtonWithoutCheck from "./RegisterButton/RegisterButtonWithoutCheck";
 import { Button } from "@/ui/components/ui/button";
 import parser from "html-react-parser";
-import type { PatientsSearch_patientsResponseData } from "@/components/generated/models";
 import { useBoltStore } from "@/stores/boltStore";
+import type { patientHit } from "@/lib/typesense/searchPatient";
 
-const Hit = ({
-  hit,
-}: {
-  hit: PatientsSearch_patientsResponseData["hits"][0];
-}) => {
+const Hit = ({ hit }: { hit: patientHit }) => {
   const { id } = useBoltStore((store) => store.consultationState);
   const addTab = useBoltStore((store) => store.addTab);
 

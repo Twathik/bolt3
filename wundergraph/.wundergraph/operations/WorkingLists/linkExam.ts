@@ -8,7 +8,7 @@ const inputSchema = z.object({
 export default createOperation.query({
   input: inputSchema,
   requireAuthentication: true,
-  live: { enable: true, pollingIntervalSeconds: 60 },
+  live: { enable: true, pollingIntervalSeconds: 20 },
   handler: async ({ input }) => {
     const { workingListId } = input;
     return await linkExamToOrthancStudy({ workingListId });

@@ -19,7 +19,6 @@ import { ListPlugin } from "@lexical/react/LexicalListPlugin";
 import { PlainTextPlugin } from "@lexical/react/LexicalPlainTextPlugin";
 import { RichTextPlugin } from "@lexical/react/LexicalRichTextPlugin";
 import { TabIndentationPlugin } from "@lexical/react/LexicalTabIndentationPlugin";
-import { TablePlugin } from "@lexical/react/LexicalTablePlugin";
 import useLexicalEditable from "@lexical/react/useLexicalEditable";
 import { useEffect, useState } from "react";
 import { CAN_USE_DOM } from "@/components/GeneralComponents/LexicalEditor/shared/src/canUseDOM";
@@ -82,8 +81,6 @@ export default function Editor(): JSX.Element {
       showTreeView,
       showTableOfContents,
       shouldUseLexicalContextMenu,
-      tableCellMerge,
-      tableCellBackgroundColor,
     },
   } = useSettings();
   const isEditable = useLexicalEditable();
@@ -171,10 +168,7 @@ export default function Editor(): JSX.Element {
             <ListPlugin />
             <CheckListPlugin />
             <ListMaxIndentLevelPlugin maxDepth={7} />
-            <TablePlugin
-              hasCellMerge={tableCellMerge}
-              hasCellBackgroundColor={tableCellBackgroundColor}
-            />
+
             <TableCellResizer />
             <NewTablePlugin cellEditorConfig={cellEditorConfig}>
               <AutoFocusPlugin />

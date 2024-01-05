@@ -1,3 +1,11 @@
-mutation ($id: String!, $Months: Int!) {
-  mainDb_changeExpirationMobileDeviceResolver(id: $id, Months: $Months)
+mutation (
+  $id: String!
+  $Months: Int!
+  $userId: String! @fromClaim(name: USERID)
+) {
+  mainDb_changeExpirationMobileDeviceResolver(
+    id: $id
+    Months: $Months
+    userId: $userId
+  )
 }

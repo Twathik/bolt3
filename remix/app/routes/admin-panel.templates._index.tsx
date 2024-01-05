@@ -22,9 +22,5 @@ export default function Templates() {
     return (
       <InitialLoadingError msg="La liste des templates n'a pas pu être réccupérée!" />
     );
-  return (
-    <main className="min-h-screen">
-      <DocumentTemplates templates={loadedData.templates} />
-    </main>
-  );
+  return <DocumentTemplates templates={loadedData.templates} />;
 }

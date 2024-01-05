@@ -1,5 +1,8 @@
-mutation ($id: String!) {
-  mainDb_deleteOneClinicalEvent(where: { id: $id }) {
+mutation ($id: String!, $userId: String! @fromClaim(name: USERID)) {
+  mainDb_deleteOneClinicalEvent(
+    where: { id: $id, deleted: { equals: false } }
+    userId: $userId
+  ) {
     id
   }
 }

@@ -10,7 +10,7 @@ export const getEditorRootComponent = ({
 }): React.ReactNode => {
   switch (clinicalEvent?.eventType) {
     case "DIAGNOSTIC":
-      return <ClinicalDiagnosticRootComponent />;
+      return <ClinicalDiagnosticRootComponent clinicalEvent={clinicalEvent} />;
     case "PRESCRIPTION":
       return <PrescriptionRootComponent clinicalEvent={clinicalEvent} />;
     case "GENERAL_SONO":

@@ -3,6 +3,7 @@ import { MobileDevice } from '../../@generated'
 import { getPrismaFromContext } from '../../@generated/helpers'
 import { PrismaClient } from '@prisma/client'
 import { SwitchMobileDeviceArgs } from './Args/switchMobileDeviceArgs'
+import { AppSubscriptionTriggerArgs } from '../Global/AppSubscription/args/AppSubscriptionTriggerArgs'
 
 @TypeGraphQL.Resolver((_of) => MobileDevice)
 export class SwitchMobileDeviceResolver {
@@ -11,7 +12,10 @@ export class SwitchMobileDeviceResolver {
   })
   async switchMobileDevice(
     @TypeGraphQL.Ctx() ctx: any,
-    @TypeGraphQL.Args() { mobileDeviceType, id }: SwitchMobileDeviceArgs,
+    @TypeGraphQL.Args()
+    { mobileDeviceType, id, userId }: SwitchMobileDeviceArgs,
+    @TypeGraphQL.PubSub('APP_SUBSCRIPTION')
+    notify: TypeGraphQL.Publisher<AppSubscriptionTriggerArgs>,
   ): Promise<Boolean | null> {
     const prisma = getPrismaFromContext(ctx) as PrismaClient
 
@@ -42,9 +46,27 @@ export class SwitchMobileDeviceResolver {
         devices_count === allowedMobileDevices.allowedMobileDevices_doctors
       )
         throw Error('4')
-      await prisma.mobileDevice.update({
+      const result = await prisma.mobileDevice.update({
         where: { id },
         data: { mobileDeviceType, connected: false },
+      })
+      const { accessToken, connected, expireAt, uuid } = result
+
+      await notify({
+        type: 'mobileDeviceUpdate',
+        userId,
+        global: true,
+        appPayload: JSON.stringify({
+          operation: 'update',
+          mobileDevice: {
+            id,
+            accessToken,
+            connected,
+            expireAt,
+            mobileDeviceType,
+            uuid,
+          },
+        }),
       })
 
       return true

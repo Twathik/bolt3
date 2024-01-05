@@ -6,4 +6,8 @@ export class MarkPatientFolderDeletedArgs {
     nullable: false,
   })
   id!: string
+  @TypeGraphQL.Field((_type) => String, {
+    nullable: false,
+  })
+  userId!: string
 }

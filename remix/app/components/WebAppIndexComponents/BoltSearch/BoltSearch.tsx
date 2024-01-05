@@ -27,6 +27,7 @@ const BoltSearch = () => {
   const [queryString, setQueryString] = useState<string | null>(null);
   const [sex, setSex] = useState<"M" | "F" | null>(null);
   const [loading, setLoading] = useState(false);
+
   const [searchData, setSearchData] = useState<
     patientSearchResponse | undefined
   >();

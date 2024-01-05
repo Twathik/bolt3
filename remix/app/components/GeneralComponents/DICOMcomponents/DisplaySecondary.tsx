@@ -36,7 +36,11 @@ function DisplaySecondary({
         payload: JSON.stringify(workingList),
       });
       if (workingList.linkId) {
-        await trigger({ appPayload, appType: "secondaryDisplay" });
+        await trigger({
+          appPayload,
+          appType: "secondaryDisplay",
+          global: false,
+        });
       }
     } catch (error) {
       console.log({ error });

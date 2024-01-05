@@ -5,6 +5,7 @@ mutation (
   $userId: String! @fromClaim(name: USERID)
 ) {
   mainDb_createOneWorkingList(
+    userId: $userId
     data: {
       clinicalEvent: { connect: { id: $clinicalEventId } }
       modality: { connect: { id: $modalityId } }

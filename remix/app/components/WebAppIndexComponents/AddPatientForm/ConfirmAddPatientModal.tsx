@@ -22,6 +22,10 @@ import { useMutation } from "@/lib/wundergraph";
 import { useToast } from "@/ui/components/ui/use-toast";
 import { convertDate } from "@/lib/convertDate";
 import CircularSpinner from "@/components/GeneralComponents/Spinners/CircularSpinner";
+import type { patientHit } from "@/lib/typesense/searchPatient";
+import searchPatient from "@/lib/typesense/searchPatient";
+import { useBoltStore } from "@/stores/boltStore";
+import createTypesenseClient from "@/lib/typesense/typesense";
 
 interface ConfirmAddPatientModalInterface {
   patient: z.infer<typeof AddPatientFormSchema> | null;
@@ -35,11 +39,10 @@ function ConfirmAddPatientModal({
   setReset,
   setIsLoading,
 }: ConfirmAddPatientModalInterface) {
-  const { data, trigger, isMutating } = useMutation({
-    operationName: "patients/search_patients",
-  });
-
+  const [hits, setHits] = useState<patientHit[]>([]);
+  const [loading, setLoading] = useState(false);
   const [open, setOpen] = useState(false);
+  const user = useBoltStore((store) => store.user);
 
   const { trigger: addPatient, isMutating: isAddingPatient } = useMutation({
     operationName: "patients/add_One_patient_to_index",
@@ -47,13 +50,35 @@ function ConfirmAddPatientModal({
   const { toast } = useToast();
 
   useEffect(() => {
-    trigger({
-      query_string: `${patient?.lastName} ${patient?.firstName} ${getYear(
-        new Date(patient?.ddn ?? "")
-      )}`,
-      sexe: patient?.sexe ?? "M",
-    });
-  }, [patient, trigger]);
+    if (user?.searchApiKey && user?.searchApiKey?.length > 0) {
+      setLoading(true);
+
+      const client = createTypesenseClient(user?.searchApiKey ?? "");
+      searchPatient({
+        client,
+        searchParams: {
+          query_string: `${patient?.lastName} ${patient?.firstName} ${getYear(
+            new Date(patient?.ddn ?? "")
+          )}`,
+          sexe: patient?.sexe ?? "M",
+        },
+      })
+        .then((data) => {
+          setHits(data?.hits ?? []);
+          setLoading(false);
+        })
+        .catch((e) => {
+          console.log({ e });
+          toast({
+            variant: "destructive",
+            title: "Erreur réseau",
+            description:
+              "La vérification du dossier ne s'est pas faite correctement",
+          });
+          setLoading(false);
+        });
+    }
+  }, [patient, toast, user?.searchApiKey]);
   useEffect(() => {
     setIsLoading(isAddingPatient);
   }, [isAddingPatient, setIsLoading]);
@@ -115,16 +140,16 @@ function ConfirmAddPatientModal({
             Etes vous sur de voulir crée un nouveau dossier?
           </AlertDialogTitle>
           <AlertDialogDescription>
-            {isMutating ? (
+            {loading ? (
               <AppSkeleton />
-            ) : data?.hits.length ? (
+            ) : hits.length ? (
               <>
                 <h5>
                   Veuillez vous assurer que le patient ne possède pas un dossier
                   avant d'en créer un nouveau, en cas de doute veuillez utiliser{" "}
                   <strong>BoltSearch</strong>
                 </h5>
-                {data.hits.map((result) => (
+                {hits.map((result) => (
                   <Hit key={result.id} hit={result} />
                 ))}
               </>

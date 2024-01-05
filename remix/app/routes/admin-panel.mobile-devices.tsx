@@ -1,4 +1,4 @@
-import MobileDevicesIndex from "@/components/AdminPanelComponents/MobileDevicesComponents/MobileDevicesIndex";
+import MobileDevicesRootComponent from "@/components/AdminPanelComponents/MobileDevicesComponents/MobileDevicesRootComponent";
 import InitialLoadingError from "@/components/GeneralComponents/InitialLoadingError/InitialLoadingError";
 import type { MobileDevicesMobileDevicesQueryResponseData } from "@/components/generated/models";
 import createClient from "@/lib/createClient";
@@ -29,9 +29,5 @@ export default function MobileDevices() {
     return (
       <InitialLoadingError msg="La liste des appareils mobiles n'a pas pu être réccupérée" />
     );
-  return (
-    <main className="min-h-screen">
-      <MobileDevicesIndex data={data} />
-    </main>
-  );
+  return <MobileDevicesRootComponent data={data} />;
 }

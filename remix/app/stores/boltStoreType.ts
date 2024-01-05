@@ -1,27 +1,32 @@
 import type {
   ClinicalEventsGetClinicalEventResponseData,
+  ClinicalEventsGetClinicalEventsResponseData,
+  ConsultationListTodayListsResponseData,
   DataTableGetDataTableConfigurationsResponseData,
   EconomizersEconomizersResponseData,
+  MobileDevicesMobileDevicesQueryResponseData,
   ModalityGetSpecificModalitiesResponseData,
+  ModalityModalitiesResponseData,
   PatientsGetOnePatientResponseData,
+  UsersGetUserResponseData,
   WorkingListsWorkingListsResponseData,
+  mainDb_EventTypesValues,
 } from "@/components/generated/models";
 import type { DrugHitInterface } from "@/lib/interfaces/DrugsInterfaces";
+import type { SecondaryDisplayInterface } from "@/lib/interfaces/GlobalSubscriptionInterfaces";
 
-export type appUser = {
-  avatarUrl?: String;
-  searchApiKey: string;
-};
 export type UserStoreSlice = {
-  user: appUser;
-  setUser: (user: appUser) => void;
+  user: UsersGetUserResponseData["mainDb_user"];
+  setUser: (user: UsersGetUserResponseData["mainDb_user"]) => void;
+};
+
+type ConsultationStateType = {
+  id: string | null;
+  allowedEventTypes: mainDb_EventTypesValues[];
 };
 export type ConsultationStoreSlice = {
-  consultationState: {
-    id: null | string;
-    refetch: boolean;
-  };
-  setConsultationId: (consultationId: string | null) => void;
+  consultationState: ConsultationStateType;
+  setConsultationState: (consultation: ConsultationStateType) => void;
 };
 
 export type PatientStoreSlice = {
@@ -50,6 +55,7 @@ export type ClinicalEventStoreSlice = {
   clinicalEvent:
     | null
     | ClinicalEventsGetClinicalEventResponseData["mainDb_clinicalEvent"];
+  clinicalEvents: ClinicalEventsGetClinicalEventsResponseData["mainDb_clinicalEvents"];
   modalities: ModalityGetSpecificModalitiesResponseData["mainDb_modalities"];
   workingLists: WorkingListsWorkingListsResponseData["mainDb_workingLists"];
   editorConfiguration: DataTableGetDataTableConfigurationsResponseData["mainDb_getDataTableConfiguration"];
@@ -63,6 +69,15 @@ export type ClinicalEventStoreSlice = {
   ) => void;
   setWorkingLists: (
     workingLists: WorkingListsWorkingListsResponseData["mainDb_workingLists"]
+  ) => void;
+  addWorkingList: (
+    workingLists: WorkingListsWorkingListsResponseData["mainDb_workingLists"][0]
+  ) => void;
+  updateWorkingList: (
+    workingLists: WorkingListsWorkingListsResponseData["mainDb_workingLists"][0]
+  ) => void;
+  removeWorkingList: (
+    workingLists: WorkingListsWorkingListsResponseData["mainDb_workingLists"][0]
   ) => void;
   setEditorConfiguration: (
     editorConfiguration: DataTableGetDataTableConfigurationsResponseData["mainDb_getDataTableConfiguration"]
@@ -80,6 +95,69 @@ export type ClinicalEventStoreSlice = {
   deleteEconomizer: (
     economizer: EconomizersEconomizersResponseData["mainDb_economizers"][0]
   ) => void;
+  setClinicalEvents: (
+    clinicalEvents: ClinicalEventsGetClinicalEventsResponseData["mainDb_clinicalEvents"]
+  ) => void;
+
+  addClinicalEvent: (
+    clinicalEvent: ClinicalEventsGetClinicalEventsResponseData["mainDb_clinicalEvents"][0]
+  ) => void;
+  updateClinicalEvent: (
+    clinicalEvent: ClinicalEventsGetClinicalEventsResponseData["mainDb_clinicalEvents"][0]
+  ) => void;
+  removeClinicalEvent: (
+    clinicalEvent: ClinicalEventsGetClinicalEventsResponseData["mainDb_clinicalEvents"][0]
+  ) => void;
+};
+
+export type SecondaryDisplayStoreSlice = {
+  secondaryDisplay: SecondaryDisplayInterface;
+  setSecondaryDisplay: (payload: SecondaryDisplayInterface) => void;
+};
+export type ModalitiesStoreSlice = {
+  modalities: ModalityModalitiesResponseData["mainDb_modalities"];
+  setModalities: (
+    modalities: ModalityModalitiesResponseData["mainDb_modalities"]
+  ) => void;
+  updateModalities: (
+    modality: ModalityModalitiesResponseData["mainDb_modalities"][0]
+  ) => void;
+};
+
+export type MobileDevicesStoreSlice = {
+  mobileDevices: MobileDevicesMobileDevicesQueryResponseData["mainDb_mobileDevices"];
+  setMobileDevices: (
+    mobileDevices: MobileDevicesMobileDevicesQueryResponseData["mainDb_mobileDevices"]
+  ) => void;
+  removeMobileDevice: (
+    mobileDevice: MobileDevicesMobileDevicesQueryResponseData["mainDb_mobileDevices"][0]
+  ) => void;
+  updateMobileDevice: (
+    mobileDevice: MobileDevicesMobileDevicesQueryResponseData["mainDb_mobileDevices"][0]
+  ) => void;
+  addMobileDevice: (
+    mobileDevice: MobileDevicesMobileDevicesQueryResponseData["mainDb_mobileDevices"][0]
+  ) => void;
+};
+
+export type PatientSpotlight = {
+  id: string;
+  label: string;
+  description: string;
+  patientId: string;
+  consultationList: ConsultationListTodayListsResponseData["mainDb_consultationLists"][0];
+};
+
+export type PatientSpotlightStoreSlice = {
+  patientSpotlights: PatientSpotlight[];
+  displayedList: PatientSpotlight[];
+  listQuery: string;
+  setDisplayedList: (limit: number) => void;
+  setPatientsSpotlights: (patientSpotlights: PatientSpotlight[]) => void;
+  addPatientSpotlight: (patientSpotlight: PatientSpotlight) => void;
+  updatePatientSpotlight: (patientSpotlight: PatientSpotlight) => void;
+  removePatientSpotlight: (patientSpotlight: PatientSpotlight) => void;
+  setListQuery: (listQuery: string) => void;
 };
 
 export type boltStoreType = ConsultationStoreSlice &
@@ -87,4 +165,8 @@ export type boltStoreType = ConsultationStoreSlice &
   TabStoreSlice &
   PrescriptionStoreSlice &
   ClinicalEventStoreSlice &
-  UserStoreSlice;
+  UserStoreSlice &
+  SecondaryDisplayStoreSlice &
+  ModalitiesStoreSlice &
+  MobileDevicesStoreSlice &
+  PatientSpotlightStoreSlice;

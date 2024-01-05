@@ -6,8 +6,8 @@ export interface SearchResponseInterface {
   search_time_ms: number;
 }
 
-const createTypesenseClient = (apiKey: string) =>
-  new Client({
+const createTypesenseClient = (apiKey: string) => {
+  return new Client({
     nodes: [
       {
         host: "search.bolt3.local",
@@ -23,5 +23,6 @@ const createTypesenseClient = (apiKey: string) =>
 
     // cacheSearchResultsForSeconds: 60,
   });
+};
 
 export default createTypesenseClient;

@@ -2,6 +2,7 @@ import * as TypeGraphQL from "type-graphql";
 import * as GraphQLScalars from "graphql-scalars";
 import { Prisma } from "@prisma/client";
 import { DecimalJSScalar } from "../../scalars";
+import { ConsultationDayMonthYearCompoundUniqueInput } from "../inputs/ConsultationDayMonthYearCompoundUniqueInput";
 import { ConsultationListListRelationFilter } from "../inputs/ConsultationListListRelationFilter";
 import { ConsultationWhereInput } from "../inputs/ConsultationWhereInput";
 import { DateTimeFilter } from "../inputs/DateTimeFilter";
@@ -13,6 +14,11 @@ export class ConsultationWhereUniqueInput {
     nullable: true
   })
   id?: string | undefined;
+
+  @TypeGraphQL.Field(_type => ConsultationDayMonthYearCompoundUniqueInput, {
+    nullable: true
+  })
+  day_month_year?: ConsultationDayMonthYearCompoundUniqueInput | undefined;
 
   @TypeGraphQL.Field(_type => [ConsultationWhereInput], {
     nullable: true

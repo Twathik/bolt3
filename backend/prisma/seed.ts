@@ -22,10 +22,11 @@ async function main() {
       fullName: 'Administrateur',
       avatarUrl: '',
       role: Role.ADMIN,
-      typesenseApiKey: 'xyz',
       phoneNumbers: ['0557506276'],
       email: 'takdemt.wathik@gmail.com',
       userId: '',
+      searchApiKey: '',
+      searchApiKeyId: null,
     },
   ]
 
@@ -45,49 +46,56 @@ async function main() {
       ddn: new Date(1986, 6, 27),
       nTel: '0557506276',
       sexe: 'M',
+      height: null,
+      weight: null,
     },
     {
       id: '2',
       firstName: 'Afaf',
       lastName: 'Mellak',
       ddn: new Date(1989, 4, 14),
-
       nTel: '',
       sexe: 'F',
+      height: null,
+      weight: null,
     },
     {
       id: '3',
       firstName: 'Kamal',
       lastName: 'Takdemt',
       ddn: new Date(1957, 4, 17),
-
       nTel: '',
       sexe: 'M',
+      height: null,
+      weight: null,
     },
     {
       id: '4',
       firstName: 'Fatiha',
       lastName: 'Boudjella',
       ddn: new Date(1957, 7, 27),
-
       nTel: '',
       sexe: 'F',
+      height: null,
+      weight: null,
     },
     {
       id: '5',
       firstName: 'Kadour',
       lastName: 'Elmahri',
       ddn: new Date(1950, 7, 27),
-
       nTel: '',
       sexe: 'M',
+      height: null,
+      weight: null,
     },
     {
       id: '6',
       firstName: 'Mohamed',
       lastName: 'Bouchnafa',
       ddn: new Date(1960, 7, 27),
-
+      height: null,
+      weight: null,
       nTel: '',
       sexe: 'M',
     },
@@ -96,7 +104,8 @@ async function main() {
       firstName: 'Saliha',
       lastName: 'Zamouchi',
       ddn: new Date(1940, 7, 27),
-
+      height: null,
+      weight: null,
       nTel: '',
       sexe: 'F',
     },
@@ -105,7 +114,8 @@ async function main() {
       firstName: 'Amel',
       lastName: 'Ouchene',
       ddn: new Date(1980, 7, 27),
-
+      height: null,
+      weight: null,
       nTel: '',
       sexe: 'F',
     },
@@ -114,7 +124,8 @@ async function main() {
       firstName: 'Karim',
       lastName: 'Rahache',
       ddn: new Date(1981, 7, 27),
-
+      height: null,
+      weight: null,
       nTel: '',
       sexe: 'M',
     },
@@ -123,7 +134,8 @@ async function main() {
       firstName: 'Rafik',
       lastName: 'Raskin',
       ddn: new Date(1989, 7, 27),
-
+      height: null,
+      weight: null,
       nTel: '',
       sexe: 'M',
     },
@@ -132,7 +144,8 @@ async function main() {
       firstName: 'Sabine',
       lastName: 'Zighoud',
       ddn: new Date(1991, 7, 27),
-
+      height: null,
+      weight: null,
       nTel: '',
       sexe: 'F',
     },
@@ -141,7 +154,8 @@ async function main() {
       firstName: 'Iyed',
       lastName: 'Bedjaoui',
       ddn: new Date(1988, 7, 27),
-
+      height: null,
+      weight: null,
       nTel: '',
       sexe: 'M',
     },
@@ -150,7 +164,8 @@ async function main() {
       firstName: 'Chawki',
       lastName: 'Bedjaoui',
       ddn: new Date(1989, 7, 27),
-
+      height: null,
+      weight: null,
       nTel: '',
       sexe: 'M',
     },
@@ -159,7 +174,8 @@ async function main() {
       firstName: 'Mohamed',
       lastName: 'Ouchene',
       ddn: new Date(1956, 7, 27),
-
+      height: null,
+      weight: null,
       nTel: '',
       sexe: 'M',
     },
@@ -168,7 +184,8 @@ async function main() {
       firstName: 'Malika',
       lastName: 'Bouali',
       ddn: new Date(1957, 7, 27),
-
+      height: null,
+      weight: null,
       nTel: '',
       sexe: 'F',
     },
@@ -177,7 +194,8 @@ async function main() {
       firstName: 'Leila',
       lastName: 'Guasmi',
       ddn: new Date(1995, 7, 27),
-
+      height: null,
+      weight: null,
       nTel: '',
       sexe: 'F',
     },
@@ -186,7 +204,8 @@ async function main() {
       firstName: 'Mohamed Taher',
       lastName: 'Bouafia',
       ddn: new Date(1953, 7, 27),
-
+      height: null,
+      weight: null,
       nTel: '',
       sexe: 'M',
     },
@@ -195,7 +214,8 @@ async function main() {
       firstName: 'Mohamed',
       lastName: 'Chettibi',
       ddn: new Date(1970, 7, 27),
-
+      height: null,
+      weight: null,
       nTel: '',
       sexe: 'M',
     },
@@ -204,7 +224,8 @@ async function main() {
       firstName: 'Mohamed Amine',
       lastName: 'Boudjella',
       ddn: new Date(1969, 7, 27),
-
+      height: null,
+      weight: null,
       nTel: '',
       sexe: 'M',
     },
@@ -213,7 +234,8 @@ async function main() {
       firstName: 'Samira',
       lastName: 'Oukid',
       ddn: new Date(1985, 7, 27),
-
+      height: null,
+      weight: null,
       nTel: '',
       sexe: 'F',
     },
@@ -221,12 +243,17 @@ async function main() {
 
   const DocumentTemplateData: Omit<DocumentTemplate, 'id'>[] = [
     {
-      eventType: 'DIAGNOSTIC',
+      eventType: 'CLINICAL_VISIT',
       template: '',
       empty: true,
     },
     {
       eventType: 'PRESCRIPTION',
+      template: '',
+      empty: true,
+    },
+    {
+      eventType: 'GENERAL_SONO',
       template: '',
       empty: true,
     },

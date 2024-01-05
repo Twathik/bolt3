@@ -10,17 +10,17 @@ export class EnumEventTypesFilter {
   @TypeGraphQL.Field(_type => EventTypes, {
     nullable: true
   })
-  equals?: "DIAGNOSTIC" | "PRESCRIPTION" | "GENERAL_SONO" | undefined;
+  equals?: "CLINICAL_VISIT" | "PRESCRIPTION" | "GENERAL_SONO" | undefined;
 
   @TypeGraphQL.Field(_type => [EventTypes], {
     nullable: true
   })
-  in?: Array<"DIAGNOSTIC" | "PRESCRIPTION" | "GENERAL_SONO"> | undefined;
+  in?: Array<"CLINICAL_VISIT" | "PRESCRIPTION" | "GENERAL_SONO"> | undefined;
 
   @TypeGraphQL.Field(_type => [EventTypes], {
     nullable: true
   })
-  notIn?: Array<"DIAGNOSTIC" | "PRESCRIPTION" | "GENERAL_SONO"> | undefined;
+  notIn?: Array<"CLINICAL_VISIT" | "PRESCRIPTION" | "GENERAL_SONO"> | undefined;
 
   @TypeGraphQL.Field(_type => NestedEnumEventTypesFilter, {
     nullable: true

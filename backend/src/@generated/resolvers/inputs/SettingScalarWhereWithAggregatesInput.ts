@@ -2,6 +2,7 @@ import * as TypeGraphQL from "type-graphql";
 import * as GraphQLScalars from "graphql-scalars";
 import { Prisma } from "@prisma/client";
 import { DecimalJSScalar } from "../../scalars";
+import { EnumEventTypesNullableListFilter } from "../inputs/EnumEventTypesNullableListFilter";
 import { IntWithAggregatesFilter } from "../inputs/IntWithAggregatesFilter";
 import { StringWithAggregatesFilter } from "../inputs/StringWithAggregatesFilter";
 
@@ -41,4 +42,9 @@ export class SettingScalarWhereWithAggregatesInput {
     nullable: true
   })
   allowedDICOMmodalities?: IntWithAggregatesFilter | undefined;
+
+  @TypeGraphQL.Field(_type => EnumEventTypesNullableListFilter, {
+    nullable: true
+  })
+  allowedEventTypes?: EnumEventTypesNullableListFilter | undefined;
 }

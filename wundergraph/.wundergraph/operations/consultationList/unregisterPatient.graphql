@@ -1,11 +1,16 @@
-mutation ($consultationId: String!, $patientId: String!) {
+mutation (
+  $consultationId: String!
+  $patientId: String!
+  $userId: String! @fromClaim(name: USERID)
+) {
   mainDb_deleteOneConsultationList(
+    userId: $userId
     where: {
-      patientId_consultationId_active: {
+      patientId_consultationId: {
         consultationId: $consultationId
         patientId: $patientId
-        active: true
       }
+      active: { equals: true }
     }
   ) {
     id

@@ -4,6 +4,7 @@ import { getPrismaFromContext } from '../../@generated/helpers'
 import { PrismaClient } from '@prisma/client'
 import { changeExpirationMobileDeviceArgs } from './Args/changeExpirationMobileDeviceArgs'
 import { addMonths } from 'date-fns'
+import { AppSubscriptionTriggerArgs } from '../Global/AppSubscription/args/AppSubscriptionTriggerArgs'
 
 @TypeGraphQL.Resolver((_of) => MobileDevice)
 export class ChangeExpirationMobileDeviceResolver {
@@ -13,7 +14,9 @@ export class ChangeExpirationMobileDeviceResolver {
   async changeExpirationMobileDeviceResolver(
     @TypeGraphQL.Ctx() ctx: any,
     @TypeGraphQL.Args()
-    { Months, id }: changeExpirationMobileDeviceArgs,
+    { Months, id, userId }: changeExpirationMobileDeviceArgs,
+    @TypeGraphQL.PubSub('APP_SUBSCRIPTION')
+    notify: TypeGraphQL.Publisher<AppSubscriptionTriggerArgs>,
   ): Promise<Boolean | null> {
     const prisma = getPrismaFromContext(ctx) as PrismaClient
 
@@ -24,13 +27,30 @@ export class ChangeExpirationMobileDeviceResolver {
       if (!mobileDevice) throw Error('not found device')
       const expired = mobileDevice.expireAt < new Date()
 
-      const expireAt: Date = expired
+      const exp: Date = expired
         ? addMonths(mobileDevice.expireAt, Months)
         : addMonths(new Date(), Months)
 
-      await prisma.mobileDevice.update({
-        where: { id },
-        data: { expireAt },
+      const { accessToken, connected, expireAt, mobileDeviceType, uuid } =
+        await prisma.mobileDevice.update({
+          where: { id },
+          data: { expireAt: exp },
+        })
+      await notify({
+        type: 'mobileDeviceUpdate',
+        global: true,
+        userId,
+        appPayload: JSON.stringify({
+          operation: 'update',
+          mobileDevice: {
+            id,
+            accessToken,
+            connected,
+            expireAt,
+            mobileDeviceType,
+            uuid,
+          },
+        }),
       })
       return true
     } catch (error) {

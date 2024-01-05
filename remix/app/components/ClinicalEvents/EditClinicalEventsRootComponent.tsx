@@ -11,6 +11,7 @@ import { ChevronLeftIcon } from "@heroicons/react/24/outline";
 import { useNavigate } from "@remix-run/react";
 import { useCallback, useEffect } from "react";
 import { useBoltStore } from "@/stores/boltStore";
+import type { appUser } from "@/stores/boltStoreType";
 
 function EditClinicalEventsRootComponent({
   clinicalEvent,
@@ -18,12 +19,14 @@ function EditClinicalEventsRootComponent({
   workingLists,
   editorConfigurationFiles,
   economizers,
+  user,
 }: {
   clinicalEvent: ClinicalEventsGetClinicalEventResponseData["mainDb_clinicalEvent"];
   modalities: ModalityGetSpecificModalitiesResponseData["mainDb_modalities"];
   workingLists: WorkingListsWorkingListsResponseData["mainDb_workingLists"];
   editorConfigurationFiles: DataTableGetDataTableConfigurationsResponseData["mainDb_getDataTableConfiguration"];
   economizers: EconomizersEconomizersResponseData["mainDb_economizers"];
+  user: appUser;
 }) {
   const router = useNavigate();
 
@@ -37,6 +40,7 @@ function EditClinicalEventsRootComponent({
     (store) => store.setEditorConfiguration
   );
   const setEconomizers = useBoltStore((store) => store.setEconomizers);
+  const setAppUser = useBoltStore((store) => store.setUser);
 
   useEffect(() => {
     setClinicalEvent(clinicalEvent);
@@ -44,16 +48,19 @@ function EditClinicalEventsRootComponent({
     setWorkingLists(workingLists);
     setEditorConfiguration(editorConfigurationFiles);
     setEconomizers(economizers);
+    setAppUser(user);
   }, [
     clinicalEvent,
     economizers,
     editorConfigurationFiles,
     modalities,
+    setAppUser,
     setClinicalEvent,
     setEconomizers,
     setEditorConfiguration,
     setModalities,
     setWorkingLists,
+    user,
     workingLists,
   ]);
   return (

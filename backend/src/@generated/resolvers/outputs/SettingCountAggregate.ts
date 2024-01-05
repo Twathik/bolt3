@@ -28,5 +28,10 @@ export class SettingCountAggregate {
   @TypeGraphQL.Field(_type => TypeGraphQL.Int, {
     nullable: false
   })
+  allowedEventTypes!: number;
+
+  @TypeGraphQL.Field(_type => TypeGraphQL.Int, {
+    nullable: false
+  })
   _all!: number;
 }

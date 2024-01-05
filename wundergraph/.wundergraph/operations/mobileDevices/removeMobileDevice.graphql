@@ -1,5 +1,5 @@
-mutation ($id: String!) {
-  mainDb_deleteOneMobileDevice(where: { id: $id }) {
+mutation ($id: String!, $userId: String! @fromClaim(name: USERID)) {
+  mainDb_deleteOneMobileDevice(where: { id: $id }, userId: $userId) {
     id
   }
 }

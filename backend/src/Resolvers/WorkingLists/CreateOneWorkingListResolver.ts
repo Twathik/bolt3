@@ -1,6 +1,6 @@
 import * as TypeGraphQL from 'type-graphql'
 import type { GraphQLResolveInfo } from 'graphql'
-import { CreateOneWorkingListArgs, WorkingList } from '../../@generated'
+import { WorkingList } from '../../@generated'
 import {
   getPrismaFromContext,
   transformCountFieldIntoSelectRelationsCount,
@@ -8,9 +8,11 @@ import {
 } from '../../@generated/helpers'
 import { Context } from '../../context'
 import { PrismaClient } from '@prisma/client'
-import { exec } from 'child_process'
+import { execSync } from 'child_process'
 import { generateWorkList, modalitiesTypes } from '../../Utils/DICOM/utils'
 import { format } from 'date-fns'
+import { AppSubscriptionTriggerArgs } from '../Global/AppSubscription/args/AppSubscriptionTriggerArgs'
+import { CreateOneWorkingListArgs } from './args/CreateOneWorkingListArgs'
 
 @TypeGraphQL.Resolver((_of) => WorkingList)
 export class CreateOneWorkingListResolver {
@@ -20,7 +22,9 @@ export class CreateOneWorkingListResolver {
   async createOneWorkingList(
     @TypeGraphQL.Ctx() ctx: Context,
     @TypeGraphQL.Info() info: GraphQLResolveInfo,
-    @TypeGraphQL.Args() args: CreateOneWorkingListArgs,
+    @TypeGraphQL.Args() { userId, ...args }: CreateOneWorkingListArgs,
+    @TypeGraphQL.PubSub('APP_SUBSCRIPTION')
+    notify: TypeGraphQL.Publisher<AppSubscriptionTriggerArgs>,
   ): Promise<WorkingList> {
     const { _count } = transformInfoIntoPrismaArgs(info)
 
@@ -69,20 +73,64 @@ export class CreateOneWorkingListResolver {
             RequestingPhysician: `${user.lastName}^${user.firstName}`,
           },
         })
-        exec(
-          `docker run --rm -v ./worklists:/var/local imbio/dcmtk dump2dcm /var/local/${workingList.id}.txt /var/local/${workingList.id}.wl`,
-          (error, stdout, stderr) => {
-            if (error) {
-              console.log(`error: ${error.message}`)
-              return
-            }
-            if (stderr) {
-              console.log(`stderr: ${stderr}`)
-              return
-            }
-            console.log(`stdout: ${stdout}`)
-          },
-        )
+
+        try {
+          const cmd = `docker run --rm -v ./worklists:/var/local imbio/dcmtk dump2dcm /var/local/${workingList.id}.txt /var/local/${workingList.id}.wl`
+          execSync(cmd).toString()
+        } catch (e) {
+          const error = e as any
+          error.status // 0 : successful exit, but here in exception it has to be greater than 0
+          error.message // Holds the message you typically want.
+          error.stderr // Holds the stderr output. Use `.toString()`.
+          error.stdout // Holds the stdout output. Use `.toString()`.
+        }
+
+        const {
+          id,
+          clinicalEventId,
+          createdAt,
+          modalityExamStatus,
+          linkId,
+          linked,
+          locked,
+        } = workingList
+        const {
+          id: modalityId,
+          modalityPseudo,
+          modalityType,
+          modalityAETitle,
+        } = modality
+        const { firstName, lastName } = patient
+        const { fullName } = user
+        await notify({
+          type: 'workingLists',
+          global: true,
+          userId,
+          appPayload: JSON.stringify({
+            operation: 'create',
+            workingList: {
+              id,
+              modality: {
+                id: modalityId,
+                modalityPseudo,
+                modalityType,
+                modalityAETitle,
+              },
+              patient: {
+                patientFullName: `${lastName} ${firstName}`,
+              },
+              user: {
+                fullName,
+              },
+              clinicalEventId,
+              createdAt,
+              modalityExamStatus,
+              linkId,
+              linked,
+              locked,
+            },
+          }),
+        })
       } else {
         throw Error('conditions not satisfied, working list not created')
       }

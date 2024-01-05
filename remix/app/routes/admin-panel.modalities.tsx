@@ -1,8 +1,10 @@
 import ModalitiesIndex from "@/components/AdminPanelComponents/ModalitiesComponents/ModalitiesIndex";
 import InitialLoadingError from "@/components/GeneralComponents/InitialLoadingError/InitialLoadingError";
 import createClient from "@/lib/createClient";
+import { useBoltStore } from "@/stores/boltStore";
 import { redirect, type LoaderFunctionArgs } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
+import { useEffect } from "react";
 
 export async function loader({ request }: LoaderFunctionArgs) {
   const client = await createClient(request);
@@ -20,13 +22,14 @@ export async function loader({ request }: LoaderFunctionArgs) {
 
 export default function Modalities() {
   const data = useLoaderData<typeof loader>();
+  const setModalities = useBoltStore((store) => store.setModalities);
+  useEffect(() => {
+    if (data) setModalities(data);
+  }, [data, setModalities]);
+
   if (!data)
     return (
       <InitialLoadingError msg="La liste des appareils d'imagerie disponibles n'a pas pu être réccupérée!" />
     );
-  return (
-    <main className="min-h-screen">
-      <ModalitiesIndex data={data} />
-    </main>
-  );
+  return <ModalitiesIndex />;
 }

@@ -9,11 +9,11 @@ const createConsultationSlice: StateCreator<
 > = (set) => ({
   consultationState: {
     id: null,
-    refetch: false,
+    allowedEventTypes: [],
   },
-  setConsultationId: (consultationId: any) =>
+  setConsultationState: (consultationState) =>
     set((state) => {
-      state.consultationState.id = consultationId;
+      state.consultationState = consultationState;
     }),
 });
 

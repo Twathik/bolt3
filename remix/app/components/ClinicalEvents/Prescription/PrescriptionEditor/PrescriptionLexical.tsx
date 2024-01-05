@@ -16,14 +16,10 @@ import { useCallback } from "react";
 import { OnChangePlugin } from "@lexical/react/LexicalOnChangePlugin";
 import CustomNodes from "./CustomNodes";
 import PrescriptionPanelContainer from "./PrescriptionPanel/PrescriptionPanelContainer";
-import PrescriptionEditor from "./PrescriptionEditor";
-import PrescriptionsPlugin from "./PrescriptionPlugin/PrescriptionPlugin";
-import { PrescriptionLayoutPlugin } from "./PrescriptionLayout/PrescriptionLayoutPlugin";
-import PrescriptionToPDF from "../../../GeneralComponents/AppLexical/TopPanel/EditorToPDF/EditorToPdf";
-import { ClientOnly } from "remix-utils/client-only";
 import { SharedAutocompleteContext } from "@/components/GeneralComponents/LexicalEditor/context/SharedAutocompleteContext";
 import type { ClinicalEventsGetClinicalEventResponseData } from "@/components/generated/models";
 import CommonNodes from "@/components/GeneralComponents/AppLexical/CommonNodes";
+import PrescriptionEditor from "./PrescriptionEditor";
 
 console.warn(
   "If you are profiling the playground app, please ensure you turn off the debug view. You can disable it by pressing on the settings control in the bottom-left of your screen and toggling the debug view setting."
@@ -70,9 +66,6 @@ export default function PrescriptionLexical({
         <TableContext>
           <SharedAutocompleteContext>
             <>
-              <div className="w-screen">
-                <ClientOnly>{() => <PrescriptionToPDF size="A5" />}</ClientOnly>
-              </div>
               <div className="grid grid-cols-12">
                 <div className="col-span-12 flex justify-end"></div>
                 <div className="col-span-5">
@@ -80,8 +73,6 @@ export default function PrescriptionLexical({
                 </div>
                 <div className="col-span-7 bg-white">
                   <PrescriptionEditor />
-                  <PrescriptionsPlugin />
-                  <PrescriptionLayoutPlugin />
                   <OnChangePlugin onChange={onChange} />
                   {children}
                 </div>

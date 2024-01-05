@@ -1,5 +1,9 @@
-mutation ($id: String!, $onTrash: Boolean!) {
-  mainDb_movePatientFolderToTrash(id: $id, onTrash: $onTrash) {
+mutation (
+  $id: String!
+  $onTrash: Boolean!
+  $userId: String! @fromClaim(name: USERID)
+) {
+  mainDb_movePatientFolderToTrash(id: $id, onTrash: $onTrash, userId: $userId) {
     id
   }
 }

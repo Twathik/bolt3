@@ -2,6 +2,7 @@ import * as TypeGraphQL from "type-graphql";
 import * as GraphQLScalars from "graphql-scalars";
 import { Prisma } from "@prisma/client";
 import { DecimalJSScalar } from "../../scalars";
+import { EnumEventTypesNullableListFilter } from "../inputs/EnumEventTypesNullableListFilter";
 import { IntFilter } from "../inputs/IntFilter";
 import { SettingWhereInput } from "../inputs/SettingWhereInput";
 
@@ -41,4 +42,9 @@ export class SettingWhereUniqueInput {
     nullable: true
   })
   allowedDICOMmodalities?: IntFilter | undefined;
+
+  @TypeGraphQL.Field(_type => EnumEventTypesNullableListFilter, {
+    nullable: true
+  })
+  allowedEventTypes?: EnumEventTypesNullableListFilter | undefined;
 }

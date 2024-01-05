@@ -3,7 +3,7 @@
 import UserProfileButton from "@/components/GeneralComponents/UserProfileButton/UserProfileButton";
 import { Link } from "@remix-run/react";
 import bolt_logo from "@/images/logo_bolt.png";
-import type { UsersGetUserResponseData } from "@/components/generated/models";
+import { useBoltStore } from "@/stores/boltStore";
 
 const navigation: { name: string; href: string }[] = [
   { name: "Product", href: "#" },
@@ -12,11 +12,8 @@ const navigation: { name: string; href: string }[] = [
   { name: "Panneau d'administration", href: "/admin-panel" },
 ];
 
-export default function WebAppHeader({
-  user,
-}: {
-  user: UsersGetUserResponseData["mainDb_user"];
-}) {
+export default function WebAppHeader() {
+  const user = useBoltStore((s) => s.user);
   return (
     <header className="max-w-full bg-white">
       <nav

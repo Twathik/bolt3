@@ -1,7 +1,12 @@
-mutation ($id: String!, $accessToken: String!) {
+mutation (
+  $id: String!
+  $accessToken: String!
+  $userId: String! @fromClaim(name: USERID)
+) {
   mainDb_updateOneMobileDevice(
     where: { id: $id }
     data: { accessToken: { set: $accessToken }, connected: { set: false } }
+    userId: $userId
   ) {
     id
   }

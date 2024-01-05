@@ -1,12 +1,14 @@
 import * as TypeGraphQL from 'type-graphql'
 import type { GraphQLResolveInfo } from 'graphql'
-import { CreateOneMobileDeviceArgs, MobileDevice } from '../../@generated'
+import { MobileDevice } from '../../@generated'
 import {
   transformInfoIntoPrismaArgs,
   getPrismaFromContext,
   transformCountFieldIntoSelectRelationsCount,
 } from '../../@generated/helpers'
 import { PrismaClient } from '@prisma/client'
+import { AppSubscriptionTriggerArgs } from '../Global/AppSubscription/args/AppSubscriptionTriggerArgs'
+import { CreateOneMobileDeviceArgs } from './Args/CreateOneMobileDeviceArgs'
 
 @TypeGraphQL.Resolver((_of) => MobileDevice)
 export class CreateOneMobileDeviceResolver {
@@ -16,7 +18,9 @@ export class CreateOneMobileDeviceResolver {
   async createOneMobileDevice(
     @TypeGraphQL.Ctx() ctx: any,
     @TypeGraphQL.Info() info: GraphQLResolveInfo,
-    @TypeGraphQL.Args() args: CreateOneMobileDeviceArgs,
+    @TypeGraphQL.Args() { userId, ...args }: CreateOneMobileDeviceArgs,
+    @TypeGraphQL.PubSub('APP_SUBSCRIPTION')
+    notify: TypeGraphQL.Publisher<AppSubscriptionTriggerArgs>,
   ): Promise<MobileDevice> {
     const { _count } = transformInfoIntoPrismaArgs(info)
     const prisma = getPrismaFromContext(ctx) as PrismaClient
@@ -45,13 +49,28 @@ export class CreateOneMobileDeviceResolver {
         devices_count === allowedMobileDevices.allowedMobileDevices_doctors
       )
         throw Error('4')
-      const mobileDevices = await getPrismaFromContext(ctx).mobileDevice.create(
-        {
-          ...args,
-          ...(_count && transformCountFieldIntoSelectRelationsCount(_count)),
-        },
-      )
-      return mobileDevices
+      const mobileDevice = await getPrismaFromContext(ctx).mobileDevice.create({
+        ...args,
+        ...(_count && transformCountFieldIntoSelectRelationsCount(_count)),
+      })
+      const { id, accessToken, connected, expireAt, uuid } = mobileDevice
+      await notify({
+        type: 'mobileDeviceUpdate',
+        userId,
+        global: true,
+        appPayload: JSON.stringify({
+          operation: 'create',
+          mobileDevice: {
+            id,
+            accessToken,
+            connected,
+            expireAt,
+            mobileDeviceType,
+            uuid,
+          },
+        }),
+      })
+      return mobileDevice
     } catch (error) {
       console.log({ error })
       throw Error('An error has occurred, the mobile Devices was not created')

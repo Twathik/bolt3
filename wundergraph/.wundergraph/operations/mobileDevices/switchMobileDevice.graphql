@@ -1,3 +1,11 @@
-mutation ($id: String!, $mobileDeviceType: mainDb_MobileDeviceType!) {
-  mainDb_switchMobileDevice(id: $id, mobileDeviceType: $mobileDeviceType)
+mutation (
+  $id: String!
+  $mobileDeviceType: mainDb_MobileDeviceType!
+  $userId: String! @fromClaim(name: USERID)
+) {
+  mainDb_switchMobileDevice(
+    id: $id
+    mobileDeviceType: $mobileDeviceType
+    userId: $userId
+  )
 }

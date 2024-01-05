@@ -14,7 +14,7 @@ export class ClinicalEventMinAggregate {
   @TypeGraphQL.Field(_type => EventTypes, {
     nullable: true
   })
-  eventType!: "DIAGNOSTIC" | "PRESCRIPTION" | "GENERAL_SONO" | null;
+  eventType!: "CLINICAL_VISIT" | "PRESCRIPTION" | "GENERAL_SONO" | null;
 
   @TypeGraphQL.Field(_type => String, {
     nullable: true

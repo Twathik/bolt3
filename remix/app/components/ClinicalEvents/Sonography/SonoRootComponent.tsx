@@ -7,7 +7,7 @@ import { ClientOnly } from "remix-utils/client-only";
 import { useMutation } from "@/lib/wundergraph";
 import type { ClinicalEventsGetClinicalEventResponseData } from "@/components/generated/models";
 import ClinicalEventsLexical from "../ClinicalEventsLexical";
-import SonoEditor from "./SonographyEditor/SonoEditor";
+import SonoEditor from "./SonoEditor/SonoEditor";
 import TopPanel from "@/components/GeneralComponents/AppLexical/TopPanel/TopPanel";
 // import Lexical from "@/components/GeneralComponents/LexicalEditor/Lexical";
 

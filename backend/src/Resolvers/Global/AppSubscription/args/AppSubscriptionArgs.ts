@@ -6,4 +6,8 @@ export class AppSubscriptionArgs {
     nullable: false,
   })
   userId!: string
+  @TypeGraphQL.Field((_type) => [String], {
+    nullable: false,
+  })
+  subscriptionSpecificId!: string[]
 }

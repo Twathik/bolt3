@@ -1,12 +1,14 @@
 import * as TypeGraphQL from 'type-graphql'
 import type { GraphQLResolveInfo } from 'graphql'
-import { ClinicalEvent, DeleteOneClinicalEventArgs } from '../../@generated'
+import { ClinicalEvent } from '../../@generated'
 import {
   getPrismaFromContext,
   transformCountFieldIntoSelectRelationsCount,
   transformInfoIntoPrismaArgs,
 } from '../../@generated/helpers'
 import { PrismaClient } from '@prisma/client'
+import { AppSubscriptionTriggerArgs } from '../Global/AppSubscription/args/AppSubscriptionTriggerArgs'
+import { DeleteOneClinicalEventArgs } from './Args/DeleteOneClinicalEventArgs'
 
 @TypeGraphQL.Resolver((_of) => ClinicalEvent)
 export class DeleteOneClinicalEventResolver {
@@ -16,16 +18,61 @@ export class DeleteOneClinicalEventResolver {
   async deleteOneClinicalEvent(
     @TypeGraphQL.Ctx() ctx: any,
     @TypeGraphQL.Info() info: GraphQLResolveInfo,
-    @TypeGraphQL.Args() args: DeleteOneClinicalEventArgs,
+    @TypeGraphQL.Args() { userId, ...args }: DeleteOneClinicalEventArgs,
+    @TypeGraphQL.PubSub('APP_SUBSCRIPTION')
+    notify: TypeGraphQL.Publisher<AppSubscriptionTriggerArgs>,
   ): Promise<ClinicalEvent | null> {
     const { _count } = transformInfoIntoPrismaArgs(info)
     const prisma = getPrismaFromContext(ctx) as PrismaClient
     try {
-      const clinicalEvent = await prisma.clinicalEvent.update({
-        ...args,
-        data: { deleted: true },
-        ...(_count && transformCountFieldIntoSelectRelationsCount(_count)),
+      const [clinicalEvent, { fullName, id: user_id }] = await Promise.all([
+        prisma.clinicalEvent.update({
+          ...args,
+          data: { deleted: true },
+          ...(_count && transformCountFieldIntoSelectRelationsCount(_count)),
+        }),
+        prisma.user.findUniqueOrThrow({ where: { userId } }),
+      ])
+
+      const {
+        id,
+        updatedAt,
+        createdReport,
+        report,
+        eventType,
+        empty,
+        dicomId,
+        dicom,
+        patientId,
+        deleted,
+        onTrash,
+      } = clinicalEvent
+      await notify({
+        type: 'clinicalEvents',
+        userId,
+        global: true,
+        appPayload: JSON.stringify({
+          operation: 'create',
+          clinicalEvent: {
+            id,
+            eventType,
+            updatedAt,
+            createdReport,
+            report,
+            empty,
+            dicomId,
+            dicom,
+            deleted,
+            onTrash,
+            user: {
+              id: user_id,
+              fullName,
+            },
+            patientId,
+          },
+        }),
       })
+
       return clinicalEvent
     } catch (error) {
       throw Error('The clinical event was not created')

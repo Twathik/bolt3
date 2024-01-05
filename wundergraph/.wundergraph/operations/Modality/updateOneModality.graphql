@@ -5,8 +5,10 @@ mutation (
   $modalityIpAddress: String!
   $modalityPort: Int!
   $modalityType: mainDb_ModalityType!
+  $userId: String! @fromClaim(name: USERID)
 ) {
   mainDb_updateOneModality(
+    userId: $userId
     where: { id: $id, deleted: { equals: false }, activated: { equals: true } }
     data: {
       modalityAETitle: { set: $modalityAETitle }

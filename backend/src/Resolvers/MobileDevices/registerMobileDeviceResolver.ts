@@ -8,6 +8,7 @@ import {
   transformInfoIntoPrismaArgs,
 } from '../../@generated/helpers'
 import { PrismaClient } from '@prisma/client'
+import { AppSubscriptionTriggerArgs } from '../Global/AppSubscription/args/AppSubscriptionTriggerArgs'
 
 @TypeGraphQL.Resolver((_of) => MobileDevice)
 export class RegisterOneMobileDeviceResolver {
@@ -17,7 +18,10 @@ export class RegisterOneMobileDeviceResolver {
   async registerOneMobileDevice(
     @TypeGraphQL.Ctx() ctx: any,
     @TypeGraphQL.Info() info: GraphQLResolveInfo,
-    @TypeGraphQL.Args() { accessToken, uuid }: RegisterOneMobileDeviceArgs,
+    @TypeGraphQL.Args()
+    { accessToken, uuid, userId }: RegisterOneMobileDeviceArgs,
+    @TypeGraphQL.PubSub('APP_SUBSCRIPTION')
+    notify: TypeGraphQL.Publisher<AppSubscriptionTriggerArgs>,
   ): Promise<MobileDevice | null> {
     const { _count } = transformInfoIntoPrismaArgs(info)
     const prisma = getPrismaFromContext(ctx) as PrismaClient
@@ -30,12 +34,31 @@ export class RegisterOneMobileDeviceResolver {
       if (mobileDevice.expireAt < new Date()) throw Error()
 
       const result = await prisma.mobileDevice.update({
-        where: { accessToken: accessToken },
+        where: { accessToken },
         data: {
           uuid,
           connected: true,
         },
         ...(_count && transformCountFieldIntoSelectRelationsCount(_count)),
+      })
+
+      const { id, connected, expireAt, mobileDeviceType } = result
+
+      await notify({
+        type: 'mobileDeviceUpdate',
+        userId,
+        global: true,
+        appPayload: JSON.stringify({
+          operation: 'update',
+          mobileDevice: {
+            id,
+            accessToken,
+            connected,
+            expireAt,
+            mobileDeviceType,
+            uuid,
+          },
+        }),
       })
 
       return result

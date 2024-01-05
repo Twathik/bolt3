@@ -1,5 +1,5 @@
-mutation ($id: String!) {
-  mainDb_toggleLockWorkingList(id: $id) {
+mutation ($id: String!, $userId: String! @fromClaim(name: USERID)) {
+  mainDb_toggleLockWorkingList(id: $id, userId: $userId) {
     id
   }
 }

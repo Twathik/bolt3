@@ -19,7 +19,7 @@ export class EconomizerCreateManyInput {
   @TypeGraphQL.Field(_type => EventTypes, {
     nullable: false
   })
-  eventType!: "DIAGNOSTIC" | "PRESCRIPTION" | "GENERAL_SONO";
+  eventType!: "CLINICAL_VISIT" | "PRESCRIPTION" | "GENERAL_SONO";
 
   @TypeGraphQL.Field(_type => String, {
     nullable: false

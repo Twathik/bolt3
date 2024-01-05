@@ -7,6 +7,7 @@ import { SettingCountAggregate } from "../outputs/SettingCountAggregate";
 import { SettingMaxAggregate } from "../outputs/SettingMaxAggregate";
 import { SettingMinAggregate } from "../outputs/SettingMinAggregate";
 import { SettingSumAggregate } from "../outputs/SettingSumAggregate";
+import { EventTypes } from "../../enums/EventTypes";
 
 @TypeGraphQL.ObjectType("SettingGroupBy", {})
 export class SettingGroupBy {
@@ -29,6 +30,11 @@ export class SettingGroupBy {
     nullable: false
   })
   allowedDICOMmodalities!: number;
+
+  @TypeGraphQL.Field(_type => [EventTypes], {
+    nullable: true
+  })
+  allowedEventTypes!: Array<"CLINICAL_VISIT" | "PRESCRIPTION" | "GENERAL_SONO"> | null;
 
   @TypeGraphQL.Field(_type => SettingCountAggregate, {
     nullable: true

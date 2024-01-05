@@ -20,10 +20,7 @@ function RegisterButtonWithCheck({
   }, [mutate]);
 
   return data?.mainDb_consultationList?.id ? (
-    <UnregisterButton
-      listId={data.mainDb_consultationList.id}
-      callBack={callBack}
-    />
+    <UnregisterButton listId={patientId} callBack={callBack} />
   ) : (
     <RegisterButton
       patientId={patientId}

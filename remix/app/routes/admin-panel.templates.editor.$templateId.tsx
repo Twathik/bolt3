@@ -30,9 +30,5 @@ export default function Templates() {
   if (!template)
     return <InitialLoadingError msg="Le template n'a pas pu être réccupéré" />;
 
-  return (
-    <main className="min-h-screen">
-      <DocumentTemplateEditor template={template} />
-    </main>
-  );
+  return <DocumentTemplateEditor template={template} />;
 }

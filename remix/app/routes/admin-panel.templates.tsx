@@ -23,9 +23,5 @@ export default function Templates() {
       <InitialLoadingError msg="La liste des templates n'a pas pu être réccupérée" />
     );
 
-  return (
-    <main className="min-h-screen">
-      <Outlet context={{ templates: loadedData.templates }} />
-    </main>
-  );
+  return <Outlet context={{ templates: loadedData.templates }} />;
 }

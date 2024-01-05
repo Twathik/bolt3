@@ -1,15 +1,12 @@
-import type { ModalityModalitiesResponseData } from "@/components/generated/models";
 import Modality from "./Modality";
+import { useBoltStore } from "@/stores/boltStore";
 
-function ModalitiesIndex({
-  data,
-}: {
-  data: ModalityModalitiesResponseData["mainDb_modalities"];
-}) {
+function ModalitiesIndex() {
+  const modalities = useBoltStore((store) => store.modalities);
   return (
     <>
       <ul className="">
-        {data?.map((modality) => (
+        {modalities?.map((modality) => (
           <Modality key={modality.id} modality={modality} />
         ))}
       </ul>

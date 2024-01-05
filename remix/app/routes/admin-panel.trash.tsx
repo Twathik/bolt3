@@ -21,14 +21,8 @@ export default function Trash() {
   const onTrash = useLoaderData<typeof loader>();
   if (!onTrash)
     return (
-      <main className="min-h-screen">
-        <InitialLoadingError msg="La liste des dossier de la corbeille n'a pas pu être réccupérée" />
-      </main>
+      <InitialLoadingError msg="La liste des dossier de la corbeille n'a pas pu être réccupérée" />
     );
 
-  return (
-    <main className="min-h-screen">
-      <TrashTable onTrash={onTrash} />
-    </main>
-  );
+  return <TrashTable onTrash={onTrash} />;
 }

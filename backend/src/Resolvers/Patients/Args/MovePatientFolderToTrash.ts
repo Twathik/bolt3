@@ -7,6 +7,11 @@ export class MovePatientFolderToTrash {
   })
   id!: string
 
+  @TypeGraphQL.Field((_type) => String, {
+    nullable: false,
+  })
+  userId!: string
+
   @TypeGraphQL.Field((_type) => Boolean, {
     nullable: false,
   })

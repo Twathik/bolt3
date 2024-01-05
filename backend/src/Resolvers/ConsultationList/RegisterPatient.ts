@@ -11,6 +11,7 @@ import {
 import { PrismaClient } from '@prisma/client'
 import { RegisterPatientArgs } from './args/RegisterPatientArgs'
 import { getDate, getMonth, getYear } from 'date-fns'
+import { AppSubscriptionTriggerArgs } from '../Global/AppSubscription/args/AppSubscriptionTriggerArgs'
 
 @TypeGraphQL.Resolver((_of) => ConsultationList)
 export class RegisterPatient {
@@ -21,9 +22,11 @@ export class RegisterPatient {
     @TypeGraphQL.Ctx() ctx: Context,
     @TypeGraphQL.Info() info: GraphQLResolveInfo,
     @TypeGraphQL.Args() args: RegisterPatientArgs,
+    @TypeGraphQL.PubSub('APP_SUBSCRIPTION')
+    notify: TypeGraphQL.Publisher<AppSubscriptionTriggerArgs>,
   ): Promise<String> {
     const { _count } = transformInfoIntoPrismaArgs(info)
-    const { patient_id } = args
+    const { patient_id, userId } = args
     const newDate = new Date()
 
     const day = getDate(newDate)
@@ -49,20 +52,48 @@ export class RegisterPatient {
           ...(_count && transformCountFieldIntoSelectRelationsCount(_count)),
         })
       }
-      await prisma.consultationList.upsert({
-        where: {
-          patientId_consultationId_active: {
-            patientId: patient_id,
+      const { id, active, consultationId, patientId } =
+        await prisma.consultationList.upsert({
+          where: {
+            patientId_consultationId: {
+              patientId: patient_id,
+              consultationId: todayConsultation.id,
+            },
+          },
+          create: {
+            active: true,
             consultationId: todayConsultation.id,
+            patientId: patient_id,
+          },
+          update: {
             active: true,
           },
-        },
-        create: {
-          active: true,
-          consultationId: todayConsultation.id,
-          patientId: patient_id,
-        },
-        update: {},
+        })
+      const { lastName, firstName, sexe, ddn } =
+        await prisma.patient.findFirstOrThrow({
+          where: { id: patient_id },
+        })
+      await notify({
+        userId,
+        global: true,
+        subscriptionSpecificId: consultationId,
+        type: 'consultationLists',
+        appPayload: JSON.stringify({
+          operation: 'create',
+          consultationList: {
+            id,
+            active,
+            consultationId,
+            patientId,
+            patient: {
+              id: patient_id,
+              lastName,
+              firstName,
+              sexe,
+              ddn,
+            },
+          },
+        }),
       })
       return todayConsultation.id
     } catch (error) {

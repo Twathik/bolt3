@@ -1,14 +1,11 @@
 import { useCallback } from "react";
-import {
-  Cog6ToothIcon,
-  TrashIcon,
-  WindowIcon,
-} from "@heroicons/react/24/outline";
+import { Cog6ToothIcon, TrashIcon } from "@heroicons/react/24/outline";
 import { useHotkeys } from "@mantine/hooks";
 import { HotKeysMapping } from "../HotKeys/HotKeysMapping";
 import { useMutation } from "@/lib/wundergraph";
 import { useToast } from "@/ui/components/ui/use-toast";
 import ConfirmationDialog from "../ConfirmationDialog/confirmationDialog";
+import ConsultationSpotlight from "../ConsultationSpotlight/ConsultationSpotlight";
 
 function AppFloatingActionButton() {
   const { toast } = useToast();
@@ -17,7 +14,11 @@ function AppFloatingActionButton() {
   });
 
   const closeAllTabs = useCallback(async () => {
-    await trigger({ appPayload: JSON.stringify({}), appType: "closeAllTabs" });
+    await trigger({
+      appPayload: JSON.stringify({}),
+      appType: "closeAllTabs",
+      global: false,
+    });
   }, [trigger]);
   useHotkeys([
     [HotKeysMapping.closeAllWindows, async () => await closeAllTabs()],
@@ -25,7 +26,11 @@ function AppFloatingActionButton() {
 
   const triggerEmptyTrash = useCallback(async () => {
     try {
-      await trigger({ appPayload: JSON.stringify({}), appType: "emptyTrash" });
+      await trigger({
+        appPayload: JSON.stringify({}),
+        appType: "emptyTrash",
+        global: false,
+      });
     } catch (error) {
       console.log({ error });
       toast({
@@ -54,9 +59,7 @@ function AppFloatingActionButton() {
         showValidationButton
       />
 
-      <div className="absolute flex scale-x-0 rounded-full bg-slate-600 p-2 text-white transition-all  duration-200  ease-out hover:bg-slate-800 hover:p-3 group-hover:-translate-y-16  group-hover:scale-x-100">
-        <WindowIcon className="w-6" onClick={closeAllTabs} />
-      </div>
+      <ConsultationSpotlight />
 
       <div className="absolute flex scale-x-0 rounded-full bg-yellow-300 p-2 text-white transition-all duration-200   ease-out  hover:bg-yellow-400 hover:p-3 group-hover:-translate-x-14 group-hover:-translate-y-14 group-hover:scale-x-100">
         <svg

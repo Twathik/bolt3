@@ -2,7 +2,7 @@ import * as TypeGraphQL from 'type-graphql'
 import { TriggerInsertDataSubscriptionArgs } from '../args/TriggerInsertDataSubscriptionArgs'
 import { InsertDataPayload } from '../args/InsertDataPayload'
 import { DataTableConfigurations } from '../configurations/DataTableConfigurations'
-import { WidgetUnionType } from '../model/DataTableModel'
+import { DataTableConfigModel, WidgetUnionType } from '../model/DataTableModel'
 import { Context } from '../../../context'
 import { PrismaClient } from '@prisma/client'
 import cloneDeep from 'lodash.clonedeep'
@@ -38,7 +38,7 @@ export class TriggerInsertDataSubscription {
                 if (c.data.paramName === paramData.paramName) {
                   columnWidth = c.columnWidth
                   widget = cloneDeep(w) as typeof w
-                  widget.config[k].value = value
+                  ;(widget as DataTableConfigModel).config[k].value = value
                 }
               })
               break

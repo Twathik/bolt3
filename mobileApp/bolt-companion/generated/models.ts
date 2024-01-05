@@ -894,12 +894,11 @@ export interface mainDb_ConsultationListWhereUniqueInput {
 	id?: string;
 	patient?: mainDb_PatientRelationFilter;
 	patientId?: mainDb_StringFilter;
-	patientId_consultationId_active?: mainDb_ConsultationListPatientIdConsultationIdActiveCompoundUniqueInput;
+	patientId_consultationId?: mainDb_ConsultationListPatientIdConsultationIdCompoundUniqueInput;
 	updatedAt?: mainDb_DateTimeFilter;
 }
 
-export interface mainDb_ConsultationListPatientIdConsultationIdActiveCompoundUniqueInput {
-	active?: boolean;
+export interface mainDb_ConsultationListPatientIdConsultationIdCompoundUniqueInput {
 	consultationId?: string;
 	patientId?: string;
 }
@@ -930,9 +929,16 @@ export interface mainDb_ConsultationWhereUniqueInput {
 	OR?: mainDb_ConsultationWhereInput[];
 	createdAt?: mainDb_DateTimeFilter;
 	day?: mainDb_IntFilter;
+	day_month_year?: mainDb_ConsultationDayMonthYearCompoundUniqueInput;
 	id?: string;
 	month?: mainDb_IntFilter;
 	year?: mainDb_IntFilter;
+}
+
+export interface mainDb_ConsultationDayMonthYearCompoundUniqueInput {
+	day?: number;
+	month?: number;
+	year?: number;
 }
 
 export interface mainDb_ConsultationCreateOrConnectWithoutConsultationListInput {
@@ -1818,16 +1824,22 @@ export type JSONValue = string | number | boolean | JSONObject | Array<JSONValue
 export type JSONObject = { [key: string]: JSONValue };
 
 export const mainDb_AppSubscriptionPayloadType = {
+	clinicalEvents: "clinicalEvents",
 	closeAllTabs: "closeAllTabs",
+	consultationLists: "consultationLists",
 	emptyTrash: "emptyTrash",
+	mobileDeviceUpdate: "mobileDeviceUpdate",
+	modalityUpdate: "modalityUpdate",
+	patientUpdate: "patientUpdate",
 	secondaryDisplay: "secondaryDisplay",
+	workingLists: "workingLists",
 } as const;
 
 export type mainDb_AppSubscriptionPayloadTypeValues =
 	(typeof mainDb_AppSubscriptionPayloadType)[keyof typeof mainDb_AppSubscriptionPayloadType];
 
 export const mainDb_EventTypes = {
-	DIAGNOSTIC: "DIAGNOSTIC",
+	CLINICAL_VISIT: "CLINICAL_VISIT",
 	GENERAL_SONO: "GENERAL_SONO",
 	PRESCRIPTION: "PRESCRIPTION",
 } as const;
@@ -1956,9 +1968,14 @@ export const mainDb_Role = {
 
 export type mainDb_RoleValues = (typeof mainDb_Role)[keyof typeof mainDb_Role];
 
+export interface AppSubscriptionGlobalSubscriptionInput {
+	subscriptionSpecificId: string[];
+}
+
 export interface AppSubscriptionTriggerAppSubscriptionInput {
 	appPayload: string;
 	appType: mainDb_AppSubscriptionPayloadTypeValues;
+	global: boolean;
 }
 
 export interface CountriesInput {
@@ -2083,6 +2100,10 @@ export interface ConsultationListCheckIfRegistredInput {
 	patientId: string;
 }
 
+export interface ConsultationListCloseConsultationInput {
+	id: string;
+}
+
 export interface ConsultationListRegisterPatientInput {
 	patient_id: string;
 }
@@ -2091,6 +2112,15 @@ export interface ConsultationListTodayConsultationInput {
 	day: number;
 	month: number;
 	year: number;
+}
+
+export interface ConsultationListTodayListsInput {
+	consultationId: string;
+}
+
+export interface ConsultationListToggleActivePatientInput {
+	id: string;
+	active: boolean;
 }
 
 export interface ConsultationListUnregisterPatientInput {
@@ -2189,6 +2219,7 @@ export type UsersSubscribeInput = ExtractInput<typeof function_UsersSubscribe>;
 export type UsersUpdateInput = ExtractInput<typeof function_UsersUpdate>;
 
 export interface AppSubscriptionGlobalSubscriptionInputInternal {
+	subscriptionSpecificId: string[];
 	userId: string;
 }
 
@@ -2196,6 +2227,7 @@ export interface AppSubscriptionTriggerAppSubscriptionInputInternal {
 	appPayload: string;
 	appType: mainDb_AppSubscriptionPayloadTypeValues;
 	userId: string;
+	global: boolean;
 }
 
 export interface CountriesInputInternal {
@@ -2251,6 +2283,7 @@ export interface ModalityGetSpecificModalitiesInputInternal {
 export interface ModalitySwitchModalityInputInternal {
 	id: string;
 	enabled: boolean;
+	userId: string;
 }
 
 export interface ModalityUpdateOneModalityInputInternal {
@@ -2260,6 +2293,7 @@ export interface ModalityUpdateOneModalityInputInternal {
 	modalityIpAddress: string;
 	modalityPort: number;
 	modalityType: mainDb_ModalityTypeValues;
+	userId: string;
 }
 
 export interface WorkingListsCreateOneWorkingListInputInternal {
@@ -2271,15 +2305,18 @@ export interface WorkingListsCreateOneWorkingListInputInternal {
 
 export interface WorkingListsDeleteOneWorkingListInputInternal {
 	id: string;
+	userId: string;
 }
 
 export interface WorkingListsLinkWorkingListInputInternal {
 	id: string;
 	linkId: string;
+	userId: string;
 }
 
 export interface WorkingListsToggleLockWorkingListInputInternal {
 	id: string;
+	userId: string;
 }
 
 export interface WorkingListsWorkingListsInputInternal {
@@ -2294,6 +2331,7 @@ export interface ClinicalEventsCreateOneClinicalEventInputInternal {
 
 export interface ClinicalEventsDeleteOneClinicalEventInputInternal {
 	id: string;
+	userId: string;
 }
 
 export interface ClinicalEventsGetClinicalEventInputInternal {
@@ -2310,11 +2348,13 @@ export interface ClinicalEventsGetClinicalEventsInputInternal {
 
 export interface ClinicalEventsMoveOnTrashClinicalEventInputInternal {
 	id: string;
+	userId: string;
 }
 
 export interface ClinicalEventsUpdateClinicalEventReportInputInternal {
 	id: string;
 	report: string;
+	userId: string;
 }
 
 export interface ConsultationListCheckIfRegistredInputInternal {
@@ -2322,8 +2362,14 @@ export interface ConsultationListCheckIfRegistredInputInternal {
 	patientId: string;
 }
 
+export interface ConsultationListCloseConsultationInputInternal {
+	id: string;
+	userId: string;
+}
+
 export interface ConsultationListRegisterPatientInputInternal {
 	patient_id: string;
+	userId: string;
 }
 
 export interface ConsultationListTodayConsultationInputInternal {
@@ -2332,9 +2378,20 @@ export interface ConsultationListTodayConsultationInputInternal {
 	year: number;
 }
 
+export interface ConsultationListTodayListsInputInternal {
+	consultationId: string;
+}
+
+export interface ConsultationListToggleActivePatientInputInternal {
+	id: string;
+	userId: string;
+	active: boolean;
+}
+
 export interface ConsultationListUnregisterPatientInputInternal {
 	consultationId: string;
 	patientId: string;
+	userId: string;
 }
 
 export interface MobileDevicesAddMobileDeviceMutationInputInternal {
@@ -2342,35 +2399,42 @@ export interface MobileDevicesAddMobileDeviceMutationInputInternal {
 	accessToken: string;
 	expireAt: string;
 	mobileDeviceType: mainDb_MobileDeviceTypeValues;
+	userId: string;
 }
 
 export interface MobileDevicesRegisterOneMobileDeviceInputInternal {
 	accessToken: string;
 	uuid: string;
+	userId: string;
 }
 
 export interface MobileDevicesRemoveMobileDeviceInputInternal {
 	id: string;
+	userId: string;
 }
 
 export interface MobileDevicesResetMobileDeviceInputInternal {
 	id: string;
 	accessToken: string;
+	userId: string;
 }
 
 export interface MobileDevicesSwitchMobileDeviceInputInternal {
 	id: string;
 	mobileDeviceType: mainDb_MobileDeviceTypeValues;
+	userId: string;
 }
 
 export interface MobileDevicesUpdateMobileDeviceExpirationInputInternal {
 	id: string;
 	Months: number;
+	userId: string;
 }
 
 export interface PatientsMovePatientFolderToTrashInputInternal {
 	id: string;
 	onTrash: boolean;
+	userId: string;
 }
 
 export interface PatientsAdd_One_patient_to_indexInputInternal {
@@ -2398,6 +2462,7 @@ export interface PatientsUpdateOnePatientInputInternal {
 	ddn: string;
 	address?: string;
 	nTel?: string;
+	userId: string;
 }
 
 export interface TemplatesFetchTemplateInputInternal {
@@ -2442,6 +2507,7 @@ export interface UsersUpdateInputInternal {
 }
 
 export interface AppSubscriptionGlobalSubscriptionInputInjected {
+	subscriptionSpecificId: string[];
 	userId: string;
 }
 
@@ -2449,6 +2515,7 @@ export interface AppSubscriptionTriggerAppSubscriptionInputInjected {
 	appPayload: string;
 	appType: mainDb_AppSubscriptionPayloadTypeValues;
 	userId: string;
+	global: boolean;
 }
 
 export interface CountriesInputInjected {
@@ -2504,6 +2571,7 @@ export interface ModalityGetSpecificModalitiesInputInjected {
 export interface ModalitySwitchModalityInputInjected {
 	id: string;
 	enabled: boolean;
+	userId: string;
 }
 
 export interface ModalityUpdateOneModalityInputInjected {
@@ -2513,6 +2581,7 @@ export interface ModalityUpdateOneModalityInputInjected {
 	modalityIpAddress: string;
 	modalityPort: number;
 	modalityType: mainDb_ModalityTypeValues;
+	userId: string;
 }
 
 export interface WorkingListsCreateOneWorkingListInputInjected {
@@ -2524,15 +2593,18 @@ export interface WorkingListsCreateOneWorkingListInputInjected {
 
 export interface WorkingListsDeleteOneWorkingListInputInjected {
 	id: string;
+	userId: string;
 }
 
 export interface WorkingListsLinkWorkingListInputInjected {
 	id: string;
 	linkId: string;
+	userId: string;
 }
 
 export interface WorkingListsToggleLockWorkingListInputInjected {
 	id: string;
+	userId: string;
 }
 
 export interface WorkingListsWorkingListsInputInjected {
@@ -2547,6 +2619,7 @@ export interface ClinicalEventsCreateOneClinicalEventInputInjected {
 
 export interface ClinicalEventsDeleteOneClinicalEventInputInjected {
 	id: string;
+	userId: string;
 }
 
 export interface ClinicalEventsGetClinicalEventInputInjected {
@@ -2563,11 +2636,13 @@ export interface ClinicalEventsGetClinicalEventsInputInjected {
 
 export interface ClinicalEventsMoveOnTrashClinicalEventInputInjected {
 	id: string;
+	userId: string;
 }
 
 export interface ClinicalEventsUpdateClinicalEventReportInputInjected {
 	id: string;
 	report: string;
+	userId: string;
 }
 
 export interface ConsultationListCheckIfRegistredInputInjected {
@@ -2575,8 +2650,14 @@ export interface ConsultationListCheckIfRegistredInputInjected {
 	patientId: string;
 }
 
+export interface ConsultationListCloseConsultationInputInjected {
+	id: string;
+	userId: string;
+}
+
 export interface ConsultationListRegisterPatientInputInjected {
 	patient_id: string;
+	userId: string;
 }
 
 export interface ConsultationListTodayConsultationInputInjected {
@@ -2585,9 +2666,20 @@ export interface ConsultationListTodayConsultationInputInjected {
 	year: number;
 }
 
+export interface ConsultationListTodayListsInputInjected {
+	consultationId: string;
+}
+
+export interface ConsultationListToggleActivePatientInputInjected {
+	id: string;
+	userId: string;
+	active: boolean;
+}
+
 export interface ConsultationListUnregisterPatientInputInjected {
 	consultationId: string;
 	patientId: string;
+	userId: string;
 }
 
 export interface MobileDevicesAddMobileDeviceMutationInputInjected {
@@ -2595,35 +2687,42 @@ export interface MobileDevicesAddMobileDeviceMutationInputInjected {
 	accessToken: string;
 	expireAt: string;
 	mobileDeviceType: mainDb_MobileDeviceTypeValues;
+	userId: string;
 }
 
 export interface MobileDevicesRegisterOneMobileDeviceInputInjected {
 	accessToken: string;
 	uuid: string;
+	userId: string;
 }
 
 export interface MobileDevicesRemoveMobileDeviceInputInjected {
 	id: string;
+	userId: string;
 }
 
 export interface MobileDevicesResetMobileDeviceInputInjected {
 	id: string;
 	accessToken: string;
+	userId: string;
 }
 
 export interface MobileDevicesSwitchMobileDeviceInputInjected {
 	id: string;
 	mobileDeviceType: mainDb_MobileDeviceTypeValues;
+	userId: string;
 }
 
 export interface MobileDevicesUpdateMobileDeviceExpirationInputInjected {
 	id: string;
 	Months: number;
+	userId: string;
 }
 
 export interface PatientsMovePatientFolderToTrashInputInjected {
 	id: string;
 	onTrash: boolean;
+	userId: string;
 }
 
 export interface PatientsAdd_One_patient_to_indexInputInjected {
@@ -2651,6 +2750,7 @@ export interface PatientsUpdateOnePatientInputInjected {
 	ddn: string;
 	address?: string;
 	nTel?: string;
+	userId: string;
 }
 
 export interface TemplatesFetchTemplateInputInjected {
@@ -2831,6 +2931,11 @@ export interface ConsultationListCheckIfRegistredResponse {
 	errors?: GraphQLError[];
 }
 
+export interface ConsultationListCloseConsultationResponse {
+	data?: ConsultationListCloseConsultationResponseData;
+	errors?: GraphQLError[];
+}
+
 export interface ConsultationListRegisterPatientResponse {
 	data?: ConsultationListRegisterPatientResponseData;
 	errors?: GraphQLError[];
@@ -2838,6 +2943,16 @@ export interface ConsultationListRegisterPatientResponse {
 
 export interface ConsultationListTodayConsultationResponse {
 	data?: ConsultationListTodayConsultationResponseData;
+	errors?: GraphQLError[];
+}
+
+export interface ConsultationListTodayListsResponse {
+	data?: ConsultationListTodayListsResponseData;
+	errors?: GraphQLError[];
+}
+
+export interface ConsultationListToggleActivePatientResponse {
+	data?: ConsultationListToggleActivePatientResponseData;
 	errors?: GraphQLError[];
 }
 
@@ -2975,7 +3090,16 @@ export interface AppSubscriptionGlobalSubscriptionResponseData {
 	mainDb_appSubscription: {
 		appPayload: string;
 		messageId: string;
-		type: "closeAllTabs" | "emptyTrash" | "secondaryDisplay";
+		type:
+			| "clinicalEvents"
+			| "closeAllTabs"
+			| "consultationLists"
+			| "emptyTrash"
+			| "mobileDeviceUpdate"
+			| "modalityUpdate"
+			| "patientUpdate"
+			| "secondaryDisplay"
+			| "workingLists";
 	};
 }
 
@@ -3053,7 +3177,7 @@ export interface EconomizersCreateEconomizerResponseData {
 	mainDb_createOneEconomizer: {
 		id: string;
 		name: string;
-		eventType: "DIAGNOSTIC" | "GENERAL_SONO" | "PRESCRIPTION";
+		eventType: "CLINICAL_VISIT" | "GENERAL_SONO" | "PRESCRIPTION";
 		template: string;
 	};
 }
@@ -3081,7 +3205,7 @@ export interface EconomizersUpdateEconomizerResponseData {
 	mainDb_updateOneEconomizer?: {
 		id: string;
 		name: string;
-		eventType: "DIAGNOSTIC" | "GENERAL_SONO" | "PRESCRIPTION";
+		eventType: "CLINICAL_VISIT" | "GENERAL_SONO" | "PRESCRIPTION";
 		template: string;
 	};
 }
@@ -3557,13 +3681,15 @@ export interface ClinicalEventsDeleteOneClinicalEventResponseData {
 export interface ClinicalEventsGetClinicalEventResponseData {
 	mainDb_clinicalEvent?: {
 		id: string;
-		eventType: "DIAGNOSTIC" | "GENERAL_SONO" | "PRESCRIPTION";
+		eventType: "CLINICAL_VISIT" | "GENERAL_SONO" | "PRESCRIPTION";
 		updatedAt: string;
 		createdReport: boolean;
 		report?: string;
 		empty: boolean;
 		dicomId?: string;
 		dicom: boolean;
+		deleted: boolean;
+		onTrash: boolean;
 		user: {
 			id: string;
 			fullName?: string;
@@ -3575,13 +3701,15 @@ export interface ClinicalEventsGetClinicalEventResponseData {
 export interface ClinicalEventsGetClinicalEventWithConfigurationResponseData {
 	mainDb_clinicalEvent?: {
 		id: string;
-		eventType: "DIAGNOSTIC" | "GENERAL_SONO" | "PRESCRIPTION";
+		eventType: "CLINICAL_VISIT" | "GENERAL_SONO" | "PRESCRIPTION";
 		updatedAt: string;
 		createdReport: boolean;
 		report?: string;
 		empty: boolean;
 		dicomId?: string;
 		dicom: boolean;
+		deleted: boolean;
+		onTrash: boolean;
 		user: {
 			id: string;
 			fullName?: string;
@@ -3787,13 +3915,15 @@ export interface ClinicalEventsGetClinicalEventWithConfigurationResponseData {
 export interface ClinicalEventsGetClinicalEventsResponseData {
 	mainDb_clinicalEvents: {
 		id: string;
-		eventType: "DIAGNOSTIC" | "GENERAL_SONO" | "PRESCRIPTION";
+		eventType: "CLINICAL_VISIT" | "GENERAL_SONO" | "PRESCRIPTION";
 		updatedAt: string;
 		createdReport: boolean;
 		report?: string;
 		empty: boolean;
 		dicomId?: string;
 		dicom: boolean;
+		deleted: boolean;
+		onTrash: boolean;
 		user: {
 			id: string;
 			fullName?: string;
@@ -3820,12 +3950,61 @@ export interface ConsultationListCheckIfRegistredResponseData {
 	};
 }
 
+export interface ConsultationListCloseConsultationResponseData {
+	mainDb_updateOneConsultationList?: {
+		id: string;
+		active: boolean;
+		consultationId: string;
+		patientId: string;
+		patient: {
+			lastName: string;
+			firstName: string;
+			sexe: "F" | "M";
+			ddn: string;
+		};
+	};
+}
+
 export interface ConsultationListRegisterPatientResponseData {
 	mainDb_registerPatient: string;
 }
 
 export interface ConsultationListTodayConsultationResponseData {
 	mainDb_findFirstConsultation?: {
+		id: string;
+		allowedEventTypes: ("CLINICAL_VISIT" | "GENERAL_SONO" | "PRESCRIPTION")[];
+		ConsultationList: {
+			id: string;
+			active: boolean;
+			consultationId: string;
+			patientId: string;
+			patient: {
+				lastName: string;
+				firstName: string;
+				sexe: "F" | "M";
+				ddn: string;
+			};
+		}[];
+	};
+}
+
+export interface ConsultationListTodayListsResponseData {
+	mainDb_consultationLists: {
+		id: string;
+		active: boolean;
+		consultationId: string;
+		patientId: string;
+		patient: {
+			lastName: string;
+			firstName: string;
+			sexe: "F" | "M";
+			ddn: string;
+		};
+	}[];
+}
+
+export interface ConsultationListToggleActivePatientResponseData {
+	mainDb_updateOneConsultationList?: {
 		id: string;
 	};
 }
@@ -3894,9 +4073,15 @@ export interface PatientsAdd_One_patient_to_indexResponseData {
 export interface PatientsGetOnTrashPatientsResponseData {
 	mainDb_patients: {
 		id: string;
-		patientFullName: string;
+		firstName: string;
+		lastName: string;
 		sexe: "F" | "M";
-		updated: string;
+		ddn: string;
+		deleted: boolean;
+		onTrash: boolean;
+		patientFullName: string;
+		informationsConfirmed: boolean;
+		nTel?: string;
 	}[];
 }
 
@@ -3934,14 +4119,14 @@ export interface PatientsUpdateOnePatientResponseData {
 export interface TemplatesFetchTemplateResponseData {
 	mainDb_documentTemplate?: {
 		template: string;
-		eventType: "DIAGNOSTIC" | "GENERAL_SONO" | "PRESCRIPTION";
+		eventType: "CLINICAL_VISIT" | "GENERAL_SONO" | "PRESCRIPTION";
 		id: string;
 	};
 }
 
 export interface TemplatesGetTemplatesResponseData {
 	mainDb_documentTemplates: {
-		eventType: "DIAGNOSTIC" | "GENERAL_SONO" | "PRESCRIPTION";
+		eventType: "CLINICAL_VISIT" | "GENERAL_SONO" | "PRESCRIPTION";
 		id: string;
 		empty: boolean;
 	}[];

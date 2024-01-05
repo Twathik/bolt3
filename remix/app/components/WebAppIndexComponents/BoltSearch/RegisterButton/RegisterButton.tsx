@@ -30,7 +30,7 @@ function RegisterButton({
         title: "Opération réussie",
         description: "Le patient est inscrit en consultation",
         duration: 2000,
-        variant: "destructive",
+        variant: "default",
       });
     },
   });
