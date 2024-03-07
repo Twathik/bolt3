@@ -14,7 +14,7 @@ export class DocumentTemplateMaxAggregate {
   @TypeGraphQL.Field(_type => EventTypes, {
     nullable: true
   })
-  eventType!: "CLINICAL_VISIT" | "PRESCRIPTION" | "GENERAL_SONO" | null;
+  eventType!: "DIAGNOSTIC" | "HISTORY" | "CLINICALEXAM" | "ECG" | "SONOGRAPHY" | "BIOLOGY" | "PRESCRIPTION" | "MEDICAL_REPORT" | "CERTIFICAT" | null;
 
   @TypeGraphQL.Field(_type => String, {
     nullable: true

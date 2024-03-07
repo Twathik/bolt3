@@ -9,22 +9,22 @@ export class EnumEventTypesNullableListFilter {
   @TypeGraphQL.Field(_type => [EventTypes], {
     nullable: true
   })
-  equals?: Array<"CLINICAL_VISIT" | "PRESCRIPTION" | "GENERAL_SONO"> | undefined;
+  equals?: Array<"DIAGNOSTIC" | "HISTORY" | "CLINICALEXAM" | "ECG" | "SONOGRAPHY" | "BIOLOGY" | "PRESCRIPTION" | "MEDICAL_REPORT" | "CERTIFICAT"> | undefined;
 
   @TypeGraphQL.Field(_type => EventTypes, {
     nullable: true
   })
-  has?: "CLINICAL_VISIT" | "PRESCRIPTION" | "GENERAL_SONO" | undefined;
+  has?: "DIAGNOSTIC" | "HISTORY" | "CLINICALEXAM" | "ECG" | "SONOGRAPHY" | "BIOLOGY" | "PRESCRIPTION" | "MEDICAL_REPORT" | "CERTIFICAT" | undefined;
 
   @TypeGraphQL.Field(_type => [EventTypes], {
     nullable: true
   })
-  hasEvery?: Array<"CLINICAL_VISIT" | "PRESCRIPTION" | "GENERAL_SONO"> | undefined;
+  hasEvery?: Array<"DIAGNOSTIC" | "HISTORY" | "CLINICALEXAM" | "ECG" | "SONOGRAPHY" | "BIOLOGY" | "PRESCRIPTION" | "MEDICAL_REPORT" | "CERTIFICAT"> | undefined;
 
   @TypeGraphQL.Field(_type => [EventTypes], {
     nullable: true
   })
-  hasSome?: Array<"CLINICAL_VISIT" | "PRESCRIPTION" | "GENERAL_SONO"> | undefined;
+  hasSome?: Array<"DIAGNOSTIC" | "HISTORY" | "CLINICALEXAM" | "ECG" | "SONOGRAPHY" | "BIOLOGY" | "PRESCRIPTION" | "MEDICAL_REPORT" | "CERTIFICAT"> | undefined;
 
   @TypeGraphQL.Field(_type => Boolean, {
     nullable: true

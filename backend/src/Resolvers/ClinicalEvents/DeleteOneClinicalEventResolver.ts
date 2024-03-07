@@ -20,62 +20,22 @@ export class DeleteOneClinicalEventResolver {
     @TypeGraphQL.Info() info: GraphQLResolveInfo,
     @TypeGraphQL.Args() { userId, ...args }: DeleteOneClinicalEventArgs,
     @TypeGraphQL.PubSub('APP_SUBSCRIPTION')
-    notify: TypeGraphQL.Publisher<AppSubscriptionTriggerArgs>,
+    _notify: TypeGraphQL.Publisher<AppSubscriptionTriggerArgs>,
   ): Promise<ClinicalEvent | null> {
     const { _count } = transformInfoIntoPrismaArgs(info)
     const prisma = getPrismaFromContext(ctx) as PrismaClient
     try {
-      const [clinicalEvent, { fullName, id: user_id }] = await Promise.all([
+      const [clinicalEvent] = await Promise.all([
         prisma.clinicalEvent.update({
           ...args,
           data: { deleted: true },
           ...(_count && transformCountFieldIntoSelectRelationsCount(_count)),
         }),
-        prisma.user.findUniqueOrThrow({ where: { userId } }),
       ])
-
-      const {
-        id,
-        updatedAt,
-        createdReport,
-        report,
-        eventType,
-        empty,
-        dicomId,
-        dicom,
-        patientId,
-        deleted,
-        onTrash,
-      } = clinicalEvent
-      await notify({
-        type: 'clinicalEvents',
-        userId,
-        global: true,
-        appPayload: JSON.stringify({
-          operation: 'create',
-          clinicalEvent: {
-            id,
-            eventType,
-            updatedAt,
-            createdReport,
-            report,
-            empty,
-            dicomId,
-            dicom,
-            deleted,
-            onTrash,
-            user: {
-              id: user_id,
-              fullName,
-            },
-            patientId,
-          },
-        }),
-      })
 
       return clinicalEvent
     } catch (error) {
-      throw Error('The clinical event was not created')
+      throw Error('The clinical event was not deleted')
     }
   }
 }

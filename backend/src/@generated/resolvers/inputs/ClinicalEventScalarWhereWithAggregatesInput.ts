@@ -4,6 +4,7 @@ import { Prisma } from "@prisma/client";
 import { DecimalJSScalar } from "../../scalars";
 import { BoolWithAggregatesFilter } from "../inputs/BoolWithAggregatesFilter";
 import { DateTimeWithAggregatesFilter } from "../inputs/DateTimeWithAggregatesFilter";
+import { EnumEventCategoryWithAggregatesFilter } from "../inputs/EnumEventCategoryWithAggregatesFilter";
 import { EnumEventTypesWithAggregatesFilter } from "../inputs/EnumEventTypesWithAggregatesFilter";
 import { StringNullableWithAggregatesFilter } from "../inputs/StringNullableWithAggregatesFilter";
 import { StringWithAggregatesFilter } from "../inputs/StringWithAggregatesFilter";
@@ -35,6 +36,11 @@ export class ClinicalEventScalarWhereWithAggregatesInput {
   })
   eventType?: EnumEventTypesWithAggregatesFilter | undefined;
 
+  @TypeGraphQL.Field(_type => EnumEventCategoryWithAggregatesFilter, {
+    nullable: true
+  })
+  eventCategory?: EnumEventCategoryWithAggregatesFilter | undefined;
+
   @TypeGraphQL.Field(_type => StringWithAggregatesFilter, {
     nullable: true
   })
@@ -58,22 +64,7 @@ export class ClinicalEventScalarWhereWithAggregatesInput {
   @TypeGraphQL.Field(_type => BoolWithAggregatesFilter, {
     nullable: true
   })
-  onTrash?: BoolWithAggregatesFilter | undefined;
-
-  @TypeGraphQL.Field(_type => BoolWithAggregatesFilter, {
-    nullable: true
-  })
   deleted?: BoolWithAggregatesFilter | undefined;
-
-  @TypeGraphQL.Field(_type => BoolWithAggregatesFilter, {
-    nullable: true
-  })
-  empty?: BoolWithAggregatesFilter | undefined;
-
-  @TypeGraphQL.Field(_type => BoolWithAggregatesFilter, {
-    nullable: true
-  })
-  createdReport?: BoolWithAggregatesFilter | undefined;
 
   @TypeGraphQL.Field(_type => StringNullableWithAggregatesFilter, {
     nullable: true

@@ -5,6 +5,7 @@ import { DecimalJSScalar } from "../../scalars";
 import { PatientCreateNestedOneWithoutClinicalEventInput } from "../inputs/PatientCreateNestedOneWithoutClinicalEventInput";
 import { PrescriptionCreateNestedOneWithoutClinicalEventInput } from "../inputs/PrescriptionCreateNestedOneWithoutClinicalEventInput";
 import { UserCreateNestedOneWithoutClinicalEventInput } from "../inputs/UserCreateNestedOneWithoutClinicalEventInput";
+import { EventCategory } from "../../enums/EventCategory";
 import { EventTypes } from "../../enums/EventTypes";
 
 @TypeGraphQL.InputType("ClinicalEventCreateWithoutWorkingListInput", {})
@@ -17,7 +18,12 @@ export class ClinicalEventCreateWithoutWorkingListInput {
   @TypeGraphQL.Field(_type => EventTypes, {
     nullable: false
   })
-  eventType!: "CLINICAL_VISIT" | "PRESCRIPTION" | "GENERAL_SONO";
+  eventType!: "DIAGNOSTIC" | "HISTORY" | "CLINICALEXAM" | "ECG" | "SONOGRAPHY" | "BIOLOGY" | "PRESCRIPTION" | "MEDICAL_REPORT" | "CERTIFICAT";
+
+  @TypeGraphQL.Field(_type => EventCategory, {
+    nullable: true
+  })
+  eventCategory?: "FOLDER" | "DOCUMENT" | undefined;
 
   @TypeGraphQL.Field(_type => Date, {
     nullable: true
@@ -32,22 +38,7 @@ export class ClinicalEventCreateWithoutWorkingListInput {
   @TypeGraphQL.Field(_type => Boolean, {
     nullable: true
   })
-  onTrash?: boolean | undefined;
-
-  @TypeGraphQL.Field(_type => Boolean, {
-    nullable: true
-  })
   deleted?: boolean | undefined;
-
-  @TypeGraphQL.Field(_type => Boolean, {
-    nullable: true
-  })
-  empty?: boolean | undefined;
-
-  @TypeGraphQL.Field(_type => Boolean, {
-    nullable: true
-  })
-  createdReport?: boolean | undefined;
 
   @TypeGraphQL.Field(_type => String, {
     nullable: true

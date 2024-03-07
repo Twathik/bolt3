@@ -17,7 +17,7 @@ export class DocumentTemplateGroupBy {
   @TypeGraphQL.Field(_type => EventTypes, {
     nullable: false
   })
-  eventType!: "CLINICAL_VISIT" | "PRESCRIPTION" | "GENERAL_SONO";
+  eventType!: "DIAGNOSTIC" | "HISTORY" | "CLINICALEXAM" | "ECG" | "SONOGRAPHY" | "BIOLOGY" | "PRESCRIPTION" | "MEDICAL_REPORT" | "CERTIFICAT";
 
   @TypeGraphQL.Field(_type => String, {
     nullable: false

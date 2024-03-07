@@ -34,7 +34,7 @@ export class SettingGroupBy {
   @TypeGraphQL.Field(_type => [EventTypes], {
     nullable: true
   })
-  allowedEventTypes!: Array<"CLINICAL_VISIT" | "PRESCRIPTION" | "GENERAL_SONO"> | null;
+  allowedEventTypes!: Array<"DIAGNOSTIC" | "HISTORY" | "CLINICALEXAM" | "ECG" | "SONOGRAPHY" | "BIOLOGY" | "PRESCRIPTION" | "MEDICAL_REPORT" | "CERTIFICAT"> | null;
 
   @TypeGraphQL.Field(_type => SettingCountAggregate, {
     nullable: true

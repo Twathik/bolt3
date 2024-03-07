@@ -91,14 +91,12 @@ export interface mainDb_ClinicalEventWhereUniqueInput {
 	WorkingList?: mainDb_WorkingListListRelationFilter;
 	clinicalDiagnosticId?: mainDb_StringNullableFilter;
 	createdAt?: mainDb_DateTimeFilter;
-	createdReport?: mainDb_BoolFilter;
 	deleted?: mainDb_BoolFilter;
 	dicom?: mainDb_BoolFilter;
 	dicomId?: mainDb_StringNullableFilter;
-	empty?: mainDb_BoolFilter;
+	eventCategory?: mainDb_EnumEventCategoryFilter;
 	eventType?: mainDb_EnumEventTypesFilter;
 	id?: string;
-	onTrash?: mainDb_BoolFilter;
 	patient?: mainDb_PatientRelationFilter;
 	patientId?: mainDb_StringFilter;
 	report?: mainDb_StringNullableFilter;
@@ -115,14 +113,12 @@ export interface mainDb_ClinicalEventWhereInput {
 	WorkingList?: mainDb_WorkingListListRelationFilter;
 	clinicalDiagnosticId?: mainDb_StringNullableFilter;
 	createdAt?: mainDb_DateTimeFilter;
-	createdReport?: mainDb_BoolFilter;
 	deleted?: mainDb_BoolFilter;
 	dicom?: mainDb_BoolFilter;
 	dicomId?: mainDb_StringNullableFilter;
-	empty?: mainDb_BoolFilter;
+	eventCategory?: mainDb_EnumEventCategoryFilter;
 	eventType?: mainDb_EnumEventTypesFilter;
 	id?: mainDb_StringFilter;
-	onTrash?: mainDb_BoolFilter;
 	patient?: mainDb_PatientRelationFilter;
 	patientId?: mainDb_StringFilter;
 	report?: mainDb_StringNullableFilter;
@@ -342,9 +338,11 @@ export interface mainDb_PatientWhereInput {
 	OR?: mainDb_PatientWhereInput[];
 	WorkingList?: mainDb_WorkingListListRelationFilter;
 	address?: mainDb_StringNullableFilter;
+	clinicalData?: mainDb_StringFilter;
 	createdAt?: mainDb_DateTimeFilter;
 	ddn?: mainDb_DateTimeFilter;
 	deleted?: mainDb_BoolFilter;
+	documentData?: mainDb_StringNullableFilter;
 	firstName?: mainDb_StringFilter;
 	height?: mainDb_FloatNullableFilter;
 	id?: mainDb_StringFilter;
@@ -506,6 +504,20 @@ export interface mainDb_NestedIntNullableFilter {
 	notIn?: number[];
 }
 
+export interface mainDb_EnumEventCategoryFilter {
+	equals?: mainDb_EventCategoryValues;
+	in?: mainDb_EventCategoryValues[];
+	not?: mainDb_NestedEnumEventCategoryFilter;
+	notIn?: mainDb_EventCategoryValues[];
+}
+
+export interface mainDb_NestedEnumEventCategoryFilter {
+	equals?: mainDb_EventCategoryValues;
+	in?: mainDb_EventCategoryValues[];
+	not?: mainDb_NestedEnumEventCategoryFilter;
+	notIn?: mainDb_EventCategoryValues[];
+}
+
 export interface mainDb_EnumEventTypesFilter {
 	equals?: mainDb_EventTypesValues;
 	in?: mainDb_EventTypesValues[];
@@ -530,14 +542,12 @@ export interface mainDb_ClinicalEventCreateWithoutUserInput {
 	WorkingList?: mainDb_WorkingListCreateNestedManyWithoutClinicalEventInput;
 	clinicalDiagnosticId?: string;
 	createdAt?: string;
-	createdReport?: boolean;
 	deleted?: boolean;
 	dicom?: boolean;
 	dicomId?: string;
-	empty?: boolean;
+	eventCategory?: mainDb_EventCategoryValues;
 	eventType: mainDb_EventTypesValues;
 	id?: string;
-	onTrash?: boolean;
 	patient: mainDb_PatientCreateNestedOneWithoutClinicalEventInput;
 	report?: string;
 	updatedAt?: string;
@@ -674,9 +684,11 @@ export interface mainDb_PatientWhereUniqueInput {
 	OR?: mainDb_PatientWhereInput[];
 	WorkingList?: mainDb_WorkingListListRelationFilter;
 	address?: mainDb_StringNullableFilter;
+	clinicalData?: mainDb_StringFilter;
 	createdAt?: mainDb_DateTimeFilter;
 	ddn?: mainDb_DateTimeFilter;
 	deleted?: mainDb_BoolFilter;
+	documentData?: mainDb_StringNullableFilter;
 	firstName?: mainDb_StringFilter;
 	height?: mainDb_FloatNullableFilter;
 	id?: string;
@@ -698,9 +710,11 @@ export interface mainDb_PatientCreateWithoutWorkingListInput {
 	ClinicalEvent?: mainDb_ClinicalEventCreateNestedManyWithoutPatientInput;
 	ConsultationList?: mainDb_ConsultationListCreateNestedManyWithoutPatientInput;
 	address?: string;
+	clinicalData: string;
 	createdAt?: string;
 	ddn: string;
 	deleted?: boolean;
+	documentData?: string;
 	firstName: string;
 	height?: number;
 	id?: string;
@@ -730,14 +744,12 @@ export interface mainDb_ClinicalEventCreateWithoutPatientInput {
 	WorkingList?: mainDb_WorkingListCreateNestedManyWithoutClinicalEventInput;
 	clinicalDiagnosticId?: string;
 	createdAt?: string;
-	createdReport?: boolean;
 	deleted?: boolean;
 	dicom?: boolean;
 	dicomId?: string;
-	empty?: boolean;
+	eventCategory?: mainDb_EventCategoryValues;
 	eventType: mainDb_EventTypesValues;
 	id?: string;
-	onTrash?: boolean;
 	report?: string;
 	updatedAt?: string;
 	user: mainDb_UserCreateNestedOneWithoutClinicalEventInput;
@@ -832,14 +844,12 @@ export interface mainDb_ClinicalEventCreateWithoutWorkingListInput {
 	Prescription?: mainDb_PrescriptionCreateNestedOneWithoutClinicalEventInput;
 	clinicalDiagnosticId?: string;
 	createdAt?: string;
-	createdReport?: boolean;
 	deleted?: boolean;
 	dicom?: boolean;
 	dicomId?: string;
-	empty?: boolean;
+	eventCategory?: mainDb_EventCategoryValues;
 	eventType: mainDb_EventTypesValues;
 	id?: string;
-	onTrash?: boolean;
 	patient: mainDb_PatientCreateNestedOneWithoutClinicalEventInput;
 	report?: string;
 	updatedAt?: string;
@@ -861,9 +871,11 @@ export interface mainDb_PatientCreateWithoutClinicalEventInput {
 	ConsultationList?: mainDb_ConsultationListCreateNestedManyWithoutPatientInput;
 	WorkingList?: mainDb_WorkingListCreateNestedManyWithoutPatientInput;
 	address?: string;
+	clinicalData: string;
 	createdAt?: string;
 	ddn: string;
 	deleted?: boolean;
+	documentData?: string;
 	firstName: string;
 	height?: number;
 	id?: string;
@@ -1068,14 +1080,12 @@ export interface mainDb_ClinicalEventCreateManyPatientInputEnvelope {
 export interface mainDb_ClinicalEventCreateManyPatientInput {
 	clinicalDiagnosticId?: string;
 	createdAt?: string;
-	createdReport?: boolean;
 	deleted?: boolean;
 	dicom?: boolean;
 	dicomId?: string;
-	empty?: boolean;
+	eventCategory?: mainDb_EventCategoryValues;
 	eventType: mainDb_EventTypesValues;
 	id?: string;
-	onTrash?: boolean;
 	report?: string;
 	updatedAt?: string;
 	userId: string;
@@ -1107,14 +1117,12 @@ export interface mainDb_ClinicalEventCreateManyUserInputEnvelope {
 export interface mainDb_ClinicalEventCreateManyUserInput {
 	clinicalDiagnosticId?: string;
 	createdAt?: string;
-	createdReport?: boolean;
 	deleted?: boolean;
 	dicom?: boolean;
 	dicomId?: string;
-	empty?: boolean;
+	eventCategory?: mainDb_EventCategoryValues;
 	eventType: mainDb_EventTypesValues;
 	id?: string;
-	onTrash?: boolean;
 	patientId: string;
 	report?: string;
 	updatedAt?: string;
@@ -1158,14 +1166,12 @@ export interface mainDb_ClinicalEventScalarWhereInput {
 	OR?: mainDb_ClinicalEventScalarWhereInput[];
 	clinicalDiagnosticId?: mainDb_StringNullableFilter;
 	createdAt?: mainDb_DateTimeFilter;
-	createdReport?: mainDb_BoolFilter;
 	deleted?: mainDb_BoolFilter;
 	dicom?: mainDb_BoolFilter;
 	dicomId?: mainDb_StringNullableFilter;
-	empty?: mainDb_BoolFilter;
+	eventCategory?: mainDb_EnumEventCategoryFilter;
 	eventType?: mainDb_EnumEventTypesFilter;
 	id?: mainDb_StringFilter;
-	onTrash?: mainDb_BoolFilter;
 	patientId?: mainDb_StringFilter;
 	report?: mainDb_StringNullableFilter;
 	updatedAt?: mainDb_DateTimeFilter;
@@ -1182,14 +1188,12 @@ export interface mainDb_ClinicalEventUpdateWithoutUserInput {
 	WorkingList?: mainDb_WorkingListUpdateManyWithoutClinicalEventNestedInput;
 	clinicalDiagnosticId?: mainDb_NullableStringFieldUpdateOperationsInput;
 	createdAt?: mainDb_DateTimeFieldUpdateOperationsInput;
-	createdReport?: mainDb_BoolFieldUpdateOperationsInput;
 	deleted?: mainDb_BoolFieldUpdateOperationsInput;
 	dicom?: mainDb_BoolFieldUpdateOperationsInput;
 	dicomId?: mainDb_NullableStringFieldUpdateOperationsInput;
-	empty?: mainDb_BoolFieldUpdateOperationsInput;
+	eventCategory?: mainDb_EnumEventCategoryFieldUpdateOperationsInput;
 	eventType?: mainDb_EnumEventTypesFieldUpdateOperationsInput;
 	id?: mainDb_StringFieldUpdateOperationsInput;
-	onTrash?: mainDb_BoolFieldUpdateOperationsInput;
 	patient?: mainDb_PatientUpdateOneRequiredWithoutClinicalEventNestedInput;
 	report?: mainDb_NullableStringFieldUpdateOperationsInput;
 	updatedAt?: mainDb_DateTimeFieldUpdateOperationsInput;
@@ -1353,9 +1357,11 @@ export interface mainDb_PatientUpdateWithoutWorkingListInput {
 	ClinicalEvent?: mainDb_ClinicalEventUpdateManyWithoutPatientNestedInput;
 	ConsultationList?: mainDb_ConsultationListUpdateManyWithoutPatientNestedInput;
 	address?: mainDb_NullableStringFieldUpdateOperationsInput;
+	clinicalData?: mainDb_StringFieldUpdateOperationsInput;
 	createdAt?: mainDb_DateTimeFieldUpdateOperationsInput;
 	ddn?: mainDb_DateTimeFieldUpdateOperationsInput;
 	deleted?: mainDb_BoolFieldUpdateOperationsInput;
+	documentData?: mainDb_NullableStringFieldUpdateOperationsInput;
 	firstName?: mainDb_StringFieldUpdateOperationsInput;
 	height?: mainDb_NullableFloatFieldUpdateOperationsInput;
 	id?: mainDb_StringFieldUpdateOperationsInput;
@@ -1392,17 +1398,19 @@ export interface mainDb_ClinicalEventUpdateWithoutPatientInput {
 	WorkingList?: mainDb_WorkingListUpdateManyWithoutClinicalEventNestedInput;
 	clinicalDiagnosticId?: mainDb_NullableStringFieldUpdateOperationsInput;
 	createdAt?: mainDb_DateTimeFieldUpdateOperationsInput;
-	createdReport?: mainDb_BoolFieldUpdateOperationsInput;
 	deleted?: mainDb_BoolFieldUpdateOperationsInput;
 	dicom?: mainDb_BoolFieldUpdateOperationsInput;
 	dicomId?: mainDb_NullableStringFieldUpdateOperationsInput;
-	empty?: mainDb_BoolFieldUpdateOperationsInput;
+	eventCategory?: mainDb_EnumEventCategoryFieldUpdateOperationsInput;
 	eventType?: mainDb_EnumEventTypesFieldUpdateOperationsInput;
 	id?: mainDb_StringFieldUpdateOperationsInput;
-	onTrash?: mainDb_BoolFieldUpdateOperationsInput;
 	report?: mainDb_NullableStringFieldUpdateOperationsInput;
 	updatedAt?: mainDb_DateTimeFieldUpdateOperationsInput;
 	user?: mainDb_UserUpdateOneRequiredWithoutClinicalEventNestedInput;
+}
+
+export interface mainDb_EnumEventCategoryFieldUpdateOperationsInput {
+	set?: mainDb_EventCategoryValues;
 }
 
 export interface mainDb_EnumEventTypesFieldUpdateOperationsInput {
@@ -1488,14 +1496,12 @@ export interface mainDb_ClinicalEventUpdateWithoutWorkingListInput {
 	Prescription?: mainDb_PrescriptionUpdateOneWithoutClinicalEventNestedInput;
 	clinicalDiagnosticId?: mainDb_NullableStringFieldUpdateOperationsInput;
 	createdAt?: mainDb_DateTimeFieldUpdateOperationsInput;
-	createdReport?: mainDb_BoolFieldUpdateOperationsInput;
 	deleted?: mainDb_BoolFieldUpdateOperationsInput;
 	dicom?: mainDb_BoolFieldUpdateOperationsInput;
 	dicomId?: mainDb_NullableStringFieldUpdateOperationsInput;
-	empty?: mainDb_BoolFieldUpdateOperationsInput;
+	eventCategory?: mainDb_EnumEventCategoryFieldUpdateOperationsInput;
 	eventType?: mainDb_EnumEventTypesFieldUpdateOperationsInput;
 	id?: mainDb_StringFieldUpdateOperationsInput;
-	onTrash?: mainDb_BoolFieldUpdateOperationsInput;
 	patient?: mainDb_PatientUpdateOneRequiredWithoutClinicalEventNestedInput;
 	report?: mainDb_NullableStringFieldUpdateOperationsInput;
 	updatedAt?: mainDb_DateTimeFieldUpdateOperationsInput;
@@ -1519,9 +1525,11 @@ export interface mainDb_PatientUpdateWithoutClinicalEventInput {
 	ConsultationList?: mainDb_ConsultationListUpdateManyWithoutPatientNestedInput;
 	WorkingList?: mainDb_WorkingListUpdateManyWithoutPatientNestedInput;
 	address?: mainDb_NullableStringFieldUpdateOperationsInput;
+	clinicalData?: mainDb_StringFieldUpdateOperationsInput;
 	createdAt?: mainDb_DateTimeFieldUpdateOperationsInput;
 	ddn?: mainDb_DateTimeFieldUpdateOperationsInput;
 	deleted?: mainDb_BoolFieldUpdateOperationsInput;
+	documentData?: mainDb_NullableStringFieldUpdateOperationsInput;
 	firstName?: mainDb_StringFieldUpdateOperationsInput;
 	height?: mainDb_NullableFloatFieldUpdateOperationsInput;
 	id?: mainDb_StringFieldUpdateOperationsInput;
@@ -1773,14 +1781,12 @@ export interface mainDb_ClinicalEventUpdateManyWithWhereWithoutPatientInput {
 export interface mainDb_ClinicalEventUpdateManyMutationInput {
 	clinicalDiagnosticId?: mainDb_NullableStringFieldUpdateOperationsInput;
 	createdAt?: mainDb_DateTimeFieldUpdateOperationsInput;
-	createdReport?: mainDb_BoolFieldUpdateOperationsInput;
 	deleted?: mainDb_BoolFieldUpdateOperationsInput;
 	dicom?: mainDb_BoolFieldUpdateOperationsInput;
 	dicomId?: mainDb_NullableStringFieldUpdateOperationsInput;
-	empty?: mainDb_BoolFieldUpdateOperationsInput;
+	eventCategory?: mainDb_EnumEventCategoryFieldUpdateOperationsInput;
 	eventType?: mainDb_EnumEventTypesFieldUpdateOperationsInput;
 	id?: mainDb_StringFieldUpdateOperationsInput;
-	onTrash?: mainDb_BoolFieldUpdateOperationsInput;
 	report?: mainDb_NullableStringFieldUpdateOperationsInput;
 	updatedAt?: mainDb_DateTimeFieldUpdateOperationsInput;
 }
@@ -1824,10 +1830,10 @@ export type JSONValue = string | number | boolean | JSONObject | Array<JSONValue
 export type JSONObject = { [key: string]: JSONValue };
 
 export const mainDb_AppSubscriptionPayloadType = {
-	clinicalEvents: "clinicalEvents",
 	closeAllTabs: "closeAllTabs",
 	consultationLists: "consultationLists",
 	emptyTrash: "emptyTrash",
+	focusedDocument: "focusedDocument",
 	mobileDeviceUpdate: "mobileDeviceUpdate",
 	modalityUpdate: "modalityUpdate",
 	patientUpdate: "patientUpdate",
@@ -1839,9 +1845,15 @@ export type mainDb_AppSubscriptionPayloadTypeValues =
 	(typeof mainDb_AppSubscriptionPayloadType)[keyof typeof mainDb_AppSubscriptionPayloadType];
 
 export const mainDb_EventTypes = {
-	CLINICAL_VISIT: "CLINICAL_VISIT",
-	GENERAL_SONO: "GENERAL_SONO",
+	BIOLOGY: "BIOLOGY",
+	CERTIFICAT: "CERTIFICAT",
+	CLINICALEXAM: "CLINICALEXAM",
+	DIAGNOSTIC: "DIAGNOSTIC",
+	ECG: "ECG",
+	HISTORY: "HISTORY",
+	MEDICAL_REPORT: "MEDICAL_REPORT",
 	PRESCRIPTION: "PRESCRIPTION",
+	SONOGRAPHY: "SONOGRAPHY",
 } as const;
 
 export type mainDb_EventTypesValues = (typeof mainDb_EventTypes)[keyof typeof mainDb_EventTypes];
@@ -1928,6 +1940,13 @@ export const mainDb_ModalityType = {
 } as const;
 
 export type mainDb_ModalityTypeValues = (typeof mainDb_ModalityType)[keyof typeof mainDb_ModalityType];
+
+export const mainDb_EventCategory = {
+	DOCUMENT: "DOCUMENT",
+	FOLDER: "FOLDER",
+} as const;
+
+export type mainDb_EventCategoryValues = (typeof mainDb_EventCategory)[keyof typeof mainDb_EventCategory];
 
 export const mainDb_MobileDeviceType = {
 	DOCTOR: "DOCTOR",
@@ -2067,6 +2086,7 @@ export interface WorkingListsWorkingListsInput {
 
 export interface ClinicalEventsCreateOneClinicalEventInput {
 	eventType: mainDb_EventTypesValues;
+	eventCategory: mainDb_EventCategoryValues;
 	patientId: string;
 }
 
@@ -2183,12 +2203,23 @@ export interface PatientsToggleSelectedTrashPatientInput {
 
 export interface PatientsUpdateOnePatientInput {
 	id: string;
-	firstName: string;
-	lastName: string;
-	sexe: mainDb_SexeValues;
-	ddn: string;
+	firstName?: string;
+	lastName?: string;
+	sexe?: mainDb_SexeValues;
+	ddn?: string;
 	address?: string;
 	nTel?: string;
+	clinicalData?: string;
+}
+
+export interface PatientsUpdateOnePatientClinicalDataInput {
+	id: string;
+	clinicalData?: string;
+}
+
+export interface PatientsUpdateOnePatientDocumentReportInput {
+	id: string;
+	documentData?: string;
 }
 
 export interface TemplatesFetchTemplateInput {
@@ -2325,6 +2356,7 @@ export interface WorkingListsWorkingListsInputInternal {
 
 export interface ClinicalEventsCreateOneClinicalEventInputInternal {
 	eventType: mainDb_EventTypesValues;
+	eventCategory: mainDb_EventCategoryValues;
 	patientId: string;
 	userId: string;
 }
@@ -2442,6 +2474,7 @@ export interface PatientsAdd_One_patient_to_indexInputInternal {
 	lastName: string;
 	ddn: string;
 	sexe: mainDb_SexeValues;
+	userId: string;
 }
 
 export interface PatientsGetOnePatientInputInternal {
@@ -2456,12 +2489,25 @@ export interface PatientsToggleSelectedTrashPatientInputInternal {
 
 export interface PatientsUpdateOnePatientInputInternal {
 	id: string;
-	firstName: string;
-	lastName: string;
-	sexe: mainDb_SexeValues;
-	ddn: string;
+	firstName?: string;
+	lastName?: string;
+	sexe?: mainDb_SexeValues;
+	ddn?: string;
 	address?: string;
 	nTel?: string;
+	clinicalData?: string;
+	userId: string;
+}
+
+export interface PatientsUpdateOnePatientClinicalDataInputInternal {
+	id: string;
+	clinicalData?: string;
+	userId: string;
+}
+
+export interface PatientsUpdateOnePatientDocumentReportInputInternal {
+	id: string;
+	documentData?: string;
 	userId: string;
 }
 
@@ -2613,6 +2659,7 @@ export interface WorkingListsWorkingListsInputInjected {
 
 export interface ClinicalEventsCreateOneClinicalEventInputInjected {
 	eventType: mainDb_EventTypesValues;
+	eventCategory: mainDb_EventCategoryValues;
 	patientId: string;
 	userId: string;
 }
@@ -2730,6 +2777,7 @@ export interface PatientsAdd_One_patient_to_indexInputInjected {
 	lastName: string;
 	ddn: string;
 	sexe: mainDb_SexeValues;
+	userId: string;
 }
 
 export interface PatientsGetOnePatientInputInjected {
@@ -2744,12 +2792,25 @@ export interface PatientsToggleSelectedTrashPatientInputInjected {
 
 export interface PatientsUpdateOnePatientInputInjected {
 	id: string;
-	firstName: string;
-	lastName: string;
-	sexe: mainDb_SexeValues;
-	ddn: string;
+	firstName?: string;
+	lastName?: string;
+	sexe?: mainDb_SexeValues;
+	ddn?: string;
 	address?: string;
 	nTel?: string;
+	clinicalData?: string;
+	userId: string;
+}
+
+export interface PatientsUpdateOnePatientClinicalDataInputInjected {
+	id: string;
+	clinicalData?: string;
+	userId: string;
+}
+
+export interface PatientsUpdateOnePatientDocumentReportInputInjected {
+	id: string;
+	documentData?: string;
 	userId: string;
 }
 
@@ -3031,6 +3092,16 @@ export interface PatientsUpdateOnePatientResponse {
 	errors?: GraphQLError[];
 }
 
+export interface PatientsUpdateOnePatientClinicalDataResponse {
+	data?: PatientsUpdateOnePatientClinicalDataResponseData;
+	errors?: GraphQLError[];
+}
+
+export interface PatientsUpdateOnePatientDocumentReportResponse {
+	data?: PatientsUpdateOnePatientDocumentReportResponseData;
+	errors?: GraphQLError[];
+}
+
 export interface TemplatesFetchTemplateResponse {
 	data?: TemplatesFetchTemplateResponseData;
 	errors?: GraphQLError[];
@@ -3091,10 +3162,10 @@ export interface AppSubscriptionGlobalSubscriptionResponseData {
 		appPayload: string;
 		messageId: string;
 		type:
-			| "clinicalEvents"
 			| "closeAllTabs"
 			| "consultationLists"
 			| "emptyTrash"
+			| "focusedDocument"
 			| "mobileDeviceUpdate"
 			| "modalityUpdate"
 			| "patientUpdate"
@@ -3177,7 +3248,16 @@ export interface EconomizersCreateEconomizerResponseData {
 	mainDb_createOneEconomizer: {
 		id: string;
 		name: string;
-		eventType: "CLINICAL_VISIT" | "GENERAL_SONO" | "PRESCRIPTION";
+		eventType:
+			| "BIOLOGY"
+			| "CERTIFICAT"
+			| "CLINICALEXAM"
+			| "DIAGNOSTIC"
+			| "ECG"
+			| "HISTORY"
+			| "MEDICAL_REPORT"
+			| "PRESCRIPTION"
+			| "SONOGRAPHY";
 		template: string;
 	};
 }
@@ -3205,7 +3285,16 @@ export interface EconomizersUpdateEconomizerResponseData {
 	mainDb_updateOneEconomizer?: {
 		id: string;
 		name: string;
-		eventType: "CLINICAL_VISIT" | "GENERAL_SONO" | "PRESCRIPTION";
+		eventType:
+			| "BIOLOGY"
+			| "CERTIFICAT"
+			| "CLINICALEXAM"
+			| "DIAGNOSTIC"
+			| "ECG"
+			| "HISTORY"
+			| "MEDICAL_REPORT"
+			| "PRESCRIPTION"
+			| "SONOGRAPHY";
 		template: string;
 	};
 }
@@ -3681,15 +3770,22 @@ export interface ClinicalEventsDeleteOneClinicalEventResponseData {
 export interface ClinicalEventsGetClinicalEventResponseData {
 	mainDb_clinicalEvent?: {
 		id: string;
-		eventType: "CLINICAL_VISIT" | "GENERAL_SONO" | "PRESCRIPTION";
+		eventType:
+			| "BIOLOGY"
+			| "CERTIFICAT"
+			| "CLINICALEXAM"
+			| "DIAGNOSTIC"
+			| "ECG"
+			| "HISTORY"
+			| "MEDICAL_REPORT"
+			| "PRESCRIPTION"
+			| "SONOGRAPHY";
+		eventCategory: "DOCUMENT" | "FOLDER";
 		updatedAt: string;
-		createdReport: boolean;
 		report?: string;
-		empty: boolean;
 		dicomId?: string;
 		dicom: boolean;
 		deleted: boolean;
-		onTrash: boolean;
 		user: {
 			id: string;
 			fullName?: string;
@@ -3701,40 +3797,27 @@ export interface ClinicalEventsGetClinicalEventResponseData {
 export interface ClinicalEventsGetClinicalEventWithConfigurationResponseData {
 	mainDb_clinicalEvent?: {
 		id: string;
-		eventType: "CLINICAL_VISIT" | "GENERAL_SONO" | "PRESCRIPTION";
+		eventType:
+			| "BIOLOGY"
+			| "CERTIFICAT"
+			| "CLINICALEXAM"
+			| "DIAGNOSTIC"
+			| "ECG"
+			| "HISTORY"
+			| "MEDICAL_REPORT"
+			| "PRESCRIPTION"
+			| "SONOGRAPHY";
+		eventCategory: "DOCUMENT" | "FOLDER";
 		updatedAt: string;
-		createdReport: boolean;
 		report?: string;
-		empty: boolean;
 		dicomId?: string;
 		dicom: boolean;
 		deleted: boolean;
-		onTrash: boolean;
 		user: {
 			id: string;
 			fullName?: string;
 		};
 		patientId: string;
-		getConfigurationFile: {
-			id: string;
-			sectionName: string;
-			tableContentType: string;
-			widgets: {
-				id?: string;
-				widgetType?: "pictureGenerator" | "table";
-				tableName?: string;
-				config?: {
-					columnWidth: number;
-					paramHeader: string;
-					data: {
-						paramName: string;
-						paramType: "number" | "string";
-					};
-					value?: string;
-				}[];
-				widgetName?: string;
-			}[];
-		}[];
 		getModalities: {
 			id: string;
 			modalityAETitle: string;
@@ -3915,15 +3998,22 @@ export interface ClinicalEventsGetClinicalEventWithConfigurationResponseData {
 export interface ClinicalEventsGetClinicalEventsResponseData {
 	mainDb_clinicalEvents: {
 		id: string;
-		eventType: "CLINICAL_VISIT" | "GENERAL_SONO" | "PRESCRIPTION";
+		eventType:
+			| "BIOLOGY"
+			| "CERTIFICAT"
+			| "CLINICALEXAM"
+			| "DIAGNOSTIC"
+			| "ECG"
+			| "HISTORY"
+			| "MEDICAL_REPORT"
+			| "PRESCRIPTION"
+			| "SONOGRAPHY";
+		eventCategory: "DOCUMENT" | "FOLDER";
 		updatedAt: string;
-		createdReport: boolean;
 		report?: string;
-		empty: boolean;
 		dicomId?: string;
 		dicom: boolean;
 		deleted: boolean;
-		onTrash: boolean;
 		user: {
 			id: string;
 			fullName?: string;
@@ -3972,7 +4062,17 @@ export interface ConsultationListRegisterPatientResponseData {
 export interface ConsultationListTodayConsultationResponseData {
 	mainDb_findFirstConsultation?: {
 		id: string;
-		allowedEventTypes: ("CLINICAL_VISIT" | "GENERAL_SONO" | "PRESCRIPTION")[];
+		allowedEventTypes: (
+			| "BIOLOGY"
+			| "CERTIFICAT"
+			| "CLINICALEXAM"
+			| "DIAGNOSTIC"
+			| "ECG"
+			| "HISTORY"
+			| "MEDICAL_REPORT"
+			| "PRESCRIPTION"
+			| "SONOGRAPHY"
+		)[];
 		ConsultationList: {
 			id: string;
 			active: boolean;
@@ -4082,6 +4182,8 @@ export interface PatientsGetOnTrashPatientsResponseData {
 		patientFullName: string;
 		informationsConfirmed: boolean;
 		nTel?: string;
+		clinicalData: string;
+		documentData?: string;
 	}[];
 }
 
@@ -4097,6 +4199,8 @@ export interface PatientsGetOnePatientResponseData {
 		patientFullName: string;
 		informationsConfirmed: boolean;
 		nTel?: string;
+		clinicalData: string;
+		documentData?: string;
 	};
 }
 
@@ -4116,17 +4220,47 @@ export interface PatientsUpdateOnePatientResponseData {
 	};
 }
 
+export interface PatientsUpdateOnePatientClinicalDataResponseData {
+	mainDb_updateOnePatient?: {
+		id: string;
+	};
+}
+
+export interface PatientsUpdateOnePatientDocumentReportResponseData {
+	mainDb_updateOnePatient?: {
+		id: string;
+	};
+}
+
 export interface TemplatesFetchTemplateResponseData {
 	mainDb_documentTemplate?: {
 		template: string;
-		eventType: "CLINICAL_VISIT" | "GENERAL_SONO" | "PRESCRIPTION";
+		eventType:
+			| "BIOLOGY"
+			| "CERTIFICAT"
+			| "CLINICALEXAM"
+			| "DIAGNOSTIC"
+			| "ECG"
+			| "HISTORY"
+			| "MEDICAL_REPORT"
+			| "PRESCRIPTION"
+			| "SONOGRAPHY";
 		id: string;
 	};
 }
 
 export interface TemplatesGetTemplatesResponseData {
 	mainDb_documentTemplates: {
-		eventType: "CLINICAL_VISIT" | "GENERAL_SONO" | "PRESCRIPTION";
+		eventType:
+			| "BIOLOGY"
+			| "CERTIFICAT"
+			| "CLINICALEXAM"
+			| "DIAGNOSTIC"
+			| "ECG"
+			| "HISTORY"
+			| "MEDICAL_REPORT"
+			| "PRESCRIPTION"
+			| "SONOGRAPHY";
 		id: string;
 		empty: boolean;
 	}[];

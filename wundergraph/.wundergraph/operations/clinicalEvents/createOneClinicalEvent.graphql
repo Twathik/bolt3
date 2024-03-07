@@ -1,5 +1,6 @@
 mutation (
   $eventType: mainDb_EventTypes!
+  $eventCategory: mainDb_EventCategory!
   $patientId: String!
   $userId: String! @fromClaim(name: USERID)
 ) {
@@ -7,6 +8,7 @@ mutation (
     eventType: $eventType
     patientId: $patientId
     userId: $userId
+    eventCategory: $eventCategory
   ) {
     id
   }

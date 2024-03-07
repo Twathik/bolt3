@@ -24,6 +24,11 @@ export class ClinicalEventOrderByWithRelationInput {
   @TypeGraphQL.Field(_type => SortOrder, {
     nullable: true
   })
+  eventCategory?: "asc" | "desc" | undefined;
+
+  @TypeGraphQL.Field(_type => SortOrder, {
+    nullable: true
+  })
   userId?: "asc" | "desc" | undefined;
 
   @TypeGraphQL.Field(_type => SortOrder, {
@@ -44,22 +49,7 @@ export class ClinicalEventOrderByWithRelationInput {
   @TypeGraphQL.Field(_type => SortOrder, {
     nullable: true
   })
-  onTrash?: "asc" | "desc" | undefined;
-
-  @TypeGraphQL.Field(_type => SortOrder, {
-    nullable: true
-  })
   deleted?: "asc" | "desc" | undefined;
-
-  @TypeGraphQL.Field(_type => SortOrder, {
-    nullable: true
-  })
-  empty?: "asc" | "desc" | undefined;
-
-  @TypeGraphQL.Field(_type => SortOrder, {
-    nullable: true
-  })
-  createdReport?: "asc" | "desc" | undefined;
 
   @TypeGraphQL.Field(_type => SortOrderInput, {
     nullable: true

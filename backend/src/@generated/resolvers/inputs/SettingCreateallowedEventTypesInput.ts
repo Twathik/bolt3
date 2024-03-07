@@ -9,5 +9,5 @@ export class SettingCreateallowedEventTypesInput {
   @TypeGraphQL.Field(_type => [EventTypes], {
     nullable: false
   })
-  set!: Array<"CLINICAL_VISIT" | "PRESCRIPTION" | "GENERAL_SONO">;
+  set!: Array<"DIAGNOSTIC" | "HISTORY" | "CLINICALEXAM" | "ECG" | "SONOGRAPHY" | "BIOLOGY" | "PRESCRIPTION" | "MEDICAL_REPORT" | "CERTIFICAT">;
 }

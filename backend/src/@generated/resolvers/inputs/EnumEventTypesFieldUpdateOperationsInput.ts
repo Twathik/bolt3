@@ -9,5 +9,5 @@ export class EnumEventTypesFieldUpdateOperationsInput {
   @TypeGraphQL.Field(_type => EventTypes, {
     nullable: true
   })
-  set?: "CLINICAL_VISIT" | "PRESCRIPTION" | "GENERAL_SONO" | undefined;
+  set?: "DIAGNOSTIC" | "HISTORY" | "CLINICALEXAM" | "ECG" | "SONOGRAPHY" | "BIOLOGY" | "PRESCRIPTION" | "MEDICAL_REPORT" | "CERTIFICAT" | undefined;
 }

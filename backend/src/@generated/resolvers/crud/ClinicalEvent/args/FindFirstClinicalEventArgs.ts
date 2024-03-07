@@ -35,5 +35,5 @@ export class FindFirstClinicalEventArgs {
   @TypeGraphQL.Field(_type => [ClinicalEventScalarFieldEnum], {
     nullable: true
   })
-  distinct?: Array<"id" | "eventType" | "userId" | "patientId" | "createdAt" | "updatedAt" | "onTrash" | "deleted" | "empty" | "createdReport" | "report" | "dicom" | "dicomId" | "clinicalDiagnosticId"> | undefined;
+  distinct?: Array<"id" | "eventType" | "eventCategory" | "userId" | "patientId" | "createdAt" | "updatedAt" | "deleted" | "report" | "dicom" | "dicomId" | "clinicalDiagnosticId"> | undefined;
 }

@@ -9,4 +9,6 @@ fragment PatientFragment on mainDb_Patient {
   patientFullName
   informationsConfirmed
   nTel
+  clinicalData
+  documentData
 }

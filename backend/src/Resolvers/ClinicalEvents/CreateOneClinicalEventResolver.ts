@@ -20,86 +20,26 @@ export class CreateOneClinicalEventResolver {
     @TypeGraphQL.Ctx() ctx: Context,
     @TypeGraphQL.Info() info: GraphQLResolveInfo,
     @TypeGraphQL.Args()
-    { eventType, patientId, userId }: createOneClinicalEventArgs,
+    { eventType, patientId, userId, eventCategory }: createOneClinicalEventArgs,
     @TypeGraphQL.PubSub('APP_SUBSCRIPTION')
-    notify: TypeGraphQL.Publisher<AppSubscriptionTriggerArgs>,
+    _notify: TypeGraphQL.Publisher<AppSubscriptionTriggerArgs>,
   ): Promise<ClinicalEvent> {
     const { _count } = transformInfoIntoPrismaArgs(info)
     const prisma = getPrismaFromContext(ctx) as PrismaClient
 
     try {
-      if (eventType === 'CLINICAL_VISIT') {
-        const clinicalVisit = await prisma.clinicalEvent.findFirstOrThrow({
-          where: { patientId, eventType: 'CLINICAL_VISIT' },
-        })
-        if (clinicalVisit) {
-          const {
-            id,
-            updatedAt,
-            createdReport,
-            report,
-            empty,
-            dicomId,
-            dicom,
-            deleted,
-            onTrash,
-          } = clinicalVisit
-          const { fullName, id: user_id } = await prisma.user.findUniqueOrThrow(
-            {
-              where: { userId },
-            },
-          )
-          await notify({
-            type: 'clinicalEvents',
-            userId,
-            global: true,
-            appPayload: JSON.stringify({
-              operation: 'create',
-              clinicalEvent: {
-                id,
-                eventType,
-                updatedAt,
-                createdReport,
-                report,
-                empty,
-                dicomId,
-                dicom,
-                deleted,
-                onTrash,
-                user: {
-                  id: user_id,
-                  fullName,
-                },
-                patientId,
-              },
-            }),
-          })
-
-          return clinicalVisit
-        }
-      }
-      const [clinicalEvent, { fullName, id: user_id }] = await Promise.all([
+      const [clinicalEvent] = await Promise.all([
         prisma.clinicalEvent.create({
           data: {
             eventType,
+            eventCategory,
             user: { connect: { userId } },
             patient: { connect: { id: patientId } },
           },
           ...(_count && transformCountFieldIntoSelectRelationsCount(_count)),
         }),
-        prisma.user.findUniqueOrThrow({ where: { userId } }),
       ])
-      const {
-        id,
-        updatedAt,
-        createdReport,
-        report,
-        empty,
-        dicomId,
-        dicom,
-        deleted,
-        onTrash,
-      } = clinicalEvent
+      /*  const { id, updatedAt, report, dicomId, dicom, deleted } = clinicalEvent
       await notify({
         type: 'clinicalEvents',
         userId,
@@ -110,13 +50,10 @@ export class CreateOneClinicalEventResolver {
             id,
             eventType,
             updatedAt,
-            createdReport,
             report,
-            empty,
             dicomId,
             dicom,
             deleted,
-            onTrash,
             user: {
               id: user_id,
               fullName,
@@ -124,7 +61,7 @@ export class CreateOneClinicalEventResolver {
             patientId,
           },
         }),
-      })
+      }) */
 
       return clinicalEvent
     } catch (error) {

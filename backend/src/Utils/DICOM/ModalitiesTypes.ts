@@ -381,7 +381,7 @@ export const modalitiesTypesMapping: modalitiesTypeMapping[] = [
   {
     type: 'US',
     description: 'Ultrasound',
-    eventType: 'GENERAL_SONO',
+    eventType: 'SONOGRAPHY',
   },
 
   {

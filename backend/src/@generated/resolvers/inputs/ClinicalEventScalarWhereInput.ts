@@ -4,6 +4,7 @@ import { Prisma } from "@prisma/client";
 import { DecimalJSScalar } from "../../scalars";
 import { BoolFilter } from "../inputs/BoolFilter";
 import { DateTimeFilter } from "../inputs/DateTimeFilter";
+import { EnumEventCategoryFilter } from "../inputs/EnumEventCategoryFilter";
 import { EnumEventTypesFilter } from "../inputs/EnumEventTypesFilter";
 import { StringFilter } from "../inputs/StringFilter";
 import { StringNullableFilter } from "../inputs/StringNullableFilter";
@@ -35,6 +36,11 @@ export class ClinicalEventScalarWhereInput {
   })
   eventType?: EnumEventTypesFilter | undefined;
 
+  @TypeGraphQL.Field(_type => EnumEventCategoryFilter, {
+    nullable: true
+  })
+  eventCategory?: EnumEventCategoryFilter | undefined;
+
   @TypeGraphQL.Field(_type => StringFilter, {
     nullable: true
   })
@@ -58,22 +64,7 @@ export class ClinicalEventScalarWhereInput {
   @TypeGraphQL.Field(_type => BoolFilter, {
     nullable: true
   })
-  onTrash?: BoolFilter | undefined;
-
-  @TypeGraphQL.Field(_type => BoolFilter, {
-    nullable: true
-  })
   deleted?: BoolFilter | undefined;
-
-  @TypeGraphQL.Field(_type => BoolFilter, {
-    nullable: true
-  })
-  empty?: BoolFilter | undefined;
-
-  @TypeGraphQL.Field(_type => BoolFilter, {
-    nullable: true
-  })
-  createdReport?: BoolFilter | undefined;
 
   @TypeGraphQL.Field(_type => StringNullableFilter, {
     nullable: true

@@ -75,4 +75,14 @@ export class PatientMaxAggregate {
     nullable: true
   })
   informationsConfirmed!: boolean | null;
+
+  @TypeGraphQL.Field(_type => String, {
+    nullable: true
+  })
+  clinicalData!: string | null;
+
+  @TypeGraphQL.Field(_type => String, {
+    nullable: true
+  })
+  documentData!: string | null;
 }

@@ -1,11 +1,12 @@
 mutation (
   $id: String!
-  $firstName: String!
-  $lastName: String!
-  $sexe: mainDb_Sexe!
-  $ddn: mainDb_DateTimeISO!
+  $firstName: String
+  $lastName: String
+  $sexe: mainDb_Sexe
+  $ddn: mainDb_DateTimeISO
   $address: String
   $nTel: String
+  $clinicalData: String
   $userId: String! @fromClaim(name: USERID)
 ) {
   mainDb_updateOnePatient(
@@ -18,6 +19,7 @@ mutation (
       ddn: { set: $ddn }
       address: { set: $address }
       nTel: { set: $nTel }
+      clinicalData: { set: $clinicalData }
     }
   ) {
     id

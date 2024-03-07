@@ -3,8 +3,8 @@ import * as GraphQLScalars from "graphql-scalars";
 import { Prisma } from "@prisma/client";
 import { DecimalJSScalar } from "../../scalars";
 import { EconomizerWhereInput } from "../inputs/EconomizerWhereInput";
+import { EnumEventTypesFilter } from "../inputs/EnumEventTypesFilter";
 import { StringFilter } from "../inputs/StringFilter";
-import { EventTypes } from "../../enums/EventTypes";
 
 @TypeGraphQL.InputType("EconomizerWhereUniqueInput", {})
 export class EconomizerWhereUniqueInput {
@@ -13,10 +13,10 @@ export class EconomizerWhereUniqueInput {
   })
   id?: string | undefined;
 
-  @TypeGraphQL.Field(_type => EventTypes, {
+  @TypeGraphQL.Field(_type => String, {
     nullable: true
   })
-  eventType?: "CLINICAL_VISIT" | "PRESCRIPTION" | "GENERAL_SONO" | undefined;
+  name?: string | undefined;
 
   @TypeGraphQL.Field(_type => [EconomizerWhereInput], {
     nullable: true
@@ -33,10 +33,10 @@ export class EconomizerWhereUniqueInput {
   })
   NOT?: EconomizerWhereInput[] | undefined;
 
-  @TypeGraphQL.Field(_type => StringFilter, {
+  @TypeGraphQL.Field(_type => EnumEventTypesFilter, {
     nullable: true
   })
-  name?: StringFilter | undefined;
+  eventType?: EnumEventTypesFilter | undefined;
 
   @TypeGraphQL.Field(_type => StringFilter, {
     nullable: true

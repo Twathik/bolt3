@@ -7,4 +7,8 @@ export class CreateOnePatientArgs {
     nullable: false,
   })
   data!: PatientCreateInput
+  @TypeGraphQL.Field((_type) => String, {
+    nullable: false,
+  })
+  userId!: string
 }

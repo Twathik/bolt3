@@ -5,6 +5,7 @@ import { DecimalJSScalar } from "../../scalars";
 import { ClinicalEventCountAggregate } from "../outputs/ClinicalEventCountAggregate";
 import { ClinicalEventMaxAggregate } from "../outputs/ClinicalEventMaxAggregate";
 import { ClinicalEventMinAggregate } from "../outputs/ClinicalEventMinAggregate";
+import { EventCategory } from "../../enums/EventCategory";
 import { EventTypes } from "../../enums/EventTypes";
 
 @TypeGraphQL.ObjectType("ClinicalEventGroupBy", {})
@@ -17,7 +18,12 @@ export class ClinicalEventGroupBy {
   @TypeGraphQL.Field(_type => EventTypes, {
     nullable: false
   })
-  eventType!: "CLINICAL_VISIT" | "PRESCRIPTION" | "GENERAL_SONO";
+  eventType!: "DIAGNOSTIC" | "HISTORY" | "CLINICALEXAM" | "ECG" | "SONOGRAPHY" | "BIOLOGY" | "PRESCRIPTION" | "MEDICAL_REPORT" | "CERTIFICAT";
+
+  @TypeGraphQL.Field(_type => EventCategory, {
+    nullable: false
+  })
+  eventCategory!: "FOLDER" | "DOCUMENT";
 
   @TypeGraphQL.Field(_type => String, {
     nullable: false
@@ -42,22 +48,7 @@ export class ClinicalEventGroupBy {
   @TypeGraphQL.Field(_type => Boolean, {
     nullable: false
   })
-  onTrash!: boolean;
-
-  @TypeGraphQL.Field(_type => Boolean, {
-    nullable: false
-  })
   deleted!: boolean;
-
-  @TypeGraphQL.Field(_type => Boolean, {
-    nullable: false
-  })
-  empty!: boolean;
-
-  @TypeGraphQL.Field(_type => Boolean, {
-    nullable: false
-  })
-  createdReport!: boolean;
 
   @TypeGraphQL.Field(_type => String, {
     nullable: true

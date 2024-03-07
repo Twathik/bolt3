@@ -1,9 +1,15 @@
 import * as TypeGraphQL from "type-graphql";
 
 export enum EventTypes {
-  CLINICAL_VISIT = "CLINICAL_VISIT",
+  DIAGNOSTIC = "DIAGNOSTIC",
+  HISTORY = "HISTORY",
+  CLINICALEXAM = "CLINICALEXAM",
+  ECG = "ECG",
+  SONOGRAPHY = "SONOGRAPHY",
+  BIOLOGY = "BIOLOGY",
   PRESCRIPTION = "PRESCRIPTION",
-  GENERAL_SONO = "GENERAL_SONO"
+  MEDICAL_REPORT = "MEDICAL_REPORT",
+  CERTIFICAT = "CERTIFICAT"
 }
 TypeGraphQL.registerEnumType(EventTypes, {
   name: "EventTypes",

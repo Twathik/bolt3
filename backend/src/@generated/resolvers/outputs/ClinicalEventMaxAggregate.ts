@@ -2,6 +2,7 @@ import * as TypeGraphQL from "type-graphql";
 import * as GraphQLScalars from "graphql-scalars";
 import { Prisma } from "@prisma/client";
 import { DecimalJSScalar } from "../../scalars";
+import { EventCategory } from "../../enums/EventCategory";
 import { EventTypes } from "../../enums/EventTypes";
 
 @TypeGraphQL.ObjectType("ClinicalEventMaxAggregate", {})
@@ -14,7 +15,12 @@ export class ClinicalEventMaxAggregate {
   @TypeGraphQL.Field(_type => EventTypes, {
     nullable: true
   })
-  eventType!: "CLINICAL_VISIT" | "PRESCRIPTION" | "GENERAL_SONO" | null;
+  eventType!: "DIAGNOSTIC" | "HISTORY" | "CLINICALEXAM" | "ECG" | "SONOGRAPHY" | "BIOLOGY" | "PRESCRIPTION" | "MEDICAL_REPORT" | "CERTIFICAT" | null;
+
+  @TypeGraphQL.Field(_type => EventCategory, {
+    nullable: true
+  })
+  eventCategory!: "FOLDER" | "DOCUMENT" | null;
 
   @TypeGraphQL.Field(_type => String, {
     nullable: true
@@ -39,22 +45,7 @@ export class ClinicalEventMaxAggregate {
   @TypeGraphQL.Field(_type => Boolean, {
     nullable: true
   })
-  onTrash!: boolean | null;
-
-  @TypeGraphQL.Field(_type => Boolean, {
-    nullable: true
-  })
   deleted!: boolean | null;
-
-  @TypeGraphQL.Field(_type => Boolean, {
-    nullable: true
-  })
-  empty!: boolean | null;
-
-  @TypeGraphQL.Field(_type => Boolean, {
-    nullable: true
-  })
-  createdReport!: boolean | null;
 
   @TypeGraphQL.Field(_type => String, {
     nullable: true

@@ -7,7 +7,7 @@ export enum AppSubscriptionPayloadType {
   patientUpdate = 'patientUpdate',
   modalityUpdate = 'modalityUpdate',
   mobileDeviceUpdate = 'mobileDeviceUpdate',
-  clinicalEvents = 'clinicalEvents',
+  focusedDocument = 'focusedDocument',
   workingLists = 'workingLists',
   consultationLists = 'consultationLists',
 }
@@ -23,6 +23,6 @@ export type AppSubscriptionPayloadEnumType =
   | 'patientUpdate'
   | 'modalityUpdate'
   | 'mobileDeviceUpdate'
-  | 'clinicalEvents'
   | 'workingLists'
   | 'consultationLists'
+  | 'focusedDocument'

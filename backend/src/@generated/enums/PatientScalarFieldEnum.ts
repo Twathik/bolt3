@@ -14,7 +14,9 @@ export enum PatientScalarFieldEnum {
   updated = "updated",
   deleted = "deleted",
   onTrash = "onTrash",
-  informationsConfirmed = "informationsConfirmed"
+  informationsConfirmed = "informationsConfirmed",
+  clinicalData = "clinicalData",
+  documentData = "documentData"
 }
 TypeGraphQL.registerEnumType(PatientScalarFieldEnum, {
   name: "PatientScalarFieldEnum",

@@ -1,5 +1,5 @@
 import * as TypeGraphQL from 'type-graphql'
-import { EventTypes } from '../../../@generated'
+import { EventCategory, EventTypes } from '../../../@generated'
 
 @TypeGraphQL.ArgsType()
 export class createOneClinicalEventArgs {
@@ -17,4 +17,8 @@ export class createOneClinicalEventArgs {
     nullable: false,
   })
   eventType!: EventTypes
+  @TypeGraphQL.Field((_type) => EventCategory, {
+    nullable: false,
+  })
+  eventCategory!: EventCategory
 }

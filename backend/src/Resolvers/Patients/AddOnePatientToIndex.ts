@@ -27,7 +27,8 @@ export class AddOnePatientToIndex {
     const { data } = args
 
     try {
-      const patient: Patient = await getPrismaFromContext(ctx).patient.create({
+      const prisma = getPrismaFromContext(ctx) as PrismaClient
+      const patient: Patient = await prisma.patient.create({
         ...{ data },
         ...(_count && transformCountFieldIntoSelectRelationsCount(_count)),
       })
@@ -38,10 +39,25 @@ export class AddOnePatientToIndex {
           typesense: ctx.typesense,
           documents: [patient],
         })
+        await prisma.clinicalEvent.create({
+          data: {
+            eventType: 'DIAGNOSTIC',
+            user: { connect: { id: args.userId } },
+            patient: { connect: { id: patient.id } },
+          },
+        })
+        await prisma.clinicalEvent.create({
+          data: {
+            eventType: 'HISTORY',
+            user: { connect: { id: args.userId } },
+            patient: { connect: { id: patient.id } },
+          },
+        })
+
         return patient
       } catch (error) {
         console.log({ error })
-        await (getPrismaFromContext(ctx) as PrismaClient).patient.delete({
+        await prisma.patient.delete({
           where: { id: patient.id },
         })
         throw Error(error as any)

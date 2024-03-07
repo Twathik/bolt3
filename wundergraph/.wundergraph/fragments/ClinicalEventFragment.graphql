@@ -1,14 +1,12 @@
 fragment ClinicalEventFragment on mainDb_ClinicalEvent {
   id
   eventType
+  eventCategory
   updatedAt
-  createdReport
   report
-  empty
   dicomId
   dicom
   deleted
-  onTrash
   user {
     id
     fullName

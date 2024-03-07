@@ -4,6 +4,7 @@ import { Prisma } from "@prisma/client";
 import { DecimalJSScalar } from "../../scalars";
 import { BoolFieldUpdateOperationsInput } from "../inputs/BoolFieldUpdateOperationsInput";
 import { DateTimeFieldUpdateOperationsInput } from "../inputs/DateTimeFieldUpdateOperationsInput";
+import { EnumEventCategoryFieldUpdateOperationsInput } from "../inputs/EnumEventCategoryFieldUpdateOperationsInput";
 import { EnumEventTypesFieldUpdateOperationsInput } from "../inputs/EnumEventTypesFieldUpdateOperationsInput";
 import { NullableStringFieldUpdateOperationsInput } from "../inputs/NullableStringFieldUpdateOperationsInput";
 import { PatientUpdateOneRequiredWithoutClinicalEventNestedInput } from "../inputs/PatientUpdateOneRequiredWithoutClinicalEventNestedInput";
@@ -23,6 +24,11 @@ export class ClinicalEventUpdateWithoutUserInput {
   })
   eventType?: EnumEventTypesFieldUpdateOperationsInput | undefined;
 
+  @TypeGraphQL.Field(_type => EnumEventCategoryFieldUpdateOperationsInput, {
+    nullable: true
+  })
+  eventCategory?: EnumEventCategoryFieldUpdateOperationsInput | undefined;
+
   @TypeGraphQL.Field(_type => DateTimeFieldUpdateOperationsInput, {
     nullable: true
   })
@@ -36,22 +42,7 @@ export class ClinicalEventUpdateWithoutUserInput {
   @TypeGraphQL.Field(_type => BoolFieldUpdateOperationsInput, {
     nullable: true
   })
-  onTrash?: BoolFieldUpdateOperationsInput | undefined;
-
-  @TypeGraphQL.Field(_type => BoolFieldUpdateOperationsInput, {
-    nullable: true
-  })
   deleted?: BoolFieldUpdateOperationsInput | undefined;
-
-  @TypeGraphQL.Field(_type => BoolFieldUpdateOperationsInput, {
-    nullable: true
-  })
-  empty?: BoolFieldUpdateOperationsInput | undefined;
-
-  @TypeGraphQL.Field(_type => BoolFieldUpdateOperationsInput, {
-    nullable: true
-  })
-  createdReport?: BoolFieldUpdateOperationsInput | undefined;
 
   @TypeGraphQL.Field(_type => NullableStringFieldUpdateOperationsInput, {
     nullable: true

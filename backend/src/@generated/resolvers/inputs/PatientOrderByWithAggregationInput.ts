@@ -82,6 +82,16 @@ export class PatientOrderByWithAggregationInput {
   })
   informationsConfirmed?: "asc" | "desc" | undefined;
 
+  @TypeGraphQL.Field(_type => SortOrder, {
+    nullable: true
+  })
+  clinicalData?: "asc" | "desc" | undefined;
+
+  @TypeGraphQL.Field(_type => SortOrderInput, {
+    nullable: true
+  })
+  documentData?: SortOrderInput | undefined;
+
   @TypeGraphQL.Field(_type => PatientCountOrderByAggregateInput, {
     nullable: true
   })

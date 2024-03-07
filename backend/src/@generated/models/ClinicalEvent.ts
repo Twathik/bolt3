@@ -6,6 +6,7 @@ import { Patient } from "../models/Patient";
 import { Prescription } from "../models/Prescription";
 import { User } from "../models/User";
 import { WorkingList } from "../models/WorkingList";
+import { EventCategory } from "../enums/EventCategory";
 import { EventTypes } from "../enums/EventTypes";
 import { ClinicalEventCount } from "../resolvers/outputs/ClinicalEventCount";
 
@@ -19,7 +20,12 @@ export class ClinicalEvent {
   @TypeGraphQL.Field(_type => EventTypes, {
     nullable: false
   })
-  eventType!: "CLINICAL_VISIT" | "PRESCRIPTION" | "GENERAL_SONO";
+  eventType!: "DIAGNOSTIC" | "HISTORY" | "CLINICALEXAM" | "ECG" | "SONOGRAPHY" | "BIOLOGY" | "PRESCRIPTION" | "MEDICAL_REPORT" | "CERTIFICAT";
+
+  @TypeGraphQL.Field(_type => EventCategory, {
+    nullable: false
+  })
+  eventCategory!: "FOLDER" | "DOCUMENT";
 
   user?: User;
 
@@ -48,22 +54,7 @@ export class ClinicalEvent {
   @TypeGraphQL.Field(_type => Boolean, {
     nullable: false
   })
-  onTrash!: boolean;
-
-  @TypeGraphQL.Field(_type => Boolean, {
-    nullable: false
-  })
   deleted!: boolean;
-
-  @TypeGraphQL.Field(_type => Boolean, {
-    nullable: false
-  })
-  empty!: boolean;
-
-  @TypeGraphQL.Field(_type => Boolean, {
-    nullable: false
-  })
-  createdReport!: boolean;
 
   @TypeGraphQL.Field(_type => String, {
     nullable: true

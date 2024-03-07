@@ -10,6 +10,7 @@
     "start": "wunderctl start"
   },
   "dependencies": {
+    "@wundergraph/nextjs": "^0.15.5",
     "@wundergraph/sdk": "^0.181.5",
     "axios": "^1.6.2",
     "date-fns": "^2.30.0",

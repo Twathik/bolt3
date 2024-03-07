@@ -28,9 +28,20 @@ enum MobileDeviceType {
 }
 
 enum EventTypes {
-  CLINICAL_VISIT
+  DIAGNOSTIC
+  HISTORY
+  CLINICALEXAM
+  ECG
+  SONOGRAPHY
+  BIOLOGY
   PRESCRIPTION
-  GENERAL_SONO
+  MEDICAL_REPORT
+  CERTIFICAT
+}
+
+enum EventCategory {
+  FOLDER
+  DOCUMENT
 }
 
 enum ModalityType {
@@ -155,25 +166,25 @@ model MobileDevice {
 }
 
 model Patient {
-  id        String   @id @default(uuid())
-  lastName  String
-  firstName String
-  ddn       DateTime
-  sexe      Sexe
-  nTel      String?
-  address   String?
-  height    Float?
-  weight    Float?
-
-  createdAt DateTime @default(now())
-  updated   DateTime @updatedAt
-
+  id                    String             @id @default(uuid())
+  lastName              String
+  firstName             String
+  ddn                   DateTime
+  sexe                  Sexe
+  nTel                  String?
+  address               String?
+  height                Float?
+  weight                Float?
+  createdAt             DateTime           @default(now())
+  updated               DateTime           @updatedAt
   deleted               Boolean            @default(false)
   onTrash               Boolean            @default(false)
   informationsConfirmed Boolean            @default(false)
   ConsultationList      ConsultationList[]
   ClinicalEvent         ClinicalEvent[]
   WorkingList           WorkingList[]
+  clinicalData          String             @db.Text
+  documentData          String?            @db.Text
 
   @@index([sexe])
 }
@@ -196,29 +207,23 @@ model ConsultationList {
   consultation   Consultation @relation(fields: [consultationId], references: [id])
   consultationId String
   active         Boolean      @default(true)
-
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  createdAt      DateTime     @default(now())
+  updatedAt      DateTime     @updatedAt
 
   @@unique([patientId, consultationId])
 }
 
 model ClinicalEvent {
-  id        String     @id @default(uuid())
-  eventType EventTypes
-
-  user   User   @relation(fields: [userId], references: [id])
-  userId String
-
-  patient   Patient @relation(fields: [patientId], references: [id])
-  patientId String
-
+  id                   String        @id @default(uuid())
+  eventType            EventTypes
+  eventCategory        EventCategory @default(FOLDER)
+  user                 User          @relation(fields: [userId], references: [id])
+  userId               String
+  patient              Patient       @relation(fields: [patientId], references: [id])
+  patientId            String
   createdAt            DateTime      @default(now())
   updatedAt            DateTime      @updatedAt
-  onTrash              Boolean       @default(false)
   deleted              Boolean       @default(false)
-  empty                Boolean       @default(true)
-  createdReport        Boolean       @default(false)
   report               String?       @db.Text
   dicom                Boolean       @default(false)
   dicomId              String?
@@ -245,8 +250,8 @@ model DocumentTemplate {
 
 model Economizer {
   id        String     @id @default(uuid())
-  name      String
-  eventType EventTypes @unique
+  name      String     @unique
+  eventType EventTypes
   template  String     @db.Text
 }
 

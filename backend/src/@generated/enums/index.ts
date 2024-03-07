@@ -3,6 +3,7 @@ export { ConsultationListScalarFieldEnum } from "./ConsultationListScalarFieldEn
 export { ConsultationScalarFieldEnum } from "./ConsultationScalarFieldEnum";
 export { DocumentTemplateScalarFieldEnum } from "./DocumentTemplateScalarFieldEnum";
 export { EconomizerScalarFieldEnum } from "./EconomizerScalarFieldEnum";
+export { EventCategory } from "./EventCategory";
 export { EventTypes } from "./EventTypes";
 export { JsonNullValueFilter } from "./JsonNullValueFilter";
 export { JsonNullValueInput } from "./JsonNullValueInput";

@@ -3,15 +3,9 @@
 /* eslint-disable no-await-in-loop */
 /* eslint-disable no-console */
 
-import {
-  Patient,
-  PrismaClient,
-  Role,
-  User,
-  DocumentTemplate,
-  Modality,
-} from '@prisma/client'
+import { Patient, PrismaClient, Role, User, Modality } from '@prisma/client'
 const prisma = new PrismaClient()
+import { format } from 'date-fns'
 
 async function main() {
   console.log(`Start seeding ...`)
@@ -29,6 +23,16 @@ async function main() {
       searchApiKeyId: null,
     },
   ]
+  let userId: string = ''
+  for (const u of userData) {
+    const user = await prisma.user.upsert({
+      where: { email: u.email },
+      update: {},
+      create: u,
+    })
+    userId = user.id
+    console.log(`Created user with id: ${user.id}`)
+  }
 
   const patientData: Omit<
     Patient,
@@ -38,6 +42,8 @@ async function main() {
     | 'informationsConfirmed'
     | 'address'
     | 'onTrash'
+    | 'historyId'
+    | 'diagnosticId'
   >[] = [
     {
       id: '1',
@@ -48,6 +54,8 @@ async function main() {
       sexe: 'M',
       height: null,
       weight: null,
+      clinicalData: '',
+      documentData: null,
     },
     {
       id: '2',
@@ -58,6 +66,8 @@ async function main() {
       sexe: 'F',
       height: null,
       weight: null,
+      clinicalData: '',
+      documentData: null,
     },
     {
       id: '3',
@@ -68,6 +78,8 @@ async function main() {
       sexe: 'M',
       height: null,
       weight: null,
+      clinicalData: '',
+      documentData: null,
     },
     {
       id: '4',
@@ -78,6 +90,8 @@ async function main() {
       sexe: 'F',
       height: null,
       weight: null,
+      clinicalData: '',
+      documentData: null,
     },
     {
       id: '5',
@@ -88,6 +102,8 @@ async function main() {
       sexe: 'M',
       height: null,
       weight: null,
+      clinicalData: '',
+      documentData: null,
     },
     {
       id: '6',
@@ -98,6 +114,8 @@ async function main() {
       weight: null,
       nTel: '',
       sexe: 'M',
+      clinicalData: '',
+      documentData: null,
     },
     {
       id: '7',
@@ -108,6 +126,8 @@ async function main() {
       weight: null,
       nTel: '',
       sexe: 'F',
+      clinicalData: '',
+      documentData: null,
     },
     {
       id: '8',
@@ -118,6 +138,8 @@ async function main() {
       weight: null,
       nTel: '',
       sexe: 'F',
+      clinicalData: '',
+      documentData: null,
     },
     {
       id: '9',
@@ -128,6 +150,8 @@ async function main() {
       weight: null,
       nTel: '',
       sexe: 'M',
+      clinicalData: '',
+      documentData: null,
     },
     {
       id: '10',
@@ -138,6 +162,8 @@ async function main() {
       weight: null,
       nTel: '',
       sexe: 'M',
+      clinicalData: '',
+      documentData: null,
     },
     {
       id: '11',
@@ -148,6 +174,8 @@ async function main() {
       weight: null,
       nTel: '',
       sexe: 'F',
+      clinicalData: '',
+      documentData: null,
     },
     {
       id: '12',
@@ -158,6 +186,8 @@ async function main() {
       weight: null,
       nTel: '',
       sexe: 'M',
+      clinicalData: '',
+      documentData: null,
     },
     {
       id: '13',
@@ -168,6 +198,8 @@ async function main() {
       weight: null,
       nTel: '',
       sexe: 'M',
+      clinicalData: '',
+      documentData: null,
     },
     {
       id: '14',
@@ -178,6 +210,8 @@ async function main() {
       weight: null,
       nTel: '',
       sexe: 'M',
+      clinicalData: '',
+      documentData: null,
     },
     {
       id: '15',
@@ -188,6 +222,8 @@ async function main() {
       weight: null,
       nTel: '',
       sexe: 'F',
+      clinicalData: '',
+      documentData: null,
     },
     {
       id: '16',
@@ -198,6 +234,8 @@ async function main() {
       weight: null,
       nTel: '',
       sexe: 'F',
+      clinicalData: '',
+      documentData: null,
     },
     {
       id: '17',
@@ -208,6 +246,8 @@ async function main() {
       weight: null,
       nTel: '',
       sexe: 'M',
+      clinicalData: '',
+      documentData: null,
     },
     {
       id: '18',
@@ -218,6 +258,8 @@ async function main() {
       weight: null,
       nTel: '',
       sexe: 'M',
+      clinicalData: '',
+      documentData: null,
     },
     {
       id: '19',
@@ -228,7 +270,10 @@ async function main() {
       weight: null,
       nTel: '',
       sexe: 'M',
+      clinicalData: '',
+      documentData: null,
     },
+
     {
       id: '20',
       firstName: 'Samira',
@@ -238,24 +283,8 @@ async function main() {
       weight: null,
       nTel: '',
       sexe: 'F',
-    },
-  ]
-
-  const DocumentTemplateData: Omit<DocumentTemplate, 'id'>[] = [
-    {
-      eventType: 'CLINICAL_VISIT',
-      template: '',
-      empty: true,
-    },
-    {
-      eventType: 'PRESCRIPTION',
-      template: '',
-      empty: true,
-    },
-    {
-      eventType: 'GENERAL_SONO',
-      template: '',
-      empty: true,
+      clinicalData: '',
+      documentData: null,
     },
   ]
 
@@ -302,31 +331,70 @@ async function main() {
     },
   ]
 
-  for (const u of userData) {
-    const user = await prisma.user.upsert({
-      where: { email: u.email },
-      update: {},
-      create: u,
-    })
-    console.log(`Created user with id: ${user.id}`)
-  }
   for (const u of patientData) {
     const patient = await prisma.patient.upsert({
       where: { id: u.id },
       update: {},
       create: u,
     })
+    const diagnostic = await prisma.clinicalEvent.create({
+      data: {
+        eventType: 'DIAGNOSTIC',
+        eventCategory: 'FOLDER',
+        userId,
+        patientId: patient.id,
+      },
+    })
+    const history = await prisma.clinicalEvent.create({
+      data: {
+        eventType: 'HISTORY',
+        eventCategory: 'FOLDER',
+        userId,
+        patientId: patient.id,
+      },
+    })
+    await prisma.patient.update({
+      data: {
+        clinicalData: JSON.stringify([
+          {
+            type: 'document-header',
+            children: [{ text: '' }],
+            createdAt: format(diagnostic.createdAt, 'dd-MM-yyy'),
+            eventId: diagnostic.id,
+            documentType: 'DIAGNOSTIC',
+            id: patient.id,
+          },
+          {
+            type: 'p',
+            children: [{ text: '' }],
+          },
+          {
+            type: 'p',
+            children: [{ text: '' }],
+          },
+          {
+            type: 'document-header',
+            children: [{ text: '' }],
+            createdAt: format(history.createdAt, 'dd-MM-yyy'),
+            eventId: history.id,
+            documentType: 'HISTORY',
+            id: patient.id,
+          },
+          {
+            type: 'p',
+            children: [{ text: '' }],
+          },
+          {
+            type: 'p',
+            children: [{ text: '' }],
+          },
+        ]),
+      },
+      where: { id: patient.id },
+    })
     console.log(`Created patient with id: ${patient.id}`)
   }
 
-  for (const d of DocumentTemplateData) {
-    const template = await prisma.documentTemplate.upsert({
-      where: { eventType: d.eventType },
-      update: {},
-      create: d,
-    })
-    console.log(`Created documentTemplates with id: ${template.id}`)
-  }
   for (const d of ModalityData) {
     const modality = await prisma.modality.upsert({
       where: { modalityName: d.modalityName },
@@ -335,6 +403,7 @@ async function main() {
     })
     console.log(`Created modalities with id: ${modality.id}`)
   }
+
   console.log(`Seeding finished.`)
 }
 

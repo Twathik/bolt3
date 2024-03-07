@@ -1,0 +1,23 @@
+{
+  "name": "@slate-yjs/example-backend",
+  "version": "0.0.11",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node dist/index.js",
+    "build": "yarn run tsup",
+    "dev": "yarn build --watch --onSuccess \"yarn run start\""
+  },
+  "devDependencies": {
+    "tsup": "^5.12.1"
+  },
+  "dependencies": {
+    "@hocuspocus/extension-logger": "^2.11.3",
+    "@hocuspocus/extension-redis": "^2.11.3",
+    "@hocuspocus/extension-sqlite": "^2.11.3",
+    "@hocuspocus/server": "^2.11.3",
+    "@slate-yjs/core": "^1.0.2",
+    "slate": "^0.102.0",
+    "yjs": "^13.6.14"
+  }
+}

@@ -5,6 +5,9 @@ settings:
   excludeLinksFromLockfile: false
 
 dependencies:
+  '@wundergraph/nextjs':
+    specifier: ^0.15.5
+    version: 0.15.5(@wundergraph/sdk@0.181.5)(next@13.5.4)(react-dom@18.2.0)(react@18.2.0)(swr@2.2.4)
   '@wundergraph/sdk':
     specifier: ^0.181.5
     version: 0.181.5
@@ -1703,6 +1706,26 @@ packages:
       tslib: 2.6.2
     dev: false
 
+  /@wundergraph/nextjs@0.15.5(@wundergraph/sdk@0.181.5)(next@13.5.4)(react-dom@18.2.0)(react@18.2.0)(swr@2.2.4):
+    resolution: {integrity: sha512-W5VLrmcZ/ZokAdrG2zeF9+cKmwP0j8frGznTX3FvlZqQO70F3H38b3P1/KCBlv3nXMOjuaFWeuBR4cwpHHqeSw==}
+    peerDependencies:
+      '@wundergraph/sdk': '>=0.110.0'
+      next: ^12.1.0 || ^13.0.0 || ^14.0.0
+      react: ^17.0.2 || ^18.0.0
+      react-dom: ^17.0.2 || ^18.0.0
+      swr: ^2.2.0
+    dependencies:
+      '@wundergraph/protobuf': 0.118.2
+      '@wundergraph/sdk': 0.181.5
+      '@wundergraph/swr': 0.18.5(@wundergraph/sdk@0.181.5)(react-dom@18.2.0)(react@18.2.0)(swr@2.2.4)
+      handlebars: 4.7.8
+      next: 13.5.4(@babel/core@7.23.2)(@opentelemetry/api@1.7.0)(react-dom@18.2.0)(react@18.2.0)
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+      react-ssr-prepass: 1.5.0(react@18.2.0)
+      swr: 2.2.4(react@18.2.0)
+    dev: false
+
   /@wundergraph/orm@0.3.1:
     resolution: {integrity: sha512-G2+dzIHkLF1yEH1b/eIIG+YaBdDTXwP834AtiFE4n9G5cRSrU62OCS6gW1o1/yidaVEkPM9qkdEBaLdi5ma7pg==}
     dependencies:
@@ -1813,6 +1836,21 @@ packages:
       yargs: 17.7.2
     transitivePeerDependencies:
       - supports-color
+    dev: false
+
+  /@wundergraph/swr@0.18.5(@wundergraph/sdk@0.181.5)(react-dom@18.2.0)(react@18.2.0)(swr@2.2.4):
+    resolution: {integrity: sha512-+PKLiT/8gNjvdc91wQK4qvJzFaAr5mh1XAgRLZevGAhAPM17ajQUnxpN2gCYyiXzGFw4uxMjL3ZHQJivfF9K1g==}
+    peerDependencies:
+      '@wundergraph/sdk': '>=0.110.0'
+      react: ^16.8.0 || ^17.0.2 || ^18.0.0
+      react-dom: ^16.8.0 || ^17.0.2 || ^18.0.0
+      swr: ^2.2.0
+    dependencies:
+      '@wundergraph/sdk': 0.181.5
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+      react-ssr-prepass: 1.5.0(react@18.2.0)
+      swr: 2.2.4(react@18.2.0)
     dev: false
 
   /@wundergraph/wunderctl@0.176.3:
@@ -5297,6 +5335,14 @@ packages:
   /react-is@18.2.0:
     resolution: {integrity: sha512-xWGDIW6x921xtzPkhiULtthJHoJvBbF3q26fzloPCK0hsvxtPVelvftw3zjbHWSkR2km9Z+4uxbDDK/6Zw9B8w==}
     dev: true
+
+  /react-ssr-prepass@1.5.0(react@18.2.0):
+    resolution: {integrity: sha512-yFNHrlVEReVYKsLI5lF05tZoHveA5pGzjFbFJY/3pOqqjGOmMmqx83N4hIjN2n6E1AOa+eQEUxs3CgRnPmT0RQ==}
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.0 || ^18.0.0
+    dependencies:
+      react: 18.2.0
+    dev: false
 
   /react@18.2.0:
     resolution: {integrity: sha512-/3IjMdb2L9QbBdWiW5e3P2/npwMBaU9mHCSCUzNln0ZCYbcfTsGbTJrU/kGemdH2IWmB2ioZ+zkxtmq6g09fGQ==}

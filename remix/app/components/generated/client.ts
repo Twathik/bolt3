@@ -169,6 +169,12 @@ import type {
 	PatientsUpdateOnePatientResponse,
 	PatientsUpdateOnePatientInput,
 	PatientsUpdateOnePatientResponseData,
+	PatientsUpdateOnePatientClinicalDataResponse,
+	PatientsUpdateOnePatientClinicalDataInput,
+	PatientsUpdateOnePatientClinicalDataResponseData,
+	PatientsUpdateOnePatientDocumentReportResponse,
+	PatientsUpdateOnePatientDocumentReportInput,
+	PatientsUpdateOnePatientDocumentReportResponseData,
 	TemplatesFetchTemplateResponse,
 	TemplatesFetchTemplateInput,
 	TemplatesFetchTemplateResponseData,
@@ -257,7 +263,7 @@ export interface AuthProvider {
 }
 
 export const defaultClientConfig: ClientConfig = {
-	applicationHash: "edf441d1",
+	applicationHash: "17a24742",
 	baseURL: "http://api.bolt3.local",
 	sdkVersion: "0.181.5",
 };
@@ -414,6 +420,12 @@ export const operationMetadata: OperationMetadata = {
 		requiresAuthentication: true,
 	},
 	"patients/updateOnePatient": {
+		requiresAuthentication: true,
+	},
+	"patients/updateOnePatientClinicalData": {
+		requiresAuthentication: true,
+	},
+	"patients/updateOnePatientDocumentReport": {
 		requiresAuthentication: true,
 	},
 	"templates/fetchTemplate": {
@@ -780,6 +792,16 @@ export type Mutations = {
 	"patients/updateOnePatient": {
 		input: PatientsUpdateOnePatientInput;
 		response: { data?: PatientsUpdateOnePatientResponse["data"]; error?: ClientOperationErrors };
+		requiresAuthentication: true;
+	};
+	"patients/updateOnePatientClinicalData": {
+		input: PatientsUpdateOnePatientClinicalDataInput;
+		response: { data?: PatientsUpdateOnePatientClinicalDataResponse["data"]; error?: ClientOperationErrors };
+		requiresAuthentication: true;
+	};
+	"patients/updateOnePatientDocumentReport": {
+		input: PatientsUpdateOnePatientDocumentReportInput;
+		response: { data?: PatientsUpdateOnePatientDocumentReportResponse["data"]; error?: ClientOperationErrors };
 		requiresAuthentication: true;
 	};
 	"templates/updateTemplate": {

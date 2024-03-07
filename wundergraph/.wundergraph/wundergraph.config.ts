@@ -9,6 +9,7 @@ import {
 import server from "./wundergraph.server";
 import operations from "./wundergraph.operations";
 import { z } from "@wundergraph/sdk/operations";
+import { NextJsTemplate } from "@wundergraph/nextjs/dist/template";
 
 const countries = introspect.graphql({
   apiNamespace: "countries",
@@ -44,7 +45,7 @@ configureWunderGraphApplication({
 
       authorizedRedirectUris: [
         "http://bolt3.local/login",
-        "http://bolt3.local/search",
+        "http://bolt3.local/webapp/search",
         "http://localhost:3000/login",
       ],
       secureCookieHashKey: new EnvironmentVariable(
@@ -84,6 +85,14 @@ configureWunderGraphApplication({
       {
         templates: [templates.typescript.client],
         path: "../../remix/app/components/generated",
+      },
+      {
+        templates: [templates.typescript.client],
+        path: "../../frontend/app/components/generated",
+      },
+      {
+        templates: [new NextJsTemplate()],
+        path: "../../nextjs/src/components/wg-generated",
       },
       {
         templates: [templates.typescript.client],

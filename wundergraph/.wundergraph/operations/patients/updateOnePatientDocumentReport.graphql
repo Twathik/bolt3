@@ -1,0 +1,13 @@
+mutation (
+  $id: String!
+  $documentData: String
+  $userId: String! @fromClaim(name: USERID)
+) {
+  mainDb_updateOnePatient(
+    where: { id: $id }
+    userId: $userId
+    data: { documentData: { set: $documentData } }
+  ) {
+    id
+  }
+}
