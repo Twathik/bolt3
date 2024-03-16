@@ -27,6 +27,12 @@ type AggregateConsultationList {
   _min: ConsultationListMinAggregate
 }
 
+type AggregateDocumentStore {
+  _count: DocumentStoreCountAggregate
+  _max: DocumentStoreMaxAggregate
+  _min: DocumentStoreMinAggregate
+}
+
 type AggregateDocumentTemplate {
   _count: DocumentTemplateCountAggregate
   _max: DocumentTemplateMaxAggregate
@@ -123,6 +129,26 @@ input BoolWithAggregatesFilter {
   _min: NestedBoolFilter
   equals: Boolean
   not: NestedBoolWithAggregatesFilter
+}
+
+"""The `Byte` scalar type represents byte value as a Buffer"""
+scalar Byte
+
+input BytesNullableFilter {
+  equals: Byte
+  in: [Byte!]
+  not: NestedBytesNullableFilter
+  notIn: [Byte!]
+}
+
+input BytesNullableWithAggregatesFilter {
+  _count: NestedIntNullableFilter
+  _max: NestedBytesNullableFilter
+  _min: NestedBytesNullableFilter
+  equals: Byte
+  in: [Byte!]
+  not: NestedBytesNullableWithAggregatesFilter
+  notIn: [Byte!]
 }
 
 type ClinicalEvent {
@@ -1458,6 +1484,148 @@ input DateTimeWithAggregatesFilter {
   notIn: [DateTimeISO!]
 }
 
+type DocumentStore {
+  clinicalData: Byte
+  documentData: Byte
+  id: String!
+  patientId: String!
+}
+
+type DocumentStoreCountAggregate {
+  _all: Int!
+  clinicalData: Int!
+  documentData: Int!
+  id: Int!
+  patientId: Int!
+}
+
+input DocumentStoreCountOrderByAggregateInput {
+  clinicalData: SortOrder
+  documentData: SortOrder
+  id: SortOrder
+  patientId: SortOrder
+}
+
+input DocumentStoreCreateInput {
+  clinicalData: Byte
+  documentData: Byte
+  id: String
+  patientId: String!
+}
+
+input DocumentStoreCreateManyInput {
+  clinicalData: Byte
+  documentData: Byte
+  id: String
+  patientId: String!
+}
+
+type DocumentStoreGroupBy {
+  _count: DocumentStoreCountAggregate
+  _max: DocumentStoreMaxAggregate
+  _min: DocumentStoreMinAggregate
+  clinicalData: Byte
+  documentData: Byte
+  id: String!
+  patientId: String!
+}
+
+type DocumentStoreMaxAggregate {
+  clinicalData: Byte
+  documentData: Byte
+  id: String
+  patientId: String
+}
+
+input DocumentStoreMaxOrderByAggregateInput {
+  clinicalData: SortOrder
+  documentData: SortOrder
+  id: SortOrder
+  patientId: SortOrder
+}
+
+type DocumentStoreMinAggregate {
+  clinicalData: Byte
+  documentData: Byte
+  id: String
+  patientId: String
+}
+
+input DocumentStoreMinOrderByAggregateInput {
+  clinicalData: SortOrder
+  documentData: SortOrder
+  id: SortOrder
+  patientId: SortOrder
+}
+
+input DocumentStoreOrderByWithAggregationInput {
+  _count: DocumentStoreCountOrderByAggregateInput
+  _max: DocumentStoreMaxOrderByAggregateInput
+  _min: DocumentStoreMinOrderByAggregateInput
+  clinicalData: SortOrderInput
+  documentData: SortOrderInput
+  id: SortOrder
+  patientId: SortOrder
+}
+
+input DocumentStoreOrderByWithRelationInput {
+  clinicalData: SortOrderInput
+  documentData: SortOrderInput
+  id: SortOrder
+  patientId: SortOrder
+}
+
+enum DocumentStoreScalarFieldEnum {
+  clinicalData
+  documentData
+  id
+  patientId
+}
+
+input DocumentStoreScalarWhereWithAggregatesInput {
+  AND: [DocumentStoreScalarWhereWithAggregatesInput!]
+  NOT: [DocumentStoreScalarWhereWithAggregatesInput!]
+  OR: [DocumentStoreScalarWhereWithAggregatesInput!]
+  clinicalData: BytesNullableWithAggregatesFilter
+  documentData: BytesNullableWithAggregatesFilter
+  id: StringWithAggregatesFilter
+  patientId: StringWithAggregatesFilter
+}
+
+input DocumentStoreUpdateInput {
+  clinicalData: NullableBytesFieldUpdateOperationsInput
+  documentData: NullableBytesFieldUpdateOperationsInput
+  id: StringFieldUpdateOperationsInput
+  patientId: StringFieldUpdateOperationsInput
+}
+
+input DocumentStoreUpdateManyMutationInput {
+  clinicalData: NullableBytesFieldUpdateOperationsInput
+  documentData: NullableBytesFieldUpdateOperationsInput
+  id: StringFieldUpdateOperationsInput
+  patientId: StringFieldUpdateOperationsInput
+}
+
+input DocumentStoreWhereInput {
+  AND: [DocumentStoreWhereInput!]
+  NOT: [DocumentStoreWhereInput!]
+  OR: [DocumentStoreWhereInput!]
+  clinicalData: BytesNullableFilter
+  documentData: BytesNullableFilter
+  id: StringFilter
+  patientId: StringFilter
+}
+
+input DocumentStoreWhereUniqueInput {
+  AND: [DocumentStoreWhereInput!]
+  NOT: [DocumentStoreWhereInput!]
+  OR: [DocumentStoreWhereInput!]
+  clinicalData: BytesNullableFilter
+  documentData: BytesNullableFilter
+  id: String
+  patientId: String
+}
+
 type DocumentTemplate {
   empty: Boolean!
   eventType: EventTypes!
@@ -2669,6 +2837,7 @@ type Mutation {
   createManyClinicalEvent(data: [ClinicalEventCreateManyInput!]!, skipDuplicates: Boolean): AffectedRowsOutput!
   createManyConsultation(data: [ConsultationCreateManyInput!]!, skipDuplicates: Boolean): AffectedRowsOutput!
   createManyConsultationList(data: [ConsultationListCreateManyInput!]!, skipDuplicates: Boolean): AffectedRowsOutput!
+  createManyDocumentStore(data: [DocumentStoreCreateManyInput!]!, skipDuplicates: Boolean): AffectedRowsOutput!
   createManyDocumentTemplate(data: [DocumentTemplateCreateManyInput!]!, skipDuplicates: Boolean): AffectedRowsOutput!
   createManyEconomizer(data: [EconomizerCreateManyInput!]!, skipDuplicates: Boolean): AffectedRowsOutput!
   createManyMobileDevice(data: [MobileDeviceCreateManyInput!]!, skipDuplicates: Boolean): AffectedRowsOutput!
@@ -2681,6 +2850,7 @@ type Mutation {
   createOneClinicalEvent(eventCategory: EventCategory!, eventType: EventTypes!, patientId: String!, userId: String!): ClinicalEvent!
   createOneConsultation(data: ConsultationCreateInput!): Consultation!
   createOneConsultationList(data: ConsultationListCreateInput!): ConsultationList!
+  createOneDocumentStore(data: DocumentStoreCreateInput!): DocumentStore!
   createOneDocumentTemplate(data: DocumentTemplateCreateInput!): DocumentTemplate!
   createOneEconomizer(data: EconomizerCreateInput!): Economizer!
   createOneMobileDevice(data: MobileDeviceCreateInput!, userId: String!): MobileDevice!
@@ -2693,6 +2863,7 @@ type Mutation {
   deleteManyClinicalEvent(where: ClinicalEventWhereInput): AffectedRowsOutput!
   deleteManyConsultation(where: ConsultationWhereInput): AffectedRowsOutput!
   deleteManyConsultationList(where: ConsultationListWhereInput): AffectedRowsOutput!
+  deleteManyDocumentStore(where: DocumentStoreWhereInput): AffectedRowsOutput!
   deleteManyDocumentTemplate(where: DocumentTemplateWhereInput): AffectedRowsOutput!
   deleteManyEconomizer(where: EconomizerWhereInput): AffectedRowsOutput!
   deleteManyMobileDevice(where: MobileDeviceWhereInput): AffectedRowsOutput!
@@ -2705,6 +2876,7 @@ type Mutation {
   deleteOneClinicalEvent(userId: String!, where: ClinicalEventWhereUniqueInput!): ClinicalEvent
   deleteOneConsultation(where: ConsultationWhereUniqueInput!): Consultation
   deleteOneConsultationList(userId: String!, where: ConsultationListWhereUniqueInput!): ConsultationList
+  deleteOneDocumentStore(where: DocumentStoreWhereUniqueInput!): DocumentStore
   deleteOneDocumentTemplate(where: DocumentTemplateWhereUniqueInput!): DocumentTemplate
   deleteOneEconomizer(where: EconomizerWhereUniqueInput!): Economizer
   deleteOneMobileDevice(userId: String!, where: MobileDeviceWhereUniqueInput!): MobileDevice
@@ -2730,6 +2902,7 @@ type Mutation {
   updateManyClinicalEvent(data: ClinicalEventUpdateManyMutationInput!, where: ClinicalEventWhereInput): AffectedRowsOutput!
   updateManyConsultation(data: ConsultationUpdateManyMutationInput!, where: ConsultationWhereInput): AffectedRowsOutput!
   updateManyConsultationList(data: ConsultationListUpdateManyMutationInput!, where: ConsultationListWhereInput): AffectedRowsOutput!
+  updateManyDocumentStore(data: DocumentStoreUpdateManyMutationInput!, where: DocumentStoreWhereInput): AffectedRowsOutput!
   updateManyDocumentTemplate(data: DocumentTemplateUpdateManyMutationInput!, where: DocumentTemplateWhereInput): AffectedRowsOutput!
   updateManyEconomizer(data: EconomizerUpdateManyMutationInput!, where: EconomizerWhereInput): AffectedRowsOutput!
   updateManyMobileDevice(data: MobileDeviceUpdateManyMutationInput!, where: MobileDeviceWhereInput): AffectedRowsOutput!
@@ -2742,6 +2915,7 @@ type Mutation {
   updateOneClinicalEvent(data: ClinicalEventUpdateInput!, userId: String!, where: ClinicalEventWhereUniqueInput!): ClinicalEvent
   updateOneConsultation(data: ConsultationUpdateInput!, where: ConsultationWhereUniqueInput!): Consultation
   updateOneConsultationList(data: ConsultationListUpdateInput!, userId: String!, where: ConsultationListWhereUniqueInput!): ConsultationList
+  updateOneDocumentStore(data: DocumentStoreUpdateInput!, where: DocumentStoreWhereUniqueInput!): DocumentStore
   updateOneDocumentTemplate(data: DocumentTemplateUpdateInput!, where: DocumentTemplateWhereUniqueInput!): DocumentTemplate
   updateOneEconomizer(data: EconomizerUpdateInput!, where: EconomizerWhereUniqueInput!): Economizer
   updateOneMobileDevice(data: MobileDeviceUpdateInput!, userId: String!, where: MobileDeviceWhereUniqueInput!): MobileDevice
@@ -2754,6 +2928,7 @@ type Mutation {
   upsertOneClinicalEvent(create: ClinicalEventCreateInput!, update: ClinicalEventUpdateInput!, where: ClinicalEventWhereUniqueInput!): ClinicalEvent!
   upsertOneConsultation(create: ConsultationCreateInput!, update: ConsultationUpdateInput!, where: ConsultationWhereUniqueInput!): Consultation!
   upsertOneConsultationList(create: ConsultationListCreateInput!, update: ConsultationListUpdateInput!, where: ConsultationListWhereUniqueInput!): ConsultationList!
+  upsertOneDocumentStore(create: DocumentStoreCreateInput!, update: DocumentStoreUpdateInput!, where: DocumentStoreWhereUniqueInput!): DocumentStore!
   upsertOneDocumentTemplate(create: DocumentTemplateCreateInput!, update: DocumentTemplateUpdateInput!, where: DocumentTemplateWhereUniqueInput!): DocumentTemplate!
   upsertOneEconomizer(create: EconomizerCreateInput!, update: EconomizerUpdateInput!, where: EconomizerWhereUniqueInput!): Economizer!
   upsertOneMobileDevice(create: MobileDeviceCreateInput!, update: MobileDeviceUpdateInput!, where: MobileDeviceWhereUniqueInput!): MobileDevice!
@@ -2776,6 +2951,23 @@ input NestedBoolWithAggregatesFilter {
   _min: NestedBoolFilter
   equals: Boolean
   not: NestedBoolWithAggregatesFilter
+}
+
+input NestedBytesNullableFilter {
+  equals: Byte
+  in: [Byte!]
+  not: NestedBytesNullableFilter
+  notIn: [Byte!]
+}
+
+input NestedBytesNullableWithAggregatesFilter {
+  _count: NestedIntNullableFilter
+  _max: NestedBytesNullableFilter
+  _min: NestedBytesNullableFilter
+  equals: Byte
+  in: [Byte!]
+  not: NestedBytesNullableWithAggregatesFilter
+  notIn: [Byte!]
 }
 
 input NestedDateTimeFilter {
@@ -3090,6 +3282,10 @@ input NestedStringWithAggregatesFilter {
   not: NestedStringWithAggregatesFilter
   notIn: [String!]
   startsWith: String
+}
+
+input NullableBytesFieldUpdateOperationsInput {
+  set: Byte
 }
 
 input NullableFloatFieldUpdateOperationsInput {
@@ -3965,6 +4161,7 @@ type Query {
   aggregateClinicalEvent(cursor: ClinicalEventWhereUniqueInput, orderBy: [ClinicalEventOrderByWithRelationInput!], skip: Int, take: Int, where: ClinicalEventWhereInput): AggregateClinicalEvent!
   aggregateConsultation(cursor: ConsultationWhereUniqueInput, orderBy: [ConsultationOrderByWithRelationInput!], skip: Int, take: Int, where: ConsultationWhereInput): AggregateConsultation!
   aggregateConsultationList(cursor: ConsultationListWhereUniqueInput, orderBy: [ConsultationListOrderByWithRelationInput!], skip: Int, take: Int, where: ConsultationListWhereInput): AggregateConsultationList!
+  aggregateDocumentStore(cursor: DocumentStoreWhereUniqueInput, orderBy: [DocumentStoreOrderByWithRelationInput!], skip: Int, take: Int, where: DocumentStoreWhereInput): AggregateDocumentStore!
   aggregateDocumentTemplate(cursor: DocumentTemplateWhereUniqueInput, orderBy: [DocumentTemplateOrderByWithRelationInput!], skip: Int, take: Int, where: DocumentTemplateWhereInput): AggregateDocumentTemplate!
   aggregateEconomizer(cursor: EconomizerWhereUniqueInput, orderBy: [EconomizerOrderByWithRelationInput!], skip: Int, take: Int, where: EconomizerWhereInput): AggregateEconomizer!
   aggregateMobileDevice(cursor: MobileDeviceWhereUniqueInput, orderBy: [MobileDeviceOrderByWithRelationInput!], skip: Int, take: Int, where: MobileDeviceWhereInput): AggregateMobileDevice!
@@ -3981,6 +4178,8 @@ type Query {
   consultationList(where: ConsultationListWhereUniqueInput!): ConsultationList
   consultationLists(cursor: ConsultationListWhereUniqueInput, distinct: [ConsultationListScalarFieldEnum!], orderBy: [ConsultationListOrderByWithRelationInput!], skip: Int, take: Int, where: ConsultationListWhereInput): [ConsultationList!]!
   consultations(cursor: ConsultationWhereUniqueInput, distinct: [ConsultationScalarFieldEnum!], orderBy: [ConsultationOrderByWithRelationInput!], skip: Int, take: Int, where: ConsultationWhereInput): [Consultation!]!
+  documentStore(where: DocumentStoreWhereUniqueInput!): DocumentStore
+  documentStores(cursor: DocumentStoreWhereUniqueInput, distinct: [DocumentStoreScalarFieldEnum!], orderBy: [DocumentStoreOrderByWithRelationInput!], skip: Int, take: Int, where: DocumentStoreWhereInput): [DocumentStore!]!
   documentTemplate(where: DocumentTemplateWhereUniqueInput!): DocumentTemplate
   documentTemplates(cursor: DocumentTemplateWhereUniqueInput, distinct: [DocumentTemplateScalarFieldEnum!], orderBy: [DocumentTemplateOrderByWithRelationInput!], skip: Int, take: Int, where: DocumentTemplateWhereInput): [DocumentTemplate!]!
   economizer(where: EconomizerWhereUniqueInput!): Economizer
@@ -3991,6 +4190,8 @@ type Query {
   findFirstConsultationList(cursor: ConsultationListWhereUniqueInput, distinct: [ConsultationListScalarFieldEnum!], orderBy: [ConsultationListOrderByWithRelationInput!], skip: Int, take: Int, where: ConsultationListWhereInput): ConsultationList
   findFirstConsultationListOrThrow(cursor: ConsultationListWhereUniqueInput, distinct: [ConsultationListScalarFieldEnum!], orderBy: [ConsultationListOrderByWithRelationInput!], skip: Int, take: Int, where: ConsultationListWhereInput): ConsultationList
   findFirstConsultationOrThrow(cursor: ConsultationWhereUniqueInput, distinct: [ConsultationScalarFieldEnum!], orderBy: [ConsultationOrderByWithRelationInput!], skip: Int, take: Int, where: ConsultationWhereInput): Consultation
+  findFirstDocumentStore(cursor: DocumentStoreWhereUniqueInput, distinct: [DocumentStoreScalarFieldEnum!], orderBy: [DocumentStoreOrderByWithRelationInput!], skip: Int, take: Int, where: DocumentStoreWhereInput): DocumentStore
+  findFirstDocumentStoreOrThrow(cursor: DocumentStoreWhereUniqueInput, distinct: [DocumentStoreScalarFieldEnum!], orderBy: [DocumentStoreOrderByWithRelationInput!], skip: Int, take: Int, where: DocumentStoreWhereInput): DocumentStore
   findFirstDocumentTemplate(cursor: DocumentTemplateWhereUniqueInput, distinct: [DocumentTemplateScalarFieldEnum!], orderBy: [DocumentTemplateOrderByWithRelationInput!], skip: Int, take: Int, where: DocumentTemplateWhereInput): DocumentTemplate
   findFirstDocumentTemplateOrThrow(cursor: DocumentTemplateWhereUniqueInput, distinct: [DocumentTemplateScalarFieldEnum!], orderBy: [DocumentTemplateOrderByWithRelationInput!], skip: Int, take: Int, where: DocumentTemplateWhereInput): DocumentTemplate
   findFirstEconomizer(cursor: EconomizerWhereUniqueInput, distinct: [EconomizerScalarFieldEnum!], orderBy: [EconomizerOrderByWithRelationInput!], skip: Int, take: Int, where: EconomizerWhereInput): Economizer
@@ -4013,6 +4214,7 @@ type Query {
   getConsultation(where: ConsultationWhereUniqueInput!): Consultation
   getConsultationList(where: ConsultationListWhereUniqueInput!): ConsultationList
   getDataTableConfiguration(eventType: EventTypes!): [DataTableSectionModel!]
+  getDocumentStore(where: DocumentStoreWhereUniqueInput!): DocumentStore
   getDocumentTemplate(where: DocumentTemplateWhereUniqueInput!): DocumentTemplate
   getEconomizer(where: EconomizerWhereUniqueInput!): Economizer
   getMobileDevice(where: MobileDeviceWhereUniqueInput!): MobileDevice
@@ -4025,6 +4227,7 @@ type Query {
   groupByClinicalEvent(by: [ClinicalEventScalarFieldEnum!]!, having: ClinicalEventScalarWhereWithAggregatesInput, orderBy: [ClinicalEventOrderByWithAggregationInput!], skip: Int, take: Int, where: ClinicalEventWhereInput): [ClinicalEventGroupBy!]!
   groupByConsultation(by: [ConsultationScalarFieldEnum!]!, having: ConsultationScalarWhereWithAggregatesInput, orderBy: [ConsultationOrderByWithAggregationInput!], skip: Int, take: Int, where: ConsultationWhereInput): [ConsultationGroupBy!]!
   groupByConsultationList(by: [ConsultationListScalarFieldEnum!]!, having: ConsultationListScalarWhereWithAggregatesInput, orderBy: [ConsultationListOrderByWithAggregationInput!], skip: Int, take: Int, where: ConsultationListWhereInput): [ConsultationListGroupBy!]!
+  groupByDocumentStore(by: [DocumentStoreScalarFieldEnum!]!, having: DocumentStoreScalarWhereWithAggregatesInput, orderBy: [DocumentStoreOrderByWithAggregationInput!], skip: Int, take: Int, where: DocumentStoreWhereInput): [DocumentStoreGroupBy!]!
   groupByDocumentTemplate(by: [DocumentTemplateScalarFieldEnum!]!, having: DocumentTemplateScalarWhereWithAggregatesInput, orderBy: [DocumentTemplateOrderByWithAggregationInput!], skip: Int, take: Int, where: DocumentTemplateWhereInput): [DocumentTemplateGroupBy!]!
   groupByEconomizer(by: [EconomizerScalarFieldEnum!]!, having: EconomizerScalarWhereWithAggregatesInput, orderBy: [EconomizerOrderByWithAggregationInput!], skip: Int, take: Int, where: EconomizerWhereInput): [EconomizerGroupBy!]!
   groupByMobileDevice(by: [MobileDeviceScalarFieldEnum!]!, having: MobileDeviceScalarWhereWithAggregatesInput, orderBy: [MobileDeviceOrderByWithAggregationInput!], skip: Int, take: Int, where: MobileDeviceWhereInput): [MobileDeviceGroupBy!]!
@@ -4357,6 +4560,7 @@ type User {
   _count: UserCount
   avatarUrl: String
   createdAt: DateTimeISO!
+  editorKey: String!
   email: String!
   firstName: String
   fullName: String
@@ -4387,6 +4591,7 @@ type UserCountAggregate {
   _all: Int!
   avatarUrl: Int!
   createdAt: Int!
+  editorKey: Int!
   email: Int!
   firstName: Int!
   fullName: Int!
@@ -4403,6 +4608,7 @@ type UserCountAggregate {
 input UserCountOrderByAggregateInput {
   avatarUrl: SortOrder
   createdAt: SortOrder
+  editorKey: SortOrder
   email: SortOrder
   firstName: SortOrder
   fullName: SortOrder
@@ -4421,6 +4627,7 @@ input UserCreateInput {
   WorkingList: WorkingListCreateNestedManyWithoutUserInput
   avatarUrl: String
   createdAt: DateTimeISO
+  editorKey: String
   email: String!
   firstName: String
   fullName: String
@@ -4437,6 +4644,7 @@ input UserCreateInput {
 input UserCreateManyInput {
   avatarUrl: String
   createdAt: DateTimeISO
+  editorKey: String
   email: String!
   firstName: String
   fullName: String
@@ -4476,6 +4684,7 @@ input UserCreateWithoutClinicalEventInput {
   WorkingList: WorkingListCreateNestedManyWithoutUserInput
   avatarUrl: String
   createdAt: DateTimeISO
+  editorKey: String
   email: String!
   firstName: String
   fullName: String
@@ -4493,6 +4702,7 @@ input UserCreateWithoutWorkingListInput {
   ClinicalEvent: ClinicalEventCreateNestedManyWithoutUserInput
   avatarUrl: String
   createdAt: DateTimeISO
+  editorKey: String
   email: String!
   firstName: String
   fullName: String
@@ -4518,6 +4728,7 @@ type UserGroupBy {
   _sum: UserSumAggregate
   avatarUrl: String
   createdAt: DateTimeISO!
+  editorKey: String!
   email: String!
   firstName: String
   fullName: String
@@ -4534,6 +4745,7 @@ type UserGroupBy {
 type UserMaxAggregate {
   avatarUrl: String
   createdAt: DateTimeISO
+  editorKey: String
   email: String
   firstName: String
   fullName: String
@@ -4549,6 +4761,7 @@ type UserMaxAggregate {
 input UserMaxOrderByAggregateInput {
   avatarUrl: SortOrder
   createdAt: SortOrder
+  editorKey: SortOrder
   email: SortOrder
   firstName: SortOrder
   fullName: SortOrder
@@ -4564,6 +4777,7 @@ input UserMaxOrderByAggregateInput {
 type UserMinAggregate {
   avatarUrl: String
   createdAt: DateTimeISO
+  editorKey: String
   email: String
   firstName: String
   fullName: String
@@ -4579,6 +4793,7 @@ type UserMinAggregate {
 input UserMinOrderByAggregateInput {
   avatarUrl: SortOrder
   createdAt: SortOrder
+  editorKey: SortOrder
   email: SortOrder
   firstName: SortOrder
   fullName: SortOrder
@@ -4599,6 +4814,7 @@ input UserOrderByWithAggregationInput {
   _sum: UserSumOrderByAggregateInput
   avatarUrl: SortOrderInput
   createdAt: SortOrder
+  editorKey: SortOrder
   email: SortOrder
   firstName: SortOrderInput
   fullName: SortOrderInput
@@ -4617,6 +4833,7 @@ input UserOrderByWithRelationInput {
   WorkingList: WorkingListOrderByRelationAggregateInput
   avatarUrl: SortOrderInput
   createdAt: SortOrder
+  editorKey: SortOrder
   email: SortOrder
   firstName: SortOrderInput
   fullName: SortOrderInput
@@ -4638,6 +4855,7 @@ input UserRelationFilter {
 enum UserScalarFieldEnum {
   avatarUrl
   createdAt
+  editorKey
   email
   firstName
   fullName
@@ -4657,6 +4875,7 @@ input UserScalarWhereWithAggregatesInput {
   OR: [UserScalarWhereWithAggregatesInput!]
   avatarUrl: StringNullableWithAggregatesFilter
   createdAt: DateTimeWithAggregatesFilter
+  editorKey: StringWithAggregatesFilter
   email: StringWithAggregatesFilter
   firstName: StringNullableWithAggregatesFilter
   fullName: StringNullableWithAggregatesFilter
@@ -4683,6 +4902,7 @@ input UserUpdateInput {
   WorkingList: WorkingListUpdateManyWithoutUserNestedInput
   avatarUrl: NullableStringFieldUpdateOperationsInput
   createdAt: DateTimeFieldUpdateOperationsInput
+  editorKey: StringFieldUpdateOperationsInput
   email: StringFieldUpdateOperationsInput
   firstName: NullableStringFieldUpdateOperationsInput
   fullName: NullableStringFieldUpdateOperationsInput
@@ -4699,6 +4919,7 @@ input UserUpdateInput {
 input UserUpdateManyMutationInput {
   avatarUrl: NullableStringFieldUpdateOperationsInput
   createdAt: DateTimeFieldUpdateOperationsInput
+  editorKey: StringFieldUpdateOperationsInput
   email: StringFieldUpdateOperationsInput
   firstName: NullableStringFieldUpdateOperationsInput
   fullName: NullableStringFieldUpdateOperationsInput
@@ -4742,6 +4963,7 @@ input UserUpdateWithoutClinicalEventInput {
   WorkingList: WorkingListUpdateManyWithoutUserNestedInput
   avatarUrl: NullableStringFieldUpdateOperationsInput
   createdAt: DateTimeFieldUpdateOperationsInput
+  editorKey: StringFieldUpdateOperationsInput
   email: StringFieldUpdateOperationsInput
   firstName: NullableStringFieldUpdateOperationsInput
   fullName: NullableStringFieldUpdateOperationsInput
@@ -4759,6 +4981,7 @@ input UserUpdateWithoutWorkingListInput {
   ClinicalEvent: ClinicalEventUpdateManyWithoutUserNestedInput
   avatarUrl: NullableStringFieldUpdateOperationsInput
   createdAt: DateTimeFieldUpdateOperationsInput
+  editorKey: StringFieldUpdateOperationsInput
   email: StringFieldUpdateOperationsInput
   firstName: NullableStringFieldUpdateOperationsInput
   fullName: NullableStringFieldUpdateOperationsInput
@@ -4797,6 +5020,7 @@ input UserWhereInput {
   WorkingList: WorkingListListRelationFilter
   avatarUrl: StringNullableFilter
   createdAt: DateTimeFilter
+  editorKey: StringFilter
   email: StringFilter
   firstName: StringNullableFilter
   fullName: StringNullableFilter
@@ -4818,6 +5042,7 @@ input UserWhereUniqueInput {
   WorkingList: WorkingListListRelationFilter
   avatarUrl: StringNullableFilter
   createdAt: DateTimeFilter
+  editorKey: StringFilter
   email: String
   firstName: StringNullableFilter
   fullName: StringNullableFilter

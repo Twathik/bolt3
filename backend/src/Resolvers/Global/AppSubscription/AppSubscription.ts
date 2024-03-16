@@ -17,13 +17,28 @@ export class AppSubscription {
       args: AppSubscriptionArgs
     }) => {
       if (payload.global) {
-        if (payload.subscriptionSpecificId) {
+        console.log({
+          global: true,
+          payload: payload.subscriptionSpecificId,
+          arg: args.subscriptionSpecificId,
+        })
+        if (payload?.subscriptionSpecificId) {
+          console.log(
+            args.subscriptionSpecificId.includes(
+              payload.subscriptionSpecificId,
+            ),
+          )
           return args.subscriptionSpecificId.includes(
             payload.subscriptionSpecificId,
           )
         }
         return payload.global
       } else {
+        console.log({
+          global: false,
+          payload: payload.subscriptionSpecificId,
+          arg: args.subscriptionSpecificId,
+        })
         if (payload.subscriptionSpecificId) {
           return (
             args.subscriptionSpecificId.includes(

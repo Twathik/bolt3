@@ -1,0 +1,29 @@
+{
+  "name": "live-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node --env-file=.env dist/index.mjs",
+    "build": "yarn run tsup",
+    "dev": "yarn build --watch --onSuccess \"yarn run start\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@wundergraph/sdk": "^0.184.0",
+    "http": "0.0.1-security",
+    "query-string": "^9.0.0",
+    "redis": "^4.6.13",
+    "tsup": "^8.0.2",
+    "ws": "^8.16.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.26",
+    "@types/ws": "^8.5.10",
+    "eslint": "^8.57.0",
+    "eslint-config-next": "^14.1.3",
+    "typescript": "^5.4.2"
+  }
+}

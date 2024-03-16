@@ -1,6 +1,7 @@
 export * from "./ClinicalEvent/args";
 export * from "./Consultation/args";
 export * from "./ConsultationList/args";
+export * from "./DocumentStore/args";
 export * from "./DocumentTemplate/args";
 export * from "./Economizer/args";
 export * from "./MobileDevice/args";

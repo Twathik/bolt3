@@ -89,6 +89,11 @@ export class UserWhereUniqueInput {
   })
   searchApiKey?: StringFilter | undefined;
 
+  @TypeGraphQL.Field(_type => StringFilter, {
+    nullable: true
+  })
+  editorKey?: StringFilter | undefined;
+
   @TypeGraphQL.Field(_type => DateTimeFilter, {
     nullable: true
   })

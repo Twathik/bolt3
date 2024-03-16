@@ -61,6 +61,11 @@ export class UserMaxAggregate {
   })
   searchApiKey!: string | null;
 
+  @TypeGraphQL.Field(_type => String, {
+    nullable: true
+  })
+  editorKey!: string | null;
+
   @TypeGraphQL.Field(_type => Date, {
     nullable: true
   })

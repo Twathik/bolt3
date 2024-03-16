@@ -1,0 +1,22 @@
+{
+  "include": ["src/**/*", "src/**/*.json"],
+  "compilerOptions": {
+    "allowSyntheticDefaultImports": true,
+
+    "declaration": true,
+    "declarationMap": true,
+    "esModuleInterop": true,
+    "jsx": "react",
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "sourceMap": true,
+    "strict": true,
+    "skipLibCheck": true,
+    "target": "ESNext",
+    "rootDir": "./src",
+    "outDir": "./dist",
+    "composite": true
+  },
+  "references": []
+}

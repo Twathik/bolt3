@@ -3,7 +3,9 @@ import { MobileDevice } from '../../@generated'
 import { getPrismaFromContext } from '../../@generated/helpers'
 import { PrismaClient } from '@prisma/client'
 import { SwitchMobileDeviceArgs } from './Args/switchMobileDeviceArgs'
-import { AppSubscriptionTriggerArgs } from '../Global/AppSubscription/args/AppSubscriptionTriggerArgs'
+import { Context } from '../../context'
+import { WebsocketMessageInterface } from '../../Utils/PubSubInterfaces/WebsocketMessageInterface'
+import { notificationTopic } from '../../Utils/PubSubInterfaces/MessageTypesInterface'
 
 @TypeGraphQL.Resolver((_of) => MobileDevice)
 export class SwitchMobileDeviceResolver {
@@ -11,13 +13,12 @@ export class SwitchMobileDeviceResolver {
     nullable: true,
   })
   async switchMobileDevice(
-    @TypeGraphQL.Ctx() ctx: any,
+    @TypeGraphQL.Ctx() ctx: Context,
     @TypeGraphQL.Args()
-    { mobileDeviceType, id, userId }: SwitchMobileDeviceArgs,
-    @TypeGraphQL.PubSub('APP_SUBSCRIPTION')
-    notify: TypeGraphQL.Publisher<AppSubscriptionTriggerArgs>,
+    { mobileDeviceType, id }: SwitchMobileDeviceArgs,
   ): Promise<Boolean | null> {
     const prisma = getPrismaFromContext(ctx) as PrismaClient
+    const pubsub = ctx.pubSub
 
     try {
       const mobileDevice = await prisma.mobileDevice.findFirst({
@@ -46,31 +47,27 @@ export class SwitchMobileDeviceResolver {
         devices_count === allowedMobileDevices.allowedMobileDevices_doctors
       )
         throw Error('4')
-      const result = await prisma.mobileDevice.update({
+      const updatedMobileDevice = await prisma.mobileDevice.update({
         where: { id },
         data: { mobileDeviceType, connected: false },
       })
-      const { accessToken, connected, expireAt, uuid } = result
 
-      await notify({
-        type: 'mobileDeviceUpdate',
-        userId,
+      const message: WebsocketMessageInterface = {
+        type: 'mobileDevice',
+        destination: ['mobileDevices'],
         global: true,
-        appPayload: JSON.stringify({
+        subscriptionIds: [],
+        payload: {
           operation: 'update',
-          mobileDevice: {
-            id,
-            accessToken,
-            connected,
-            expireAt,
-            mobileDeviceType,
-            uuid,
-          },
-        }),
-      })
+          mobileDevice: updatedMobileDevice,
+        },
+      }
+
+      await pubsub.publish(notificationTopic, message)
 
       return true
     } catch (error) {
+      console.log({ error })
       throw Error("an error occurred, Mobile device isn't registered!")
     }
   }

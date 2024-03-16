@@ -22,7 +22,8 @@ const crudResolversMap = {
   DocumentTemplate: crudResolvers.DocumentTemplateCrudResolver,
   Economizer: crudResolvers.EconomizerCrudResolver,
   Modality: crudResolvers.ModalityCrudResolver,
-  WorkingList: crudResolvers.WorkingListCrudResolver
+  WorkingList: crudResolvers.WorkingListCrudResolver,
+  DocumentStore: crudResolvers.DocumentStoreCrudResolver
 };
 const actionResolversMap = {
   User: {
@@ -216,6 +217,22 @@ const actionResolversMap = {
     updateManyWorkingList: actionResolvers.UpdateManyWorkingListResolver,
     updateOneWorkingList: actionResolvers.UpdateOneWorkingListResolver,
     upsertOneWorkingList: actionResolvers.UpsertOneWorkingListResolver
+  },
+  DocumentStore: {
+    aggregateDocumentStore: actionResolvers.AggregateDocumentStoreResolver,
+    createManyDocumentStore: actionResolvers.CreateManyDocumentStoreResolver,
+    createOneDocumentStore: actionResolvers.CreateOneDocumentStoreResolver,
+    deleteManyDocumentStore: actionResolvers.DeleteManyDocumentStoreResolver,
+    deleteOneDocumentStore: actionResolvers.DeleteOneDocumentStoreResolver,
+    findFirstDocumentStore: actionResolvers.FindFirstDocumentStoreResolver,
+    findFirstDocumentStoreOrThrow: actionResolvers.FindFirstDocumentStoreOrThrowResolver,
+    documentStores: actionResolvers.FindManyDocumentStoreResolver,
+    documentStore: actionResolvers.FindUniqueDocumentStoreResolver,
+    getDocumentStore: actionResolvers.FindUniqueDocumentStoreOrThrowResolver,
+    groupByDocumentStore: actionResolvers.GroupByDocumentStoreResolver,
+    updateManyDocumentStore: actionResolvers.UpdateManyDocumentStoreResolver,
+    updateOneDocumentStore: actionResolvers.UpdateOneDocumentStoreResolver,
+    upsertOneDocumentStore: actionResolvers.UpsertOneDocumentStoreResolver
   }
 };
 const crudResolversInfo = {
@@ -230,7 +247,8 @@ const crudResolversInfo = {
   DocumentTemplate: ["aggregateDocumentTemplate", "createManyDocumentTemplate", "createOneDocumentTemplate", "deleteManyDocumentTemplate", "deleteOneDocumentTemplate", "findFirstDocumentTemplate", "findFirstDocumentTemplateOrThrow", "documentTemplates", "documentTemplate", "getDocumentTemplate", "groupByDocumentTemplate", "updateManyDocumentTemplate", "updateOneDocumentTemplate", "upsertOneDocumentTemplate"],
   Economizer: ["aggregateEconomizer", "createManyEconomizer", "createOneEconomizer", "deleteManyEconomizer", "deleteOneEconomizer", "findFirstEconomizer", "findFirstEconomizerOrThrow", "economizers", "economizer", "getEconomizer", "groupByEconomizer", "updateManyEconomizer", "updateOneEconomizer", "upsertOneEconomizer"],
   Modality: ["aggregateModality", "createManyModality", "createOneModality", "deleteManyModality", "deleteOneModality", "findFirstModality", "findFirstModalityOrThrow", "modalities", "modality", "getModality", "groupByModality", "updateManyModality", "updateOneModality", "upsertOneModality"],
-  WorkingList: ["aggregateWorkingList", "createManyWorkingList", "createOneWorkingList", "deleteManyWorkingList", "deleteOneWorkingList", "findFirstWorkingList", "findFirstWorkingListOrThrow", "workingLists", "workingList", "getWorkingList", "groupByWorkingList", "updateManyWorkingList", "updateOneWorkingList", "upsertOneWorkingList"]
+  WorkingList: ["aggregateWorkingList", "createManyWorkingList", "createOneWorkingList", "deleteManyWorkingList", "deleteOneWorkingList", "findFirstWorkingList", "findFirstWorkingListOrThrow", "workingLists", "workingList", "getWorkingList", "groupByWorkingList", "updateManyWorkingList", "updateOneWorkingList", "upsertOneWorkingList"],
+  DocumentStore: ["aggregateDocumentStore", "createManyDocumentStore", "createOneDocumentStore", "deleteManyDocumentStore", "deleteOneDocumentStore", "findFirstDocumentStore", "findFirstDocumentStoreOrThrow", "documentStores", "documentStore", "getDocumentStore", "groupByDocumentStore", "updateManyDocumentStore", "updateOneDocumentStore", "upsertOneDocumentStore"]
 };
 const argsInfo = {
   AggregateUserArgs: ["where", "orderBy", "cursor", "take", "skip"],
@@ -400,7 +418,21 @@ const argsInfo = {
   GroupByWorkingListArgs: ["where", "orderBy", "by", "having", "take", "skip"],
   UpdateManyWorkingListArgs: ["data", "where"],
   UpdateOneWorkingListArgs: ["data", "where"],
-  UpsertOneWorkingListArgs: ["where", "create", "update"]
+  UpsertOneWorkingListArgs: ["where", "create", "update"],
+  AggregateDocumentStoreArgs: ["where", "orderBy", "cursor", "take", "skip"],
+  CreateManyDocumentStoreArgs: ["data", "skipDuplicates"],
+  CreateOneDocumentStoreArgs: ["data"],
+  DeleteManyDocumentStoreArgs: ["where"],
+  DeleteOneDocumentStoreArgs: ["where"],
+  FindFirstDocumentStoreArgs: ["where", "orderBy", "cursor", "take", "skip", "distinct"],
+  FindFirstDocumentStoreOrThrowArgs: ["where", "orderBy", "cursor", "take", "skip", "distinct"],
+  FindManyDocumentStoreArgs: ["where", "orderBy", "cursor", "take", "skip", "distinct"],
+  FindUniqueDocumentStoreArgs: ["where"],
+  FindUniqueDocumentStoreOrThrowArgs: ["where"],
+  GroupByDocumentStoreArgs: ["where", "orderBy", "by", "having", "take", "skip"],
+  UpdateManyDocumentStoreArgs: ["data", "where"],
+  UpdateOneDocumentStoreArgs: ["data", "where"],
+  UpsertOneDocumentStoreArgs: ["where", "create", "update"]
 };
 
 type ResolverModelNames = keyof typeof crudResolversMap;
@@ -597,7 +629,7 @@ function applyTypeClassEnhanceConfig<
 }
 
 const modelsInfo = {
-  User: ["id", "email", "userId", "lastName", "firstName", "fullName", "avatarUrl", "role", "phoneNumbers", "lastConnection", "searchApiKeyId", "searchApiKey", "createdAt"],
+  User: ["id", "email", "userId", "lastName", "firstName", "fullName", "avatarUrl", "role", "phoneNumbers", "lastConnection", "searchApiKeyId", "searchApiKey", "editorKey", "createdAt"],
   Setting: ["id", "allowedMobileDevices_doctors", "allowedMobileDevices_secretary", "allowedDICOMmodalities", "allowedEventTypes"],
   MobileDevice: ["id", "uuid", "accessToken", "mobileDeviceType", "expireAt", "connected"],
   Patient: ["id", "lastName", "firstName", "ddn", "sexe", "nTel", "address", "height", "weight", "createdAt", "updated", "deleted", "onTrash", "informationsConfirmed", "clinicalData", "documentData"],
@@ -608,7 +640,8 @@ const modelsInfo = {
   DocumentTemplate: ["id", "eventType", "template", "empty"],
   Economizer: ["id", "name", "eventType", "template"],
   Modality: ["id", "modalityName", "modalityPseudo", "modalityAETitle", "modalityIpAddress", "modalityType", "modalityPort", "deleted", "activated", "enabled"],
-  WorkingList: ["id", "patientId", "modalityId", "userId", "clinicalEventId", "modalityExamStatus", "createdAt", "updatedAt", "linked", "linkId", "locked"]
+  WorkingList: ["id", "patientId", "modalityId", "userId", "clinicalEventId", "modalityExamStatus", "createdAt", "updatedAt", "linked", "linkId", "locked"],
+  DocumentStore: ["id", "patientId", "clinicalData", "documentData"]
 };
 
 type ModelNames = keyof typeof models;
@@ -648,7 +681,7 @@ export function applyModelsEnhanceMap(modelsEnhanceMap: ModelsEnhanceMap) {
 
 const outputsInfo = {
   AggregateUser: ["_count", "_avg", "_sum", "_min", "_max"],
-  UserGroupBy: ["id", "email", "userId", "lastName", "firstName", "fullName", "avatarUrl", "role", "phoneNumbers", "lastConnection", "searchApiKeyId", "searchApiKey", "createdAt", "_count", "_avg", "_sum", "_min", "_max"],
+  UserGroupBy: ["id", "email", "userId", "lastName", "firstName", "fullName", "avatarUrl", "role", "phoneNumbers", "lastConnection", "searchApiKeyId", "searchApiKey", "editorKey", "createdAt", "_count", "_avg", "_sum", "_min", "_max"],
   AggregateSetting: ["_count", "_avg", "_sum", "_min", "_max"],
   SettingGroupBy: ["id", "allowedMobileDevices_doctors", "allowedMobileDevices_secretary", "allowedDICOMmodalities", "allowedEventTypes", "_count", "_avg", "_sum", "_min", "_max"],
   AggregateMobileDevice: ["_count", "_min", "_max"],
@@ -671,13 +704,15 @@ const outputsInfo = {
   ModalityGroupBy: ["id", "modalityName", "modalityPseudo", "modalityAETitle", "modalityIpAddress", "modalityType", "modalityPort", "deleted", "activated", "enabled", "_count", "_avg", "_sum", "_min", "_max"],
   AggregateWorkingList: ["_count", "_min", "_max"],
   WorkingListGroupBy: ["id", "patientId", "modalityId", "userId", "clinicalEventId", "modalityExamStatus", "createdAt", "updatedAt", "linked", "linkId", "locked", "_count", "_min", "_max"],
+  AggregateDocumentStore: ["_count", "_min", "_max"],
+  DocumentStoreGroupBy: ["id", "patientId", "clinicalData", "documentData", "_count", "_min", "_max"],
   AffectedRowsOutput: ["count"],
   UserCount: ["ClinicalEvent", "WorkingList"],
-  UserCountAggregate: ["id", "email", "userId", "lastName", "firstName", "fullName", "avatarUrl", "role", "phoneNumbers", "lastConnection", "searchApiKeyId", "searchApiKey", "createdAt", "_all"],
+  UserCountAggregate: ["id", "email", "userId", "lastName", "firstName", "fullName", "avatarUrl", "role", "phoneNumbers", "lastConnection", "searchApiKeyId", "searchApiKey", "editorKey", "createdAt", "_all"],
   UserAvgAggregate: ["searchApiKeyId"],
   UserSumAggregate: ["searchApiKeyId"],
-  UserMinAggregate: ["id", "email", "userId", "lastName", "firstName", "fullName", "avatarUrl", "role", "lastConnection", "searchApiKeyId", "searchApiKey", "createdAt"],
-  UserMaxAggregate: ["id", "email", "userId", "lastName", "firstName", "fullName", "avatarUrl", "role", "lastConnection", "searchApiKeyId", "searchApiKey", "createdAt"],
+  UserMinAggregate: ["id", "email", "userId", "lastName", "firstName", "fullName", "avatarUrl", "role", "lastConnection", "searchApiKeyId", "searchApiKey", "editorKey", "createdAt"],
+  UserMaxAggregate: ["id", "email", "userId", "lastName", "firstName", "fullName", "avatarUrl", "role", "lastConnection", "searchApiKeyId", "searchApiKey", "editorKey", "createdAt"],
   SettingCountAggregate: ["id", "allowedMobileDevices_doctors", "allowedMobileDevices_secretary", "allowedDICOMmodalities", "allowedEventTypes", "_all"],
   SettingAvgAggregate: ["allowedMobileDevices_doctors", "allowedMobileDevices_secretary", "allowedDICOMmodalities"],
   SettingSumAggregate: ["allowedMobileDevices_doctors", "allowedMobileDevices_secretary", "allowedDICOMmodalities"],
@@ -722,7 +757,10 @@ const outputsInfo = {
   ModalityMaxAggregate: ["id", "modalityName", "modalityPseudo", "modalityAETitle", "modalityIpAddress", "modalityType", "modalityPort", "deleted", "activated", "enabled"],
   WorkingListCountAggregate: ["id", "patientId", "modalityId", "userId", "clinicalEventId", "modalityExamStatus", "createdAt", "updatedAt", "linked", "linkId", "locked", "_all"],
   WorkingListMinAggregate: ["id", "patientId", "modalityId", "userId", "clinicalEventId", "modalityExamStatus", "createdAt", "updatedAt", "linked", "linkId", "locked"],
-  WorkingListMaxAggregate: ["id", "patientId", "modalityId", "userId", "clinicalEventId", "modalityExamStatus", "createdAt", "updatedAt", "linked", "linkId", "locked"]
+  WorkingListMaxAggregate: ["id", "patientId", "modalityId", "userId", "clinicalEventId", "modalityExamStatus", "createdAt", "updatedAt", "linked", "linkId", "locked"],
+  DocumentStoreCountAggregate: ["id", "patientId", "clinicalData", "documentData", "_all"],
+  DocumentStoreMinAggregate: ["id", "patientId", "clinicalData", "documentData"],
+  DocumentStoreMaxAggregate: ["id", "patientId", "clinicalData", "documentData"]
 };
 
 type OutputTypesNames = keyof typeof outputTypes;
@@ -763,11 +801,11 @@ export function applyOutputTypesEnhanceMap(
 }
 
 const inputsInfo = {
-  UserWhereInput: ["AND", "OR", "NOT", "id", "email", "userId", "lastName", "firstName", "fullName", "avatarUrl", "role", "phoneNumbers", "lastConnection", "searchApiKeyId", "searchApiKey", "createdAt", "ClinicalEvent", "WorkingList"],
-  UserOrderByWithRelationInput: ["id", "email", "userId", "lastName", "firstName", "fullName", "avatarUrl", "role", "phoneNumbers", "lastConnection", "searchApiKeyId", "searchApiKey", "createdAt", "ClinicalEvent", "WorkingList"],
-  UserWhereUniqueInput: ["id", "email", "userId", "AND", "OR", "NOT", "lastName", "firstName", "fullName", "avatarUrl", "role", "phoneNumbers", "lastConnection", "searchApiKeyId", "searchApiKey", "createdAt", "ClinicalEvent", "WorkingList"],
-  UserOrderByWithAggregationInput: ["id", "email", "userId", "lastName", "firstName", "fullName", "avatarUrl", "role", "phoneNumbers", "lastConnection", "searchApiKeyId", "searchApiKey", "createdAt", "_count", "_avg", "_max", "_min", "_sum"],
-  UserScalarWhereWithAggregatesInput: ["AND", "OR", "NOT", "id", "email", "userId", "lastName", "firstName", "fullName", "avatarUrl", "role", "phoneNumbers", "lastConnection", "searchApiKeyId", "searchApiKey", "createdAt"],
+  UserWhereInput: ["AND", "OR", "NOT", "id", "email", "userId", "lastName", "firstName", "fullName", "avatarUrl", "role", "phoneNumbers", "lastConnection", "searchApiKeyId", "searchApiKey", "editorKey", "createdAt", "ClinicalEvent", "WorkingList"],
+  UserOrderByWithRelationInput: ["id", "email", "userId", "lastName", "firstName", "fullName", "avatarUrl", "role", "phoneNumbers", "lastConnection", "searchApiKeyId", "searchApiKey", "editorKey", "createdAt", "ClinicalEvent", "WorkingList"],
+  UserWhereUniqueInput: ["id", "email", "userId", "AND", "OR", "NOT", "lastName", "firstName", "fullName", "avatarUrl", "role", "phoneNumbers", "lastConnection", "searchApiKeyId", "searchApiKey", "editorKey", "createdAt", "ClinicalEvent", "WorkingList"],
+  UserOrderByWithAggregationInput: ["id", "email", "userId", "lastName", "firstName", "fullName", "avatarUrl", "role", "phoneNumbers", "lastConnection", "searchApiKeyId", "searchApiKey", "editorKey", "createdAt", "_count", "_avg", "_max", "_min", "_sum"],
+  UserScalarWhereWithAggregatesInput: ["AND", "OR", "NOT", "id", "email", "userId", "lastName", "firstName", "fullName", "avatarUrl", "role", "phoneNumbers", "lastConnection", "searchApiKeyId", "searchApiKey", "editorKey", "createdAt"],
   SettingWhereInput: ["AND", "OR", "NOT", "id", "allowedMobileDevices_doctors", "allowedMobileDevices_secretary", "allowedDICOMmodalities", "allowedEventTypes"],
   SettingOrderByWithRelationInput: ["id", "allowedMobileDevices_doctors", "allowedMobileDevices_secretary", "allowedDICOMmodalities", "allowedEventTypes"],
   SettingWhereUniqueInput: ["id", "AND", "OR", "NOT", "allowedMobileDevices_doctors", "allowedMobileDevices_secretary", "allowedDICOMmodalities", "allowedEventTypes"],
@@ -823,10 +861,15 @@ const inputsInfo = {
   WorkingListWhereUniqueInput: ["id", "AND", "OR", "NOT", "patientId", "modalityId", "userId", "clinicalEventId", "modalityExamStatus", "createdAt", "updatedAt", "linked", "linkId", "locked", "patient", "modality", "user", "clinicalEvent"],
   WorkingListOrderByWithAggregationInput: ["id", "patientId", "modalityId", "userId", "clinicalEventId", "modalityExamStatus", "createdAt", "updatedAt", "linked", "linkId", "locked", "_count", "_max", "_min"],
   WorkingListScalarWhereWithAggregatesInput: ["AND", "OR", "NOT", "id", "patientId", "modalityId", "userId", "clinicalEventId", "modalityExamStatus", "createdAt", "updatedAt", "linked", "linkId", "locked"],
-  UserCreateInput: ["id", "email", "userId", "lastName", "firstName", "fullName", "avatarUrl", "role", "phoneNumbers", "lastConnection", "searchApiKeyId", "searchApiKey", "createdAt", "ClinicalEvent", "WorkingList"],
-  UserUpdateInput: ["id", "email", "userId", "lastName", "firstName", "fullName", "avatarUrl", "role", "phoneNumbers", "lastConnection", "searchApiKeyId", "searchApiKey", "createdAt", "ClinicalEvent", "WorkingList"],
-  UserCreateManyInput: ["id", "email", "userId", "lastName", "firstName", "fullName", "avatarUrl", "role", "phoneNumbers", "lastConnection", "searchApiKeyId", "searchApiKey", "createdAt"],
-  UserUpdateManyMutationInput: ["id", "email", "userId", "lastName", "firstName", "fullName", "avatarUrl", "role", "phoneNumbers", "lastConnection", "searchApiKeyId", "searchApiKey", "createdAt"],
+  DocumentStoreWhereInput: ["AND", "OR", "NOT", "id", "patientId", "clinicalData", "documentData"],
+  DocumentStoreOrderByWithRelationInput: ["id", "patientId", "clinicalData", "documentData"],
+  DocumentStoreWhereUniqueInput: ["id", "patientId", "AND", "OR", "NOT", "clinicalData", "documentData"],
+  DocumentStoreOrderByWithAggregationInput: ["id", "patientId", "clinicalData", "documentData", "_count", "_max", "_min"],
+  DocumentStoreScalarWhereWithAggregatesInput: ["AND", "OR", "NOT", "id", "patientId", "clinicalData", "documentData"],
+  UserCreateInput: ["id", "email", "userId", "lastName", "firstName", "fullName", "avatarUrl", "role", "phoneNumbers", "lastConnection", "searchApiKeyId", "searchApiKey", "editorKey", "createdAt", "ClinicalEvent", "WorkingList"],
+  UserUpdateInput: ["id", "email", "userId", "lastName", "firstName", "fullName", "avatarUrl", "role", "phoneNumbers", "lastConnection", "searchApiKeyId", "searchApiKey", "editorKey", "createdAt", "ClinicalEvent", "WorkingList"],
+  UserCreateManyInput: ["id", "email", "userId", "lastName", "firstName", "fullName", "avatarUrl", "role", "phoneNumbers", "lastConnection", "searchApiKeyId", "searchApiKey", "editorKey", "createdAt"],
+  UserUpdateManyMutationInput: ["id", "email", "userId", "lastName", "firstName", "fullName", "avatarUrl", "role", "phoneNumbers", "lastConnection", "searchApiKeyId", "searchApiKey", "editorKey", "createdAt"],
   SettingCreateInput: ["id", "allowedMobileDevices_doctors", "allowedMobileDevices_secretary", "allowedDICOMmodalities", "allowedEventTypes"],
   SettingUpdateInput: ["id", "allowedMobileDevices_doctors", "allowedMobileDevices_secretary", "allowedDICOMmodalities", "allowedEventTypes"],
   SettingCreateManyInput: ["id", "allowedMobileDevices_doctors", "allowedMobileDevices_secretary", "allowedDICOMmodalities", "allowedEventTypes"],
@@ -871,6 +914,10 @@ const inputsInfo = {
   WorkingListUpdateInput: ["id", "modalityExamStatus", "createdAt", "updatedAt", "linked", "linkId", "locked", "patient", "modality", "user", "clinicalEvent"],
   WorkingListCreateManyInput: ["id", "patientId", "modalityId", "userId", "clinicalEventId", "modalityExamStatus", "createdAt", "updatedAt", "linked", "linkId", "locked"],
   WorkingListUpdateManyMutationInput: ["id", "modalityExamStatus", "createdAt", "updatedAt", "linked", "linkId", "locked"],
+  DocumentStoreCreateInput: ["id", "patientId", "clinicalData", "documentData"],
+  DocumentStoreUpdateInput: ["id", "patientId", "clinicalData", "documentData"],
+  DocumentStoreCreateManyInput: ["id", "patientId", "clinicalData", "documentData"],
+  DocumentStoreUpdateManyMutationInput: ["id", "patientId", "clinicalData", "documentData"],
   StringFilter: ["equals", "in", "notIn", "lt", "lte", "gt", "gte", "contains", "startsWith", "endsWith", "mode", "not"],
   StringNullableFilter: ["equals", "in", "notIn", "lt", "lte", "gt", "gte", "contains", "startsWith", "endsWith", "mode", "not"],
   EnumRoleFilter: ["equals", "in", "notIn", "not"],
@@ -882,10 +929,10 @@ const inputsInfo = {
   SortOrderInput: ["sort", "nulls"],
   ClinicalEventOrderByRelationAggregateInput: ["_count"],
   WorkingListOrderByRelationAggregateInput: ["_count"],
-  UserCountOrderByAggregateInput: ["id", "email", "userId", "lastName", "firstName", "fullName", "avatarUrl", "role", "phoneNumbers", "lastConnection", "searchApiKeyId", "searchApiKey", "createdAt"],
+  UserCountOrderByAggregateInput: ["id", "email", "userId", "lastName", "firstName", "fullName", "avatarUrl", "role", "phoneNumbers", "lastConnection", "searchApiKeyId", "searchApiKey", "editorKey", "createdAt"],
   UserAvgOrderByAggregateInput: ["searchApiKeyId"],
-  UserMaxOrderByAggregateInput: ["id", "email", "userId", "lastName", "firstName", "fullName", "avatarUrl", "role", "lastConnection", "searchApiKeyId", "searchApiKey", "createdAt"],
-  UserMinOrderByAggregateInput: ["id", "email", "userId", "lastName", "firstName", "fullName", "avatarUrl", "role", "lastConnection", "searchApiKeyId", "searchApiKey", "createdAt"],
+  UserMaxOrderByAggregateInput: ["id", "email", "userId", "lastName", "firstName", "fullName", "avatarUrl", "role", "lastConnection", "searchApiKeyId", "searchApiKey", "editorKey", "createdAt"],
+  UserMinOrderByAggregateInput: ["id", "email", "userId", "lastName", "firstName", "fullName", "avatarUrl", "role", "lastConnection", "searchApiKeyId", "searchApiKey", "editorKey", "createdAt"],
   UserSumOrderByAggregateInput: ["searchApiKeyId"],
   StringWithAggregatesFilter: ["equals", "in", "notIn", "lt", "lte", "gt", "gte", "contains", "startsWith", "endsWith", "mode", "not", "_count", "_min", "_max"],
   StringNullableWithAggregatesFilter: ["equals", "in", "notIn", "lt", "lte", "gt", "gte", "contains", "startsWith", "endsWith", "mode", "not", "_count", "_min", "_max"],
@@ -965,6 +1012,11 @@ const inputsInfo = {
   WorkingListMaxOrderByAggregateInput: ["id", "patientId", "modalityId", "userId", "clinicalEventId", "modalityExamStatus", "createdAt", "updatedAt", "linked", "linkId", "locked"],
   WorkingListMinOrderByAggregateInput: ["id", "patientId", "modalityId", "userId", "clinicalEventId", "modalityExamStatus", "createdAt", "updatedAt", "linked", "linkId", "locked"],
   EnumModalityExamStatusWithAggregatesFilter: ["equals", "in", "notIn", "not", "_count", "_min", "_max"],
+  BytesNullableFilter: ["equals", "in", "notIn", "not"],
+  DocumentStoreCountOrderByAggregateInput: ["id", "patientId", "clinicalData", "documentData"],
+  DocumentStoreMaxOrderByAggregateInput: ["id", "patientId", "clinicalData", "documentData"],
+  DocumentStoreMinOrderByAggregateInput: ["id", "patientId", "clinicalData", "documentData"],
+  BytesNullableWithAggregatesFilter: ["equals", "in", "notIn", "not", "_count", "_min", "_max"],
   UserCreatephoneNumbersInput: ["set"],
   ClinicalEventCreateNestedManyWithoutUserInput: ["create", "connectOrCreate", "createMany", "connect"],
   WorkingListCreateNestedManyWithoutUserInput: ["create", "connectOrCreate", "createMany", "connect"],
@@ -1019,6 +1071,7 @@ const inputsInfo = {
   ModalityUpdateOneRequiredWithoutWorkingListNestedInput: ["create", "connectOrCreate", "upsert", "connect", "update"],
   UserUpdateOneRequiredWithoutWorkingListNestedInput: ["create", "connectOrCreate", "upsert", "connect", "update"],
   ClinicalEventUpdateOneRequiredWithoutWorkingListNestedInput: ["create", "connectOrCreate", "upsert", "connect", "update"],
+  NullableBytesFieldUpdateOperationsInput: ["set"],
   NestedStringFilter: ["equals", "in", "notIn", "lt", "lte", "gt", "gte", "contains", "startsWith", "endsWith", "not"],
   NestedStringNullableFilter: ["equals", "in", "notIn", "lt", "lte", "gt", "gte", "contains", "startsWith", "endsWith", "not"],
   NestedEnumRoleFilter: ["equals", "in", "notIn", "not"],
@@ -1049,6 +1102,8 @@ const inputsInfo = {
   NestedEnumModalityTypeWithAggregatesFilter: ["equals", "in", "notIn", "not", "_count", "_min", "_max"],
   NestedEnumModalityExamStatusFilter: ["equals", "in", "notIn", "not"],
   NestedEnumModalityExamStatusWithAggregatesFilter: ["equals", "in", "notIn", "not", "_count", "_min", "_max"],
+  NestedBytesNullableFilter: ["equals", "in", "notIn", "not"],
+  NestedBytesNullableWithAggregatesFilter: ["equals", "in", "notIn", "not", "_count", "_min", "_max"],
   ClinicalEventCreateWithoutUserInput: ["id", "eventType", "eventCategory", "createdAt", "updatedAt", "deleted", "report", "dicom", "dicomId", "clinicalDiagnosticId", "patient", "Prescription", "WorkingList"],
   ClinicalEventCreateOrConnectWithoutUserInput: ["where", "create"],
   ClinicalEventCreateManyUserInputEnvelope: ["data", "skipDuplicates"],
@@ -1098,7 +1153,7 @@ const inputsInfo = {
   ConsultationUpsertWithoutConsultationListInput: ["update", "create", "where"],
   ConsultationUpdateToOneWithWhereWithoutConsultationListInput: ["where", "data"],
   ConsultationUpdateWithoutConsultationListInput: ["id", "day", "month", "year", "createdAt"],
-  UserCreateWithoutClinicalEventInput: ["id", "email", "userId", "lastName", "firstName", "fullName", "avatarUrl", "role", "phoneNumbers", "lastConnection", "searchApiKeyId", "searchApiKey", "createdAt", "WorkingList"],
+  UserCreateWithoutClinicalEventInput: ["id", "email", "userId", "lastName", "firstName", "fullName", "avatarUrl", "role", "phoneNumbers", "lastConnection", "searchApiKeyId", "searchApiKey", "editorKey", "createdAt", "WorkingList"],
   UserCreateOrConnectWithoutClinicalEventInput: ["where", "create"],
   PatientCreateWithoutClinicalEventInput: ["id", "lastName", "firstName", "ddn", "sexe", "nTel", "address", "height", "weight", "createdAt", "updated", "deleted", "onTrash", "informationsConfirmed", "clinicalData", "documentData", "ConsultationList", "WorkingList"],
   PatientCreateOrConnectWithoutClinicalEventInput: ["where", "create"],
@@ -1109,7 +1164,7 @@ const inputsInfo = {
   WorkingListCreateManyClinicalEventInputEnvelope: ["data", "skipDuplicates"],
   UserUpsertWithoutClinicalEventInput: ["update", "create", "where"],
   UserUpdateToOneWithWhereWithoutClinicalEventInput: ["where", "data"],
-  UserUpdateWithoutClinicalEventInput: ["id", "email", "userId", "lastName", "firstName", "fullName", "avatarUrl", "role", "phoneNumbers", "lastConnection", "searchApiKeyId", "searchApiKey", "createdAt", "WorkingList"],
+  UserUpdateWithoutClinicalEventInput: ["id", "email", "userId", "lastName", "firstName", "fullName", "avatarUrl", "role", "phoneNumbers", "lastConnection", "searchApiKeyId", "searchApiKey", "editorKey", "createdAt", "WorkingList"],
   PatientUpsertWithoutClinicalEventInput: ["update", "create", "where"],
   PatientUpdateToOneWithWhereWithoutClinicalEventInput: ["where", "data"],
   PatientUpdateWithoutClinicalEventInput: ["id", "lastName", "firstName", "ddn", "sexe", "nTel", "address", "height", "weight", "createdAt", "updated", "deleted", "onTrash", "informationsConfirmed", "clinicalData", "documentData", "ConsultationList", "WorkingList"],
@@ -1134,7 +1189,7 @@ const inputsInfo = {
   PatientCreateOrConnectWithoutWorkingListInput: ["where", "create"],
   ModalityCreateWithoutWorkingListInput: ["id", "modalityName", "modalityPseudo", "modalityAETitle", "modalityIpAddress", "modalityType", "modalityPort", "deleted", "activated", "enabled"],
   ModalityCreateOrConnectWithoutWorkingListInput: ["where", "create"],
-  UserCreateWithoutWorkingListInput: ["id", "email", "userId", "lastName", "firstName", "fullName", "avatarUrl", "role", "phoneNumbers", "lastConnection", "searchApiKeyId", "searchApiKey", "createdAt", "ClinicalEvent"],
+  UserCreateWithoutWorkingListInput: ["id", "email", "userId", "lastName", "firstName", "fullName", "avatarUrl", "role", "phoneNumbers", "lastConnection", "searchApiKeyId", "searchApiKey", "editorKey", "createdAt", "ClinicalEvent"],
   UserCreateOrConnectWithoutWorkingListInput: ["where", "create"],
   ClinicalEventCreateWithoutWorkingListInput: ["id", "eventType", "eventCategory", "createdAt", "updatedAt", "deleted", "report", "dicom", "dicomId", "clinicalDiagnosticId", "user", "patient", "Prescription"],
   ClinicalEventCreateOrConnectWithoutWorkingListInput: ["where", "create"],
@@ -1146,7 +1201,7 @@ const inputsInfo = {
   ModalityUpdateWithoutWorkingListInput: ["id", "modalityName", "modalityPseudo", "modalityAETitle", "modalityIpAddress", "modalityType", "modalityPort", "deleted", "activated", "enabled"],
   UserUpsertWithoutWorkingListInput: ["update", "create", "where"],
   UserUpdateToOneWithWhereWithoutWorkingListInput: ["where", "data"],
-  UserUpdateWithoutWorkingListInput: ["id", "email", "userId", "lastName", "firstName", "fullName", "avatarUrl", "role", "phoneNumbers", "lastConnection", "searchApiKeyId", "searchApiKey", "createdAt", "ClinicalEvent"],
+  UserUpdateWithoutWorkingListInput: ["id", "email", "userId", "lastName", "firstName", "fullName", "avatarUrl", "role", "phoneNumbers", "lastConnection", "searchApiKeyId", "searchApiKey", "editorKey", "createdAt", "ClinicalEvent"],
   ClinicalEventUpsertWithoutWorkingListInput: ["update", "create", "where"],
   ClinicalEventUpdateToOneWithWhereWithoutWorkingListInput: ["where", "data"],
   ClinicalEventUpdateWithoutWorkingListInput: ["id", "eventType", "eventCategory", "createdAt", "updatedAt", "deleted", "report", "dicom", "dicomId", "clinicalDiagnosticId", "user", "patient", "Prescription"],

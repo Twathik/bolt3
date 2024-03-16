@@ -1,9 +1,0 @@
-query ($userId: String! @fromClaim(name: USERID)) {
-  mainDb_user(where: { userId: $userId }) {
-    lastName
-    firstName
-    fullName
-    avatarUrl
-    searchApiKey
-  }
-}

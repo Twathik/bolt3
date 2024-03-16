@@ -68,6 +68,11 @@ export class UserCreateWithoutClinicalEventInput {
   })
   searchApiKey?: string | undefined;
 
+  @TypeGraphQL.Field(_type => String, {
+    nullable: true
+  })
+  editorKey?: string | undefined;
+
   @TypeGraphQL.Field(_type => Date, {
     nullable: true
   })

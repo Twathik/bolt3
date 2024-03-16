@@ -1,6 +1,7 @@
 export { ClinicalEventScalarFieldEnum } from "./ClinicalEventScalarFieldEnum";
 export { ConsultationListScalarFieldEnum } from "./ConsultationListScalarFieldEnum";
 export { ConsultationScalarFieldEnum } from "./ConsultationScalarFieldEnum";
+export { DocumentStoreScalarFieldEnum } from "./DocumentStoreScalarFieldEnum";
 export { DocumentTemplateScalarFieldEnum } from "./DocumentTemplateScalarFieldEnum";
 export { EconomizerScalarFieldEnum } from "./EconomizerScalarFieldEnum";
 export { EventCategory } from "./EventCategory";

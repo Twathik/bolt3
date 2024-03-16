@@ -1,0 +1,25 @@
+mutation (
+  $id: String!
+  $firstName: String
+  $lastName: String
+  $sexe: mainDb_Sexe
+  $ddn: mainDb_DateTimeISO
+  $address: String
+  $nTel: String
+  $userId: String! @fromClaim(name: USERID)
+) {
+  mainDb_updateOnePatient(
+    where: { id: $id }
+    userId: $userId
+    data: {
+      firstName: { set: $firstName }
+      lastName: { set: $lastName }
+      sexe: { set: $sexe }
+      ddn: { set: $ddn }
+      address: { set: $address }
+      nTel: { set: $nTel }
+    }
+  ) {
+    ...PatientFragment
+  }
+}

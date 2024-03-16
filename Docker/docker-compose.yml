@@ -133,6 +133,24 @@ services:
     ports:
       - "6379:6379"
     command: redis-server --loglevel warning --requirepass eYVX7EwVmmxKPCDmwMtyKVge8oLd2t81
+    #links:
+    #  - redis-commander
+
+  #redis-commander:
+  #  container_name: redis-commander
+  ## hostname: redis-commander
+  ## image: rediscommander/redis-commander:latest
+  # build: .
+  # restart: always
+  # environment:
+  #   REDIS_HOSTS: redis
+  #   REDIS_HOST: redis
+  #   REDIS_PORT: redis:6379
+  #   REDIS_PASSWORD: eYVX7EwVmmxKPCDmwMtyKVge8oLd2t81
+  #   HTTP_USER: root
+  #   HTTP_PASSWORD: root
+  # ports:
+  #   - 8088:8081
 
   postgres_orthanc:
     image: postgres:13-alpine

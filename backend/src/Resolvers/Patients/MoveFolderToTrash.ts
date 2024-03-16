@@ -4,8 +4,9 @@ import { Context } from '../../context'
 import { MovePatientFolderToTrash } from './Args/MovePatientFolderToTrash'
 import createTypesenseDocuments from '../../Utils/typesense/operations/createDocuments'
 import RemoveTypesenseDocument from '../../Utils/typesense/operations/removeDocument'
-import { AppSubscriptionTriggerArgs } from '../Global/AppSubscription/args/AppSubscriptionTriggerArgs'
 import { getYear } from 'date-fns'
+import { WebsocketMessageInterface } from '../../Utils/PubSubInterfaces/WebsocketMessageInterface'
+import { notificationTopic } from '../../Utils/PubSubInterfaces/MessageTypesInterface'
 
 @TypeGraphQL.Resolver((_of) => Patient)
 export class MoveFolderToTrash {
@@ -15,14 +16,14 @@ export class MoveFolderToTrash {
   async movePatientFolderToTrash(
     @TypeGraphQL.Ctx() ctx: Context,
     @TypeGraphQL.Args() { userId, ...args }: MovePatientFolderToTrash,
-    @TypeGraphQL.PubSub('APP_SUBSCRIPTION')
-    notify: TypeGraphQL.Publisher<AppSubscriptionTriggerArgs>,
   ): Promise<Patient | null> {
     try {
-      const patient = await ctx.prisma.patient.update({
+      const { prisma, pubSub } = ctx
+      const patient = await prisma.patient.update({
         where: { id: args.id },
         data: { onTrash: args.onTrash },
       })
+
       const {
         id,
         firstName,
@@ -33,72 +34,51 @@ export class MoveFolderToTrash {
         onTrash,
         informationsConfirmed,
         nTel,
+        createdAt,
+        updated,
       } = patient
 
       if (args.onTrash) {
-        await Promise.all([
-          RemoveTypesenseDocument({
-            index: 'patients',
-            id: patient.id,
-            typesense: ctx.typesense,
-          }),
-          await notify({
-            type: 'patientUpdate',
-            userId,
-            global: true,
-            appPayload: JSON.stringify({
-              operation: 'update',
-              patient: {
-                id,
-                firstName,
-                lastName,
-                sexe,
-                ddn,
-                deleted,
-                onTrash,
-                patientFullName: `${lastName} ${firstName}`,
-                informationsConfirmed,
-                nTel,
-              },
-            }),
-          }),
-        ])
+        await RemoveTypesenseDocument({
+          index: 'patients',
+          id: patient.id,
+          typesense: ctx.typesense,
+        })
       } else {
-        await Promise.all([
-          createTypesenseDocuments({
-            index: 'patients',
-            typesense: ctx.typesense,
-            documents: [
-              {
-                ...patient,
-                ddn_year: getYear(ddn),
-                search_ddn_year: getYear(ddn).toString(),
-              },
-            ],
-          }),
-          await notify({
-            type: 'patientUpdate',
-            userId,
-            global: true,
-            appPayload: JSON.stringify({
-              operation: 'update',
-              patient: {
-                id,
-                firstName,
-                lastName,
-                sexe,
-                ddn,
-                deleted,
-                onTrash,
-                patientFullName: `${lastName} ${firstName}`,
-                informationsConfirmed,
-                nTel,
-              },
-            }),
-          }),
-          ,
-        ])
+        await createTypesenseDocuments({
+          index: 'patients',
+          typesense: ctx.typesense,
+          documents: [
+            {
+              ...patient,
+              ddn_year: getYear(ddn),
+              search_ddn_year: getYear(ddn).toString(),
+            },
+          ],
+        })
       }
+      const notification: WebsocketMessageInterface = {
+        global: true,
+        subscriptionIDS: [],
+        type: 'patient',
+        payload: {
+          operation: 'onTrash',
+          patient: {
+            id,
+            firstName,
+            lastName,
+            sexe,
+            ddn,
+            deleted,
+            onTrash,
+            informationsConfirmed,
+            nTel,
+            createdAt,
+            updated,
+          },
+        },
+      }
+      pubSub.publish(notificationTopic, notification)
 
       return patient
     } catch (error) {

@@ -4,7 +4,9 @@ import { getPrismaFromContext } from '../../@generated/helpers'
 import { PrismaClient } from '@prisma/client'
 import { changeExpirationMobileDeviceArgs } from './Args/changeExpirationMobileDeviceArgs'
 import { addMonths } from 'date-fns'
-import { AppSubscriptionTriggerArgs } from '../Global/AppSubscription/args/AppSubscriptionTriggerArgs'
+import { Context } from '../../context'
+import { WebsocketMessageInterface } from '../../Utils/PubSubInterfaces/WebsocketMessageInterface'
+import { notificationTopic } from '../../Utils/PubSubInterfaces/MessageTypesInterface'
 
 @TypeGraphQL.Resolver((_of) => MobileDevice)
 export class ChangeExpirationMobileDeviceResolver {
@@ -12,13 +14,12 @@ export class ChangeExpirationMobileDeviceResolver {
     nullable: true,
   })
   async changeExpirationMobileDeviceResolver(
-    @TypeGraphQL.Ctx() ctx: any,
+    @TypeGraphQL.Ctx() ctx: Context,
     @TypeGraphQL.Args()
-    { Months, id, userId }: changeExpirationMobileDeviceArgs,
-    @TypeGraphQL.PubSub('APP_SUBSCRIPTION')
-    notify: TypeGraphQL.Publisher<AppSubscriptionTriggerArgs>,
+    { Months, id }: changeExpirationMobileDeviceArgs,
   ): Promise<Boolean | null> {
     const prisma = getPrismaFromContext(ctx) as PrismaClient
+    const pubsub = ctx.pubSub
 
     try {
       const mobileDevice = await prisma.mobileDevice.findFirst({
@@ -31,27 +32,23 @@ export class ChangeExpirationMobileDeviceResolver {
         ? addMonths(mobileDevice.expireAt, Months)
         : addMonths(new Date(), Months)
 
-      const { accessToken, connected, expireAt, mobileDeviceType, uuid } =
-        await prisma.mobileDevice.update({
-          where: { id },
-          data: { expireAt: exp },
-        })
-      await notify({
-        type: 'mobileDeviceUpdate',
-        global: true,
-        userId,
-        appPayload: JSON.stringify({
-          operation: 'update',
-          mobileDevice: {
-            id,
-            accessToken,
-            connected,
-            expireAt,
-            mobileDeviceType,
-            uuid,
-          },
-        }),
+      const updatedMobileDevice = await prisma.mobileDevice.update({
+        where: { id },
+        data: { expireAt: exp },
       })
+      const message: WebsocketMessageInterface = {
+        type: 'mobileDevice',
+        destination: ['mobileDevices'],
+        global: true,
+        subscriptionIds: [],
+        payload: {
+          operation: 'update',
+          mobileDevice: updatedMobileDevice,
+        },
+      }
+
+      await pubsub.publish(notificationTopic, message)
+
       return true
     } catch (error) {
       throw Error("an error occurred, Mobile device isn't registered!")

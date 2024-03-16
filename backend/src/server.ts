@@ -133,7 +133,7 @@ async function bootstrap() {
     cors<cors.CorsRequest>(),
     bodyParser.json(),
     expressMiddleware(server, {
-      context: async ({ req, res }) => createContext({ req, res }),
+      context: async ({ req, res }) => createContext({ req, res }, pubSub),
     }),
   )
 

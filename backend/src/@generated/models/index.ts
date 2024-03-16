@@ -1,6 +1,7 @@
 export { ClinicalEvent } from "./ClinicalEvent";
 export { Consultation } from "./Consultation";
 export { ConsultationList } from "./ConsultationList";
+export { DocumentStore } from "./DocumentStore";
 export { DocumentTemplate } from "./DocumentTemplate";
 export { Economizer } from "./Economizer";
 export { MobileDevice } from "./MobileDevice";

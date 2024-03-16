@@ -13,6 +13,7 @@ export enum UserScalarFieldEnum {
   lastConnection = "lastConnection",
   searchApiKeyId = "searchApiKeyId",
   searchApiKey = "searchApiKey",
+  editorKey = "editorKey",
   createdAt = "createdAt"
 }
 TypeGraphQL.registerEnumType(UserScalarFieldEnum, {

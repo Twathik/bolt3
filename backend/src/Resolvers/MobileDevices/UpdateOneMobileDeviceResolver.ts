@@ -7,7 +7,9 @@ import {
   transformCountFieldIntoSelectRelationsCount,
 } from '../../@generated/helpers'
 import { UpdateOneMobileDeviceArgs } from './Args/UpdateOneMobileDeviceArgs'
-import { AppSubscriptionTriggerArgs } from '../Global/AppSubscription/args/AppSubscriptionTriggerArgs'
+import { WebsocketMessageInterface } from '../../Utils/PubSubInterfaces/WebsocketMessageInterface'
+import { notificationTopic } from '../../Utils/PubSubInterfaces/MessageTypesInterface'
+import { Context } from '../../context'
 
 @TypeGraphQL.Resolver((_of) => MobileDevice)
 export class UpdateOneMobileDeviceResolver {
@@ -15,40 +17,34 @@ export class UpdateOneMobileDeviceResolver {
     nullable: true,
   })
   async updateOneMobileDevice(
-    @TypeGraphQL.Ctx() ctx: any,
+    @TypeGraphQL.Ctx() ctx: Context,
     @TypeGraphQL.Info() info: GraphQLResolveInfo,
     @TypeGraphQL.Args() { userId, ...args }: UpdateOneMobileDeviceArgs,
-    @TypeGraphQL.PubSub('APP_SUBSCRIPTION')
-    notify: TypeGraphQL.Publisher<AppSubscriptionTriggerArgs>,
   ): Promise<MobileDevice | null> {
     try {
       const { _count } = transformInfoIntoPrismaArgs(info)
-      const result = await getPrismaFromContext(ctx).mobileDevice.update({
+      const updatedMobileDevice = await getPrismaFromContext(
+        ctx,
+      ).mobileDevice.update({
         ...args,
         ...(_count && transformCountFieldIntoSelectRelationsCount(_count)),
       })
+      const pubsub = ctx.pubSub
 
-      const { id, accessToken, connected, expireAt, mobileDeviceType, uuid } =
-        result
-
-      await notify({
-        type: 'mobileDeviceUpdate',
-        userId,
+      const message: WebsocketMessageInterface = {
+        type: 'mobileDevice',
+        destination: ['mobileDevices'],
         global: true,
-        appPayload: JSON.stringify({
+        subscriptionIds: [],
+        payload: {
           operation: 'update',
-          mobileDevice: {
-            id,
-            accessToken,
-            connected,
-            expireAt,
-            mobileDeviceType,
-            uuid,
-          },
-        }),
-      })
+          mobileDevice: updatedMobileDevice,
+        },
+      }
 
-      return result
+      await pubsub.publish(notificationTopic, message)
+
+      return updatedMobileDevice
     } catch (error) {
       throw Error('Mobile Device : failed update')
     }

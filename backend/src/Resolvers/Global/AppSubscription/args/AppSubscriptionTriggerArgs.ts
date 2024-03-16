@@ -29,5 +29,5 @@ export class AppSubscriptionTriggerArgs {
   @TypeGraphQL.Field((_type) => String, {
     nullable: true,
   })
-  subscriptionSpecificId?: string
+  subscriptionSpecificId!: string
 }

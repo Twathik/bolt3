@@ -2,8 +2,8 @@
 # Some IDEs, like VS code require this file to be at the
 # root of your workspace. If you move it around, make sure
 # to update schema and documents with the new paths.
-schema: './wundergraph/.wundergraph/generated/wundergraph.schema.graphql'
-documents: ['./wundergraph/.wundergraph/operations/**/*.graphql','./wundergraph/.wundergraph/fragments/**/*.graphql']
+schema: './wundergraph-server/.wundergraph/generated/wundergraph.schema.graphql'
+documents: ['./wundergraph-server/.wundergraph/operations/**/*.graphql','./wundergraph-server/.wundergraph/fragments/**/*.graphql']
 extensions:
   endpoint:
     introspect: false

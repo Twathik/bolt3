@@ -71,6 +71,11 @@ export class UserGroupBy {
   })
   searchApiKey!: string;
 
+  @TypeGraphQL.Field(_type => String, {
+    nullable: false
+  })
+  editorKey!: string;
+
   @TypeGraphQL.Field(_type => Date, {
     nullable: false
   })

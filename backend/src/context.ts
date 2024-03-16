@@ -8,6 +8,7 @@ import { Client } from 'typesense'
 import typesense from './Utils/typesense'
 import { axiosOrthancInstance as orthanc } from './Utils/api/axiosConfig'
 import { AxiosInstance } from 'axios'
+import { RedisPubSub } from 'graphql-redis-subscriptions'
 
 config({
   path:
@@ -20,14 +21,19 @@ export interface Context {
   res: Response
   typesense: Client
   orthanc: AxiosInstance
+  pubSub: RedisPubSub
 }
-export function createContext(ctx: { req: Request; res: Response }) {
+export async function createContext(
+  ctx: { req: Request; res: Response },
+  pubSub: RedisPubSub,
+) {
   return {
     ...ctx,
     prisma,
     // user,
     typesense,
     orthanc,
+    pubSub,
   }
 }
 

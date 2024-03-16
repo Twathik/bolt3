@@ -6,8 +6,10 @@ import {
   transformCountFieldIntoSelectRelationsCount,
   transformInfoIntoPrismaArgs,
 } from '../../@generated/helpers'
-import { AppSubscriptionTriggerArgs } from '../Global/AppSubscription/args/AppSubscriptionTriggerArgs'
 import { DeleteOneMobileDeviceArgs } from './Args/DeleteOneMobileDeviceArgs'
+import { Context } from '../../context'
+import { WebsocketMessageInterface } from '../../Utils/PubSubInterfaces/WebsocketMessageInterface'
+import { notificationTopic } from '../../Utils/PubSubInterfaces/MessageTypesInterface'
 
 @TypeGraphQL.Resolver((_of) => MobileDevice)
 export class DeleteOneMobileDeviceResolver {
@@ -15,39 +17,32 @@ export class DeleteOneMobileDeviceResolver {
     nullable: true,
   })
   async deleteOneMobileDevice(
-    @TypeGraphQL.Ctx() ctx: any,
+    @TypeGraphQL.Ctx() ctx: Context,
     @TypeGraphQL.Info() info: GraphQLResolveInfo,
     @TypeGraphQL.Args() { userId, ...args }: DeleteOneMobileDeviceArgs,
-    @TypeGraphQL.PubSub('APP_SUBSCRIPTION')
-    notify: TypeGraphQL.Publisher<AppSubscriptionTriggerArgs>,
   ): Promise<MobileDevice | null> {
+    const pubsub = ctx.pubSub
     const { _count } = transformInfoIntoPrismaArgs(info)
     try {
-      const result = await getPrismaFromContext(ctx).mobileDevice.delete({
+      const mobileDevice = await getPrismaFromContext(ctx).mobileDevice.delete({
         ...args,
         ...(_count && transformCountFieldIntoSelectRelationsCount(_count)),
       })
-      const { id, accessToken, connected, expireAt, mobileDeviceType, uuid } =
-        result
 
-      await notify({
-        type: 'mobileDeviceUpdate',
-        userId,
+      const message: WebsocketMessageInterface = {
+        type: 'mobileDevice',
+        destination: ['mobileDevices'],
         global: true,
-        appPayload: JSON.stringify({
+        subscriptionIds: [],
+        payload: {
           operation: 'delete',
-          mobileDevice: {
-            id,
-            accessToken,
-            connected,
-            expireAt,
-            mobileDeviceType,
-            uuid,
-          },
-        }),
-      })
+          mobileDevice,
+        },
+      }
 
-      return result
+      await pubsub.publish(notificationTopic, message)
+
+      return mobileDevice
     } catch (error) {
       throw Error('deletion failed')
     }

@@ -8,7 +8,9 @@ import {
   transformInfoIntoPrismaArgs,
 } from '../../@generated/helpers'
 import { PrismaClient } from '@prisma/client'
-import { AppSubscriptionTriggerArgs } from '../Global/AppSubscription/args/AppSubscriptionTriggerArgs'
+import { Context } from '../../context'
+import { notificationTopic } from '../../Utils/PubSubInterfaces/MessageTypesInterface'
+import { WebsocketMessageInterface } from '../../Utils/PubSubInterfaces/WebsocketMessageInterface'
 
 @TypeGraphQL.Resolver((_of) => MobileDevice)
 export class RegisterOneMobileDeviceResolver {
@@ -16,15 +18,14 @@ export class RegisterOneMobileDeviceResolver {
     nullable: true,
   })
   async registerOneMobileDevice(
-    @TypeGraphQL.Ctx() ctx: any,
+    @TypeGraphQL.Ctx() ctx: Context,
     @TypeGraphQL.Info() info: GraphQLResolveInfo,
     @TypeGraphQL.Args()
-    { accessToken, uuid, userId }: RegisterOneMobileDeviceArgs,
-    @TypeGraphQL.PubSub('APP_SUBSCRIPTION')
-    notify: TypeGraphQL.Publisher<AppSubscriptionTriggerArgs>,
+    { accessToken, uuid }: RegisterOneMobileDeviceArgs,
   ): Promise<MobileDevice | null> {
     const { _count } = transformInfoIntoPrismaArgs(info)
     const prisma = getPrismaFromContext(ctx) as PrismaClient
+    const pubsub = ctx.pubSub
 
     try {
       const mobileDevice = await prisma.mobileDevice.findFirst({
@@ -33,7 +34,7 @@ export class RegisterOneMobileDeviceResolver {
       if (!mobileDevice) throw Error()
       if (mobileDevice.expireAt < new Date()) throw Error()
 
-      const result = await prisma.mobileDevice.update({
+      const updatedMobileDevice = await prisma.mobileDevice.update({
         where: { accessToken },
         data: {
           uuid,
@@ -42,26 +43,20 @@ export class RegisterOneMobileDeviceResolver {
         ...(_count && transformCountFieldIntoSelectRelationsCount(_count)),
       })
 
-      const { id, connected, expireAt, mobileDeviceType } = result
-
-      await notify({
-        type: 'mobileDeviceUpdate',
-        userId,
+      const message: WebsocketMessageInterface = {
+        type: 'mobileDevice',
+        destination: ['mobileDevices'],
         global: true,
-        appPayload: JSON.stringify({
+        subscriptionIds: [],
+        payload: {
           operation: 'update',
-          mobileDevice: {
-            id,
-            accessToken,
-            connected,
-            expireAt,
-            mobileDeviceType,
-            uuid,
-          },
-        }),
-      })
+          mobileDevice: updatedMobileDevice,
+        },
+      }
 
-      return result
+      await pubsub.publish(notificationTopic, message)
+
+      return updatedMobileDevice
     } catch (error) {
       throw Error("an error occurred, Mobile device isn't registered!")
     }

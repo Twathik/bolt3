@@ -138,6 +138,7 @@ model User {
   lastConnection DateTime        @updatedAt
   searchApiKeyId Int?
   searchApiKey   String          @default("")
+  editorKey      String          @default("")
   createdAt      DateTime        @default(now())
   ClinicalEvent  ClinicalEvent[]
   WorkingList    WorkingList[]
@@ -285,4 +286,11 @@ model WorkingList {
   linked             Boolean            @default(false)
   linkId             String?
   locked             Boolean            @default(false)
+}
+
+model DocumentStore {
+  id           String @id @default(uuid())
+  patientId    String @unique
+  clinicalData Bytes?
+  documentData Bytes?
 }

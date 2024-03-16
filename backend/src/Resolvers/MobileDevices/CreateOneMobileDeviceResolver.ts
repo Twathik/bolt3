@@ -7,8 +7,10 @@ import {
   transformCountFieldIntoSelectRelationsCount,
 } from '../../@generated/helpers'
 import { PrismaClient } from '@prisma/client'
-import { AppSubscriptionTriggerArgs } from '../Global/AppSubscription/args/AppSubscriptionTriggerArgs'
 import { CreateOneMobileDeviceArgs } from './Args/CreateOneMobileDeviceArgs'
+import { Context } from '../../context'
+import { WebsocketMessageInterface } from '../../Utils/PubSubInterfaces/WebsocketMessageInterface'
+import { notificationTopic } from '../../Utils/PubSubInterfaces/MessageTypesInterface'
 
 @TypeGraphQL.Resolver((_of) => MobileDevice)
 export class CreateOneMobileDeviceResolver {
@@ -16,14 +18,13 @@ export class CreateOneMobileDeviceResolver {
     nullable: false,
   })
   async createOneMobileDevice(
-    @TypeGraphQL.Ctx() ctx: any,
+    @TypeGraphQL.Ctx() ctx: Context,
     @TypeGraphQL.Info() info: GraphQLResolveInfo,
     @TypeGraphQL.Args() { userId, ...args }: CreateOneMobileDeviceArgs,
-    @TypeGraphQL.PubSub('APP_SUBSCRIPTION')
-    notify: TypeGraphQL.Publisher<AppSubscriptionTriggerArgs>,
   ): Promise<MobileDevice> {
     const { _count } = transformInfoIntoPrismaArgs(info)
     const prisma = getPrismaFromContext(ctx) as PrismaClient
+    const pubsub = ctx.pubSub
 
     const {
       data: { mobileDeviceType },
@@ -53,23 +54,19 @@ export class CreateOneMobileDeviceResolver {
         ...args,
         ...(_count && transformCountFieldIntoSelectRelationsCount(_count)),
       })
-      const { id, accessToken, connected, expireAt, uuid } = mobileDevice
-      await notify({
-        type: 'mobileDeviceUpdate',
-        userId,
+      const message: WebsocketMessageInterface = {
+        type: 'mobileDevice',
+        destination: ['mobileDevices'],
         global: true,
-        appPayload: JSON.stringify({
+        subscriptionIds: [],
+        payload: {
           operation: 'create',
-          mobileDevice: {
-            id,
-            accessToken,
-            connected,
-            expireAt,
-            mobileDeviceType,
-            uuid,
-          },
-        }),
-      })
+          mobileDevice,
+        },
+      }
+
+      await pubsub.publish(notificationTopic, message)
+
       return mobileDevice
     } catch (error) {
       console.log({ error })
