@@ -1,5 +1,6 @@
 /* eslint-disable react/no-unescaped-entities */
 import ModalitiesIndex from "@/components/AdminPanelPage/ModalitiesComponents/ModalitiesIndex";
+import SubscribeToModalitiesWebSocket from "@/components/AdminPanelPage/ModalitiesComponents/SubscribeToModalitiesWebSocket";
 import getModalities from "@/components/ApiCalls/getModalities";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import {
@@ -41,6 +42,7 @@ async function ModalitiesPage() {
       <CardContent>
         <ModalitiesIndex initialModalities={initialModalities} />
       </CardContent>
+      <SubscribeToModalitiesWebSocket />
     </Card>
   );
 }

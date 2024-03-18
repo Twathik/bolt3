@@ -10,7 +10,7 @@ export default function MainSecondaryScreen() {
         <CgScreenMirror />
       </h1>
       <h5 className="md:text-2xl text-xl lg:text-3xl font-bold text-center relative z-20 text-amber-400">
-        BOLT 3
+        BOLT 3 
       </h5>
       <div className="w-[80rem] h-60 relative">
         {/* Gradients */}

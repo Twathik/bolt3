@@ -1,4 +1,4 @@
-import type { ModalityGetOneModalityResponseData } from "@/components/wg-generated/models";
+import type { ModalityModalitiesResponseData } from "@/components/wg-generated/models";
 import type { RootMessageInterface } from "./MessageTypesInterface";
 
 type ModalityMessagePayloadOperationType = "update" | "create" | "delete";
@@ -8,7 +8,7 @@ interface RootModalityMessagePayload {
 }
 
 interface ModalityUpdateMessagePayload extends RootModalityMessagePayload {
-  modality: ModalityGetOneModalityResponseData["mainDb_modality"];
+  modality: ModalityModalitiesResponseData["mainDb_modalities"][0];
 }
 
 type ModalityMessagePayload = ModalityUpdateMessagePayload;

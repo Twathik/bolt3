@@ -13,13 +13,14 @@ interface RootPatientMessagePayload {
 }
 
 interface PatientUpdateMessagePayload extends RootPatientMessagePayload {
-  operation: "update";
+  operation: "update" | "delete";
   patient: PatientsGetOnePatientInfoResponseData["mainDb_getPatient"];
 }
-
-interface PatientDeleteMessagePayload extends RootPatientMessagePayload {
-  operation: "onTrash" | "delete";
-  patientId: string;
+interface PatientTrashManagementMessagePayload
+  extends RootPatientMessagePayload {
+  operation: "onTrash";
+  patient: PatientsGetOnePatientInfoResponseData["mainDb_getPatient"];
+  trashOperation: "addToTrash" | "restore";
 }
 
 interface PatientUpdateDocumentPayload extends RootPatientMessagePayload {
@@ -29,8 +30,8 @@ interface PatientUpdateDocumentPayload extends RootPatientMessagePayload {
 
 type PatientMessagePayload =
   | PatientUpdateMessagePayload
-  | PatientDeleteMessagePayload
-  | PatientUpdateDocumentPayload;
+  | PatientUpdateDocumentPayload
+  | PatientTrashManagementMessagePayload;
 
 export interface PatientMessageInterface extends RootMessageInterface {
   type: "patient";

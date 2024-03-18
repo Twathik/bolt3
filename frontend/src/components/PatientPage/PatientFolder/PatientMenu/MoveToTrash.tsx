@@ -5,13 +5,10 @@ import { useCallback, useEffect, useState } from "react";
 import { BeatLoader } from "react-spinners";
 import { useMutation } from "@/components/wg-generated/nextjs";
 import ConfirmationDialog from "@/components/GeneralComponents/ConfirmationDialog/ConfirmationDialog";
-import type { PatientsGetOnePatientInfoResponseData } from "@/components/wg-generated/models";
+import { useBoltStore } from "@/stores/boltStore";
 
-function MoveToTrash({
-  patient,
-}: {
-  patient: PatientsGetOnePatientInfoResponseData["mainDb_getPatient"];
-}) {
+function MoveToTrash() {
+  const patient = useBoltStore((s) => s.patient);
   const { toast } = useToast();
   const { trigger } = useMutation({
     operationName: "patients/MovePatientFolderToTrash",
@@ -44,9 +41,9 @@ function MoveToTrash({
         <ConfirmationDialog
           callback={onMoveFromTrash}
           triggerButton={
-            <Button variant="ghost" className="w-full justify-start">
+            <Button variant="ghost" className="w-full justify-start ">
               {loading ? (
-                <BeatLoader color="#fff" size={10} />
+                <BeatLoader color="#000" size={10} />
               ) : (
                 <span>Retirer de la corbeille</span>
               )}
@@ -61,9 +58,9 @@ function MoveToTrash({
           triggerButton={
             <Button
               variant="ghost"
-              className="w-full text-rose-800 justify-start hover:bg-rose-50 hover:text-rose-800">
+              className="w-full text-rose-800 justify-start hover:bg-rose-50 hover:text-rose-800  disabled:bg-red-600">
               {loading ? (
-                <BeatLoader color="#fff" size={10} />
+                <BeatLoader color="#dc2626" size={10} />
               ) : (
                 <span>Deplacer vers la corbeille</span>
               )}

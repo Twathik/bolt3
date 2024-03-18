@@ -19,6 +19,7 @@ function ToggleTrashElements({ patientId }: { patientId: string }) {
     await trigger({ id: { equals: patientId }, onTrash: true, delete: true });
     setLoading(false);
   }, [patientId, trigger]);
+
   const restore = useCallback(async () => {
     setLoading(true);
     await trigger({ id: { equals: patientId }, onTrash: false, delete: false });

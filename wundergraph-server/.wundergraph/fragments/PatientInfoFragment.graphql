@@ -1,0 +1,13 @@
+fragment PatientInfoFragment on mainDb_Patient {
+  id
+  firstName
+  lastName
+  sexe
+  ddn
+  deleted
+  onTrash
+  patientFullName
+  informationsConfirmed
+  nTel
+  updated
+}

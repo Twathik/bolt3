@@ -1,5 +1,6 @@
 /* eslint-disable react/no-unescaped-entities */
-import TrashTable from "@/components/AdminPanelPage/TrashComponents/TrashTable";
+import SubscribeToTrashWebSocket from "@/components/AdminPanelPage/TrashComponents/SubscribeToTrashWebSocket";
+import TrashTableRootComponent from "@/components/AdminPanelPage/TrashComponents/TrashTableRootComponent";
 import getOnTrashPatients from "@/components/ApiCalls/getOnTrashPatient";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import {
@@ -41,8 +42,9 @@ async function TrashPage() {
         </CardDescription>
       </CardHeader>
       <CardContent>
-        <TrashTable onTrash={onTrash} />
+        <TrashTableRootComponent onTrash={onTrash} />
       </CardContent>
+      <SubscribeToTrashWebSocket />
     </Card>
   );
 }

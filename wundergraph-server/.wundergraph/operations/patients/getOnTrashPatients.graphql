@@ -4,6 +4,6 @@ query {
       AND: [{ onTrash: { equals: true } }, { deleted: { equals: false } }]
     }
   ) {
-    ...PatientFragment
+    ...PatientInfoFragment
   }
 }

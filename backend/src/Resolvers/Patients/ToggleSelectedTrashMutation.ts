@@ -13,6 +13,8 @@ import {
 import { PrismaClient } from '@prisma/client'
 import { Context } from '../../context'
 import UpsertTypesenseDocument from '../../Utils/typesense/operations/upsertDocument'
+import { WebsocketMessageInterface } from '../../Utils/PubSubInterfaces/WebsocketMessageInterface'
+import { notificationTopic } from '../../Utils/PubSubInterfaces/MessageTypesInterface'
 
 @TypeGraphQL.Resolver((_of) => Patient)
 export class ToggleSelectedTrashMutation {
@@ -24,11 +26,10 @@ export class ToggleSelectedTrashMutation {
     @TypeGraphQL.Info() info: GraphQLResolveInfo,
     @TypeGraphQL.Args() args: UpdateManyPatientArgs,
     @TypeGraphQL.PubSub('EMPTY_TRASH') publish: TypeGraphQL.Publisher<string>,
-    @TypeGraphQL.PubSub('GET_UPDATED_PATIENT')
-    update: TypeGraphQL.Publisher<string>,
   ): Promise<AffectedRowsOutput> {
     const { _count } = transformInfoIntoPrismaArgs(info)
     const prisma = getPrismaFromContext(ctx) as PrismaClient
+    const pubsub = ctx.pubSub
     try {
       const trash = await prisma.patient.updateMany({
         ...args,
@@ -37,17 +38,42 @@ export class ToggleSelectedTrashMutation {
       })
       const documents = await prisma.patient.findMany({
         where: { id: args.where?.id },
+        select: {
+          id: true,
+          firstName: true,
+          lastName: true,
+          sexe: true,
+          ddn: true,
+          deleted: true,
+          onTrash: true,
+          informationsConfirmed: true,
+          nTel: true,
+          updated: true,
+        },
       })
-      if (args.data?.onTrash?.set == false) {
+      if (args.data?.onTrash?.set === false) {
         await UpsertTypesenseDocument({
           index: 'patients',
           typesense: ctx.typesense,
           documents,
         })
       }
-      documents.forEach((d) => {
-        update(d.id)
-      })
+      await Promise.all(
+        documents.map((d) => {
+          const message: WebsocketMessageInterface = {
+            destination: ['trash'],
+            global: true,
+            subscriptionIds: [],
+            type: 'patient',
+            payload: {
+              operation: 'onTrash',
+              trashOperation: d.onTrash ? 'addToTrash' : 'restore',
+              patient: d,
+            },
+          }
+          pubsub.publish(notificationTopic, message)
+        }),
+      )
       publish('update')
       return trash
     } catch (error) {

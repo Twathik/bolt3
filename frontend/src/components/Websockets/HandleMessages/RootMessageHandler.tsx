@@ -3,6 +3,7 @@ import type { WebsocketMessageInterface } from "../interfaces/WebsocketMessageIn
 import PatientUpdateSubscription from "./PatientUpdateSubscription";
 import SecondaryDisplaySubscription from "./SecondaryDisplaySubscription";
 import MobileDevicesSubscription from "./MobileDevicesSubscription";
+import ModalitySubscription from "./ModalitySubscription";
 
 function RootMessageHandler({
   message,
@@ -17,6 +18,8 @@ function RootMessageHandler({
         return <SecondaryDisplaySubscription message={message} />;
       case "mobileDevice":
         return <MobileDevicesSubscription message={message} />;
+      case "modality":
+        return <ModalitySubscription message={message} />;
 
       default:
         return null;

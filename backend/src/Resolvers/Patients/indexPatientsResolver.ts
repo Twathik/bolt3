@@ -4,6 +4,7 @@ import { Patient } from '../../@generated'
 import { Context } from '../../context'
 import patientSchema from '../../Utils/typesense/Patients/patientSchema'
 import createTypesenseDocuments from '../../Utils/typesense/operations/createDocuments'
+import { format, getYear } from 'date-fns'
 
 @TypeGraphQL.Resolver((_of) => Patient)
 export class IndexPatientsResolver {
@@ -17,9 +18,23 @@ export class IndexPatientsResolver {
       console.log('new collection')
     }
     try {
-      const documents = await ctx.prisma.patient.findMany({
+      const patients = await ctx.prisma.patient.findMany({
         where: { onTrash: false, deleted: false },
       })
+
+      const documents = patients.map((p) => {
+        const { lastName, firstName, ddn, id, sexe } = p
+        return {
+          lastName,
+          firstName,
+          sexe,
+          ddn: format(ddn, 'dd-MM-yyyy'),
+          id,
+          ddn_year: getYear(ddn),
+          search_ddn_year: getYear(ddn).toString(),
+        }
+      })
+
       await ctx.typesense.collections().create(patientSchema)
       await createTypesenseDocuments({
         index: 'patients',

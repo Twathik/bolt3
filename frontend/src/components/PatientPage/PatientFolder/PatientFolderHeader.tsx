@@ -60,7 +60,7 @@ export default function PatientFolderHeader({
               <DropdownMenuLabel>Paramètres</DropdownMenuLabel>
               <DropdownMenuGroup className="flex flex-col">
                 <EditPatientInformation />
-                <MoveToTrash patient={patient} />
+                <MoveToTrash />
               </DropdownMenuGroup>
             </DropdownMenuContent>
           </DropdownMenu>

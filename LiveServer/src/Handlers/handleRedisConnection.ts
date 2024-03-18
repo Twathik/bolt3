@@ -2,6 +2,7 @@ import { RedisClientType } from "redis";
 import { WebsocketMessageInterface } from "../messagesInterfaces/WebsocketMessageInterface";
 import { Socket } from "../socketInterface";
 import { notificationTopic } from "../messagesInterfaces/MessageTypesInterface";
+import messageBroker from "../utils/messageBroker";
 
 export default async function handleRedisConnection({
   subscriber,
@@ -14,20 +15,8 @@ export default async function handleRedisConnection({
     const message = JSON.parse(data) as WebsocketMessageInterface;
     // console.dir({ message }, { depth: 5 });
 
-    peers.forEach((p) => {
-      if (message.subscriptionIds.length > 0) {
-        // console.log("global - with IDS");
-        let send = false;
-        for (const id of message.subscriptionIds) {
-          if (message.subscriptionIds.includes(id)) send = true;
-        }
-        if (send) {
-          p.send(data.toString());
-        }
-      } else {
-        // console.log("global - no IDS");
-        p.send(data.toString());
-      }
+    peers.forEach((peer) => {
+      messageBroker({ message, peer });
     });
   });
 }

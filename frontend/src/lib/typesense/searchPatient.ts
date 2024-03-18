@@ -23,7 +23,7 @@ export interface patientHit {
 }
 
 export interface RawPatientDocumentResultInterface {
-  ddn: number;
+  ddn: string;
   ddn_year: number;
   firstName: string;
   id: string;
@@ -59,14 +59,18 @@ const searchPatient = async ({
     if (sexe) params.filter_by = `sexe: ${sexe}`;
 
     const search_result: SearchResponse<RawPatientDocumentResultInterface> =
-      await client.collections("patients").documents().search(params);
+      (await client
+        .collections("patients")
+        .documents()
+        .search(params)) as SearchResponse<RawPatientDocumentResultInterface>;
+    console.log({ search_result });
 
     const hits: patientHit[] =
       search_result.hits?.map((hit) => {
         const { ddn, firstName, lastName, sexe, id } = hit.document;
         const highlight = hit.highlight as any;
         return {
-          formatted_ddn: format(new Date(ddn), "dd/MM/yyyy"),
+          formatted_ddn: ddn,
           firstName: highlight?.firstName?.snippet ?? firstName,
           lastName: highlight?.lastName?.snippet ?? lastName,
           sexe,
@@ -82,7 +86,6 @@ const searchPatient = async ({
 
     return searchResponse;
   } catch (error) {
-    console.log({ error });
     throw Error("Patient search error");
   }
 };

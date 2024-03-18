@@ -1,12 +1,11 @@
+"use client";
 import TrashTableComponent from "./TrashTableComponent";
 import TrashColumn from "./TrashColumn";
-import type { PatientsGetOnTrashPatientsResponseData } from "@/components/wg-generated/models";
+import { useBoltStore } from "@/stores/boltStore";
 
-function TrashTable({
-  onTrash,
-}: {
-  onTrash: PatientsGetOnTrashPatientsResponseData["mainDb_patients"];
-}) {
+function TrashTable() {
+  const onTrash = useBoltStore((s) => s.onTrash);
+
   return <TrashTableComponent columns={TrashColumn} data={onTrash} />;
 }
 

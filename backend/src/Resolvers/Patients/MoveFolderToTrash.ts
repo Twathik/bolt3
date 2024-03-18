@@ -24,19 +24,7 @@ export class MoveFolderToTrash {
         data: { onTrash: args.onTrash },
       })
 
-      const {
-        id,
-        firstName,
-        lastName,
-        sexe,
-        ddn,
-        deleted,
-        onTrash,
-        informationsConfirmed,
-        nTel,
-        createdAt,
-        updated,
-      } = patient
+      const { ddn } = patient
 
       if (args.onTrash) {
         await RemoveTypesenseDocument({
@@ -57,28 +45,31 @@ export class MoveFolderToTrash {
           ],
         })
       }
-      const notification: WebsocketMessageInterface = {
+      const updatePatientNotification: WebsocketMessageInterface = {
         global: true,
-        subscriptionIDS: [],
+        destination: ['folder'],
+        subscriptionIds: [patient.id],
+        type: 'patient',
+        payload: {
+          operation: 'update',
+          patient,
+        },
+      }
+      pubSub.publish(notificationTopic, updatePatientNotification)
+
+      const onTrashNotification: WebsocketMessageInterface = {
+        global: true,
+        destination: ['trash'],
+        subscriptionIds: [],
         type: 'patient',
         payload: {
           operation: 'onTrash',
-          patient: {
-            id,
-            firstName,
-            lastName,
-            sexe,
-            ddn,
-            deleted,
-            onTrash,
-            informationsConfirmed,
-            nTel,
-            createdAt,
-            updated,
-          },
+          patient,
+          trashOperation: args.onTrash ? 'addToTrash' : 'restore',
         },
       }
-      pubSub.publish(notificationTopic, notification)
+
+      pubSub.publish(notificationTopic, onTrashNotification)
 
       return patient
     } catch (error) {

@@ -272,7 +272,7 @@ export interface AuthProvider {
 }
 
 export const defaultClientConfig: ClientConfig = {
-	applicationHash: "627121d2",
+	applicationHash: "c2f61626",
 	baseURL: "http://api.bolt3.local",
 	sdkVersion: "0.181.5",
 };

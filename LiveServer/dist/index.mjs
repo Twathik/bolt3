@@ -53,6 +53,45 @@ var handleUpgrade_default = handleUpgrade;
 // src/messagesInterfaces/MessageTypesInterface.ts
 var notificationTopic = "bolt3notifications";
 
+// src/utils/DestinationHandler.ts
+function destinationHandler({
+  message,
+  ws
+}) {
+  let send = false;
+  ws.destination.forEach((d) => {
+    if (message.destination?.includes(d))
+      send = true;
+  });
+  return send;
+}
+
+// src/utils/messageBroker.ts
+var messageBroker = ({
+  message,
+  peer
+}) => {
+  console.log({ message });
+  if (message.destination.length > 0) {
+    const check = destinationHandler({ message, ws: peer });
+    if (!check)
+      return;
+  }
+  if (message.subscriptionIds.length > 0) {
+    let send = false;
+    for (const id of message.subscriptionIds) {
+      if (peer.subscriptionIds?.includes(id))
+        send = true;
+    }
+    if (send) {
+      peer.send(JSON.stringify(message));
+    }
+  } else {
+    peer.send(JSON.stringify(message));
+  }
+};
+var messageBroker_default = messageBroker;
+
 // src/Handlers/handleRedisConnection.ts
 async function handleRedisConnection({
   subscriber: subscriber2,
@@ -60,19 +99,8 @@ async function handleRedisConnection({
 }) {
   await subscriber2.subscribe(notificationTopic, (data) => {
     const message = JSON.parse(data);
-    peers.forEach((p) => {
-      if (message.subscriptionIds.length > 0) {
-        let send = false;
-        for (const id of message.subscriptionIds) {
-          if (message.subscriptionIds.includes(id))
-            send = true;
-        }
-        if (send) {
-          p.send(data.toString());
-        }
-      } else {
-        p.send(data.toString());
-      }
+    peers.forEach((peer) => {
+      messageBroker_default({ message, peer });
     });
   });
 }
@@ -89,48 +117,20 @@ function errorHandler({ ws }) {
   ws.on("error", console.error);
 }
 
-// src/Handlers/messageRootTypesHandlers/messagesSubTypesHandlers/DestinationHandler.ts
-function destinationHandler({
-  message,
-  ws
-}) {
-  let send = false;
-  ws.destination.forEach((d) => {
-    if (message.destination.includes(d))
-      send = true;
-  });
-  return send;
-}
-
 // src/Handlers/messageRootTypesHandlers/messagesSubTypesHandlers/GlobalMessageHandler.ts
 function globalMessageHandler({
   message,
-  peers,
-  ws
+  peers
 }) {
-  peers.forEach((p) => {
-    if (message.destination.length > 0) {
-      const check = destinationHandler({ message, ws: p });
-      if (!check)
-        return;
-    }
-    if (message.subscriptionIds.length > 0) {
-      let send = false;
-      for (const id of message.subscriptionIds) {
-        if (ws.subscriptionIds.includes(id))
-          send = true;
-      }
-      if (send) {
-        p.send(JSON.stringify(message));
-      }
-    } else {
-      p.send(JSON.stringify(message));
-    }
+  peers.forEach((peer) => {
+    messageBroker_default({ message, peer });
   });
 }
 
 // src/Handlers/messageRootTypesHandlers/messagesSubTypesHandlers/handleSubscriptionMessages.ts
 var handleSubscriptionMessages = ({ message, ws }) => {
+  ws.subscriptionIds = [];
+  ws.destination = [];
   if (ws.user?.userId !== void 0 && message.type === "subscribe") {
     ws.subscriptionIds = message.payload.SubscribeTo;
     ws.destination = message.destination;
@@ -144,26 +144,10 @@ function userMessageHandler({
   peers,
   ws
 }) {
-  peers.forEach((p) => {
-    if (message.destination.length > 0) {
-      const check = destinationHandler({ message, ws: p });
-      if (!check)
-        return;
-    }
-    if (p.user && ws.user) {
-      if (p.user.userId === ws.user.userId) {
-        if (message.subscriptionIds.length > 0) {
-          let send = false;
-          for (const id of message.subscriptionIds) {
-            if (ws.subscriptionIds.includes(id))
-              send = true;
-          }
-          if (send) {
-            p.send(JSON.stringify(message));
-          }
-        } else {
-          p.send(JSON.stringify(message));
-        }
+  peers.forEach((peer) => {
+    if (peer.user && ws.user) {
+      if (peer.user.userId === ws.user.userId) {
+        messageBroker_default({ message, peer });
       }
     }
   });

@@ -40,6 +40,7 @@ export class UpdateOnePatientResolver {
         const notification: WebsocketMessageInterface = {
           global: true,
           subscriptionIds: [patient.id],
+          destination: [],
           type: 'patient',
           payload: {
             operation: 'update',

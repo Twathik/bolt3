@@ -29,8 +29,13 @@ export const TrashColumn: ColumnDef<
     enableHiding: false,
   },
   {
-    accessorKey: "patientFullName",
-    header: "Nom et prénom",
+    accessorKey: "lastName",
+    header: "Nom",
+    enableColumnFilter: true,
+  },
+  {
+    accessorKey: "firstName",
+    header: "Prénom",
     enableColumnFilter: true,
   },
   {

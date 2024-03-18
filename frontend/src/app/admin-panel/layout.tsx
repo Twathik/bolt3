@@ -2,7 +2,6 @@
 
 import AdminPanel from "@/components/AdminPanelPage/AdminPanel";
 import GoBackButton from "@/components/AdminPanelPage/GoBackButton";
-import BoltSubscriptionComponent from "@/components/Subscriptions/wg-subscription/BoltSubscriptionComponent";
 import React from "react";
 
 function SettingsLayout({
@@ -14,7 +13,6 @@ function SettingsLayout({
     <div>
       <GoBackButton />
       <AdminPanel>{children}</AdminPanel>
-      <BoltSubscriptionComponent subscriptionIds={[]} />
     </div>
   );
 }

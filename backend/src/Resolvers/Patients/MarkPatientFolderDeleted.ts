@@ -24,11 +24,12 @@ export class MarkPatientFolderDeleted {
 
       const notification: WebsocketMessageInterface = {
         global: true,
-        subscriptionIDS: [],
+        subscriptionIds: [],
+        destination: [],
         type: 'patient',
         payload: {
           operation: 'delete',
-          patientId: patient.id,
+          patient,
         },
       }
       pubSub.publish(notificationTopic, notification)

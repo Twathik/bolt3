@@ -7,6 +7,8 @@ interface HandleMessages {
   ws: Socket;
 }
 const handleSubscriptionMessages = ({ message, ws }: HandleMessages) => {
+  ws.subscriptionIds = [];
+  ws.destination = [];
   if (ws.user?.userId !== undefined && message.type === "subscribe") {
     ws.subscriptionIds = message.payload.SubscribeTo;
     ws.destination = message.destination;

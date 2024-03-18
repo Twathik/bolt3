@@ -10,7 +10,7 @@ const createPatientSlice: StateCreator<
   patient: null,
   patientView: "folder",
   documentVersion: "",
-  focusedPatientId: "",
+  onTrash: [],
   setPatient: (patient) => {
     set((state) => {
       state.patient = patient;
@@ -26,10 +26,19 @@ const createPatientSlice: StateCreator<
       s.documentVersion = version;
     });
   },
-  setFocusedPatientId: (id) => {
+  setOnTrashPatients: (onTrash) => {
     set((s) => {
-      console.log({ id });
-      s.focusedPatientId = id;
+      s.onTrash = onTrash;
+    });
+  },
+  addPatientToTrash: (addToTrash) => {
+    set((s) => {
+      s.onTrash.push(addToTrash);
+    });
+  },
+  removePatientFromTrash: (removeFromTrash) => {
+    set((s) => {
+      s.onTrash = s.onTrash.filter((p) => p.id !== removeFromTrash.id);
     });
   },
 });

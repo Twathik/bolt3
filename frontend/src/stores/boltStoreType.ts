@@ -9,6 +9,7 @@ import type {
   MobileDevicesMobileDevicesQueryResponseData,
   ModalityGetSpecificModalitiesResponseData,
   ModalityModalitiesResponseData,
+  PatientsGetOnTrashPatientsResponseData,
   PatientsGetOnePatientInfoResponseData,
   UsersGetUserResponseData,
   WorkingListsWorkingListsResponseData,
@@ -40,15 +41,24 @@ export type PatientViewType = "folder" | "document";
 
 export type PatientStoreSlice = {
   patient: PatientsGetOnePatientInfoResponseData["mainDb_getPatient"] | null;
+  onTrash: PatientsGetOnTrashPatientsResponseData["mainDb_patients"];
   patientView: PatientViewType;
   documentVersion: string;
-  focusedPatientId: string;
+
   setPatient: (
     patient: PatientsGetOnePatientInfoResponseData["mainDb_getPatient"] | null
   ) => void;
+  addPatientToTrash: (
+    addToTrash: PatientsGetOnTrashPatientsResponseData["mainDb_patients"][0]
+  ) => void;
+  removePatientFromTrash: (
+    removeFromTrash: PatientsGetOnTrashPatientsResponseData["mainDb_patients"][0]
+  ) => void;
+  setOnTrashPatients: (
+    onTrash: PatientsGetOnTrashPatientsResponseData["mainDb_patients"]
+  ) => void;
   setPatientView: (view: PatientViewType) => void;
   setDocumentVersion: (documentVersion: string) => void;
-  setFocusedPatientId: (id: string) => void;
 };
 
 export type PrescriptionStoreSlice = {

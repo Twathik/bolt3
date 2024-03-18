@@ -8,21 +8,33 @@ function PatientUpdateSubscription({
   message: WebsocketMessageInterface;
 }) {
   const setPatient = useBoltStore((store) => store.setPatient);
+  const addToTrash = useBoltStore((s) => s.addPatientToTrash);
+  const removeFromTrash = useBoltStore((s) => s.removePatientFromTrash);
   //const setDocumentVersion = useBoltStore((s) => s.setDocumentVersion);
   //const setFocusedPatientId = useBoltStore((s) => s.setFocusedPatientId);
   useEffect(() => {
     if (message.type === "patient") {
       switch (message.payload.operation) {
         case "update":
-          //console.log({ patient: message.payload.patient });
+          console.log({ patient: message.payload });
           setPatient(message.payload.patient);
+          break;
+        case "onTrash":
+          console.log({ payload: message.payload });
+          if (message.payload.patient) {
+            if (message.payload.trashOperation === "addToTrash")
+              addToTrash(message.payload.patient);
+            if (message.payload.trashOperation === "restore")
+              removeFromTrash(message.payload.patient);
+          }
+
           break;
 
         default:
           break;
       }
     }
-  }, [message, setPatient]);
+  }, [addToTrash, message, removeFromTrash, setPatient]);
   return null;
 }
 

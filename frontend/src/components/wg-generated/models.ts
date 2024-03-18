@@ -4241,8 +4241,6 @@ export interface PatientsGetOnTrashPatientsResponseData {
 		patientFullName: string;
 		informationsConfirmed: boolean;
 		nTel?: string;
-		clinicalData: string;
-		documentData?: string;
 		updated: string;
 	}[];
 }

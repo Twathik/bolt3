@@ -9,8 +9,9 @@ import {
 } from '../../@generated/helpers'
 import { PrismaClient } from '@prisma/client'
 import { Context } from '../../context'
-import { AppSubscriptionTriggerArgs } from '../Global/AppSubscription/args/AppSubscriptionTriggerArgs'
 import { UpdateOneModalityArgs } from './args/UpdateOneModalityArgs'
+import { WebsocketMessageInterface } from '../../Utils/PubSubInterfaces/WebsocketMessageInterface'
+import { notificationTopic } from '../../Utils/PubSubInterfaces/MessageTypesInterface'
 
 @TypeGraphQL.Resolver((_of) => Modality)
 export class UpdateOneModalityResolver {
@@ -21,26 +22,16 @@ export class UpdateOneModalityResolver {
     @TypeGraphQL.Ctx() ctx: Context,
     @TypeGraphQL.Info() info: GraphQLResolveInfo,
     @TypeGraphQL.Args() { userId, ...args }: UpdateOneModalityArgs,
-    @TypeGraphQL.PubSub('APP_SUBSCRIPTION')
-    notify: TypeGraphQL.Publisher<AppSubscriptionTriggerArgs>,
   ): Promise<Modality | null> {
     const { _count } = transformInfoIntoPrismaArgs(info)
     const prisma = getPrismaFromContext(ctx) as PrismaClient
+    const pubsub = ctx.pubSub
 
     try {
       const modality = await prisma.modality.update({
         ...args,
         ...(_count && transformCountFieldIntoSelectRelationsCount(_count)),
       })
-      const {
-        id,
-        modalityAETitle,
-        modalityIpAddress,
-        modalityPseudo,
-        modalityPort,
-        modalityType,
-        enabled,
-      } = modality
 
       const res = await ctx.orthanc.put(
         `/modalities/${modality.modalityName}`,
@@ -60,20 +51,18 @@ export class UpdateOneModalityResolver {
         },
       )
       if (res.status !== 200) throw Error()
-      await notify({
-        type: 'modalityUpdate',
-        userId,
+      const message: WebsocketMessageInterface = {
+        type: 'modality',
+        destination: ['modality'],
         global: true,
-        appPayload: JSON.stringify({
-          id,
-          modalityAETitle,
-          modalityIpAddress,
-          modalityPseudo,
-          modalityPort,
-          modalityType,
-          enabled,
-        }),
-      })
+        subscriptionIds: [],
+        payload: {
+          operation: 'update',
+          modality: modality,
+        },
+      }
+
+      await pubsub.publish(notificationTopic, message)
 
       return modality
     } catch (error) {

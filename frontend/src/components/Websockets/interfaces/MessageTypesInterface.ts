@@ -13,7 +13,13 @@ export interface RootMessageInterface {
   type: MessageType;
   global: boolean;
   subscriptionIds: string[];
-  destination: ("secondary-display" | "folder" | "mobileDevices")[];
+  destination: (
+    | "secondary-display"
+    | "folder"
+    | "mobileDevices"
+    | "modality"
+    | "trash"
+  )[];
 }
 
 export const notificationTopic = "bolt3notifications";

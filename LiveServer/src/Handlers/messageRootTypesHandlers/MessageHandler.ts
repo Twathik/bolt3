@@ -1,6 +1,6 @@
 import { WebsocketMessageInterface } from "../../messagesInterfaces/WebsocketMessageInterface";
 import { Socket } from "../../socketInterface";
-import destinationHandler from "./messagesSubTypesHandlers/DestinationHandler";
+import destinationHandler from "../../utils/DestinationHandler";
 import globalMessageHandler from "./messagesSubTypesHandlers/GlobalMessageHandler";
 import handleSubscriptionMessages from "./messagesSubTypesHandlers/handleSubscriptionMessages";
 import userMessageHandler from "./messagesSubTypesHandlers/userMessageHandler";
