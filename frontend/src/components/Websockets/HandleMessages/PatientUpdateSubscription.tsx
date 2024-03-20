@@ -10,13 +10,13 @@ function PatientUpdateSubscription({
   const setPatient = useBoltStore((store) => store.setPatient);
   const addToTrash = useBoltStore((s) => s.addPatientToTrash);
   const removeFromTrash = useBoltStore((s) => s.removePatientFromTrash);
-  //const setDocumentVersion = useBoltStore((s) => s.setDocumentVersion);
+  const setDocumentData = useBoltStore((s) => s.setDocumentData);
   //const setFocusedPatientId = useBoltStore((s) => s.setFocusedPatientId);
   useEffect(() => {
     if (message.type === "patient") {
       switch (message.payload.operation) {
         case "update":
-          console.log({ patient: message.payload });
+          console.log({ patientUpdate: message.payload });
           setPatient(message.payload.patient);
           break;
         case "onTrash":
@@ -29,12 +29,16 @@ function PatientUpdateSubscription({
           }
 
           break;
+        case "update-clinicalData":
+          console.log("triggered");
+          setDocumentData(JSON.parse(message.payload.content));
+          break;
 
         default:
           break;
       }
     }
-  }, [addToTrash, message, removeFromTrash, setPatient]);
+  }, [addToTrash, message, removeFromTrash, setDocumentData, setPatient]);
   return null;
 }
 

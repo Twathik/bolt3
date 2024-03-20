@@ -35,8 +35,6 @@ export class UpdateOnePatientResolver {
         typesense: ctx.typesense,
       })
       if (patient) {
-        const { clinicalData, documentData, ...rest } = patient
-
         const notification: WebsocketMessageInterface = {
           global: true,
           subscriptionIds: [patient.id],
@@ -44,10 +42,10 @@ export class UpdateOnePatientResolver {
           type: 'patient',
           payload: {
             operation: 'update',
-            patient: rest,
+            patient,
           },
         }
-        pubSub.publish(notificationTopic, notification)
+        await pubSub.publish(notificationTopic, notification)
       }
 
       return patient

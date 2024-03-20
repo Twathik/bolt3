@@ -2,6 +2,7 @@ import * as TypeGraphQL from "type-graphql";
 import * as GraphQLScalars from "graphql-scalars";
 import { Prisma } from "@prisma/client";
 import { DecimalJSScalar } from "../../scalars";
+import { PatientDocumentType } from "../../enums/PatientDocumentType";
 
 @TypeGraphQL.ObjectType("DocumentStoreMinAggregate", {})
 export class DocumentStoreMinAggregate {
@@ -15,13 +16,13 @@ export class DocumentStoreMinAggregate {
   })
   patientId!: string | null;
 
-  @TypeGraphQL.Field(_type => GraphQLScalars.ByteResolver, {
+  @TypeGraphQL.Field(_type => PatientDocumentType, {
     nullable: true
   })
-  clinicalData!: Buffer | null;
+  patientDocumentType!: "folder" | "document" | null;
 
-  @TypeGraphQL.Field(_type => GraphQLScalars.ByteResolver, {
+  @TypeGraphQL.Field(_type => String, {
     nullable: true
   })
-  documentData!: Buffer | null;
+  content!: string | null;
 }

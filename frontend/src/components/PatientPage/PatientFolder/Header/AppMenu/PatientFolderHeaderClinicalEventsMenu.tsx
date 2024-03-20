@@ -7,22 +7,16 @@ import { CgScreenMirror } from "react-icons/cg";
 import type { PatientsGetOnePatientInfoResponseData } from "@/components/wg-generated/models";
 import { MdKeyboardDoubleArrowRight } from "react-icons/md";
 import type { WebsocketMessageInterface } from "@/components/Websockets/interfaces/WebsocketMessageInterface";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 function PatientFolderHeaderClinicalEventsMenu({
   patient,
 }: {
   patient: PatientsGetOnePatientInfoResponseData["mainDb_getPatient"];
 }) {
-  const patientView = useBoltStore((s) => s.patientView);
-  const setPatientView = useBoltStore((s) => s.setPatientView);
   const socket = useBoltStore((s) => s.socket);
-
-  const setFolderView = useCallback(() => {
-    setPatientView("folder");
-  }, [setPatientView]);
-  const setDocumentView = useCallback(() => {
-    setPatientView("document");
-  }, [setPatientView]);
+  const path = usePathname();
 
   const sendToSecondaryDisplay = useCallback(async () => {
     try {
@@ -40,33 +34,38 @@ function PatientFolderHeaderClinicalEventsMenu({
   }, [patient, socket]);
   return (
     <NavigationMenuItem className="flex flex-row gap-x-4">
-      <Button
-        onClick={setFolderView}
-        variant="ghost"
-        className={classNames(
-          "text-white  hover:text-white",
-          patientView === "folder"
-            ? "bg-amber-400 text-slate-800 hover:bg-amber-400 hover:text-slate-800"
-            : "hover:bg-gray-700"
-        )}>
-        Dossier du patient
-      </Button>
-      <Button
-        onClick={setDocumentView}
-        variant="ghost"
-        className={classNames(
-          "text-white  hover:text-white",
-          patientView === "document"
-            ? "bg-amber-400 text-slate-800 hover:bg-amber-400 hover:text-slate-800"
-            : "hover:bg-gray-700"
-        )}>
-        Créer un document
-      </Button>
+      <Link href={`/patient/${patient?.id}/folder`}>
+        <Button
+          variant="ghost"
+          className={classNames(
+            "text-white  hover:text-white",
+            path.includes("folder")
+              ? "bg-amber-400 text-slate-800 hover:bg-amber-400 hover:text-slate-800"
+              : "hover:bg-gray-700"
+          )}
+        >
+          Dossier du patient
+        </Button>
+      </Link>
+      <Link href={`/patient/${patient?.id}/document`}>
+        <Button
+          variant="ghost"
+          className={classNames(
+            "text-white  hover:text-white",
+            path.includes("document")
+              ? "bg-amber-400 text-slate-800 hover:bg-amber-400 hover:text-slate-800"
+              : "hover:bg-gray-700"
+          )}
+        >
+          Créer un document
+        </Button>
+      </Link>
       <Button
         variant="link"
         className=""
         onClick={sendToSecondaryDisplay}
-        disabled={!socket}>
+        disabled={!socket}
+      >
         <span className="text-amber-400 text-2xl flex flex-row align-middle">
           <MdKeyboardDoubleArrowRight />
           <CgScreenMirror />

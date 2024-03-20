@@ -1,4 +1,5 @@
 "use client";
+
 import type { WebsocketMessageInterface } from "@/components/Websockets/interfaces/WebsocketMessageInterface";
 import { useBoltStore } from "@/stores/boltStore";
 import { useEffect } from "react";
@@ -15,7 +16,8 @@ function SubscribeToSecondaryDisplayWebSocket() {
         subscriptionIds: [],
         destination: ["secondary-display"],
       };
-      socket.sendJsonMessage(message, true);
+
+      socket.sendJsonMessage(message, false);
     }
   }, [socket, socket?.readyState]);
   return null;

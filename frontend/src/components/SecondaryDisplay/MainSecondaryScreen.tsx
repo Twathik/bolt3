@@ -2,6 +2,7 @@
 import React from "react";
 import { SparklesCore } from "../GeneralComponents/AceternityUi/Sparkles";
 import { CgScreenMirror } from "react-icons/cg";
+import SubscribeToSecondaryDisplayWebSocket from "./SubscribeToSecondaryDisplayWebSocket";
 
 export default function MainSecondaryScreen() {
   return (
@@ -10,7 +11,7 @@ export default function MainSecondaryScreen() {
         <CgScreenMirror />
       </h1>
       <h5 className="md:text-2xl text-xl lg:text-3xl font-bold text-center relative z-20 text-amber-400">
-        BOLT 3 
+        BOLT 3
       </h5>
       <div className="w-[80rem] h-60 relative">
         {/* Gradients */}
@@ -32,6 +33,7 @@ export default function MainSecondaryScreen() {
 
         <div className="absolute inset-0 w-full h-full bg-black [mask-image:radial-gradient(350px_200px_at_top,transparent_20%,white)]"></div>
       </div>
+      <SubscribeToSecondaryDisplayWebSocket />
     </div>
   );
 }

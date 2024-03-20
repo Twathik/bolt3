@@ -131,26 +131,6 @@ input BoolWithAggregatesFilter {
   not: NestedBoolWithAggregatesFilter
 }
 
-"""The `Byte` scalar type represents byte value as a Buffer"""
-scalar Byte
-
-input BytesNullableFilter {
-  equals: Byte
-  in: [Byte!]
-  not: NestedBytesNullableFilter
-  notIn: [Byte!]
-}
-
-input BytesNullableWithAggregatesFilter {
-  _count: NestedIntNullableFilter
-  _max: NestedBytesNullableFilter
-  _min: NestedBytesNullableFilter
-  equals: Byte
-  in: [Byte!]
-  not: NestedBytesNullableWithAggregatesFilter
-  notIn: [Byte!]
-}
-
 type ClinicalEvent {
   Prescription(where: PrescriptionWhereInput): Prescription
   WorkingList(cursor: WorkingListWhereUniqueInput, distinct: [WorkingListScalarFieldEnum!], orderBy: [WorkingListOrderByWithRelationInput!], skip: Int, take: Int, where: WorkingListWhereInput): [WorkingList!]!
@@ -1485,38 +1465,38 @@ input DateTimeWithAggregatesFilter {
 }
 
 type DocumentStore {
-  clinicalData: Byte
-  documentData: Byte
+  content: String!
   id: String!
+  patientDocumentType: PatientDocumentType!
   patientId: String!
 }
 
 type DocumentStoreCountAggregate {
   _all: Int!
-  clinicalData: Int!
-  documentData: Int!
+  content: Int!
   id: Int!
+  patientDocumentType: Int!
   patientId: Int!
 }
 
 input DocumentStoreCountOrderByAggregateInput {
-  clinicalData: SortOrder
-  documentData: SortOrder
+  content: SortOrder
   id: SortOrder
+  patientDocumentType: SortOrder
   patientId: SortOrder
 }
 
 input DocumentStoreCreateInput {
-  clinicalData: Byte
-  documentData: Byte
+  content: String!
   id: String
+  patientDocumentType: PatientDocumentType!
   patientId: String!
 }
 
 input DocumentStoreCreateManyInput {
-  clinicalData: Byte
-  documentData: Byte
+  content: String!
   id: String
+  patientDocumentType: PatientDocumentType!
   patientId: String!
 }
 
@@ -1524,37 +1504,37 @@ type DocumentStoreGroupBy {
   _count: DocumentStoreCountAggregate
   _max: DocumentStoreMaxAggregate
   _min: DocumentStoreMinAggregate
-  clinicalData: Byte
-  documentData: Byte
+  content: String!
   id: String!
+  patientDocumentType: PatientDocumentType!
   patientId: String!
 }
 
 type DocumentStoreMaxAggregate {
-  clinicalData: Byte
-  documentData: Byte
+  content: String
   id: String
+  patientDocumentType: PatientDocumentType
   patientId: String
 }
 
 input DocumentStoreMaxOrderByAggregateInput {
-  clinicalData: SortOrder
-  documentData: SortOrder
+  content: SortOrder
   id: SortOrder
+  patientDocumentType: SortOrder
   patientId: SortOrder
 }
 
 type DocumentStoreMinAggregate {
-  clinicalData: Byte
-  documentData: Byte
+  content: String
   id: String
+  patientDocumentType: PatientDocumentType
   patientId: String
 }
 
 input DocumentStoreMinOrderByAggregateInput {
-  clinicalData: SortOrder
-  documentData: SortOrder
+  content: SortOrder
   id: SortOrder
+  patientDocumentType: SortOrder
   patientId: SortOrder
 }
 
@@ -1562,23 +1542,23 @@ input DocumentStoreOrderByWithAggregationInput {
   _count: DocumentStoreCountOrderByAggregateInput
   _max: DocumentStoreMaxOrderByAggregateInput
   _min: DocumentStoreMinOrderByAggregateInput
-  clinicalData: SortOrderInput
-  documentData: SortOrderInput
+  content: SortOrder
   id: SortOrder
+  patientDocumentType: SortOrder
   patientId: SortOrder
 }
 
 input DocumentStoreOrderByWithRelationInput {
-  clinicalData: SortOrderInput
-  documentData: SortOrderInput
+  content: SortOrder
   id: SortOrder
+  patientDocumentType: SortOrder
   patientId: SortOrder
 }
 
 enum DocumentStoreScalarFieldEnum {
-  clinicalData
-  documentData
+  content
   id
+  patientDocumentType
   patientId
 }
 
@@ -1586,23 +1566,23 @@ input DocumentStoreScalarWhereWithAggregatesInput {
   AND: [DocumentStoreScalarWhereWithAggregatesInput!]
   NOT: [DocumentStoreScalarWhereWithAggregatesInput!]
   OR: [DocumentStoreScalarWhereWithAggregatesInput!]
-  clinicalData: BytesNullableWithAggregatesFilter
-  documentData: BytesNullableWithAggregatesFilter
+  content: StringWithAggregatesFilter
   id: StringWithAggregatesFilter
+  patientDocumentType: EnumPatientDocumentTypeWithAggregatesFilter
   patientId: StringWithAggregatesFilter
 }
 
 input DocumentStoreUpdateInput {
-  clinicalData: NullableBytesFieldUpdateOperationsInput
-  documentData: NullableBytesFieldUpdateOperationsInput
+  content: StringFieldUpdateOperationsInput
   id: StringFieldUpdateOperationsInput
+  patientDocumentType: EnumPatientDocumentTypeFieldUpdateOperationsInput
   patientId: StringFieldUpdateOperationsInput
 }
 
 input DocumentStoreUpdateManyMutationInput {
-  clinicalData: NullableBytesFieldUpdateOperationsInput
-  documentData: NullableBytesFieldUpdateOperationsInput
+  content: StringFieldUpdateOperationsInput
   id: StringFieldUpdateOperationsInput
+  patientDocumentType: EnumPatientDocumentTypeFieldUpdateOperationsInput
   patientId: StringFieldUpdateOperationsInput
 }
 
@@ -1610,9 +1590,9 @@ input DocumentStoreWhereInput {
   AND: [DocumentStoreWhereInput!]
   NOT: [DocumentStoreWhereInput!]
   OR: [DocumentStoreWhereInput!]
-  clinicalData: BytesNullableFilter
-  documentData: BytesNullableFilter
+  content: StringFilter
   id: StringFilter
+  patientDocumentType: EnumPatientDocumentTypeFilter
   patientId: StringFilter
 }
 
@@ -1620,9 +1600,9 @@ input DocumentStoreWhereUniqueInput {
   AND: [DocumentStoreWhereInput!]
   NOT: [DocumentStoreWhereInput!]
   OR: [DocumentStoreWhereInput!]
-  clinicalData: BytesNullableFilter
-  documentData: BytesNullableFilter
+  content: StringFilter
   id: String
+  patientDocumentType: EnumPatientDocumentTypeFilter
   patientId: String
 }
 
@@ -2021,6 +2001,27 @@ input EnumModalityTypeWithAggregatesFilter {
   in: [ModalityType!]
   not: NestedEnumModalityTypeWithAggregatesFilter
   notIn: [ModalityType!]
+}
+
+input EnumPatientDocumentTypeFieldUpdateOperationsInput {
+  set: PatientDocumentType
+}
+
+input EnumPatientDocumentTypeFilter {
+  equals: PatientDocumentType
+  in: [PatientDocumentType!]
+  not: NestedEnumPatientDocumentTypeFilter
+  notIn: [PatientDocumentType!]
+}
+
+input EnumPatientDocumentTypeWithAggregatesFilter {
+  _count: NestedIntFilter
+  _max: NestedEnumPatientDocumentTypeFilter
+  _min: NestedEnumPatientDocumentTypeFilter
+  equals: PatientDocumentType
+  in: [PatientDocumentType!]
+  not: NestedEnumPatientDocumentTypeWithAggregatesFilter
+  notIn: [PatientDocumentType!]
 }
 
 input EnumRoleFieldUpdateOperationsInput {
@@ -2953,23 +2954,6 @@ input NestedBoolWithAggregatesFilter {
   not: NestedBoolWithAggregatesFilter
 }
 
-input NestedBytesNullableFilter {
-  equals: Byte
-  in: [Byte!]
-  not: NestedBytesNullableFilter
-  notIn: [Byte!]
-}
-
-input NestedBytesNullableWithAggregatesFilter {
-  _count: NestedIntNullableFilter
-  _max: NestedBytesNullableFilter
-  _min: NestedBytesNullableFilter
-  equals: Byte
-  in: [Byte!]
-  not: NestedBytesNullableWithAggregatesFilter
-  notIn: [Byte!]
-}
-
 input NestedDateTimeFilter {
   equals: DateTimeISO
   gt: DateTimeISO
@@ -3078,6 +3062,23 @@ input NestedEnumModalityTypeWithAggregatesFilter {
   in: [ModalityType!]
   not: NestedEnumModalityTypeWithAggregatesFilter
   notIn: [ModalityType!]
+}
+
+input NestedEnumPatientDocumentTypeFilter {
+  equals: PatientDocumentType
+  in: [PatientDocumentType!]
+  not: NestedEnumPatientDocumentTypeFilter
+  notIn: [PatientDocumentType!]
+}
+
+input NestedEnumPatientDocumentTypeWithAggregatesFilter {
+  _count: NestedIntFilter
+  _max: NestedEnumPatientDocumentTypeFilter
+  _min: NestedEnumPatientDocumentTypeFilter
+  equals: PatientDocumentType
+  in: [PatientDocumentType!]
+  not: NestedEnumPatientDocumentTypeWithAggregatesFilter
+  notIn: [PatientDocumentType!]
 }
 
 input NestedEnumRoleFilter {
@@ -3284,10 +3285,6 @@ input NestedStringWithAggregatesFilter {
   startsWith: String
 }
 
-input NullableBytesFieldUpdateOperationsInput {
-  set: Byte
-}
-
 input NullableFloatFieldUpdateOperationsInput {
   decrement: Float
   divide: Float
@@ -3324,11 +3321,9 @@ type Patient {
   WorkingList(cursor: WorkingListWhereUniqueInput, distinct: [WorkingListScalarFieldEnum!], orderBy: [WorkingListOrderByWithRelationInput!], skip: Int, take: Int, where: WorkingListWhereInput): [WorkingList!]!
   _count: PatientCount
   address: String
-  clinicalData: String!
   createdAt: DateTimeISO!
   ddn: DateTimeISO!
   deleted: Boolean!
-  documentData: String
   firstName: String!
   height: Float
   id: String!
@@ -3361,11 +3356,9 @@ type PatientCount {
 type PatientCountAggregate {
   _all: Int!
   address: Int!
-  clinicalData: Int!
   createdAt: Int!
   ddn: Int!
   deleted: Int!
-  documentData: Int!
   firstName: Int!
   height: Int!
   id: Int!
@@ -3380,11 +3373,9 @@ type PatientCountAggregate {
 
 input PatientCountOrderByAggregateInput {
   address: SortOrder
-  clinicalData: SortOrder
   createdAt: SortOrder
   ddn: SortOrder
   deleted: SortOrder
-  documentData: SortOrder
   firstName: SortOrder
   height: SortOrder
   id: SortOrder
@@ -3402,11 +3393,9 @@ input PatientCreateInput {
   ConsultationList: ConsultationListCreateNestedManyWithoutPatientInput
   WorkingList: WorkingListCreateNestedManyWithoutPatientInput
   address: String
-  clinicalData: String!
   createdAt: DateTimeISO
   ddn: DateTimeISO!
   deleted: Boolean
-  documentData: String
   firstName: String!
   height: Float
   id: String
@@ -3421,11 +3410,9 @@ input PatientCreateInput {
 
 input PatientCreateManyInput {
   address: String
-  clinicalData: String!
   createdAt: DateTimeISO
   ddn: DateTimeISO!
   deleted: Boolean
-  documentData: String
   firstName: String!
   height: Float
   id: String
@@ -3475,11 +3462,9 @@ input PatientCreateWithoutClinicalEventInput {
   ConsultationList: ConsultationListCreateNestedManyWithoutPatientInput
   WorkingList: WorkingListCreateNestedManyWithoutPatientInput
   address: String
-  clinicalData: String!
   createdAt: DateTimeISO
   ddn: DateTimeISO!
   deleted: Boolean
-  documentData: String
   firstName: String!
   height: Float
   id: String
@@ -3496,11 +3481,9 @@ input PatientCreateWithoutConsultationListInput {
   ClinicalEvent: ClinicalEventCreateNestedManyWithoutPatientInput
   WorkingList: WorkingListCreateNestedManyWithoutPatientInput
   address: String
-  clinicalData: String!
   createdAt: DateTimeISO
   ddn: DateTimeISO!
   deleted: Boolean
-  documentData: String
   firstName: String!
   height: Float
   id: String
@@ -3517,11 +3500,9 @@ input PatientCreateWithoutWorkingListInput {
   ClinicalEvent: ClinicalEventCreateNestedManyWithoutPatientInput
   ConsultationList: ConsultationListCreateNestedManyWithoutPatientInput
   address: String
-  clinicalData: String!
   createdAt: DateTimeISO
   ddn: DateTimeISO!
   deleted: Boolean
-  documentData: String
   firstName: String!
   height: Float
   id: String
@@ -3534,6 +3515,11 @@ input PatientCreateWithoutWorkingListInput {
   weight: Float
 }
 
+enum PatientDocumentType {
+  document
+  folder
+}
+
 type PatientGroupBy {
   _avg: PatientAvgAggregate
   _count: PatientCountAggregate
@@ -3541,11 +3527,9 @@ type PatientGroupBy {
   _min: PatientMinAggregate
   _sum: PatientSumAggregate
   address: String
-  clinicalData: String!
   createdAt: DateTimeISO!
   ddn: DateTimeISO!
   deleted: Boolean!
-  documentData: String
   firstName: String!
   height: Float
   id: String!
@@ -3560,11 +3544,9 @@ type PatientGroupBy {
 
 type PatientMaxAggregate {
   address: String
-  clinicalData: String
   createdAt: DateTimeISO
   ddn: DateTimeISO
   deleted: Boolean
-  documentData: String
   firstName: String
   height: Float
   id: String
@@ -3579,11 +3561,9 @@ type PatientMaxAggregate {
 
 input PatientMaxOrderByAggregateInput {
   address: SortOrder
-  clinicalData: SortOrder
   createdAt: SortOrder
   ddn: SortOrder
   deleted: SortOrder
-  documentData: SortOrder
   firstName: SortOrder
   height: SortOrder
   id: SortOrder
@@ -3598,11 +3578,9 @@ input PatientMaxOrderByAggregateInput {
 
 type PatientMinAggregate {
   address: String
-  clinicalData: String
   createdAt: DateTimeISO
   ddn: DateTimeISO
   deleted: Boolean
-  documentData: String
   firstName: String
   height: Float
   id: String
@@ -3617,11 +3595,9 @@ type PatientMinAggregate {
 
 input PatientMinOrderByAggregateInput {
   address: SortOrder
-  clinicalData: SortOrder
   createdAt: SortOrder
   ddn: SortOrder
   deleted: SortOrder
-  documentData: SortOrder
   firstName: SortOrder
   height: SortOrder
   id: SortOrder
@@ -3641,11 +3617,9 @@ input PatientOrderByWithAggregationInput {
   _min: PatientMinOrderByAggregateInput
   _sum: PatientSumOrderByAggregateInput
   address: SortOrderInput
-  clinicalData: SortOrder
   createdAt: SortOrder
   ddn: SortOrder
   deleted: SortOrder
-  documentData: SortOrderInput
   firstName: SortOrder
   height: SortOrderInput
   id: SortOrder
@@ -3663,11 +3637,9 @@ input PatientOrderByWithRelationInput {
   ConsultationList: ConsultationListOrderByRelationAggregateInput
   WorkingList: WorkingListOrderByRelationAggregateInput
   address: SortOrderInput
-  clinicalData: SortOrder
   createdAt: SortOrder
   ddn: SortOrder
   deleted: SortOrder
-  documentData: SortOrderInput
   firstName: SortOrder
   height: SortOrderInput
   id: SortOrder
@@ -3687,11 +3659,9 @@ input PatientRelationFilter {
 
 enum PatientScalarFieldEnum {
   address
-  clinicalData
   createdAt
   ddn
   deleted
-  documentData
   firstName
   height
   id
@@ -3709,11 +3679,9 @@ input PatientScalarWhereWithAggregatesInput {
   NOT: [PatientScalarWhereWithAggregatesInput!]
   OR: [PatientScalarWhereWithAggregatesInput!]
   address: StringNullableWithAggregatesFilter
-  clinicalData: StringWithAggregatesFilter
   createdAt: DateTimeWithAggregatesFilter
   ddn: DateTimeWithAggregatesFilter
   deleted: BoolWithAggregatesFilter
-  documentData: StringNullableWithAggregatesFilter
   firstName: StringWithAggregatesFilter
   height: FloatNullableWithAggregatesFilter
   id: StringWithAggregatesFilter
@@ -3741,11 +3709,9 @@ input PatientUpdateInput {
   ConsultationList: ConsultationListUpdateManyWithoutPatientNestedInput
   WorkingList: WorkingListUpdateManyWithoutPatientNestedInput
   address: NullableStringFieldUpdateOperationsInput
-  clinicalData: StringFieldUpdateOperationsInput
   createdAt: DateTimeFieldUpdateOperationsInput
   ddn: DateTimeFieldUpdateOperationsInput
   deleted: BoolFieldUpdateOperationsInput
-  documentData: NullableStringFieldUpdateOperationsInput
   firstName: StringFieldUpdateOperationsInput
   height: NullableFloatFieldUpdateOperationsInput
   id: StringFieldUpdateOperationsInput
@@ -3760,11 +3726,9 @@ input PatientUpdateInput {
 
 input PatientUpdateManyMutationInput {
   address: NullableStringFieldUpdateOperationsInput
-  clinicalData: StringFieldUpdateOperationsInput
   createdAt: DateTimeFieldUpdateOperationsInput
   ddn: DateTimeFieldUpdateOperationsInput
   deleted: BoolFieldUpdateOperationsInput
-  documentData: NullableStringFieldUpdateOperationsInput
   firstName: StringFieldUpdateOperationsInput
   height: NullableFloatFieldUpdateOperationsInput
   id: StringFieldUpdateOperationsInput
@@ -3820,11 +3784,9 @@ input PatientUpdateWithoutClinicalEventInput {
   ConsultationList: ConsultationListUpdateManyWithoutPatientNestedInput
   WorkingList: WorkingListUpdateManyWithoutPatientNestedInput
   address: NullableStringFieldUpdateOperationsInput
-  clinicalData: StringFieldUpdateOperationsInput
   createdAt: DateTimeFieldUpdateOperationsInput
   ddn: DateTimeFieldUpdateOperationsInput
   deleted: BoolFieldUpdateOperationsInput
-  documentData: NullableStringFieldUpdateOperationsInput
   firstName: StringFieldUpdateOperationsInput
   height: NullableFloatFieldUpdateOperationsInput
   id: StringFieldUpdateOperationsInput
@@ -3841,11 +3803,9 @@ input PatientUpdateWithoutConsultationListInput {
   ClinicalEvent: ClinicalEventUpdateManyWithoutPatientNestedInput
   WorkingList: WorkingListUpdateManyWithoutPatientNestedInput
   address: NullableStringFieldUpdateOperationsInput
-  clinicalData: StringFieldUpdateOperationsInput
   createdAt: DateTimeFieldUpdateOperationsInput
   ddn: DateTimeFieldUpdateOperationsInput
   deleted: BoolFieldUpdateOperationsInput
-  documentData: NullableStringFieldUpdateOperationsInput
   firstName: StringFieldUpdateOperationsInput
   height: NullableFloatFieldUpdateOperationsInput
   id: StringFieldUpdateOperationsInput
@@ -3862,11 +3822,9 @@ input PatientUpdateWithoutWorkingListInput {
   ClinicalEvent: ClinicalEventUpdateManyWithoutPatientNestedInput
   ConsultationList: ConsultationListUpdateManyWithoutPatientNestedInput
   address: NullableStringFieldUpdateOperationsInput
-  clinicalData: StringFieldUpdateOperationsInput
   createdAt: DateTimeFieldUpdateOperationsInput
   ddn: DateTimeFieldUpdateOperationsInput
   deleted: BoolFieldUpdateOperationsInput
-  documentData: NullableStringFieldUpdateOperationsInput
   firstName: StringFieldUpdateOperationsInput
   height: NullableFloatFieldUpdateOperationsInput
   id: StringFieldUpdateOperationsInput
@@ -3905,11 +3863,9 @@ input PatientWhereInput {
   OR: [PatientWhereInput!]
   WorkingList: WorkingListListRelationFilter
   address: StringNullableFilter
-  clinicalData: StringFilter
   createdAt: DateTimeFilter
   ddn: DateTimeFilter
   deleted: BoolFilter
-  documentData: StringNullableFilter
   firstName: StringFilter
   height: FloatNullableFilter
   id: StringFilter
@@ -3930,11 +3886,9 @@ input PatientWhereUniqueInput {
   OR: [PatientWhereInput!]
   WorkingList: WorkingListListRelationFilter
   address: StringNullableFilter
-  clinicalData: StringFilter
   createdAt: DateTimeFilter
   ddn: DateTimeFilter
   deleted: BoolFilter
-  documentData: StringNullableFilter
   firstName: StringFilter
   height: FloatNullableFilter
   id: String
@@ -4214,6 +4168,7 @@ type Query {
   getConsultation(where: ConsultationWhereUniqueInput!): Consultation
   getConsultationList(where: ConsultationListWhereUniqueInput!): ConsultationList
   getDataTableConfiguration(eventType: EventTypes!): [DataTableSectionModel!]
+  getDocumentHeaders(patientDocumentType: PatientDocumentType!, patientId: String!): Boolean
   getDocumentStore(where: DocumentStoreWhereUniqueInput!): DocumentStore
   getDocumentTemplate(where: DocumentTemplateWhereUniqueInput!): DocumentTemplate
   getEconomizer(where: EconomizerWhereUniqueInput!): Economizer

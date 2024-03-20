@@ -5,6 +5,7 @@ import { DecimalJSScalar } from "../../scalars";
 import { DocumentStoreCountAggregate } from "../outputs/DocumentStoreCountAggregate";
 import { DocumentStoreMaxAggregate } from "../outputs/DocumentStoreMaxAggregate";
 import { DocumentStoreMinAggregate } from "../outputs/DocumentStoreMinAggregate";
+import { PatientDocumentType } from "../../enums/PatientDocumentType";
 
 @TypeGraphQL.ObjectType("DocumentStoreGroupBy", {})
 export class DocumentStoreGroupBy {
@@ -18,15 +19,15 @@ export class DocumentStoreGroupBy {
   })
   patientId!: string;
 
-  @TypeGraphQL.Field(_type => GraphQLScalars.ByteResolver, {
-    nullable: true
+  @TypeGraphQL.Field(_type => PatientDocumentType, {
+    nullable: false
   })
-  clinicalData!: Buffer | null;
+  patientDocumentType!: "folder" | "document";
 
-  @TypeGraphQL.Field(_type => GraphQLScalars.ByteResolver, {
-    nullable: true
+  @TypeGraphQL.Field(_type => String, {
+    nullable: false
   })
-  documentData!: Buffer | null;
+  content!: string;
 
   @TypeGraphQL.Field(_type => DocumentStoreCountAggregate, {
     nullable: true

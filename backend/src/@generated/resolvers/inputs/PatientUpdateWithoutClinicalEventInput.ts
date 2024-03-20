@@ -83,16 +83,6 @@ export class PatientUpdateWithoutClinicalEventInput {
   })
   informationsConfirmed?: BoolFieldUpdateOperationsInput | undefined;
 
-  @TypeGraphQL.Field(_type => StringFieldUpdateOperationsInput, {
-    nullable: true
-  })
-  clinicalData?: StringFieldUpdateOperationsInput | undefined;
-
-  @TypeGraphQL.Field(_type => NullableStringFieldUpdateOperationsInput, {
-    nullable: true
-  })
-  documentData?: NullableStringFieldUpdateOperationsInput | undefined;
-
   @TypeGraphQL.Field(_type => ConsultationListUpdateManyWithoutPatientNestedInput, {
     nullable: true
   })

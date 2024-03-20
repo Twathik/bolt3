@@ -95,14 +95,4 @@ export class PatientScalarWhereWithAggregatesInput {
     nullable: true
   })
   informationsConfirmed?: BoolWithAggregatesFilter | undefined;
-
-  @TypeGraphQL.Field(_type => StringWithAggregatesFilter, {
-    nullable: true
-  })
-  clinicalData?: StringWithAggregatesFilter | undefined;
-
-  @TypeGraphQL.Field(_type => StringNullableWithAggregatesFilter, {
-    nullable: true
-  })
-  documentData?: StringNullableWithAggregatesFilter | undefined;
 }

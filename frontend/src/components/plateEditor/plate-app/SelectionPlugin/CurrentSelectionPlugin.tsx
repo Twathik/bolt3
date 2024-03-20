@@ -20,7 +20,6 @@ function CurrentSelectionPlugin({ patientId }: { patientId: string }) {
     useState<FocusedDocumentType | null>(null);
 
   useEffect(() => {
-    console.log({ localFocusedDocument });
     let req = true;
     const updateFocusedDocument = async () => {
       try {

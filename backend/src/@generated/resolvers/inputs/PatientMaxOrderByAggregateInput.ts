@@ -75,14 +75,4 @@ export class PatientMaxOrderByAggregateInput {
     nullable: true
   })
   informationsConfirmed?: "asc" | "desc" | undefined;
-
-  @TypeGraphQL.Field(_type => SortOrder, {
-    nullable: true
-  })
-  clinicalData?: "asc" | "desc" | undefined;
-
-  @TypeGraphQL.Field(_type => SortOrder, {
-    nullable: true
-  })
-  documentData?: "asc" | "desc" | undefined;
 }

@@ -2,6 +2,7 @@ import * as TypeGraphQL from "type-graphql";
 import * as GraphQLScalars from "graphql-scalars";
 import { Prisma } from "@prisma/client";
 import { DecimalJSScalar } from "../../scalars";
+import { PatientDocumentType } from "../../enums/PatientDocumentType";
 
 @TypeGraphQL.InputType("DocumentStoreCreateManyInput", {})
 export class DocumentStoreCreateManyInput {
@@ -15,13 +16,13 @@ export class DocumentStoreCreateManyInput {
   })
   patientId!: string;
 
-  @TypeGraphQL.Field(_type => GraphQLScalars.ByteResolver, {
-    nullable: true
+  @TypeGraphQL.Field(_type => PatientDocumentType, {
+    nullable: false
   })
-  clinicalData?: Buffer | undefined;
+  patientDocumentType!: "folder" | "document";
 
-  @TypeGraphQL.Field(_type => GraphQLScalars.ByteResolver, {
-    nullable: true
+  @TypeGraphQL.Field(_type => String, {
+    nullable: false
   })
-  documentData?: Buffer | undefined;
+  content!: string;
 }

@@ -78,16 +78,6 @@ export class PatientCreateWithoutConsultationListInput {
   })
   informationsConfirmed?: boolean | undefined;
 
-  @TypeGraphQL.Field(_type => String, {
-    nullable: false
-  })
-  clinicalData!: string;
-
-  @TypeGraphQL.Field(_type => String, {
-    nullable: true
-  })
-  documentData?: string | undefined;
-
   @TypeGraphQL.Field(_type => ClinicalEventCreateNestedManyWithoutPatientInput, {
     nullable: true
   })

@@ -9,12 +9,12 @@ export default function GetSelectedDisplay({
 }: {
   secondaryDisplay: SecondaryDisplayMessagePayload;
 }): ReactNode {
-  const focusedPatientId = useBoltStore((s) => s.focusedPatientId);
+  const patient = useBoltStore((s) => s.patient);
   switch (secondaryDisplay.screenType) {
     case "mainScreen":
       return <MainSecondaryScreen />;
     case "patientView":
-      return <PatientViewScreen focusedPatientId={focusedPatientId} />;
+      return <PatientViewScreen patientId={patient?.id ?? ""} />;
     default:
       return <div></div>;
       break;

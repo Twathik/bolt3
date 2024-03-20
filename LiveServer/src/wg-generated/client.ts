@@ -156,6 +156,9 @@ import type {
 	PatientsAdd_One_patient_to_indexResponse,
 	PatientsAdd_One_patient_to_indexInput,
 	PatientsAdd_One_patient_to_indexResponseData,
+	PatientsGetDocumentHeadersResponse,
+	PatientsGetDocumentHeadersInput,
+	PatientsGetDocumentHeadersResponseData,
 	PatientsGetOnTrashPatientsResponse,
 	PatientsGetOnTrashPatientsResponseData,
 	PatientsGetOnePatientResponse,
@@ -164,12 +167,6 @@ import type {
 	PatientsGetOnePatientInfoResponse,
 	PatientsGetOnePatientInfoInput,
 	PatientsGetOnePatientInfoResponseData,
-	PatientsGetPatientClinicalDataResponse,
-	PatientsGetPatientClinicalDataInput,
-	PatientsGetPatientClinicalDataResponseData,
-	PatientsGetPatientDocumentDataResponse,
-	PatientsGetPatientDocumentDataInput,
-	PatientsGetPatientDocumentDataResponseData,
 	PatientsIndex_patientsResponse,
 	PatientsIndex_patientsResponseData,
 	PatientsToggleSelectedTrashPatientResponse,
@@ -178,12 +175,6 @@ import type {
 	PatientsUpdateOnePatientResponse,
 	PatientsUpdateOnePatientInput,
 	PatientsUpdateOnePatientResponseData,
-	PatientsUpdateOnePatientClinicalDataResponse,
-	PatientsUpdateOnePatientClinicalDataInput,
-	PatientsUpdateOnePatientClinicalDataResponseData,
-	PatientsUpdateOnePatientDocumentReportResponse,
-	PatientsUpdateOnePatientDocumentReportInput,
-	PatientsUpdateOnePatientDocumentReportResponseData,
 	TemplatesFetchTemplateResponse,
 	TemplatesFetchTemplateInput,
 	TemplatesFetchTemplateResponseData,
@@ -272,7 +263,7 @@ export interface AuthProvider {
 }
 
 export const defaultClientConfig: ClientConfig = {
-	applicationHash: "c2f61626",
+	applicationHash: "c5719521",
 	baseURL: "http://api.bolt3.local",
 	sdkVersion: "0.181.5",
 };
@@ -416,6 +407,9 @@ export const operationMetadata: OperationMetadata = {
 	"patients/add_One_patient_to_index": {
 		requiresAuthentication: true,
 	},
+	"patients/getDocumentHeaders": {
+		requiresAuthentication: true,
+	},
 	"patients/getOnTrashPatients": {
 		requiresAuthentication: true,
 	},
@@ -425,12 +419,6 @@ export const operationMetadata: OperationMetadata = {
 	"patients/getOnePatientInfo": {
 		requiresAuthentication: true,
 	},
-	"patients/getPatientClinicalData": {
-		requiresAuthentication: true,
-	},
-	"patients/getPatientDocumentData": {
-		requiresAuthentication: true,
-	},
 	"patients/index_patients": {
 		requiresAuthentication: true,
 	},
@@ -438,12 +426,6 @@ export const operationMetadata: OperationMetadata = {
 		requiresAuthentication: true,
 	},
 	"patients/updateOnePatient": {
-		requiresAuthentication: true,
-	},
-	"patients/updateOnePatientClinicalData": {
-		requiresAuthentication: true,
-	},
-	"patients/updateOnePatientDocumentReport": {
 		requiresAuthentication: true,
 	},
 	"templates/fetchTemplate": {
@@ -612,6 +594,11 @@ export type Queries = {
 		response: { data?: MobileDevicesMobileDevicesQueryResponse["data"]; error?: ClientOperationErrors };
 		requiresAuthentication: true;
 	};
+	"patients/getDocumentHeaders": {
+		input: PatientsGetDocumentHeadersInput;
+		response: { data?: PatientsGetDocumentHeadersResponse["data"]; error?: ClientOperationErrors };
+		requiresAuthentication: true;
+	};
 	"patients/getOnTrashPatients": {
 		input?: undefined;
 		response: { data?: PatientsGetOnTrashPatientsResponse["data"]; error?: ClientOperationErrors };
@@ -625,16 +612,6 @@ export type Queries = {
 	"patients/getOnePatientInfo": {
 		input: PatientsGetOnePatientInfoInput;
 		response: { data?: PatientsGetOnePatientInfoResponse["data"]; error?: ClientOperationErrors };
-		requiresAuthentication: true;
-	};
-	"patients/getPatientClinicalData": {
-		input: PatientsGetPatientClinicalDataInput;
-		response: { data?: PatientsGetPatientClinicalDataResponse["data"]; error?: ClientOperationErrors };
-		requiresAuthentication: true;
-	};
-	"patients/getPatientDocumentData": {
-		input: PatientsGetPatientDocumentDataInput;
-		response: { data?: PatientsGetPatientDocumentDataResponse["data"]; error?: ClientOperationErrors };
 		requiresAuthentication: true;
 	};
 	"templates/fetchTemplate": {
@@ -825,16 +802,6 @@ export type Mutations = {
 	"patients/updateOnePatient": {
 		input: PatientsUpdateOnePatientInput;
 		response: { data?: PatientsUpdateOnePatientResponse["data"]; error?: ClientOperationErrors };
-		requiresAuthentication: true;
-	};
-	"patients/updateOnePatientClinicalData": {
-		input: PatientsUpdateOnePatientClinicalDataInput;
-		response: { data?: PatientsUpdateOnePatientClinicalDataResponse["data"]; error?: ClientOperationErrors };
-		requiresAuthentication: true;
-	};
-	"patients/updateOnePatientDocumentReport": {
-		input: PatientsUpdateOnePatientDocumentReportInput;
-		response: { data?: PatientsUpdateOnePatientDocumentReportResponse["data"]; error?: ClientOperationErrors };
 		requiresAuthentication: true;
 	};
 	"templates/updateTemplate": {

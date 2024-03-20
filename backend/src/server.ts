@@ -123,7 +123,8 @@ async function bootstrap() {
         if (res.status !== 200) throw Error()
       })
     } catch (error) {
-      console.log({ error })
+      console.log({ expressError: error })
+      throw Error('server error')
     }
   }
 
@@ -131,11 +132,12 @@ async function bootstrap() {
   app.use(
     '/graphql',
     cors<cors.CorsRequest>(),
-    bodyParser.json(),
+    bodyParser.json({ limit: '200mb' }),
     expressMiddleware(server, {
       context: async ({ req, res }) => createContext({ req, res }, pubSub),
     }),
   )
+  app.use(bodyParser.urlencoded({ limit: '200mb', extended: true }))
 
   // Now that the HTTP server is fully set up, we can listen to it
   httpServer.listen(port, () => {

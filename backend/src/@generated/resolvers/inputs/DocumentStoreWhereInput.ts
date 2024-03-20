@@ -2,7 +2,7 @@ import * as TypeGraphQL from "type-graphql";
 import * as GraphQLScalars from "graphql-scalars";
 import { Prisma } from "@prisma/client";
 import { DecimalJSScalar } from "../../scalars";
-import { BytesNullableFilter } from "../inputs/BytesNullableFilter";
+import { EnumPatientDocumentTypeFilter } from "../inputs/EnumPatientDocumentTypeFilter";
 import { StringFilter } from "../inputs/StringFilter";
 
 @TypeGraphQL.InputType("DocumentStoreWhereInput", {})
@@ -32,13 +32,13 @@ export class DocumentStoreWhereInput {
   })
   patientId?: StringFilter | undefined;
 
-  @TypeGraphQL.Field(_type => BytesNullableFilter, {
+  @TypeGraphQL.Field(_type => EnumPatientDocumentTypeFilter, {
     nullable: true
   })
-  clinicalData?: BytesNullableFilter | undefined;
+  patientDocumentType?: EnumPatientDocumentTypeFilter | undefined;
 
-  @TypeGraphQL.Field(_type => BytesNullableFilter, {
+  @TypeGraphQL.Field(_type => StringFilter, {
     nullable: true
   })
-  documentData?: BytesNullableFilter | undefined;
+  content?: StringFilter | undefined;
 }

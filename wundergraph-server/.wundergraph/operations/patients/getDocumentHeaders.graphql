@@ -1,0 +1,3 @@
+query getDocumentHeaders ($patientId: String!, $patientDocumentType: mainDb_PatientDocumentType!){
+    mainDb_getDocumentHeaders(patientId:$patientId, patientDocumentType:$patientDocumentType)
+}

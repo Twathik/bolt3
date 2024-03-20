@@ -339,11 +339,9 @@ export interface mainDb_PatientWhereInput {
 	OR?: mainDb_PatientWhereInput[];
 	WorkingList?: mainDb_WorkingListListRelationFilter;
 	address?: mainDb_StringNullableFilter;
-	clinicalData?: mainDb_StringFilter;
 	createdAt?: mainDb_DateTimeFilter;
 	ddn?: mainDb_DateTimeFilter;
 	deleted?: mainDb_BoolFilter;
-	documentData?: mainDb_StringNullableFilter;
 	firstName?: mainDb_StringFilter;
 	height?: mainDb_FloatNullableFilter;
 	id?: mainDb_StringFilter;
@@ -686,11 +684,9 @@ export interface mainDb_PatientWhereUniqueInput {
 	OR?: mainDb_PatientWhereInput[];
 	WorkingList?: mainDb_WorkingListListRelationFilter;
 	address?: mainDb_StringNullableFilter;
-	clinicalData?: mainDb_StringFilter;
 	createdAt?: mainDb_DateTimeFilter;
 	ddn?: mainDb_DateTimeFilter;
 	deleted?: mainDb_BoolFilter;
-	documentData?: mainDb_StringNullableFilter;
 	firstName?: mainDb_StringFilter;
 	height?: mainDb_FloatNullableFilter;
 	id?: string;
@@ -712,11 +708,9 @@ export interface mainDb_PatientCreateWithoutWorkingListInput {
 	ClinicalEvent?: mainDb_ClinicalEventCreateNestedManyWithoutPatientInput;
 	ConsultationList?: mainDb_ConsultationListCreateNestedManyWithoutPatientInput;
 	address?: string;
-	clinicalData: string;
 	createdAt?: string;
 	ddn: string;
 	deleted?: boolean;
-	documentData?: string;
 	firstName: string;
 	height?: number;
 	id?: string;
@@ -875,11 +869,9 @@ export interface mainDb_PatientCreateWithoutClinicalEventInput {
 	ConsultationList?: mainDb_ConsultationListCreateNestedManyWithoutPatientInput;
 	WorkingList?: mainDb_WorkingListCreateNestedManyWithoutPatientInput;
 	address?: string;
-	clinicalData: string;
 	createdAt?: string;
 	ddn: string;
 	deleted?: boolean;
-	documentData?: string;
 	firstName: string;
 	height?: number;
 	id?: string;
@@ -1363,11 +1355,9 @@ export interface mainDb_PatientUpdateWithoutWorkingListInput {
 	ClinicalEvent?: mainDb_ClinicalEventUpdateManyWithoutPatientNestedInput;
 	ConsultationList?: mainDb_ConsultationListUpdateManyWithoutPatientNestedInput;
 	address?: mainDb_NullableStringFieldUpdateOperationsInput;
-	clinicalData?: mainDb_StringFieldUpdateOperationsInput;
 	createdAt?: mainDb_DateTimeFieldUpdateOperationsInput;
 	ddn?: mainDb_DateTimeFieldUpdateOperationsInput;
 	deleted?: mainDb_BoolFieldUpdateOperationsInput;
-	documentData?: mainDb_NullableStringFieldUpdateOperationsInput;
 	firstName?: mainDb_StringFieldUpdateOperationsInput;
 	height?: mainDb_NullableFloatFieldUpdateOperationsInput;
 	id?: mainDb_StringFieldUpdateOperationsInput;
@@ -1532,11 +1522,9 @@ export interface mainDb_PatientUpdateWithoutClinicalEventInput {
 	ConsultationList?: mainDb_ConsultationListUpdateManyWithoutPatientNestedInput;
 	WorkingList?: mainDb_WorkingListUpdateManyWithoutPatientNestedInput;
 	address?: mainDb_NullableStringFieldUpdateOperationsInput;
-	clinicalData?: mainDb_StringFieldUpdateOperationsInput;
 	createdAt?: mainDb_DateTimeFieldUpdateOperationsInput;
 	ddn?: mainDb_DateTimeFieldUpdateOperationsInput;
 	deleted?: mainDb_BoolFieldUpdateOperationsInput;
-	documentData?: mainDb_NullableStringFieldUpdateOperationsInput;
 	firstName?: mainDb_StringFieldUpdateOperationsInput;
 	height?: mainDb_NullableFloatFieldUpdateOperationsInput;
 	id?: mainDb_StringFieldUpdateOperationsInput;
@@ -1970,6 +1958,14 @@ export const mainDb_Sexe = {
 
 export type mainDb_SexeValues = (typeof mainDb_Sexe)[keyof typeof mainDb_Sexe];
 
+export const mainDb_PatientDocumentType = {
+	document: "document",
+	folder: "folder",
+} as const;
+
+export type mainDb_PatientDocumentTypeValues =
+	(typeof mainDb_PatientDocumentType)[keyof typeof mainDb_PatientDocumentType];
+
 export const mainDb_QueryMode = {
 	default: "default",
 	insensitive: "insensitive",
@@ -2200,19 +2196,16 @@ export interface PatientsAdd_One_patient_to_indexInput {
 	sexe: mainDb_SexeValues;
 }
 
+export interface PatientsGetDocumentHeadersInput {
+	patientId: string;
+	patientDocumentType: mainDb_PatientDocumentTypeValues;
+}
+
 export interface PatientsGetOnePatientInput {
 	patientId: string;
 }
 
 export interface PatientsGetOnePatientInfoInput {
-	patientId: string;
-}
-
-export interface PatientsGetPatientClinicalDataInput {
-	patientId: string;
-}
-
-export interface PatientsGetPatientDocumentDataInput {
 	patientId: string;
 }
 
@@ -2230,16 +2223,6 @@ export interface PatientsUpdateOnePatientInput {
 	ddn?: string;
 	address?: string;
 	nTel?: string;
-}
-
-export interface PatientsUpdateOnePatientClinicalDataInput {
-	id: string;
-	clinicalData?: string;
-}
-
-export interface PatientsUpdateOnePatientDocumentReportInput {
-	id: string;
-	documentData?: string;
 }
 
 export interface TemplatesFetchTemplateInput {
@@ -2498,19 +2481,16 @@ export interface PatientsAdd_One_patient_to_indexInputInternal {
 	userId: string;
 }
 
+export interface PatientsGetDocumentHeadersInputInternal {
+	patientId: string;
+	patientDocumentType: mainDb_PatientDocumentTypeValues;
+}
+
 export interface PatientsGetOnePatientInputInternal {
 	patientId: string;
 }
 
 export interface PatientsGetOnePatientInfoInputInternal {
-	patientId: string;
-}
-
-export interface PatientsGetPatientClinicalDataInputInternal {
-	patientId: string;
-}
-
-export interface PatientsGetPatientDocumentDataInputInternal {
 	patientId: string;
 }
 
@@ -2528,18 +2508,6 @@ export interface PatientsUpdateOnePatientInputInternal {
 	ddn?: string;
 	address?: string;
 	nTel?: string;
-	userId: string;
-}
-
-export interface PatientsUpdateOnePatientClinicalDataInputInternal {
-	id: string;
-	clinicalData?: string;
-	userId: string;
-}
-
-export interface PatientsUpdateOnePatientDocumentReportInputInternal {
-	id: string;
-	documentData?: string;
 	userId: string;
 }
 
@@ -2813,19 +2781,16 @@ export interface PatientsAdd_One_patient_to_indexInputInjected {
 	userId: string;
 }
 
+export interface PatientsGetDocumentHeadersInputInjected {
+	patientId: string;
+	patientDocumentType: mainDb_PatientDocumentTypeValues;
+}
+
 export interface PatientsGetOnePatientInputInjected {
 	patientId: string;
 }
 
 export interface PatientsGetOnePatientInfoInputInjected {
-	patientId: string;
-}
-
-export interface PatientsGetPatientClinicalDataInputInjected {
-	patientId: string;
-}
-
-export interface PatientsGetPatientDocumentDataInputInjected {
 	patientId: string;
 }
 
@@ -2843,18 +2808,6 @@ export interface PatientsUpdateOnePatientInputInjected {
 	ddn?: string;
 	address?: string;
 	nTel?: string;
-	userId: string;
-}
-
-export interface PatientsUpdateOnePatientClinicalDataInputInjected {
-	id: string;
-	clinicalData?: string;
-	userId: string;
-}
-
-export interface PatientsUpdateOnePatientDocumentReportInputInjected {
-	id: string;
-	documentData?: string;
 	userId: string;
 }
 
@@ -3111,6 +3064,11 @@ export interface PatientsAdd_One_patient_to_indexResponse {
 	errors?: GraphQLError[];
 }
 
+export interface PatientsGetDocumentHeadersResponse {
+	data?: PatientsGetDocumentHeadersResponseData;
+	errors?: GraphQLError[];
+}
+
 export interface PatientsGetOnTrashPatientsResponse {
 	data?: PatientsGetOnTrashPatientsResponseData;
 	errors?: GraphQLError[];
@@ -3126,16 +3084,6 @@ export interface PatientsGetOnePatientInfoResponse {
 	errors?: GraphQLError[];
 }
 
-export interface PatientsGetPatientClinicalDataResponse {
-	data?: PatientsGetPatientClinicalDataResponseData;
-	errors?: GraphQLError[];
-}
-
-export interface PatientsGetPatientDocumentDataResponse {
-	data?: PatientsGetPatientDocumentDataResponseData;
-	errors?: GraphQLError[];
-}
-
 export interface PatientsIndex_patientsResponse {
 	data?: PatientsIndex_patientsResponseData;
 	errors?: GraphQLError[];
@@ -3148,16 +3096,6 @@ export interface PatientsToggleSelectedTrashPatientResponse {
 
 export interface PatientsUpdateOnePatientResponse {
 	data?: PatientsUpdateOnePatientResponseData;
-	errors?: GraphQLError[];
-}
-
-export interface PatientsUpdateOnePatientClinicalDataResponse {
-	data?: PatientsUpdateOnePatientClinicalDataResponseData;
-	errors?: GraphQLError[];
-}
-
-export interface PatientsUpdateOnePatientDocumentReportResponse {
-	data?: PatientsUpdateOnePatientDocumentReportResponseData;
 	errors?: GraphQLError[];
 }
 
@@ -4229,6 +4167,10 @@ export interface PatientsAdd_One_patient_to_indexResponseData {
 	};
 }
 
+export interface PatientsGetDocumentHeadersResponseData {
+	mainDb_getDocumentHeaders?: boolean;
+}
+
 export interface PatientsGetOnTrashPatientsResponseData {
 	mainDb_patients: {
 		id: string;
@@ -4257,8 +4199,6 @@ export interface PatientsGetOnePatientResponseData {
 		patientFullName: string;
 		informationsConfirmed: boolean;
 		nTel?: string;
-		clinicalData: string;
-		documentData?: string;
 		updated: string;
 	};
 }
@@ -4276,18 +4216,6 @@ export interface PatientsGetOnePatientInfoResponseData {
 		informationsConfirmed: boolean;
 		nTel?: string;
 		updated: string;
-	};
-}
-
-export interface PatientsGetPatientClinicalDataResponseData {
-	mainDb_getPatient?: {
-		clinicalData: string;
-	};
-}
-
-export interface PatientsGetPatientDocumentDataResponseData {
-	mainDb_getPatient?: {
-		documentData?: string;
 	};
 }
 
@@ -4313,44 +4241,6 @@ export interface PatientsUpdateOnePatientResponseData {
 		patientFullName: string;
 		informationsConfirmed: boolean;
 		nTel?: string;
-		clinicalData: string;
-		documentData?: string;
-		updated: string;
-	};
-}
-
-export interface PatientsUpdateOnePatientClinicalDataResponseData {
-	mainDb_updateOnePatient?: {
-		id: string;
-		firstName: string;
-		lastName: string;
-		sexe: "F" | "M";
-		ddn: string;
-		deleted: boolean;
-		onTrash: boolean;
-		patientFullName: string;
-		informationsConfirmed: boolean;
-		nTel?: string;
-		clinicalData: string;
-		documentData?: string;
-		updated: string;
-	};
-}
-
-export interface PatientsUpdateOnePatientDocumentReportResponseData {
-	mainDb_updateOnePatient?: {
-		id: string;
-		firstName: string;
-		lastName: string;
-		sexe: "F" | "M";
-		ddn: string;
-		deleted: boolean;
-		onTrash: boolean;
-		patientFullName: string;
-		informationsConfirmed: boolean;
-		nTel?: string;
-		clinicalData: string;
-		documentData?: string;
 		updated: string;
 	};
 }

@@ -1,6 +1,5 @@
 import { WebsocketMessageInterface } from "../../messagesInterfaces/WebsocketMessageInterface";
 import { Socket } from "../../socketInterface";
-import destinationHandler from "../../utils/DestinationHandler";
 import globalMessageHandler from "./messagesSubTypesHandlers/GlobalMessageHandler";
 import handleSubscriptionMessages from "./messagesSubTypesHandlers/handleSubscriptionMessages";
 import userMessageHandler from "./messagesSubTypesHandlers/userMessageHandler";
@@ -25,7 +24,7 @@ export default function messageHandler({
       }
 
       if (message.global) {
-        globalMessageHandler({ message, peers, ws });
+        globalMessageHandler({ message, peers });
       } else {
         userMessageHandler({ message, peers, ws });
       }

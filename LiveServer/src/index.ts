@@ -16,6 +16,7 @@ async function main() {
   });
   const wss = new WebSocketServer({ noServer: true });
   const peers = wss.clients as Set<Socket>;
+
   await subscriber.connect();
   await publisher.connect();
 

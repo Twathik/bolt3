@@ -1,4 +1,3 @@
-import { format } from "date-fns";
 import type { Client } from "typesense";
 import type {
   SearchParams,

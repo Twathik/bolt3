@@ -81,16 +81,6 @@ export class PatientGroupBy {
   })
   informationsConfirmed!: boolean;
 
-  @TypeGraphQL.Field(_type => String, {
-    nullable: false
-  })
-  clinicalData!: string;
-
-  @TypeGraphQL.Field(_type => String, {
-    nullable: true
-  })
-  documentData!: string | null;
-
   @TypeGraphQL.Field(_type => PatientCountAggregate, {
     nullable: true
   })

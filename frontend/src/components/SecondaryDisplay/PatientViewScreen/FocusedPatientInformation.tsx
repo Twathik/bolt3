@@ -3,7 +3,7 @@ import { useBoltStore } from "@/stores/boltStore";
 
 function FocusedPatientInformation() {
   const patient = useBoltStore((s) => s.patient);
-  console.log({ patient });
+
   return (
     <div>
       <strong className="p-2 text-white">

@@ -7,7 +7,10 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "copy": "cp -r ./src/components/Websockets/interfaces/ ../LiveServer/src/messagesInterfaces/ && cp -r ./src/components/Websockets/interfaces/ ../backend/src/Utils/PubSubInterfaces/"
+    "copy:LiveServer": "cp -r ./src/components/Websockets/interfaces/ ../LiveServer/src/messagesInterfaces/",
+    "copy:backend": "cp -r ./src/components/Websockets/interfaces/ ../backend/src/Utils/PubSubInterfaces/",
+    "copy:plateCollaborationBackend": "cp -r ./src/components/Websockets/interfaces/ ../plateCollaborationBackend/src/utils/PubSubInterfaces/",
+    "copy": " pnpm copy:LiveServer && pnpm copy:backend && pnpm copy:plateCollaborationBackend"
   },
   "dependencies": {
     "@hocuspocus/provider": "^2.11.3",
@@ -100,6 +103,7 @@
     "html-react-parser": "^5.1.7",
     "http": "0.0.1-security",
     "immer": "^10.0.3",
+    "lodash": "^4.17.21",
     "lodash-es": "^4.17.21",
     "lucide-react": "^0.341.0",
     "next": "14.1.0",
@@ -134,6 +138,7 @@
   },
   "devDependencies": {
     "@remix-run/eslint-config": "^2.7.2",
+    "@types/lodash": "^4.17.0",
     "@types/lodash-es": "^4.17.12",
     "@types/node": "^20",
     "@types/nprogress": "^0.2.3",

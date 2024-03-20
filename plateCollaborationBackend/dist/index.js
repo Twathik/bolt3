@@ -1,7 +1,6 @@
 // src/index.ts
-import { Logger } from "@hocuspocus/extension-logger";
 import { Server } from "@hocuspocus/server";
-import { slateNodesToInsertDelta } from "@slate-yjs/core";
+import { slateNodesToInsertDelta, yTextToSlateElement } from "@slate-yjs/core";
 import { Redis } from "@hocuspocus/extension-redis";
 import * as Y from "yjs";
 
@@ -19,10 +18,17 @@ if (process.env.NODE_ENV === "production") {
 var prismaClient_default = prisma;
 
 // src/index.ts
-import { Database } from "@hocuspocus/extension-database";
+import redis from "redis";
+import debounce from "debounce";
 var initialValue = [{ type: "p", children: [{ text: "" }] }];
+var debounced;
 var _a;
 var JWT_SECRET = (_a = process.env.JWT_SECRET) != null ? _a : "";
+var redisUrl = "redis://localhost:6379";
+var publisher = redis.createClient({
+  url: redisUrl,
+  password: "eYVX7EwVmmxKPCDmwMtyKVge8oLd2t81"
+});
 var server = Server.configure({
   port: 1234,
   name: "slate-yjs",
@@ -30,43 +36,6 @@ var server = Server.configure({
   maxDebounce: 1e4,
   quiet: true,
   extensions: [
-    new Logger(),
-    new Database({
-      fetch: async ({ documentName }) => {
-        return new Promise(async (resolve, reject) => {
-          try {
-            const [patientId, documentType] = documentName.split("-");
-            const document = await prismaClient_default.documentStore.findFirst({
-              where: { patientId }
-            });
-            if (!document) {
-              resolve(null);
-            } else {
-              resolve(new Uint8Array(document[documentType]));
-            }
-          } catch (error) {
-            reject(error);
-          }
-        });
-      },
-      store: async ({ documentName, state }) => {
-        try {
-          console.log("stored");
-          const [patientId, documentType] = documentName.split("-");
-          const documentStore = { patientId };
-          documentStore[documentType] = Buffer.from(state);
-          const updateDocumentStore = {};
-          updateDocumentStore[documentType] = { set: Buffer.from(state) };
-          await prismaClient_default.documentStore.upsert({
-            create: documentStore,
-            update: updateDocumentStore,
-            where: { patientId }
-          });
-        } catch (error) {
-          console.log({ error });
-        }
-      }
-    }),
     new Redis({
       host: "127.0.0.1",
       port: 6379,
@@ -75,8 +44,41 @@ var server = Server.configure({
   ],
   onAuthenticate: async ({ documentName, token }) => {
   },
+  onChange: async (data) => {
+    const save = async () => {
+      console.log("houra");
+      const [patientId, documentType] = data.documentName.split("-");
+      const sharedRoot = data.document.get("content", Y.XmlText);
+      const content = JSON.stringify(yTextToSlateElement(sharedRoot).children);
+      await prismaClient_default.documentStore.upsert({
+        create: {
+          patientId,
+          patientDocumentType: documentType,
+          content
+        },
+        update: { content: { set: content } },
+        where: { patientId }
+      });
+    };
+    debounced == null ? void 0 : debounced.clear();
+    debounced = debounce(save, 4e3);
+    debounced();
+  },
   async onLoadDocument(data) {
-    if (data.document.isEmpty("content")) {
+    const [patientId, documentType] = data.documentName.split("-");
+    const documentStore = await prismaClient_default.documentStore.findFirst({
+      where: {
+        patientId,
+        patientDocumentType: documentType
+      }
+    });
+    if (documentStore) {
+      const insertDelta = slateNodesToInsertDelta(
+        JSON.parse(documentStore.content)
+      );
+      const sharedRoot = data.document.get("content", Y.XmlText);
+      sharedRoot.applyDelta(insertDelta);
+    } else {
       const insertDelta = slateNodesToInsertDelta(initialValue);
       const sharedRoot = data.document.get("content", Y.XmlText);
       sharedRoot.applyDelta(insertDelta);
@@ -84,5 +86,4 @@ var server = Server.configure({
     return data.document;
   }
 });
-server.enableMessageLogging();
 server.listen();

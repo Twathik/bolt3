@@ -16,6 +16,7 @@ import type {
   mainDb_EventTypesValues,
 } from "@/components/wg-generated/models";
 import type { DrugHitInterface } from "@/lib/interfaces/DrugsInterfaces";
+import type { Value } from "@udecode/plate-common";
 import type { ReadyState } from "react-use-websocket";
 import type {
   SendJsonMessage,
@@ -37,13 +38,11 @@ export type ConsultationStoreSlice = {
   setConsultationState: (consultation: ConsultationStateType) => void;
 };
 
-export type PatientViewType = "folder" | "document";
-
 export type PatientStoreSlice = {
   patient: PatientsGetOnePatientInfoResponseData["mainDb_getPatient"] | null;
   onTrash: PatientsGetOnTrashPatientsResponseData["mainDb_patients"];
-  patientView: PatientViewType;
-  documentVersion: string;
+
+  documentData: Value;
 
   setPatient: (
     patient: PatientsGetOnePatientInfoResponseData["mainDb_getPatient"] | null
@@ -57,8 +56,8 @@ export type PatientStoreSlice = {
   setOnTrashPatients: (
     onTrash: PatientsGetOnTrashPatientsResponseData["mainDb_patients"]
   ) => void;
-  setPatientView: (view: PatientViewType) => void;
-  setDocumentVersion: (documentVersion: string) => void;
+
+  setDocumentData: (documentVersion: Value) => void;
 };
 
 export type PrescriptionStoreSlice = {

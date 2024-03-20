@@ -86,16 +86,6 @@ export class Patient {
 
   WorkingList?: WorkingList[];
 
-  @TypeGraphQL.Field(_type => String, {
-    nullable: false
-  })
-  clinicalData!: string;
-
-  @TypeGraphQL.Field(_type => String, {
-    nullable: true
-  })
-  documentData?: string | null;
-
   @TypeGraphQL.Field(_type => PatientCount, {
     nullable: true
   })

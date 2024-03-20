@@ -36,7 +36,7 @@ import {
   unwrapCodeBlock,
 } from "@udecode/plate-code-block";
 import { createComboboxPlugin } from "@udecode/plate-combobox";
-import { createCommentsPlugin, MARK_COMMENT } from "@udecode/plate-comments";
+import { MARK_COMMENT } from "@udecode/plate-comments";
 import type { RenderAfterEditable } from "@udecode/plate-common";
 import {
   createPlugins,
@@ -419,7 +419,7 @@ export const platePluginsWithCollaboration = ({
       dragOverCursorPlugin,
 
       // Collaboration
-      createCommentsPlugin(),
+      // createCommentsPlugin(),
       createYjsPlugin({
         // withOverrides: normalizeCollaboration,
         options: {

@@ -8,22 +8,17 @@ const createPatientSlice: StateCreator<
   PatientStoreSlice
 > = (set) => ({
   patient: null,
-  patientView: "folder",
-  documentVersion: "",
+
+  documentData: [{ type: "p", children: [{ text: "" }] }],
   onTrash: [],
   setPatient: (patient) => {
     set((state) => {
       state.patient = patient;
     });
   },
-  setPatientView: (view) => {
+  setDocumentData: (version) => {
     set((s) => {
-      s.patientView = view;
-    });
-  },
-  setDocumentVersion: (version) => {
-    set((s) => {
-      s.documentVersion = version;
+      s.documentData = version;
     });
   },
   setOnTrashPatients: (onTrash) => {

@@ -71,13 +71,12 @@ var messageBroker = ({
   message,
   peer
 }) => {
-  console.log({ message });
-  if (message.destination.length > 0) {
+  if (message.destination?.length > 0) {
     const check = destinationHandler({ message, ws: peer });
     if (!check)
       return;
   }
-  if (message.subscriptionIds.length > 0) {
+  if (message.subscriptionIds?.length > 0) {
     let send = false;
     for (const id of message.subscriptionIds) {
       if (peer.subscriptionIds?.includes(id))
@@ -168,7 +167,7 @@ function messageHandler({
         });
       }
       if (message2.global) {
-        globalMessageHandler({ message: message2, peers, ws });
+        globalMessageHandler({ message: message2, peers });
       } else {
         userMessageHandler({ message: message2, peers, ws });
       }

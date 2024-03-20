@@ -19,10 +19,10 @@ export class DocumentStoreCountOrderByAggregateInput {
   @TypeGraphQL.Field(_type => SortOrder, {
     nullable: true
   })
-  clinicalData?: "asc" | "desc" | undefined;
+  patientDocumentType?: "asc" | "desc" | undefined;
 
   @TypeGraphQL.Field(_type => SortOrder, {
     nullable: true
   })
-  documentData?: "asc" | "desc" | undefined;
+  content?: "asc" | "desc" | undefined;
 }

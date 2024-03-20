@@ -1,5 +1,6 @@
 query ($patientId: String!) {
   mainDb_getPatient(where: { id: $patientId }) {
+    
     ...PatientFragment
   }
 }

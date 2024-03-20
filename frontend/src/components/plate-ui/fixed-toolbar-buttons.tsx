@@ -1,5 +1,4 @@
 /* eslint-disable react/jsx-pascal-case */
-import type { Dispatch, SetStateAction } from "react";
 import React from "react";
 import {
   MARK_BOLD,
@@ -8,7 +7,6 @@ import {
   MARK_STRIKETHROUGH,
   MARK_UNDERLINE,
 } from "@udecode/plate-basic-marks";
-import type { Value } from "@udecode/plate-common";
 import { useEditorReadOnly } from "@udecode/plate-common";
 import { MARK_BG_COLOR, MARK_COLOR } from "@udecode/plate-font";
 import { ListStyleType } from "@udecode/plate-indent-list";
@@ -35,17 +33,11 @@ import { MediaToolbarButton } from "./media-toolbar-button";
 import { TableDropdownMenu } from "./table-dropdown-menu";
 import { MoreDropdownMenu } from "./more-dropdown-menu";
 import { CommentToolbarButton } from "./comment-toolbar-button";
-import { SaveToolBarButton } from "../plateEditor/plate-app/CustomButtons/SaveFolderToolBarButton";
 
 export function FixedToolbarButtons({
   boltMenu,
-  saveCallback,
 }: {
   boltMenu: menuItemsType[];
-  saveCallback: (
-    value: Value,
-    setLoading?: Dispatch<SetStateAction<boolean>>
-  ) => Promise<void>;
 }) {
   const readOnly = useEditorReadOnly();
 
@@ -55,7 +47,8 @@ export function FixedToolbarButtons({
         className="flex flex-wrap"
         style={{
           transform: "translateX(calc(-1px))",
-        }}>
+        }}
+      >
         {!readOnly && (
           <>
             <ToolbarGroup>
@@ -75,13 +68,15 @@ export function FixedToolbarButtons({
               </MarkToolbarButton>
               <MarkToolbarButton
                 tooltip="Underline (⌘+U)"
-                nodeType={MARK_UNDERLINE}>
+                nodeType={MARK_UNDERLINE}
+              >
                 <Icons.underline />
               </MarkToolbarButton>
 
               <MarkToolbarButton
                 tooltip="Strikethrough (⌘+⇧+M)"
-                nodeType={MARK_STRIKETHROUGH}>
+                nodeType={MARK_STRIKETHROUGH}
+              >
                 <Icons.strikethrough />
               </MarkToolbarButton>
               <MarkToolbarButton tooltip="Code (⌘+E)" nodeType={MARK_CODE}>
@@ -95,7 +90,8 @@ export function FixedToolbarButtons({
               </ColorDropdownMenu>
               <ColorDropdownMenu
                 nodeType={MARK_BG_COLOR}
-                tooltip="Highlight Color">
+                tooltip="Highlight Color"
+              >
                 <Icons.bg className={iconVariants({ variant: "toolbar" })} />
               </ColorDropdownMenu>
             </ToolbarGroup>
@@ -129,7 +125,7 @@ export function FixedToolbarButtons({
 
         <ToolbarGroup noSeparator>
           <CommentToolbarButton />
-          <SaveToolBarButton saveCallback={saveCallback} />
+          {/* <SaveToolBarButton saveCallback={saveCallback} /> */}
           <ModeDropdownMenu />
         </ToolbarGroup>
       </div>

@@ -5,7 +5,6 @@ import { DecimalJSScalar } from "../../scalars";
 import { DocumentStoreCountOrderByAggregateInput } from "../inputs/DocumentStoreCountOrderByAggregateInput";
 import { DocumentStoreMaxOrderByAggregateInput } from "../inputs/DocumentStoreMaxOrderByAggregateInput";
 import { DocumentStoreMinOrderByAggregateInput } from "../inputs/DocumentStoreMinOrderByAggregateInput";
-import { SortOrderInput } from "../inputs/SortOrderInput";
 import { SortOrder } from "../../enums/SortOrder";
 
 @TypeGraphQL.InputType("DocumentStoreOrderByWithAggregationInput", {})
@@ -20,15 +19,15 @@ export class DocumentStoreOrderByWithAggregationInput {
   })
   patientId?: "asc" | "desc" | undefined;
 
-  @TypeGraphQL.Field(_type => SortOrderInput, {
+  @TypeGraphQL.Field(_type => SortOrder, {
     nullable: true
   })
-  clinicalData?: SortOrderInput | undefined;
+  patientDocumentType?: "asc" | "desc" | undefined;
 
-  @TypeGraphQL.Field(_type => SortOrderInput, {
+  @TypeGraphQL.Field(_type => SortOrder, {
     nullable: true
   })
-  documentData?: SortOrderInput | undefined;
+  content?: "asc" | "desc" | undefined;
 
   @TypeGraphQL.Field(_type => DocumentStoreCountOrderByAggregateInput, {
     nullable: true

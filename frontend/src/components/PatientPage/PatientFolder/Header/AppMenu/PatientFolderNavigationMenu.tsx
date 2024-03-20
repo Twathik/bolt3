@@ -18,7 +18,6 @@ export function PatientFolderNavigationMenu({
 
   useEffect(() => {
     if (patient) {
-      console.log({ patientSpotlights });
       const checkIndex = patientSpotlights.findIndex(
         (p) => p.patientId === patient.id
       );

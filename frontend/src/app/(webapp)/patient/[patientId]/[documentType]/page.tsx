@@ -1,4 +1,5 @@
 /* eslint-disable react/no-unescaped-entities */
+import getDocumentHeaders from "@/components/ApiCalls/getDocumentHeaders";
 import getOnePatient from "@/components/ApiCalls/getOnePatient";
 import getPatientClinicalEvents from "@/components/ApiCalls/getPatientClinicalEvents";
 import getUser from "@/components/ApiCalls/getUser";
@@ -8,16 +9,21 @@ import PatientFolderHeader from "@/components/PatientPage/PatientFolder/PatientF
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import React from "react";
 import { FaExclamationTriangle } from "react-icons/fa";
+import type { mainDb_PatientDocumentTypeValues } from "../../../../../../../wundergraph-server/.wundergraph/generated/models";
 
 async function PatientPage({
-  params: { patientId },
+  params: { patientId, documentType },
 }: {
-  params: { patientId: string };
+  params: { patientId: string; documentType: mainDb_PatientDocumentTypeValues };
 }) {
   const patient = await getOnePatient({ patientId });
   const clinicalEvents = await getPatientClinicalEvents({ patientId });
   const user = await getUser();
-
+  const documentHeaders = await getDocumentHeaders({
+    patientId,
+    patientDocumentType: documentType,
+  });
+  console.log({ documentHeaders });
   if (!patient || !clinicalEvents)
     return (
       <div className="w-1/2 mx-auto my-10">
@@ -39,7 +45,13 @@ async function PatientPage({
   return (
     <div>
       <PatientFolderHeader patient={patient} />
-      {user && <PatientFolderBody patient={patient} user={user} />}
+      {user && ["folder", "document"].includes(documentType) && (
+        <PatientFolderBody
+          patient={patient}
+          user={user}
+          documentType={documentType}
+        />
+      )}
       <SubscribeToPatientWebSocket patientId={patient.id} />
     </div>
   );

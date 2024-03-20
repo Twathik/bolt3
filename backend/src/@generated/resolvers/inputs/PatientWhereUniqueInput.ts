@@ -100,16 +100,6 @@ export class PatientWhereUniqueInput {
   })
   informationsConfirmed?: BoolFilter | undefined;
 
-  @TypeGraphQL.Field(_type => StringFilter, {
-    nullable: true
-  })
-  clinicalData?: StringFilter | undefined;
-
-  @TypeGraphQL.Field(_type => StringNullableFilter, {
-    nullable: true
-  })
-  documentData?: StringNullableFilter | undefined;
-
   @TypeGraphQL.Field(_type => ConsultationListListRelationFilter, {
     nullable: true
   })

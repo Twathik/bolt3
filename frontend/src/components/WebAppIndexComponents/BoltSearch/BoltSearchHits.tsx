@@ -12,13 +12,14 @@ const Hit = ({ hit }: { hit: patientHit }) => {
   const { id } = useBoltStore((store) => store.consultationState);
   const router = useAppRouter();
   const onClick = useCallback(() => {
-    router.push(`/patient/${hit.id}`);
+    router.push(`/patient/${hit.id}/folder`);
   }, [hit.id, router]);
 
   return (
     <div
       key={hit.id}
-      className="col-span-1 my-4 divide-y divide-gray-200 rounded-lg bg-slate-100 shadow">
+      className="col-span-1 my-4 divide-y divide-gray-200 rounded-lg bg-slate-100 shadow"
+    >
       <div className="flex w-full items-center justify-between space-x-6 p-2">
         <div className="flex-1 truncate">
           <div className="flex items-center space-x-3">
@@ -31,7 +32,8 @@ const Hit = ({ hit }: { hit: patientHit }) => {
                 hit.sexe === "M"
                   ? "bg-cyan-50 text-cyan-700 ring-cyan-600/20"
                   : "bg-rose-50 text-rose-700 ring-rose-600/20"
-              }`}>
+              }`}
+            >
               {hit.sexe === "M" ? "Homme" : "Femme"}
             </span>
           </div>
@@ -50,7 +52,8 @@ const Hit = ({ hit }: { hit: patientHit }) => {
 
             <Button
               className="font-semiboldntext-black relative -mr-px inline-flex w-0 flex-1 items-center justify-center gap-x-3 rounded-bl-lg border  border-transparent bg-slate-200 py-4 text-sm hover:bg-slate-300"
-              onClick={onClick}>
+              onClick={onClick}
+            >
               <>
                 <span className="h-5 w-5 text-gray-400" aria-hidden="true">
                   <FaFolderOpen />

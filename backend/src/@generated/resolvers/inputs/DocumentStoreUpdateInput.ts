@@ -2,7 +2,7 @@ import * as TypeGraphQL from "type-graphql";
 import * as GraphQLScalars from "graphql-scalars";
 import { Prisma } from "@prisma/client";
 import { DecimalJSScalar } from "../../scalars";
-import { NullableBytesFieldUpdateOperationsInput } from "../inputs/NullableBytesFieldUpdateOperationsInput";
+import { EnumPatientDocumentTypeFieldUpdateOperationsInput } from "../inputs/EnumPatientDocumentTypeFieldUpdateOperationsInput";
 import { StringFieldUpdateOperationsInput } from "../inputs/StringFieldUpdateOperationsInput";
 
 @TypeGraphQL.InputType("DocumentStoreUpdateInput", {})
@@ -17,13 +17,13 @@ export class DocumentStoreUpdateInput {
   })
   patientId?: StringFieldUpdateOperationsInput | undefined;
 
-  @TypeGraphQL.Field(_type => NullableBytesFieldUpdateOperationsInput, {
+  @TypeGraphQL.Field(_type => EnumPatientDocumentTypeFieldUpdateOperationsInput, {
     nullable: true
   })
-  clinicalData?: NullableBytesFieldUpdateOperationsInput | undefined;
+  patientDocumentType?: EnumPatientDocumentTypeFieldUpdateOperationsInput | undefined;
 
-  @TypeGraphQL.Field(_type => NullableBytesFieldUpdateOperationsInput, {
+  @TypeGraphQL.Field(_type => StringFieldUpdateOperationsInput, {
     nullable: true
   })
-  documentData?: NullableBytesFieldUpdateOperationsInput | undefined;
+  content?: StringFieldUpdateOperationsInput | undefined;
 }

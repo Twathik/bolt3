@@ -3,8 +3,8 @@ import * as TypeGraphQL from "type-graphql";
 export enum DocumentStoreScalarFieldEnum {
   id = "id",
   patientId = "patientId",
-  clinicalData = "clinicalData",
-  documentData = "documentData"
+  patientDocumentType = "patientDocumentType",
+  content = "content"
 }
 TypeGraphQL.registerEnumType(DocumentStoreScalarFieldEnum, {
   name: "DocumentStoreScalarFieldEnum",

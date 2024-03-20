@@ -4,8 +4,9 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 import CopyFolderComponent from "./PatientViewScreen/CopyFolderComponent";
 import PatientFolderHeader from "./PatientViewScreen/PatientFolderHeader";
+import SubscribeToSecondaryDisplayPatientViewWebSocket from "./SubscribeToSecondaryDisplayPatientViewWebSocket";
 
-function PatientViewScreen({ focusedPatientId }: { focusedPatientId: string }) {
+function PatientViewScreen({ patientId }: { patientId: string }) {
   return (
     <div>
       <>
@@ -23,10 +24,13 @@ function PatientViewScreen({ focusedPatientId }: { focusedPatientId: string }) {
           <TabsContent value="informations"></TabsContent>
           <TabsContent value="focusedDocument">focused document</TabsContent>
           <TabsContent value="copyFolder">
-            <CopyFolderComponent />
+            <CopyFolderComponent patientId={patientId} />
           </TabsContent>
           <TabsContent value="copyDocuments">Document copy</TabsContent>
         </Tabs>
+        <SubscribeToSecondaryDisplayPatientViewWebSocket
+          patientId={patientId}
+        />
       </>
     </div>
   );
