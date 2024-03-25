@@ -3,22 +3,22 @@ import { useMemo } from "react";
 import { getWidget } from "./getWidget";
 
 function WidgetView() {
-  const focusedDocument = useBoltStore((s) => s.focusedDocument);
+  const focusedClinicalEvent = useBoltStore((s) => s.focusedClinicalEvent);
   const widgets = useMemo(
     () =>
-      focusedDocument ? (
-        getWidget(focusedDocument)
+      focusedClinicalEvent ? (
+        getWidget(focusedClinicalEvent)
       ) : (
         <div>Veuillez selectionner un document</div>
       ),
-    [focusedDocument]
+    [focusedClinicalEvent]
   );
   return (
     <div>
-      {focusedDocument && (
+      {focusedClinicalEvent && (
         <div className=" w-full shadow-lg rounded-md border-slate-500 border-[1px] mb-5">
           <div className="font-bold underline p-4 text-center">
-            {focusedDocument.d.documentType}: {focusedDocument.d.createdAt}
+            {focusedClinicalEvent.eventType}: {focusedClinicalEvent.createdAt}
           </div>
         </div>
       )}

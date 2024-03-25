@@ -79,13 +79,13 @@ export class UserOrderByWithRelationInput {
   })
   createdAt?: "asc" | "desc" | undefined;
 
-  @TypeGraphQL.Field(_type => ClinicalEventOrderByRelationAggregateInput, {
-    nullable: true
-  })
-  ClinicalEvent?: ClinicalEventOrderByRelationAggregateInput | undefined;
-
   @TypeGraphQL.Field(_type => WorkingListOrderByRelationAggregateInput, {
     nullable: true
   })
   WorkingList?: WorkingListOrderByRelationAggregateInput | undefined;
+
+  @TypeGraphQL.Field(_type => ClinicalEventOrderByRelationAggregateInput, {
+    nullable: true
+  })
+  ClinicalEvent?: ClinicalEventOrderByRelationAggregateInput | undefined;
 }

@@ -14,13 +14,19 @@
   "dependencies": {
     "@wundergraph/sdk": "^0.184.0",
     "http": "0.0.1-security",
+    "lodash": "^4.17.21",
     "query-string": "^9.0.0",
+    "randomcolor": "^0.6.2",
     "redis": "^4.6.13",
     "tsup": "^8.0.2",
+    "uuid": "^9.0.1",
     "ws": "^8.16.0"
   },
   "devDependencies": {
+    "@types/lodash": "^4.17.0",
     "@types/node": "^20.11.26",
+    "@types/randomcolor": "^0.5.9",
+    "@types/uuid": "^9.0.8",
     "@types/ws": "^8.5.10",
     "eslint": "^8.57.0",
     "eslint-config-next": "^14.1.3",

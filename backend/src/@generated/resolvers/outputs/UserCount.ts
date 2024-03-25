@@ -7,16 +7,8 @@ import { UserCountWorkingListArgs } from "./args/UserCountWorkingListArgs";
 
 @TypeGraphQL.ObjectType("UserCount", {})
 export class UserCount {
-  ClinicalEvent!: number;
   WorkingList!: number;
-
-  @TypeGraphQL.Field(_type => TypeGraphQL.Int, {
-    name: "ClinicalEvent",
-    nullable: false
-  })
-  getClinicalEvent(@TypeGraphQL.Root() root: UserCount, @TypeGraphQL.Args() args: UserCountClinicalEventArgs): number {
-    return root.ClinicalEvent;
-  }
+  ClinicalEvent!: number;
 
   @TypeGraphQL.Field(_type => TypeGraphQL.Int, {
     name: "WorkingList",
@@ -24,5 +16,13 @@ export class UserCount {
   })
   getWorkingList(@TypeGraphQL.Root() root: UserCount, @TypeGraphQL.Args() args: UserCountWorkingListArgs): number {
     return root.WorkingList;
+  }
+
+  @TypeGraphQL.Field(_type => TypeGraphQL.Int, {
+    name: "ClinicalEvent",
+    nullable: false
+  })
+  getClinicalEvent(@TypeGraphQL.Root() root: UserCount, @TypeGraphQL.Args() args: UserCountClinicalEventArgs): number {
+    return root.ClinicalEvent;
   }
 }

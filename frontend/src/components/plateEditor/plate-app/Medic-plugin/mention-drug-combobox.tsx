@@ -28,6 +28,7 @@ export function MentionDrugCombobox({
       getMentionOnSelectItem({
         key: pluginKey,
       })(editor, item);
+      console.log({});
 
       const selectedNode =
         editor.selection &&

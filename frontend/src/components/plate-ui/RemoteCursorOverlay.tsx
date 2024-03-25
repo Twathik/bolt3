@@ -13,7 +13,7 @@ import type { UnknownObject } from "@udecode/utils";
 import { flushSync } from "react-dom";
 
 import type { YjsPlugin } from "@udecode/plate-yjs";
-import { KEY_YJS, yjsSelectors } from "@udecode/plate-yjs";
+import { KEY_YJS } from "@udecode/plate-yjs";
 
 export interface CaretPosition {
   height: number;
@@ -117,18 +117,14 @@ export function RemoteCursorOverlay<
 >(props: CursorOverlayProps<TCursorData>) {
   const editor = useEditorRef();
   const isRendered = usePlateSelectors().isMounted();
-  const isSynced = yjsSelectors.isSynced();
+
   const { disableCursors } = getPluginOptions<YjsPlugin>(editor, KEY_YJS);
 
   // console.log("editor", editor);
 
   const hidden =
-    disableCursors ||
-    !editor ||
-    editor.children.length === 0 ||
-    !isSynced ||
-    !isRendered;
-  console.log({ disableCursors, isSynced, isRendered });
+    disableCursors || !editor || editor.children.length === 0 || !isRendered;
+  console.log({ disableCursors, isRendered });
 
   // existing issue with @slate-yjs/react https://github.com/BitPhinix/slate-yjs/issues/372
   useEffect(() => {

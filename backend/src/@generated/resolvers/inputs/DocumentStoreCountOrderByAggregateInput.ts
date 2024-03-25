@@ -25,4 +25,9 @@ export class DocumentStoreCountOrderByAggregateInput {
     nullable: true
   })
   content?: "asc" | "desc" | undefined;
+
+  @TypeGraphQL.Field(_type => SortOrder, {
+    nullable: true
+  })
+  textContent?: "asc" | "desc" | undefined;
 }

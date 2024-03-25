@@ -1,10 +1,11 @@
 import { WebSocketServer } from "ws";
 import { WebsocketMessageInterface } from "../messagesInterfaces/WebsocketMessageInterface";
-import { Socket } from "../socketInterface";
+import { Socket, TopicRoom, TopicStore } from "../socketInterface";
 import pongHandler from "./messageRootTypesHandlers/pongHandler";
 import errorHandler from "./messageRootTypesHandlers/errorHandler";
 import messageHandler from "./messageRootTypesHandlers/MessageHandler";
 import welcomeMessageHandler from "./messageRootTypesHandlers/messagesSubTypesHandlers/welcomeMessageHandler";
+import clearConnectionFromTopicRooms from "../utils/ClearConnectionFromTopicRooms";
 
 export default function handleConnections({
   peers,
@@ -19,5 +20,10 @@ export default function handleConnections({
     errorHandler({ ws });
     messageHandler({ ws, peers });
     welcomeMessageHandler({ ws });
+    ws.on("close", function close(this) {
+      const socket = this as Socket;
+      clearConnectionFromTopicRooms({ ws: socket, peers });
+      // console.log({ destination: ws.destination });
+    });
   });
 }

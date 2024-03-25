@@ -24,10 +24,15 @@ export class DocumentStoreGroupBy {
   })
   patientDocumentType!: "folder" | "document";
 
-  @TypeGraphQL.Field(_type => String, {
-    nullable: false
+  @TypeGraphQL.Field(_type => GraphQLScalars.ByteResolver, {
+    nullable: true
   })
-  content!: string;
+  content!: Buffer | null;
+
+  @TypeGraphQL.Field(_type => String, {
+    nullable: true
+  })
+  textContent!: string | null;
 
   @TypeGraphQL.Field(_type => DocumentStoreCountAggregate, {
     nullable: true

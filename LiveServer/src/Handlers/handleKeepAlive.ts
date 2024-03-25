@@ -11,6 +11,6 @@ export default function handleKeepAlive({ peers }: { peers: Set<Socket> }) {
       ws.isAlive = false;
       ws.ping();
     });
-  }, 30000);
+  }, 3000);
   return interval;
 }

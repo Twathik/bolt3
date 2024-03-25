@@ -8,7 +8,7 @@ const createPlateSlice: StateCreator<
   PlateStoreSlice
 > = (set) => ({
   documentHeaders: [],
-  focusedDocument: null,
+  focusedClinicalEvent: null,
   setDocumentHeaders: (d) => {
     set((s) => {
       s.documentHeaders = d;
@@ -26,9 +26,9 @@ const createPlateSlice: StateCreator<
       );
     });
   },
-  setFocusedDocument: (d) => {
+  setFocusedClinicalEvent(event) {
     set((s) => {
-      s.focusedDocument = d;
+      s.focusedClinicalEvent = event;
     });
   },
 });

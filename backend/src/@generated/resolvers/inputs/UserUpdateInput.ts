@@ -83,13 +83,13 @@ export class UserUpdateInput {
   })
   createdAt?: DateTimeFieldUpdateOperationsInput | undefined;
 
-  @TypeGraphQL.Field(_type => ClinicalEventUpdateManyWithoutUserNestedInput, {
-    nullable: true
-  })
-  ClinicalEvent?: ClinicalEventUpdateManyWithoutUserNestedInput | undefined;
-
   @TypeGraphQL.Field(_type => WorkingListUpdateManyWithoutUserNestedInput, {
     nullable: true
   })
   WorkingList?: WorkingListUpdateManyWithoutUserNestedInput | undefined;
+
+  @TypeGraphQL.Field(_type => ClinicalEventUpdateManyWithoutUserNestedInput, {
+    nullable: true
+  })
+  ClinicalEvent?: ClinicalEventUpdateManyWithoutUserNestedInput | undefined;
 }

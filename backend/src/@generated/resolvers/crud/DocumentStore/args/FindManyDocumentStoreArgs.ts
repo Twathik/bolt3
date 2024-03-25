@@ -35,5 +35,5 @@ export class FindManyDocumentStoreArgs {
   @TypeGraphQL.Field(_type => [DocumentStoreScalarFieldEnum], {
     nullable: true
   })
-  distinct?: Array<"id" | "patientId" | "patientDocumentType" | "content"> | undefined;
+  distinct?: Array<"id" | "patientId" | "patientDocumentType" | "content" | "textContent"> | undefined;
 }

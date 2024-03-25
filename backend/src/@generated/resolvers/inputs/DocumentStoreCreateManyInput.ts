@@ -21,8 +21,13 @@ export class DocumentStoreCreateManyInput {
   })
   patientDocumentType!: "folder" | "document";
 
-  @TypeGraphQL.Field(_type => String, {
-    nullable: false
+  @TypeGraphQL.Field(_type => GraphQLScalars.ByteResolver, {
+    nullable: true
   })
-  content!: string;
+  content?: Buffer | undefined;
+
+  @TypeGraphQL.Field(_type => String, {
+    nullable: true
+  })
+  textContent?: string | undefined;
 }

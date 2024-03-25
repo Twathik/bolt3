@@ -7,10 +7,22 @@ const appSubscriptionSlice: StateCreator<
   [],
   AppSubscriptionSlice
 > = (set) => ({
-  SubscriptionIds: [""],
-  setSubscriptionIds: (sIds) => {
+  subscribedUsers: [],
+  setSubscribedUsers: (users) => {
     set((s) => {
-      s.SubscriptionIds = sIds;
+      s.subscribedUsers = users;
+    });
+  },
+  addSubscribedUser: (user) => {
+    set((s) => {
+      s.subscribedUsers.push(user);
+    });
+  },
+  removeSubscribedUser: (user) => {
+    set((s) => {
+      // const newUsers = s.subscribedUsers.filter((u) => u.id !== user.id);
+
+      s.subscribedUsers = s.subscribedUsers.filter((u) => u.id !== user.id);
     });
   },
 });

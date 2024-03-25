@@ -20,7 +20,7 @@ export class GroupByClinicalEventArgs {
   @TypeGraphQL.Field(_type => [ClinicalEventScalarFieldEnum], {
     nullable: false
   })
-  by!: Array<"id" | "eventType" | "eventCategory" | "userId" | "patientId" | "createdAt" | "updatedAt" | "deleted" | "report" | "dicom" | "dicomId" | "clinicalDiagnosticId">;
+  by!: Array<"id" | "eventType" | "eventCategory" | "userId" | "patientId" | "createdAt" | "updatedAt" | "deleted" | "deletedReport" | "deletedByUserId" | "dicom" | "dicomId" | "clinicalDiagnosticId">;
 
   @TypeGraphQL.Field(_type => ClinicalEventScalarWhereWithAggregatesInput, {
     nullable: true

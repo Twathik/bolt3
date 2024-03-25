@@ -4,6 +4,7 @@ import { Prisma } from "@prisma/client";
 import { DecimalJSScalar } from "../../scalars";
 import { ClinicalEventCreateNestedManyWithoutPatientInput } from "../inputs/ClinicalEventCreateNestedManyWithoutPatientInput";
 import { ConsultationListCreateNestedManyWithoutPatientInput } from "../inputs/ConsultationListCreateNestedManyWithoutPatientInput";
+import { DocumentStoreCreateNestedManyWithoutPatientInput } from "../inputs/DocumentStoreCreateNestedManyWithoutPatientInput";
 import { Sexe } from "../../enums/Sexe";
 
 @TypeGraphQL.InputType("PatientCreateWithoutWorkingListInput", {})
@@ -87,4 +88,9 @@ export class PatientCreateWithoutWorkingListInput {
     nullable: true
   })
   ClinicalEvent?: ClinicalEventCreateNestedManyWithoutPatientInput | undefined;
+
+  @TypeGraphQL.Field(_type => DocumentStoreCreateNestedManyWithoutPatientInput, {
+    nullable: true
+  })
+  DocumentStore?: DocumentStoreCreateNestedManyWithoutPatientInput | undefined;
 }

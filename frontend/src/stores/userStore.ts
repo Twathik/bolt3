@@ -7,7 +7,7 @@ const createUserSlice: StateCreator<
   [],
   UserStoreSlice
 > = (set) => ({
-  user: { searchApiKey: "", editorApiKey: "" },
+  user: null,
   setUser: (user) => {
     set((state) => {
       state.user = user;

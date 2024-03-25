@@ -11,6 +11,7 @@ import { PrismaClient } from '@prisma/client'
 import { Context } from '../../context'
 import { notificationTopic } from '../../Utils/PubSubInterfaces/MessageTypesInterface'
 import { WebsocketMessageInterface } from '../../Utils/PubSubInterfaces/WebsocketMessageInterface'
+import { v4 } from 'uuid'
 
 @TypeGraphQL.Resolver((_of) => MobileDevice)
 export class RegisterOneMobileDeviceResolver {
@@ -44,6 +45,7 @@ export class RegisterOneMobileDeviceResolver {
       })
 
       const message: WebsocketMessageInterface = {
+        id: v4(),
         type: 'mobileDevice',
         destination: ['mobileDevices'],
         global: true,

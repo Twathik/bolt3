@@ -1,6 +1,7 @@
 export { ClinicalEventRelationsResolver } from "./ClinicalEvent/ClinicalEventRelationsResolver";
 export { ConsultationRelationsResolver } from "./Consultation/ConsultationRelationsResolver";
 export { ConsultationListRelationsResolver } from "./ConsultationList/ConsultationListRelationsResolver";
+export { DocumentStoreRelationsResolver } from "./DocumentStore/DocumentStoreRelationsResolver";
 export { ModalityRelationsResolver } from "./Modality/ModalityRelationsResolver";
 export { PatientRelationsResolver } from "./Patient/PatientRelationsResolver";
 export { PrescriptionRelationsResolver } from "./Prescription/PrescriptionRelationsResolver";

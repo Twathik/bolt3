@@ -9,6 +9,7 @@ import { MdKeyboardDoubleArrowRight } from "react-icons/md";
 import type { WebsocketMessageInterface } from "@/components/Websockets/interfaces/WebsocketMessageInterface";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { v4 as uuid } from "uuid";
 
 function PatientFolderHeaderClinicalEventsMenu({
   patient,
@@ -22,6 +23,7 @@ function PatientFolderHeaderClinicalEventsMenu({
     try {
       if (patient) {
         const message: WebsocketMessageInterface = {
+          id: uuid(),
           type: "secondaryDisplay",
           payload: { screenType: "patientView", patient },
           global: false,

@@ -5,6 +5,7 @@ import { cva } from "class-variance-authority";
 
 import type { PlateContentProps } from "@udecode/plate-common";
 import type { VariantProps } from "class-variance-authority";
+import useGetDocumentHeadersFromEditor from "../PatientPage/PatientFolder/Body/FolderHooks/useGetDocumentHeadersFromEditor";
 
 const editorVariants = cva(
   cn(
@@ -61,6 +62,8 @@ const Editor = React.forwardRef<HTMLDivElement, EditorProps>(
     ref
   ) => {
     const editor = useEditorRef();
+    useGetDocumentHeadersFromEditor({ editor });
+
     useEffect(() => {
       editor.select({ path: [0, 0], offset: 0 });
 

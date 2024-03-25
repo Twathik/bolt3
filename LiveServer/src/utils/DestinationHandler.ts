@@ -10,7 +10,7 @@ export default function destinationHandler({
 }): boolean {
   let send = false;
 
-  ws.destination.forEach((d) => {
+  ws.destination?.forEach((d) => {
     if (message.destination?.includes(d)) send = true;
   });
   return send;

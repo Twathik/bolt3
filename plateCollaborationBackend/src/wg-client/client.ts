@@ -103,12 +103,6 @@ import type {
 	ClinicalEventsGetClinicalEventsResponse,
 	ClinicalEventsGetClinicalEventsInput,
 	ClinicalEventsGetClinicalEventsResponseData,
-	ClinicalEventsMoveOnTrashClinicalEventResponse,
-	ClinicalEventsMoveOnTrashClinicalEventInput,
-	ClinicalEventsMoveOnTrashClinicalEventResponseData,
-	ClinicalEventsUpdateClinicalEventReportResponse,
-	ClinicalEventsUpdateClinicalEventReportInput,
-	ClinicalEventsUpdateClinicalEventReportResponseData,
 	ConsultationListCheckIfRegistredResponse,
 	ConsultationListCheckIfRegistredInput,
 	ConsultationListCheckIfRegistredResponseData,
@@ -263,7 +257,7 @@ export interface AuthProvider {
 }
 
 export const defaultClientConfig: ClientConfig = {
-	applicationHash: "c5719521",
+	applicationHash: "0422896d",
 	baseURL: "http://api.bolt3.local",
 	sdkVersion: "0.181.5",
 };
@@ -351,12 +345,6 @@ export const operationMetadata: OperationMetadata = {
 		requiresAuthentication: true,
 	},
 	"clinicalEvents/getClinicalEvents": {
-		requiresAuthentication: true,
-	},
-	"clinicalEvents/moveOnTrashClinicalEvent": {
-		requiresAuthentication: true,
-	},
-	"clinicalEvents/updateClinicalEventReport": {
 		requiresAuthentication: true,
 	},
 	"consultationList/checkIfRegistred": {
@@ -717,16 +705,6 @@ export type Mutations = {
 	"clinicalEvents/deleteOneClinicalEvent": {
 		input: ClinicalEventsDeleteOneClinicalEventInput;
 		response: { data?: ClinicalEventsDeleteOneClinicalEventResponse["data"]; error?: ClientOperationErrors };
-		requiresAuthentication: true;
-	};
-	"clinicalEvents/moveOnTrashClinicalEvent": {
-		input: ClinicalEventsMoveOnTrashClinicalEventInput;
-		response: { data?: ClinicalEventsMoveOnTrashClinicalEventResponse["data"]; error?: ClientOperationErrors };
-		requiresAuthentication: true;
-	};
-	"clinicalEvents/updateClinicalEventReport": {
-		input: ClinicalEventsUpdateClinicalEventReportInput;
-		response: { data?: ClinicalEventsUpdateClinicalEventReportResponse["data"]; error?: ClientOperationErrors };
 		requiresAuthentication: true;
 	};
 	"consultationList/closeConsultation": {

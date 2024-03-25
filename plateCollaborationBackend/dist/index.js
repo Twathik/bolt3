@@ -1,5 +1,7 @@
 // src/index.ts
-import { Server } from "@hocuspocus/server";
+import {
+  Server
+} from "@hocuspocus/server";
 import { slateNodesToInsertDelta, yTextToSlateElement } from "@slate-yjs/core";
 import { Redis } from "@hocuspocus/extension-redis";
 import * as Y from "yjs";
@@ -19,9 +21,7 @@ var prismaClient_default = prisma;
 
 // src/index.ts
 import redis from "redis";
-import debounce from "debounce";
-var initialValue = [{ type: "p", children: [{ text: "" }] }];
-var debounced;
+import jwt from "jsonwebtoken";
 var _a;
 var JWT_SECRET = (_a = process.env.JWT_SECRET) != null ? _a : "";
 var redisUrl = "redis://localhost:6379";
@@ -42,48 +42,75 @@ var server = Server.configure({
       options: { password: "eYVX7EwVmmxKPCDmwMtyKVge8oLd2t81" }
     })
   ],
-  onAuthenticate: async ({ documentName, token }) => {
+  onAuthenticate: async ({ token }) => {
+    const { userId, editorKey } = jwt.verify(
+      token,
+      JWT_SECRET
+    );
+    if (!userId || !editorKey)
+      throw Error();
+    await prismaClient_default.user.findFirstOrThrow({
+      where: {
+        AND: [
+          { userId: { equals: userId } },
+          { editorKey: { equals: editorKey } }
+        ]
+      }
+    });
   },
-  onChange: async (data) => {
-    const save = async () => {
-      console.log("houra");
-      const [patientId, documentType] = data.documentName.split("-");
-      const sharedRoot = data.document.get("content", Y.XmlText);
-      const content = JSON.stringify(yTextToSlateElement(sharedRoot).children);
-      await prismaClient_default.documentStore.upsert({
-        create: {
-          patientId,
-          patientDocumentType: documentType,
-          content
-        },
-        update: { content: { set: content } },
-        where: { patientId }
-      });
-    };
-    debounced == null ? void 0 : debounced.clear();
-    debounced = debounce(save, 4e3);
-    debounced();
-  },
-  async onLoadDocument(data) {
-    const [patientId, documentType] = data.documentName.split("-");
+  async onLoadDocument({
+    documentName,
+    document
+  }) {
+    const [patientId, documentType] = documentName.split("-");
     const documentStore = await prismaClient_default.documentStore.findFirst({
       where: {
         patientId,
         patientDocumentType: documentType
       }
     });
-    if (documentStore) {
-      const insertDelta = slateNodesToInsertDelta(
-        JSON.parse(documentStore.content)
-      );
-      const sharedRoot = data.document.get("content", Y.XmlText);
-      sharedRoot.applyDelta(insertDelta);
+    if (documentStore == null ? void 0 : documentStore.content) {
+      Y.applyUpdate(document, new Uint8Array(documentStore.content));
     } else {
-      const insertDelta = slateNodesToInsertDelta(initialValue);
-      const sharedRoot = data.document.get("content", Y.XmlText);
+      const insertDelta = slateNodesToInsertDelta([
+        {
+          type: "p",
+          children: [{ text: "" }]
+        }
+      ]);
+      const sharedRoot = document.get("content", Y.XmlText);
       sharedRoot.applyDelta(insertDelta);
     }
-    return data.document;
+    return document;
+  },
+  async onStoreDocument({ document, documentName }) {
+    try {
+      const textContent = JSON.stringify(
+        yTextToSlateElement(document.get("content", Y.XmlText))
+      );
+      const state = Buffer.from(Y.encodeStateAsUpdate(document));
+      const [patientId, documentType] = documentName.split("-");
+      await prismaClient_default.documentStore.upsert({
+        create: {
+          patientId,
+          patientDocumentType: documentType,
+          content: Buffer.from(state),
+          textContent
+        },
+        update: {
+          content: { set: Buffer.from(state) },
+          textContent: { set: textContent }
+        },
+        where: {
+          patientId_patientDocumentType: {
+            patientId,
+            patientDocumentType: documentType
+          }
+        }
+      });
+    } catch (error) {
+      console.log({ error });
+    }
   }
 });
 server.listen();

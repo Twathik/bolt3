@@ -1,4 +1,8 @@
-import { Server } from "@hocuspocus/server";
+import {
+  Server,
+  onLoadDocumentPayload,
+  onChangePayload,
+} from "@hocuspocus/server";
 import { slateNodesToInsertDelta, yTextToSlateElement } from "@slate-yjs/core";
 import { Redis } from "@hocuspocus/extension-redis";
 import * as Y from "yjs";
@@ -6,6 +10,9 @@ import prisma from "./utils/prismaClient";
 import { PatientDocumentType } from "@prisma/client";
 import redis, { RedisClientType } from "redis";
 import debounce from "debounce";
+import jwt from "jsonwebtoken";
+import { UserInterface } from "./utils/userInterface";
+import { Database } from "@hocuspocus/extension-database";
 
 const initialValue = [{ type: "p", children: [{ text: "" }] }];
 let debounced: ReturnType<typeof debounce>;
@@ -29,54 +36,7 @@ const server = Server.configure({
   // Add logging
   extensions: [
     // new Logger(),
-    /*  new Database({
-      // Return a Promise to retrieve data …
-      fetch: async ({ documentName }) => {
-        return new Promise(async (resolve, reject) => {
-          try {
-            console.log({ documentName });
-            const [patientId, documentType] = documentName.split("-");
-            const document = await prisma.documentStore.findFirst({
-              where: {
-                patientId,
-                patientDocumentType: documentType as PatientDocumentType,
-              },
-            });
 
-            if (!document) {
-              resolve(null);
-            } else {
-              //@ts-expect-error
-              resolve(new Uint8Array(document.content));
-            }
-          } catch (error) {
-            reject(error);
-          }
-        });
-      },
-      // … and a Promise to store data:
-      store: async ({ documentName, state, document }) => {
-        try {
-          const [patientId, documentType] = documentName.split("-");
-          const sharedRoot = Y.decodeUpdate(state);
-          
-          //const slateContents = yTextToSlateElement(sharedRoot).children;
-          console.dir({ sharedRoot }, { depth: 5 });
-
-          await prisma.documentStore.upsert({
-            create: {
-              patientId,
-              patientDocumentType: documentType as PatientDocumentType,
-              content: Buffer.from(state),
-            },
-            update: { content: { set: Buffer.from(state) } },
-            where: { patientId },
-          });
-        } catch (error) {
-          console.log({ error });
-        }
-      },
-    }), */
     new Redis({
       // [required] Hostname of your Redis instance
       host: "127.0.0.1",
@@ -87,11 +47,12 @@ const server = Server.configure({
     }),
   ],
 
-  onAuthenticate: async ({ documentName, token }) => {
-    /* const { userId, editorKey } = jwt.verify(
+  onAuthenticate: async ({ token }) => {
+    const { userId, editorKey } = jwt.verify(
       token,
       JWT_SECRET
-    ) as userInterface;
+    ) as UserInterface;
+
     if (!userId || !editorKey) throw Error();
     await prisma.user.findFirstOrThrow({
       where: {
@@ -100,72 +61,74 @@ const server = Server.configure({
           { editorKey: { equals: editorKey } },
         ],
       },
-    }); */
+    });
   },
+  /* async onChange() {
+    console.log("triggered");
+  }, */
 
-  onChange: async (data) => {
-    const save = async () => {
-      console.log("houra");
-      const [patientId, documentType] = data.documentName.split("-");
-      const sharedRoot = data.document.get("content", Y.XmlText) as Y.XmlText;
-      const content = JSON.stringify(yTextToSlateElement(sharedRoot).children);
-      await prisma.documentStore.upsert({
-        create: {
-          patientId,
-          patientDocumentType: documentType as PatientDocumentType,
-          content,
-        },
-        update: { content: { set: content } },
-        where: { patientId },
-      });
-    };
-
-    debounced?.clear();
-    debounced = debounce(save, 4000);
-    debounced();
-
-    // ....
-  },
-
-  async onLoadDocument(data) {
-    // Load the initial value in case the document is empty
-    //await publisher.connect();
-    const [patientId, documentType] = data.documentName.split("-");
+  async onLoadDocument({
+    documentName,
+    document,
+  }: onLoadDocumentPayload): Promise<any> {
+    const [patientId, documentType] = documentName.split("-");
     const documentStore = await prisma.documentStore.findFirst({
       where: {
         patientId,
         patientDocumentType: documentType as PatientDocumentType,
       },
     });
-    if (documentStore) {
-      const insertDelta = slateNodesToInsertDelta(
-        JSON.parse(documentStore.content)
-      );
-      const sharedRoot = data.document.get("content", Y.XmlText) as Y.XmlText;
-      sharedRoot.applyDelta(insertDelta);
+
+    if (documentStore?.content) {
+      Y.applyUpdate(document, new Uint8Array(documentStore.content));
     } else {
-      const insertDelta = slateNodesToInsertDelta(initialValue);
-      const sharedRoot = data.document.get("content", Y.XmlText) as Y.XmlText;
+      const insertDelta = slateNodesToInsertDelta([
+        {
+          //@ts-expect-error
+          type: "p",
+          children: [{ text: "" }],
+        },
+      ]);
+      const sharedRoot = document.get("content", Y.XmlText) as Y.XmlText;
       sharedRoot.applyDelta(insertDelta);
     }
 
-    /*  const [patientId] = data.document.name.split("-");
-    const content = TiptapTransformer.fromYdoc(data.document);
-    const message: WebsocketMessageInterface = {
-      global: false,
-      destination: ["folder", "secondary-display"],
-      type: "patient",
-      subscriptionIds: [patientId],
-      payload: {
-        operation: "update-clinicalData",
-        content: JSON.stringify(content),
-      },
-    }; */
-    /*  await publisher.publish(notificationTopic, JSON.stringify(message));
+    return document;
+  },
 
-    await publisher.disconnect(); */
+  /**
+   * Store new updates in the database.
+   */
+  async onStoreDocument({ document, documentName }: onChangePayload) {
+    try {
+      const textContent = JSON.stringify(
+        yTextToSlateElement(document.get("content", Y.XmlText) as Y.XmlText)
+      );
 
-    return data.document;
+      const state = Buffer.from(Y.encodeStateAsUpdate(document));
+      const [patientId, documentType] = documentName.split("-");
+
+      await prisma.documentStore.upsert({
+        create: {
+          patientId,
+          patientDocumentType: documentType as PatientDocumentType,
+          content: Buffer.from(state),
+          textContent,
+        },
+        update: {
+          content: { set: Buffer.from(state) },
+          textContent: { set: textContent },
+        },
+        where: {
+          patientId_patientDocumentType: {
+            patientId,
+            patientDocumentType: documentType as PatientDocumentType,
+          },
+        },
+      });
+    } catch (error) {
+      console.log({ error });
+    }
   },
 });
 

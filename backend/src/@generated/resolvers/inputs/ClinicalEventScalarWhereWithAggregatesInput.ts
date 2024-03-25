@@ -69,7 +69,12 @@ export class ClinicalEventScalarWhereWithAggregatesInput {
   @TypeGraphQL.Field(_type => StringNullableWithAggregatesFilter, {
     nullable: true
   })
-  report?: StringNullableWithAggregatesFilter | undefined;
+  deletedReport?: StringNullableWithAggregatesFilter | undefined;
+
+  @TypeGraphQL.Field(_type => StringNullableWithAggregatesFilter, {
+    nullable: true
+  })
+  deletedByUserId?: StringNullableWithAggregatesFilter | undefined;
 
   @TypeGraphQL.Field(_type => BoolWithAggregatesFilter, {
     nullable: true

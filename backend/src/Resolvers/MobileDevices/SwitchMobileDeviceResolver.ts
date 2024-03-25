@@ -6,6 +6,7 @@ import { SwitchMobileDeviceArgs } from './Args/switchMobileDeviceArgs'
 import { Context } from '../../context'
 import { WebsocketMessageInterface } from '../../Utils/PubSubInterfaces/WebsocketMessageInterface'
 import { notificationTopic } from '../../Utils/PubSubInterfaces/MessageTypesInterface'
+import { v4 } from 'uuid'
 
 @TypeGraphQL.Resolver((_of) => MobileDevice)
 export class SwitchMobileDeviceResolver {
@@ -53,6 +54,7 @@ export class SwitchMobileDeviceResolver {
       })
 
       const message: WebsocketMessageInterface = {
+        id: v4(),
         type: 'mobileDevice',
         destination: ['mobileDevices'],
         global: true,

@@ -1,50 +1,41 @@
 import { useEditorRef, useEditorSelection } from "@udecode/plate-common";
 import { useEffect, useState } from "react";
 import { DOCUMENT_HEADER_KEY } from "../Documents/DocumentsKeys";
-import type { FocusedDocumentType } from "@/stores/boltStoreType";
+import type { FocusedClinicalEvent } from "@/stores/boltStoreType";
 import type { DocumentHeaderElementTypeWithId } from "../Documents/DocumentHeaderUtils";
-import { useToast } from "@/components/ui/use-toast";
-import { useMutation } from "@/components/wg-generated/nextjs";
+import { useBoltStore } from "@/stores/boltStore";
+import { v4 as uuid } from "uuid";
+import { ReadyState } from "react-use-websocket";
+import type { WebsocketMessageInterface } from "@/components/Websockets/interfaces/WebsocketMessageInterface";
 
 const RootDocumentTypes = [DOCUMENT_HEADER_KEY];
 
 function CurrentSelectionPlugin({ patientId }: { patientId: string }) {
   const selection = useEditorSelection();
   const editor = useEditorRef();
-  const { toast } = useToast();
+  const socket = useBoltStore((s) => s.socket);
 
-  const { trigger } = useMutation({
-    operationName: "AppSubscription/triggerAppSubscription",
-  });
   const [localFocusedDocument, setLocalFocusedDocument] =
-    useState<FocusedDocumentType | null>(null);
+    useState<FocusedClinicalEvent | null>(null);
 
   useEffect(() => {
-    let req = true;
-    const updateFocusedDocument = async () => {
-      try {
-        await trigger({
-          global: false,
-          appType: "focusedDocument",
-          appPayload: JSON.stringify(localFocusedDocument),
-          subscriptionSpecificId: patientId,
-        });
-      } catch (error) {
-        toast({
-          title: "Erreur réseau",
-          description: "La synchronisation du dossier a échoué",
-          variant: "destructive",
-        });
-      }
-    };
+    if (socket?.readyState === ReadyState.OPEN && localFocusedDocument) {
+      let message: WebsocketMessageInterface = {
+        id: uuid(),
+        type: "focused-clinical-event",
+        global: false,
+        payload: {
+          operation: "update",
+          focusedClinicalEvent: localFocusedDocument,
+        },
+        subscriptionIds: [patientId],
+        destination: ["folder", "document", "focused-clinical-event"],
+      };
+      socket.sendJsonMessage(message, false);
+    }
 
-    if (req) updateFocusedDocument();
-
-    return () => {
-      req = false;
-    };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [localFocusedDocument?.d.eventId, toast, trigger]);
+  }, [localFocusedDocument?.eventId]);
 
   useEffect(() => {
     if (selection?.anchor.path[0]) {
@@ -56,10 +47,12 @@ function CurrentSelectionPlugin({ patientId }: { patientId: string }) {
       ) {
         index--;
       }
+      const event = editor.children[index] as DocumentHeaderElementTypeWithId;
       if (editor.children[index].type === "document-header") {
         setLocalFocusedDocument({
-          d: editor.children[index] as DocumentHeaderElementTypeWithId,
-          payload: "{}",
+          eventId: event.eventId,
+          eventType: event.documentType,
+          createdAt: event.createdAt,
         });
       } else {
         setLocalFocusedDocument(null);

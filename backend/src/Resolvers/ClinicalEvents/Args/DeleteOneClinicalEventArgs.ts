@@ -12,4 +12,9 @@ export class DeleteOneClinicalEventArgs {
     nullable: false,
   })
   userId!: string
+
+  @TypeGraphQL.Field((_type) => String, {
+    nullable: false,
+  })
+  deletedReport!: string
 }

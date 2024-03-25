@@ -20,7 +20,6 @@ export function Cursor({
   disableSelection,
   classNames,
 }: CursorProps<CursorData>) {
-  console.log({ data });
   if (!data) {
     return null;
   }

@@ -12,6 +12,7 @@ import { Context } from '../../context'
 import { UpdateOneModalityArgs } from './args/UpdateOneModalityArgs'
 import { WebsocketMessageInterface } from '../../Utils/PubSubInterfaces/WebsocketMessageInterface'
 import { notificationTopic } from '../../Utils/PubSubInterfaces/MessageTypesInterface'
+import { v4 } from 'uuid'
 
 @TypeGraphQL.Resolver((_of) => Modality)
 export class UpdateOneModalityResolver {
@@ -52,6 +53,7 @@ export class UpdateOneModalityResolver {
       )
       if (res.status !== 200) throw Error()
       const message: WebsocketMessageInterface = {
+        id: v4(),
         type: 'modality',
         destination: ['modality'],
         global: true,

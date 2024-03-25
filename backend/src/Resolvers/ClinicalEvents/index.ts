@@ -1,5 +1,4 @@
 export * from './CreateOneClinicalEventResolver'
 export * from './DeleteOneClinicalEventResolver'
-export * from './MoveClinicalEventToTrash'
 export * from './FieldResolvers'
 export * from './UpdateOneClinicalEventResolver'

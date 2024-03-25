@@ -50,7 +50,12 @@ export class ClinicalEventCreateManyInput {
   @TypeGraphQL.Field(_type => String, {
     nullable: true
   })
-  report?: string | undefined;
+  deletedReport?: string | undefined;
+
+  @TypeGraphQL.Field(_type => String, {
+    nullable: true
+  })
+  deletedByUserId?: string | undefined;
 
   @TypeGraphQL.Field(_type => Boolean, {
     nullable: true

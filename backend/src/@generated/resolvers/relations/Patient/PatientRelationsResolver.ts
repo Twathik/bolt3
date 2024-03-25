@@ -2,10 +2,12 @@ import * as TypeGraphQL from "type-graphql";
 import type { GraphQLResolveInfo } from "graphql";
 import { ClinicalEvent } from "../../../models/ClinicalEvent";
 import { ConsultationList } from "../../../models/ConsultationList";
+import { DocumentStore } from "../../../models/DocumentStore";
 import { Patient } from "../../../models/Patient";
 import { WorkingList } from "../../../models/WorkingList";
 import { PatientClinicalEventArgs } from "./args/PatientClinicalEventArgs";
 import { PatientConsultationListArgs } from "./args/PatientConsultationListArgs";
+import { PatientDocumentStoreArgs } from "./args/PatientDocumentStoreArgs";
 import { PatientWorkingListArgs } from "./args/PatientWorkingListArgs";
 import { transformInfoIntoPrismaArgs, getPrismaFromContext, transformCountFieldIntoSelectRelationsCount } from "../../../helpers";
 
@@ -51,6 +53,21 @@ export class PatientRelationsResolver {
         id: patient.id,
       },
     }).WorkingList({
+      ...args,
+      ...(_count && transformCountFieldIntoSelectRelationsCount(_count)),
+    });
+  }
+
+  @TypeGraphQL.FieldResolver(_type => [DocumentStore], {
+    nullable: false
+  })
+  async DocumentStore(@TypeGraphQL.Root() patient: Patient, @TypeGraphQL.Ctx() ctx: any, @TypeGraphQL.Info() info: GraphQLResolveInfo, @TypeGraphQL.Args() args: PatientDocumentStoreArgs): Promise<DocumentStore[]> {
+    const { _count } = transformInfoIntoPrismaArgs(info);
+    return getPrismaFromContext(ctx).patient.findUniqueOrThrow({
+      where: {
+        id: patient.id,
+      },
+    }).DocumentStore({
       ...args,
       ...(_count && transformCountFieldIntoSelectRelationsCount(_count)),
     });

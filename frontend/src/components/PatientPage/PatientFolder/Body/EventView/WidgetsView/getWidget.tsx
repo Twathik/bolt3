@@ -1,11 +1,11 @@
 /* eslint-disable react/no-unescaped-entities */
-import type { FocusedDocumentType } from "@/stores/boltStoreType";
+import type { FocusedClinicalEvent } from "@/stores/boltStoreType";
 import type { ReactNode } from "react";
 import ETTWidget from "./widgets/ETTWidget";
 import PrescriptionWidgets from "./widgets/PrescriptionWidgets";
 
-export const getWidget = (doc: FocusedDocumentType): ReactNode => {
-  switch (doc.d.documentType) {
+export const getWidget = (doc: FocusedClinicalEvent): ReactNode => {
+  switch (doc.eventType) {
     case "SONOGRAPHY":
       return <ETTWidget />;
     case "PRESCRIPTION":

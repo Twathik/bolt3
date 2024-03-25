@@ -74,7 +74,12 @@ export class ClinicalEventWhereUniqueInput {
   @TypeGraphQL.Field(_type => StringNullableFilter, {
     nullable: true
   })
-  report?: StringNullableFilter | undefined;
+  deletedReport?: StringNullableFilter | undefined;
+
+  @TypeGraphQL.Field(_type => StringNullableFilter, {
+    nullable: true
+  })
+  deletedByUserId?: StringNullableFilter | undefined;
 
   @TypeGraphQL.Field(_type => BoolFilter, {
     nullable: true

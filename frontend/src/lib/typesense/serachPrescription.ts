@@ -92,7 +92,12 @@ const searchPrescription = async ({
     if (sexe) params.filter_by = `sexe: ${sexe}`;
 
     const search_result: SearchResponse<RawPrescriptionDocumentResultInterface> =
-      await client.collections("drugs").documents().search();
+      (await client
+        .collections("drugs")
+        .documents()
+        .search(
+          params
+        )) as SearchResponse<RawPrescriptionDocumentResultInterface>;
 
     const hits: prescriptionHit[] =
       search_result.hits?.map((hit) => {

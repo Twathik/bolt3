@@ -2,6 +2,7 @@ import { IncomingMessage, Server, ServerResponse } from "http";
 import { Server as WebsocketServer } from "ws";
 import { Socket } from "../socketInterface";
 import onSocketError from "../utils/onSocketError";
+import { v4 as uuid } from "uuid";
 
 const handleUpgrade = ({
   server,
@@ -29,6 +30,7 @@ const handleUpgrade = ({
       wss.handleUpgrade(request, socket, head, async function done(ws) {
         const connection = ws as Socket;
         connection.user = await auth.json();
+        connection.id = uuid();
 
         wss.emit("connection", connection, request);
       });

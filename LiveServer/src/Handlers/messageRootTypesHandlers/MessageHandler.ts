@@ -1,7 +1,7 @@
 import { WebsocketMessageInterface } from "../../messagesInterfaces/WebsocketMessageInterface";
-import { Socket } from "../../socketInterface";
+import { Socket, TopicStore } from "../../socketInterface";
 import globalMessageHandler from "./messagesSubTypesHandlers/GlobalMessageHandler";
-import handleSubscriptionMessages from "./messagesSubTypesHandlers/handleSubscriptionMessages";
+import handleSubscriptionMessages from "./messagesSubTypesHandlers/SubscriptionMessagesHandler";
 import userMessageHandler from "./messagesSubTypesHandlers/userMessageHandler";
 
 export default function messageHandler({
@@ -20,6 +20,7 @@ export default function messageHandler({
         return handleSubscriptionMessages({
           message,
           ws,
+          peers,
         });
       }
 

@@ -1,4 +1,4 @@
-import type { PlateEditor, Value } from "@udecode/plate-common";
+import type { PlateEditor } from "@udecode/plate-common";
 import { Plate, createPlateEditor } from "@udecode/plate-common";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
@@ -9,83 +9,69 @@ import { TooltipProvider } from "@/components/plate-ui/tooltip";
 import { DIAGNOSTIC_MENTION_KEY } from "./plate-app/Diag-plugin/diag-plugin-key";
 import { DrugMentionKey } from "./plate-app/Medic-plugin/drug-plugin-key";
 import { MentionDrugCombobox } from "./plate-app/Medic-plugin/mention-drug-combobox";
-import { platePluginsWithCollaboration } from "./lib/plate-plugins-with-collaboration";
 import { CommentsProvider } from "@udecode/plate-comments";
 import { commentsUsers, myUserId } from "./lib/comments";
 import { cn } from "@/lib/utils";
 import type { ReactNode } from "react";
-import { useCallback, useMemo, useRef } from "react";
+import { useEffect, useMemo, useRef } from "react";
 import { MentionDiagCombobox } from "./plate-app/Diag-plugin/mention-diag-combobox";
 import { CommentsPopover } from "../plate-ui/comments-popover";
 import { CursorOverlay } from "../plate-ui/cursor-overlay";
 import { useBoltStore } from "@/stores/boltStore";
 import EventLateralPanel from "../PatientPage/PatientFolder/Body/EventView/EventLateralPanel";
 import CurrentSelectionPlugin from "./plate-app/SelectionPlugin/CurrentSelectionPlugin";
-import type { WebsocketMessageInterface } from "../Websockets/interfaces/WebsocketMessageInterface";
-import { debounce } from "lodash";
+import * as Y from "yjs";
+import type { HocuspocusProvider } from "@hocuspocus/provider";
+import { platePluginWithoutCollaboration } from "./lib/plate-plugins";
+import { withTCursors, withTYjs } from "@udecode/plate-yjs";
+import randomColor from "randomcolor";
 
-// Import the core binding
-
-// import { useMutation } from "@/lib/wundergraph";
-
-interface PlateEditorProps {
+interface AppPlateEditorProps {
   children: ReactNode;
-  documentName: string;
   patientId: string;
+  provider: HocuspocusProvider;
 }
 
-export default function PlateEditor({
+export default function AppPlateEditor({
   children,
-  documentName,
   patientId,
-}: PlateEditorProps) {
-  const containerRef = useRef(null);
+  provider,
+}: AppPlateEditorProps) {
+  const containerRef = useRef<HTMLDivElement>(null);
   const user = useBoltStore((s) => s.user);
-  const socket = useBoltStore((s) => s.socket);
 
   const editor: PlateEditor = useMemo(() => {
-    const e = createPlateEditor({
-      plugins: platePluginsWithCollaboration({ user, documentName }),
-      id: "read-only-editor",
-    });
-    /* const { normalizeNode } = e;
-
-    e.normalizeNode = (entry) => {
-      const [node, path] = entry;
-
-      if (isElement(node) && node.type === "p") {
-        // ERROR: null is not a valid value for a url
-        console.log({ node, path });
-        return;
-      }
-
-      normalizeNode(entry);
-    }; */
-    return e;
-  }, [documentName, user]);
-
-  const propagate = useCallback(
-    (value: Value) => {
-      const message: WebsocketMessageInterface = {
-        global: false,
-        destination: ["folder", "secondary-display"],
-        type: "patient",
-        subscriptionIds: [patientId],
-        payload: {
-          operation: "update-clinicalData",
-          content: JSON.stringify(value),
+    const sharedType = provider.document.get("content", Y.XmlText) as Y.XmlText;
+    const e = withTCursors(
+      withTYjs(
+        createPlateEditor({
+          plugins: platePluginWithoutCollaboration(),
+          id: "read-write-editor",
+        }),
+        sharedType,
+        { autoConnect: false }
+      ),
+      provider.awareness!,
+      {
+        autoSend: true,
+        data: {
+          color: randomColor({
+            luminosity: "dark",
+            alpha: 1,
+            format: "hex",
+          }),
+          name: `${user?.lastName} ${user?.firstName}`,
         },
-      };
-      socket?.sendJsonMessage(message, false);
-    },
-    [patientId, socket]
-  );
+      }
+    );
+    return e;
+  }, [provider.awareness, provider.document, user?.firstName, user?.lastName]);
 
-  const debouncedFunction = useRef(debounce(propagate, 2000));
+  useEffect(() => {
+    editor.connect();
 
-  const onChange = useCallback(async (value: Value) => {
-    debouncedFunction.current(value);
-  }, []);
+    return () => editor.disconnect();
+  }, [editor]);
 
   return user ? (
     <TooltipProvider
@@ -95,7 +81,7 @@ export default function PlateEditor({
     >
       <DndProvider backend={HTML5Backend}>
         <CommentsProvider users={commentsUsers} myUserId={myUserId}>
-          <Plate editor={editor} onChange={onChange}>
+          <Plate editor={editor}>
             <div
               ref={containerRef}
               className={cn(
@@ -124,7 +110,18 @@ export default function PlateEditor({
                   <CommentsPopover />
                   <CurrentSelectionPlugin patientId={patientId} />
 
-                  {/* <RemoteCursorOverlay containerRef={containerRef} /> */}
+                  {/* <RemoteCursorOverlay
+                    containerRef={containerRef}
+                    onRenderCaret={() => {
+                      console.log("caret");
+                      return <div>Test caret</div>;
+                    }}
+                    onRenderSelectionRect={() => {
+                      console.log("select");
+                      return <div>Test selection</div>;
+                    }}
+                  /> */}
+
                   <PlateBaseEditor
                     className="px-[96px] py-16 min-w-[70vw]"
                     autoFocus={true}
@@ -132,6 +129,7 @@ export default function PlateEditor({
                     variant="ghost"
                     size="md"
                   />
+
                   <CursorOverlay containerRef={containerRef} />
                   <div id="editor-bottom" />
                 </div>

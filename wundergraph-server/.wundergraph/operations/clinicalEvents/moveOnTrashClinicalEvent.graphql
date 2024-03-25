@@ -1,8 +1,0 @@
-mutation ($id: String!, $userId: String! @fromClaim(name: USERID)) {
-  mainDb_moveClinicalEventToTrash(
-    where: { id: $id, deleted: { equals: false } }
-    userId: $userId
-  ) {
-    id
-  }
-}

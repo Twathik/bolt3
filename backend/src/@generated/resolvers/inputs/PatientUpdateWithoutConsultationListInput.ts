@@ -5,6 +5,7 @@ import { DecimalJSScalar } from "../../scalars";
 import { BoolFieldUpdateOperationsInput } from "../inputs/BoolFieldUpdateOperationsInput";
 import { ClinicalEventUpdateManyWithoutPatientNestedInput } from "../inputs/ClinicalEventUpdateManyWithoutPatientNestedInput";
 import { DateTimeFieldUpdateOperationsInput } from "../inputs/DateTimeFieldUpdateOperationsInput";
+import { DocumentStoreUpdateManyWithoutPatientNestedInput } from "../inputs/DocumentStoreUpdateManyWithoutPatientNestedInput";
 import { EnumSexeFieldUpdateOperationsInput } from "../inputs/EnumSexeFieldUpdateOperationsInput";
 import { NullableFloatFieldUpdateOperationsInput } from "../inputs/NullableFloatFieldUpdateOperationsInput";
 import { NullableStringFieldUpdateOperationsInput } from "../inputs/NullableStringFieldUpdateOperationsInput";
@@ -92,4 +93,9 @@ export class PatientUpdateWithoutConsultationListInput {
     nullable: true
   })
   WorkingList?: WorkingListUpdateManyWithoutPatientNestedInput | undefined;
+
+  @TypeGraphQL.Field(_type => DocumentStoreUpdateManyWithoutPatientNestedInput, {
+    nullable: true
+  })
+  DocumentStore?: DocumentStoreUpdateManyWithoutPatientNestedInput | undefined;
 }

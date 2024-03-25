@@ -1,4 +1,5 @@
 import type { SecondaryDisplayMessagePayload } from "@/components/Websockets/interfaces/SecondaryDisplayMessageInterface";
+import type { subscribedUsers } from "@/components/Websockets/interfaces/SubscribedUsersMessageInterface";
 import type { DocumentHeaderElementTypeWithId } from "@/components/plateEditor/plate-app/Documents/DocumentHeaderUtils";
 import type {
   ClinicalEventsGetClinicalEventResponseData,
@@ -11,7 +12,6 @@ import type {
   ModalityModalitiesResponseData,
   PatientsGetOnTrashPatientsResponseData,
   PatientsGetOnePatientInfoResponseData,
-  UsersGetUserResponseData,
   WorkingListsWorkingListsResponseData,
   mainDb_EventTypesValues,
 } from "@/components/wg-generated/models";
@@ -24,9 +24,19 @@ import type {
   WebSocketLike,
 } from "react-use-websocket/dist/lib/types";
 
+export type BoltUser = {
+  userId: string;
+  lastName: string;
+  firstName: string;
+  fullName: string;
+  avatarUrl: string;
+  searchApiKey: string;
+  editorApiKey: string;
+};
+
 export type UserStoreSlice = {
-  user: UsersGetUserResponseData["mainDb_user"];
-  setUser: (user: UsersGetUserResponseData["mainDb_user"]) => void;
+  user: BoltUser | null;
+  setUser: (user: BoltUser) => void;
 };
 
 type ConsultationStateType = {
@@ -175,18 +185,26 @@ export type FocusedDocumentType = {
   payload: string;
 };
 
+export type FocusedClinicalEvent = {
+  eventId: string;
+  eventType: mainDb_EventTypesValues;
+  createdAt: string;
+};
+
 export type PlateStoreSlice = {
   documentHeaders: DocumentHeaderElementTypeWithId[];
-  focusedDocument: FocusedDocumentType | null;
+  focusedClinicalEvent: FocusedClinicalEvent | null;
   setDocumentHeaders: (d: DocumentHeaderElementTypeWithId[]) => void;
   addDocumentHeader: (d: DocumentHeaderElementTypeWithId) => void;
   removeDocumentHeader: (d: DocumentHeaderElementTypeWithId) => void;
-  setFocusedDocument: (d: FocusedDocumentType) => void;
+  setFocusedClinicalEvent: (event: FocusedClinicalEvent) => void;
 };
 
 export type AppSubscriptionSlice = {
-  SubscriptionIds: string[];
-  setSubscriptionIds: (sIds: string[]) => void;
+  subscribedUsers: subscribedUsers[];
+  setSubscribedUsers: (users: subscribedUsers[]) => void;
+  addSubscribedUser: (user: subscribedUsers) => void;
+  removeSubscribedUser: (user: subscribedUsers) => void;
 };
 
 export type EconomizersSlice = {

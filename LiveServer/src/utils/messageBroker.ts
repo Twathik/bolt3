@@ -11,7 +11,7 @@ const messageBroker = ({
 }) => {
   if (message.destination?.length > 0) {
     const check = destinationHandler({ message, ws: peer });
-
+    // console.log({ message });
     if (!check) return;
   }
   // console.log({ message });

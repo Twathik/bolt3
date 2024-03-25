@@ -53,7 +53,12 @@ export class ClinicalEventGroupBy {
   @TypeGraphQL.Field(_type => String, {
     nullable: true
   })
-  report!: string | null;
+  deletedReport!: string | null;
+
+  @TypeGraphQL.Field(_type => String, {
+    nullable: true
+  })
+  deletedByUserId!: string | null;
 
   @TypeGraphQL.Field(_type => Boolean, {
     nullable: false

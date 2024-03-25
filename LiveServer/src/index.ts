@@ -27,7 +27,8 @@ async function main() {
   const interval = handleKeepAlive({ peers });
 
   wss.on("close", function close() {
-    console.log("connection closed");
+    console.log("closed");
+
     clearInterval(interval);
   });
 

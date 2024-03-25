@@ -79,13 +79,13 @@ export class UserCreateInput {
   })
   createdAt?: Date | undefined;
 
-  @TypeGraphQL.Field(_type => ClinicalEventCreateNestedManyWithoutUserInput, {
-    nullable: true
-  })
-  ClinicalEvent?: ClinicalEventCreateNestedManyWithoutUserInput | undefined;
-
   @TypeGraphQL.Field(_type => WorkingListCreateNestedManyWithoutUserInput, {
     nullable: true
   })
   WorkingList?: WorkingListCreateNestedManyWithoutUserInput | undefined;
+
+  @TypeGraphQL.Field(_type => ClinicalEventCreateNestedManyWithoutUserInput, {
+    nullable: true
+  })
+  ClinicalEvent?: ClinicalEventCreateNestedManyWithoutUserInput | undefined;
 }

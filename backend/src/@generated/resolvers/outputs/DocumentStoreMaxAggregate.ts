@@ -21,8 +21,13 @@ export class DocumentStoreMaxAggregate {
   })
   patientDocumentType!: "folder" | "document" | null;
 
+  @TypeGraphQL.Field(_type => GraphQLScalars.ByteResolver, {
+    nullable: true
+  })
+  content!: Buffer | null;
+
   @TypeGraphQL.Field(_type => String, {
     nullable: true
   })
-  content!: string | null;
+  textContent!: string | null;
 }

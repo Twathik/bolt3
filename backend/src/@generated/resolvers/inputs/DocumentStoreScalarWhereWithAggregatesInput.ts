@@ -2,7 +2,9 @@ import * as TypeGraphQL from "type-graphql";
 import * as GraphQLScalars from "graphql-scalars";
 import { Prisma } from "@prisma/client";
 import { DecimalJSScalar } from "../../scalars";
+import { BytesNullableWithAggregatesFilter } from "../inputs/BytesNullableWithAggregatesFilter";
 import { EnumPatientDocumentTypeWithAggregatesFilter } from "../inputs/EnumPatientDocumentTypeWithAggregatesFilter";
+import { StringNullableWithAggregatesFilter } from "../inputs/StringNullableWithAggregatesFilter";
 import { StringWithAggregatesFilter } from "../inputs/StringWithAggregatesFilter";
 
 @TypeGraphQL.InputType("DocumentStoreScalarWhereWithAggregatesInput", {})
@@ -37,8 +39,13 @@ export class DocumentStoreScalarWhereWithAggregatesInput {
   })
   patientDocumentType?: EnumPatientDocumentTypeWithAggregatesFilter | undefined;
 
-  @TypeGraphQL.Field(_type => StringWithAggregatesFilter, {
+  @TypeGraphQL.Field(_type => BytesNullableWithAggregatesFilter, {
     nullable: true
   })
-  content?: StringWithAggregatesFilter | undefined;
+  content?: BytesNullableWithAggregatesFilter | undefined;
+
+  @TypeGraphQL.Field(_type => StringNullableWithAggregatesFilter, {
+    nullable: true
+  })
+  textContent?: StringNullableWithAggregatesFilter | undefined;
 }

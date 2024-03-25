@@ -15,6 +15,7 @@ import { Context } from '../../context'
 import UpsertTypesenseDocument from '../../Utils/typesense/operations/upsertDocument'
 import { WebsocketMessageInterface } from '../../Utils/PubSubInterfaces/WebsocketMessageInterface'
 import { notificationTopic } from '../../Utils/PubSubInterfaces/MessageTypesInterface'
+import { v4 } from 'uuid'
 
 @TypeGraphQL.Resolver((_of) => Patient)
 export class ToggleSelectedTrashMutation {
@@ -61,6 +62,7 @@ export class ToggleSelectedTrashMutation {
       await Promise.all(
         documents.map((d) => {
           const message: WebsocketMessageInterface = {
+            id: v4(),
             destination: ['trash'],
             global: true,
             subscriptionIds: [],

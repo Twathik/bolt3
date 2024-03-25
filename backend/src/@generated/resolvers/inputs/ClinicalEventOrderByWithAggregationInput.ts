@@ -53,7 +53,12 @@ export class ClinicalEventOrderByWithAggregationInput {
   @TypeGraphQL.Field(_type => SortOrderInput, {
     nullable: true
   })
-  report?: SortOrderInput | undefined;
+  deletedReport?: SortOrderInput | undefined;
+
+  @TypeGraphQL.Field(_type => SortOrderInput, {
+    nullable: true
+  })
+  deletedByUserId?: SortOrderInput | undefined;
 
   @TypeGraphQL.Field(_type => SortOrder, {
     nullable: true

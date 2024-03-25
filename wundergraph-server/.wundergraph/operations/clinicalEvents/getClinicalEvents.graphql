@@ -1,5 +1,5 @@
 query ($patientId: String!) {
-  mainDb_clinicalEvents(where: { patientId: { equals: $patientId } }) {
+  mainDb_clinicalEvents(where: { patientId: { equals: $patientId }, deleted:{ equals:false } }) {
     ...ClinicalEventFragment
   }
 }

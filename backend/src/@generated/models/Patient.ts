@@ -4,6 +4,7 @@ import { Prisma } from "@prisma/client";
 import { DecimalJSScalar } from "../scalars";
 import { ClinicalEvent } from "../models/ClinicalEvent";
 import { ConsultationList } from "../models/ConsultationList";
+import { DocumentStore } from "../models/DocumentStore";
 import { WorkingList } from "../models/WorkingList";
 import { Sexe } from "../enums/Sexe";
 import { PatientCount } from "../resolvers/outputs/PatientCount";
@@ -85,6 +86,8 @@ export class Patient {
   ClinicalEvent?: ClinicalEvent[];
 
   WorkingList?: WorkingList[];
+
+  DocumentStore?: DocumentStore[];
 
   @TypeGraphQL.Field(_type => PatientCount, {
     nullable: true

@@ -1,6 +1,6 @@
 "use client";
 import { useBoltStore } from "@/stores/boltStore";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import useWebSocket from "react-use-websocket";
 import RootMessageHandler from "./HandleMessages/RootMessageHandler";
 import type { WebsocketMessageInterface } from "./interfaces/WebsocketMessageInterface";
@@ -32,11 +32,12 @@ export const WebsocketProvider = () => {
 
     onMessage: (event) => {
       const m = JSON.parse(event.data) as WebsocketMessageInterface;
+
       setMessage(m);
 
       if (m.type === "welcome") console.log({ m });
     },
-    queryParams: { subscriptionIds: "test1,test2,test3" },
+    queryParams: {},
     //heartbeat: true,
 
     //Will attempt to reconnect on all close events, such as server shutting down
@@ -64,5 +65,11 @@ export const WebsocketProvider = () => {
     setSocket,
   ]);
 
-  return message ? <RootMessageHandler message={message} /> : null;
+  const response = useMemo(
+    () => (message ? <RootMessageHandler message={message} /> : null),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [message?.id]
+  );
+
+  return response;
 };

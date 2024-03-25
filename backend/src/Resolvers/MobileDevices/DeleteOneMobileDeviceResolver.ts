@@ -10,6 +10,7 @@ import { DeleteOneMobileDeviceArgs } from './Args/DeleteOneMobileDeviceArgs'
 import { Context } from '../../context'
 import { WebsocketMessageInterface } from '../../Utils/PubSubInterfaces/WebsocketMessageInterface'
 import { notificationTopic } from '../../Utils/PubSubInterfaces/MessageTypesInterface'
+import { v4 as uuid } from 'uuid'
 
 @TypeGraphQL.Resolver((_of) => MobileDevice)
 export class DeleteOneMobileDeviceResolver {
@@ -30,6 +31,7 @@ export class DeleteOneMobileDeviceResolver {
       })
 
       const message: WebsocketMessageInterface = {
+        id: uuid(),
         type: 'mobileDevice',
         destination: ['mobileDevices'],
         global: true,

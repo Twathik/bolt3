@@ -17,7 +17,6 @@ function MobileDevicesSubscription({
           addMobileDevice(message.payload.mobileDevice);
           break;
         case "update":
-          console.log({ mobile: message.payload.mobileDevice });
           updateMobileDevice(message.payload.mobileDevice);
           break;
         case "delete":

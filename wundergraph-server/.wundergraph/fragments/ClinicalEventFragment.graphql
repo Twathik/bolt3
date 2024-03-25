@@ -3,7 +3,7 @@ fragment ClinicalEventFragment on mainDb_ClinicalEvent {
   eventType
   eventCategory
   updatedAt
-  report
+  createdAt
   dicomId
   dicom
   deleted

@@ -9,7 +9,8 @@ export enum ClinicalEventScalarFieldEnum {
   createdAt = "createdAt",
   updatedAt = "updatedAt",
   deleted = "deleted",
-  report = "report",
+  deletedReport = "deletedReport",
+  deletedByUserId = "deletedByUserId",
   dicom = "dicom",
   dicomId = "dicomId",
   clinicalDiagnosticId = "clinicalDiagnosticId"

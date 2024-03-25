@@ -48,10 +48,12 @@ const searchDiagnostic = async ({
     };
 
     const search_result: SearchResponse<RawDiagnosticDocumentResultInterface> =
-      await client
+      (await client
         .collections("clinical-diagnostics")
         .documents()
-        .search(params);
+        .search(
+          params
+        )) as SearchResponse<RawDiagnosticDocumentResultInterface>;
 
     const hits: diagnosticHit[] =
       search_result.hits?.map((hit) => {

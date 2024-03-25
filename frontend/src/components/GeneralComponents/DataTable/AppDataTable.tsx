@@ -26,6 +26,7 @@ interface DataTableProps<TData, TValue> {
   setSelectedIds: (value: React.SetStateAction<string[]>) => void;
   setRowSelection: React.Dispatch<React.SetStateAction<{}>>;
   rowSelection: {};
+  showPagination?: boolean;
 }
 
 export function AppDataTable<TData, TValue>({
@@ -34,6 +35,7 @@ export function AppDataTable<TData, TValue>({
   setSelectedIds,
   setRowSelection,
   rowSelection,
+  showPagination = true,
 }: DataTableProps<TData, TValue>) {
   const table = useReactTable({
     data,
@@ -95,7 +97,8 @@ export function AppDataTable<TData, TValue>({
               table.getRowModel().rows.map((row) => (
                 <TableRow
                   key={row.id}
-                  data-state={row.getIsSelected() && "selected"}>
+                  data-state={row.getIsSelected() && "selected"}
+                >
                   {row.getVisibleCells().map((cell) => (
                     <TableCell key={cell.id}>
                       {flexRender(
@@ -110,7 +113,8 @@ export function AppDataTable<TData, TValue>({
               <TableRow>
                 <TableCell
                   colSpan={columns.length}
-                  className="h-24 text-center">
+                  className="h-24 text-center"
+                >
                   Aucun Résultat
                 </TableCell>
               </TableRow>
@@ -135,7 +139,7 @@ export function AppDataTable<TData, TValue>({
         </Table>
       </div>
       <div className="h-4" />
-      <TablePagination table={table} />
+      {showPagination && <TablePagination table={table} />}
     </>
   );
 }

@@ -3,11 +3,14 @@
 import { useBoltStore } from "@/stores/boltStore";
 import { FixedToolbar } from "@/components/plate-ui/fixed-toolbar";
 import { FixedToolbarButtons } from "@/components/plate-ui/fixed-toolbar-buttons";
-import { BoltFolderMenu } from "./BoltMenuButtons/FolderMenuButtons";
+import { BoltFolderMenuButtons } from "./BoltMenuButtons/FolderMenuButtons";
 import { lazy } from "react";
 import type { PatientDocumentType } from "@/lib/interfaces/DocumentTypes";
+import { DocumentMenuButtons } from "./BoltMenuButtons/DocumentMenuButtons";
 
-const PlateEditor = lazy(() => import("@/components/plateEditor/plate"));
+const PlateEditorRoot = lazy(
+  () => import("@/components/plateEditor/PlateEditorRoot")
+);
 
 function PatientBodyEditor({
   patientId,
@@ -25,16 +28,22 @@ function PatientBodyEditor({
     </div>
   ) : (
     patient && (
-      <PlateEditor
+      <PlateEditorRoot
         documentName={`${patient?.id}-${documentType}`}
         patientId={patientId}
       >
         <>
           <FixedToolbar>
-            <FixedToolbarButtons boltMenu={BoltFolderMenu} />
+            <FixedToolbarButtons
+              boltMenu={
+                documentType === "folder"
+                  ? BoltFolderMenuButtons
+                  : DocumentMenuButtons
+              }
+            />
           </FixedToolbar>
         </>
-      </PlateEditor>
+      </PlateEditorRoot>
     )
   );
 }

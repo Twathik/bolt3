@@ -98,13 +98,13 @@ export class UserWhereInput {
   })
   createdAt?: DateTimeFilter | undefined;
 
-  @TypeGraphQL.Field(_type => ClinicalEventListRelationFilter, {
-    nullable: true
-  })
-  ClinicalEvent?: ClinicalEventListRelationFilter | undefined;
-
   @TypeGraphQL.Field(_type => WorkingListListRelationFilter, {
     nullable: true
   })
   WorkingList?: WorkingListListRelationFilter | undefined;
+
+  @TypeGraphQL.Field(_type => ClinicalEventListRelationFilter, {
+    nullable: true
+  })
+  ClinicalEvent?: ClinicalEventListRelationFilter | undefined;
 }

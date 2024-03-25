@@ -82,7 +82,6 @@ export function DrugComboboxContent(props: ComboboxContentProps) {
       setFilteredItems(items || []);
       return;
     }
-
     debouncedSearch.current(searchString);
   }, [searchString, setFilteredItems, debouncedSearch, items]);
   return (
@@ -100,7 +99,8 @@ export function DrugComboboxContent(props: ComboboxContentProps) {
           className={cn(
             "z-[500] m-0 max-h-[288px] w-[300px] overflow-scroll rounded-md bg-popover p-0 shadow-md"
           )}
-          onOpenAutoFocus={(event) => event.preventDefault()}>
+          onOpenAutoFocus={(event) => event.preventDefault()}
+        >
           {Component ? Component({ store: activeComboboxStore }) : null}
 
           {filteredItems?.map((item, index) => (

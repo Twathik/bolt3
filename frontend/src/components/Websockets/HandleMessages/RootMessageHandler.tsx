@@ -4,6 +4,9 @@ import PatientUpdateSubscription from "./PatientUpdateSubscription";
 import SecondaryDisplaySubscription from "./SecondaryDisplaySubscription";
 import MobileDevicesSubscription from "./MobileDevicesSubscription";
 import ModalitySubscription from "./ModalitySubscription";
+import DispatchUserSubscription from "./DispatchUserSubscription";
+import ClinicalEventsSubscription from "./ClinicalEventsSubscription";
+import FocusedDocumentSubscription from "./FocusedClinicalEventSubscription";
 
 function RootMessageHandler({
   message,
@@ -20,11 +23,18 @@ function RootMessageHandler({
         return <MobileDevicesSubscription message={message} />;
       case "modality":
         return <ModalitySubscription message={message} />;
+      case "subscribedUsers":
+        return <DispatchUserSubscription message={message} />;
+      case "clinicalEvent":
+        return <ClinicalEventsSubscription message={message} />;
+      case "focused-clinical-event":
+        return <FocusedDocumentSubscription message={message} />;
 
       default:
         return null;
     }
-  }, [message]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [message.id]);
 
   return component;
 }

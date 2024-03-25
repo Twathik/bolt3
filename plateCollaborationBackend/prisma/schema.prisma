@@ -184,16 +184,20 @@ model Patient {
   ConsultationList      ConsultationList[]
   ClinicalEvent         ClinicalEvent[]
   WorkingList           WorkingList[]
+  DocumentStore         DocumentStore[]
 
   @@index([sexe])
 }
 
 model DocumentStore {
   id                  String              @id @default(uuid())
-  patientId           String              @unique
+  patient             Patient             @relation(fields: [patientId], references: [id])
+  patientId           String
   patientDocumentType PatientDocumentType
-  //content             Bytes?
-  content             String              @db.Text
+  content             Bytes?
+  textContent         String?             @db.Text
+
+  @@unique([patientId, patientDocumentType])
 }
 
 model Consultation {

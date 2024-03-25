@@ -10,6 +10,7 @@ import { UpdateOneMobileDeviceArgs } from './Args/UpdateOneMobileDeviceArgs'
 import { WebsocketMessageInterface } from '../../Utils/PubSubInterfaces/WebsocketMessageInterface'
 import { notificationTopic } from '../../Utils/PubSubInterfaces/MessageTypesInterface'
 import { Context } from '../../context'
+import { v4 } from 'uuid'
 
 @TypeGraphQL.Resolver((_of) => MobileDevice)
 export class UpdateOneMobileDeviceResolver {
@@ -32,6 +33,7 @@ export class UpdateOneMobileDeviceResolver {
       const pubsub = ctx.pubSub
 
       const message: WebsocketMessageInterface = {
+        id: v4(),
         type: 'mobileDevice',
         destination: ['mobileDevices'],
         global: true,

@@ -3,26 +3,29 @@ import type { WebsocketMessageInterface } from "@/components/Websockets/interfac
 import { useBoltStore } from "@/stores/boltStore";
 import { useEffect } from "react";
 import { ReadyState } from "react-use-websocket";
+import { v4 as uuid } from "uuid";
 
-function SubscribeToSecondaryDisplayPatientViewWebSocket({
+function SubscribeToFocusedClinicalEventView({
   patientId,
 }: {
   patientId: string;
 }) {
   const socket = useBoltStore((s) => s.socket);
   useEffect(() => {
-    if (socket?.readyState === ReadyState.OPEN) {
+    if (socket?.readyState === ReadyState.OPEN && patientId) {
       const message: WebsocketMessageInterface = {
+        id: uuid(),
         type: "subscribe",
         global: false,
         payload: { operation: "subscribeTo", SubscribeTo: [patientId] },
         subscriptionIds: [],
-        destination: ["secondary-display"],
+        destination: ["secondary-display", "focused-clinical-event"],
       };
       socket.sendJsonMessage(message, true);
     }
-  }, [patientId, socket, socket?.readyState]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [patientId, socket?.readyState]);
   return null;
 }
 
-export default SubscribeToSecondaryDisplayPatientViewWebSocket;
+export default SubscribeToFocusedClinicalEventView;

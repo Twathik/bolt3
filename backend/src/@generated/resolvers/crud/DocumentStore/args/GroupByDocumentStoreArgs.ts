@@ -20,7 +20,7 @@ export class GroupByDocumentStoreArgs {
   @TypeGraphQL.Field(_type => [DocumentStoreScalarFieldEnum], {
     nullable: false
   })
-  by!: Array<"id" | "patientId" | "patientDocumentType" | "content">;
+  by!: Array<"id" | "patientId" | "patientDocumentType" | "content" | "textContent">;
 
   @TypeGraphQL.Field(_type => DocumentStoreScalarWhereWithAggregatesInput, {
     nullable: true

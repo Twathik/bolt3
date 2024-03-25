@@ -3,7 +3,7 @@ import { Icons } from "@/components/icons";
 import type { menuItemsType } from "./menuItemstype";
 import { DOCUMENT_HEADER_KEY } from "@/components/plateEditor/plate-app/Documents/DocumentsKeys";
 
-export const BoltFolderMenu: menuItemsType[] = [
+export const BoltFolderMenuButtons: menuItemsType[] = [
   {
     label: "Basic blocks",
     items: [

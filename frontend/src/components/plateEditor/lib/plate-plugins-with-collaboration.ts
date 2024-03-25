@@ -193,7 +193,7 @@ import {
 } from "../plate-app/PrescriptionTable/PrescriptionQuentityCol";
 import { createYjsPlugin } from "@udecode/plate-yjs";
 import normalizeCollaboration from "./normalizeCollaboration";
-import type { UsersGetUserResponseData } from "@/components/wg-generated/models";
+import type { BoltUser } from "@/stores/boltStoreType";
 
 const resetBlockTypesCommonRule = {
   types: [ELEMENT_BLOCKQUOTE, ELEMENT_TODO_LI],
@@ -210,7 +210,7 @@ export const platePluginsWithCollaboration = ({
   user,
   documentName,
 }: {
-  user: UsersGetUserResponseData["mainDb_user"] | undefined;
+  user: BoltUser | null;
   documentName: string;
 }) => {
   return createPlugins(

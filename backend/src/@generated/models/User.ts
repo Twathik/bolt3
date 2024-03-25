@@ -79,9 +79,9 @@ export class User {
   })
   createdAt!: Date;
 
-  ClinicalEvent?: ClinicalEvent[];
-
   WorkingList?: WorkingList[];
+
+  ClinicalEvent?: ClinicalEvent[];
 
   @TypeGraphQL.Field(_type => UserCount, {
     nullable: true

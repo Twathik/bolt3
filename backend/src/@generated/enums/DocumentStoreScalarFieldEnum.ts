@@ -4,7 +4,8 @@ export enum DocumentStoreScalarFieldEnum {
   id = "id",
   patientId = "patientId",
   patientDocumentType = "patientDocumentType",
-  content = "content"
+  content = "content",
+  textContent = "textContent"
 }
 TypeGraphQL.registerEnumType(DocumentStoreScalarFieldEnum, {
   name: "DocumentStoreScalarFieldEnum",

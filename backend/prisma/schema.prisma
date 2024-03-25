@@ -145,8 +145,8 @@ model User {
   searchApiKey   String          @default("")
   editorKey      String          @default("")
   createdAt      DateTime        @default(now())
-  ClinicalEvent  ClinicalEvent[]
   WorkingList    WorkingList[]
+  ClinicalEvent  ClinicalEvent[]
 
   @@index([role])
 }
@@ -189,16 +189,20 @@ model Patient {
   ConsultationList      ConsultationList[]
   ClinicalEvent         ClinicalEvent[]
   WorkingList           WorkingList[]
+  DocumentStore         DocumentStore[]
 
   @@index([sexe])
 }
 
 model DocumentStore {
   id                  String              @id @default(uuid())
-  patientId           String              @unique
+  patient             Patient             @relation(fields: [patientId], references: [id])
+  patientId           String
   patientDocumentType PatientDocumentType
-  //content             Bytes?
-  content             String              @db.Text
+  content             Bytes?
+  textContent         String?             @db.Text
+
+  @@unique([patientId, patientDocumentType])
 }
 
 model Consultation {
@@ -236,7 +240,8 @@ model ClinicalEvent {
   createdAt            DateTime      @default(now())
   updatedAt            DateTime      @updatedAt
   deleted              Boolean       @default(false)
-  report               String?       @db.Text
+  deletedReport        String?       @db.Text
+  deletedByUserId      String?
   dicom                Boolean       @default(false)
   dicomId              String?
   clinicalDiagnosticId String?

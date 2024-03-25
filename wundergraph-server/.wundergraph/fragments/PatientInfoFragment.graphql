@@ -9,5 +9,8 @@ fragment PatientInfoFragment on mainDb_Patient {
   patientFullName
   informationsConfirmed
   nTel
+  weight
+  height
+  address
   updated
 }

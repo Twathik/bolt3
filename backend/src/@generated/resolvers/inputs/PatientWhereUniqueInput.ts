@@ -6,6 +6,7 @@ import { BoolFilter } from "../inputs/BoolFilter";
 import { ClinicalEventListRelationFilter } from "../inputs/ClinicalEventListRelationFilter";
 import { ConsultationListListRelationFilter } from "../inputs/ConsultationListListRelationFilter";
 import { DateTimeFilter } from "../inputs/DateTimeFilter";
+import { DocumentStoreListRelationFilter } from "../inputs/DocumentStoreListRelationFilter";
 import { EnumSexeFilter } from "../inputs/EnumSexeFilter";
 import { FloatNullableFilter } from "../inputs/FloatNullableFilter";
 import { PatientWhereInput } from "../inputs/PatientWhereInput";
@@ -114,4 +115,9 @@ export class PatientWhereUniqueInput {
     nullable: true
   })
   WorkingList?: WorkingListListRelationFilter | undefined;
+
+  @TypeGraphQL.Field(_type => DocumentStoreListRelationFilter, {
+    nullable: true
+  })
+  DocumentStore?: DocumentStoreListRelationFilter | undefined;
 }
