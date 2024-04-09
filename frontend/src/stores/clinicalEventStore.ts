@@ -13,6 +13,7 @@ const createClinicalEventSlice: StateCreator<
   workingLists: [],
   editorConfiguration: [],
   economizers: [],
+  focusedWorkingList: null,
 
   setClinicalEvent: (clinicalEvent) => {
     set((state) => {
@@ -73,6 +74,12 @@ const createClinicalEventSlice: StateCreator<
       state.workingLists = state.workingLists.filter(
         (e) => e.id != workingList.id
       );
+    });
+  },
+  setFocusedWorkingList(workingLists) {
+    set((s) => {
+      s.focusedWorkingList = workingLists;
+      s.patientTab = "dicomView";
     });
   },
   setEditorConfiguration: (editorConfiguration) => {

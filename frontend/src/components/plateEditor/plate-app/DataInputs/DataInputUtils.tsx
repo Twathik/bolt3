@@ -34,22 +34,16 @@ export type DataInputProps = {
 
 export type DataTextInputProps = DataInputProps & {
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  value: string | number;
 };
 
 export type DataCheckBoxInputProps = DataInputProps & {
   onCheckedChange: (checked: CheckedState) => void;
-  value: number;
 };
 
 export type DataSelectInputProps = DataInputProps & {
   onValueChange: (value: string) => void;
-  value: string;
 };
 
 export type MultiSelectInputProps = DataInputProps & {
-  onMultiValueChange: React.Dispatch<
-    React.SetStateAction<FancyMultiSelectOptions[]>
-  >;
-  value: FancyMultiSelectOptions[];
+  onMultiValueChange: (value: FancyMultiSelectOptions[]) => void;
 };

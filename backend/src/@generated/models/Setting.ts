@@ -30,4 +30,9 @@ export class Setting {
     nullable: false
   })
   allowedEventTypes!: Array<"DIAGNOSTIC" | "HISTORY" | "CLINICALEXAM" | "ECG" | "SONOGRAPHY" | "BIOLOGY" | "PRESCRIPTION" | "MEDICAL_REPORT" | "CERTIFICAT">;
+
+  @TypeGraphQL.Field(_type => String, {
+    nullable: true
+  })
+  documentTemplateConfiguration?: string | null;
 }

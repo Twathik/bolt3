@@ -1,12 +1,14 @@
 import React, { useMemo } from "react";
 import type { WebsocketMessageInterface } from "../interfaces/WebsocketMessageInterface";
-import PatientUpdateSubscription from "./PatientUpdateSubscription";
-import SecondaryDisplaySubscription from "./SecondaryDisplaySubscription";
-import MobileDevicesSubscription from "./MobileDevicesSubscription";
-import ModalitySubscription from "./ModalitySubscription";
-import DispatchUserSubscription from "./DispatchUserSubscription";
-import ClinicalEventsSubscription from "./ClinicalEventsSubscription";
-import FocusedDocumentSubscription from "./FocusedClinicalEventSubscription";
+import PatientUpdateSubscription from "./Handlers/PatientUpdateSubscription";
+import SecondaryDisplaySubscription from "./Handlers/SecondaryDisplaySubscription";
+import MobileDevicesSubscription from "./Handlers/MobileDevicesSubscription";
+import ModalitySubscription from "./Handlers/ModalitySubscription";
+import DispatchUserSubscription from "./Handlers/DispatchUserSubscription";
+import ClinicalEventsSubscription from "./Handlers/ClinicalEventsSubscription";
+import FocusedDocumentSubscription from "./Handlers/FocusedClinicalEventSubscription";
+import PrescriptionSubscription from "./Handlers/PrescriptionSubscription";
+import WorkingListSubscription from "./Handlers/WorkingListSubscription";
 
 function RootMessageHandler({
   message,
@@ -29,6 +31,10 @@ function RootMessageHandler({
         return <ClinicalEventsSubscription message={message} />;
       case "focused-clinical-event":
         return <FocusedDocumentSubscription message={message} />;
+      case "prescription":
+        return <PrescriptionSubscription message={message} />;
+      case "workingList":
+        return <WorkingListSubscription message={message} />;
 
       default:
         return null;

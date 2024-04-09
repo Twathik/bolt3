@@ -9,7 +9,10 @@ import { DotLoader } from "react-spinners";
 import type { mainDb_PatientDocumentTypeValues } from "../../../../../wundergraph-server/.wundergraph/generated/models";
 
 const PlateEditorReadOnlyRoot = lazy(
-  () => import("@/components/plateEditor/PlateEditorReadOnlyRoot")
+  () =>
+    import(
+      "@/components/plateEditor/plate-app/readOnlyEditor/PlateEditorReadOnlyRoot"
+    )
 );
 
 function CopyPatientDocument({

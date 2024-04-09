@@ -11,7 +11,7 @@ const CustomDateInput = forwardRef<HTMLInputElement, any>(
 );
 CustomDateInput.displayName = "plate-date-input";
 
-function PlateDateInput({ element, onChange, value }: DataTextInputProps) {
+function PlateDateInput({ element, onChange }: DataTextInputProps) {
   return (
     <InputMask
       component={CustomDateInput}
@@ -19,11 +19,8 @@ function PlateDateInput({ element, onChange, value }: DataTextInputProps) {
       replacement={{ j: /\d/, m: /\d/, a: /\d/ }}
       showMask
       separate
-      onMask={(e) => {
-        console.log({ e });
-      }}
       className={classNames(element.className ?? "")}
-      value={value}
+      value={element.value}
       onChange={onChange}
       type="date"
     />

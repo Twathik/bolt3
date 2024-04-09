@@ -7,6 +7,7 @@ import { SettingCountOrderByAggregateInput } from "../inputs/SettingCountOrderBy
 import { SettingMaxOrderByAggregateInput } from "../inputs/SettingMaxOrderByAggregateInput";
 import { SettingMinOrderByAggregateInput } from "../inputs/SettingMinOrderByAggregateInput";
 import { SettingSumOrderByAggregateInput } from "../inputs/SettingSumOrderByAggregateInput";
+import { SortOrderInput } from "../inputs/SortOrderInput";
 import { SortOrder } from "../../enums/SortOrder";
 
 @TypeGraphQL.InputType("SettingOrderByWithAggregationInput", {})
@@ -35,6 +36,11 @@ export class SettingOrderByWithAggregationInput {
     nullable: true
   })
   allowedEventTypes?: "asc" | "desc" | undefined;
+
+  @TypeGraphQL.Field(_type => SortOrderInput, {
+    nullable: true
+  })
+  documentTemplateConfiguration?: SortOrderInput | undefined;
 
   @TypeGraphQL.Field(_type => SettingCountOrderByAggregateInput, {
     nullable: true

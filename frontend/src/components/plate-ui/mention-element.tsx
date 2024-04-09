@@ -30,7 +30,8 @@ export const MentionElement = withRef<
       data-slate-value={element.value}
       contentEditable={false}
       onClick={getHandler(onClick, element)}
-      {...props}>
+      {...props}
+    >
       {prefix}
       {renderLabel ? renderLabel(element) : element.value}
       {children}

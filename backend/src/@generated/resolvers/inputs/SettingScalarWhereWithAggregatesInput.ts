@@ -4,6 +4,7 @@ import { Prisma } from "@prisma/client";
 import { DecimalJSScalar } from "../../scalars";
 import { EnumEventTypesNullableListFilter } from "../inputs/EnumEventTypesNullableListFilter";
 import { IntWithAggregatesFilter } from "../inputs/IntWithAggregatesFilter";
+import { StringNullableWithAggregatesFilter } from "../inputs/StringNullableWithAggregatesFilter";
 import { StringWithAggregatesFilter } from "../inputs/StringWithAggregatesFilter";
 
 @TypeGraphQL.InputType("SettingScalarWhereWithAggregatesInput", {})
@@ -47,4 +48,9 @@ export class SettingScalarWhereWithAggregatesInput {
     nullable: true
   })
   allowedEventTypes?: EnumEventTypesNullableListFilter | undefined;
+
+  @TypeGraphQL.Field(_type => StringNullableWithAggregatesFilter, {
+    nullable: true
+  })
+  documentTemplateConfiguration?: StringNullableWithAggregatesFilter | undefined;
 }

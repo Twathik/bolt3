@@ -1,12 +1,12 @@
 import * as TypeGraphQL from 'type-graphql'
 import { WorkingList } from '../../@generated'
-import { getPrismaFromContext } from '../../@generated/helpers'
 import { Context } from '../../context'
-import { PrismaClient } from '@prisma/client'
 import { execSync } from 'child_process'
 import { rmSync } from 'fs'
 import { GetWorkingListArgs } from './args/GetWorkingListArgs'
-import { AppSubscriptionTriggerArgs } from '../Global/AppSubscription/args/AppSubscriptionTriggerArgs'
+import { v4 as uuid } from 'uuid'
+import { WebsocketMessageInterface } from '../../Utils/PubSubInterfaces/WebsocketMessageInterface'
+import { notificationTopic } from '../../Utils/PubSubInterfaces/MessageTypesInterface'
 
 @TypeGraphQL.Resolver((_of) => WorkingList)
 export class ToggleLockWorkingList {
@@ -14,12 +14,9 @@ export class ToggleLockWorkingList {
     nullable: false,
   })
   async toggleLockWorkingList(
-    @TypeGraphQL.Ctx() ctx: Context,
-    @TypeGraphQL.Args() { id, userId }: GetWorkingListArgs,
-    @TypeGraphQL.PubSub('APP_SUBSCRIPTION')
-    notify: TypeGraphQL.Publisher<AppSubscriptionTriggerArgs>,
+    @TypeGraphQL.Ctx() { prisma, pubSub }: Context,
+    @TypeGraphQL.Args() { id }: GetWorkingListArgs,
   ): Promise<WorkingList> {
-    const prisma = getPrismaFromContext(ctx) as PrismaClient
     try {
       const workingList = await prisma.workingList.findUniqueOrThrow({
         where: { id },
@@ -71,51 +68,27 @@ export class ToggleLockWorkingList {
         rmSync(`./worklists/${workingList.id}.wl`)
       }
 
-      const {
-        clinicalEventId,
-        createdAt,
-        modalityExamStatus,
-        linkId,
-        linked,
-        locked,
-      } = updateWorkingList
-      const {
-        id: modalityId,
-        modalityPseudo,
-        modalityType,
-        modalityAETitle,
-      } = modality
-      const { firstName, lastName } = patient
-      const { fullName } = user
-      await notify({
-        type: 'workingLists',
+      const message: WebsocketMessageInterface = {
+        destination: ['folder'],
         global: true,
-        userId,
-        appPayload: JSON.stringify({
-          operation: 'update',
+        id: uuid(),
+        payload: {
           workingList: {
-            id,
-            modality: {
-              id: modalityId,
-              modalityPseudo,
-              modalityType,
-              modalityAETitle,
+            ...updateWorkingList,
+            modality,
+            user: {
+              fullName: `${user.lastName}^${user.firstName}`,
             },
             patient: {
-              patientFullName: `${lastName} ${firstName}`,
+              patientFullName: `${patient.lastName}^${patient.firstName}`,
             },
-            user: {
-              fullName,
-            },
-            clinicalEventId,
-            createdAt,
-            modalityExamStatus,
-            linkId,
-            linked,
-            locked,
           },
-        }),
-      })
+          operation: 'update',
+        },
+        type: 'workingList',
+        subscriptionIds: [patient.id],
+      }
+      await pubSub.publish(notificationTopic, message)
 
       return workingList
     } catch (error) {

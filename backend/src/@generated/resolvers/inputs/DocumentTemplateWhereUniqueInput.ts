@@ -2,22 +2,18 @@ import * as TypeGraphQL from "type-graphql";
 import * as GraphQLScalars from "graphql-scalars";
 import { Prisma } from "@prisma/client";
 import { DecimalJSScalar } from "../../scalars";
-import { BoolFilter } from "../inputs/BoolFilter";
+import { DateTimeFilter } from "../inputs/DateTimeFilter";
 import { DocumentTemplateWhereInput } from "../inputs/DocumentTemplateWhereInput";
+import { EnumTemplateSpecialityFilter } from "../inputs/EnumTemplateSpecialityFilter";
 import { StringFilter } from "../inputs/StringFilter";
-import { EventTypes } from "../../enums/EventTypes";
+import { StringNullableFilter } from "../inputs/StringNullableFilter";
 
 @TypeGraphQL.InputType("DocumentTemplateWhereUniqueInput", {})
 export class DocumentTemplateWhereUniqueInput {
-  @TypeGraphQL.Field(_type => String, {
+  @TypeGraphQL.Field(_type => TypeGraphQL.Int, {
     nullable: true
   })
-  id?: string | undefined;
-
-  @TypeGraphQL.Field(_type => EventTypes, {
-    nullable: true
-  })
-  eventType?: "DIAGNOSTIC" | "HISTORY" | "CLINICALEXAM" | "ECG" | "SONOGRAPHY" | "BIOLOGY" | "PRESCRIPTION" | "MEDICAL_REPORT" | "CERTIFICAT" | undefined;
+  id?: number | undefined;
 
   @TypeGraphQL.Field(_type => [DocumentTemplateWhereInput], {
     nullable: true
@@ -37,10 +33,35 @@ export class DocumentTemplateWhereUniqueInput {
   @TypeGraphQL.Field(_type => StringFilter, {
     nullable: true
   })
-  template?: StringFilter | undefined;
+  templateName?: StringFilter | undefined;
 
-  @TypeGraphQL.Field(_type => BoolFilter, {
+  @TypeGraphQL.Field(_type => StringFilter, {
     nullable: true
   })
-  empty?: BoolFilter | undefined;
+  evenTemplateUrl?: StringFilter | undefined;
+
+  @TypeGraphQL.Field(_type => StringNullableFilter, {
+    nullable: true
+  })
+  eventDoxTemplate?: StringNullableFilter | undefined;
+
+  @TypeGraphQL.Field(_type => StringFilter, {
+    nullable: true
+  })
+  oddTemplateUrl?: StringFilter | undefined;
+
+  @TypeGraphQL.Field(_type => StringNullableFilter, {
+    nullable: true
+  })
+  oddDoxTemplate?: StringNullableFilter | undefined;
+
+  @TypeGraphQL.Field(_type => EnumTemplateSpecialityFilter, {
+    nullable: true
+  })
+  templateSpeciality?: EnumTemplateSpecialityFilter | undefined;
+
+  @TypeGraphQL.Field(_type => DateTimeFilter, {
+    nullable: true
+  })
+  createdAt?: DateTimeFilter | undefined;
 }

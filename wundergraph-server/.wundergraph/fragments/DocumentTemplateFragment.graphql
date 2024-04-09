@@ -1,0 +1,9 @@
+fragment DocumentTemplateFragment on mainDb_DocumentTemplate {
+  id
+  oddDoxTemplate
+  oddTemplateUrl
+  eventDoxTemplate
+  evenTemplateUrl
+  templateSpeciality
+  templateName
+}

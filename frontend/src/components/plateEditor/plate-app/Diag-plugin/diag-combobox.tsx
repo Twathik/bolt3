@@ -6,6 +6,7 @@ import { cn } from "@udecode/cn";
 import type {
   ComboboxContentProps,
   ComboboxProps,
+  TComboboxItemBase,
 } from "@udecode/plate-combobox";
 import {
   comboboxActions,
@@ -26,8 +27,8 @@ import { useBoltStore } from "@/stores/boltStore";
 import createTypesenseClient from "@/lib/typesense/typesense";
 import searchDiagnostic from "@/lib/typesense/searchDiagnostic";
 import { debounce } from "lodash-es";
-import type { DiagnosticComboboxInterface } from "../../lib/plate-types";
 import { ComboboxItem } from "../../../plate-ui/combobox";
+import type { ItemWithMetadata } from "@/lib/interfaces/itemWithMetadata";
 
 export function DiagComboboxContent(props: ComboboxContentProps) {
   const {
@@ -41,7 +42,9 @@ export function DiagComboboxContent(props: ComboboxContentProps) {
 
   const editor = useEditorRef();
 
-  const [filteredItems, setFilteredItems] = useState(items ?? []);
+  const [filteredItems, setFilteredItems] = useState<
+    ItemWithMetadata[] | TComboboxItemBase[]
+  >(items ?? []);
 
   const activeComboboxStore = useActiveComboboxStore()!;
 
@@ -58,13 +61,11 @@ export function DiagComboboxContent(props: ComboboxContentProps) {
           searchParams: { query_string: searchString },
         }).then((data) => {
           if (data) {
-            const result: DiagnosticComboboxInterface[] = data.hits.map(
-              (e) => ({
-                key: e.id,
-                diagnosticId: e.id,
-                text: e.FormattedTitle,
-              })
-            );
+            const result: ItemWithMetadata[] = data.hits.map((e) => ({
+              key: e.id,
+              text: e.FormattedTitle,
+              metadata: { diagnosticId: e.id },
+            }));
             setFilteredItems(result);
           }
         });
@@ -97,7 +98,8 @@ export function DiagComboboxContent(props: ComboboxContentProps) {
           className={cn(
             "z-[500] m-0 max-h-[288px] w-[300px] overflow-scroll rounded-md bg-popover p-0 shadow-md"
           )}
-          onOpenAutoFocus={(event) => event.preventDefault()}>
+          onOpenAutoFocus={(event) => event.preventDefault()}
+        >
           {Component ? Component({ store: activeComboboxStore }) : null}
 
           {filteredItems?.map((item, index) => (

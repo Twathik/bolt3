@@ -2,27 +2,47 @@ import * as TypeGraphQL from "type-graphql";
 import * as GraphQLScalars from "graphql-scalars";
 import { Prisma } from "@prisma/client";
 import { DecimalJSScalar } from "../scalars";
-import { EventTypes } from "../enums/EventTypes";
+import { TemplateSpeciality } from "../enums/TemplateSpeciality";
 
 @TypeGraphQL.ObjectType("DocumentTemplate", {})
 export class DocumentTemplate {
-  @TypeGraphQL.Field(_type => String, {
+  @TypeGraphQL.Field(_type => TypeGraphQL.Int, {
     nullable: false
   })
-  id!: string;
-
-  @TypeGraphQL.Field(_type => EventTypes, {
-    nullable: false
-  })
-  eventType!: "DIAGNOSTIC" | "HISTORY" | "CLINICALEXAM" | "ECG" | "SONOGRAPHY" | "BIOLOGY" | "PRESCRIPTION" | "MEDICAL_REPORT" | "CERTIFICAT";
+  id!: number;
 
   @TypeGraphQL.Field(_type => String, {
     nullable: false
   })
-  template!: string;
+  templateName!: string;
 
-  @TypeGraphQL.Field(_type => Boolean, {
+  @TypeGraphQL.Field(_type => String, {
     nullable: false
   })
-  empty!: boolean;
+  evenTemplateUrl!: string;
+
+  @TypeGraphQL.Field(_type => String, {
+    nullable: true
+  })
+  eventDoxTemplate?: string | null;
+
+  @TypeGraphQL.Field(_type => String, {
+    nullable: false
+  })
+  oddTemplateUrl!: string;
+
+  @TypeGraphQL.Field(_type => String, {
+    nullable: true
+  })
+  oddDoxTemplate?: string | null;
+
+  @TypeGraphQL.Field(_type => TemplateSpeciality, {
+    nullable: false
+  })
+  templateSpeciality!: "CARDIOLOGY" | "GYNECOLOGY";
+
+  @TypeGraphQL.Field(_type => Date, {
+    nullable: false
+  })
+  createdAt!: Date;
 }

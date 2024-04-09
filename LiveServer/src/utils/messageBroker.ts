@@ -14,8 +14,13 @@ const messageBroker = ({
     // console.log({ message });
     if (!check) return;
   }
+
   // console.log({ message });
   if (message.subscriptionIds?.length > 0) {
+    if (peer.subscriptionIds?.length === 0) {
+      return peer.send(JSON.stringify(message));
+    }
+
     // console.log("user - with IDS");
     let send = false;
     for (const id of message.subscriptionIds) {

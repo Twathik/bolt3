@@ -1,12 +1,15 @@
-import React from "react";
+import React, { useEffect, useMemo } from "react";
 import { cn } from "@udecode/cn";
+import type { UnknownObject } from "@udecode/plate-common";
 import { createZustandStore } from "@udecode/plate-common";
 import type {
   CursorData,
   CursorOverlayProps,
   CursorProps,
+  CursorState,
 } from "@udecode/plate-cursor";
 import { CursorOverlay as CursorOverlayPrimitive } from "@udecode/plate-cursor";
+import { useBoltStore } from "@/stores/boltStore";
 
 export const cursorStore = createZustandStore("cursor")({
   cursors: {},
@@ -17,14 +20,22 @@ export function Cursor({
   selectionRects,
   caretPosition,
   disableCaret,
-  disableSelection,
+  disableSelection = false,
   classNames,
-}: CursorProps<CursorData>) {
+}: CursorProps<CursorData & { name: string }>) {
   if (!data) {
     return null;
   }
 
-  const { style, selectionStyle = style } = data;
+  console.log({
+    data,
+    selectionRects,
+    caretPosition,
+    disableCaret,
+    disableSelection,
+    classNames,
+  });
+  const { style, selectionStyle = style, name } = data;
 
   return (
     <>
@@ -40,7 +51,9 @@ export function Cursor({
               ...selectionStyle,
               ...position,
             }}
-          />
+          >
+            {name}
+          </div>
         ))}
       {!disableCaret && caretPosition && (
         <div
@@ -49,21 +62,29 @@ export function Cursor({
             classNames?.caret
           )}
           style={{ ...caretPosition, ...style }}
-        />
+        >
+          {name}
+        </div>
       )}
     </>
   );
 }
 
-export function CursorOverlay({ cursors, ...props }: CursorOverlayProps) {
-  const dynamicCursors = cursorStore.use.cursors();
+export function CursorOverlay({ ...props }: CursorOverlayProps) {
+  const cursorStates = useBoltStore((s) => s.cursorStates);
 
-  const allCursors = { ...cursors, ...dynamicCursors };
-
+  const cursors: Record<string, CursorState<UnknownObject>> = useMemo(() => {
+    console.log({ cursorStates });
+    const c: Record<string, CursorState<UnknownObject>> = {};
+    cursorStates.forEach((cr, index) => {
+      c[`cursor${index}`] = cr;
+    });
+    return c;
+  }, [cursorStates]);
   return (
     <CursorOverlayPrimitive
       {...props}
-      cursors={allCursors}
+      cursors={cursors}
       onRenderCursor={Cursor}
     />
   );

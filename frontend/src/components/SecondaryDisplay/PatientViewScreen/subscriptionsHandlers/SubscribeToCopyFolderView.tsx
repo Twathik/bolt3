@@ -15,7 +15,7 @@ function SubscribeToCopyFolderView({ patientId }: { patientId: string }) {
         global: false,
         payload: { operation: "subscribeTo", SubscribeTo: [patientId] },
         subscriptionIds: [],
-        destination: ["secondary-display", "folder-copy"],
+        destination: ["secondary-display", "folder-copy", "patient-Root"],
       };
       socket.sendJsonMessage(message, true);
     }

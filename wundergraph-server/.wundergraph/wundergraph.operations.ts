@@ -18,7 +18,7 @@ export default configureWunderGraphOperations<OperationsConfiguration>({
       },
       liveQuery: {
         enable: false,
-        pollingIntervalSeconds: 5,
+        pollingIntervalSeconds: 10,
       },
     }),
     mutations: (config) => ({

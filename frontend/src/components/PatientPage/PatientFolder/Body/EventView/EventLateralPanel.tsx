@@ -12,13 +12,13 @@ type tabs = "Folder" | "widgets" | "economizers" | "dicom";
 
 function EventLateralPanel() {
   const [tab, setTab] = useState<tabs>("Folder");
-  const focusedDocument = useBoltStore((s) => s.focusedDocument);
+  const focusedClinicalEvent = useBoltStore((s) => s.focusedClinicalEvent);
   const setEconomizers = useBoltStore((s) => s.setEconomizers);
   const setModalities = useBoltStore((s) => s.setModalities);
   const { toast } = useToast();
   const { data, isLoading, mutate } = useQuery({
     operationName: "clinicalEvents/getClinicalEventWithConfiguration",
-    input: { id: focusedDocument?.d.eventId ?? "" },
+    input: { id: focusedClinicalEvent?.eventId ?? "" },
     enabled: true,
     onError: (e) => {
       toast({
@@ -52,7 +52,7 @@ function EventLateralPanel() {
     return () => {
       req = false;
     };
-  }, [data, mutate, focusedDocument?.d, setEconomizers, setModalities]);
+  }, [data, mutate, focusedClinicalEvent, setEconomizers, setModalities]);
 
   const onChangeTab = useCallback(
     (value: string) => {
@@ -68,7 +68,8 @@ function EventLateralPanel() {
     <Tabs
       value={tab}
       onValueChange={onChangeTab}
-      className=" w-[25vw] sticky left-0 top-10 shadow-lg rounded-md overflow-auto h-[84vh] mx-2 my-2 border-zinc-200 border-[1px] p-1">
+      className=" w-[25vw] sticky left-0 top-10 shadow-lg rounded-md overflow-auto h-[84vh] mx-2 my-2 border-zinc-200 border-[1px] p-1"
+    >
       <TabsList className="m-2 mx-auto">
         <TabsTrigger value="Folder">Dossier</TabsTrigger>
         {!isLoading && (

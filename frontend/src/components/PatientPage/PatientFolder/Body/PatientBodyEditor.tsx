@@ -9,7 +9,10 @@ import type { PatientDocumentType } from "@/lib/interfaces/DocumentTypes";
 import { DocumentMenuButtons } from "./BoltMenuButtons/DocumentMenuButtons";
 
 const PlateEditorRoot = lazy(
-  () => import("@/components/plateEditor/PlateEditorRoot")
+  () =>
+    import(
+      "@/components/plateEditor/plate-app/readAndWriteEditor/PlateEditorRoot"
+    )
 );
 
 function PatientBodyEditor({

@@ -7,7 +7,7 @@ import { MessageDestination } from "../messagesInterfaces/MessageTypesInterface"
 import randomColor from "randomColor";
 
 const ConnectToTopic = ({ ws, peers }: { ws: Socket; peers: Set<Socket> }) => {
-  console.log({ destinationFromClearConnection: ws.destination });
+  //console.log({ destinationFromClearConnection: ws.destination });
   const message: WebsocketMessageInterface = {
     type: "subscribedUsers",
     destination: ws.destination

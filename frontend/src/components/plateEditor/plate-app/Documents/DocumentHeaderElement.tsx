@@ -35,7 +35,8 @@ export function DocumentHeaderElement({
       className={className}
       {...props}
       contentEditable={false}
-      id={element.id}>
+      id={element.id}
+    >
       <div>
         <span className="font-bold underline">
           {DocumentHeader()} : {element.createdAt}

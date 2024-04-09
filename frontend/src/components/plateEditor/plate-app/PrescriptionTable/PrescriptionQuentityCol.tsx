@@ -25,10 +25,11 @@ export function PrescriptionQuantityCol({
       asChild
       className={classNames(
         className ?? "",
-        "col-span-3 border-dotted border-[1px] border-slate-500"
+        "col-span-2 border-dotted border-[1px] border-slate-500"
       )}
       {...props}
-      id={element.id}>
+      id={element.id}
+    >
       <div>{children}</div>
     </PlateElement>
   );

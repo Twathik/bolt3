@@ -1,13 +1,13 @@
 import type { mainDb_EventTypesValues } from "@/components/wg-generated/models";
-import type { FocusedDocumentType } from "@/stores/boltStoreType";
+import type { FocusedClinicalEvent } from "@/stores/boltStoreType";
 
 const DicomDocuments: mainDb_EventTypesValues[] = ["SONOGRAPHY"];
 
 const isDicomAvailable = (
-  focusedDocument: FocusedDocumentType | null
+  focusedClinicalEvent: FocusedClinicalEvent | null
 ): boolean =>
-  focusedDocument
-    ? DicomDocuments.includes(focusedDocument.d.documentType)
+  focusedClinicalEvent
+    ? DicomDocuments.includes(focusedClinicalEvent.eventType)
     : false;
 
 export default isDicomAvailable;

@@ -15,7 +15,6 @@ const getSubscribedUsers = ({
 }) => {
   topicRelations.forEach(({ origin, destination }) => {
     if (ws.destination?.includes(destination)) {
-      console.log("hit");
       const subscribedUsers: subscribedUsers[] = [];
       peers.forEach((p) => {
         if (p.destination?.includes(origin)) {

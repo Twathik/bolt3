@@ -36,6 +36,11 @@ export class SettingGroupBy {
   })
   allowedEventTypes!: Array<"DIAGNOSTIC" | "HISTORY" | "CLINICALEXAM" | "ECG" | "SONOGRAPHY" | "BIOLOGY" | "PRESCRIPTION" | "MEDICAL_REPORT" | "CERTIFICAT"> | null;
 
+  @TypeGraphQL.Field(_type => String, {
+    nullable: true
+  })
+  documentTemplateConfiguration!: string | null;
+
   @TypeGraphQL.Field(_type => SettingCountAggregate, {
     nullable: true
   })

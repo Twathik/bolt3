@@ -1,0 +1,10 @@
+query ($patientId: String!, $documentType: mainDb_PatientDocumentType!) {
+  mainDb_getPatient(where: { id: $patientId }) {
+    DocumentStore(where: { patientDocumentType: { equals: $documentType } }) {
+      textContent
+    }
+  }
+  mainDb_settings {
+    documentTemplateConfiguration
+  }
+}

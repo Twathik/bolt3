@@ -2,6 +2,7 @@ import * as TypeGraphQL from "type-graphql";
 import * as GraphQLScalars from "graphql-scalars";
 import { Prisma } from "@prisma/client";
 import { DecimalJSScalar } from "../../scalars";
+import { SortOrderInput } from "../inputs/SortOrderInput";
 import { SortOrder } from "../../enums/SortOrder";
 
 @TypeGraphQL.InputType("SettingOrderByWithRelationInput", {})
@@ -30,4 +31,9 @@ export class SettingOrderByWithRelationInput {
     nullable: true
   })
   allowedEventTypes?: "asc" | "desc" | undefined;
+
+  @TypeGraphQL.Field(_type => SortOrderInput, {
+    nullable: true
+  })
+  documentTemplateConfiguration?: SortOrderInput | undefined;
 }

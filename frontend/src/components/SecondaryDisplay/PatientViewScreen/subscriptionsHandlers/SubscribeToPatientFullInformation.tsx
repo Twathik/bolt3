@@ -19,7 +19,11 @@ function SubscribeToPatientFullInformation({
         global: false,
         payload: { operation: "subscribeTo", SubscribeTo: [patientId] },
         subscriptionIds: [],
-        destination: ["secondary-display", "patient-full-information"],
+        destination: [
+          "secondary-display",
+          "patient-full-information",
+          "patient-Root",
+        ],
       };
       socket.sendJsonMessage(message, true);
     }

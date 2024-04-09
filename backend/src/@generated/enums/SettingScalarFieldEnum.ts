@@ -5,7 +5,8 @@ export enum SettingScalarFieldEnum {
   allowedMobileDevices_doctors = "allowedMobileDevices_doctors",
   allowedMobileDevices_secretary = "allowedMobileDevices_secretary",
   allowedDICOMmodalities = "allowedDICOMmodalities",
-  allowedEventTypes = "allowedEventTypes"
+  allowedEventTypes = "allowedEventTypes",
+  documentTemplateConfiguration = "documentTemplateConfiguration"
 }
 TypeGraphQL.registerEnumType(SettingScalarFieldEnum, {
   name: "SettingScalarFieldEnum",

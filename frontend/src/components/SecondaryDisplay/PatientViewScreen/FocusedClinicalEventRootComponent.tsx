@@ -1,5 +1,4 @@
 import React from "react";
-import SubscribeToFocusedDocumentView from "./subscriptionsHandlers/SubscribeToFocusedClinicalEventView";
 import FocusedClinicalEventComponent from "./FocusedClinicalEvent/FocusedClinicalEventComponent";
 
 function FocusedClinicalEventRootComponent({
@@ -10,7 +9,6 @@ function FocusedClinicalEventRootComponent({
   return (
     <div>
       <FocusedClinicalEventComponent />
-      <SubscribeToFocusedDocumentView patientId={patientId} />
     </div>
   );
 }

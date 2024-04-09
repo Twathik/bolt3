@@ -1,0 +1,5 @@
+query ($patientId: String!) {
+  mainDb_workingLists(where: { patientId: { equals: $patientId } }) {
+    ...WorkingListFragment
+  }
+}

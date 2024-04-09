@@ -16,14 +16,17 @@ import { useBoltStore } from "@/stores/boltStore";
 import { useCallback, useEffect, useMemo, useState } from "react";
 
 function AddNewWorkingListItem() {
-  const clinicalEvent = useBoltStore((store) => store.clinicalEvent);
+  const focusedClinicalEvent = useBoltStore(
+    (store) => store.focusedClinicalEvent
+  );
   const modalities = useBoltStore((store) => store.modalities);
+  const patient = useBoltStore((s) => s.patient);
 
   const [modality, setModality] =
     useState<
       ModalityGetSpecificModalitiesResponseData["mainDb_modalities"][0]
     >();
-  const { error, isMutating, trigger } = useMutation({
+  const { error, isMutating, trigger, data } = useMutation({
     operationName: "WorkingLists/createOneWorkingList",
   });
   const { toast } = useToast();
@@ -43,12 +46,22 @@ function AddNewWorkingListItem() {
       console.log({ error });
       toast({
         title: "Une erreur est survenue",
-        description: `Le patient n'apas pu être ajouté à la liste de travail de l'appareil`,
+        description: `Le patient n'a pas pu être ajouté à la liste de travail de l'appareil`,
         variant: "destructive",
         duration: 2000,
       });
     }
   }, [error, toast]);
+  useEffect(() => {
+    if (data) {
+      toast({
+        title: "Operation rèussie",
+        description: `Le patient a été enregistrer au niveau de la liste de travail de l'appareil selèectioné`,
+        variant: "default",
+        duration: 2000,
+      });
+    }
+  }, [data, toast]);
 
   const onValueChange = useCallback(
     (value: string) => {
@@ -59,15 +72,17 @@ function AddNewWorkingListItem() {
 
   const add = useCallback(async () => {
     try {
-      if (clinicalEvent && modality) {
+      if (focusedClinicalEvent && modality && patient) {
         await trigger({
-          clinicalEventId: clinicalEvent.id,
+          clinicalEventId: focusedClinicalEvent.eventId,
           modalityId: modality.id,
-          patientId: clinicalEvent.patientId,
+          patientId: patient.id,
         });
       }
-    } catch (error) {}
-  }, [clinicalEvent, modality, trigger]);
+    } catch (error) {
+      console.log({ error });
+    }
+  }, [focusedClinicalEvent, modality, patient, trigger]);
   return (
     <div className="min-h-[17vh] flex flex-col justify-between">
       <div className="underline font-bold">
@@ -87,7 +102,8 @@ function AddNewWorkingListItem() {
       <Button
         onClick={add}
         disabled={isMutating || !modality}
-        className="w-full">
+        className="w-full"
+      >
         {modality
           ? `Envoyer vers ${modality.modalityPseudo}`
           : "selectionner un appareil"}

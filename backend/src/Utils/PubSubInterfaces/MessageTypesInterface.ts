@@ -9,7 +9,9 @@ export type MessageType =
   | "workingList"
   | "consultationList"
   | "subscribedUsers"
-  | "clinicalEvent";
+  | "clinicalEvent"
+  | "focused-clinical-event"
+  | "prescription";
 
 export type MessageDestination =
   | "secondary-display"
@@ -21,9 +23,10 @@ export type MessageDestination =
   | "folder-copy"
   | "document-copy"
   | "patient-information"
-  | "focused-document"
+  | "focused-clinical-event"
   | "clinicalEvent"
-  | "patient-full-information";
+  | "patient-full-information"
+  | "sd-prescription-widget";
 
 export interface RootMessageInterface {
   id: string;

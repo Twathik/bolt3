@@ -2,27 +2,47 @@ import * as TypeGraphQL from "type-graphql";
 import * as GraphQLScalars from "graphql-scalars";
 import { Prisma } from "@prisma/client";
 import { DecimalJSScalar } from "../../scalars";
-import { EventTypes } from "../../enums/EventTypes";
+import { TemplateSpeciality } from "../../enums/TemplateSpeciality";
 
 @TypeGraphQL.ObjectType("DocumentTemplateMaxAggregate", {})
 export class DocumentTemplateMaxAggregate {
-  @TypeGraphQL.Field(_type => String, {
+  @TypeGraphQL.Field(_type => TypeGraphQL.Int, {
     nullable: true
   })
-  id!: string | null;
-
-  @TypeGraphQL.Field(_type => EventTypes, {
-    nullable: true
-  })
-  eventType!: "DIAGNOSTIC" | "HISTORY" | "CLINICALEXAM" | "ECG" | "SONOGRAPHY" | "BIOLOGY" | "PRESCRIPTION" | "MEDICAL_REPORT" | "CERTIFICAT" | null;
+  id!: number | null;
 
   @TypeGraphQL.Field(_type => String, {
     nullable: true
   })
-  template!: string | null;
+  templateName!: string | null;
 
-  @TypeGraphQL.Field(_type => Boolean, {
+  @TypeGraphQL.Field(_type => String, {
     nullable: true
   })
-  empty!: boolean | null;
+  evenTemplateUrl!: string | null;
+
+  @TypeGraphQL.Field(_type => String, {
+    nullable: true
+  })
+  eventDoxTemplate!: string | null;
+
+  @TypeGraphQL.Field(_type => String, {
+    nullable: true
+  })
+  oddTemplateUrl!: string | null;
+
+  @TypeGraphQL.Field(_type => String, {
+    nullable: true
+  })
+  oddDoxTemplate!: string | null;
+
+  @TypeGraphQL.Field(_type => TemplateSpeciality, {
+    nullable: true
+  })
+  templateSpeciality!: "CARDIOLOGY" | "GYNECOLOGY" | null;
+
+  @TypeGraphQL.Field(_type => Date, {
+    nullable: true
+  })
+  createdAt!: Date | null;
 }

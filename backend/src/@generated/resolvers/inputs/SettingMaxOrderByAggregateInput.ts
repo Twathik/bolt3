@@ -25,4 +25,9 @@ export class SettingMaxOrderByAggregateInput {
     nullable: true
   })
   allowedDICOMmodalities?: "asc" | "desc" | undefined;
+
+  @TypeGraphQL.Field(_type => SortOrder, {
+    nullable: true
+  })
+  documentTemplateConfiguration?: "asc" | "desc" | undefined;
 }

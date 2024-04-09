@@ -5,6 +5,7 @@ import "./globals.css";
 import EndProgress from "@/lib/utils/useAppRouter";
 import { Suspense } from "react";
 import { WebsocketProvider } from "@/components/Websockets/WebsocketProvider";
+import { Toaster } from "@/components/ui/toaster";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -40,6 +41,7 @@ export default function RootLayout({
         </Suspense>
 
         {children}
+        <Toaster />
         <WebsocketProvider />
       </body>
     </html>

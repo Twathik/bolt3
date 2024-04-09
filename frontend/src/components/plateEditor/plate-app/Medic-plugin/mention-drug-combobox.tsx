@@ -2,16 +2,18 @@ import type {
   ComboboxOnSelectItem,
   ComboboxProps,
 } from "@udecode/plate-combobox";
-import {
-  getPluginOptions,
-  getPreviousNode,
-  useEditorRef,
-} from "@udecode/plate-common";
-import type { MentionPlugin } from "@udecode/plate-mention";
-import { getMentionOnSelectItem } from "@udecode/plate-mention";
+import { getPluginOptions, useEditorRef } from "@udecode/plate-common";
+import { type MentionPlugin } from "@udecode/plate-mention";
+
 import { DrugCombobox } from "./drug-combobox";
 import { DrugMentionKey } from "./drug-plugin-key";
 import { useCallback } from "react";
+import getMentionOnSelectItemWithMetadata from "@/lib/utils/getMentionOnSelectItemWithMetadata";
+import type { ItemWithMetadata } from "@/lib/interfaces/itemWithMetadata";
+import { useBoltStore } from "@/stores/boltStore";
+import { ReadyState } from "react-use-websocket";
+import type { WebsocketMessageInterface } from "@/components/Websockets/interfaces/WebsocketMessageInterface";
+import { v4 as uuid } from "uuid";
 
 export function MentionDrugCombobox({
   pluginKey = DrugMentionKey,
@@ -21,33 +23,32 @@ export function MentionDrugCombobox({
   pluginKey?: string;
 }) {
   const editor = useEditorRef();
+  const socket = useBoltStore((s) => s.socket);
+  const patient = useBoltStore((s) => s.patient);
 
   const { trigger } = getPluginOptions<MentionPlugin>(editor, pluginKey);
   const onSelectItem: ComboboxOnSelectItem<undefined> = useCallback(
     (editor, item) => {
-      getMentionOnSelectItem({
+      getMentionOnSelectItemWithMetadata({
         key: pluginKey,
-      })(editor, item);
-      console.log({});
+      })(editor, item as ItemWithMetadata);
+      if (socket && socket.readyState === ReadyState.OPEN && patient) {
+        const message: WebsocketMessageInterface = {
+          id: uuid(),
+          destination: ["sd-prescription-widget"],
+          global: true,
+          type: "prescription",
+          payload: {
+            operation: "add",
+            prescription: (item as ItemWithMetadata).metadata,
+          },
+          subscriptionIds: [patient.id],
+        };
 
-      const selectedNode =
-        editor.selection &&
-        getPreviousNode(editor, {
-          at: editor.selection.focus,
-        });
-      if (selectedNode) {
-        const previousNode = getPreviousNode(editor, {
-          at: selectedNode[1],
-        });
-        if (previousNode) {
-          const deleteNode = getPreviousNode(editor, {
-            at: previousNode[1],
-          });
-          if (deleteNode) editor.delete({ at: deleteNode[1] });
-        }
+        socket.sendJsonMessage(message);
       }
     },
-    [pluginKey]
+    [patient, pluginKey, socket]
   );
 
   return (

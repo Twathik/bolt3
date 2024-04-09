@@ -1,7 +1,18 @@
+import type { PatientsGetOnePatientInfoResponseData } from "@/components/wg-generated/models";
 import React from "react";
+import SubscribeToFocusedClinicalEventView from "../../subscriptionsHandlers/SubscribeToFocusedClinicalEventView";
 
-function DiagnosticEventComponent() {
-  return <div>DiagnosticEventComponent</div>;
+function DiagnosticEventComponent({
+  patient,
+}: {
+  patient: PatientsGetOnePatientInfoResponseData["mainDb_getPatient"];
+}) {
+  return (
+    <div>
+      DiagnosticEventComponent
+      <SubscribeToFocusedClinicalEventView patientId={patient!.id} />
+    </div>
+  );
 }
 
 export default DiagnosticEventComponent;

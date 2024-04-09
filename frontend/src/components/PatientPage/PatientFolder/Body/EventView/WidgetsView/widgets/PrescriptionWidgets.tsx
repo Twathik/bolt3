@@ -8,6 +8,7 @@ import InsertWidgetButton from "./InsertWidgetButton";
 import {
   PRESCRIPTION_DRUG_COL,
   PRESCRIPTION_FREQUENCY_COL,
+  PRESCRIPTION_LIST_NUMBER_COL,
   PRESCRIPTION_QUANTITY_COL,
   PRESCRIPTION_TABLE_KEY,
 } from "@/components/plateEditor/plate-app/PrescriptionTable/PrescriptionTableKey";
@@ -29,6 +30,10 @@ function PrescriptionWidgets() {
                       {
                         type: PRESCRIPTION_TABLE_KEY,
                         children: [
+                          {
+                            type: PRESCRIPTION_LIST_NUMBER_COL,
+                            children: [{ text: "" }],
+                          },
                           {
                             type: PRESCRIPTION_DRUG_COL,
                             children: [
@@ -75,6 +80,10 @@ function PrescriptionWidgets() {
                         ],
                       },
                     ],
+                  },
+                  {
+                    type: "p",
+                    children: [{ text: "" }],
                   },
                 ]}
               />

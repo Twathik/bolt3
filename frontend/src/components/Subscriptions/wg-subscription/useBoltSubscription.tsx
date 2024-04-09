@@ -33,9 +33,9 @@ function useBoltSubscription({
       });
     }
   }, [error, toast]);
-  useEffect(() => {
+  /* useEffect(() => {
     console.log({ data });
-  }, [data]);
+  }, [data]); */
   return {
     data,
     isSubscribed,

@@ -1,0 +1,2 @@
+-- AlterTable
+ALTER TABLE "DocumentTemplate" ADD COLUMN     "created" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP;

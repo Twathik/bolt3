@@ -1,10 +1,15 @@
 import type { CursorOverlayData } from "@slate-yjs/react";
-import { useRemoteCursorOverlayPositions } from "@slate-yjs/react";
 import clsx from "clsx";
 import type { CSSProperties, PropsWithChildren } from "react";
 import React, { useRef } from "react";
 import type { CursorData } from "./types";
 import { addAlpha } from "./utils";
+import { useBoltStore } from "@/stores/boltStore";
+import type { CursorState } from "@udecode/plate-cursor";
+import { useCursorOverlayPositions } from "@udecode/plate-cursor";
+import type { UnknownObject } from "@udecode/utils";
+
+const zIndex = 100;
 
 type CaretProps = Pick<CursorOverlayData<CursorData>, "caretPosition" | "data">;
 
@@ -17,6 +22,7 @@ function Caret({ caretPosition, data }: CaretProps) {
   const labelStyle: CSSProperties = {
     transform: "translateY(-100%)",
     background: data?.color,
+    zIndex,
   };
 
   return (
@@ -43,6 +49,7 @@ function RemoteSelection({
   const selectionStyle: CSSProperties = {
     // Add a opacity to the background color
     backgroundColor: addAlpha(data.color, 0.5),
+    zIndex,
   };
 
   return (
@@ -50,7 +57,7 @@ function RemoteSelection({
       {selectionRects.map((position, i) => (
         <div
           style={{ ...selectionStyle, ...position }}
-          className="absolute pointer-events-none"
+          className="absolute pointer-events-none bg-red-600"
           // eslint-disable-next-line react/no-array-index-key
           key={i}
         />
@@ -69,14 +76,34 @@ export function RemoteCursorOverlay({
   children,
 }: RemoteCursorsProps) {
   const containerRef = useRef<HTMLDivElement>(null);
-  const [cursors] = useRemoteCursorOverlayPositions<CursorData>({
+
+  const cursorStates = useBoltStore((s) => s.cursorStates);
+
+  const cursorsData: Record<string, CursorState<UnknownObject>> = {};
+  cursorStates.forEach((c) => {
+    cursorsData[`cursor${c.clientId}`] = {
+      selection: c.selection,
+      data: c.data,
+      key: c.clientId,
+    };
+  });
+  const cursors = useCursorOverlayPositions({
     containerRef,
+    cursors: cursorsData,
+  }).cursors.map((cursor) => {
+    return {
+      clientId: cursor.key,
+      data: cursor.data,
+      selectionRects: cursor.selectionRects,
+      caretPosition: cursor.caretPosition,
+    };
   });
 
   return (
     <div className={clsx("relative", className)} ref={containerRef}>
       {children}
       {cursors.map((cursor) => (
+        // @ts-expect-error
         <RemoteSelection key={cursor.clientId} {...cursor} />
       ))}
     </div>

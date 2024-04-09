@@ -74,7 +74,7 @@ function ETTWidget() {
                     {
                       type: "data-input",
                       children: [{ text: "" }],
-                      value: "",
+                      value: [],
                       inputType: "multiple",
                       inputName: "testMultiSelectInputName",
                       documentType: "SONOGRAPHY",

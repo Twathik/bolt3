@@ -2,13 +2,14 @@ import * as TypeGraphQL from 'type-graphql'
 import type { GraphQLResolveInfo } from 'graphql'
 import { WorkingList } from '../../@generated'
 import {
-  getPrismaFromContext,
   transformCountFieldIntoSelectRelationsCount,
   transformInfoIntoPrismaArgs,
 } from '../../@generated/helpers'
-import { PrismaClient } from '@prisma/client'
-import { AppSubscriptionTriggerArgs } from '../Global/AppSubscription/args/AppSubscriptionTriggerArgs'
 import { UpdateOneWorkingListArgs } from './args/UpdateOneWorkingListArgs'
+import { Context } from '../../context'
+import { v4 as uuid } from 'uuid'
+import { WebsocketMessageInterface } from '../../Utils/PubSubInterfaces/WebsocketMessageInterface'
+import { notificationTopic } from '../../Utils/PubSubInterfaces/MessageTypesInterface'
 
 @TypeGraphQL.Resolver((_of) => WorkingList)
 export class UpdateOneWorkingListResolver {
@@ -16,20 +17,18 @@ export class UpdateOneWorkingListResolver {
     nullable: true,
   })
   async updateOneWorkingList(
-    @TypeGraphQL.Ctx() ctx: any,
+    @TypeGraphQL.Ctx() { prisma, pubSub }: Context,
     @TypeGraphQL.Info() info: GraphQLResolveInfo,
     @TypeGraphQL.Args() { userId, ...args }: UpdateOneWorkingListArgs,
-    @TypeGraphQL.PubSub('APP_SUBSCRIPTION')
-    notify: TypeGraphQL.Publisher<AppSubscriptionTriggerArgs>,
   ): Promise<WorkingList | null> {
     const { _count } = transformInfoIntoPrismaArgs(info)
-    const prisma = getPrismaFromContext(ctx) as PrismaClient
+
     try {
       const workingList = await prisma.workingList.update({
         ...args,
         ...(_count && transformCountFieldIntoSelectRelationsCount(_count)),
       })
-      const [patient, user, modality] = await Promise.all([
+      const [patient, user, modality, clinicalEvent] = await Promise.all([
         prisma.patient.findFirstOrThrow({
           where: { id: workingList.patientId },
         }),
@@ -38,53 +37,34 @@ export class UpdateOneWorkingListResolver {
         prisma.modality.findFirstOrThrow({
           where: { id: workingList.modalityId },
         }),
+        prisma.clinicalEvent.findFirstOrThrow({
+          where: { id: workingList.clinicalEventId },
+        }),
       ])
-      const {
-        id,
-        clinicalEventId,
-        createdAt,
-        modalityExamStatus,
-        linkId,
-        linked,
-        locked,
-      } = workingList
-      const {
-        id: modalityId,
-        modalityPseudo,
-        modalityType,
-        modalityAETitle,
-      } = modality
-      const { firstName, lastName } = patient
-      const { fullName } = user
-      await notify({
-        type: 'workingLists',
+      const message: WebsocketMessageInterface = {
+        destination: ['folder'],
         global: true,
-        userId,
-        appPayload: JSON.stringify({
-          operation: 'update',
+        id: uuid(),
+        payload: {
           workingList: {
-            id,
-            modality: {
-              id: modalityId,
-              modalityPseudo,
-              modalityType,
-              modalityAETitle,
+            ...workingList,
+            modality,
+            user: {
+              fullName: `${user.lastName}^${user.firstName}`,
+            },
+            clinicalEvent: {
+              eventType: clinicalEvent.eventType,
             },
             patient: {
-              patientFullName: `${lastName} ${firstName}`,
+              patientFullName: `${patient.lastName}^${patient.firstName}`,
             },
-            user: {
-              fullName,
-            },
-            clinicalEventId,
-            createdAt,
-            modalityExamStatus,
-            linkId,
-            linked,
-            locked,
           },
-        }),
-      })
+          operation: 'update',
+        },
+        type: 'workingList',
+        subscriptionIds: [patient.id],
+      }
+      await pubSub.publish(notificationTopic, message)
       return workingList
     } catch (error) {
       throw Error('The workingList could not have been updated')

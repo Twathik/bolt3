@@ -29,6 +29,8 @@ const createPlateSlice: StateCreator<
   setFocusedClinicalEvent(event) {
     set((s) => {
       s.focusedClinicalEvent = event;
+      s.focusedWorkingList = null;
+      s.patientTab = "focusedDocument";
     });
   },
 });

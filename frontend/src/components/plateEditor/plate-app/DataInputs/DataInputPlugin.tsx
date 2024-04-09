@@ -2,6 +2,8 @@ import type { PlateElementProps } from "@udecode/plate-common";
 import {
   PlateElement,
   createPluginFactory,
+  findNodePath,
+  useEditorRef,
   useElement,
 } from "@udecode/plate-common";
 import { useCallback, useEffect, useMemo, useState } from "react";
@@ -28,22 +30,50 @@ export function DataInputElement({
   children,
   ...props
 }: PlateElementProps) {
+  const editor = useEditorRef();
   const element = useElement<DataInputElementType>();
   const [value, setValue] = useState(element.value ?? "");
-  const [multiValue, setMultiValue] = useState<FancyMultiSelectOptions[]>([]);
+  const [multiValues, setMultiValues] = useState<FancyMultiSelectOptions[]>(
+    element.multiValues ?? []
+  );
+  const [dirty, setDirty] = useState(false);
 
   useEffect(() => {
-    element.value = value;
-    element.modifiedAt = formatISO(new Date());
-  }, [element, value]);
+    const path = findNodePath(editor, element);
+
+    if (path && dirty)
+      editor.apply({
+        type: "set_node",
+        path: [...path],
+        properties: {},
+        newProperties: {
+          value: value,
+          modifiedAt: formatISO(new Date()),
+        },
+      });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [editor, value]);
 
   useEffect(() => {
-    element.multiValues = multiValue;
-    element.modifiedAt = formatISO(new Date());
-  }, [element, multiValue]);
+    const path = findNodePath(editor, element);
+
+    if (path && element.inputType === "multiple" && dirty) {
+      editor.apply({
+        type: "set_node",
+        path,
+        properties: {},
+        newProperties: {
+          multiValues,
+          modifiedAt: formatISO(new Date()),
+        },
+      });
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [editor, multiValues]);
 
   const onChange = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
+      setDirty(true);
       setValue(e.target.value);
     },
     [setValue]
@@ -51,64 +81,64 @@ export function DataInputElement({
 
   const onCheckedChange = useCallback(
     (checked: CheckedState) => {
+      setDirty(true);
       setValue(Number(checked));
     },
     [setValue]
   );
   const onValueChange = useCallback(
     (value: string) => {
+      setDirty(true);
       setValue(value);
     },
     [setValue]
+  );
+  const onMultiSelectChange = useCallback(
+    (value: FancyMultiSelectOptions[]) => {
+      setDirty(true);
+      setMultiValues(value);
+    },
+    [setMultiValues]
   );
 
   const input = useMemo(() => {
     switch (element.inputType) {
       case "text":
       case "number":
-        return (
-          <PlateTextInput element={element} onChange={onChange} value={value} />
-        );
+        return <PlateTextInput element={element} onChange={onChange} />;
       case "checkbox":
         return (
           <PlateCheckBoxInput
             element={element}
             onCheckedChange={onCheckedChange}
-            value={value as number}
           />
         );
       case "select":
         return (
-          <PlateSelectInput
-            element={element}
-            onValueChange={onValueChange}
-            value={value as string}
-          />
+          <PlateSelectInput element={element} onValueChange={onValueChange} />
         );
       case "date":
-        return (
-          <PlateDateInput element={element} onChange={onChange} value={value} />
-        );
+        return <PlateDateInput element={element} onChange={onChange} />;
       case "multiple":
         return (
           <PlateMultiSelect
             element={element}
-            onMultiValueChange={setMultiValue}
-            value={multiValue}
+            onMultiValueChange={onMultiSelectChange}
           />
         );
 
       default:
         throw Error("unknown data type");
     }
-  }, [element, multiValue, onChange, onCheckedChange, onValueChange, value]);
+  }, [element, onChange, onCheckedChange, onMultiSelectChange, onValueChange]);
 
   return (
     <PlateElement
       asChild
       className={className}
       {...props}
-      contentEditable={false}>
+      contentEditable={false}
+    >
       <span>
         {input}
         {children}

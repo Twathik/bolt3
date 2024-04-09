@@ -93,6 +93,7 @@ export interface mainDb_ClinicalEventWhereUniqueInput {
 	clinicalDiagnosticId?: mainDb_StringNullableFilter;
 	createdAt?: mainDb_DateTimeFilter;
 	deleted?: mainDb_BoolFilter;
+	deletedByUserId?: mainDb_StringNullableFilter;
 	deletedReport?: mainDb_StringNullableFilter;
 	dicom?: mainDb_BoolFilter;
 	dicomId?: mainDb_StringNullableFilter;
@@ -115,6 +116,7 @@ export interface mainDb_ClinicalEventWhereInput {
 	clinicalDiagnosticId?: mainDb_StringNullableFilter;
 	createdAt?: mainDb_DateTimeFilter;
 	deleted?: mainDb_BoolFilter;
+	deletedByUserId?: mainDb_StringNullableFilter;
 	deletedReport?: mainDb_StringNullableFilter;
 	dicom?: mainDb_BoolFilter;
 	dicomId?: mainDb_StringNullableFilter;
@@ -590,6 +592,7 @@ export interface mainDb_ClinicalEventCreateWithoutUserInput {
 	clinicalDiagnosticId?: string;
 	createdAt?: string;
 	deleted?: boolean;
+	deletedByUserId?: string;
 	deletedReport?: string;
 	dicom?: boolean;
 	dicomId?: string;
@@ -790,6 +793,7 @@ export interface mainDb_ClinicalEventCreateWithoutPatientInput {
 	clinicalDiagnosticId?: string;
 	createdAt?: string;
 	deleted?: boolean;
+	deletedByUserId?: string;
 	deletedReport?: string;
 	dicom?: boolean;
 	dicomId?: string;
@@ -892,6 +896,7 @@ export interface mainDb_ClinicalEventCreateWithoutWorkingListInput {
 	clinicalDiagnosticId?: string;
 	createdAt?: string;
 	deleted?: boolean;
+	deletedByUserId?: string;
 	deletedReport?: string;
 	dicom?: boolean;
 	dicomId?: string;
@@ -1177,6 +1182,7 @@ export interface mainDb_ClinicalEventCreateManyPatientInput {
 	clinicalDiagnosticId?: string;
 	createdAt?: string;
 	deleted?: boolean;
+	deletedByUserId?: string;
 	deletedReport?: string;
 	dicom?: boolean;
 	dicomId?: string;
@@ -1214,6 +1220,7 @@ export interface mainDb_ClinicalEventCreateManyUserInput {
 	clinicalDiagnosticId?: string;
 	createdAt?: string;
 	deleted?: boolean;
+	deletedByUserId?: string;
 	deletedReport?: string;
 	dicom?: boolean;
 	dicomId?: string;
@@ -1264,6 +1271,7 @@ export interface mainDb_ClinicalEventScalarWhereInput {
 	clinicalDiagnosticId?: mainDb_StringNullableFilter;
 	createdAt?: mainDb_DateTimeFilter;
 	deleted?: mainDb_BoolFilter;
+	deletedByUserId?: mainDb_StringNullableFilter;
 	deletedReport?: mainDb_StringNullableFilter;
 	dicom?: mainDb_BoolFilter;
 	dicomId?: mainDb_StringNullableFilter;
@@ -1286,6 +1294,7 @@ export interface mainDb_ClinicalEventUpdateWithoutUserInput {
 	clinicalDiagnosticId?: mainDb_NullableStringFieldUpdateOperationsInput;
 	createdAt?: mainDb_DateTimeFieldUpdateOperationsInput;
 	deleted?: mainDb_BoolFieldUpdateOperationsInput;
+	deletedByUserId?: mainDb_NullableStringFieldUpdateOperationsInput;
 	deletedReport?: mainDb_NullableStringFieldUpdateOperationsInput;
 	dicom?: mainDb_BoolFieldUpdateOperationsInput;
 	dicomId?: mainDb_NullableStringFieldUpdateOperationsInput;
@@ -1495,6 +1504,7 @@ export interface mainDb_ClinicalEventUpdateWithoutPatientInput {
 	clinicalDiagnosticId?: mainDb_NullableStringFieldUpdateOperationsInput;
 	createdAt?: mainDb_DateTimeFieldUpdateOperationsInput;
 	deleted?: mainDb_BoolFieldUpdateOperationsInput;
+	deletedByUserId?: mainDb_NullableStringFieldUpdateOperationsInput;
 	deletedReport?: mainDb_NullableStringFieldUpdateOperationsInput;
 	dicom?: mainDb_BoolFieldUpdateOperationsInput;
 	dicomId?: mainDb_NullableStringFieldUpdateOperationsInput;
@@ -1594,6 +1604,7 @@ export interface mainDb_ClinicalEventUpdateWithoutWorkingListInput {
 	clinicalDiagnosticId?: mainDb_NullableStringFieldUpdateOperationsInput;
 	createdAt?: mainDb_DateTimeFieldUpdateOperationsInput;
 	deleted?: mainDb_BoolFieldUpdateOperationsInput;
+	deletedByUserId?: mainDb_NullableStringFieldUpdateOperationsInput;
 	deletedReport?: mainDb_NullableStringFieldUpdateOperationsInput;
 	dicom?: mainDb_BoolFieldUpdateOperationsInput;
 	dicomId?: mainDb_NullableStringFieldUpdateOperationsInput;
@@ -1942,6 +1953,7 @@ export interface mainDb_ClinicalEventUpdateManyMutationInput {
 	clinicalDiagnosticId?: mainDb_NullableStringFieldUpdateOperationsInput;
 	createdAt?: mainDb_DateTimeFieldUpdateOperationsInput;
 	deleted?: mainDb_BoolFieldUpdateOperationsInput;
+	deletedByUserId?: mainDb_NullableStringFieldUpdateOperationsInput;
 	deletedReport?: mainDb_NullableStringFieldUpdateOperationsInput;
 	dicom?: mainDb_BoolFieldUpdateOperationsInput;
 	dicomId?: mainDb_NullableStringFieldUpdateOperationsInput;
@@ -2185,6 +2197,11 @@ export interface DataTableTriggerInsertDataSubscriptionInput {
 	value: string;
 }
 
+export interface DocumentTemplatesSaveDocumentTemplateSettingsInput {
+	id: string;
+	documentTemplateConfiguration: string;
+}
+
 export interface EconomizersCreateEconomizerInput {
 	name: string;
 	eventType: mainDb_EventTypesValues;
@@ -2243,6 +2260,10 @@ export interface WorkingListsDeleteOneWorkingListInput {
 export interface WorkingListsLinkWorkingListInput {
 	id: string;
 	linkId: string;
+}
+
+export interface WorkingListsPatientWorkingListsInput {
+	patientId: string;
 }
 
 export interface WorkingListsToggleLockWorkingListInput {
@@ -2361,6 +2382,11 @@ export interface PatientsGetOnePatientInput {
 	patientId: string;
 }
 
+export interface PatientsGetOnePatientDocumentInput {
+	patientId: string;
+	documentType: mainDb_PatientDocumentTypeValues;
+}
+
 export interface PatientsGetOnePatientInfoInput {
 	patientId: string;
 }
@@ -2379,15 +2405,6 @@ export interface PatientsUpdateOnePatientInput {
 	ddn?: string;
 	address?: string;
 	nTel?: string;
-}
-
-export interface TemplatesFetchTemplateInput {
-	id: string;
-}
-
-export interface TemplatesUpdateTemplateInput {
-	id: string;
-	template: string;
 }
 
 export interface UsersInternalGetUserInput {
@@ -2438,6 +2455,11 @@ export interface DataTableTriggerInsertDataSubscriptionInputInternal {
 	tableContentType: string;
 	paramData: mainDb_ParamDataInputType;
 	value: string;
+}
+
+export interface DocumentTemplatesSaveDocumentTemplateSettingsInputInternal {
+	id: string;
+	documentTemplateConfiguration: string;
 }
 
 export interface EconomizersCreateEconomizerInputInternal {
@@ -2503,6 +2525,10 @@ export interface WorkingListsLinkWorkingListInputInternal {
 	id: string;
 	linkId: string;
 	userId: string;
+}
+
+export interface WorkingListsPatientWorkingListsInputInternal {
+	patientId: string;
 }
 
 export interface WorkingListsToggleLockWorkingListInputInternal {
@@ -2636,6 +2662,11 @@ export interface PatientsGetOnePatientInputInternal {
 	patientId: string;
 }
 
+export interface PatientsGetOnePatientDocumentInputInternal {
+	patientId: string;
+	documentType: mainDb_PatientDocumentTypeValues;
+}
+
 export interface PatientsGetOnePatientInfoInputInternal {
 	patientId: string;
 }
@@ -2655,15 +2686,6 @@ export interface PatientsUpdateOnePatientInputInternal {
 	address?: string;
 	nTel?: string;
 	userId: string;
-}
-
-export interface TemplatesFetchTemplateInputInternal {
-	id: string;
-}
-
-export interface TemplatesUpdateTemplateInputInternal {
-	id: string;
-	template: string;
 }
 
 export interface UsersGetUserInputInternal {
@@ -2730,6 +2752,11 @@ export interface DataTableTriggerInsertDataSubscriptionInputInjected {
 	value: string;
 }
 
+export interface DocumentTemplatesSaveDocumentTemplateSettingsInputInjected {
+	id: string;
+	documentTemplateConfiguration: string;
+}
+
 export interface EconomizersCreateEconomizerInputInjected {
 	name: string;
 	eventType: mainDb_EventTypesValues;
@@ -2793,6 +2820,10 @@ export interface WorkingListsLinkWorkingListInputInjected {
 	id: string;
 	linkId: string;
 	userId: string;
+}
+
+export interface WorkingListsPatientWorkingListsInputInjected {
+	patientId: string;
 }
 
 export interface WorkingListsToggleLockWorkingListInputInjected {
@@ -2926,6 +2957,11 @@ export interface PatientsGetOnePatientInputInjected {
 	patientId: string;
 }
 
+export interface PatientsGetOnePatientDocumentInputInjected {
+	patientId: string;
+	documentType: mainDb_PatientDocumentTypeValues;
+}
+
 export interface PatientsGetOnePatientInfoInputInjected {
 	patientId: string;
 }
@@ -2945,15 +2981,6 @@ export interface PatientsUpdateOnePatientInputInjected {
 	address?: string;
 	nTel?: string;
 	userId: string;
-}
-
-export interface TemplatesFetchTemplateInputInjected {
-	id: string;
-}
-
-export interface TemplatesUpdateTemplateInputInjected {
-	id: string;
-	template: string;
 }
 
 export interface UsersGetUserInputInjected {
@@ -2997,6 +3024,21 @@ export interface DataTableInsertDataSubscriptionResponse {
 
 export interface DataTableTriggerInsertDataSubscriptionResponse {
 	data?: DataTableTriggerInsertDataSubscriptionResponseData;
+	errors?: GraphQLError[];
+}
+
+export interface DocumentTemplatesGetDocumentTemplatesResponse {
+	data?: DocumentTemplatesGetDocumentTemplatesResponseData;
+	errors?: GraphQLError[];
+}
+
+export interface DocumentTemplatesGetDocumentTemplatesSettingsResponse {
+	data?: DocumentTemplatesGetDocumentTemplatesSettingsResponseData;
+	errors?: GraphQLError[];
+}
+
+export interface DocumentTemplatesSaveDocumentTemplateSettingsResponse {
+	data?: DocumentTemplatesSaveDocumentTemplateSettingsResponseData;
 	errors?: GraphQLError[];
 }
 
@@ -3067,6 +3109,11 @@ export interface WorkingListsDeleteOneWorkingListResponse {
 
 export interface WorkingListsLinkWorkingListResponse {
 	data?: WorkingListsLinkWorkingListResponseData;
+	errors?: GraphQLError[];
+}
+
+export interface WorkingListsPatientWorkingListsResponse {
+	data?: WorkingListsPatientWorkingListsResponseData;
 	errors?: GraphQLError[];
 }
 
@@ -3205,6 +3252,11 @@ export interface PatientsGetOnePatientResponse {
 	errors?: GraphQLError[];
 }
 
+export interface PatientsGetOnePatientDocumentResponse {
+	data?: PatientsGetOnePatientDocumentResponseData;
+	errors?: GraphQLError[];
+}
+
 export interface PatientsGetOnePatientInfoResponse {
 	data?: PatientsGetOnePatientInfoResponseData;
 	errors?: GraphQLError[];
@@ -3222,21 +3274,6 @@ export interface PatientsToggleSelectedTrashPatientResponse {
 
 export interface PatientsUpdateOnePatientResponse {
 	data?: PatientsUpdateOnePatientResponseData;
-	errors?: GraphQLError[];
-}
-
-export interface TemplatesFetchTemplateResponse {
-	data?: TemplatesFetchTemplateResponseData;
-	errors?: GraphQLError[];
-}
-
-export interface TemplatesGetTemplatesResponse {
-	data?: TemplatesGetTemplatesResponseData;
-	errors?: GraphQLError[];
-}
-
-export interface TemplatesUpdateTemplateResponse {
-	data?: TemplatesUpdateTemplateResponseData;
 	errors?: GraphQLError[];
 }
 
@@ -3361,6 +3398,34 @@ export interface DataTableInsertDataSubscriptionResponseData {
 
 export interface DataTableTriggerInsertDataSubscriptionResponseData {
 	mainDb_triggerInsertDataSubscription: boolean;
+}
+
+export interface DocumentTemplatesGetDocumentTemplatesResponseData {
+	mainDb_documentTemplates: {
+		id: number;
+		oddDoxTemplate?: string;
+		oddTemplateUrl: string;
+		eventDoxTemplate?: string;
+		evenTemplateUrl: string;
+		templateSpeciality: "CARDIOLOGY" | "GYNECOLOGY";
+		templateName: string;
+	}[];
+	mainDb_settings: {
+		id: string;
+		documentTemplateConfiguration?: string;
+	}[];
+}
+
+export interface DocumentTemplatesGetDocumentTemplatesSettingsResponseData {
+	mainDb_settings: {
+		documentTemplateConfiguration?: string;
+	}[];
+}
+
+export interface DocumentTemplatesSaveDocumentTemplateSettingsResponseData {
+	mainDb_updateOneSetting?: {
+		id: string;
+	};
 }
 
 export interface DrugsIndexDrugsResponseData {
@@ -3774,6 +3839,112 @@ export interface WorkingListsLinkWorkingListResponseData {
 	};
 }
 
+export interface WorkingListsPatientWorkingListsResponseData {
+	mainDb_workingLists: {
+		id: string;
+		modality: {
+			id: string;
+			modalityPseudo?: string;
+			modalityType:
+				| "AR"
+				| "ASMT"
+				| "AU"
+				| "BDUS"
+				| "BI"
+				| "BMD"
+				| "CR"
+				| "CT"
+				| "CTPROTOCOL"
+				| "DG"
+				| "DOC"
+				| "DX"
+				| "ECG"
+				| "EPS"
+				| "ES"
+				| "FID"
+				| "GM"
+				| "HC"
+				| "HD"
+				| "IO"
+				| "IOL"
+				| "IVOCT"
+				| "IVUS"
+				| "KER"
+				| "KO"
+				| "LEN"
+				| "LS"
+				| "M3D"
+				| "MG"
+				| "MR"
+				| "NM"
+				| "OAM"
+				| "OCT"
+				| "OP"
+				| "OPM"
+				| "OPT"
+				| "OPTBSV"
+				| "OPTENF"
+				| "OPV"
+				| "OSS"
+				| "OT"
+				| "PLAN"
+				| "PR"
+				| "PT"
+				| "PX"
+				| "REG"
+				| "RESP"
+				| "RF"
+				| "RG"
+				| "RTDOSE"
+				| "RTIMAGE"
+				| "RTINTENT"
+				| "RTPLAN"
+				| "RTRAD"
+				| "RTRECORD"
+				| "RTSEGANN"
+				| "RTSTRUCT"
+				| "RWV"
+				| "SEG"
+				| "SM"
+				| "SMR"
+				| "SR"
+				| "SRF"
+				| "STAIN"
+				| "TEXTUREMAP"
+				| "TG"
+				| "US"
+				| "VA"
+				| "XA"
+				| "XC";
+			modalityAETitle: string;
+		};
+		patient: {
+			patientFullName: string;
+		};
+		user: {
+			fullName?: string;
+		};
+		clinicalEvent: {
+			eventType:
+				| "BIOLOGY"
+				| "CERTIFICAT"
+				| "CLINICALEXAM"
+				| "DIAGNOSTIC"
+				| "ECG"
+				| "HISTORY"
+				| "MEDICAL_REPORT"
+				| "PRESCRIPTION"
+				| "SONOGRAPHY";
+		};
+		clinicalEventId: string;
+		createdAt: string;
+		modalityExamStatus: "CLOSED" | "CREATED" | "INPROGRESS" | "REALIZED" | "REPORT_DONE";
+		linkId?: string;
+		linked: boolean;
+		locked: boolean;
+	}[];
+}
+
 export interface WorkingListsToggleLockWorkingListResponseData {
 	mainDb_toggleLockWorkingList: {
 		id: string;
@@ -3864,6 +4035,18 @@ export interface WorkingListsWorkingListsResponseData {
 		};
 		user: {
 			fullName?: string;
+		};
+		clinicalEvent: {
+			eventType:
+				| "BIOLOGY"
+				| "CERTIFICAT"
+				| "CLINICALEXAM"
+				| "DIAGNOSTIC"
+				| "ECG"
+				| "HISTORY"
+				| "MEDICAL_REPORT"
+				| "PRESCRIPTION"
+				| "SONOGRAPHY";
 		};
 		clinicalEventId: string;
 		createdAt: string;
@@ -4104,6 +4287,18 @@ export interface ClinicalEventsGetClinicalEventWithConfigurationResponseData {
 			user: {
 				fullName?: string;
 			};
+			clinicalEvent: {
+				eventType:
+					| "BIOLOGY"
+					| "CERTIFICAT"
+					| "CLINICALEXAM"
+					| "DIAGNOSTIC"
+					| "ECG"
+					| "HISTORY"
+					| "MEDICAL_REPORT"
+					| "PRESCRIPTION"
+					| "SONOGRAPHY";
+			};
 			clinicalEventId: string;
 			createdAt: string;
 			modalityExamStatus: "CLOSED" | "CREATED" | "INPROGRESS" | "REALIZED" | "REPORT_DONE";
@@ -4324,6 +4519,17 @@ export interface PatientsGetOnePatientResponseData {
 	};
 }
 
+export interface PatientsGetOnePatientDocumentResponseData {
+	mainDb_getPatient?: {
+		DocumentStore: {
+			textContent?: string;
+		}[];
+	};
+	mainDb_settings: {
+		documentTemplateConfiguration?: string;
+	}[];
+}
+
 export interface PatientsGetOnePatientInfoResponseData {
 	mainDb_getPatient?: {
 		id: string;
@@ -4370,46 +4576,6 @@ export interface PatientsUpdateOnePatientResponseData {
 			textContent?: string;
 			patientDocumentType: "document" | "folder";
 		}[];
-	};
-}
-
-export interface TemplatesFetchTemplateResponseData {
-	mainDb_documentTemplate?: {
-		template: string;
-		eventType:
-			| "BIOLOGY"
-			| "CERTIFICAT"
-			| "CLINICALEXAM"
-			| "DIAGNOSTIC"
-			| "ECG"
-			| "HISTORY"
-			| "MEDICAL_REPORT"
-			| "PRESCRIPTION"
-			| "SONOGRAPHY";
-		id: string;
-	};
-}
-
-export interface TemplatesGetTemplatesResponseData {
-	mainDb_documentTemplates: {
-		eventType:
-			| "BIOLOGY"
-			| "CERTIFICAT"
-			| "CLINICALEXAM"
-			| "DIAGNOSTIC"
-			| "ECG"
-			| "HISTORY"
-			| "MEDICAL_REPORT"
-			| "PRESCRIPTION"
-			| "SONOGRAPHY";
-		id: string;
-		empty: boolean;
-	}[];
-}
-
-export interface TemplatesUpdateTemplateResponseData {
-	mainDb_updateOneDocumentTemplate?: {
-		id: string;
 	};
 }
 

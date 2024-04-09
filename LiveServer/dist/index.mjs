@@ -473,6 +473,9 @@ var messageBroker = ({
       return;
   }
   if (message.subscriptionIds?.length > 0) {
+    if (peer.subscriptionIds?.length === 0) {
+      return peer.send(JSON.stringify(message));
+    }
     let send = false;
     for (const id of message.subscriptionIds) {
       if (peer.subscriptionIds?.includes(id))
@@ -536,7 +539,6 @@ var clearConnectionFromTopicRooms = ({
   ws,
   peers
 }) => {
-  console.log({ destinationFromClearConnection: ws.destination });
   const message = {
     type: "subscribedUsers",
     destination: ws.destination ? [
@@ -567,7 +569,6 @@ var ClearConnectionFromTopicRooms_default = clearConnectionFromTopicRooms;
 import { v4 as uuid3 } from "uuid";
 var import_randomColor = __toESM(require_randomColor());
 var ConnectToTopic = ({ ws, peers }) => {
-  console.log({ destinationFromClearConnection: ws.destination });
   const message = {
     type: "subscribedUsers",
     destination: ws.destination ? [
@@ -608,7 +609,6 @@ var getSubscribedUsers = ({
 }) => {
   topicRelations.forEach(({ origin, destination }) => {
     if (ws.destination?.includes(destination)) {
-      console.log("hit");
       const subscribedUsers = [];
       peers.forEach((p) => {
         if (p.destination?.includes(origin)) {

@@ -51,7 +51,7 @@ function LinkExam({
     let update = false;
     if (data) {
       update = true;
-      console.log({ data });
+      // console.log({ data });
       const linkExam = async () => {
         try {
           await trigger({ id: workingList.id, linkId: data.linkId });
@@ -78,7 +78,8 @@ function LinkExam({
     <Button
       variant="link"
       onClick={refresh}
-      disabled={isLoading || isMutating || isRefreshMutating}>
+      disabled={isLoading || isMutating || isRefreshMutating}
+    >
       {isLoading || isMutating || isRefreshMutating ? (
         <RingLoader size={20} color="#0f172a" />
       ) : (

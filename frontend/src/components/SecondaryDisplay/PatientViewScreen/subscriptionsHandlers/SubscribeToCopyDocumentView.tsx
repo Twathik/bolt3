@@ -15,7 +15,7 @@ function SubscribeToCopyDocumentView({ patientId }: { patientId: string }) {
         global: false,
         payload: { operation: "subscribeTo", SubscribeTo: [patientId] },
         subscriptionIds: [],
-        destination: ["secondary-display", "document-copy"],
+        destination: ["secondary-display", "document-copy", "patient-Root"],
       };
       socket.sendJsonMessage(message, true);
     }

@@ -52,6 +52,7 @@ const server = Server.configure({
       token,
       JWT_SECRET
     ) as UserInterface;
+    // console.log({ userId });
 
     if (!userId || !editorKey) throw Error();
     await prisma.user.findFirstOrThrow({
@@ -63,14 +64,15 @@ const server = Server.configure({
       },
     });
   },
-  /* async onChange() {
+  async onChange() {
     console.log("triggered");
-  }, */
+  },
 
   async onLoadDocument({
     documentName,
     document,
   }: onLoadDocumentPayload): Promise<any> {
+    // console.log({ documentName });
     const [patientId, documentType] = documentName.split("-");
     const documentStore = await prisma.documentStore.findFirst({
       where: {
@@ -101,6 +103,7 @@ const server = Server.configure({
    */
   async onStoreDocument({ document, documentName }: onChangePayload) {
     try {
+      console.log("stored");
       const textContent = JSON.stringify(
         yTextToSlateElement(document.get("content", Y.XmlText) as Y.XmlText)
       );

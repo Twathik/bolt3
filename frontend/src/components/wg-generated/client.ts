@@ -40,6 +40,13 @@ import type {
 	DataTableTriggerInsertDataSubscriptionResponse,
 	DataTableTriggerInsertDataSubscriptionInput,
 	DataTableTriggerInsertDataSubscriptionResponseData,
+	DocumentTemplatesGetDocumentTemplatesResponse,
+	DocumentTemplatesGetDocumentTemplatesResponseData,
+	DocumentTemplatesGetDocumentTemplatesSettingsResponse,
+	DocumentTemplatesGetDocumentTemplatesSettingsResponseData,
+	DocumentTemplatesSaveDocumentTemplateSettingsResponse,
+	DocumentTemplatesSaveDocumentTemplateSettingsInput,
+	DocumentTemplatesSaveDocumentTemplateSettingsResponseData,
 	DrugsIndexDrugsResponse,
 	DrugsIndexDrugsResponseData,
 	EconomizersCreateEconomizerResponse,
@@ -80,6 +87,9 @@ import type {
 	WorkingListsLinkWorkingListResponse,
 	WorkingListsLinkWorkingListInput,
 	WorkingListsLinkWorkingListResponseData,
+	WorkingListsPatientWorkingListsResponse,
+	WorkingListsPatientWorkingListsInput,
+	WorkingListsPatientWorkingListsResponseData,
 	WorkingListsToggleLockWorkingListResponse,
 	WorkingListsToggleLockWorkingListInput,
 	WorkingListsToggleLockWorkingListResponseData,
@@ -158,6 +168,9 @@ import type {
 	PatientsGetOnePatientResponse,
 	PatientsGetOnePatientInput,
 	PatientsGetOnePatientResponseData,
+	PatientsGetOnePatientDocumentResponse,
+	PatientsGetOnePatientDocumentInput,
+	PatientsGetOnePatientDocumentResponseData,
 	PatientsGetOnePatientInfoResponse,
 	PatientsGetOnePatientInfoInput,
 	PatientsGetOnePatientInfoResponseData,
@@ -169,14 +182,6 @@ import type {
 	PatientsUpdateOnePatientResponse,
 	PatientsUpdateOnePatientInput,
 	PatientsUpdateOnePatientResponseData,
-	TemplatesFetchTemplateResponse,
-	TemplatesFetchTemplateInput,
-	TemplatesFetchTemplateResponseData,
-	TemplatesGetTemplatesResponse,
-	TemplatesGetTemplatesResponseData,
-	TemplatesUpdateTemplateResponse,
-	TemplatesUpdateTemplateInput,
-	TemplatesUpdateTemplateResponseData,
 	UsersGetUserResponse,
 	UsersGetUserResponseData,
 	WorkingListsLinkExamResponse,
@@ -212,6 +217,11 @@ export interface LocalMinioGalleryMetadata {
 	position: number;
 }
 
+export interface LocalMinioDocumentTemplateMetadata {
+	uuid: string;
+	face: string;
+}
+
 type S3Providers = {
 	localMinio: {
 		hasProfiles: true;
@@ -219,6 +229,7 @@ type S3Providers = {
 			avatar: LocalMinioAvatarMetadata;
 			coverPicture: object;
 			gallery: LocalMinioGalleryMetadata;
+			documentTemplate: LocalMinioDocumentTemplateMetadata;
 		};
 	};
 };
@@ -244,6 +255,13 @@ const S3UploadProviderData: { [provider: string]: { [profile: string]: UploadVal
 			maxAllowedUploadSizeBytes: -1,
 			maxAllowedFiles: -1,
 		},
+		documentTemplate: {
+			requireAuthentication: true,
+			maxAllowedUploadSizeBytes: 20971520,
+			maxAllowedFiles: 1,
+			allowedMimeTypes: ["image/png", "image/jpeg"],
+			allowedFileExtensions: ["png", "jpg"],
+		},
 	},
 };
 
@@ -257,7 +275,7 @@ export interface AuthProvider {
 }
 
 export const defaultClientConfig: ClientConfig = {
-	applicationHash: "0422896d",
+	applicationHash: "e1e48066",
 	baseURL: "http://api.bolt3.local",
 	sdkVersion: "0.181.5",
 };
@@ -279,6 +297,15 @@ export const operationMetadata: OperationMetadata = {
 		requiresAuthentication: true,
 	},
 	"DataTable/triggerInsertDataSubscription": {
+		requiresAuthentication: true,
+	},
+	"DocumentTemplates/getDocumentTemplates": {
+		requiresAuthentication: true,
+	},
+	"DocumentTemplates/getDocumentTemplatesSettings": {
+		requiresAuthentication: true,
+	},
+	"DocumentTemplates/saveDocumentTemplateSettings": {
 		requiresAuthentication: true,
 	},
 	"Drugs/indexDrugs": {
@@ -321,6 +348,9 @@ export const operationMetadata: OperationMetadata = {
 		requiresAuthentication: true,
 	},
 	"WorkingLists/linkWorkingList": {
+		requiresAuthentication: true,
+	},
+	"WorkingLists/patientWorkingLists": {
 		requiresAuthentication: true,
 	},
 	"WorkingLists/toggleLockWorkingList": {
@@ -404,6 +434,9 @@ export const operationMetadata: OperationMetadata = {
 	"patients/getOnePatient": {
 		requiresAuthentication: true,
 	},
+	"patients/getOnePatientDocument": {
+		requiresAuthentication: true,
+	},
 	"patients/getOnePatientInfo": {
 		requiresAuthentication: true,
 	},
@@ -414,15 +447,6 @@ export const operationMetadata: OperationMetadata = {
 		requiresAuthentication: true,
 	},
 	"patients/updateOnePatient": {
-		requiresAuthentication: true,
-	},
-	"templates/fetchTemplate": {
-		requiresAuthentication: true,
-	},
-	"templates/getTemplates": {
-		requiresAuthentication: true,
-	},
-	"templates/updateTemplate": {
 		requiresAuthentication: true,
 	},
 	"users/getUser": {
@@ -517,6 +541,16 @@ export type Queries = {
 		response: { data?: DataTableGetDataTableConfigurationsResponse["data"]; error?: ClientOperationErrors };
 		requiresAuthentication: true;
 	};
+	"DocumentTemplates/getDocumentTemplates": {
+		input?: undefined;
+		response: { data?: DocumentTemplatesGetDocumentTemplatesResponse["data"]; error?: ClientOperationErrors };
+		requiresAuthentication: true;
+	};
+	"DocumentTemplates/getDocumentTemplatesSettings": {
+		input?: undefined;
+		response: { data?: DocumentTemplatesGetDocumentTemplatesSettingsResponse["data"]; error?: ClientOperationErrors };
+		requiresAuthentication: true;
+	};
 	"Economizers/economizerTemplate": {
 		input: EconomizersEconomizerTemplateInput;
 		response: { data?: EconomizersEconomizerTemplateResponse["data"]; error?: ClientOperationErrors };
@@ -540,6 +574,11 @@ export type Queries = {
 	"Modality/modalities": {
 		input?: undefined;
 		response: { data?: ModalityModalitiesResponse["data"]; error?: ClientOperationErrors };
+		requiresAuthentication: true;
+	};
+	"WorkingLists/patientWorkingLists": {
+		input: WorkingListsPatientWorkingListsInput;
+		response: { data?: WorkingListsPatientWorkingListsResponse["data"]; error?: ClientOperationErrors };
 		requiresAuthentication: true;
 	};
 	"WorkingLists/workingLists": {
@@ -597,19 +636,14 @@ export type Queries = {
 		response: { data?: PatientsGetOnePatientResponse["data"]; error?: ClientOperationErrors };
 		requiresAuthentication: true;
 	};
+	"patients/getOnePatientDocument": {
+		input: PatientsGetOnePatientDocumentInput;
+		response: { data?: PatientsGetOnePatientDocumentResponse["data"]; error?: ClientOperationErrors };
+		requiresAuthentication: true;
+	};
 	"patients/getOnePatientInfo": {
 		input: PatientsGetOnePatientInfoInput;
 		response: { data?: PatientsGetOnePatientInfoResponse["data"]; error?: ClientOperationErrors };
-		requiresAuthentication: true;
-	};
-	"templates/fetchTemplate": {
-		input: TemplatesFetchTemplateInput;
-		response: { data?: TemplatesFetchTemplateResponse["data"]; error?: ClientOperationErrors };
-		requiresAuthentication: true;
-	};
-	"templates/getTemplates": {
-		input?: undefined;
-		response: { data?: TemplatesGetTemplatesResponse["data"]; error?: ClientOperationErrors };
 		requiresAuthentication: true;
 	};
 	"users/getUser": {
@@ -640,6 +674,11 @@ export type Mutations = {
 	"DataTable/triggerInsertDataSubscription": {
 		input: DataTableTriggerInsertDataSubscriptionInput;
 		response: { data?: DataTableTriggerInsertDataSubscriptionResponse["data"]; error?: ClientOperationErrors };
+		requiresAuthentication: true;
+	};
+	"DocumentTemplates/saveDocumentTemplateSettings": {
+		input: DocumentTemplatesSaveDocumentTemplateSettingsInput;
+		response: { data?: DocumentTemplatesSaveDocumentTemplateSettingsResponse["data"]; error?: ClientOperationErrors };
 		requiresAuthentication: true;
 	};
 	"Drugs/indexDrugs": {
@@ -780,11 +819,6 @@ export type Mutations = {
 	"patients/updateOnePatient": {
 		input: PatientsUpdateOnePatientInput;
 		response: { data?: PatientsUpdateOnePatientResponse["data"]; error?: ClientOperationErrors };
-		requiresAuthentication: true;
-	};
-	"templates/updateTemplate": {
-		input: TemplatesUpdateTemplateInput;
-		response: { data?: TemplatesUpdateTemplateResponse["data"]; error?: ClientOperationErrors };
 		requiresAuthentication: true;
 	};
 	"WorkingLists/refreshLinkExam": {

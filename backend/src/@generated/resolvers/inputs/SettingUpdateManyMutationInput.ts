@@ -3,6 +3,7 @@ import * as GraphQLScalars from "graphql-scalars";
 import { Prisma } from "@prisma/client";
 import { DecimalJSScalar } from "../../scalars";
 import { IntFieldUpdateOperationsInput } from "../inputs/IntFieldUpdateOperationsInput";
+import { NullableStringFieldUpdateOperationsInput } from "../inputs/NullableStringFieldUpdateOperationsInput";
 import { SettingUpdateallowedEventTypesInput } from "../inputs/SettingUpdateallowedEventTypesInput";
 import { StringFieldUpdateOperationsInput } from "../inputs/StringFieldUpdateOperationsInput";
 
@@ -32,4 +33,9 @@ export class SettingUpdateManyMutationInput {
     nullable: true
   })
   allowedEventTypes?: SettingUpdateallowedEventTypesInput | undefined;
+
+  @TypeGraphQL.Field(_type => NullableStringFieldUpdateOperationsInput, {
+    nullable: true
+  })
+  documentTemplateConfiguration?: NullableStringFieldUpdateOperationsInput | undefined;
 }

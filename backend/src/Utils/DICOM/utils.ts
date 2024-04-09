@@ -1,6 +1,7 @@
 import { EventTypes } from '@prisma/client'
 import { ModalityType, WorkListInterface } from './WorklistInterface'
 import { writeFileSync } from 'fs'
+import { v4 as uuid } from 'uuid'
 
 type modalitiesType = {
   type: ModalityType
@@ -383,7 +384,7 @@ export const modalitiesTypes: modalitiesType[] = [
   {
     type: 'US',
     description: 'Ultrasound',
-    eventType: 'GENERAL_SONO',
+    eventType: 'SONOGRAPHY',
   },
 
   {
@@ -452,6 +453,7 @@ export const generateWorkList = ({
     },
     StudyInstanceUID,
   } = data
+  console.log({ StudyInstanceUID })
   const template = `
 (0008,0050) [${AccessionNumber}] 
 (0008,0090) [${ReferringPhysiciansName}] 
@@ -470,7 +472,7 @@ export const generateWorkList = ({
 (0010,21b0) [${AdditionalPatientHistory ?? ''}] 
 (0010,21c0) [${PregnancyStatus ?? ''}]
 (0010,4000) [${PatientComments ?? ''}] 
-(0020,000d) [${StudyInstanceUID ?? ''}] 
+(0020,000d) [${StudyInstanceUID ?? uuid()}] 
 (0032,1032) [${RequestingPhysician ?? ''}] 
 (0032,1033) [${RequestingService ?? ''}] 
 (0032,1060) [${RequestedProcedureDescription ?? ''}] 

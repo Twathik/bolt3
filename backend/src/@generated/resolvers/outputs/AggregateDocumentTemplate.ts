@@ -2,9 +2,11 @@ import * as TypeGraphQL from "type-graphql";
 import * as GraphQLScalars from "graphql-scalars";
 import { Prisma } from "@prisma/client";
 import { DecimalJSScalar } from "../../scalars";
+import { DocumentTemplateAvgAggregate } from "../outputs/DocumentTemplateAvgAggregate";
 import { DocumentTemplateCountAggregate } from "../outputs/DocumentTemplateCountAggregate";
 import { DocumentTemplateMaxAggregate } from "../outputs/DocumentTemplateMaxAggregate";
 import { DocumentTemplateMinAggregate } from "../outputs/DocumentTemplateMinAggregate";
+import { DocumentTemplateSumAggregate } from "../outputs/DocumentTemplateSumAggregate";
 
 @TypeGraphQL.ObjectType("AggregateDocumentTemplate", {})
 export class AggregateDocumentTemplate {
@@ -12,6 +14,16 @@ export class AggregateDocumentTemplate {
     nullable: true
   })
   _count!: DocumentTemplateCountAggregate | null;
+
+  @TypeGraphQL.Field(_type => DocumentTemplateAvgAggregate, {
+    nullable: true
+  })
+  _avg!: DocumentTemplateAvgAggregate | null;
+
+  @TypeGraphQL.Field(_type => DocumentTemplateSumAggregate, {
+    nullable: true
+  })
+  _sum!: DocumentTemplateSumAggregate | null;
 
   @TypeGraphQL.Field(_type => DocumentTemplateMinAggregate, {
     nullable: true

@@ -24,4 +24,9 @@ export class SettingMinAggregate {
     nullable: true
   })
   allowedDICOMmodalities!: number | null;
+
+  @TypeGraphQL.Field(_type => String, {
+    nullable: true
+  })
+  documentTemplateConfiguration!: string | null;
 }

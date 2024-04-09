@@ -1,4 +1,8 @@
-import type { PlateEditor, TElement, Value } from "@udecode/plate-common";
+import {
+  isElement,
+  type TDescendant,
+  type TElement,
+} from "@udecode/plate-common";
 import type { NodeCustomTypes } from "./NodesCustomTypes";
 
 const checkType = ({
@@ -22,17 +26,22 @@ const checkType = ({
     checkType({ child: c, type, index: i, set, path: nodePath })
   );
 };
-export const getNodesByType = <V extends Value>(
-  editor: PlateEditor<V>,
-  type: NodeCustomTypes
-): { n: TElement; path: number[] }[] => {
+export const getNodesByType = ({
+  nodesToCheck,
+  type,
+}: {
+  nodesToCheck: TDescendant[];
+  type: NodeCustomTypes;
+}): { n: TElement; path: number[] }[] => {
   let nodes: { n: TElement; path: number[] }[] = [];
 
   const set = ({ n, path }: { n: TElement; path: number[] }) => {
     nodes.push({ n, path });
   };
-  editor.children?.forEach((child, index) => {
-    checkType({ child, type, index, set, path: [index] });
+  nodesToCheck.forEach((child, index) => {
+    if (isElement(child)) {
+      checkType({ child, type, index, set, path: [index] });
+    }
   });
 
   return nodes;

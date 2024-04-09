@@ -8,37 +8,46 @@ import DiagnosticEventComponent from "./ClinicalEvents/DiagnosticEventComponent"
 import ECGEventComponent from "./ClinicalEvents/ECGEventComponent";
 import HistoryEventComponent from "./ClinicalEvents/HistoryEventComponent";
 import MedicalReportEventComponent from "./ClinicalEvents/MedicalReportEventComponent";
-import PrescriptionEventComponent from "./ClinicalEvents/PrescriptionEventComponent";
-import SonographyEventComponent from "./ClinicalEvents/SonographyEventComponent";
+import PrescriptionEventRootComponent from "./ClinicalEvents/PrescriptionEvent/PrescriptionEventRootComponent";
+import SubscribeToFocusedClinicalEventView from "../subscriptionsHandlers/SubscribeToFocusedClinicalEventView";
+import SonographyEventRootComponent from "./ClinicalEvents/SonographyEvent/SonographyEventRootComponent";
 
 function FocusedClinicalEventComponent() {
   const focusedClinicalEvent = useBoltStore((s) => s.focusedClinicalEvent);
+  const patient = useBoltStore((s) => s.patient);
 
   const event = useMemo(() => {
-    switch (focusedClinicalEvent?.eventType) {
-      case "BIOLOGY":
-        return <BiologyEventComponent />;
-      case "CERTIFICAT":
-        return <CertificatEventComponent />;
-      case "CLINICALEXAM":
-        return <ClinicalExamEventComponent />;
-      case "DIAGNOSTIC":
-        return <DiagnosticEventComponent />;
-      case "ECG":
-        return <ECGEventComponent />;
-      case "HISTORY":
-        return <HistoryEventComponent />;
-      case "MEDICAL_REPORT":
-        return <MedicalReportEventComponent />;
-      case "PRESCRIPTION":
-        return <PrescriptionEventComponent />;
-      case "SONOGRAPHY":
-        return <SonographyEventComponent />;
+    if (patient) {
+      switch (focusedClinicalEvent?.eventType) {
+        case "BIOLOGY":
+          return <BiologyEventComponent patient={patient} />;
+        case "CERTIFICAT":
+          return <CertificatEventComponent patient={patient} />;
+        case "CLINICALEXAM":
+          return <ClinicalExamEventComponent patient={patient} />;
+        case "DIAGNOSTIC":
+          return <DiagnosticEventComponent patient={patient} />;
+        case "ECG":
+          return <ECGEventComponent patient={patient} />;
+        case "HISTORY":
+          return <HistoryEventComponent patient={patient} />;
+        case "MEDICAL_REPORT":
+          return <MedicalReportEventComponent patient={patient} />;
+        case "PRESCRIPTION":
+          return <PrescriptionEventRootComponent patient={patient} />;
+        case "SONOGRAPHY":
+          return <SonographyEventRootComponent patient={patient} />;
 
-      default:
-        return <div></div>;
+        default:
+          return (
+            <div>
+              <SubscribeToFocusedClinicalEventView patientId={patient.id} />
+            </div>
+          );
+      }
     }
-  }, [focusedClinicalEvent]);
+    return <div>No patient</div>;
+  }, [focusedClinicalEvent?.eventType, patient]);
   return event;
 }
 

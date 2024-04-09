@@ -101,7 +101,6 @@ import {
   ELEMENT_MENTION,
   ELEMENT_MENTION_INPUT,
 } from "@udecode/plate-mention";
-import { createNodeIdPlugin } from "@udecode/plate-node-id";
 import {
   createParagraphPlugin,
   ELEMENT_PARAGRAPH,
@@ -122,7 +121,7 @@ import {
 import { createTrailingBlockPlugin } from "@udecode/plate-trailing-block";
 
 import { autoformatPlugin } from "@/components/plateEditor/lib/autoformatPlugin";
-import { dragOverCursorPlugin } from "@/components/plateEditor/lib/dragOverCursorPlugin";
+//import { dragOverCursorPlugin } from "@/components/plateEditor/lib/dragOverCursorPlugin";
 import { BlockquoteElement } from "@/components/plate-ui/blockquote-element";
 import { CodeBlockElement } from "@/components/plate-ui/code-block-element";
 import { CodeLeaf } from "@/components/plate-ui/code-leaf";
@@ -167,11 +166,11 @@ import {
   DocumentHeaderElement,
 } from "../plate-app/Documents/DocumentHeaderElement";
 import { DOCUMENT_HEADER_KEY } from "../plate-app/Documents/DocumentsKeys";
-import withPreventHeadersModifications from "./deletionProtect";
 import { DATA_INPUT_ELEMENT } from "../plate-app/DataInputs/DataInputKeys";
 import {
   PRESCRIPTION_DRUG_COL,
   PRESCRIPTION_FREQUENCY_COL,
+  PRESCRIPTION_LIST_NUMBER_COL,
   PRESCRIPTION_QUANTITY_COL,
   PRESCRIPTION_TABLE_KEY,
 } from "../plate-app/PrescriptionTable/PrescriptionTableKey";
@@ -192,6 +191,27 @@ import {
   PrescriptionQuantityCol,
 } from "../plate-app/PrescriptionTable/PrescriptionQuentityCol";
 import normalizeCollaboration from "./normalizeCollaboration";
+import {
+  createPrescriptionListNumberCol,
+  PrescriptionListNumberCol,
+} from "../plate-app/PrescriptionTable/PrescriptionListNumberCol";
+import {
+  ColumnElement,
+  createColumnElementPlugin,
+} from "../plate-app/ColumnSystem/ColumnElementPlugin";
+import {
+  ColumnContainerElement,
+  createColumnContainerElement,
+} from "../plate-app/ColumnSystem/ColumnContainerPlugin";
+import {
+  COLUMN_CONTAINER_KEY,
+  COLUMN_ELEMENT_KEY,
+} from "../plate-app/ColumnSystem/ColumnSystemKeys";
+import {
+  createPageBreakElement,
+  PageBreakElement,
+} from "../plate-app/PageBreak/PageBreakPlugin";
+import { PAGE_BREAK_KEY } from "../plate-app/PageBreak/PageBreakKeys";
 
 const resetBlockTypesCommonRule = {
   types: [ELEMENT_BLOCKQUOTE, ELEMENT_TODO_LI],
@@ -330,7 +350,7 @@ export const platePluginWithoutCollaboration = () => {
           ],
         },
       }),
-      createNodeIdPlugin(),
+
       createResetNodePlugin({
         options: {
           rules: [
@@ -408,7 +428,7 @@ export const platePluginWithoutCollaboration = () => {
       createTrailingBlockPlugin({
         options: { type: ELEMENT_PARAGRAPH },
       }),
-      dragOverCursorPlugin,
+      //dragOverCursorPlugin,
 
       // Collaboration
       // Deserialization
@@ -433,7 +453,6 @@ export const platePluginWithoutCollaboration = () => {
       createDataInputPlugin(),
       createDocumentHeaderPlugin({
         key: DOCUMENT_HEADER_KEY,
-        withOverrides: withPreventHeadersModifications,
         options: {
           documentType: "Diagnostics du patient",
         },
@@ -442,6 +461,10 @@ export const platePluginWithoutCollaboration = () => {
       createPrescriptionDrugCol(),
       createPrescriptionFrequencyCol(),
       createPrescriptionQuantityCol(),
+      createPrescriptionListNumberCol(),
+      createColumnElementPlugin(),
+      createColumnContainerElement(),
+      createPageBreakElement(),
 
       /* createTogglePlugin({
       key: DIAGNOSTIC_DOCUMENT_KEY,
@@ -495,6 +518,10 @@ export const platePluginWithoutCollaboration = () => {
           [PRESCRIPTION_DRUG_COL]: PrescriptionDrugCol,
           [PRESCRIPTION_FREQUENCY_COL]: PrescriptionFrequencyCol,
           [PRESCRIPTION_QUANTITY_COL]: PrescriptionQuantityCol,
+          [PRESCRIPTION_LIST_NUMBER_COL]: PrescriptionListNumberCol,
+          [COLUMN_CONTAINER_KEY]: ColumnContainerElement,
+          [COLUMN_ELEMENT_KEY]: ColumnElement,
+          [PAGE_BREAK_KEY]: PageBreakElement,
 
           // [DIAGNOSTIC_DOCUMENT_KEY]: ToggleElement,
         })

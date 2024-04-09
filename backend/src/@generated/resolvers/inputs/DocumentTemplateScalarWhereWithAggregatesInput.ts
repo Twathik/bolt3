@@ -2,8 +2,10 @@ import * as TypeGraphQL from "type-graphql";
 import * as GraphQLScalars from "graphql-scalars";
 import { Prisma } from "@prisma/client";
 import { DecimalJSScalar } from "../../scalars";
-import { BoolWithAggregatesFilter } from "../inputs/BoolWithAggregatesFilter";
-import { EnumEventTypesWithAggregatesFilter } from "../inputs/EnumEventTypesWithAggregatesFilter";
+import { DateTimeWithAggregatesFilter } from "../inputs/DateTimeWithAggregatesFilter";
+import { EnumTemplateSpecialityWithAggregatesFilter } from "../inputs/EnumTemplateSpecialityWithAggregatesFilter";
+import { IntWithAggregatesFilter } from "../inputs/IntWithAggregatesFilter";
+import { StringNullableWithAggregatesFilter } from "../inputs/StringNullableWithAggregatesFilter";
 import { StringWithAggregatesFilter } from "../inputs/StringWithAggregatesFilter";
 
 @TypeGraphQL.InputType("DocumentTemplateScalarWhereWithAggregatesInput", {})
@@ -23,23 +25,43 @@ export class DocumentTemplateScalarWhereWithAggregatesInput {
   })
   NOT?: DocumentTemplateScalarWhereWithAggregatesInput[] | undefined;
 
-  @TypeGraphQL.Field(_type => StringWithAggregatesFilter, {
+  @TypeGraphQL.Field(_type => IntWithAggregatesFilter, {
     nullable: true
   })
-  id?: StringWithAggregatesFilter | undefined;
-
-  @TypeGraphQL.Field(_type => EnumEventTypesWithAggregatesFilter, {
-    nullable: true
-  })
-  eventType?: EnumEventTypesWithAggregatesFilter | undefined;
+  id?: IntWithAggregatesFilter | undefined;
 
   @TypeGraphQL.Field(_type => StringWithAggregatesFilter, {
     nullable: true
   })
-  template?: StringWithAggregatesFilter | undefined;
+  templateName?: StringWithAggregatesFilter | undefined;
 
-  @TypeGraphQL.Field(_type => BoolWithAggregatesFilter, {
+  @TypeGraphQL.Field(_type => StringWithAggregatesFilter, {
     nullable: true
   })
-  empty?: BoolWithAggregatesFilter | undefined;
+  evenTemplateUrl?: StringWithAggregatesFilter | undefined;
+
+  @TypeGraphQL.Field(_type => StringNullableWithAggregatesFilter, {
+    nullable: true
+  })
+  eventDoxTemplate?: StringNullableWithAggregatesFilter | undefined;
+
+  @TypeGraphQL.Field(_type => StringWithAggregatesFilter, {
+    nullable: true
+  })
+  oddTemplateUrl?: StringWithAggregatesFilter | undefined;
+
+  @TypeGraphQL.Field(_type => StringNullableWithAggregatesFilter, {
+    nullable: true
+  })
+  oddDoxTemplate?: StringNullableWithAggregatesFilter | undefined;
+
+  @TypeGraphQL.Field(_type => EnumTemplateSpecialityWithAggregatesFilter, {
+    nullable: true
+  })
+  templateSpeciality?: EnumTemplateSpecialityWithAggregatesFilter | undefined;
+
+  @TypeGraphQL.Field(_type => DateTimeWithAggregatesFilter, {
+    nullable: true
+  })
+  createdAt?: DateTimeWithAggregatesFilter | undefined;
 }

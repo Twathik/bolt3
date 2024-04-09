@@ -12,7 +12,7 @@ const clearConnectionFromTopicRooms = ({
   ws: Socket;
   peers: Set<Socket>;
 }) => {
-  console.log({ destinationFromClearConnection: ws.destination });
+  //console.log({ destinationFromClearConnection: ws.destination });
   const message: WebsocketMessageInterface = {
     type: "subscribedUsers",
     destination: ws.destination

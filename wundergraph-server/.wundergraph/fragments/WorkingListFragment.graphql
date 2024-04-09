@@ -12,6 +12,9 @@ fragment WorkingListFragment on mainDb_WorkingList {
   user {
     fullName
   }
+  clinicalEvent {
+    eventType
+  }
   clinicalEventId
   createdAt
   modalityExamStatus

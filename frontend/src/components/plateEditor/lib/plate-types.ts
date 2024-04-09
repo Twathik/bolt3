@@ -396,7 +396,7 @@ export type MyAutoformatRule = AutoformatRule<MyValue, MyEditor>;
 /// New interfaces
 
 export interface DiagnosticComboboxInterface extends TComboboxItemBase {
-  diagnosticId: string;
+  metadata: { diagnosticId: string };
 }
 export interface DiagnosticElementInterface {
   type: typeof DIAGNOSTIC_MENTION_KEY;

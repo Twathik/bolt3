@@ -35,5 +35,5 @@ export class FindFirstDocumentTemplateOrThrowArgs {
   @TypeGraphQL.Field(_type => [DocumentTemplateScalarFieldEnum], {
     nullable: true
   })
-  distinct?: Array<"id" | "eventType" | "template" | "empty"> | undefined;
+  distinct?: Array<"id" | "templateName" | "evenTemplateUrl" | "eventDoxTemplate" | "oddTemplateUrl" | "oddDoxTemplate" | "templateSpeciality" | "createdAt"> | undefined;
 }

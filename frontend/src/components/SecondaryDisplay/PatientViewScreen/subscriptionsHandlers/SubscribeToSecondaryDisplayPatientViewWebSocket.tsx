@@ -19,7 +19,11 @@ function SubscribeToSecondaryDisplayPatientViewWebSocket({
         global: false,
         payload: { operation: "subscribeTo", SubscribeTo: [patientId] },
         subscriptionIds: [],
-        destination: ["secondary-display", "patient-information"],
+        destination: [
+          "secondary-display",
+          "patient-information",
+          "patient-Root",
+        ],
       };
       socket.sendJsonMessage(message, true);
     }

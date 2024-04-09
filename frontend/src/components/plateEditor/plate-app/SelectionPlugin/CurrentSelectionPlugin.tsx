@@ -1,25 +1,45 @@
 import { useEditorRef, useEditorSelection } from "@udecode/plate-common";
-import { useEffect, useState } from "react";
-import { DOCUMENT_HEADER_KEY } from "../Documents/DocumentsKeys";
+import { useEffect, useMemo, useState } from "react";
 import type { FocusedClinicalEvent } from "@/stores/boltStoreType";
 import type { DocumentHeaderElementTypeWithId } from "../Documents/DocumentHeaderUtils";
 import { useBoltStore } from "@/stores/boltStore";
 import { v4 as uuid } from "uuid";
 import { ReadyState } from "react-use-websocket";
 import type { WebsocketMessageInterface } from "@/components/Websockets/interfaces/WebsocketMessageInterface";
+import { RootDocumentTypes } from "@/lib/utils/RootDocumentTypes";
+import type { HocuspocusProvider } from "@hocuspocus/provider";
+import randomColor from "randomcolor";
 
-const RootDocumentTypes = [DOCUMENT_HEADER_KEY];
-
-function CurrentSelectionPlugin({ patientId }: { patientId: string }) {
+function CurrentSelectionPlugin({
+  provider,
+}: {
+  provider: HocuspocusProvider;
+}) {
   const selection = useEditorSelection();
   const editor = useEditorRef();
   const socket = useBoltStore((s) => s.socket);
+  const patient = useBoltStore((s) => s.patient);
+  const user = useBoltStore((s) => s.user);
+
+  const color = useMemo(
+    () =>
+      randomColor({
+        luminosity: "dark",
+        alpha: 1,
+        format: "hex",
+      }),
+    []
+  );
 
   const [localFocusedDocument, setLocalFocusedDocument] =
     useState<FocusedClinicalEvent | null>(null);
 
   useEffect(() => {
-    if (socket?.readyState === ReadyState.OPEN && localFocusedDocument) {
+    if (
+      socket?.readyState === ReadyState.OPEN &&
+      localFocusedDocument &&
+      patient
+    ) {
       let message: WebsocketMessageInterface = {
         id: uuid(),
         type: "focused-clinical-event",
@@ -27,9 +47,15 @@ function CurrentSelectionPlugin({ patientId }: { patientId: string }) {
         payload: {
           operation: "update",
           focusedClinicalEvent: localFocusedDocument,
+          patient,
         },
-        subscriptionIds: [patientId],
-        destination: ["folder", "document", "focused-clinical-event"],
+        subscriptionIds: [patient.id],
+        destination: [
+          "folder",
+          "document",
+          "focused-clinical-event",
+          "secondary-display",
+        ],
       };
       socket.sendJsonMessage(message, false);
     }
@@ -39,6 +65,13 @@ function CurrentSelectionPlugin({ patientId }: { patientId: string }) {
 
   useEffect(() => {
     if (selection?.anchor.path[0]) {
+      provider.setAwarenessField("user", {
+        data: {
+          color,
+          name: `${user?.lastName} ${user?.firstName}`,
+        },
+        selection,
+      });
       let index: number = selection.anchor.path[0];
 
       while (
@@ -58,7 +91,7 @@ function CurrentSelectionPlugin({ patientId }: { patientId: string }) {
         setLocalFocusedDocument(null);
       }
     }
-  }, [editor.children, selection]);
+  }, [color, editor.children, provider, selection, user]);
   return null;
 }
 

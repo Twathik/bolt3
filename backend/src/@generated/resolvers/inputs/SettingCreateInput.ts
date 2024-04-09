@@ -30,4 +30,9 @@ export class SettingCreateInput {
     nullable: true
   })
   allowedEventTypes?: SettingCreateallowedEventTypesInput | undefined;
+
+  @TypeGraphQL.Field(_type => String, {
+    nullable: true
+  })
+  documentTemplateConfiguration?: string | undefined;
 }

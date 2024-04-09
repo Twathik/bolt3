@@ -34,9 +34,11 @@ type AggregateDocumentStore {
 }
 
 type AggregateDocumentTemplate {
+  _avg: DocumentTemplateAvgAggregate
   _count: DocumentTemplateCountAggregate
   _max: DocumentTemplateMaxAggregate
   _min: DocumentTemplateMinAggregate
+  _sum: DocumentTemplateSumAggregate
 }
 
 type AggregateEconomizer {
@@ -1772,145 +1774,234 @@ input DocumentStoreWhereUniqueInput {
 }
 
 type DocumentTemplate {
-  empty: Boolean!
-  eventType: EventTypes!
-  id: String!
-  template: String!
+  createdAt: DateTimeISO!
+  evenTemplateUrl: String!
+  eventDoxTemplate: String
+  id: Int!
+  oddDoxTemplate: String
+  oddTemplateUrl: String!
+  templateName: String!
+  templateSpeciality: TemplateSpeciality!
+}
+
+type DocumentTemplateAvgAggregate {
+  id: Float
+}
+
+input DocumentTemplateAvgOrderByAggregateInput {
+  id: SortOrder
 }
 
 type DocumentTemplateCountAggregate {
   _all: Int!
-  empty: Int!
-  eventType: Int!
+  createdAt: Int!
+  evenTemplateUrl: Int!
+  eventDoxTemplate: Int!
   id: Int!
-  template: Int!
+  oddDoxTemplate: Int!
+  oddTemplateUrl: Int!
+  templateName: Int!
+  templateSpeciality: Int!
 }
 
 input DocumentTemplateCountOrderByAggregateInput {
-  empty: SortOrder
-  eventType: SortOrder
+  createdAt: SortOrder
+  evenTemplateUrl: SortOrder
+  eventDoxTemplate: SortOrder
   id: SortOrder
-  template: SortOrder
+  oddDoxTemplate: SortOrder
+  oddTemplateUrl: SortOrder
+  templateName: SortOrder
+  templateSpeciality: SortOrder
 }
 
 input DocumentTemplateCreateInput {
-  empty: Boolean
-  eventType: EventTypes!
-  id: String
-  template: String!
+  createdAt: DateTimeISO
+  evenTemplateUrl: String!
+  eventDoxTemplate: String
+  oddDoxTemplate: String
+  oddTemplateUrl: String!
+  templateName: String!
+  templateSpeciality: TemplateSpeciality!
 }
 
 input DocumentTemplateCreateManyInput {
-  empty: Boolean
-  eventType: EventTypes!
-  id: String
-  template: String!
+  createdAt: DateTimeISO
+  evenTemplateUrl: String!
+  eventDoxTemplate: String
+  id: Int
+  oddDoxTemplate: String
+  oddTemplateUrl: String!
+  templateName: String!
+  templateSpeciality: TemplateSpeciality!
 }
 
 type DocumentTemplateGroupBy {
+  _avg: DocumentTemplateAvgAggregate
   _count: DocumentTemplateCountAggregate
   _max: DocumentTemplateMaxAggregate
   _min: DocumentTemplateMinAggregate
-  empty: Boolean!
-  eventType: EventTypes!
-  id: String!
-  template: String!
+  _sum: DocumentTemplateSumAggregate
+  createdAt: DateTimeISO!
+  evenTemplateUrl: String!
+  eventDoxTemplate: String
+  id: Int!
+  oddDoxTemplate: String
+  oddTemplateUrl: String!
+  templateName: String!
+  templateSpeciality: TemplateSpeciality!
 }
 
 type DocumentTemplateMaxAggregate {
-  empty: Boolean
-  eventType: EventTypes
-  id: String
-  template: String
+  createdAt: DateTimeISO
+  evenTemplateUrl: String
+  eventDoxTemplate: String
+  id: Int
+  oddDoxTemplate: String
+  oddTemplateUrl: String
+  templateName: String
+  templateSpeciality: TemplateSpeciality
 }
 
 input DocumentTemplateMaxOrderByAggregateInput {
-  empty: SortOrder
-  eventType: SortOrder
+  createdAt: SortOrder
+  evenTemplateUrl: SortOrder
+  eventDoxTemplate: SortOrder
   id: SortOrder
-  template: SortOrder
+  oddDoxTemplate: SortOrder
+  oddTemplateUrl: SortOrder
+  templateName: SortOrder
+  templateSpeciality: SortOrder
 }
 
 type DocumentTemplateMinAggregate {
-  empty: Boolean
-  eventType: EventTypes
-  id: String
-  template: String
+  createdAt: DateTimeISO
+  evenTemplateUrl: String
+  eventDoxTemplate: String
+  id: Int
+  oddDoxTemplate: String
+  oddTemplateUrl: String
+  templateName: String
+  templateSpeciality: TemplateSpeciality
 }
 
 input DocumentTemplateMinOrderByAggregateInput {
-  empty: SortOrder
-  eventType: SortOrder
+  createdAt: SortOrder
+  evenTemplateUrl: SortOrder
+  eventDoxTemplate: SortOrder
   id: SortOrder
-  template: SortOrder
+  oddDoxTemplate: SortOrder
+  oddTemplateUrl: SortOrder
+  templateName: SortOrder
+  templateSpeciality: SortOrder
 }
 
 input DocumentTemplateOrderByWithAggregationInput {
+  _avg: DocumentTemplateAvgOrderByAggregateInput
   _count: DocumentTemplateCountOrderByAggregateInput
   _max: DocumentTemplateMaxOrderByAggregateInput
   _min: DocumentTemplateMinOrderByAggregateInput
-  empty: SortOrder
-  eventType: SortOrder
+  _sum: DocumentTemplateSumOrderByAggregateInput
+  createdAt: SortOrder
+  evenTemplateUrl: SortOrder
+  eventDoxTemplate: SortOrderInput
   id: SortOrder
-  template: SortOrder
+  oddDoxTemplate: SortOrderInput
+  oddTemplateUrl: SortOrder
+  templateName: SortOrder
+  templateSpeciality: SortOrder
 }
 
 input DocumentTemplateOrderByWithRelationInput {
-  empty: SortOrder
-  eventType: SortOrder
+  createdAt: SortOrder
+  evenTemplateUrl: SortOrder
+  eventDoxTemplate: SortOrderInput
   id: SortOrder
-  template: SortOrder
+  oddDoxTemplate: SortOrderInput
+  oddTemplateUrl: SortOrder
+  templateName: SortOrder
+  templateSpeciality: SortOrder
 }
 
 enum DocumentTemplateScalarFieldEnum {
-  empty
-  eventType
+  createdAt
+  evenTemplateUrl
+  eventDoxTemplate
   id
-  template
+  oddDoxTemplate
+  oddTemplateUrl
+  templateName
+  templateSpeciality
 }
 
 input DocumentTemplateScalarWhereWithAggregatesInput {
   AND: [DocumentTemplateScalarWhereWithAggregatesInput!]
   NOT: [DocumentTemplateScalarWhereWithAggregatesInput!]
   OR: [DocumentTemplateScalarWhereWithAggregatesInput!]
-  empty: BoolWithAggregatesFilter
-  eventType: EnumEventTypesWithAggregatesFilter
-  id: StringWithAggregatesFilter
-  template: StringWithAggregatesFilter
+  createdAt: DateTimeWithAggregatesFilter
+  evenTemplateUrl: StringWithAggregatesFilter
+  eventDoxTemplate: StringNullableWithAggregatesFilter
+  id: IntWithAggregatesFilter
+  oddDoxTemplate: StringNullableWithAggregatesFilter
+  oddTemplateUrl: StringWithAggregatesFilter
+  templateName: StringWithAggregatesFilter
+  templateSpeciality: EnumTemplateSpecialityWithAggregatesFilter
+}
+
+type DocumentTemplateSumAggregate {
+  id: Int
+}
+
+input DocumentTemplateSumOrderByAggregateInput {
+  id: SortOrder
 }
 
 input DocumentTemplateUpdateInput {
-  empty: BoolFieldUpdateOperationsInput
-  eventType: EnumEventTypesFieldUpdateOperationsInput
-  id: StringFieldUpdateOperationsInput
-  template: StringFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  evenTemplateUrl: StringFieldUpdateOperationsInput
+  eventDoxTemplate: NullableStringFieldUpdateOperationsInput
+  oddDoxTemplate: NullableStringFieldUpdateOperationsInput
+  oddTemplateUrl: StringFieldUpdateOperationsInput
+  templateName: StringFieldUpdateOperationsInput
+  templateSpeciality: EnumTemplateSpecialityFieldUpdateOperationsInput
 }
 
 input DocumentTemplateUpdateManyMutationInput {
-  empty: BoolFieldUpdateOperationsInput
-  eventType: EnumEventTypesFieldUpdateOperationsInput
-  id: StringFieldUpdateOperationsInput
-  template: StringFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  evenTemplateUrl: StringFieldUpdateOperationsInput
+  eventDoxTemplate: NullableStringFieldUpdateOperationsInput
+  oddDoxTemplate: NullableStringFieldUpdateOperationsInput
+  oddTemplateUrl: StringFieldUpdateOperationsInput
+  templateName: StringFieldUpdateOperationsInput
+  templateSpeciality: EnumTemplateSpecialityFieldUpdateOperationsInput
 }
 
 input DocumentTemplateWhereInput {
   AND: [DocumentTemplateWhereInput!]
   NOT: [DocumentTemplateWhereInput!]
   OR: [DocumentTemplateWhereInput!]
-  empty: BoolFilter
-  eventType: EnumEventTypesFilter
-  id: StringFilter
-  template: StringFilter
+  createdAt: DateTimeFilter
+  evenTemplateUrl: StringFilter
+  eventDoxTemplate: StringNullableFilter
+  id: IntFilter
+  oddDoxTemplate: StringNullableFilter
+  oddTemplateUrl: StringFilter
+  templateName: StringFilter
+  templateSpeciality: EnumTemplateSpecialityFilter
 }
 
 input DocumentTemplateWhereUniqueInput {
   AND: [DocumentTemplateWhereInput!]
   NOT: [DocumentTemplateWhereInput!]
   OR: [DocumentTemplateWhereInput!]
-  empty: BoolFilter
-  eventType: EventTypes
-  id: String
-  template: StringFilter
+  createdAt: DateTimeFilter
+  evenTemplateUrl: StringFilter
+  eventDoxTemplate: StringNullableFilter
+  id: Int
+  oddDoxTemplate: StringNullableFilter
+  oddTemplateUrl: StringFilter
+  templateName: StringFilter
+  templateSpeciality: EnumTemplateSpecialityFilter
 }
 
 type Economizer {
@@ -2229,6 +2320,27 @@ input EnumSexeWithAggregatesFilter {
   in: [Sexe!]
   not: NestedEnumSexeWithAggregatesFilter
   notIn: [Sexe!]
+}
+
+input EnumTemplateSpecialityFieldUpdateOperationsInput {
+  set: TemplateSpeciality
+}
+
+input EnumTemplateSpecialityFilter {
+  equals: TemplateSpeciality
+  in: [TemplateSpeciality!]
+  not: NestedEnumTemplateSpecialityFilter
+  notIn: [TemplateSpeciality!]
+}
+
+input EnumTemplateSpecialityWithAggregatesFilter {
+  _count: NestedIntFilter
+  _max: NestedEnumTemplateSpecialityFilter
+  _min: NestedEnumTemplateSpecialityFilter
+  equals: TemplateSpeciality
+  in: [TemplateSpeciality!]
+  not: NestedEnumTemplateSpecialityWithAggregatesFilter
+  notIn: [TemplateSpeciality!]
 }
 
 enum EventCategory {
@@ -3294,6 +3406,23 @@ input NestedEnumSexeWithAggregatesFilter {
   in: [Sexe!]
   not: NestedEnumSexeWithAggregatesFilter
   notIn: [Sexe!]
+}
+
+input NestedEnumTemplateSpecialityFilter {
+  equals: TemplateSpeciality
+  in: [TemplateSpeciality!]
+  not: NestedEnumTemplateSpecialityFilter
+  notIn: [TemplateSpeciality!]
+}
+
+input NestedEnumTemplateSpecialityWithAggregatesFilter {
+  _count: NestedIntFilter
+  _max: NestedEnumTemplateSpecialityFilter
+  _min: NestedEnumTemplateSpecialityFilter
+  equals: TemplateSpeciality
+  in: [TemplateSpeciality!]
+  not: NestedEnumTemplateSpecialityWithAggregatesFilter
+  notIn: [TemplateSpeciality!]
 }
 
 input NestedFloatFilter {
@@ -4491,6 +4620,7 @@ type Setting {
   allowedEventTypes: [EventTypes!]!
   allowedMobileDevices_doctors: Int!
   allowedMobileDevices_secretary: Int!
+  documentTemplateConfiguration: String
   id: String!
 }
 
@@ -4512,6 +4642,7 @@ type SettingCountAggregate {
   allowedEventTypes: Int!
   allowedMobileDevices_doctors: Int!
   allowedMobileDevices_secretary: Int!
+  documentTemplateConfiguration: Int!
   id: Int!
 }
 
@@ -4520,6 +4651,7 @@ input SettingCountOrderByAggregateInput {
   allowedEventTypes: SortOrder
   allowedMobileDevices_doctors: SortOrder
   allowedMobileDevices_secretary: SortOrder
+  documentTemplateConfiguration: SortOrder
   id: SortOrder
 }
 
@@ -4528,6 +4660,7 @@ input SettingCreateInput {
   allowedEventTypes: SettingCreateallowedEventTypesInput
   allowedMobileDevices_doctors: Int
   allowedMobileDevices_secretary: Int
+  documentTemplateConfiguration: String
   id: String
 }
 
@@ -4536,6 +4669,7 @@ input SettingCreateManyInput {
   allowedEventTypes: SettingCreateallowedEventTypesInput
   allowedMobileDevices_doctors: Int
   allowedMobileDevices_secretary: Int
+  documentTemplateConfiguration: String
   id: String
 }
 
@@ -4553,6 +4687,7 @@ type SettingGroupBy {
   allowedEventTypes: [EventTypes!]
   allowedMobileDevices_doctors: Int!
   allowedMobileDevices_secretary: Int!
+  documentTemplateConfiguration: String
   id: String!
 }
 
@@ -4560,6 +4695,7 @@ type SettingMaxAggregate {
   allowedDICOMmodalities: Int
   allowedMobileDevices_doctors: Int
   allowedMobileDevices_secretary: Int
+  documentTemplateConfiguration: String
   id: String
 }
 
@@ -4567,6 +4703,7 @@ input SettingMaxOrderByAggregateInput {
   allowedDICOMmodalities: SortOrder
   allowedMobileDevices_doctors: SortOrder
   allowedMobileDevices_secretary: SortOrder
+  documentTemplateConfiguration: SortOrder
   id: SortOrder
 }
 
@@ -4574,6 +4711,7 @@ type SettingMinAggregate {
   allowedDICOMmodalities: Int
   allowedMobileDevices_doctors: Int
   allowedMobileDevices_secretary: Int
+  documentTemplateConfiguration: String
   id: String
 }
 
@@ -4581,6 +4719,7 @@ input SettingMinOrderByAggregateInput {
   allowedDICOMmodalities: SortOrder
   allowedMobileDevices_doctors: SortOrder
   allowedMobileDevices_secretary: SortOrder
+  documentTemplateConfiguration: SortOrder
   id: SortOrder
 }
 
@@ -4594,6 +4733,7 @@ input SettingOrderByWithAggregationInput {
   allowedEventTypes: SortOrder
   allowedMobileDevices_doctors: SortOrder
   allowedMobileDevices_secretary: SortOrder
+  documentTemplateConfiguration: SortOrderInput
   id: SortOrder
 }
 
@@ -4602,6 +4742,7 @@ input SettingOrderByWithRelationInput {
   allowedEventTypes: SortOrder
   allowedMobileDevices_doctors: SortOrder
   allowedMobileDevices_secretary: SortOrder
+  documentTemplateConfiguration: SortOrderInput
   id: SortOrder
 }
 
@@ -4610,6 +4751,7 @@ enum SettingScalarFieldEnum {
   allowedEventTypes
   allowedMobileDevices_doctors
   allowedMobileDevices_secretary
+  documentTemplateConfiguration
   id
 }
 
@@ -4621,6 +4763,7 @@ input SettingScalarWhereWithAggregatesInput {
   allowedEventTypes: EnumEventTypesNullableListFilter
   allowedMobileDevices_doctors: IntWithAggregatesFilter
   allowedMobileDevices_secretary: IntWithAggregatesFilter
+  documentTemplateConfiguration: StringNullableWithAggregatesFilter
   id: StringWithAggregatesFilter
 }
 
@@ -4641,6 +4784,7 @@ input SettingUpdateInput {
   allowedEventTypes: SettingUpdateallowedEventTypesInput
   allowedMobileDevices_doctors: IntFieldUpdateOperationsInput
   allowedMobileDevices_secretary: IntFieldUpdateOperationsInput
+  documentTemplateConfiguration: NullableStringFieldUpdateOperationsInput
   id: StringFieldUpdateOperationsInput
 }
 
@@ -4649,6 +4793,7 @@ input SettingUpdateManyMutationInput {
   allowedEventTypes: SettingUpdateallowedEventTypesInput
   allowedMobileDevices_doctors: IntFieldUpdateOperationsInput
   allowedMobileDevices_secretary: IntFieldUpdateOperationsInput
+  documentTemplateConfiguration: NullableStringFieldUpdateOperationsInput
   id: StringFieldUpdateOperationsInput
 }
 
@@ -4665,6 +4810,7 @@ input SettingWhereInput {
   allowedEventTypes: EnumEventTypesNullableListFilter
   allowedMobileDevices_doctors: IntFilter
   allowedMobileDevices_secretary: IntFilter
+  documentTemplateConfiguration: StringNullableFilter
   id: StringFilter
 }
 
@@ -4676,6 +4822,7 @@ input SettingWhereUniqueInput {
   allowedEventTypes: EnumEventTypesNullableListFilter
   allowedMobileDevices_doctors: IntFilter
   allowedMobileDevices_secretary: IntFilter
+  documentTemplateConfiguration: StringNullableFilter
   id: String
 }
 
@@ -4775,6 +4922,11 @@ input StringWithAggregatesFilter {
 type Subscription {
   appSubscription(subscriptionSpecificId: [String!]!, userId: String!): AppSubscriptionModel!
   insertDataSubscription(clinicalEventId: String!): InsertDataModel!
+}
+
+enum TemplateSpeciality {
+  CARDIOLOGY
+  GYNECOLOGY
 }
 
 type User {

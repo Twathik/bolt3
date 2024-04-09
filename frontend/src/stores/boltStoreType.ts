@@ -1,5 +1,5 @@
-import type { SecondaryDisplayMessagePayload } from "@/components/Websockets/interfaces/SecondaryDisplayMessageInterface";
-import type { subscribedUsers } from "@/components/Websockets/interfaces/SubscribedUsersMessageInterface";
+import type { SecondaryDisplayMessagePayload } from "@/components/Websockets/interfaces/MessagesTypes/SecondaryDisplayMessageInterface";
+import type { subscribedUsers } from "@/components/Websockets/interfaces/MessagesTypes/SubscribedUsersMessageInterface";
 import type { DocumentHeaderElementTypeWithId } from "@/components/plateEditor/plate-app/Documents/DocumentHeaderUtils";
 import type {
   ClinicalEventsGetClinicalEventResponseData,
@@ -15,7 +15,7 @@ import type {
   WorkingListsWorkingListsResponseData,
   mainDb_EventTypesValues,
 } from "@/components/wg-generated/models";
-import type { DrugHitInterface } from "@/lib/interfaces/DrugsInterfaces";
+import type { prescriptionHit } from "@/lib/typesense/searchPrescription";
 import type { Value } from "@udecode/plate-common";
 import type { ReadyState } from "react-use-websocket";
 import type {
@@ -23,6 +23,7 @@ import type {
   SendMessage,
   WebSocketLike,
 } from "react-use-websocket/dist/lib/types";
+import type { BaseRange } from "slate";
 
 export type BoltUser = {
   userId: string;
@@ -71,12 +72,10 @@ export type PatientStoreSlice = {
 };
 
 export type PrescriptionStoreSlice = {
-  loadingPrescription: boolean;
-  prescriptions: DrugHitInterface[];
-  setInitialPrescriptions: (prescriptions: DrugHitInterface[]) => void;
-  addPrescription: (prescription: DrugHitInterface) => void;
-  removePrescription: (prescriptionId: string) => void;
-  setLoadingPrescription: (loading: boolean) => void;
+  prescriptions: prescriptionHit[];
+  setInitialPrescriptions: (prescriptions: prescriptionHit[]) => void;
+  addPrescription: (prescription: prescriptionHit) => void;
+  removePrescription: (prescriptionId: prescriptionHit) => void;
 };
 
 export type TabStoreSlice = {
@@ -93,6 +92,9 @@ export type ClinicalEventStoreSlice = {
   modalities: ModalityGetSpecificModalitiesResponseData["mainDb_modalities"];
   workingLists: WorkingListsWorkingListsResponseData["mainDb_workingLists"];
   editorConfiguration: DataTableGetDataTableConfigurationsResponseData["mainDb_getDataTableConfiguration"];
+  focusedWorkingList:
+    | WorkingListsWorkingListsResponseData["mainDb_workingLists"][0]
+    | null;
 
   setClinicalEvent: (
     clinicalEvent: ClinicalEventsGetClinicalEventResponseData["mainDb_clinicalEvent"]
@@ -112,6 +114,11 @@ export type ClinicalEventStoreSlice = {
   removeWorkingList: (
     workingLists: WorkingListsWorkingListsResponseData["mainDb_workingLists"][0]
   ) => void;
+  setFocusedWorkingList: (
+    workingLists:
+      | WorkingListsWorkingListsResponseData["mainDb_workingLists"][0]
+      | null
+  ) => void;
   setEditorConfiguration: (
     editorConfiguration: DataTableGetDataTableConfigurationsResponseData["mainDb_getDataTableConfiguration"]
   ) => void;
@@ -129,10 +136,19 @@ export type ClinicalEventStoreSlice = {
     clinicalEvent: ClinicalEventsGetClinicalEventsResponseData["mainDb_clinicalEvents"][0]
   ) => void;
 };
+export type PatientViewTabs =
+  | "informations"
+  | "focusedDocument"
+  | "copyFolder"
+  | "copyDocuments"
+  | "dicomView"
+  | "allDicomVue";
 
 export type SecondaryDisplayStoreSlice = {
   secondaryDisplay: SecondaryDisplayMessagePayload;
+  patientTab: PatientViewTabs;
   setSecondaryDisplay: (payload: SecondaryDisplayMessagePayload) => void;
+  setPatientViewTab: (tab: PatientViewTabs) => void;
 };
 export type ModalitiesStoreSlice = {
   modalities: ModalityModalitiesResponseData["mainDb_modalities"];
@@ -238,6 +254,17 @@ export type WebsocketConnectionSlice = {
   setSocket: (socket: WebsocketConnectionType | null) => void;
 };
 
+export type CursorStateType = {
+  clientId: number;
+  data: { name: string; color: string };
+  selection: BaseRange | null;
+};
+
+export type CursorStateStoreSlice = {
+  cursorStates: CursorStateType[];
+  setCursorStates: (states: CursorStateType[]) => void;
+};
+
 export type boltStoreType = ConsultationStoreSlice &
   PatientStoreSlice &
   TabStoreSlice &
@@ -251,4 +278,5 @@ export type boltStoreType = ConsultationStoreSlice &
   PlateStoreSlice &
   AppSubscriptionSlice &
   EconomizersSlice &
-  WebsocketConnectionSlice;
+  WebsocketConnectionSlice &
+  CursorStateStoreSlice;

@@ -5,6 +5,7 @@ import { DecimalJSScalar } from "../../scalars";
 import { EnumEventTypesNullableListFilter } from "../inputs/EnumEventTypesNullableListFilter";
 import { IntFilter } from "../inputs/IntFilter";
 import { SettingWhereInput } from "../inputs/SettingWhereInput";
+import { StringNullableFilter } from "../inputs/StringNullableFilter";
 
 @TypeGraphQL.InputType("SettingWhereUniqueInput", {})
 export class SettingWhereUniqueInput {
@@ -47,4 +48,9 @@ export class SettingWhereUniqueInput {
     nullable: true
   })
   allowedEventTypes?: EnumEventTypesNullableListFilter | undefined;
+
+  @TypeGraphQL.Field(_type => StringNullableFilter, {
+    nullable: true
+  })
+  documentTemplateConfiguration?: StringNullableFilter | undefined;
 }

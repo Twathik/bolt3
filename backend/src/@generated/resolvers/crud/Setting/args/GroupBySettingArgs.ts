@@ -20,7 +20,7 @@ export class GroupBySettingArgs {
   @TypeGraphQL.Field(_type => [SettingScalarFieldEnum], {
     nullable: false
   })
-  by!: Array<"id" | "allowedMobileDevices_doctors" | "allowedMobileDevices_secretary" | "allowedDICOMmodalities" | "allowedEventTypes">;
+  by!: Array<"id" | "allowedMobileDevices_doctors" | "allowedMobileDevices_secretary" | "allowedDICOMmodalities" | "allowedEventTypes" | "documentTemplateConfiguration">;
 
   @TypeGraphQL.Field(_type => SettingScalarWhereWithAggregatesInput, {
     nullable: true

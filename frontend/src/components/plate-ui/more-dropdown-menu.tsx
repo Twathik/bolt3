@@ -14,6 +14,7 @@ import {
   useOpenState,
 } from "./dropdown-menu";
 import { ToolbarButton } from "./toolbar";
+import AddPageDivider from "../plateEditor/plate-app/CustomButtons/AddPageDivider";
 
 export function MoreDropdownMenu(props: DropdownMenuProps) {
   const editor = useEditorRef();
@@ -29,15 +30,17 @@ export function MoreDropdownMenu(props: DropdownMenuProps) {
 
       <DropdownMenuContent
         align="start"
-        className="flex max-h-[500px] min-w-[180px] flex-col gap-0.5 overflow-y-auto">
+        className="flex max-h-[500px] min-w-[180px] flex-col gap-0.5 overflow-y-auto"
+      >
         <DropdownMenuItem
           onSelect={() => {
             toggleMark(editor, {
-              key: MARK_SUBSCRIPT,
+              key: MARK_SUPERSCRIPT,
               clear: MARK_SUPERSCRIPT,
             });
             focusEditor(editor);
-          }}>
+          }}
+        >
           <Icons.superscript className="mr-2 h-5 w-5" />
           Superscript
           {/* (⌘+,) */}
@@ -45,15 +48,17 @@ export function MoreDropdownMenu(props: DropdownMenuProps) {
         <DropdownMenuItem
           onSelect={() => {
             toggleMark(editor, {
-              key: MARK_SUPERSCRIPT,
+              key: MARK_SUBSCRIPT,
               clear: MARK_SUBSCRIPT,
             });
             focusEditor(editor);
-          }}>
+          }}
+        >
           <Icons.subscript className="mr-2 h-5 w-5" />
           Subscript
           {/* (⌘+.) */}
         </DropdownMenuItem>
+        <AddPageDivider />
       </DropdownMenuContent>
     </DropdownMenu>
   );

@@ -11,7 +11,11 @@ export const generateDocumentType = ({
     case "PRESCRIPTION":
       return "Ordonnances";
     case "SONOGRAPHY":
-      return "Echographie";
+      return "ETT";
+    case "ECG":
+      return "ECG";
+    case "BIOLOGY":
+      return "Bilan biologique";
     default:
       return "Unkown document type";
   }

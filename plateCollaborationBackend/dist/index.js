@@ -58,6 +58,9 @@ var server = Server.configure({
       }
     });
   },
+  async onChange() {
+    console.log("triggered");
+  },
   async onLoadDocument({
     documentName,
     document
@@ -85,6 +88,7 @@ var server = Server.configure({
   },
   async onStoreDocument({ document, documentName }) {
     try {
+      console.log("stored");
       const textContent = JSON.stringify(
         yTextToSlateElement(document.get("content", Y.XmlText))
       );

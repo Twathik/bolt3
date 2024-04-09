@@ -10,7 +10,6 @@ import {
 import { useEditorReadOnly } from "@udecode/plate-common";
 import { MARK_BG_COLOR, MARK_COLOR } from "@udecode/plate-font";
 import { ListStyleType } from "@udecode/plate-indent-list";
-import { ELEMENT_IMAGE } from "@udecode/plate-media";
 
 import { Icons, iconVariants } from "@/components/icons";
 
@@ -19,7 +18,6 @@ import { MarkToolbarButton } from "./mark-toolbar-button";
 import { ModeDropdownMenu } from "./mode-dropdown-menu";
 import { ToolbarGroup } from "./toolbar";
 import { TurnIntoDropdownMenu } from "./turn-into-dropdown-menu";
-import { ToggleToolbarButton } from "./toggle-toolbar-button";
 import type { menuItemsType } from "../PatientPage/PatientFolder/Body/BoltMenuButtons/menuItemstype";
 import { BoltDropDownMenu } from "../plateEditor/plate-app/CustomButtons/BoltDropDownMenu";
 import { ColorDropdownMenu } from "./color-dropdown-menu";
@@ -28,11 +26,9 @@ import { LineHeightDropdownMenu } from "./line-height-dropdown-menu";
 import { IndentListToolbarButton } from "./indent-list-toolbar-button";
 import { OutdentToolbarButton } from "./outdent-toolbar-button";
 import { IndentToolbarButton } from "./indent-toolbar-button";
-import { LinkToolbarButton } from "./link-toolbar-button";
-import { MediaToolbarButton } from "./media-toolbar-button";
 import { TableDropdownMenu } from "./table-dropdown-menu";
 import { MoreDropdownMenu } from "./more-dropdown-menu";
-import { CommentToolbarButton } from "./comment-toolbar-button";
+import AddColumnsButton from "../plateEditor/plate-app/CustomButtons/AddColumnsButton";
 
 export function FixedToolbarButtons({
   boltMenu,
@@ -109,12 +105,14 @@ export function FixedToolbarButtons({
             </ToolbarGroup>
 
             <ToolbarGroup>
-              <LinkToolbarButton />
+              {/*  <LinkToolbarButton /> */}
 
-              <MediaToolbarButton nodeType={ELEMENT_IMAGE} />
+              {/* <MediaToolbarButton nodeType={ELEMENT_IMAGE} /> */}
 
               <TableDropdownMenu />
-              <ToggleToolbarButton />
+              <AddColumnsButton />
+
+              {/* <ToggleToolbarButton /> */}
 
               <MoreDropdownMenu />
             </ToolbarGroup>
@@ -124,7 +122,7 @@ export function FixedToolbarButtons({
         <div className="grow" />
 
         <ToolbarGroup noSeparator>
-          <CommentToolbarButton />
+          {/* <CommentToolbarButton /> */}
           {/* <SaveToolBarButton saveCallback={saveCallback} /> */}
           <ModeDropdownMenu />
         </ToolbarGroup>

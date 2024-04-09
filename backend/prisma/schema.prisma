@@ -130,6 +130,11 @@ enum PatientDocumentType {
   document
 }
 
+enum TemplateSpeciality {
+  CARDIOLOGY
+  GYNECOLOGY
+}
+
 model User {
   id             String          @id @default(uuid())
   email          String          @unique
@@ -157,6 +162,7 @@ model Setting {
   allowedMobileDevices_secretary Int          @default(1)
   allowedDICOMmodalities         Int          @default(2)
   allowedEventTypes              EventTypes[]
+  documentTemplateConfiguration  String?
 }
 
 model MobileDevice {
@@ -259,10 +265,14 @@ model Prescription {
 }
 
 model DocumentTemplate {
-  id        String     @id @default(uuid())
-  eventType EventTypes @unique
-  template  String     @db.Text
-  empty     Boolean    @default(true)
+  id                 Int                @id @default(autoincrement())
+  templateName       String
+  evenTemplateUrl    String
+  eventDoxTemplate   String?
+  oddTemplateUrl     String
+  oddDoxTemplate     String?
+  templateSpeciality TemplateSpeciality
+  createdAt          DateTime           @default(now())
 }
 
 model Economizer {

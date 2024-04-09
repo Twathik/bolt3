@@ -15,6 +15,7 @@ import createPlateSlice from "./plateStore";
 import appSubscriptionSlice from "./appSubscriptionsStore";
 import economizerPlateSlice from "./economizerSliceStore";
 import createWebSocketConnection from "./webSocketConnectionSlice";
+import createCursorStateSlice from "./cursorStateStore";
 
 export const useBoltStore = create<boltStoreType>()(
   immer((...a) => ({
@@ -32,5 +33,6 @@ export const useBoltStore = create<boltStoreType>()(
     ...appSubscriptionSlice(...a),
     ...economizerPlateSlice(...a),
     ...createWebSocketConnection(...a),
+    ...createCursorStateSlice(...a),
   }))
 );

@@ -26,6 +26,14 @@ export async function middleware(request: NextRequest) {
           return NextResponse.redirect(new URL("/", request.url));
         }
       }
+
+      if (request.nextUrl.pathname.startsWith("/app-storage")) {
+        console.log({ url: request.url });
+        return NextResponse.rewrite(
+          "http://storage.bolt3.local/uploads/" +
+            request.url.split("/").slice(-1)[0]
+        );
+      }
     } catch (error) {
       console.log({ error });
       if (request.nextUrl.pathname.startsWith("/login")) {

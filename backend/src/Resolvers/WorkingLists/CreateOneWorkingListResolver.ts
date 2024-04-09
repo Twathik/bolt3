@@ -2,17 +2,17 @@ import * as TypeGraphQL from 'type-graphql'
 import type { GraphQLResolveInfo } from 'graphql'
 import { WorkingList } from '../../@generated'
 import {
-  getPrismaFromContext,
   transformCountFieldIntoSelectRelationsCount,
   transformInfoIntoPrismaArgs,
 } from '../../@generated/helpers'
 import { Context } from '../../context'
-import { PrismaClient } from '@prisma/client'
 import { execSync } from 'child_process'
 import { generateWorkList, modalitiesTypes } from '../../Utils/DICOM/utils'
 import { format } from 'date-fns'
-import { AppSubscriptionTriggerArgs } from '../Global/AppSubscription/args/AppSubscriptionTriggerArgs'
 import { CreateOneWorkingListArgs } from './args/CreateOneWorkingListArgs'
+import { WebsocketMessageInterface } from '../../Utils/PubSubInterfaces/WebsocketMessageInterface'
+import { v4 as uuid } from 'uuid'
+import { notificationTopic } from '../../Utils/PubSubInterfaces/MessageTypesInterface'
 
 @TypeGraphQL.Resolver((_of) => WorkingList)
 export class CreateOneWorkingListResolver {
@@ -20,30 +20,30 @@ export class CreateOneWorkingListResolver {
     nullable: false,
   })
   async createOneWorkingList(
-    @TypeGraphQL.Ctx() ctx: Context,
+    @TypeGraphQL.Ctx() { prisma, pubSub }: Context,
     @TypeGraphQL.Info() info: GraphQLResolveInfo,
     @TypeGraphQL.Args() { userId, ...args }: CreateOneWorkingListArgs,
-    @TypeGraphQL.PubSub('APP_SUBSCRIPTION')
-    notify: TypeGraphQL.Publisher<AppSubscriptionTriggerArgs>,
   ): Promise<WorkingList> {
     const { _count } = transformInfoIntoPrismaArgs(info)
 
-    const prisma = getPrismaFromContext(ctx) as PrismaClient
     try {
       const workingList = await prisma.workingList.create({
         ...args,
         ...(_count && transformCountFieldIntoSelectRelationsCount(_count)),
       })
+      console.log({ workingList })
 
       const [patient, user, clinicalEvent, modality] = await Promise.all([
         prisma.patient.findUnique({
           where: { id: workingList.patientId },
         }),
         prisma.user.findUnique({ where: { id: workingList.userId } }),
-        prisma.clinicalEvent.findUnique({
+        prisma.clinicalEvent.findFirstOrThrow({
           where: { id: workingList.clinicalEventId },
         }),
-        prisma.modality.findUnique({ where: { id: workingList.modalityId } }),
+        prisma.modality.findFirstOrThrow({
+          where: { id: workingList.modalityId },
+        }),
       ])
 
       if (workingList && patient && user && clinicalEvent && modality) {
@@ -77,6 +77,31 @@ export class CreateOneWorkingListResolver {
         try {
           const cmd = `docker run --rm -v ./worklists:/var/local imbio/dcmtk dump2dcm /var/local/${workingList.id}.txt /var/local/${workingList.id}.wl`
           execSync(cmd).toString()
+
+          const message: WebsocketMessageInterface = {
+            destination: ['folder'],
+            global: true,
+            id: uuid(),
+            payload: {
+              workingList: {
+                ...workingList,
+                modality,
+                user: {
+                  fullName: `${user.lastName}^${user.firstName}`,
+                },
+                clinicalEvent: {
+                  eventType: clinicalEvent.eventType,
+                },
+                patient: {
+                  patientFullName: `${patient.lastName}^${patient.firstName}`,
+                },
+              },
+              operation: 'create',
+            },
+            type: 'workingList',
+            subscriptionIds: [patient.id],
+          }
+          await pubSub.publish(notificationTopic, message)
         } catch (e) {
           const error = e as any
           error.status // 0 : successful exit, but here in exception it has to be greater than 0
@@ -84,53 +109,6 @@ export class CreateOneWorkingListResolver {
           error.stderr // Holds the stderr output. Use `.toString()`.
           error.stdout // Holds the stdout output. Use `.toString()`.
         }
-
-        const {
-          id,
-          clinicalEventId,
-          createdAt,
-          modalityExamStatus,
-          linkId,
-          linked,
-          locked,
-        } = workingList
-        const {
-          id: modalityId,
-          modalityPseudo,
-          modalityType,
-          modalityAETitle,
-        } = modality
-        const { firstName, lastName } = patient
-        const { fullName } = user
-        await notify({
-          type: 'workingLists',
-          global: true,
-          userId,
-          appPayload: JSON.stringify({
-            operation: 'create',
-            workingList: {
-              id,
-              modality: {
-                id: modalityId,
-                modalityPseudo,
-                modalityType,
-                modalityAETitle,
-              },
-              patient: {
-                patientFullName: `${lastName} ${firstName}`,
-              },
-              user: {
-                fullName,
-              },
-              clinicalEventId,
-              createdAt,
-              modalityExamStatus,
-              linkId,
-              linked,
-              locked,
-            },
-          }),
-        })
       } else {
         throw Error('conditions not satisfied, working list not created')
       }

@@ -9,7 +9,7 @@ mutation (
     data: {
       linked: { set: true }
       linkId: { set: $linkId }
-      modalityExamStatus: { set: INPROGRESS }
+      modalityExamStatus: { set: REALIZED }
     }
   ) {
     id

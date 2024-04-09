@@ -26,13 +26,9 @@ import { createVirtualRef } from "@udecode/plate-floating";
 import { useBoltStore } from "@/stores/boltStore";
 import createTypesenseClient from "@/lib/typesense/typesense";
 import { debounce } from "lodash-es";
-import type { prescriptionHit } from "@/lib/typesense/serachPrescription";
-import searchPrescription from "@/lib/typesense/serachPrescription";
+import searchPrescription from "@/lib/typesense/searchPrescription";
 import { ComboboxItem } from "../../../plate-ui/combobox";
-
-export type DrugItems = TComboboxItemBase & {
-  metadata?: prescriptionHit | null;
-};
+import type { ItemWithMetadata } from "@/lib/interfaces/itemWithMetadata";
 
 export function DrugComboboxContent(props: ComboboxContentProps) {
   const {
@@ -42,11 +38,14 @@ export function DrugComboboxContent(props: ComboboxContentProps) {
     combobox,
     onRenderItem,
   } = props;
+
   const user = useBoltStore((store) => store.user);
 
   const editor = useEditorRef();
 
-  const [filteredItems, setFilteredItems] = useState<DrugItems[]>(items ?? []);
+  const [filteredItems, setFilteredItems] = useState<
+    ItemWithMetadata[] | TComboboxItemBase[]
+  >(items ?? []);
 
   const activeComboboxStore = useActiveComboboxStore()!;
 
@@ -63,7 +62,7 @@ export function DrugComboboxContent(props: ComboboxContentProps) {
           searchParams: { query_string: searchString },
         }).then((data) => {
           if (data) {
-            const result: DrugItems[] = data.hits.map((e) => ({
+            const result: ItemWithMetadata[] = data.hits.map((e) => ({
               key: e.id,
               text: e.drugTemplate,
               metadata: { ...e },
@@ -103,15 +102,17 @@ export function DrugComboboxContent(props: ComboboxContentProps) {
         >
           {Component ? Component({ store: activeComboboxStore }) : null}
 
-          {filteredItems?.map((item, index) => (
-            <ComboboxItem
-              key={item.key}
-              item={item}
-              combobox={combobox}
-              index={index}
-              onRenderItem={onRenderItem}
-            />
-          ))}
+          {filteredItems?.map((item, index) => {
+            return (
+              <ComboboxItem
+                key={item.key}
+                item={item}
+                combobox={combobox}
+                index={index}
+                onRenderItem={onRenderItem}
+              />
+            );
+          })}
         </Popover.Content>
       </Popover.Portal>
     </Popover.Root>

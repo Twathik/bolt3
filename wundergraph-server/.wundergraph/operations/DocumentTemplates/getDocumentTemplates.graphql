@@ -1,0 +1,9 @@
+query {
+  mainDb_documentTemplates(orderBy: { id: asc }) {
+    ...DocumentTemplateFragment
+  }
+  mainDb_settings {
+    id
+    documentTemplateConfiguration
+  }
+}

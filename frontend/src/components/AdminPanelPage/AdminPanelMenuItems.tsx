@@ -18,7 +18,7 @@ const AdminPanelMenuItems: AdminPanelShellMenuInterface[] = [
   {
     id: 3,
     name: "Templates",
-    href: "/admin-panel/templates",
+    href: "/admin-panel/document-templates",
     icon: FaClipboardList,
   },
   {

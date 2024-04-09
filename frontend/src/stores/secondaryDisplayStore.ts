@@ -13,9 +13,15 @@ const createSecondaryDisplaySlice: StateCreator<
   secondaryDisplay: {
     screenType: "mainScreen",
   },
+  patientTab: "informations",
   setSecondaryDisplay: (secondaryDisplay) => {
     set((state) => {
       state.secondaryDisplay = secondaryDisplay;
+    });
+  },
+  setPatientViewTab(tab) {
+    set((s) => {
+      s.patientTab = tab;
     });
   },
 });

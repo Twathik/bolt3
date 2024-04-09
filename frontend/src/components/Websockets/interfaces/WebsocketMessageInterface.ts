@@ -1,14 +1,15 @@
-import type { ClinicalEventMessageInterface } from "./ClinicalEventsMessageInterface";
-import type { EmptyTrashMessageInterface } from "./EmptyTrashMessageInterface";
-import type { FocusedClinicalEventMessageInterface } from "./FocusedClinicalEventMessageInterface";
-import type { MobileDeviceMessageInterface } from "./MobileDeviceMessageInterface";
-import type { ModalityMessageInterface } from "./ModalityMessageInterface";
-import type { PatientMessageInterface } from "./PatientMessageInterface";
-import type { SecondaryDisplayMessageInterface } from "./SecondaryDisplayMessageInterface";
-import type { SubscribeMessageInterface } from "./SubscribeMessageInterface";
-import type { SubscribedUsersMessageInterface } from "./SubscribedUsersMessageInterface";
+import type { ClinicalEventMessageInterface } from "./MessagesTypes/ClinicalEventsMessageInterface";
+import type { EmptyTrashMessageInterface } from "./MessagesTypes/EmptyTrashMessageInterface";
+import type { FocusedClinicalEventMessageInterface } from "./MessagesTypes/FocusedClinicalEventMessageInterface";
+import type { MobileDeviceMessageInterface } from "./MessagesTypes/MobileDeviceMessageInterface";
+import type { ModalityMessageInterface } from "./MessagesTypes/ModalityMessageInterface";
+import type { PatientMessageInterface } from "./MessagesTypes/PatientMessageInterface";
+import type { PrescriptionMessageInterface } from "./MessagesTypes/PrescriptionMessageInterface";
+import type { SecondaryDisplayMessageInterface } from "./MessagesTypes/SecondaryDisplayMessageInterface";
+import type { SubscribeMessageInterface } from "./MessagesTypes/SubscribeMessageInterface";
+import type { SubscribedUsersMessageInterface } from "./MessagesTypes/SubscribedUsersMessageInterface";
 import type { WelcomeMessageInterface } from "./WelcomeMessageInterface";
-import type { WorkingListMessageInterface } from "./WorkingListMessageInterface";
+import type { WorkingListMessageInterface } from "./MessagesTypes/WorkingListMessageInterface";
 
 export type WebsocketMessageInterface =
   | SecondaryDisplayMessageInterface
@@ -21,4 +22,5 @@ export type WebsocketMessageInterface =
   | MobileDeviceMessageInterface
   | SubscribedUsersMessageInterface
   | ClinicalEventMessageInterface
-  | FocusedClinicalEventMessageInterface;
+  | FocusedClinicalEventMessageInterface
+  | PrescriptionMessageInterface;

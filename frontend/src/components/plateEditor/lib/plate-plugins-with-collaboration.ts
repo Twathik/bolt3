@@ -101,7 +101,6 @@ import {
   ELEMENT_MENTION,
   ELEMENT_MENTION_INPUT,
 } from "@udecode/plate-mention";
-import { createNodeIdPlugin } from "@udecode/plate-node-id";
 import {
   createParagraphPlugin,
   ELEMENT_PARAGRAPH,
@@ -167,11 +166,12 @@ import {
   DocumentHeaderElement,
 } from "../plate-app/Documents/DocumentHeaderElement";
 import { DOCUMENT_HEADER_KEY } from "../plate-app/Documents/DocumentsKeys";
-import withPreventHeadersModifications from "./deletionProtect";
+import withPreventHeadersModifications from "./AppOverrides/deletionProtect";
 import { DATA_INPUT_ELEMENT } from "../plate-app/DataInputs/DataInputKeys";
 import {
   PRESCRIPTION_DRUG_COL,
   PRESCRIPTION_FREQUENCY_COL,
+  PRESCRIPTION_LIST_NUMBER_COL,
   PRESCRIPTION_QUANTITY_COL,
   PRESCRIPTION_TABLE_KEY,
 } from "../plate-app/PrescriptionTable/PrescriptionTableKey";
@@ -194,6 +194,27 @@ import {
 import { createYjsPlugin } from "@udecode/plate-yjs";
 import normalizeCollaboration from "./normalizeCollaboration";
 import type { BoltUser } from "@/stores/boltStoreType";
+import {
+  createPrescriptionListNumberCol,
+  PrescriptionListNumberCol,
+} from "../plate-app/PrescriptionTable/PrescriptionListNumberCol";
+import {
+  ColumnElement,
+  createColumnElementPlugin,
+} from "../plate-app/ColumnSystem/ColumnElementPlugin";
+import {
+  COLUMN_CONTAINER_KEY,
+  COLUMN_ELEMENT_KEY,
+} from "../plate-app/ColumnSystem/ColumnSystemKeys";
+import {
+  ColumnContainerElement,
+  createColumnContainerElement,
+} from "../plate-app/ColumnSystem/ColumnContainerPlugin";
+import {
+  createPageBreakElement,
+  PageBreakElement,
+} from "../plate-app/PageBreak/PageBreakPlugin";
+import { PAGE_BREAK_KEY } from "../plate-app/PageBreak/PageBreakKeys";
 
 const resetBlockTypesCommonRule = {
   types: [ELEMENT_BLOCKQUOTE, ELEMENT_TODO_LI],
@@ -338,7 +359,7 @@ export const platePluginsWithCollaboration = ({
           ],
         },
       }),
-      createNodeIdPlugin(),
+      // createNodeIdPlugin(),
       createResetNodePlugin({
         options: {
           rules: [
@@ -439,6 +460,7 @@ export const platePluginsWithCollaboration = ({
       createTogglePlugin({}),
       createMentionPlugin({
         key: DIAGNOSTIC_MENTION_KEY,
+
         options: {
           trigger: "d",
           triggerPreviousCharPattern: new RegExp("^@$"),
@@ -446,6 +468,7 @@ export const platePluginsWithCollaboration = ({
       }),
       createMentionPlugin({
         key: DrugMentionKey,
+
         options: {
           trigger: "m",
           triggerPreviousCharPattern: new RegExp("^@$"),
@@ -463,6 +486,10 @@ export const platePluginsWithCollaboration = ({
       createPrescriptionDrugCol(),
       createPrescriptionFrequencyCol(),
       createPrescriptionQuantityCol(),
+      createPrescriptionListNumberCol(),
+      createColumnElementPlugin(),
+      createColumnContainerElement(),
+      createPageBreakElement(),
 
       /* createTogglePlugin({
       key: DIAGNOSTIC_DOCUMENT_KEY,
@@ -516,6 +543,10 @@ export const platePluginsWithCollaboration = ({
           [PRESCRIPTION_DRUG_COL]: PrescriptionDrugCol,
           [PRESCRIPTION_FREQUENCY_COL]: PrescriptionFrequencyCol,
           [PRESCRIPTION_QUANTITY_COL]: PrescriptionQuantityCol,
+          [PRESCRIPTION_LIST_NUMBER_COL]: PrescriptionListNumberCol,
+          [COLUMN_CONTAINER_KEY]: ColumnContainerElement,
+          [COLUMN_ELEMENT_KEY]: ColumnElement,
+          [PAGE_BREAK_KEY]: PageBreakElement,
 
           // [DIAGNOSTIC_DOCUMENT_KEY]: ToggleElement,
         })

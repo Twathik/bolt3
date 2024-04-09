@@ -8,7 +8,6 @@ const createPrescriptionSlice: StateCreator<
   [],
   PrescriptionStoreSlice
 > = (set) => ({
-  loadingPrescription: false,
   prescriptions: [],
   setInitialPrescriptions: (prescriptions: DrugHitInterface[]) =>
     set((state) => {
@@ -18,15 +17,11 @@ const createPrescriptionSlice: StateCreator<
     set((state) => {
       state.prescriptions.push(prescription);
     }),
-  removePrescription: (prescriptionId: string) =>
+  removePrescription: (prescription) =>
     set((state) => {
       state.prescriptions = state.prescriptions.filter(
-        (p) => p.prescriptionId !== prescriptionId
+        (p) => p.prescriptionId !== prescription.prescriptionId
       );
-    }),
-  setLoadingPrescription: (loading: boolean) =>
-    set((state) => {
-      state.loadingPrescription = loading;
     }),
 });
 

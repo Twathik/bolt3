@@ -22,6 +22,7 @@ export { Role } from "./Role";
 export { SettingScalarFieldEnum } from "./SettingScalarFieldEnum";
 export { Sexe } from "./Sexe";
 export { SortOrder } from "./SortOrder";
+export { TemplateSpeciality } from "./TemplateSpeciality";
 export { TransactionIsolationLevel } from "./TransactionIsolationLevel";
 export { UserScalarFieldEnum } from "./UserScalarFieldEnum";
 export { WorkingListScalarFieldEnum } from "./WorkingListScalarFieldEnum";

@@ -2,13 +2,13 @@ import { classNames } from "@/lib/utils";
 import type { DataTextInputProps } from "../DataInputUtils";
 import { Input } from "@/components/plate-ui/input";
 
-function PlateTextInput({ onChange, value, element }: DataTextInputProps) {
+function PlateTextInput({ onChange, element }: DataTextInputProps) {
   return (
     <Input
       className={classNames(element.className ?? "")}
       type={element.inputType}
       placeholder={element.placeholder}
-      value={value}
+      value={element.value}
       onChange={onChange}
     />
   );

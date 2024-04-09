@@ -19,7 +19,11 @@ function SubscribeToFocusedClinicalEventView({
         global: false,
         payload: { operation: "subscribeTo", SubscribeTo: [patientId] },
         subscriptionIds: [],
-        destination: ["secondary-display", "focused-clinical-event"],
+        destination: [
+          "secondary-display",
+          "focused-clinical-event",
+          "patient-Root",
+        ],
       };
       socket.sendJsonMessage(message, true);
     }

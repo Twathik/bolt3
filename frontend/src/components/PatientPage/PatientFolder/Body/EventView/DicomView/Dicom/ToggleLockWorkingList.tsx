@@ -24,7 +24,8 @@ function ToggleLockWorkingList({
   }, [error, toast]);
   const toggle = useCallback(async () => {
     try {
-      await trigger({ id: workingList.id });
+      const data = await trigger({ id: workingList.id });
+      console.log({ data });
     } catch (error) {}
   }, [trigger, workingList.id]);
   return (

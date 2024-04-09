@@ -20,7 +20,7 @@ export class GroupByDocumentTemplateArgs {
   @TypeGraphQL.Field(_type => [DocumentTemplateScalarFieldEnum], {
     nullable: false
   })
-  by!: Array<"id" | "eventType" | "template" | "empty">;
+  by!: Array<"id" | "templateName" | "evenTemplateUrl" | "eventDoxTemplate" | "oddTemplateUrl" | "oddDoxTemplate" | "templateSpeciality" | "createdAt">;
 
   @TypeGraphQL.Field(_type => DocumentTemplateScalarWhereWithAggregatesInput, {
     nullable: true

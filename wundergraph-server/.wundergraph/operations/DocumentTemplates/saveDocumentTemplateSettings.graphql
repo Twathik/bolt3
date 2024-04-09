@@ -1,0 +1,10 @@
+mutation ($id: String!, $documentTemplateConfiguration: String!) {
+  mainDb_updateOneSetting(
+    where: { id: $id }
+    data: {
+      documentTemplateConfiguration: { set: $documentTemplateConfiguration }
+    }
+  ) {
+    id
+  }
+}
