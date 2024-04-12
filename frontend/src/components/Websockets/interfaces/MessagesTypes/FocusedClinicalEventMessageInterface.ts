@@ -1,4 +1,3 @@
-import type { PatientsGetOnePatientInfoResponseData } from "@/components/wg-generated/models";
 import type { RootMessageInterface } from "../MessageTypesInterface";
 import type { FocusedClinicalEvent } from "@/stores/boltStoreType";
 
@@ -11,7 +10,22 @@ interface RootFocusedClinicalEventMessagePayload {
 interface FocusedClinicalEventUpdateMessagePayload
   extends RootFocusedClinicalEventMessagePayload {
   focusedClinicalEvent: FocusedClinicalEvent;
-  patient: PatientsGetOnePatientInfoResponseData["mainDb_getPatient"];
+  patient: {
+    id: string;
+    firstName: string;
+    lastName: string;
+    sexe: "F" | "M";
+    ddn: string;
+    deleted: boolean;
+    onTrash: boolean;
+    patientFullName: string;
+    informationsConfirmed: boolean;
+    nTel?: string;
+    weight?: number;
+    height?: number;
+    address?: string;
+    updated: string;
+  };
 }
 
 type FocusedClinicalEventMessagePayload =

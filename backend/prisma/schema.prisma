@@ -211,28 +211,17 @@ model DocumentStore {
   @@unique([patientId, patientDocumentType])
 }
 
-model Consultation {
-  id               String             @id @default(uuid())
-  day              Int
-  month            Int
-  year             Int
-  createdAt        DateTime           @default(now())
-  ConsultationList ConsultationList[]
-
-  @@unique([day, month, year])
-}
-
 model ConsultationList {
-  id             String       @id @default(uuid())
-  patient        Patient      @relation(fields: [patientId], references: [id])
-  patientId      String
-  consultation   Consultation @relation(fields: [consultationId], references: [id])
-  consultationId String
-  active         Boolean      @default(true)
-  createdAt      DateTime     @default(now())
-  updatedAt      DateTime     @updatedAt
+  id               String   @id @default(uuid())
+  patient          Patient  @relation(fields: [patientId], references: [id])
+  patientId        String
+  active           Boolean  @default(true)
+  consultationDate String
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
 
-  @@unique([patientId, consultationId])
+  @@unique([patientId, consultationDate])
+  @@index([consultationDate])
 }
 
 model ClinicalEvent {

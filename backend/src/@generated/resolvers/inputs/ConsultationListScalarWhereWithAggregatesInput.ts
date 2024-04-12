@@ -33,15 +33,15 @@ export class ConsultationListScalarWhereWithAggregatesInput {
   })
   patientId?: StringWithAggregatesFilter | undefined;
 
-  @TypeGraphQL.Field(_type => StringWithAggregatesFilter, {
-    nullable: true
-  })
-  consultationId?: StringWithAggregatesFilter | undefined;
-
   @TypeGraphQL.Field(_type => BoolWithAggregatesFilter, {
     nullable: true
   })
   active?: BoolWithAggregatesFilter | undefined;
+
+  @TypeGraphQL.Field(_type => StringWithAggregatesFilter, {
+    nullable: true
+  })
+  consultationDate?: StringWithAggregatesFilter | undefined;
 
   @TypeGraphQL.Field(_type => DateTimeWithAggregatesFilter, {
     nullable: true

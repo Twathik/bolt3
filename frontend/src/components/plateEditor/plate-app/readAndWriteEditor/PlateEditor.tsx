@@ -8,7 +8,7 @@ import React, { useRef } from "react";
 import { DndProvider } from "react-dnd";
 import { MentionDiagCombobox } from "../Diag-plugin/mention-diag-combobox";
 import { DIAGNOSTIC_MENTION_KEY } from "../Diag-plugin/diag-plugin-key";
-import { DrugMentionKey } from "../Medic-plugin/drug-plugin-key";
+import { DrugMentionKey } from "../Drug-plugin/drug-plugin-key";
 import { CommentsPopover } from "@/components/plate-ui/comments-popover";
 import CurrentSelectionPlugin from "../SelectionPlugin/CurrentSelectionPlugin";
 import { Editor as PlateBaseEditor } from "@/components/plate-ui/editor";
@@ -17,10 +17,11 @@ import type { BoltUser } from "@/stores/boltStoreType";
 import { commentsUsers } from "../../lib/comments";
 import { HTML5Backend } from "react-dnd-html5-backend";
 import { Plate, type PlateEditor } from "@udecode/plate-core";
-import { MentionDrugCombobox } from "../Medic-plugin/mention-drug-combobox";
+import { MentionDrugCombobox } from "../Drug-plugin/mention-drug-combobox";
 import type { Value } from "@udecode/plate-common";
 import type { HocuspocusProvider } from "@hocuspocus/provider";
 import { RemoteCursorOverlay } from "../RemoteOverlay/Overlay";
+import { useBoltStore } from "@/stores/boltStore";
 
 const PlateEditor = ({
   user,
@@ -34,6 +35,7 @@ const PlateEditor = ({
   provider: HocuspocusProvider;
 }) => {
   const containerRef = useRef<HTMLDivElement>(null);
+  const socket = useBoltStore((s) => s.socket);
 
   return (
     <TooltipProvider
@@ -68,6 +70,7 @@ const PlateEditor = ({
                   <MentionDrugCombobox
                     pluginKey={DrugMentionKey}
                     items={[{ key: "#", text: "" }]}
+                    socket={socket}
                   />
                   <CommentsPopover />
                   <CurrentSelectionPlugin provider={provider} />

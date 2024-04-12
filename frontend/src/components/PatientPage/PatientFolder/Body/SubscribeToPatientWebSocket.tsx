@@ -24,7 +24,7 @@ function SubscribeToPatientWebSocket({
         global: false,
         payload: { operation: "subscribeTo", SubscribeTo: [patientId] },
         subscriptionIds: [],
-        destination: [documentType],
+        destination: [documentType, "consultation-list"],
       };
       socket.sendJsonMessage(message, false);
     }

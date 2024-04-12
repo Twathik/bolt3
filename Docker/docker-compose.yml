@@ -36,16 +36,16 @@ services:
 
   minio:
     image: minio/minio
+    restart: unless-stopped
     ports:
-      - '9000:9000'
-      - '9001:9001'
+      - "9000:9000"
+      - "9001:9001"
     volumes:
       - data:/data
     environment:
       MINIO_ROOT_USER: minio
       MINIO_ROOT_PASSWORD: minio123
     command: server --console-address ":9001" /data
-
 
   postgres:
     image: postgres:13-alpine
@@ -148,7 +148,7 @@ services:
       test: "exit 0"
 
   orthanc:
-    image: osimis/orthanc:bookworm-full
+    image: orthancteam/orthanc
     container_name: orthanc
     restart: always
     ports:
@@ -158,11 +158,22 @@ services:
       postgres_orthanc:
         condition: service_healthy
     environment:
-      OSIMIS_WEB_VIEWER1_PLUGIN_ENABLED: "true"
+      #OSIMIS_WEB_VIEWER1_PLUGIN_ENABLED: "true"
       VERBOSE_ENABLED: "true"
+      #ORTHANC_WEB_VIEWER_PLUGIN_ENABLED: "true"
+      #STONE_WEB_VIEWER_PLUGIN_ENABLED: "true"
+      OSIMIS_WEB_VIEWER1_ALPHA_PLUGIN_ENABLED: "true"
       ORTHANC__REGISTERED_USERS: |
         {"admin": "admin"}
       OHIF_PLUGIN_ENABLED: "true"
+      ORTHANC_EXPLORER_2_ENABLED: |
+        {
+          "OrthancExplorer2": {
+            "Enable": true,
+            "IsDefaultOrthancUI": true
+          }
+        }
+
       ORTHANC_JSON: |
         {
           "PostgreSQL": {
@@ -202,7 +213,7 @@ services:
 
   typesense:
     image: typesense/typesense:0.25.1
-    restart: on-failure
+    restart: unless-stopped
     ports:
       - "8108:8108"
     environment:

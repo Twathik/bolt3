@@ -20,7 +20,7 @@ export class GroupByConsultationListArgs {
   @TypeGraphQL.Field(_type => [ConsultationListScalarFieldEnum], {
     nullable: false
   })
-  by!: Array<"id" | "patientId" | "consultationId" | "active" | "createdAt" | "updatedAt">;
+  by!: Array<"id" | "patientId" | "active" | "consultationDate" | "createdAt" | "updatedAt">;
 
   @TypeGraphQL.Field(_type => ConsultationListScalarWhereWithAggregatesInput, {
     nullable: true

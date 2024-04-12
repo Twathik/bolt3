@@ -10,15 +10,15 @@ export class ConsultationListCreateManyPatientInput {
   })
   id?: string | undefined;
 
-  @TypeGraphQL.Field(_type => String, {
-    nullable: false
-  })
-  consultationId!: string;
-
   @TypeGraphQL.Field(_type => Boolean, {
     nullable: true
   })
   active?: boolean | undefined;
+
+  @TypeGraphQL.Field(_type => String, {
+    nullable: false
+  })
+  consultationDate!: string;
 
   @TypeGraphQL.Field(_type => Date, {
     nullable: true

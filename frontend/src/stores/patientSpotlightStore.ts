@@ -36,7 +36,7 @@ const createPatientSpotlightSlice: StateCreator<
   updatePatientSpotlight: (patientSpotlight) => {
     set((state) => {
       const index = state.patientSpotlights.findIndex(
-        (e) => e.id === patientSpotlight.id
+        (e) => e.patientId === patientSpotlight.patientId
       );
       if (index !== -1) state.patientSpotlights[index] = patientSpotlight;
     });
@@ -49,7 +49,7 @@ const createPatientSpotlightSlice: StateCreator<
   removePatientSpotlight: (patientSpotlight) => {
     set((state) => {
       state.patientSpotlights = state.patientSpotlights.filter(
-        (e) => e.id !== patientSpotlight.id
+        (e) => e.patientId !== patientSpotlight.patientId
       );
     });
   },

@@ -1,13 +1,9 @@
-query ($consultationId: String!, $patientId: String!) {
-  mainDb_consultationList(
+query ($patientId: String!, $consultationDate: String!) {
+  mainDb_checkIfRegistered(
     where: {
+      patientId: { equals: $patientId }
+      consultationDate: { equals: $consultationDate }
       active: { equals: true }
-      patientId_consultationId: {
-        consultationId: $consultationId
-        patientId: $patientId
-      }
     }
-  ) {
-    id
-  }
+  )
 }

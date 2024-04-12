@@ -1,11 +1,11 @@
 import { useEffect } from "react";
 import { useBoltStore } from "@/stores/boltStore";
-import type { ClinicalEventMessageInterface } from "../../interfaces/MessagesTypes/ClinicalEventsMessageInterface";
+import type { WebsocketMessageInterface } from "../../interfaces/WebsocketMessageInterface";
 
 function ClinicalEventsSubscription({
   message,
 }: {
-  message: ClinicalEventMessageInterface;
+  message: WebsocketMessageInterface;
 }) {
   const addClinicalEvent = useBoltStore((store) => store.addClinicalEvent);
 

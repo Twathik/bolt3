@@ -22,12 +22,6 @@ import type { OperationErrors } from "./ts-operation-errors";
 
 import type { PublicCustomClaims } from "./claims";
 import type {
-	AppSubscriptionGlobalSubscriptionResponse,
-	AppSubscriptionGlobalSubscriptionInput,
-	AppSubscriptionGlobalSubscriptionResponseData,
-	AppSubscriptionTriggerAppSubscriptionResponse,
-	AppSubscriptionTriggerAppSubscriptionInput,
-	AppSubscriptionTriggerAppSubscriptionResponseData,
 	CountriesResponse,
 	CountriesInput,
 	CountriesResponseData,
@@ -125,9 +119,6 @@ import type {
 	ConsultationListTodayConsultationResponse,
 	ConsultationListTodayConsultationInput,
 	ConsultationListTodayConsultationResponseData,
-	ConsultationListTodayListsResponse,
-	ConsultationListTodayListsInput,
-	ConsultationListTodayListsResponseData,
 	ConsultationListToggleActivePatientResponse,
 	ConsultationListToggleActivePatientInput,
 	ConsultationListToggleActivePatientResponseData,
@@ -275,18 +266,12 @@ export interface AuthProvider {
 }
 
 export const defaultClientConfig: ClientConfig = {
-	applicationHash: "e1e48066",
+	applicationHash: "d8215210",
 	baseURL: "http://api.bolt3.local",
 	sdkVersion: "0.181.5",
 };
 
 export const operationMetadata: OperationMetadata = {
-	"AppSubscription/globalSubscription": {
-		requiresAuthentication: true,
-	},
-	"AppSubscription/triggerAppSubscription": {
-		requiresAuthentication: true,
-	},
 	Countries: {
 		requiresAuthentication: true,
 	},
@@ -387,9 +372,6 @@ export const operationMetadata: OperationMetadata = {
 		requiresAuthentication: true,
 	},
 	"consultationList/todayConsultation": {
-		requiresAuthentication: true,
-	},
-	"consultationList/todayLists": {
 		requiresAuthentication: true,
 	},
 	"consultationList/toggleActivePatient": {
@@ -611,11 +593,6 @@ export type Queries = {
 		response: { data?: ConsultationListTodayConsultationResponse["data"]; error?: ClientOperationErrors };
 		requiresAuthentication: true;
 	};
-	"consultationList/todayLists": {
-		input: ConsultationListTodayListsInput;
-		response: { data?: ConsultationListTodayListsResponse["data"]; error?: ClientOperationErrors };
-		requiresAuthentication: true;
-	};
 	"mobileDevices/MobileDevicesQuery": {
 		input?: undefined;
 		response: { data?: MobileDevicesMobileDevicesQueryResponse["data"]; error?: ClientOperationErrors };
@@ -666,11 +643,6 @@ export type Queries = {
 };
 
 export type Mutations = {
-	"AppSubscription/triggerAppSubscription": {
-		input: AppSubscriptionTriggerAppSubscriptionInput;
-		response: { data?: AppSubscriptionTriggerAppSubscriptionResponse["data"]; error?: ClientOperationErrors };
-		requiresAuthentication: true;
-	};
 	"DataTable/triggerInsertDataSubscription": {
 		input: DataTableTriggerInsertDataSubscriptionInput;
 		response: { data?: DataTableTriggerInsertDataSubscriptionResponse["data"]; error?: ClientOperationErrors };
@@ -837,11 +809,6 @@ export type Mutations = {
 };
 
 export type Subscriptions = {
-	"AppSubscription/globalSubscription": {
-		input: AppSubscriptionGlobalSubscriptionInput;
-		response: { data?: AppSubscriptionGlobalSubscriptionResponse["data"]; error?: ClientOperationErrors };
-		requiresAuthentication: true;
-	};
 	"DataTable/insertDataSubscription": {
 		input: DataTableInsertDataSubscriptionInput;
 		response: { data?: DataTableInsertDataSubscriptionResponse["data"]; error?: ClientOperationErrors };

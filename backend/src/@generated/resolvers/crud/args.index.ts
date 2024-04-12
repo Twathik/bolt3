@@ -1,5 +1,4 @@
 export * from "./ClinicalEvent/args";
-export * from "./Consultation/args";
 export * from "./ConsultationList/args";
 export * from "./DocumentStore/args";
 export * from "./DocumentTemplate/args";

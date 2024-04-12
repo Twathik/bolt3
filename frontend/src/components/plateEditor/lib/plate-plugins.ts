@@ -153,7 +153,7 @@ import { TodoListElement } from "@/components/plate-ui/todo-list-element";
 import { withDraggables } from "@/components/plate-ui/with-draggables";
 import { TabbableElement } from "./tabbable-element";
 import { DIAGNOSTIC_MENTION_KEY } from "../plate-app/Diag-plugin/diag-plugin-key";
-import { DrugMentionKey } from "../plate-app/Medic-plugin/drug-plugin-key";
+import { DrugMentionKey } from "../plate-app/Drug-plugin/drug-plugin-key";
 import { createTogglePlugin, ELEMENT_TOGGLE } from "@udecode/plate-toggle";
 import { ToggleElement } from "@/components/plate-ui/toggle-element";
 import {

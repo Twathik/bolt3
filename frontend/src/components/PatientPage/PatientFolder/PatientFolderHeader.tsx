@@ -17,6 +17,7 @@ import { PatientFolderNavigationMenu } from "./Header/AppMenu/PatientFolderNavig
 import PatientInformation from "./PatientMenu/PatientInformation";
 import Link from "next/link";
 import { useBoltStore } from "@/stores/boltStore";
+import ConsultationButton from "@/components/Consultation/ConsultationButton";
 
 export default function PatientFolderHeader({
   patient,
@@ -34,7 +35,8 @@ export default function PatientFolderHeader({
     <header className="max-w-full bg-slate-800">
       <nav
         className="mx-auto flex flex-grow items-center justify-between gap-x-6 p-6 lg:px-8"
-        aria-label="Global">
+        aria-label="Global"
+      >
         <div className="flex items-center">
           <Link href="/search">
             <div className="flex item-center">
@@ -46,10 +48,10 @@ export default function PatientFolderHeader({
           <PatientInformation />
         </div>
 
-        <div className="hidden flex-row items-center justify-center lg:flex lg:gap-x-12">
+        <div className="flex flex-row items-center justify-center flex-1 lg:gap-x-12">
           <PatientFolderNavigationMenu patient={patient} />
         </div>
-        <div className=" hidden items-center justify-center gap-x-6 lg:block">
+        <div className=" hidden items-end justify-center gap-x-6 lg:block">
           <DropdownMenu open={open} onOpenChange={setOpen}>
             <DropdownMenuTrigger asChild>
               <Button variant="ghost" size="default" className="text-white">
@@ -65,6 +67,7 @@ export default function PatientFolderHeader({
             </DropdownMenuContent>
           </DropdownMenu>
         </div>
+        <ConsultationButton />
       </nav>
     </header>
   );

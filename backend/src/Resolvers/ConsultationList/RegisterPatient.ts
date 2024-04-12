@@ -3,101 +3,91 @@ import type { GraphQLResolveInfo } from 'graphql'
 import { Context } from '../../context'
 import { ConsultationList } from '../../@generated'
 import {
-  getPrismaFromContext,
   transformCountFieldIntoSelectRelationsCount,
   transformInfoIntoPrismaArgs,
 } from '../../@generated/helpers'
 
-import { PrismaClient } from '@prisma/client'
 import { RegisterPatientArgs } from './args/RegisterPatientArgs'
-import { getDate, getMonth, getYear } from 'date-fns'
-import { AppSubscriptionTriggerArgs } from '../Global/AppSubscription/args/AppSubscriptionTriggerArgs'
+import { format } from 'date-fns'
+import { WebsocketMessageInterface } from '../../Utils/PubSubInterfaces/WebsocketMessageInterface'
+import { v4 as uuid } from 'uuid'
+import { notificationTopic } from '../../Utils/PubSubInterfaces/MessageTypesInterface'
 
 @TypeGraphQL.Resolver((_of) => ConsultationList)
 export class RegisterPatient {
-  @TypeGraphQL.Mutation((_returns) => String, {
+  @TypeGraphQL.Mutation((_returns) => Boolean, {
     nullable: false,
   })
   async registerPatient(
-    @TypeGraphQL.Ctx() ctx: Context,
+    @TypeGraphQL.Ctx() { prisma, pubSub }: Context,
     @TypeGraphQL.Info() info: GraphQLResolveInfo,
-    @TypeGraphQL.Args() args: RegisterPatientArgs,
-    @TypeGraphQL.PubSub('APP_SUBSCRIPTION')
-    notify: TypeGraphQL.Publisher<AppSubscriptionTriggerArgs>,
-  ): Promise<String> {
+    @TypeGraphQL.Args() { patientId }: RegisterPatientArgs,
+  ): Promise<Boolean> {
     const { _count } = transformInfoIntoPrismaArgs(info)
-    const { patient_id, userId } = args
-    const newDate = new Date()
-
-    const day = getDate(newDate)
-    const month = getMonth(newDate)
-    const year = getYear(newDate)
+    const consultationDate = format(new Date(), 'dd-MM-yyyy')
 
     try {
-      const prisma = getPrismaFromContext(ctx) as PrismaClient
-
-      let todayConsultation = await prisma.consultation.findFirst({
-        where: {
-          AND: [
-            { day: { equals: day } },
-            { month: { equals: month } },
-            { year: { equals: year } },
-          ],
-        },
-      })
-
-      if (!todayConsultation) {
-        todayConsultation = await prisma.consultation.create({
-          data: { day, month, year },
-          ...(_count && transformCountFieldIntoSelectRelationsCount(_count)),
-        })
-      }
-      const { id, active, consultationId, patientId } =
+      const [consultationList, patient] = await Promise.all([
         await prisma.consultationList.upsert({
           where: {
-            patientId_consultationId: {
-              patientId: patient_id,
-              consultationId: todayConsultation.id,
+            patientId_consultationDate: {
+              consultationDate,
+              patientId,
             },
           },
           create: {
             active: true,
-            consultationId: todayConsultation.id,
-            patientId: patient_id,
+            patientId,
+            consultationDate,
           },
           update: {
             active: true,
           },
-        })
-      const { lastName, firstName, sexe, ddn } =
+          ...(_count && transformCountFieldIntoSelectRelationsCount(_count)),
+        }),
         await prisma.patient.findFirstOrThrow({
-          where: { id: patient_id },
-        })
-      await notify({
-        userId,
+          where: { id: patientId },
+        }),
+      ])
+      const { id, active } = consultationList
+
+      const { lastName, firstName, sexe, ddn } = patient
+
+      const message: WebsocketMessageInterface = {
+        type: 'consultation-list',
+        destination: ['consultation-list'],
         global: true,
-        subscriptionSpecificId: consultationId,
-        type: 'consultationLists',
-        appPayload: JSON.stringify({
-          operation: 'create',
+        id: uuid(),
+        subscriptionIds: [],
+        payload: {
+          operation: 'add',
           consultationList: {
-            id,
-            active,
-            consultationId,
+            consultationDate,
+            label: `${lastName} ${firstName}`,
+            description: `DDN : ${format(ddn, 'dd-MM-yyyy')} - sexe: ${
+              sexe === 'F' ? 'Femme' : 'Homme'
+            }`,
             patientId,
-            patient: {
-              id: patient_id,
-              lastName,
-              firstName,
-              sexe,
-              ddn,
+            consultationList: {
+              active,
+              id,
+              patient: {
+                ddn: format(ddn, 'dd-MM-yyyy'),
+                firstName,
+                lastName,
+                sexe,
+              },
+              patientId,
+              consultationDate,
             },
           },
-        }),
-      })
-      return todayConsultation.id
+        },
+      }
+      await pubSub.publish(notificationTopic, message)
+
+      return true
     } catch (error) {
-      throw Error(error as any)
+      return false
     }
   }
 }

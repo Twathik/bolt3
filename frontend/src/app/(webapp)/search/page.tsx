@@ -1,7 +1,7 @@
 import getUser from "@/components/ApiCalls/getUser";
-import ConsultationSpotlight from "@/components/SearchPage/AppSpotlight/ConsultationSpotlight";
 import AddPatient from "@/components/WebAppIndexComponents/AddPatientForm";
 import BoltSearch from "@/components/WebAppIndexComponents/BoltSearch/BoltSearch";
+import SubscribeToBoltSearch from "@/components/WebAppIndexComponents/BoltSearch/SubscribeToBoltSearch";
 import WebAppHeader from "@/components/WebAppIndexComponents/WebAppHeader/header";
 import React from "react";
 
@@ -11,7 +11,6 @@ async function BoltSearchPage() {
   return (
     <main className="min-h-screen ">
       <WebAppHeader user={user} />
-      <ConsultationSpotlight />
       <section className="md:workspace-min-height flex flex-col">
         <section className="grid grid-flow-row grid-cols-2 gap-4">
           <div>
@@ -22,6 +21,7 @@ async function BoltSearchPage() {
           </div>
         </section>
       </section>
+      <SubscribeToBoltSearch />
     </main>
   );
 }

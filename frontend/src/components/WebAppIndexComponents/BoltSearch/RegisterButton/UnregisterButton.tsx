@@ -14,25 +14,14 @@ import { Button } from "@/components/ui/button";
 import { useToast } from "@/components/ui/use-toast";
 import { HiQueueList } from "react-icons/hi2";
 import { useCallback } from "react";
-
-import { useBoltStore } from "@/stores/boltStore";
 import { useMutation } from "@/components/wg-generated/nextjs";
+import { format } from "date-fns";
 
-function UnregisterButton({
-  listId,
-  callBack,
-}: {
-  listId: string;
-  callBack: () => Promise<void>;
-}) {
-  const { id: consultationId } = useBoltStore(
-    (store) => store.consultationState
-  );
-
+function UnregisterButton({ listId }: { listId: string }) {
   const { toast } = useToast();
   const { trigger } = useMutation({
     operationName: "consultationList/unregisterPatient",
-    onError: () => {
+    onError: (e) => {
       toast({
         title: "Une erreur est survenue",
         description: "Le patient n'a pas pu être retiré en consultation",
@@ -41,7 +30,6 @@ function UnregisterButton({
       });
     },
     onSuccess: async () => {
-      await callBack();
       toast({
         title: "Opération réussie",
         description: "Le patient a été retiré de la consultation",
@@ -50,28 +38,20 @@ function UnregisterButton({
     },
   });
   const noCallBack = useCallback(() => {}, []);
-  const alertCallBack = useCallback(() => {
-    if (consultationId) {
-      trigger({
-        patientId: listId,
-        consultationId: consultationId,
-      });
-    } else {
-      toast({
-        title: "Une erreur est survenue",
-        description: "Le patient n'a pas pu être retiré en consultation",
-        duration: 2000,
-        variant: "destructive",
-      });
-    }
-  }, [trigger, consultationId, listId, toast]);
+  const alertCallBack = useCallback(async () => {
+    await trigger({
+      patientId: listId,
+      consultationDate: format(new Date(), "dd-MM-yyyy"),
+    });
+  }, [trigger, listId]);
   return (
     <AlertDialog>
       <AlertDialogTrigger asChild>
         <Button
           className="font-semiboldntext-black relative -mr-px inline-flex w-0 flex-1 items-center justify-center gap-x-3 rounded-bl-lg border  border-transparent bg-rose-600 py-4 text-sm hover:bg-rose-700"
           onClick={noCallBack}
-          disabled={false}>
+          disabled={false}
+        >
           <>
             <span className="h-5 w-5 text-black" aria-hidden="true">
               <HiQueueList />
@@ -95,7 +75,8 @@ function UnregisterButton({
           <AlertDialogCancel>Annuler</AlertDialogCancel>
           <AlertDialogAction
             className="bg-rose-600 hover:bg-rose-700"
-            onClick={alertCallBack}>
+            onClick={alertCallBack}
+          >
             Valider
           </AlertDialogAction>
         </AlertDialogFooter>

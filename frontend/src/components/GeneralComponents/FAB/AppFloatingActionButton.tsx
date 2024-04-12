@@ -1,8 +1,6 @@
 "use client";
 import { useCallback, useState } from "react";
 
-import { useHotkeys } from "@mantine/hooks";
-
 //import { useToast } from "@/components/ui/use-toast";
 import {
   DropdownMenu,
@@ -27,8 +25,6 @@ import {
   CommandList,
 } from "@/components/ui/command";
 import { CgMenuRound } from "react-icons/cg";
-import { useMutation } from "@/components/wg-generated/nextjs";
-import { HotKeysMapping } from "@/lib/utils/HotKeysMapping";
 
 const labels = [
   "feature",
@@ -43,20 +39,6 @@ const labels = [
 function AppFloatingActionButton() {
   /* const { toast } = useToast(); */
   const [open, setOpen] = useState(false);
-  const { trigger } = useMutation({
-    operationName: "AppSubscription/triggerAppSubscription",
-  });
-
-  const closeAllTabs = useCallback(async () => {
-    await trigger({
-      appPayload: JSON.stringify({}),
-      appType: "closeAllTabs",
-      global: false,
-    });
-  }, [trigger]);
-  useHotkeys([
-    [HotKeysMapping.closeAllWindows, async () => await closeAllTabs()],
-  ]);
 
   /*  const triggerEmptyTrash = useCallback(async () => {
     try {
@@ -115,7 +97,8 @@ function AppFloatingActionButton() {
                           value={label}
                           onSelect={(value) => {
                             setOpen(false);
-                          }}>
+                          }}
+                        >
                           {label}
                         </CommandItem>
                       ))}

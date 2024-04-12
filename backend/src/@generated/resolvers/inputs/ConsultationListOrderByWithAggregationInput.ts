@@ -22,12 +22,12 @@ export class ConsultationListOrderByWithAggregationInput {
   @TypeGraphQL.Field(_type => SortOrder, {
     nullable: true
   })
-  consultationId?: "asc" | "desc" | undefined;
+  active?: "asc" | "desc" | undefined;
 
   @TypeGraphQL.Field(_type => SortOrder, {
     nullable: true
   })
-  active?: "asc" | "desc" | undefined;
+  consultationDate?: "asc" | "desc" | undefined;
 
   @TypeGraphQL.Field(_type => SortOrder, {
     nullable: true

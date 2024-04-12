@@ -1,5 +1,7 @@
-import type { PatientsGetOnePatientInfoResponseData } from "../../../wg-generated/models";
-import type { RootMessageInterface } from "../MessageTypesInterface";
+import type {
+  PatientInfoInterface,
+  RootMessageInterface,
+} from "../MessageTypesInterface";
 
 interface RootSecondaryDisplayMessagePayloadInterface {
   screenType: "mainScreen" | "patientView";
@@ -13,7 +15,7 @@ interface SecondaryDisplayMainScreenMessagePayload
 interface SecondaryDisplayPatientViewMessagePayload
   extends RootSecondaryDisplayMessagePayloadInterface {
   screenType: "patientView";
-  patient: PatientsGetOnePatientInfoResponseData["mainDb_getPatient"];
+  patient: PatientInfoInterface;
 }
 
 export type SecondaryDisplayMessagePayload =

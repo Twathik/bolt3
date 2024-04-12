@@ -1,9 +1,10 @@
-query ($day: Int!, $month: Int!, $year: Int!) {
-  mainDb_findFirstConsultation(day: $day, month: $month, year: $year) {
-    id
-    allowedEventTypes
-    ConsultationList(where: { active: { equals: true } }) {
-      ...ConsultationListFragment
+query ($consultationDate: String!) {
+  mainDb_consultationLists(
+    where: {
+      consultationDate: { equals: $consultationDate }
+      active: { equals: true }
     }
+  ) {
+    ...ConsultationListFragment
   }
 }

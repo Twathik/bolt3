@@ -6,7 +6,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { useBoltStore } from "@/stores/boltStore";
-import React, { useEffect, useMemo } from "react";
+import React, { useMemo } from "react";
 import { FaUserMd } from "react-icons/fa";
 
 function SubscribedUsersComponent() {
@@ -23,9 +23,7 @@ function SubscribedUsersComponent() {
       )),
     [subscribedUsers]
   );
-  useEffect(() => {
-    console.log({ subscribedUsers });
-  }, [subscribedUsers]);
+
   return (
     <Card className="m-6 shadow-lg w-fit ">
       <CardHeader>

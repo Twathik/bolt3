@@ -1,7 +1,6 @@
-mutation ($id: String!, $userId: String! @fromClaim(name: USERID)) {
+mutation ($id: String!) {
   mainDb_updateOneConsultationList(
     where: { id: $id }
-    userId: $userId
     data: { active: { set: false } }
   ) {
     ...ConsultationListFragment

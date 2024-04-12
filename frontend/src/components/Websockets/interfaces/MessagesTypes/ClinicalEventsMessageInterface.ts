@@ -1,4 +1,3 @@
-import type { ClinicalEventsGetClinicalEventsResponseData } from "@/components/wg-generated/models";
 import type { RootMessageInterface } from "../MessageTypesInterface";
 
 type ClinicalEventMessagePayloadOperationType = "add" | "remove";
@@ -9,7 +8,30 @@ interface RootClinicalEventMessagePayload {
 
 interface ClinicalEventUpdateMessagePayload
   extends RootClinicalEventMessagePayload {
-  clinicalEvent: ClinicalEventsGetClinicalEventsResponseData["mainDb_clinicalEvents"][0];
+  clinicalEvent: {
+    id: string;
+    eventType:
+      | "BIOLOGY"
+      | "CERTIFICAT"
+      | "CLINICALEXAM"
+      | "DIAGNOSTIC"
+      | "ECG"
+      | "HISTORY"
+      | "MEDICAL_REPORT"
+      | "PRESCRIPTION"
+      | "SONOGRAPHY";
+    eventCategory: "DOCUMENT" | "FOLDER";
+    updatedAt: string;
+    createdAt: string;
+    dicomId?: string;
+    dicom: boolean;
+    deleted: boolean;
+    user: {
+      id: string;
+      fullName?: string;
+    };
+    patientId: string;
+  };
 }
 
 type ClinicalEventMessagePayload = ClinicalEventUpdateMessagePayload;

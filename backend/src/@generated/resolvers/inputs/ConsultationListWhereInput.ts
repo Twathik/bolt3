@@ -3,7 +3,6 @@ import * as GraphQLScalars from "graphql-scalars";
 import { Prisma } from "@prisma/client";
 import { DecimalJSScalar } from "../../scalars";
 import { BoolFilter } from "../inputs/BoolFilter";
-import { ConsultationRelationFilter } from "../inputs/ConsultationRelationFilter";
 import { DateTimeFilter } from "../inputs/DateTimeFilter";
 import { PatientRelationFilter } from "../inputs/PatientRelationFilter";
 import { StringFilter } from "../inputs/StringFilter";
@@ -35,15 +34,15 @@ export class ConsultationListWhereInput {
   })
   patientId?: StringFilter | undefined;
 
-  @TypeGraphQL.Field(_type => StringFilter, {
-    nullable: true
-  })
-  consultationId?: StringFilter | undefined;
-
   @TypeGraphQL.Field(_type => BoolFilter, {
     nullable: true
   })
   active?: BoolFilter | undefined;
+
+  @TypeGraphQL.Field(_type => StringFilter, {
+    nullable: true
+  })
+  consultationDate?: StringFilter | undefined;
 
   @TypeGraphQL.Field(_type => DateTimeFilter, {
     nullable: true
@@ -59,9 +58,4 @@ export class ConsultationListWhereInput {
     nullable: true
   })
   patient?: PatientRelationFilter | undefined;
-
-  @TypeGraphQL.Field(_type => ConsultationRelationFilter, {
-    nullable: true
-  })
-  consultation?: ConsultationRelationFilter | undefined;
 }

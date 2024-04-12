@@ -4,7 +4,7 @@ import type { DocumentHeaderElementTypeWithId } from "@/components/plateEditor/p
 import type {
   ClinicalEventsGetClinicalEventResponseData,
   ClinicalEventsGetClinicalEventsResponseData,
-  ConsultationListTodayListsResponseData,
+  ConsultationListTodayConsultationResponseData,
   DataTableGetDataTableConfigurationsResponseData,
   EconomizersEconomizersResponseData,
   MobileDevicesMobileDevicesQueryResponseData,
@@ -177,11 +177,11 @@ export type MobileDevicesStoreSlice = {
 };
 
 export type PatientSpotlight = {
-  id: string;
+  consultationDate: string;
   label: string;
   description: string;
   patientId: string;
-  consultationList: ConsultationListTodayListsResponseData["mainDb_consultationLists"][0];
+  consultationList: ConsultationListTodayConsultationResponseData["mainDb_consultationLists"][0];
 };
 
 export type PatientSpotlightStoreSlice = {

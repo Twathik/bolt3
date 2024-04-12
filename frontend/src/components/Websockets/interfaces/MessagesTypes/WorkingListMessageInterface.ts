@@ -1,5 +1,7 @@
-import type { WorkingListsWorkingListsResponseData } from "@/components/wg-generated/models";
-import type { RootMessageInterface } from "../MessageTypesInterface";
+import type {
+  RootMessageInterface,
+  WorkingList,
+} from "../MessageTypesInterface";
 
 type WorkingListMessagePayloadOperationType =
   | "update"
@@ -13,7 +15,7 @@ interface RootWorkingListMessagePayload {
 
 interface WorkingListUpdateMessagePayload
   extends RootWorkingListMessagePayload {
-  workingList: WorkingListsWorkingListsResponseData["mainDb_workingLists"][0];
+  workingList: WorkingList;
 }
 
 type WorkingListMessagePayload = WorkingListUpdateMessagePayload;

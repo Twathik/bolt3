@@ -27,7 +27,7 @@ import {
   PRESCRIPTION_QUANTITY_COL,
   PRESCRIPTION_TABLE_KEY,
 } from "@/components/plateEditor/plate-app/PrescriptionTable/PrescriptionTableKey";
-import { DrugMentionKey } from "@/components/plateEditor/plate-app/Medic-plugin/drug-plugin-key";
+import { DrugMentionKey } from "@/components/plateEditor/plate-app/Drug-plugin/drug-plugin-key";
 import { DIAGNOSTIC_MENTION_KEY } from "@/components/plateEditor/plate-app/Diag-plugin/diag-plugin-key";
 import { DATA_INPUT_ELEMENT } from "@/components/plateEditor/plate-app/DataInputs/DataInputKeys";
 import {

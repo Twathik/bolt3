@@ -1,19 +1,26 @@
 import { FaFolderOpen } from "react-icons/fa";
-import RegisterButtonWithCheck from "./RegisterButton/RegisterButtonWithCheck";
-import RegisterButtonWithoutCheck from "./RegisterButton/RegisterButtonWithoutCheck";
 import { Button } from "@/components/ui/button";
 import parser from "html-react-parser";
-import { useBoltStore } from "@/stores/boltStore";
 import type { patientHit } from "@/lib/typesense/searchPatient";
-import { useCallback } from "react";
+import { useCallback, useMemo } from "react";
 import { useAppRouter } from "@/lib/utils/useAppRouter";
+import UnregisterButton from "./RegisterButton/UnregisterButton";
+import RegisterButton from "./RegisterButton/RegisterButton";
+import { useBoltStore } from "@/stores/boltStore";
 
 const Hit = ({ hit }: { hit: patientHit }) => {
-  const { id } = useBoltStore((store) => store.consultationState);
   const router = useAppRouter();
   const onClick = useCallback(() => {
     router.push(`/patient/${hit.id}/folder`);
   }, [hit.id, router]);
+  const patientSpotlights = useBoltStore((s) => s.patientSpotlights);
+
+  const registered = useMemo(() => {
+    const check = patientSpotlights.findIndex(
+      (p) => p.patientId === hit.id && p.consultationList.active
+    );
+    return check !== -1;
+  }, [hit, patientSpotlights]);
 
   return (
     <div
@@ -44,10 +51,10 @@ const Hit = ({ hit }: { hit: patientHit }) => {
 
         <div className="flex-1">
           <div className="-mt-px flex items-center justify-center gap-4 divide-x divide-gray-200">
-            {id ? (
-              <RegisterButtonWithCheck consultationId={id} patientId={hit.id} />
+            {registered ? (
+              <UnregisterButton listId={hit.id} />
             ) : (
-              <RegisterButtonWithoutCheck patientId={hit.id} />
+              <RegisterButton patientId={hit.id} />
             )}
 
             <Button

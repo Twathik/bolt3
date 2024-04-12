@@ -14,11 +14,9 @@ function PrescriptionSubscription({
     if (message.type === "prescription") {
       switch (message.payload.operation) {
         case "add":
-          console.log({ message });
           addPrescription(message.payload.prescription);
           break;
         case "remove":
-          console.log({ message });
           removePrescription(message.payload.prescription);
           break;
 

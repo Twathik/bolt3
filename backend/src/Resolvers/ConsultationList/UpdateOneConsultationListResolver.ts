@@ -3,12 +3,14 @@ import type { GraphQLResolveInfo } from 'graphql'
 import { ConsultationList } from '../../@generated'
 import {
   transformInfoIntoPrismaArgs,
-  getPrismaFromContext,
   transformCountFieldIntoSelectRelationsCount,
 } from '../../@generated/helpers'
 import { UpdateOneConsultationListArgs } from './args/UpdateOneConsultationListArgs'
-import { AppSubscriptionTriggerArgs } from '../Global/AppSubscription/args/AppSubscriptionTriggerArgs'
-import { PrismaClient } from '@prisma/client'
+import { v4 as uuid } from 'uuid'
+import { WebsocketMessageInterface } from '../../Utils/PubSubInterfaces/WebsocketMessageInterface'
+import { format } from 'date-fns'
+import { Context } from '../../context'
+import { notificationTopic } from '../../Utils/PubSubInterfaces/MessageTypesInterface'
 
 @TypeGraphQL.Resolver((_of) => ConsultationList)
 export class UpdateOneConsultationListResolver {
@@ -16,51 +18,58 @@ export class UpdateOneConsultationListResolver {
     nullable: true,
   })
   async updateOneConsultationList(
-    @TypeGraphQL.Ctx() ctx: any,
+    @TypeGraphQL.Ctx() { prisma, pubSub }: Context,
     @TypeGraphQL.Info() info: GraphQLResolveInfo,
-    @TypeGraphQL.Args() { userId, ...args }: UpdateOneConsultationListArgs,
-    @TypeGraphQL.PubSub('APP_SUBSCRIPTION')
-    notify: TypeGraphQL.Publisher<AppSubscriptionTriggerArgs>,
+    @TypeGraphQL.Args() args: UpdateOneConsultationListArgs,
   ): Promise<ConsultationList | null> {
     const { _count } = transformInfoIntoPrismaArgs(info)
     try {
-      const prisma = getPrismaFromContext(ctx) as PrismaClient
-
       const consultationList = await prisma.consultationList.update({
         ...args,
         ...(_count && transformCountFieldIntoSelectRelationsCount(_count)),
       })
 
-      const { active, id, patientId, consultationId } = consultationList
+      const { active, id, patientId, consultationDate } = consultationList
 
       const { firstName, lastName, ddn, sexe } =
         await prisma.patient.findFirstOrThrow({
           where: { id: patientId },
         })
-      await notify({
-        userId,
-        subscriptionSpecificId: consultationId,
+      const message: WebsocketMessageInterface = {
+        type: 'consultation-list',
+        destination: ['consultation-list'],
         global: true,
-        type: 'consultationLists',
-        appPayload: JSON.stringify({
+        id: uuid(),
+        subscriptionIds: [],
+        payload: {
           operation: 'update',
           consultationList: {
-            id,
-            active,
-            consultationId,
+            consultationDate,
+            label: `${lastName} ${firstName}`,
+            description: `DDN : ${format(ddn, 'dd-MM-yyyy')} - sexe: ${
+              sexe === 'F' ? 'Femme' : 'Homme'
+            }`,
             patientId,
-            patient: {
-              id: patientId,
-              lastName,
-              firstName,
-              sexe,
-              ddn,
+            consultationList: {
+              active,
+              id,
+              patient: {
+                ddn: format(ddn, 'dd-MM-yyyy'),
+                firstName,
+                lastName,
+                sexe,
+              },
+              patientId,
+              consultationDate,
             },
           },
-        }),
-      })
+        },
+      }
+      await pubSub.publish(notificationTopic, message)
+
       return consultationList
     } catch (error) {
+      console.log({ error })
       throw Error('ConsultationList has not been updated')
     }
   }

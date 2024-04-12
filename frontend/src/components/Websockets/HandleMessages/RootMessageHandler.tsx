@@ -9,6 +9,7 @@ import ClinicalEventsSubscription from "./Handlers/ClinicalEventsSubscription";
 import FocusedDocumentSubscription from "./Handlers/FocusedClinicalEventSubscription";
 import PrescriptionSubscription from "./Handlers/PrescriptionSubscription";
 import WorkingListSubscription from "./Handlers/WorkingListSubscription";
+import ConsultationListSubscription from "./Handlers/ConsultationListSubscription";
 
 function RootMessageHandler({
   message,
@@ -35,6 +36,8 @@ function RootMessageHandler({
         return <PrescriptionSubscription message={message} />;
       case "workingList":
         return <WorkingListSubscription message={message} />;
+      case "consultation-list":
+        return <ConsultationListSubscription message={message} />;
 
       default:
         return null;

@@ -3,8 +3,8 @@ import * as TypeGraphQL from "type-graphql";
 export enum ConsultationListScalarFieldEnum {
   id = "id",
   patientId = "patientId",
-  consultationId = "consultationId",
   active = "active",
+  consultationDate = "consultationDate",
   createdAt = "createdAt",
   updatedAt = "updatedAt"
 }

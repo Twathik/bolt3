@@ -1,4 +1,3 @@
-import type { MobileDevicesMobileDevicesQueryResponseData } from "@/components/wg-generated/models";
 import type { RootMessageInterface } from "../MessageTypesInterface";
 
 type MobileDeviceMessagePayloadOperationType = "update" | "create" | "delete";
@@ -9,7 +8,14 @@ interface RootMobileDeviceMessagePayload {
 
 interface MobileDeviceUpdateMessagePayload
   extends RootMobileDeviceMessagePayload {
-  mobileDevice: MobileDevicesMobileDevicesQueryResponseData["mainDb_mobileDevices"][0];
+  mobileDevice: {
+    id: string;
+    accessToken: string;
+    connected: boolean;
+    expireAt: string;
+    mobileDeviceType: "DOCTOR" | "SECRETARY";
+    uuid: string;
+  };
 }
 
 type MobileDeviceMessagePayload = MobileDeviceUpdateMessagePayload;

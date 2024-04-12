@@ -1,5 +1,7 @@
-import type { PatientsGetOnePatientInfoResponseData } from "../../../wg-generated/models";
-import type { RootMessageInterface } from "../MessageTypesInterface";
+import type {
+  PatientInfoInterface,
+  RootMessageInterface,
+} from "../MessageTypesInterface";
 
 type PatientMessagePayloadOperationType =
   | "update"
@@ -14,12 +16,12 @@ interface RootPatientMessagePayload {
 
 interface PatientUpdateMessagePayload extends RootPatientMessagePayload {
   operation: "update" | "delete";
-  patient: PatientsGetOnePatientInfoResponseData["mainDb_getPatient"];
+  patient: PatientInfoInterface;
 }
 interface PatientTrashManagementMessagePayload
   extends RootPatientMessagePayload {
   operation: "onTrash";
-  patient: PatientsGetOnePatientInfoResponseData["mainDb_getPatient"];
+  patient: PatientInfoInterface;
   trashOperation: "addToTrash" | "restore";
 }
 

@@ -1,1 +1,0 @@
-export { ConsultationConsultationListArgs } from "./ConsultationConsultationListArgs";

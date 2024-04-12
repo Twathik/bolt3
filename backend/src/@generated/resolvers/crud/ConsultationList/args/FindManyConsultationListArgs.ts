@@ -35,5 +35,5 @@ export class FindManyConsultationListArgs {
   @TypeGraphQL.Field(_type => [ConsultationListScalarFieldEnum], {
     nullable: true
   })
-  distinct?: Array<"id" | "patientId" | "consultationId" | "active" | "createdAt" | "updatedAt"> | undefined;
+  distinct?: Array<"id" | "patientId" | "active" | "consultationDate" | "createdAt" | "updatedAt"> | undefined;
 }

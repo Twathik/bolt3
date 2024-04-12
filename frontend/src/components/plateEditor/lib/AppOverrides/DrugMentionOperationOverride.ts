@@ -4,7 +4,7 @@ import { v4 as uuid } from "uuid";
 import { ReadyState } from "react-use-websocket";
 import type { WebsocketMessageInterface } from "@/components/Websockets/interfaces/WebsocketMessageInterface";
 import type { DrugHitInterface } from "@/lib/interfaces/DrugsInterfaces";
-import { DrugMentionKey } from "../../plate-app/Medic-plugin/drug-plugin-key";
+import { DrugMentionKey } from "../../plate-app/Drug-plugin/drug-plugin-key";
 
 const withDrugMentionOperationOverride = (
   editor: PlateEditor,

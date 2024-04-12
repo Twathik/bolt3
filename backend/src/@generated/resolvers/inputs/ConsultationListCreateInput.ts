@@ -2,7 +2,6 @@ import * as TypeGraphQL from "type-graphql";
 import * as GraphQLScalars from "graphql-scalars";
 import { Prisma } from "@prisma/client";
 import { DecimalJSScalar } from "../../scalars";
-import { ConsultationCreateNestedOneWithoutConsultationListInput } from "../inputs/ConsultationCreateNestedOneWithoutConsultationListInput";
 import { PatientCreateNestedOneWithoutConsultationListInput } from "../inputs/PatientCreateNestedOneWithoutConsultationListInput";
 
 @TypeGraphQL.InputType("ConsultationListCreateInput", {})
@@ -16,6 +15,11 @@ export class ConsultationListCreateInput {
     nullable: true
   })
   active?: boolean | undefined;
+
+  @TypeGraphQL.Field(_type => String, {
+    nullable: false
+  })
+  consultationDate!: string;
 
   @TypeGraphQL.Field(_type => Date, {
     nullable: true
@@ -31,9 +35,4 @@ export class ConsultationListCreateInput {
     nullable: false
   })
   patient!: PatientCreateNestedOneWithoutConsultationListInput;
-
-  @TypeGraphQL.Field(_type => ConsultationCreateNestedOneWithoutConsultationListInput, {
-    nullable: false
-  })
-  consultation!: ConsultationCreateNestedOneWithoutConsultationListInput;
 }

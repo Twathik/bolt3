@@ -15,15 +15,15 @@ export class ConsultationListMaxAggregate {
   })
   patientId!: string | null;
 
-  @TypeGraphQL.Field(_type => String, {
-    nullable: true
-  })
-  consultationId!: string | null;
-
   @TypeGraphQL.Field(_type => Boolean, {
     nullable: true
   })
   active!: boolean | null;
+
+  @TypeGraphQL.Field(_type => String, {
+    nullable: true
+  })
+  consultationDate!: string | null;
 
   @TypeGraphQL.Field(_type => Date, {
     nullable: true

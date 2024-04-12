@@ -374,30 +374,12 @@ export interface mainDb_ConsultationListWhereInput {
 	NOT?: mainDb_ConsultationListWhereInput[];
 	OR?: mainDb_ConsultationListWhereInput[];
 	active?: mainDb_BoolFilter;
-	consultation?: mainDb_ConsultationRelationFilter;
-	consultationId?: mainDb_StringFilter;
+	consultationDate?: mainDb_StringFilter;
 	createdAt?: mainDb_DateTimeFilter;
 	id?: mainDb_StringFilter;
 	patient?: mainDb_PatientRelationFilter;
 	patientId?: mainDb_StringFilter;
 	updatedAt?: mainDb_DateTimeFilter;
-}
-
-export interface mainDb_ConsultationRelationFilter {
-	is?: mainDb_ConsultationWhereInput;
-	isNot?: mainDb_ConsultationWhereInput;
-}
-
-export interface mainDb_ConsultationWhereInput {
-	AND?: mainDb_ConsultationWhereInput[];
-	ConsultationList?: mainDb_ConsultationListListRelationFilter;
-	NOT?: mainDb_ConsultationWhereInput[];
-	OR?: mainDb_ConsultationWhereInput[];
-	createdAt?: mainDb_DateTimeFilter;
-	day?: mainDb_IntFilter;
-	id?: mainDb_StringFilter;
-	month?: mainDb_IntFilter;
-	year?: mainDb_IntFilter;
 }
 
 export interface mainDb_DocumentStoreListRelationFilter {
@@ -951,18 +933,17 @@ export interface mainDb_ConsultationListWhereUniqueInput {
 	NOT?: mainDb_ConsultationListWhereInput[];
 	OR?: mainDb_ConsultationListWhereInput[];
 	active?: mainDb_BoolFilter;
-	consultation?: mainDb_ConsultationRelationFilter;
-	consultationId?: mainDb_StringFilter;
+	consultationDate?: mainDb_StringFilter;
 	createdAt?: mainDb_DateTimeFilter;
 	id?: string;
 	patient?: mainDb_PatientRelationFilter;
 	patientId?: mainDb_StringFilter;
-	patientId_consultationId?: mainDb_ConsultationListPatientIdConsultationIdCompoundUniqueInput;
+	patientId_consultationDate?: mainDb_ConsultationListPatientIdConsultationDateCompoundUniqueInput;
 	updatedAt?: mainDb_DateTimeFilter;
 }
 
-export interface mainDb_ConsultationListPatientIdConsultationIdCompoundUniqueInput {
-	consultationId?: string;
+export interface mainDb_ConsultationListPatientIdConsultationDateCompoundUniqueInput {
+	consultationDate?: string;
 	patientId?: string;
 }
 
@@ -973,48 +954,10 @@ export interface mainDb_ConsultationListCreateOrConnectWithoutPatientInput {
 
 export interface mainDb_ConsultationListCreateWithoutPatientInput {
 	active?: boolean;
-	consultation: mainDb_ConsultationCreateNestedOneWithoutConsultationListInput;
+	consultationDate: string;
 	createdAt?: string;
 	id?: string;
 	updatedAt?: string;
-}
-
-export interface mainDb_ConsultationCreateNestedOneWithoutConsultationListInput {
-	connect?: mainDb_ConsultationWhereUniqueInput;
-	connectOrCreate?: mainDb_ConsultationCreateOrConnectWithoutConsultationListInput;
-	create?: mainDb_ConsultationCreateWithoutConsultationListInput;
-}
-
-export interface mainDb_ConsultationWhereUniqueInput {
-	AND?: mainDb_ConsultationWhereInput[];
-	ConsultationList?: mainDb_ConsultationListListRelationFilter;
-	NOT?: mainDb_ConsultationWhereInput[];
-	OR?: mainDb_ConsultationWhereInput[];
-	createdAt?: mainDb_DateTimeFilter;
-	day?: mainDb_IntFilter;
-	day_month_year?: mainDb_ConsultationDayMonthYearCompoundUniqueInput;
-	id?: string;
-	month?: mainDb_IntFilter;
-	year?: mainDb_IntFilter;
-}
-
-export interface mainDb_ConsultationDayMonthYearCompoundUniqueInput {
-	day?: number;
-	month?: number;
-	year?: number;
-}
-
-export interface mainDb_ConsultationCreateOrConnectWithoutConsultationListInput {
-	create?: mainDb_ConsultationCreateWithoutConsultationListInput;
-	where?: mainDb_ConsultationWhereUniqueInput;
-}
-
-export interface mainDb_ConsultationCreateWithoutConsultationListInput {
-	createdAt?: string;
-	day: number;
-	id?: string;
-	month: number;
-	year: number;
 }
 
 export interface mainDb_ConsultationListCreateManyPatientInputEnvelope {
@@ -1024,7 +967,7 @@ export interface mainDb_ConsultationListCreateManyPatientInputEnvelope {
 
 export interface mainDb_ConsultationListCreateManyPatientInput {
 	active?: boolean;
-	consultationId: string;
+	consultationDate: string;
 	createdAt?: string;
 	id?: string;
 	updatedAt?: string;
@@ -1668,7 +1611,7 @@ export interface mainDb_ConsultationListScalarWhereInput {
 	NOT?: mainDb_ConsultationListScalarWhereInput[];
 	OR?: mainDb_ConsultationListScalarWhereInput[];
 	active?: mainDb_BoolFilter;
-	consultationId?: mainDb_StringFilter;
+	consultationDate?: mainDb_StringFilter;
 	createdAt?: mainDb_DateTimeFilter;
 	id?: mainDb_StringFilter;
 	patientId?: mainDb_StringFilter;
@@ -1682,37 +1625,10 @@ export interface mainDb_ConsultationListUpdateWithWhereUniqueWithoutPatientInput
 
 export interface mainDb_ConsultationListUpdateWithoutPatientInput {
 	active?: mainDb_BoolFieldUpdateOperationsInput;
-	consultation?: mainDb_ConsultationUpdateOneRequiredWithoutConsultationListNestedInput;
+	consultationDate?: mainDb_StringFieldUpdateOperationsInput;
 	createdAt?: mainDb_DateTimeFieldUpdateOperationsInput;
 	id?: mainDb_StringFieldUpdateOperationsInput;
 	updatedAt?: mainDb_DateTimeFieldUpdateOperationsInput;
-}
-
-export interface mainDb_ConsultationUpdateOneRequiredWithoutConsultationListNestedInput {
-	connect?: mainDb_ConsultationWhereUniqueInput;
-	connectOrCreate?: mainDb_ConsultationCreateOrConnectWithoutConsultationListInput;
-	create?: mainDb_ConsultationCreateWithoutConsultationListInput;
-	update?: mainDb_ConsultationUpdateToOneWithWhereWithoutConsultationListInput;
-	upsert?: mainDb_ConsultationUpsertWithoutConsultationListInput;
-}
-
-export interface mainDb_ConsultationUpdateToOneWithWhereWithoutConsultationListInput {
-	data?: mainDb_ConsultationUpdateWithoutConsultationListInput;
-	where?: mainDb_ConsultationWhereInput;
-}
-
-export interface mainDb_ConsultationUpdateWithoutConsultationListInput {
-	createdAt?: mainDb_DateTimeFieldUpdateOperationsInput;
-	day?: mainDb_IntFieldUpdateOperationsInput;
-	id?: mainDb_StringFieldUpdateOperationsInput;
-	month?: mainDb_IntFieldUpdateOperationsInput;
-	year?: mainDb_IntFieldUpdateOperationsInput;
-}
-
-export interface mainDb_ConsultationUpsertWithoutConsultationListInput {
-	create?: mainDb_ConsultationCreateWithoutConsultationListInput;
-	update?: mainDb_ConsultationUpdateWithoutConsultationListInput;
-	where?: mainDb_ConsultationWhereInput;
 }
 
 export interface mainDb_ConsultationListUpdateManyWithWhereWithoutPatientInput {
@@ -1722,6 +1638,7 @@ export interface mainDb_ConsultationListUpdateManyWithWhereWithoutPatientInput {
 
 export interface mainDb_ConsultationListUpdateManyMutationInput {
 	active?: mainDb_BoolFieldUpdateOperationsInput;
+	consultationDate?: mainDb_StringFieldUpdateOperationsInput;
 	createdAt?: mainDb_DateTimeFieldUpdateOperationsInput;
 	id?: mainDb_StringFieldUpdateOperationsInput;
 	updatedAt?: mainDb_DateTimeFieldUpdateOperationsInput;
@@ -2001,21 +1918,6 @@ export type JSONValue = string | number | boolean | JSONObject | Array<JSONValue
 
 export type JSONObject = { [key: string]: JSONValue };
 
-export const mainDb_AppSubscriptionPayloadType = {
-	closeAllTabs: "closeAllTabs",
-	consultationLists: "consultationLists",
-	emptyTrash: "emptyTrash",
-	focusedDocument: "focusedDocument",
-	mobileDeviceUpdate: "mobileDeviceUpdate",
-	modalityUpdate: "modalityUpdate",
-	patientUpdate: "patientUpdate",
-	secondaryDisplay: "secondaryDisplay",
-	workingLists: "workingLists",
-} as const;
-
-export type mainDb_AppSubscriptionPayloadTypeValues =
-	(typeof mainDb_AppSubscriptionPayloadType)[keyof typeof mainDb_AppSubscriptionPayloadType];
-
 export const mainDb_EventTypes = {
 	BIOLOGY: "BIOLOGY",
 	CERTIFICAT: "CERTIFICAT",
@@ -2167,17 +2069,6 @@ export const mainDb_Role = {
 
 export type mainDb_RoleValues = (typeof mainDb_Role)[keyof typeof mainDb_Role];
 
-export interface AppSubscriptionGlobalSubscriptionInput {
-	subscriptionSpecificId: string[];
-}
-
-export interface AppSubscriptionTriggerAppSubscriptionInput {
-	appPayload: string;
-	appType: mainDb_AppSubscriptionPayloadTypeValues;
-	subscriptionSpecificId?: string;
-	global: boolean;
-}
-
 export interface CountriesInput {
 	filter?: countries_CountryFilterInput;
 }
@@ -2298,8 +2189,8 @@ export interface ClinicalEventsGetClinicalEventsInput {
 }
 
 export interface ConsultationListCheckIfRegistredInput {
-	consultationId: string;
 	patientId: string;
+	consultationDate: string;
 }
 
 export interface ConsultationListCloseConsultationInput {
@@ -2307,17 +2198,11 @@ export interface ConsultationListCloseConsultationInput {
 }
 
 export interface ConsultationListRegisterPatientInput {
-	patient_id: string;
+	patientId: string;
 }
 
 export interface ConsultationListTodayConsultationInput {
-	day: number;
-	month: number;
-	year: number;
-}
-
-export interface ConsultationListTodayListsInput {
-	consultationId: string;
+	consultationDate: string;
 }
 
 export interface ConsultationListToggleActivePatientInput {
@@ -2326,8 +2211,8 @@ export interface ConsultationListToggleActivePatientInput {
 }
 
 export interface ConsultationListUnregisterPatientInput {
-	consultationId: string;
 	patientId: string;
+	consultationDate: string;
 }
 
 export interface MobileDevicesAddMobileDeviceMutationInput {
@@ -2424,19 +2309,6 @@ export type WorkingListsRefreshLinkExamInput = ExtractInput<typeof function_Work
 export type UsersSubscribeInput = ExtractInput<typeof function_UsersSubscribe>;
 
 export type UsersUpdateInput = ExtractInput<typeof function_UsersUpdate>;
-
-export interface AppSubscriptionGlobalSubscriptionInputInternal {
-	subscriptionSpecificId: string[];
-	userId: string;
-}
-
-export interface AppSubscriptionTriggerAppSubscriptionInputInternal {
-	appPayload: string;
-	appType: mainDb_AppSubscriptionPayloadTypeValues;
-	subscriptionSpecificId?: string;
-	global: boolean;
-	userId: string;
-}
 
 export interface CountriesInputInternal {
 	filter?: countries_CountryFilterInput;
@@ -2566,40 +2438,30 @@ export interface ClinicalEventsGetClinicalEventsInputInternal {
 }
 
 export interface ConsultationListCheckIfRegistredInputInternal {
-	consultationId: string;
 	patientId: string;
+	consultationDate: string;
 }
 
 export interface ConsultationListCloseConsultationInputInternal {
 	id: string;
-	userId: string;
 }
 
 export interface ConsultationListRegisterPatientInputInternal {
-	patient_id: string;
-	userId: string;
+	patientId: string;
 }
 
 export interface ConsultationListTodayConsultationInputInternal {
-	day: number;
-	month: number;
-	year: number;
-}
-
-export interface ConsultationListTodayListsInputInternal {
-	consultationId: string;
+	consultationDate: string;
 }
 
 export interface ConsultationListToggleActivePatientInputInternal {
 	id: string;
-	userId: string;
 	active: boolean;
 }
 
 export interface ConsultationListUnregisterPatientInputInternal {
-	consultationId: string;
 	patientId: string;
-	userId: string;
+	consultationDate: string;
 }
 
 export interface MobileDevicesAddMobileDeviceMutationInputInternal {
@@ -2718,19 +2580,6 @@ export interface UsersUpdateInputInternal {
 	id: string;
 	name: string;
 	bio: string;
-}
-
-export interface AppSubscriptionGlobalSubscriptionInputInjected {
-	subscriptionSpecificId: string[];
-	userId: string;
-}
-
-export interface AppSubscriptionTriggerAppSubscriptionInputInjected {
-	appPayload: string;
-	appType: mainDb_AppSubscriptionPayloadTypeValues;
-	subscriptionSpecificId?: string;
-	global: boolean;
-	userId: string;
 }
 
 export interface CountriesInputInjected {
@@ -2861,40 +2710,30 @@ export interface ClinicalEventsGetClinicalEventsInputInjected {
 }
 
 export interface ConsultationListCheckIfRegistredInputInjected {
-	consultationId: string;
 	patientId: string;
+	consultationDate: string;
 }
 
 export interface ConsultationListCloseConsultationInputInjected {
 	id: string;
-	userId: string;
 }
 
 export interface ConsultationListRegisterPatientInputInjected {
-	patient_id: string;
-	userId: string;
+	patientId: string;
 }
 
 export interface ConsultationListTodayConsultationInputInjected {
-	day: number;
-	month: number;
-	year: number;
-}
-
-export interface ConsultationListTodayListsInputInjected {
-	consultationId: string;
+	consultationDate: string;
 }
 
 export interface ConsultationListToggleActivePatientInputInjected {
 	id: string;
-	userId: string;
 	active: boolean;
 }
 
 export interface ConsultationListUnregisterPatientInputInjected {
-	consultationId: string;
 	patientId: string;
-	userId: string;
+	consultationDate: string;
 }
 
 export interface MobileDevicesAddMobileDeviceMutationInputInjected {
@@ -2995,16 +2834,6 @@ export interface UsersInternalUpdateAuthenticatedUserInputInjected {
 	create: mainDb_UserCreateInput;
 	update: mainDb_UserUpdateInput;
 	where: mainDb_UserWhereUniqueInput;
-}
-
-export interface AppSubscriptionGlobalSubscriptionResponse {
-	data?: AppSubscriptionGlobalSubscriptionResponseData;
-	errors?: GraphQLError[];
-}
-
-export interface AppSubscriptionTriggerAppSubscriptionResponse {
-	data?: AppSubscriptionTriggerAppSubscriptionResponseData;
-	errors?: GraphQLError[];
 }
 
 export interface CountriesResponse {
@@ -3177,11 +3006,6 @@ export interface ConsultationListTodayConsultationResponse {
 	errors?: GraphQLError[];
 }
 
-export interface ConsultationListTodayListsResponse {
-	data?: ConsultationListTodayListsResponseData;
-	errors?: GraphQLError[];
-}
-
 export interface ConsultationListToggleActivePatientResponse {
 	data?: ConsultationListToggleActivePatientResponseData;
 	errors?: GraphQLError[];
@@ -3315,27 +3139,6 @@ export interface UsersSubscribeResponse {
 export interface UsersUpdateResponse {
 	data?: UsersUpdateResponseData;
 	errors?: GraphQLError[];
-}
-
-export interface AppSubscriptionGlobalSubscriptionResponseData {
-	mainDb_appSubscription: {
-		appPayload: string;
-		messageId: string;
-		type:
-			| "closeAllTabs"
-			| "consultationLists"
-			| "emptyTrash"
-			| "focusedDocument"
-			| "mobileDeviceUpdate"
-			| "modalityUpdate"
-			| "patientUpdate"
-			| "secondaryDisplay"
-			| "workingLists";
-	};
-}
-
-export interface AppSubscriptionTriggerAppSubscriptionResponseData {
-	mainDb_triggerAppSubscription: boolean;
 }
 
 export interface CountriesResponseData {
@@ -4341,17 +4144,15 @@ export interface ClinicalEventsGetClinicalEventsResponseData {
 }
 
 export interface ConsultationListCheckIfRegistredResponseData {
-	mainDb_consultationList?: {
-		id: string;
-	};
+	mainDb_checkIfRegistered: boolean;
 }
 
 export interface ConsultationListCloseConsultationResponseData {
 	mainDb_updateOneConsultationList?: {
 		id: string;
 		active: boolean;
-		consultationId: string;
 		patientId: string;
+		consultationDate: string;
 		patient: {
 			lastName: string;
 			firstName: string;
@@ -4362,44 +4163,15 @@ export interface ConsultationListCloseConsultationResponseData {
 }
 
 export interface ConsultationListRegisterPatientResponseData {
-	mainDb_registerPatient: string;
+	mainDb_registerPatient: boolean;
 }
 
 export interface ConsultationListTodayConsultationResponseData {
-	mainDb_findFirstConsultation?: {
-		id: string;
-		allowedEventTypes: (
-			| "BIOLOGY"
-			| "CERTIFICAT"
-			| "CLINICALEXAM"
-			| "DIAGNOSTIC"
-			| "ECG"
-			| "HISTORY"
-			| "MEDICAL_REPORT"
-			| "PRESCRIPTION"
-			| "SONOGRAPHY"
-		)[];
-		ConsultationList: {
-			id: string;
-			active: boolean;
-			consultationId: string;
-			patientId: string;
-			patient: {
-				lastName: string;
-				firstName: string;
-				sexe: "F" | "M";
-				ddn: string;
-			};
-		}[];
-	};
-}
-
-export interface ConsultationListTodayListsResponseData {
 	mainDb_consultationLists: {
 		id: string;
 		active: boolean;
-		consultationId: string;
 		patientId: string;
+		consultationDate: string;
 		patient: {
 			lastName: string;
 			firstName: string;

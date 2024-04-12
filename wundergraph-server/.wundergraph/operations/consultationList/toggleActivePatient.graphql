@@ -1,11 +1,6 @@
-mutation (
-  $id: String!
-  $userId: String! @fromClaim(name: USERID)
-  $active: Boolean!
-) {
+mutation ($id: String!, $active: Boolean!) {
   mainDb_updateOneConsultationList(
     where: { id: $id }
-    userId: $userId
     data: { active: { set: $active } }
   ) {
     id

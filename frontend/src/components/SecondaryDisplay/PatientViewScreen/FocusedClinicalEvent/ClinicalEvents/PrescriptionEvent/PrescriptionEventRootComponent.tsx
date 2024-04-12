@@ -7,7 +7,7 @@ import type { TElement } from "@udecode/plate-common";
 import React, { useEffect } from "react";
 import SubscribeToPrescriptionsWidget from "../../../subscriptionsHandlers/SubscribeToPrescriptionsWidget";
 import { getNodesByType } from "@/components/plateEditor/lib/getNodesByType";
-import { DrugMentionKey } from "@/components/plateEditor/plate-app/Medic-plugin/drug-plugin-key";
+import { DrugMentionKey } from "@/components/plateEditor/plate-app/Drug-plugin/drug-plugin-key";
 import type { DrugHitInterface } from "@/lib/interfaces/DrugsInterfaces";
 import PrescriptionEventComponent from "./PrescriptionEventComponent";
 import CommandPanel from "../Common/CommandPanel";

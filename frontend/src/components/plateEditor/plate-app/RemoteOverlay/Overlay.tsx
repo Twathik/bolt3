@@ -9,7 +9,7 @@ import type { CursorState } from "@udecode/plate-cursor";
 import { useCursorOverlayPositions } from "@udecode/plate-cursor";
 import type { UnknownObject } from "@udecode/utils";
 
-const zIndex = 100;
+const zIndex = 10;
 
 type CaretProps = Pick<CursorOverlayData<CursorData>, "caretPosition" | "data">;
 

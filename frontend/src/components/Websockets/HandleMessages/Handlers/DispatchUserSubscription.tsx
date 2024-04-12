@@ -23,6 +23,7 @@ function DispatchUserSubscription({
           break;
         case "leave":
           removeSubscribedUser(message.payload.subscribedUser);
+          break;
         default:
           break;
       }

@@ -13,14 +13,6 @@ type AggregateClinicalEvent {
   _min: ClinicalEventMinAggregate
 }
 
-type AggregateConsultation {
-  _avg: ConsultationAvgAggregate
-  _count: ConsultationCountAggregate
-  _max: ConsultationMaxAggregate
-  _min: ConsultationMinAggregate
-  _sum: ConsultationSumAggregate
-}
-
 type AggregateConsultationList {
   _count: ConsultationListCountAggregate
   _max: ConsultationListMaxAggregate
@@ -837,109 +829,9 @@ input ClinicalEventWhereUniqueInput {
   userId: StringFilter
 }
 
-type Consultation {
-  ConsultationList(cursor: ConsultationListWhereUniqueInput, distinct: [ConsultationListScalarFieldEnum!], orderBy: [ConsultationListOrderByWithRelationInput!], skip: Int, take: Int, where: ConsultationListWhereInput): [ConsultationList!]!
-  _count: ConsultationCount
-  allowedEventTypes: [EventTypes!]!
-  createdAt: DateTimeISO!
-  day: Int!
-  id: String!
-  month: Int!
-  year: Int!
-}
-
-type ConsultationAvgAggregate {
-  day: Float
-  month: Float
-  year: Float
-}
-
-input ConsultationAvgOrderByAggregateInput {
-  day: SortOrder
-  month: SortOrder
-  year: SortOrder
-}
-
-type ConsultationCount {
-  ConsultationList(where: ConsultationListWhereInput): Int!
-}
-
-type ConsultationCountAggregate {
-  _all: Int!
-  createdAt: Int!
-  day: Int!
-  id: Int!
-  month: Int!
-  year: Int!
-}
-
-input ConsultationCountOrderByAggregateInput {
-  createdAt: SortOrder
-  day: SortOrder
-  id: SortOrder
-  month: SortOrder
-  year: SortOrder
-}
-
-input ConsultationCreateInput {
-  ConsultationList: ConsultationListCreateNestedManyWithoutConsultationInput
-  createdAt: DateTimeISO
-  day: Int!
-  id: String
-  month: Int!
-  year: Int!
-}
-
-input ConsultationCreateManyInput {
-  createdAt: DateTimeISO
-  day: Int!
-  id: String
-  month: Int!
-  year: Int!
-}
-
-input ConsultationCreateNestedOneWithoutConsultationListInput {
-  connect: ConsultationWhereUniqueInput
-  connectOrCreate: ConsultationCreateOrConnectWithoutConsultationListInput
-  create: ConsultationCreateWithoutConsultationListInput
-}
-
-input ConsultationCreateOrConnectWithoutConsultationListInput {
-  create: ConsultationCreateWithoutConsultationListInput!
-  where: ConsultationWhereUniqueInput!
-}
-
-input ConsultationCreateWithoutConsultationListInput {
-  createdAt: DateTimeISO
-  day: Int!
-  id: String
-  month: Int!
-  year: Int!
-}
-
-input ConsultationDayMonthYearCompoundUniqueInput {
-  day: Int!
-  month: Int!
-  year: Int!
-}
-
-type ConsultationGroupBy {
-  _avg: ConsultationAvgAggregate
-  _count: ConsultationCountAggregate
-  _max: ConsultationMaxAggregate
-  _min: ConsultationMinAggregate
-  _sum: ConsultationSumAggregate
-  createdAt: DateTimeISO!
-  day: Int!
-  id: String!
-  month: Int!
-  year: Int!
-}
-
 type ConsultationList {
   active: Boolean!
-  consultation: Consultation!
-  consultationId: String!
+  consultationDate: String!
   createdAt: DateTimeISO!
   id: String!
   patient: Patient!
@@ -950,7 +842,7 @@ type ConsultationList {
 type ConsultationListCountAggregate {
   _all: Int!
   active: Int!
-  consultationId: Int!
+  consultationDate: Int!
   createdAt: Int!
   id: Int!
   patientId: Int!
@@ -959,7 +851,7 @@ type ConsultationListCountAggregate {
 
 input ConsultationListCountOrderByAggregateInput {
   active: SortOrder
-  consultationId: SortOrder
+  consultationDate: SortOrder
   createdAt: SortOrder
   id: SortOrder
   patientId: SortOrder
@@ -968,29 +860,16 @@ input ConsultationListCountOrderByAggregateInput {
 
 input ConsultationListCreateInput {
   active: Boolean
-  consultation: ConsultationCreateNestedOneWithoutConsultationListInput!
+  consultationDate: String!
   createdAt: DateTimeISO
   id: String
   patient: PatientCreateNestedOneWithoutConsultationListInput!
   updatedAt: DateTimeISO
 }
 
-input ConsultationListCreateManyConsultationInput {
-  active: Boolean
-  createdAt: DateTimeISO
-  id: String
-  patientId: String!
-  updatedAt: DateTimeISO
-}
-
-input ConsultationListCreateManyConsultationInputEnvelope {
-  data: [ConsultationListCreateManyConsultationInput!]!
-  skipDuplicates: Boolean
-}
-
 input ConsultationListCreateManyInput {
   active: Boolean
-  consultationId: String!
+  consultationDate: String!
   createdAt: DateTimeISO
   id: String
   patientId: String!
@@ -999,7 +878,7 @@ input ConsultationListCreateManyInput {
 
 input ConsultationListCreateManyPatientInput {
   active: Boolean
-  consultationId: String!
+  consultationDate: String!
   createdAt: DateTimeISO
   id: String
   updatedAt: DateTimeISO
@@ -1010,13 +889,6 @@ input ConsultationListCreateManyPatientInputEnvelope {
   skipDuplicates: Boolean
 }
 
-input ConsultationListCreateNestedManyWithoutConsultationInput {
-  connect: [ConsultationListWhereUniqueInput!]
-  connectOrCreate: [ConsultationListCreateOrConnectWithoutConsultationInput!]
-  create: [ConsultationListCreateWithoutConsultationInput!]
-  createMany: ConsultationListCreateManyConsultationInputEnvelope
-}
-
 input ConsultationListCreateNestedManyWithoutPatientInput {
   connect: [ConsultationListWhereUniqueInput!]
   connectOrCreate: [ConsultationListCreateOrConnectWithoutPatientInput!]
@@ -1024,27 +896,14 @@ input ConsultationListCreateNestedManyWithoutPatientInput {
   createMany: ConsultationListCreateManyPatientInputEnvelope
 }
 
-input ConsultationListCreateOrConnectWithoutConsultationInput {
-  create: ConsultationListCreateWithoutConsultationInput!
-  where: ConsultationListWhereUniqueInput!
-}
-
 input ConsultationListCreateOrConnectWithoutPatientInput {
   create: ConsultationListCreateWithoutPatientInput!
   where: ConsultationListWhereUniqueInput!
 }
 
-input ConsultationListCreateWithoutConsultationInput {
-  active: Boolean
-  createdAt: DateTimeISO
-  id: String
-  patient: PatientCreateNestedOneWithoutConsultationListInput!
-  updatedAt: DateTimeISO
-}
-
 input ConsultationListCreateWithoutPatientInput {
   active: Boolean
-  consultation: ConsultationCreateNestedOneWithoutConsultationListInput!
+  consultationDate: String!
   createdAt: DateTimeISO
   id: String
   updatedAt: DateTimeISO
@@ -1055,7 +914,7 @@ type ConsultationListGroupBy {
   _max: ConsultationListMaxAggregate
   _min: ConsultationListMinAggregate
   active: Boolean!
-  consultationId: String!
+  consultationDate: String!
   createdAt: DateTimeISO!
   id: String!
   patientId: String!
@@ -1070,7 +929,7 @@ input ConsultationListListRelationFilter {
 
 type ConsultationListMaxAggregate {
   active: Boolean
-  consultationId: String
+  consultationDate: String
   createdAt: DateTimeISO
   id: String
   patientId: String
@@ -1079,7 +938,7 @@ type ConsultationListMaxAggregate {
 
 input ConsultationListMaxOrderByAggregateInput {
   active: SortOrder
-  consultationId: SortOrder
+  consultationDate: SortOrder
   createdAt: SortOrder
   id: SortOrder
   patientId: SortOrder
@@ -1088,7 +947,7 @@ input ConsultationListMaxOrderByAggregateInput {
 
 type ConsultationListMinAggregate {
   active: Boolean
-  consultationId: String
+  consultationDate: String
   createdAt: DateTimeISO
   id: String
   patientId: String
@@ -1097,7 +956,7 @@ type ConsultationListMinAggregate {
 
 input ConsultationListMinOrderByAggregateInput {
   active: SortOrder
-  consultationId: SortOrder
+  consultationDate: SortOrder
   createdAt: SortOrder
   id: SortOrder
   patientId: SortOrder
@@ -1113,7 +972,7 @@ input ConsultationListOrderByWithAggregationInput {
   _max: ConsultationListMaxOrderByAggregateInput
   _min: ConsultationListMinOrderByAggregateInput
   active: SortOrder
-  consultationId: SortOrder
+  consultationDate: SortOrder
   createdAt: SortOrder
   id: SortOrder
   patientId: SortOrder
@@ -1122,8 +981,7 @@ input ConsultationListOrderByWithAggregationInput {
 
 input ConsultationListOrderByWithRelationInput {
   active: SortOrder
-  consultation: ConsultationOrderByWithRelationInput
-  consultationId: SortOrder
+  consultationDate: SortOrder
   createdAt: SortOrder
   id: SortOrder
   patient: PatientOrderByWithRelationInput
@@ -1131,14 +989,14 @@ input ConsultationListOrderByWithRelationInput {
   updatedAt: SortOrder
 }
 
-input ConsultationListPatientIdConsultationIdCompoundUniqueInput {
-  consultationId: String!
+input ConsultationListPatientIdConsultationDateCompoundUniqueInput {
+  consultationDate: String!
   patientId: String!
 }
 
 enum ConsultationListScalarFieldEnum {
   active
-  consultationId
+  consultationDate
   createdAt
   id
   patientId
@@ -1150,7 +1008,7 @@ input ConsultationListScalarWhereInput {
   NOT: [ConsultationListScalarWhereInput!]
   OR: [ConsultationListScalarWhereInput!]
   active: BoolFilter
-  consultationId: StringFilter
+  consultationDate: StringFilter
   createdAt: DateTimeFilter
   id: StringFilter
   patientId: StringFilter
@@ -1162,7 +1020,7 @@ input ConsultationListScalarWhereWithAggregatesInput {
   NOT: [ConsultationListScalarWhereWithAggregatesInput!]
   OR: [ConsultationListScalarWhereWithAggregatesInput!]
   active: BoolWithAggregatesFilter
-  consultationId: StringWithAggregatesFilter
+  consultationDate: StringWithAggregatesFilter
   createdAt: DateTimeWithAggregatesFilter
   id: StringWithAggregatesFilter
   patientId: StringWithAggregatesFilter
@@ -1171,7 +1029,7 @@ input ConsultationListScalarWhereWithAggregatesInput {
 
 input ConsultationListUpdateInput {
   active: BoolFieldUpdateOperationsInput
-  consultation: ConsultationUpdateOneRequiredWithoutConsultationListNestedInput
+  consultationDate: StringFieldUpdateOperationsInput
   createdAt: DateTimeFieldUpdateOperationsInput
   id: StringFieldUpdateOperationsInput
   patient: PatientUpdateOneRequiredWithoutConsultationListNestedInput
@@ -1180,33 +1038,15 @@ input ConsultationListUpdateInput {
 
 input ConsultationListUpdateManyMutationInput {
   active: BoolFieldUpdateOperationsInput
+  consultationDate: StringFieldUpdateOperationsInput
   createdAt: DateTimeFieldUpdateOperationsInput
   id: StringFieldUpdateOperationsInput
   updatedAt: DateTimeFieldUpdateOperationsInput
 }
 
-input ConsultationListUpdateManyWithWhereWithoutConsultationInput {
-  data: ConsultationListUpdateManyMutationInput!
-  where: ConsultationListScalarWhereInput!
-}
-
 input ConsultationListUpdateManyWithWhereWithoutPatientInput {
   data: ConsultationListUpdateManyMutationInput!
   where: ConsultationListScalarWhereInput!
-}
-
-input ConsultationListUpdateManyWithoutConsultationNestedInput {
-  connect: [ConsultationListWhereUniqueInput!]
-  connectOrCreate: [ConsultationListCreateOrConnectWithoutConsultationInput!]
-  create: [ConsultationListCreateWithoutConsultationInput!]
-  createMany: ConsultationListCreateManyConsultationInputEnvelope
-  delete: [ConsultationListWhereUniqueInput!]
-  deleteMany: [ConsultationListScalarWhereInput!]
-  disconnect: [ConsultationListWhereUniqueInput!]
-  set: [ConsultationListWhereUniqueInput!]
-  update: [ConsultationListUpdateWithWhereUniqueWithoutConsultationInput!]
-  updateMany: [ConsultationListUpdateManyWithWhereWithoutConsultationInput!]
-  upsert: [ConsultationListUpsertWithWhereUniqueWithoutConsultationInput!]
 }
 
 input ConsultationListUpdateManyWithoutPatientNestedInput {
@@ -1223,36 +1063,17 @@ input ConsultationListUpdateManyWithoutPatientNestedInput {
   upsert: [ConsultationListUpsertWithWhereUniqueWithoutPatientInput!]
 }
 
-input ConsultationListUpdateWithWhereUniqueWithoutConsultationInput {
-  data: ConsultationListUpdateWithoutConsultationInput!
-  where: ConsultationListWhereUniqueInput!
-}
-
 input ConsultationListUpdateWithWhereUniqueWithoutPatientInput {
   data: ConsultationListUpdateWithoutPatientInput!
   where: ConsultationListWhereUniqueInput!
 }
 
-input ConsultationListUpdateWithoutConsultationInput {
-  active: BoolFieldUpdateOperationsInput
-  createdAt: DateTimeFieldUpdateOperationsInput
-  id: StringFieldUpdateOperationsInput
-  patient: PatientUpdateOneRequiredWithoutConsultationListNestedInput
-  updatedAt: DateTimeFieldUpdateOperationsInput
-}
-
 input ConsultationListUpdateWithoutPatientInput {
   active: BoolFieldUpdateOperationsInput
-  consultation: ConsultationUpdateOneRequiredWithoutConsultationListNestedInput
+  consultationDate: StringFieldUpdateOperationsInput
   createdAt: DateTimeFieldUpdateOperationsInput
   id: StringFieldUpdateOperationsInput
   updatedAt: DateTimeFieldUpdateOperationsInput
-}
-
-input ConsultationListUpsertWithWhereUniqueWithoutConsultationInput {
-  create: ConsultationListCreateWithoutConsultationInput!
-  update: ConsultationListUpdateWithoutConsultationInput!
-  where: ConsultationListWhereUniqueInput!
 }
 
 input ConsultationListUpsertWithWhereUniqueWithoutPatientInput {
@@ -1266,8 +1087,7 @@ input ConsultationListWhereInput {
   NOT: [ConsultationListWhereInput!]
   OR: [ConsultationListWhereInput!]
   active: BoolFilter
-  consultation: ConsultationRelationFilter
-  consultationId: StringFilter
+  consultationDate: StringFilter
   createdAt: DateTimeFilter
   id: StringFilter
   patient: PatientRelationFilter
@@ -1280,173 +1100,13 @@ input ConsultationListWhereUniqueInput {
   NOT: [ConsultationListWhereInput!]
   OR: [ConsultationListWhereInput!]
   active: BoolFilter
-  consultation: ConsultationRelationFilter
-  consultationId: StringFilter
+  consultationDate: StringFilter
   createdAt: DateTimeFilter
   id: String
   patient: PatientRelationFilter
   patientId: StringFilter
-  patientId_consultationId: ConsultationListPatientIdConsultationIdCompoundUniqueInput
+  patientId_consultationDate: ConsultationListPatientIdConsultationDateCompoundUniqueInput
   updatedAt: DateTimeFilter
-}
-
-type ConsultationMaxAggregate {
-  createdAt: DateTimeISO
-  day: Int
-  id: String
-  month: Int
-  year: Int
-}
-
-input ConsultationMaxOrderByAggregateInput {
-  createdAt: SortOrder
-  day: SortOrder
-  id: SortOrder
-  month: SortOrder
-  year: SortOrder
-}
-
-type ConsultationMinAggregate {
-  createdAt: DateTimeISO
-  day: Int
-  id: String
-  month: Int
-  year: Int
-}
-
-input ConsultationMinOrderByAggregateInput {
-  createdAt: SortOrder
-  day: SortOrder
-  id: SortOrder
-  month: SortOrder
-  year: SortOrder
-}
-
-input ConsultationOrderByWithAggregationInput {
-  _avg: ConsultationAvgOrderByAggregateInput
-  _count: ConsultationCountOrderByAggregateInput
-  _max: ConsultationMaxOrderByAggregateInput
-  _min: ConsultationMinOrderByAggregateInput
-  _sum: ConsultationSumOrderByAggregateInput
-  createdAt: SortOrder
-  day: SortOrder
-  id: SortOrder
-  month: SortOrder
-  year: SortOrder
-}
-
-input ConsultationOrderByWithRelationInput {
-  ConsultationList: ConsultationListOrderByRelationAggregateInput
-  createdAt: SortOrder
-  day: SortOrder
-  id: SortOrder
-  month: SortOrder
-  year: SortOrder
-}
-
-input ConsultationRelationFilter {
-  is: ConsultationWhereInput
-  isNot: ConsultationWhereInput
-}
-
-enum ConsultationScalarFieldEnum {
-  createdAt
-  day
-  id
-  month
-  year
-}
-
-input ConsultationScalarWhereWithAggregatesInput {
-  AND: [ConsultationScalarWhereWithAggregatesInput!]
-  NOT: [ConsultationScalarWhereWithAggregatesInput!]
-  OR: [ConsultationScalarWhereWithAggregatesInput!]
-  createdAt: DateTimeWithAggregatesFilter
-  day: IntWithAggregatesFilter
-  id: StringWithAggregatesFilter
-  month: IntWithAggregatesFilter
-  year: IntWithAggregatesFilter
-}
-
-type ConsultationSumAggregate {
-  day: Int
-  month: Int
-  year: Int
-}
-
-input ConsultationSumOrderByAggregateInput {
-  day: SortOrder
-  month: SortOrder
-  year: SortOrder
-}
-
-input ConsultationUpdateInput {
-  ConsultationList: ConsultationListUpdateManyWithoutConsultationNestedInput
-  createdAt: DateTimeFieldUpdateOperationsInput
-  day: IntFieldUpdateOperationsInput
-  id: StringFieldUpdateOperationsInput
-  month: IntFieldUpdateOperationsInput
-  year: IntFieldUpdateOperationsInput
-}
-
-input ConsultationUpdateManyMutationInput {
-  createdAt: DateTimeFieldUpdateOperationsInput
-  day: IntFieldUpdateOperationsInput
-  id: StringFieldUpdateOperationsInput
-  month: IntFieldUpdateOperationsInput
-  year: IntFieldUpdateOperationsInput
-}
-
-input ConsultationUpdateOneRequiredWithoutConsultationListNestedInput {
-  connect: ConsultationWhereUniqueInput
-  connectOrCreate: ConsultationCreateOrConnectWithoutConsultationListInput
-  create: ConsultationCreateWithoutConsultationListInput
-  update: ConsultationUpdateToOneWithWhereWithoutConsultationListInput
-  upsert: ConsultationUpsertWithoutConsultationListInput
-}
-
-input ConsultationUpdateToOneWithWhereWithoutConsultationListInput {
-  data: ConsultationUpdateWithoutConsultationListInput!
-  where: ConsultationWhereInput
-}
-
-input ConsultationUpdateWithoutConsultationListInput {
-  createdAt: DateTimeFieldUpdateOperationsInput
-  day: IntFieldUpdateOperationsInput
-  id: StringFieldUpdateOperationsInput
-  month: IntFieldUpdateOperationsInput
-  year: IntFieldUpdateOperationsInput
-}
-
-input ConsultationUpsertWithoutConsultationListInput {
-  create: ConsultationCreateWithoutConsultationListInput!
-  update: ConsultationUpdateWithoutConsultationListInput!
-  where: ConsultationWhereInput
-}
-
-input ConsultationWhereInput {
-  AND: [ConsultationWhereInput!]
-  ConsultationList: ConsultationListListRelationFilter
-  NOT: [ConsultationWhereInput!]
-  OR: [ConsultationWhereInput!]
-  createdAt: DateTimeFilter
-  day: IntFilter
-  id: StringFilter
-  month: IntFilter
-  year: IntFilter
-}
-
-input ConsultationWhereUniqueInput {
-  AND: [ConsultationWhereInput!]
-  ConsultationList: ConsultationListListRelationFilter
-  NOT: [ConsultationWhereInput!]
-  OR: [ConsultationWhereInput!]
-  createdAt: DateTimeFilter
-  day: IntFilter
-  day_month_year: ConsultationDayMonthYearCompoundUniqueInput
-  id: String
-  month: IntFilter
-  year: IntFilter
 }
 
 type DataTableConfigModel {
@@ -3113,7 +2773,6 @@ type Mutation {
   AddOnePatientToIndex(data: PatientCreateInput!, userId: String!): Patient!
   changeExpirationMobileDeviceResolver(Months: Int!, id: String!, userId: String!): Boolean
   createManyClinicalEvent(data: [ClinicalEventCreateManyInput!]!, skipDuplicates: Boolean): AffectedRowsOutput!
-  createManyConsultation(data: [ConsultationCreateManyInput!]!, skipDuplicates: Boolean): AffectedRowsOutput!
   createManyConsultationList(data: [ConsultationListCreateManyInput!]!, skipDuplicates: Boolean): AffectedRowsOutput!
   createManyDocumentStore(data: [DocumentStoreCreateManyInput!]!, skipDuplicates: Boolean): AffectedRowsOutput!
   createManyDocumentTemplate(data: [DocumentTemplateCreateManyInput!]!, skipDuplicates: Boolean): AffectedRowsOutput!
@@ -3126,7 +2785,6 @@ type Mutation {
   createManyUser(data: [UserCreateManyInput!]!, skipDuplicates: Boolean): AffectedRowsOutput!
   createManyWorkingList(data: [WorkingListCreateManyInput!]!, skipDuplicates: Boolean): AffectedRowsOutput!
   createOneClinicalEvent(eventCategory: EventCategory!, eventType: EventTypes!, patientId: String!, userId: String!): ClinicalEvent!
-  createOneConsultation(data: ConsultationCreateInput!): Consultation!
   createOneConsultationList(data: ConsultationListCreateInput!): ConsultationList!
   createOneDocumentStore(data: DocumentStoreCreateInput!): DocumentStore!
   createOneDocumentTemplate(data: DocumentTemplateCreateInput!): DocumentTemplate!
@@ -3139,7 +2797,6 @@ type Mutation {
   createOneUser(data: UserCreateInput!): User!
   createOneWorkingList(data: WorkingListCreateInput!, userId: String!): WorkingList!
   deleteManyClinicalEvent(where: ClinicalEventWhereInput): AffectedRowsOutput!
-  deleteManyConsultation(where: ConsultationWhereInput): AffectedRowsOutput!
   deleteManyConsultationList(where: ConsultationListWhereInput): AffectedRowsOutput!
   deleteManyDocumentStore(where: DocumentStoreWhereInput): AffectedRowsOutput!
   deleteManyDocumentTemplate(where: DocumentTemplateWhereInput): AffectedRowsOutput!
@@ -3152,8 +2809,7 @@ type Mutation {
   deleteManyUser(where: UserWhereInput): AffectedRowsOutput!
   deleteManyWorkingList(where: WorkingListWhereInput): AffectedRowsOutput!
   deleteOneClinicalEvent(deletedReport: String!, userId: String!, where: ClinicalEventWhereUniqueInput!): ClinicalEvent
-  deleteOneConsultation(where: ConsultationWhereUniqueInput!): Consultation
-  deleteOneConsultationList(userId: String!, where: ConsultationListWhereUniqueInput!): ConsultationList
+  deleteOneConsultationList(where: ConsultationListWhereUniqueInput!): ConsultationList
   deleteOneDocumentStore(where: DocumentStoreWhereUniqueInput!): DocumentStore
   deleteOneDocumentTemplate(where: DocumentTemplateWhereUniqueInput!): DocumentTemplate
   deleteOneEconomizer(where: EconomizerWhereUniqueInput!): Economizer
@@ -3170,14 +2826,13 @@ type Mutation {
   indexPatients: Boolean
   movePatientFolderToTrash(id: String!, onTrash: Boolean!, userId: String!): Patient
   registerOneMobileDevice(accessToken: String!, userId: String!, uuid: String!): MobileDevice
-  registerPatient(patient_id: String!, userId: String!): String!
+  registerPatient(patientId: String!): Boolean!
   switchMobileDevice(id: String!, mobileDeviceType: MobileDeviceType!, userId: String!): Boolean
   toggleLockWorkingList(id: String!, userId: String!): WorkingList!
   toggleSelectedTrashMutation(data: PatientUpdateManyMutationInput!, where: PatientWhereInput): AffectedRowsOutput!
   triggerAppSubscription(appPayload: String!, global: Boolean!, subscriptionSpecificId: String, type: AppSubscriptionPayloadType!, userId: String!): Boolean!
   triggerInsertDataSubscription(clinicalEventId: String!, paramData: ParamDataInputType!, tableContentType: String!, value: String!): Boolean!
   updateManyClinicalEvent(data: ClinicalEventUpdateManyMutationInput!, where: ClinicalEventWhereInput): AffectedRowsOutput!
-  updateManyConsultation(data: ConsultationUpdateManyMutationInput!, where: ConsultationWhereInput): AffectedRowsOutput!
   updateManyConsultationList(data: ConsultationListUpdateManyMutationInput!, where: ConsultationListWhereInput): AffectedRowsOutput!
   updateManyDocumentStore(data: DocumentStoreUpdateManyMutationInput!, where: DocumentStoreWhereInput): AffectedRowsOutput!
   updateManyDocumentTemplate(data: DocumentTemplateUpdateManyMutationInput!, where: DocumentTemplateWhereInput): AffectedRowsOutput!
@@ -3190,8 +2845,7 @@ type Mutation {
   updateManyUser(data: UserUpdateManyMutationInput!, where: UserWhereInput): AffectedRowsOutput!
   updateManyWorkingList(data: WorkingListUpdateManyMutationInput!, where: WorkingListWhereInput): AffectedRowsOutput!
   updateOneClinicalEvent(data: ClinicalEventUpdateInput!, userId: String!, where: ClinicalEventWhereUniqueInput!): ClinicalEvent
-  updateOneConsultation(data: ConsultationUpdateInput!, where: ConsultationWhereUniqueInput!): Consultation
-  updateOneConsultationList(data: ConsultationListUpdateInput!, userId: String!, where: ConsultationListWhereUniqueInput!): ConsultationList
+  updateOneConsultationList(data: ConsultationListUpdateInput!, where: ConsultationListWhereUniqueInput!): ConsultationList
   updateOneDocumentStore(data: DocumentStoreUpdateInput!, where: DocumentStoreWhereUniqueInput!): DocumentStore
   updateOneDocumentTemplate(data: DocumentTemplateUpdateInput!, where: DocumentTemplateWhereUniqueInput!): DocumentTemplate
   updateOneEconomizer(data: EconomizerUpdateInput!, where: EconomizerWhereUniqueInput!): Economizer
@@ -3203,7 +2857,6 @@ type Mutation {
   updateOneUser(data: UserUpdateInput!, where: UserWhereUniqueInput!): User
   updateOneWorkingList(data: WorkingListUpdateInput!, userId: String!, where: WorkingListWhereUniqueInput!): WorkingList
   upsertOneClinicalEvent(create: ClinicalEventCreateInput!, update: ClinicalEventUpdateInput!, where: ClinicalEventWhereUniqueInput!): ClinicalEvent!
-  upsertOneConsultation(create: ConsultationCreateInput!, update: ConsultationUpdateInput!, where: ConsultationWhereUniqueInput!): Consultation!
   upsertOneConsultationList(create: ConsultationListCreateInput!, update: ConsultationListUpdateInput!, where: ConsultationListWhereUniqueInput!): ConsultationList!
   upsertOneDocumentStore(create: DocumentStoreCreateInput!, update: DocumentStoreUpdateInput!, where: DocumentStoreWhereUniqueInput!): DocumentStore!
   upsertOneDocumentTemplate(create: DocumentTemplateCreateInput!, update: DocumentTemplateUpdateInput!, where: DocumentTemplateWhereUniqueInput!): DocumentTemplate!
@@ -4510,7 +4163,6 @@ input PrescriptionWhereUniqueInput {
 
 type Query {
   aggregateClinicalEvent(cursor: ClinicalEventWhereUniqueInput, orderBy: [ClinicalEventOrderByWithRelationInput!], skip: Int, take: Int, where: ClinicalEventWhereInput): AggregateClinicalEvent!
-  aggregateConsultation(cursor: ConsultationWhereUniqueInput, orderBy: [ConsultationOrderByWithRelationInput!], skip: Int, take: Int, where: ConsultationWhereInput): AggregateConsultation!
   aggregateConsultationList(cursor: ConsultationListWhereUniqueInput, orderBy: [ConsultationListOrderByWithRelationInput!], skip: Int, take: Int, where: ConsultationListWhereInput): AggregateConsultationList!
   aggregateDocumentStore(cursor: DocumentStoreWhereUniqueInput, orderBy: [DocumentStoreOrderByWithRelationInput!], skip: Int, take: Int, where: DocumentStoreWhereInput): AggregateDocumentStore!
   aggregateDocumentTemplate(cursor: DocumentTemplateWhereUniqueInput, orderBy: [DocumentTemplateOrderByWithRelationInput!], skip: Int, take: Int, where: DocumentTemplateWhereInput): AggregateDocumentTemplate!
@@ -4523,12 +4175,11 @@ type Query {
   aggregateUser(cursor: UserWhereUniqueInput, orderBy: [UserOrderByWithRelationInput!], skip: Int, take: Int, where: UserWhereInput): AggregateUser!
   aggregateWorkingList(cursor: WorkingListWhereUniqueInput, orderBy: [WorkingListOrderByWithRelationInput!], skip: Int, take: Int, where: WorkingListWhereInput): AggregateWorkingList!
   authMobileApp(accessToken: String!, userId: String!, uuid: String!): MobileDevice!
+  checkIfRegistered(where: ConsultationListWhereUniqueInput!): Boolean!
   clinicalEvent(where: ClinicalEventWhereUniqueInput!): ClinicalEvent
   clinicalEvents(cursor: ClinicalEventWhereUniqueInput, distinct: [ClinicalEventScalarFieldEnum!], orderBy: [ClinicalEventOrderByWithRelationInput!], skip: Int, take: Int, where: ClinicalEventWhereInput): [ClinicalEvent!]!
-  consultation(where: ConsultationWhereUniqueInput!): Consultation
   consultationList(where: ConsultationListWhereUniqueInput!): ConsultationList
   consultationLists(cursor: ConsultationListWhereUniqueInput, distinct: [ConsultationListScalarFieldEnum!], orderBy: [ConsultationListOrderByWithRelationInput!], skip: Int, take: Int, where: ConsultationListWhereInput): [ConsultationList!]!
-  consultations(cursor: ConsultationWhereUniqueInput, distinct: [ConsultationScalarFieldEnum!], orderBy: [ConsultationOrderByWithRelationInput!], skip: Int, take: Int, where: ConsultationWhereInput): [Consultation!]!
   documentStore(where: DocumentStoreWhereUniqueInput!): DocumentStore
   documentStores(cursor: DocumentStoreWhereUniqueInput, distinct: [DocumentStoreScalarFieldEnum!], orderBy: [DocumentStoreOrderByWithRelationInput!], skip: Int, take: Int, where: DocumentStoreWhereInput): [DocumentStore!]!
   documentTemplate(where: DocumentTemplateWhereUniqueInput!): DocumentTemplate
@@ -4537,10 +4188,8 @@ type Query {
   economizers(cursor: EconomizerWhereUniqueInput, distinct: [EconomizerScalarFieldEnum!], orderBy: [EconomizerOrderByWithRelationInput!], skip: Int, take: Int, where: EconomizerWhereInput): [Economizer!]!
   findFirstClinicalEvent(cursor: ClinicalEventWhereUniqueInput, distinct: [ClinicalEventScalarFieldEnum!], orderBy: [ClinicalEventOrderByWithRelationInput!], skip: Int, take: Int, where: ClinicalEventWhereInput): ClinicalEvent
   findFirstClinicalEventOrThrow(cursor: ClinicalEventWhereUniqueInput, distinct: [ClinicalEventScalarFieldEnum!], orderBy: [ClinicalEventOrderByWithRelationInput!], skip: Int, take: Int, where: ClinicalEventWhereInput): ClinicalEvent
-  findFirstConsultation(day: Int!, month: Int!, year: Int!): Consultation
   findFirstConsultationList(cursor: ConsultationListWhereUniqueInput, distinct: [ConsultationListScalarFieldEnum!], orderBy: [ConsultationListOrderByWithRelationInput!], skip: Int, take: Int, where: ConsultationListWhereInput): ConsultationList
   findFirstConsultationListOrThrow(cursor: ConsultationListWhereUniqueInput, distinct: [ConsultationListScalarFieldEnum!], orderBy: [ConsultationListOrderByWithRelationInput!], skip: Int, take: Int, where: ConsultationListWhereInput): ConsultationList
-  findFirstConsultationOrThrow(cursor: ConsultationWhereUniqueInput, distinct: [ConsultationScalarFieldEnum!], orderBy: [ConsultationOrderByWithRelationInput!], skip: Int, take: Int, where: ConsultationWhereInput): Consultation
   findFirstDocumentStore(cursor: DocumentStoreWhereUniqueInput, distinct: [DocumentStoreScalarFieldEnum!], orderBy: [DocumentStoreOrderByWithRelationInput!], skip: Int, take: Int, where: DocumentStoreWhereInput): DocumentStore
   findFirstDocumentStoreOrThrow(cursor: DocumentStoreWhereUniqueInput, distinct: [DocumentStoreScalarFieldEnum!], orderBy: [DocumentStoreOrderByWithRelationInput!], skip: Int, take: Int, where: DocumentStoreWhereInput): DocumentStore
   findFirstDocumentTemplate(cursor: DocumentTemplateWhereUniqueInput, distinct: [DocumentTemplateScalarFieldEnum!], orderBy: [DocumentTemplateOrderByWithRelationInput!], skip: Int, take: Int, where: DocumentTemplateWhereInput): DocumentTemplate
@@ -4562,7 +4211,6 @@ type Query {
   findFirstWorkingList(cursor: WorkingListWhereUniqueInput, distinct: [WorkingListScalarFieldEnum!], orderBy: [WorkingListOrderByWithRelationInput!], skip: Int, take: Int, where: WorkingListWhereInput): WorkingList
   findFirstWorkingListOrThrow(cursor: WorkingListWhereUniqueInput, distinct: [WorkingListScalarFieldEnum!], orderBy: [WorkingListOrderByWithRelationInput!], skip: Int, take: Int, where: WorkingListWhereInput): WorkingList
   getClinicalEvent(where: ClinicalEventWhereUniqueInput!): ClinicalEvent
-  getConsultation(where: ConsultationWhereUniqueInput!): Consultation
   getConsultationList(where: ConsultationListWhereUniqueInput!): ConsultationList
   getDataTableConfiguration(eventType: EventTypes!): [DataTableSectionModel!]
   getDocumentHeaders(patientDocumentType: PatientDocumentType!, patientId: String!): Boolean
@@ -4577,7 +4225,6 @@ type Query {
   getUser(where: UserWhereUniqueInput!): User
   getWorkingList(where: WorkingListWhereUniqueInput!): WorkingList
   groupByClinicalEvent(by: [ClinicalEventScalarFieldEnum!]!, having: ClinicalEventScalarWhereWithAggregatesInput, orderBy: [ClinicalEventOrderByWithAggregationInput!], skip: Int, take: Int, where: ClinicalEventWhereInput): [ClinicalEventGroupBy!]!
-  groupByConsultation(by: [ConsultationScalarFieldEnum!]!, having: ConsultationScalarWhereWithAggregatesInput, orderBy: [ConsultationOrderByWithAggregationInput!], skip: Int, take: Int, where: ConsultationWhereInput): [ConsultationGroupBy!]!
   groupByConsultationList(by: [ConsultationListScalarFieldEnum!]!, having: ConsultationListScalarWhereWithAggregatesInput, orderBy: [ConsultationListOrderByWithAggregationInput!], skip: Int, take: Int, where: ConsultationListWhereInput): [ConsultationListGroupBy!]!
   groupByDocumentStore(by: [DocumentStoreScalarFieldEnum!]!, having: DocumentStoreScalarWhereWithAggregatesInput, orderBy: [DocumentStoreOrderByWithAggregationInput!], skip: Int, take: Int, where: DocumentStoreWhereInput): [DocumentStoreGroupBy!]!
   groupByDocumentTemplate(by: [DocumentTemplateScalarFieldEnum!]!, having: DocumentTemplateScalarWhereWithAggregatesInput, orderBy: [DocumentTemplateOrderByWithAggregationInput!], skip: Int, take: Int, where: DocumentTemplateWhereInput): [DocumentTemplateGroupBy!]!

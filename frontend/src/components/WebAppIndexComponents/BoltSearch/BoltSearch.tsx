@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 "use client";
 import { GiMagnifyingGlass } from "react-icons/gi";
 import { useCallback, useEffect, useState } from "react";
@@ -21,12 +22,17 @@ import type {
 import searchPatient from "@/lib/typesense/searchPatient";
 import { useToast } from "@/components/ui/use-toast";
 import type { PublicUser } from "@/components/wg-generated/client";
+import useConsultationListUpdater from "@/components/GeneralComponents/Consultation/useConsultationListUpdater";
+import { useBoltStore } from "@/stores/boltStore";
+import { ReadyState } from "react-use-websocket";
 
 const BoltSearch = ({ user }: { user: PublicUser | undefined }) => {
   const [page, setPage] = useState(1);
   const [queryString, setQueryString] = useState<string>("");
   const [sex, setSex] = useState<"M" | "F" | null>(null);
   const [loading, setLoading] = useState(false);
+  useConsultationListUpdater({ refreshInterval: 0 });
+  const socket = useBoltStore((s) => s.socket);
 
   const [searchData, setSearchData] = useState<
     patientSearchResponse | undefined
@@ -123,14 +129,21 @@ const BoltSearch = ({ user }: { user: PublicUser | undefined }) => {
       <div className="w-full flex flex-col">
         {loading ? (
           <BoltSearchSkeleton />
-        ) : searchData !== undefined ? (
-          <BoltSearchPagination
-            data={searchData}
-            setPage={setPage}
-            page={page}
-          />
+        ) : socket && socket?.readyState === ReadyState.OPEN ? (
+          searchData !== undefined ? (
+            <BoltSearchPagination
+              data={searchData}
+              setPage={setPage}
+              page={page}
+            />
+          ) : (
+            <></>
+          )
         ) : (
-          <></>
+          <div>
+            Initialisation de l'index de recherche en cours, veuillez patienter
+            ...
+          </div>
         )}
       </div>
     </>

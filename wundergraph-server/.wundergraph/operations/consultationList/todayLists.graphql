@@ -1,7 +1,0 @@
-query ($consultationId: String!) {
-  mainDb_consultationLists(
-    where: { consultationId: { equals: $consultationId } }
-  ) {
-    ...ConsultationListFragment
-  }
-}

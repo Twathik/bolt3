@@ -1,8 +1,8 @@
 fragment ConsultationListFragment on mainDb_ConsultationList {
   id
   active
-  consultationId
   patientId
+  consultationDate
   patient {
     lastName
     firstName

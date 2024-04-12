@@ -19,6 +19,7 @@ function PlateEditorRoot({
   const user = useBoltStore((s) => s.user);
   const setCursorStates = useBoltStore((s) => s.setCursorStates);
   const [synced, setSynced] = useState(false);
+  const socket = useBoltStore((s) => s.socket);
   const provider = useMemo(
     () =>
       new HocuspocusProvider({
@@ -56,12 +57,12 @@ function PlateEditorRoot({
     return () => provider.disconnect();
   }, [provider, user]);
 
-  return synced ? (
+  return synced && socket ? (
     <AppPlateEditor patientId={patientId} provider={provider}>
       {children}
     </AppPlateEditor>
   ) : (
-    <div />
+    <div>Conexion to live server in progress ...</div>
   );
 }
 

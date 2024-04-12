@@ -4,7 +4,7 @@ import { useBoltStore } from "@/stores/boltStore";
 import { FixedToolbar } from "@/components/plate-ui/fixed-toolbar";
 import { FixedToolbarButtons } from "@/components/plate-ui/fixed-toolbar-buttons";
 import { BoltFolderMenuButtons } from "./BoltMenuButtons/FolderMenuButtons";
-import { lazy } from "react";
+import { lazy, useEffect } from "react";
 import type { PatientDocumentType } from "@/lib/interfaces/DocumentTypes";
 import { DocumentMenuButtons } from "./BoltMenuButtons/DocumentMenuButtons";
 
@@ -23,6 +23,10 @@ function PatientBodyEditor({
   documentType: PatientDocumentType;
 }) {
   const patient = useBoltStore((store) => store.patient);
+  const patientSpotlights = useBoltStore((s) => s.patientSpotlights);
+  useEffect(() => {
+    console.log({ patientSpotlights });
+  }, [patientSpotlights]);
 
   return patient?.onTrash ? (
     <div className="col-span-2 m-auto flex items-center justify-center align-middle text-rose-800">

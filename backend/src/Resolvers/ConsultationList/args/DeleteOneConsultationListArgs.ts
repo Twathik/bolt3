@@ -7,9 +7,4 @@ export class DeleteOneConsultationListArgs {
     nullable: false,
   })
   where!: ConsultationListWhereUniqueInput
-
-  @TypeGraphQL.Field((_type) => String, {
-    nullable: false,
-  })
-  userId!: string
 }
