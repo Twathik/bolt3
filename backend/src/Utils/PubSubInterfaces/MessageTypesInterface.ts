@@ -12,7 +12,8 @@ export type MessageType =
   | "clinicalEvent"
   | "focused-clinical-event"
   | "prescription"
-  | "consultation-list";
+  | "consultation-list"
+  | "patientScannedDocument";
 
 export type MessageDestination =
   | "secondary-display"
@@ -29,7 +30,8 @@ export type MessageDestination =
   | "clinicalEvent"
   | "patient-full-information"
   | "sd-prescription-widget"
-  | "consultation-list";
+  | "consultation-list"
+  | "patientScannedDocument";
 
 export interface RootMessageInterface {
   id: string;

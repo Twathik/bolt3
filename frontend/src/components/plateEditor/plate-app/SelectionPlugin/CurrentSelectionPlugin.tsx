@@ -6,7 +6,7 @@ import { useBoltStore } from "@/stores/boltStore";
 import { v4 as uuid } from "uuid";
 import { ReadyState } from "react-use-websocket";
 import type { WebsocketMessageInterface } from "@/components/Websockets/interfaces/WebsocketMessageInterface";
-import { RootDocumentTypes } from "@/lib/utils/RootDocumentTypes";
+import { RootDocumentTypes } from "@/lib/generalUtils/RootDocumentTypes";
 import type { HocuspocusProvider } from "@hocuspocus/provider";
 import randomColor from "randomcolor";
 

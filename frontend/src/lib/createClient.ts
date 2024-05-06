@@ -2,7 +2,7 @@ import {
   createClient,
   type WunderGraphClient,
 } from "@/components/wg-generated/client";
-import getCookieData from "./utils/getCookiesData";
+import getCookieData from "./generalUtils/getCookiesData";
 
 const createWgClient = async (): Promise<WunderGraphClient> => {
   const nextCookies = await getCookieData();

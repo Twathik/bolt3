@@ -9,7 +9,7 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import type { DocumentTemplatesGetDocumentTemplatesResponseData } from "@/components/wg-generated/models";
-import { getDocumentPaddings } from "@/lib/utils/getDocumentSettings";
+import { getDocumentPaddings } from "@/lib/generalUtils/getDocumentSettings";
 import React from "react";
 
 function CheckDocumentTemplate({

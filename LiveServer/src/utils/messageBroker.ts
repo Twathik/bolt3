@@ -9,10 +9,9 @@ const messageBroker = ({
   message: WebsocketMessageInterface;
   peer: Socket;
 }) => {
-  console.log({ message });
   if (message.destination?.length > 0) {
     const check = destinationHandler({ message, ws: peer });
-    // console.log({ message });
+
     if (!check) return;
   }
 
@@ -31,7 +30,11 @@ const messageBroker = ({
       peer.send(JSON.stringify(message));
     }
   } else {
-    // console.log("user - no IDS", { message });
+    /* console.log("user - no IDS", {
+      message,
+      peer: { id: peer.id, destinations: peer.destination },
+    }); */
+
     peer.send(JSON.stringify(message));
   }
 };

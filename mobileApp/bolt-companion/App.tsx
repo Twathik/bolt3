@@ -4,31 +4,39 @@ import { StyleSheet } from "react-native";
 import {
   getValueFromSecureStore,
   saveToSecureStore,
-} from "./lib/stores/secureStore";
+} from "@/lib/stores/secureStore";
 import { v4 as uuidv4 } from "uuid";
-import useWundergraphStore from "./lib/stores/wundergraphStore";
-import useSpinnerStore from "./lib/stores/spinnerStore";
 import { AlertNotificationRoot } from "react-native-alert-notification";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import InsideStack from "./src/InsideStack/InsideStack";
-import LoginPage from "./src/loginPage/LoginPage";
-import { appUser } from "./lib/types/appUserInterface";
+import InsideStack from "@/InsideStack/InsideStack";
+import LoginPage from "@/loginPage/LoginPage";
+import { appUser } from "@/lib/types/appUserInterface";
 import { PaperProvider } from "react-native-paper";
 import { NavigationContainer } from "@react-navigation/native";
 import Spinner from "react-native-loading-spinner-overlay";
-import useThemeStore from "./lib/stores/themeStore";
-import { generateTheme } from "./src/GeneralComponent/colorPalletes/ColorThemes";
+import { generateTheme } from "@/GeneralComponent/colorPalletes/ColorThemes";
 import { fr, registerTranslation } from "react-native-paper-dates";
+import { useMobileBoltStore } from "@/lib/stores/mobileBoltStore";
+import { WebsocketProvider } from "@/Websockets/WebsocketProvider";
+
 registerTranslation("fr", fr);
 
-const url = `http://bolt3.local/api/user`;
+const url = `http://bolt3.local/user`;
 const Stack = createNativeStackNavigator();
 
 export default function App() {
-  const { setAuthToken, setUuid, authToken, setUser, user, appAxios } =
-    useWundergraphStore();
-  const { appSpinnerLoading, setAppSpinnerLoading } = useSpinnerStore();
-  const { isDarkTheme, setDarkTheme } = useThemeStore();
+  const setAuthToken = useMobileBoltStore((s) => s.setAuthToken);
+  const setUuid = useMobileBoltStore((s) => s.setUuid);
+  const authToken = useMobileBoltStore((s) => s.authToken);
+  const user = useMobileBoltStore((s) => s.user);
+  const appAxios = useMobileBoltStore((s) => s.appAxios);
+  const setUser = useMobileBoltStore((s) => s.setUser);
+  const appSpinnerLoading = useMobileBoltStore((s) => s.appSpinnerLoading);
+  const setAppSpinnerLoading = useMobileBoltStore(
+    (s) => s.setAppSpinnerLoading
+  );
+  const isDarkTheme = useMobileBoltStore((s) => s.isDarkTheme);
+  const setDarkTheme = useMobileBoltStore((s) => s.setDarkTheme);
 
   useEffect(() => {
     const getTokens = async () => {
@@ -45,6 +53,7 @@ export default function App() {
         uuid = uuidv4();
         await saveToSecureStore("bolt3_uuid", uuid);
       }
+
       setUuid(uuid);
       if (authToken) {
         setAuthToken(authToken);
@@ -52,12 +61,12 @@ export default function App() {
       setAppSpinnerLoading(false);
     };
     getTokens().catch(console.error);
-  }, []);
+  }, [setAppSpinnerLoading]);
 
   useEffect(() => {
     const abortController = new AbortController();
 
-    if (authToken) {
+    if (authToken && authToken?.length > 0) {
       const fetchUsers = async () => {
         try {
           const response = await appAxios.get(url, {
@@ -90,7 +99,8 @@ export default function App() {
       theme={generateTheme({
         isDarkTheme,
         mobileDeviceType: user?.mobileDeviceType ?? "DOCTOR",
-      })}>
+      })}
+    >
       <Spinner
         visible={appSpinnerLoading}
         textContent={"Chargement en cours"}
@@ -116,6 +126,7 @@ export default function App() {
           </Stack.Navigator>
         </NavigationContainer>
       </AlertNotificationRoot>
+      {authToken?.length > 0 && <WebsocketProvider />}
     </PaperProvider>
   );
 }

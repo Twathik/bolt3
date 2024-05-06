@@ -10,6 +10,7 @@ import type {
   MobileDevicesMobileDevicesQueryResponseData,
   ModalityGetSpecificModalitiesResponseData,
   ModalityModalitiesResponseData,
+  PatientScannedDocumentsGetPatientScannedDocumentsResponseData,
   PatientsGetOnTrashPatientsResponseData,
   PatientsGetOnePatientInfoResponseData,
   WorkingListsWorkingListsResponseData,
@@ -265,6 +266,17 @@ export type CursorStateStoreSlice = {
   setCursorStates: (states: CursorStateType[]) => void;
 };
 
+export type PatientScannedDocumentSlice = {
+  patientScannedDocuments: PatientScannedDocumentsGetPatientScannedDocumentsResponseData["mainDb_patientScannedDocuments"];
+  setPatientScannedDocuments: (
+    docs: PatientScannedDocumentsGetPatientScannedDocumentsResponseData["mainDb_patientScannedDocuments"]
+  ) => void;
+  addPatientScannedDocument: (
+    doc: PatientScannedDocumentsGetPatientScannedDocumentsResponseData["mainDb_patientScannedDocuments"][0]
+  ) => void;
+  removePatientScannedDocument: (id: string) => void;
+};
+
 export type boltStoreType = ConsultationStoreSlice &
   PatientStoreSlice &
   TabStoreSlice &
@@ -279,4 +291,5 @@ export type boltStoreType = ConsultationStoreSlice &
   AppSubscriptionSlice &
   EconomizersSlice &
   WebsocketConnectionSlice &
-  CursorStateStoreSlice;
+  CursorStateStoreSlice &
+  PatientScannedDocumentSlice;

@@ -56,7 +56,8 @@ function SwitchModalityButton({
             locallyEnabled
               ? "bg-rose-900 hover:bg-rose-600"
               : "bg-slate-700 hover:bg-slate-500"
-          )}>
+          )}
+        >
           {locallyEnabled ? "Desactiver l'appareil" : "Activer l'appareil"}{" "}
           {isMutating && <ClipLoader size={10} color="white" />}
         </Button>

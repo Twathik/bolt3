@@ -16,6 +16,7 @@ import appSubscriptionSlice from "./appSubscriptionsStore";
 import economizerPlateSlice from "./economizerSliceStore";
 import createWebSocketConnection from "./webSocketConnectionSlice";
 import createCursorStateSlice from "./cursorStateStore";
+import createPatientScannedDocumentSlice from "./patientScannedDocumentStore";
 
 export const useBoltStore = create<boltStoreType>()(
   immer((...a) => ({
@@ -34,5 +35,6 @@ export const useBoltStore = create<boltStoreType>()(
     ...economizerPlateSlice(...a),
     ...createWebSocketConnection(...a),
     ...createCursorStateSlice(...a),
+    ...createPatientScannedDocumentSlice(...a),
   }))
 );

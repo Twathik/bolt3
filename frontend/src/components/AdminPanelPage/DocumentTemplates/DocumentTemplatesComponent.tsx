@@ -4,7 +4,7 @@ import type { DocumentTemplatesGetDocumentTemplatesResponseData } from "@/compon
 import React, { useMemo } from "react";
 import DocumentTemplate from "./DocumentTemplate";
 import CustomizeButton from "./CustomizeDocumentTemplate/CustomizeDocumentTemplateButton";
-import type { RawDocumentSettingsInterface } from "@/lib/utils/getDocumentSettings";
+import type { RawDocumentSettingsInterface } from "@/lib/generalUtils/getDocumentSettings";
 
 function DocumentTemplatesComponent({
   documentTemplates,

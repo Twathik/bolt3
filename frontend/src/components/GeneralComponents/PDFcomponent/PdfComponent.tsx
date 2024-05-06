@@ -10,7 +10,7 @@ import { useBoltStore } from "@/stores/boltStore";
 import type {
   FormattedDocumentTemplate,
   RawDocumentSettingsInterface,
-} from "@/lib/utils/getDocumentSettings";
+} from "@/lib/generalUtils/getDocumentSettings";
 
 registerFonts();
 

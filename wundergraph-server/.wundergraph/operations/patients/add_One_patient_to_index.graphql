@@ -6,12 +6,7 @@ mutation add_one_patient_to_index(
   $userId: String! @fromClaim(name: USERID)
 ) {
   mainDb_AddOnePatientToIndex(
-    data: {
-      firstName: $firstName
-      lastName: $lastName
-      ddn: $ddn
-      sexe: $sexe
-    }
+    data: { firstName: $firstName, lastName: $lastName, ddn: $ddn, sexe: $sexe }
     userId: $userId
   ) {
     id

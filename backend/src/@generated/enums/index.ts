@@ -15,6 +15,7 @@ export { ModalityType } from "./ModalityType";
 export { NullsOrder } from "./NullsOrder";
 export { PatientDocumentType } from "./PatientDocumentType";
 export { PatientScalarFieldEnum } from "./PatientScalarFieldEnum";
+export { PatientScannedDocumentScalarFieldEnum } from "./PatientScannedDocumentScalarFieldEnum";
 export { PrescriptionScalarFieldEnum } from "./PrescriptionScalarFieldEnum";
 export { QueryMode } from "./QueryMode";
 export { Role } from "./Role";

@@ -6,7 +6,6 @@ import {
   PreUploadHookRequest,
   PreUploadHookResponse,
 } from "@wundergraph/sdk/server";
-import * as Minio from "minio";
 
 const documentTemplate: {
   preUpload?:

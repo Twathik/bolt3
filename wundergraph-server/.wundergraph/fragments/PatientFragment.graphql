@@ -10,9 +10,9 @@ fragment PatientFragment on mainDb_Patient {
   informationsConfirmed
   nTel
   updated
+  patientAvatar
   DocumentStore {
     textContent
     patientDocumentType
   }
-
 }

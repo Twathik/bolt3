@@ -1,0 +1,8 @@
+query ($patientId: String) {
+  mainDb_patientScannedDocuments(
+    where: { patientId: { equals: $patientId } }
+    orderBy: { createdAt: desc }
+  ) {
+    ...PatientScannedDocumentFragment
+  }
+}

@@ -1,7 +1,7 @@
 import React, { useRef, useState } from "react";
-import { StyleSheet, View, Text } from "react-native";
+import { View } from "react-native";
 import { UseSearchBoxProps, useSearchBox } from "react-instantsearch-core";
-import { Searchbar, TextInput } from "react-native-paper";
+import { Searchbar } from "react-native-paper";
 
 export function AppSearchBox(props: UseSearchBoxProps) {
   const { query, refine } = useSearchBox(props);

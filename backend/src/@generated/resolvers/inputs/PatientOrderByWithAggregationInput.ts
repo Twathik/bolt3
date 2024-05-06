@@ -82,6 +82,11 @@ export class PatientOrderByWithAggregationInput {
   })
   informationsConfirmed?: "asc" | "desc" | undefined;
 
+  @TypeGraphQL.Field(_type => SortOrderInput, {
+    nullable: true
+  })
+  patientAvatar?: SortOrderInput | undefined;
+
   @TypeGraphQL.Field(_type => PatientCountOrderByAggregateInput, {
     nullable: true
   })

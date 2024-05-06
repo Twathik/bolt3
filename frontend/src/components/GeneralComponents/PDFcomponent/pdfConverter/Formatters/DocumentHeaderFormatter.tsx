@@ -3,7 +3,7 @@ import type { PdfCheckerProps } from "../PdfCheckerInterface";
 import { View, Text } from "@react-pdf/renderer";
 import { InlineStyle } from "../DefaultStyles";
 import { parseISO, format } from "date-fns";
-import { generatePDFDocumentTitles } from "@/lib/utils/generatePDFDocumentTitles";
+import { generatePDFDocumentTitles } from "@/lib/generalUtils/generatePDFDocumentTitles";
 import type { mainDb_EventTypesValues } from "@/components/wg-generated/models";
 
 function DocumentHeaderFormatter({ patient, content }: PdfCheckerProps) {

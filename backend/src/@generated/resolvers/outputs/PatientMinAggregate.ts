@@ -75,4 +75,9 @@ export class PatientMinAggregate {
     nullable: true
   })
   informationsConfirmed!: boolean | null;
+
+  @TypeGraphQL.Field(_type => String, {
+    nullable: true
+  })
+  patientAvatar!: string | null;
 }

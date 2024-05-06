@@ -1,0 +1,13 @@
+[http]
+[http.routers]
+[http.routers.gap-route]
+entryPoints = ["web"]
+priority = 4
+rule = "Host(`gap.bolt3.local`)"
+service = "gap"
+
+[http.services]
+[http.services.gap]
+[http.services.gap.loadBalancer]
+[[http.services.gap.loadBalancer.servers]]
+url = "http://host.docker.internal:3001"

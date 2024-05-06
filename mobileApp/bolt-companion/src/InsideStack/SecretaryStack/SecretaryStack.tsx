@@ -1,13 +1,11 @@
 import React, { useEffect } from "react";
 
-import { Text, View } from "react-native";
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import SearchPatientScreen from "./SecreataryScreens/SearchPatientScreen";
 import AddPatientFormScreen from "./SecreataryScreens/AddPatientFormScreen";
 import { MaterialIcons } from "@expo/vector-icons";
 import { AntDesign } from "@expo/vector-icons";
-
 import { createMaterialBottomTabNavigator } from "react-native-paper/react-navigation";
+
 const Tab = createMaterialBottomTabNavigator();
 
 function SecretaryStack() {
@@ -38,7 +36,8 @@ function SecretaryStack() {
         },
 
         tabBarShowLabel: false,
-      })}>
+      })}
+    >
       <Tab.Screen
         name="Search"
         options={{ title: "Blot3 Search" }}

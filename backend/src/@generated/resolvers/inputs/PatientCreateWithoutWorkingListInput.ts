@@ -5,6 +5,7 @@ import { DecimalJSScalar } from "../../scalars";
 import { ClinicalEventCreateNestedManyWithoutPatientInput } from "../inputs/ClinicalEventCreateNestedManyWithoutPatientInput";
 import { ConsultationListCreateNestedManyWithoutPatientInput } from "../inputs/ConsultationListCreateNestedManyWithoutPatientInput";
 import { DocumentStoreCreateNestedManyWithoutPatientInput } from "../inputs/DocumentStoreCreateNestedManyWithoutPatientInput";
+import { PatientScannedDocumentCreateNestedManyWithoutPatientInput } from "../inputs/PatientScannedDocumentCreateNestedManyWithoutPatientInput";
 import { Sexe } from "../../enums/Sexe";
 
 @TypeGraphQL.InputType("PatientCreateWithoutWorkingListInput", {})
@@ -79,6 +80,11 @@ export class PatientCreateWithoutWorkingListInput {
   })
   informationsConfirmed?: boolean | undefined;
 
+  @TypeGraphQL.Field(_type => String, {
+    nullable: true
+  })
+  patientAvatar?: string | undefined;
+
   @TypeGraphQL.Field(_type => ConsultationListCreateNestedManyWithoutPatientInput, {
     nullable: true
   })
@@ -93,4 +99,9 @@ export class PatientCreateWithoutWorkingListInput {
     nullable: true
   })
   DocumentStore?: DocumentStoreCreateNestedManyWithoutPatientInput | undefined;
+
+  @TypeGraphQL.Field(_type => PatientScannedDocumentCreateNestedManyWithoutPatientInput, {
+    nullable: true
+  })
+  PatientScanedDocument?: PatientScannedDocumentCreateNestedManyWithoutPatientInput | undefined;
 }

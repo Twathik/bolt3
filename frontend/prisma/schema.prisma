@@ -1,0 +1,311 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator gen {
+  provider = "prisma-client-js"
+}
+
+enum Role {
+  USER
+  ADMIN
+}
+
+enum Sexe {
+  M
+  F
+}
+
+enum MobileDeviceType {
+  DOCTOR
+  SECRETARY
+}
+
+enum EventTypes {
+  DIAGNOSTIC
+  HISTORY
+  CLINICALEXAM
+  ECG
+  SONOGRAPHY
+  BIOLOGY
+  PRESCRIPTION
+  MEDICAL_REPORT
+  CERTIFICAT
+}
+
+enum EventCategory {
+  FOLDER
+  DOCUMENT
+}
+
+enum ModalityType {
+  AR
+  ASMT
+  AU
+  BDUS
+  BI
+  BMD
+  CR
+  CT
+  CTPROTOCOL
+  DG
+  DOC
+  DX
+  ECG
+  EPS
+  ES
+  FID
+  GM
+  HC
+  HD
+  IO
+  IOL
+  IVOCT
+  IVUS
+  KER
+  KO
+  LEN
+  LS
+  MG
+  MR
+  M3D
+  NM
+  OAM
+  OCT
+  OP
+  OPM
+  OPT
+  OPTBSV
+  OPTENF
+  OPV
+  OSS
+  OT
+  PLAN
+  PR
+  PT
+  PX
+  REG
+  RESP
+  RF
+  RG
+  RTDOSE
+  RTIMAGE
+  RTINTENT
+  RTPLAN
+  RTRAD
+  RTRECORD
+  RTSEGANN
+  RTSTRUCT
+  RWV
+  SEG
+  SM
+  SMR
+  SR
+  SRF
+  STAIN
+  TEXTUREMAP
+  TG
+  US
+  VA
+  XA
+  XC
+}
+
+enum ModalityExamStatus {
+  CREATED
+  INPROGRESS
+  REALIZED
+  REPORT_DONE
+  CLOSED
+}
+
+enum PatientDocumentType {
+  folder
+  document
+}
+
+enum TemplateSpeciality {
+  CARDIOLOGY
+  GYNECOLOGY
+}
+
+model User {
+  id             String          @id @default(uuid())
+  email          String          @unique
+  userId         String          @unique
+  lastName       String?
+  firstName      String?
+  fullName       String?
+  avatarUrl      String?
+  role           Role            @default(USER)
+  phoneNumbers   String[]
+  lastConnection DateTime        @updatedAt
+  searchApiKeyId Int?
+  searchApiKey   String          @default("")
+  editorKey      String          @default("")
+  createdAt      DateTime        @default(now())
+  WorkingList    WorkingList[]
+  ClinicalEvent  ClinicalEvent[]
+
+  @@index([role])
+}
+
+model Setting {
+  id                             String       @id @default(uuid())
+  allowedMobileDevices_doctors   Int          @default(1)
+  allowedMobileDevices_secretary Int          @default(1)
+  allowedDICOMmodalities         Int          @default(2)
+  allowedEventTypes              EventTypes[]
+  documentTemplateConfiguration  String?
+}
+
+model MobileDevice {
+  id          String @id @default(uuid())
+  uuid        String
+  accessToken String @unique
+
+  mobileDeviceType MobileDeviceType @default(SECRETARY)
+  expireAt         DateTime
+  connected        Boolean          @default(false)
+
+  @@unique([uuid, accessToken])
+}
+
+model Patient {
+  id                     String                   @id @default(uuid())
+  lastName               String
+  firstName              String
+  ddn                    DateTime
+  sexe                   Sexe
+  nTel                   String?
+  address                String?
+  height                 Float?
+  weight                 Float?
+  createdAt              DateTime                 @default(now())
+  updated                DateTime                 @updatedAt
+  deleted                Boolean                  @default(false)
+  onTrash                Boolean                  @default(false)
+  informationsConfirmed  Boolean                  @default(false)
+  ConsultationList       ConsultationList[]
+  ClinicalEvent          ClinicalEvent[]
+  WorkingList            WorkingList[]
+  DocumentStore          DocumentStore[]
+  patientAvatar          String?
+  PatientScannedDocument PatientScannedDocument[]
+
+  @@index([sexe])
+}
+
+model PatientScannedDocument {
+  id                     String   @id @default(uuid())
+  documentCollectionName String
+  documentCollectionUrls String[]
+  documentCollectionDate DateTime
+  createdAt              DateTime @default(now())
+  patient                Patient  @relation(fields: [patientId], references: [id])
+  patientId              String
+}
+
+model DocumentStore {
+  id                  String              @id @default(uuid())
+  patient             Patient             @relation(fields: [patientId], references: [id])
+  patientId           String
+  patientDocumentType PatientDocumentType
+  content             Bytes?
+  textContent         String?             @db.Text
+
+  @@unique([patientId, patientDocumentType])
+}
+
+model ConsultationList {
+  id               String   @id @default(uuid())
+  patient          Patient  @relation(fields: [patientId], references: [id])
+  patientId        String
+  active           Boolean  @default(true)
+  consultationDate String
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+
+  @@unique([patientId, consultationDate])
+  @@index([consultationDate])
+}
+
+model ClinicalEvent {
+  id                   String        @id @default(uuid())
+  eventType            EventTypes
+  eventCategory        EventCategory @default(FOLDER)
+  user                 User          @relation(fields: [userId], references: [id])
+  userId               String
+  patient              Patient       @relation(fields: [patientId], references: [id])
+  patientId            String
+  createdAt            DateTime      @default(now())
+  updatedAt            DateTime      @updatedAt
+  deleted              Boolean       @default(false)
+  deletedReport        String?       @db.Text
+  deletedByUserId      String?
+  dicom                Boolean       @default(false)
+  dicomId              String?
+  clinicalDiagnosticId String?
+  Prescription         Prescription?
+  WorkingList          WorkingList[]
+}
+
+model Prescription {
+  id                String        @id @default(uuid())
+  clinicalEvent     ClinicalEvent @relation(fields: [clinicalEventId], references: [id], onDelete: Cascade)
+  clinicalEventId   String        @unique
+  savedPrescription Json          @default("{}")
+  createdAt         DateTime      @default(now())
+  updatedAt         DateTime      @updatedAt
+}
+
+model DocumentTemplate {
+  id                 Int                @id @default(autoincrement())
+  templateName       String
+  evenTemplateUrl    String
+  eventDoxTemplate   String?
+  oddTemplateUrl     String
+  oddDoxTemplate     String?
+  templateSpeciality TemplateSpeciality
+  createdAt          DateTime           @default(now())
+}
+
+model Economizer {
+  id        String     @id @default(uuid())
+  name      String     @unique
+  eventType EventTypes
+  template  String     @db.Text
+}
+
+model Modality {
+  id                String        @id @default(uuid())
+  modalityName      String        @unique
+  modalityPseudo    String?
+  modalityAETitle   String
+  modalityIpAddress String
+  modalityType      ModalityType
+  modalityPort      Int
+  deleted           Boolean       @default(false)
+  WorkingList       WorkingList[]
+  activated         Boolean       @default(false)
+  enabled           Boolean       @default(true)
+}
+
+model WorkingList {
+  id                 String             @id @default(uuid())
+  patient            Patient            @relation(fields: [patientId], references: [id])
+  patientId          String
+  modality           Modality           @relation(fields: [modalityId], references: [id])
+  modalityId         String
+  user               User               @relation(fields: [userId], references: [id])
+  userId             String
+  clinicalEvent      ClinicalEvent      @relation(fields: [clinicalEventId], references: [id])
+  clinicalEventId    String
+  modalityExamStatus ModalityExamStatus @default(CREATED)
+  createdAt          DateTime           @default(now())
+  updatedAt          DateTime           @updatedAt
+  linked             Boolean            @default(false)
+  linkId             String?
+  locked             Boolean            @default(false)
+}

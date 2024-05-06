@@ -3,10 +3,8 @@ import type { GraphQLResolveInfo } from 'graphql'
 import { MobileDevice } from '../../@generated'
 import {
   transformInfoIntoPrismaArgs,
-  getPrismaFromContext,
   transformCountFieldIntoSelectRelationsCount,
 } from '../../@generated/helpers'
-import { PrismaClient } from '@prisma/client'
 import { CreateOneMobileDeviceArgs } from './Args/CreateOneMobileDeviceArgs'
 import { Context } from '../../context'
 import { WebsocketMessageInterface } from '../../Utils/PubSubInterfaces/WebsocketMessageInterface'
@@ -19,13 +17,11 @@ export class CreateOneMobileDeviceResolver {
     nullable: false,
   })
   async createOneMobileDevice(
-    @TypeGraphQL.Ctx() ctx: Context,
+    @TypeGraphQL.Ctx() { prisma, pubSub }: Context,
     @TypeGraphQL.Info() info: GraphQLResolveInfo,
     @TypeGraphQL.Args() { userId, ...args }: CreateOneMobileDeviceArgs,
   ): Promise<MobileDevice> {
     const { _count } = transformInfoIntoPrismaArgs(info)
-    const prisma = getPrismaFromContext(ctx) as PrismaClient
-    const pubsub = ctx.pubSub
 
     const {
       data: { mobileDeviceType },
@@ -51,7 +47,7 @@ export class CreateOneMobileDeviceResolver {
         devices_count === allowedMobileDevices.allowedMobileDevices_doctors
       )
         throw Error('4')
-      const mobileDevice = await getPrismaFromContext(ctx).mobileDevice.create({
+      const mobileDevice = await prisma.mobileDevice.create({
         ...args,
         ...(_count && transformCountFieldIntoSelectRelationsCount(_count)),
       })
@@ -63,11 +59,14 @@ export class CreateOneMobileDeviceResolver {
         subscriptionIds: [],
         payload: {
           operation: 'create',
-          mobileDevice,
+          mobileDevice: {
+            ...mobileDevice,
+            expireAt: mobileDevice.expireAt.toISOString(),
+          },
         },
       }
 
-      await pubsub.publish(notificationTopic, message)
+      await pubSub.publish(notificationTopic, message)
 
       return mobileDevice
     } catch (error) {

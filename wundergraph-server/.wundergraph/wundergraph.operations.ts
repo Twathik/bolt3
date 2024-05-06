@@ -27,11 +27,6 @@ export default configureWunderGraphOperations<OperationsConfiguration>({
     subscriptions: (config) => ({
       ...config,
     }),
-    custom: {
-      MobileDevicesRegisterOneMobileDevice: (config) => ({
-        ...config,
-        authentication: { required: true },
-      }),
-    },
+    custom: {},
   },
 });

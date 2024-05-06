@@ -1,22 +1,30 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { Button, TouchableOpacity, View } from "react-native";
-import { BarCodeScannedCallback, BarCodeScanner } from "expo-barcode-scanner";
-import useWundergraphStore from "../../lib/stores/wundergraphStore";
-import useSpinnerStore from "../../lib/stores/spinnerStore";
 import { ALERT_TYPE, Dialog } from "react-native-alert-notification";
-
+import { Text } from "react-native-paper";
+import { CameraType } from "expo-camera";
+import {
+  BarcodeScanningResult,
+  CameraView,
+  useCameraPermissions,
+} from "expo-camera/next";
+import { useMobileBoltStore } from "../lib/stores/mobileBoltStore";
 import {
   MobileDevicesAddMobileDeviceMutationResponse,
   MobileDevicesRegisterOneMobileDeviceInput,
-} from "../../generated/models";
-import { saveToSecureStore } from "../../lib/stores/secureStore";
-import { Text } from "react-native-paper";
+} from "@/generated/models";
+import { saveToSecureStore } from "@/lib/stores/secureStore";
 
 function LoginPage() {
-  const [hasPermission, setHasPermission] = useState<boolean | null>(null);
+  const [status, requestPermission] = useCameraPermissions();
+  const [facing, setFacing] = useState<CameraType>(CameraType.back);
   const [scanned, setScanned] = useState(true);
-  const { uuid, setAuthToken, appAxios } = useWundergraphStore();
-  const { setAppSpinnerLoading } = useSpinnerStore();
+  const uuid = useMobileBoltStore((s) => s.uuid);
+  const setAuthToken = useMobileBoltStore((s) => s.setAuthToken);
+  const appAxios = useMobileBoltStore((s) => s.appAxios);
+  const setAppSpinnerLoading = useMobileBoltStore(
+    (s) => s.setAppSpinnerLoading
+  );
 
   const errorNotification = useCallback(
     () =>
@@ -29,39 +37,45 @@ function LoginPage() {
     []
   );
 
-  useEffect(() => {
-    const getBarCodeScannerPermissions = async () => {
-      const { status } = await BarCodeScanner.requestPermissionsAsync();
-      setHasPermission(status === "granted");
-    };
+  function toggleCameraFacing() {
+    setFacing((current) =>
+      current === CameraType.back ? CameraType.front : CameraType.back
+    );
+  }
 
-    getBarCodeScannerPermissions();
-  }, []);
-
-  const handleBarCodeScanned: BarCodeScannedCallback = useCallback(
-    async ({ data: accessToken }) => {
+  const onBarCodeScanned = useCallback(
+    async ({ data: accessToken }: BarcodeScanningResult) => {
       setAppSpinnerLoading(true);
+      if (!uuid) throw Error("no uuid");
+
       try {
         const formData: MobileDevicesRegisterOneMobileDeviceInput = {
           accessToken,
           uuid: uuid ?? "",
         };
         setScanned(true);
+        const authToken = `Bearer ${uuid}##_##${accessToken}`;
         const result =
           await appAxios.post<MobileDevicesAddMobileDeviceMutationResponse>(
             "/operations/mobileDevices/registerOneMobileDevice",
-            formData
+            formData,
+            {
+              headers: {
+                Authorization: authToken,
+              },
+            }
           );
 
         if (result.status !== 200) {
           errorNotification();
           setAppSpinnerLoading(false);
         }
-        const authToken = `Bearer ${uuid}##_##${accessToken}`;
+
         saveToSecureStore("bolt3_authToken", authToken);
         setAuthToken(authToken);
         setAppSpinnerLoading(false);
       } catch (error) {
+        console.log({ error });
         setAppSpinnerLoading(false);
         errorNotification();
       }
@@ -72,32 +86,35 @@ function LoginPage() {
       setAppSpinnerLoading,
       saveToSecureStore,
       setAuthToken,
+      uuid,
     ]
   );
 
-  if (hasPermission === null) {
+  if (!status) {
     return (
       <View className=" h-full w-full flex items-center justify-center">
         <Text>Initialization ...</Text>
       </View>
     );
   }
-  if (hasPermission === false) {
+  if (status.expires !== "never" || !status.granted) {
     return (
       <View>
         <Text>
           Vous devez autoriser l'utilisation de la camera pour cette application
         </Text>
+
         <Button
-          title="Demander l'autorization"
+          title="Demander l'autorization!"
           onPress={async () => {
-            const { status } = await BarCodeScanner.requestPermissionsAsync();
-            setHasPermission(status === "granted");
+            console.log("clicked");
+            await requestPermission();
           }}
         />
       </View>
     );
   }
+
   return (
     <View className="bg-slate-300 h-full w-full flex justify-center items-center">
       <Text className="text-slate-800 text-center font-bold text-lg">
@@ -108,14 +125,24 @@ function LoginPage() {
         Scanner le QR code d'authentification pour vous connecter à
         l'application
       </Text>
-      <View
-        className="border-slate-600 border-2 border-dashed p-5 flex w-3/4 h-1/2 
-       rounded-2xl mt-10">
+      <View className="border-slate-600 border-2 border-dashed p-5 w-3/4 min-h-[55vh] rounded-2xl mt-10">
         {!scanned && (
-          <BarCodeScanner
-            onBarCodeScanned={scanned ? undefined : handleBarCodeScanned}
-            className="h-full w-full"
-          />
+          <CameraView
+            className="flex"
+            facing={facing}
+            onBarcodeScanned={onBarCodeScanned}
+          >
+            <View className="bg-transparent h-[50vh] rounded-2xl">
+              <TouchableOpacity
+                className="flex flex-col text-center items-center"
+                onPress={toggleCameraFacing}
+              >
+                <Text className="text-2xl font-bold text-white m-auto">
+                  Flip Camera
+                </Text>
+              </TouchableOpacity>
+            </View>
+          </CameraView>
         )}
       </View>
 

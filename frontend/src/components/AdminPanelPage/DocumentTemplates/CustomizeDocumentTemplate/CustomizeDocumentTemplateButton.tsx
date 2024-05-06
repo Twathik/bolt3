@@ -7,7 +7,7 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
-import type { RawDocumentSettingsInterface } from "@/lib/utils/getDocumentSettings";
+import type { RawDocumentSettingsInterface } from "@/lib/generalUtils/getDocumentSettings";
 import React, { useState } from "react";
 import CustomizeDocumentTemplateSettingsComponent from "./CustomizeDocumentTemplateSettingsComponent";
 import PDFDocumentTemplatePreviewComponent from "./PDFDocumentTemplatePreviewComponent";

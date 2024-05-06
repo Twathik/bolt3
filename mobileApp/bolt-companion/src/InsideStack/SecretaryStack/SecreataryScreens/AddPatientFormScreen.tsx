@@ -1,20 +1,22 @@
-import React, { useCallback } from "react";
+import React, { useCallback, useState } from "react";
 import { Controller, SubmitHandler, useForm } from "react-hook-form";
-import {
-  PatientsAdd_One_patient_to_indexInput,
-  mainDb_Sexe,
-  PatientsAdd_One_patient_to_indexResponse,
-} from "../../../../generated/models";
-import useWundergraphStore from "../../../../lib/stores/wundergraphStore";
 import { ALERT_TYPE, Dialog } from "react-native-alert-notification";
 import { TextInput, Text, useTheme, Button } from "react-native-paper";
 import { SafeAreaView } from "react-native-safe-area-context";
-import SelectDropdown from "react-native-select-dropdown";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { DatePickerInput } from "react-native-paper-dates";
 import { View } from "react-native";
 import { useNavigation } from "@react-navigation/native";
+import { Dropdown } from "react-native-element-dropdown";
+import { useMobileBoltStore } from "@/lib/stores/mobileBoltStore";
+import {
+  PatientsAdd_One_patient_to_indexInput,
+  mainDb_Sexe,
+} from "@/generated/models";
+import { PatientSchema } from "./utils/PatientSchema";
+import { NativeStackNavigationProp } from "@react-navigation/native-stack";
+import { BoltNavigationStackType } from "@/lib/types/navigationStackType";
 
 const errorNotification = () =>
   Dialog.show({
@@ -32,27 +34,13 @@ const SuccessNotification = () =>
   });
 
 function AddPatientFormScreen() {
-  const navigation = useNavigation<any>();
+  const navigation =
+    useNavigation<NativeStackNavigationProp<BoltNavigationStackType>>();
   const {
     colors: { error, secondaryContainer, primary, secondary },
     dark,
   } = useTheme();
 
-  const schema = z.object(
-    {
-      firstName: z.string({ required_error: "champ requis" }),
-      lastName: z.string({ required_error: "champ requis" }),
-      ddn: z.date({
-        required_error: "champ requis",
-        invalid_type_error: "Valeure non valide",
-      }),
-      sexe: z.enum(["Homme", "Femme"], {
-        invalid_type_error: "Valeure non valide",
-        required_error: "chmap requis!",
-      }),
-    },
-    { required_error: "champ requis" }
-  );
   const {
     control,
     handleSubmit,
@@ -60,12 +48,13 @@ function AddPatientFormScreen() {
     formState: { errors },
     setValue,
     reset,
-  } = useForm<z.infer<typeof schema>>({
-    resolver: zodResolver(schema),
+  } = useForm<z.infer<typeof PatientSchema>>({
+    resolver: zodResolver(PatientSchema),
   });
-  const { appAxios } = useWundergraphStore();
+  const appAxios = useMobileBoltStore((s) => s.appAxios);
+  const [isFocus, setIsFocus] = useState(false);
 
-  const onSubmit: SubmitHandler<z.infer<typeof schema>> = useCallback(
+  const onSubmit: SubmitHandler<z.infer<typeof PatientSchema>> = useCallback(
     async (d) => {
       const { sexe, ddn, ...rest } = d;
       const data: PatientsAdd_One_patient_to_indexInput = {
@@ -74,11 +63,10 @@ function AddPatientFormScreen() {
         ...rest,
       };
       try {
-        const result =
-          await appAxios.post<PatientsAdd_One_patient_to_indexResponse>(
-            "/operations/patients/add_One_patient_to_index",
-            data
-          );
+        const result = await appAxios.post(
+          "/operations/patients/add_One_patient_to_index",
+          data
+        );
 
         if (result.status === 200) {
           navigation.navigate("Search");
@@ -126,7 +114,7 @@ function AddPatientFormScreen() {
       )}
       <Controller
         control={control}
-        render={({ field: { onChange, onBlur, value } }) => (
+        render={({ field: { onChange } }) => (
           <View className="mt-11 mb-11">
             <DatePickerInput
               locale="fr"
@@ -142,35 +130,59 @@ function AddPatientFormScreen() {
       {errors.ddn && <Text style={{ color: error }}>{errors.ddn.message}</Text>}
       <Controller
         control={control}
-        render={({ field: { onChange, onBlur, value } }) => (
-          <SelectDropdown
-            defaultButtonText="Sexe"
-            buttonStyle={{
-              display: "flex",
-              width: "100%",
-              marginTop: 20,
-              marginBottom: 20,
-              backgroundColor: secondaryContainer,
-              borderRadius: 20,
-            }}
-            buttonTextStyle={{
-              color: primary,
-            }}
-            data={["Homme", "Femme"]}
-            onSelect={(selectedItem, index) => {
-              setValue("sexe", selectedItem);
-            }}
-            buttonTextAfterSelection={(selectedItem, index) => {
-              // text represented after item is selected
-              // if data array is an array of objects then return selectedItem.property to render after item is selected
-              return selectedItem;
-            }}
-            rowTextForSelection={(item, index) => {
-              // text represented for each item in dropdown
-              // if data array is an array of objects then return item.property to represent item in dropdown
-              return item;
-            }}
-          />
+        render={({ field: { value } }) => (
+          <View style={{ backgroundColor: "white", padding: 16 }}>
+            {value || isFocus ? (
+              <Text
+                style={[
+                  {
+                    position: "absolute",
+                    backgroundColor: "white",
+                    left: 22,
+                    top: 8,
+                    zIndex: 999,
+                    paddingHorizontal: 8,
+                    fontSize: 14,
+                  },
+                  isFocus && { color: "blue" },
+                ]}
+              >
+                Dropdown label
+              </Text>
+            ) : null}
+            <Dropdown
+              style={[
+                {
+                  height: 50,
+                  borderColor: "gray",
+                  borderWidth: 0.5,
+                  borderRadius: 8,
+                  paddingHorizontal: 8,
+                },
+                isFocus && { borderColor: "blue" },
+              ]}
+              placeholderStyle={{ fontSize: 16 }}
+              selectedTextStyle={{ fontSize: 16 }}
+              inputSearchStyle={{ height: 40, fontSize: 16 }}
+              data={[
+                { label: "Homme", value: "Home" },
+                { label: "Femme", value: "Femme" },
+              ]}
+              search
+              maxHeight={300}
+              labelField="label"
+              valueField="value"
+              placeholder={!isFocus ? "Select item" : "..."}
+              searchPlaceholder="Search..."
+              value={value}
+              onFocus={() => setIsFocus(true)}
+              onBlur={() => setIsFocus(false)}
+              onChange={(item) => {
+                setValue("sexe", item.value as "Homme" | "Femme");
+                setIsFocus(false);
+              }}
+            />
+          </View>
         )}
         name="sexe"
       />
@@ -183,7 +195,8 @@ function AddPatientFormScreen() {
         icon="form-select"
         buttonColor={secondary}
         textColor={dark ? "#000" : "#fff"}
-        onPress={handleSubmit(onSubmit)}>
+        onPress={handleSubmit(onSubmit)}
+      >
         Valider
       </Button>
     </SafeAreaView>

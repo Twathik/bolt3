@@ -10,16 +10,22 @@ export async function middleware(request: NextRequest) {
     !request.nextUrl.pathname.startsWith("/favicon")
   ) {
     const response = NextResponse.next();
+    const Authorization = request.headers.get("Authorization");
+
     try {
       const client = createClient({
-        extraHeaders: { cookie: request.headers.get("cookie") || "" },
+        extraHeaders: {
+          cookie: request.headers.get("cookie") || "",
+          Authorization: Authorization ?? "",
+        },
         baseURL: "http://api.bolt3.local",
+        requestTimeoutMs: 30000,
       });
 
-      const user = await client.fetchUser();
       if (request.nextUrl.pathname.startsWith("/user")) {
         return response;
       }
+      const user = await client.fetchUser();
 
       if (request.nextUrl.pathname.startsWith("/login")) {
         if (user) {
@@ -28,14 +34,12 @@ export async function middleware(request: NextRequest) {
       }
 
       if (request.nextUrl.pathname.startsWith("/app-storage")) {
-        console.log({ url: request.url });
         return NextResponse.rewrite(
-          "http://storage.bolt3.local/uploads/" +
-            request.url.split("/").slice(-1)[0]
+          "http://localhost:9000/uploads/" + request.url.split("/").slice(-1)[0]
         );
       }
     } catch (error) {
-      console.log({ error });
+      console.log({ errorMiddlware: error });
       if (request.nextUrl.pathname.startsWith("/login")) {
         return response;
       }

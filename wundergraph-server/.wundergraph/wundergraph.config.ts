@@ -46,6 +46,7 @@ configureWunderGraphApplication({
       authorizedRedirectUris: [
         "http://bolt3.local/login",
         "http://bolt3.local/webapp/search",
+        "http://gap.bolt3.local",
         "http://localhost:3000/login",
       ],
       secureCookieHashKey: new EnvironmentVariable(
@@ -62,7 +63,7 @@ configureWunderGraphApplication({
       ), // must be of length 11
     },
     tokenBased: {
-      providers: [{ userInfoEndpoint: "http://localhost:3000/api/user" }],
+      providers: [{ userInfoEndpoint: "http://localhost:3000/user" }],
     },
     customClaims: {
       avatarUrl: { jsonPath: "avatarUrl", type: "string", required: false },
@@ -97,8 +98,12 @@ configureWunderGraphApplication({
         path: "../../frontend/src/components/wg-generated",
       },
       {
+        templates: [new NextJsTemplate()],
+        path: "../../Gap/src/components/wg-generated",
+      },
+      {
         templates: [templates.typescript.client],
-        path: "../../mobileApp/bolt-companion/generated",
+        path: "../../mobileApp/bolt-companion/src/generated",
       },
       {
         templates: [templates.typescript.client],
@@ -114,7 +119,11 @@ configureWunderGraphApplication({
             // change this before deploying to production to the actual domain where you're deploying your app
             new EnvironmentVariable("NEXT_PUBLIC_APPLICATION_BASE_PATH"),
           ]
-        : ["http://localhost:3000", "http://bolt3.local"],
+        : [
+            "http://localhost:3000",
+            "http://bolt3.local",
+            "http://gap.bolt3.local",
+          ],
   },
 
   security: {
@@ -131,7 +140,7 @@ configureWunderGraphApplication({
   s3UploadProvider: [
     {
       name: "localMinio",
-      endpoint: "storage.bolt3.local",
+      endpoint: "localhost:9000",
       accessKeyID: "test",
       secretAccessKey: "12345678",
       bucketLocation: "eu-central-1",

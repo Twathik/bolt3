@@ -4,7 +4,7 @@ import {
   PRESCRIPTION_TABLE_KEY,
 } from "../../plate-app/PrescriptionTable/PrescriptionTableKey";
 import { getNodeById } from "../getNodeById";
-import { RootDocumentTypes } from "@/lib/utils/RootDocumentTypes";
+import { RootDocumentTypes } from "@/lib/generalUtils/RootDocumentTypes";
 import { getNodesByType } from "../getNodesByType";
 
 const withPrescriptionListNumberOverride = (editor: PlateEditor) => {

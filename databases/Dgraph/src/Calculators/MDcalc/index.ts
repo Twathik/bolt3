@@ -1,6 +1,0 @@
-export * from './Biology'
-export * from './Cardio'
-export * from './General'
-export * from './Psychiatry'
-export * from './Surgery'
-export * from './pediatrics'

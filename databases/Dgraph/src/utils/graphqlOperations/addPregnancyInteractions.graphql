@@ -1,9 +1,0 @@
-
-mutation addPregnancyInteractions($input : [AddPregnancyInteractionsInput!]!, $upsert: Boolean ) {
-  addPregnancyInteractions(input: $input, upsert: $upsert) {
-    pregnancyInteractions {
-      id
-    }
-    numUids
-  }
-}

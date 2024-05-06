@@ -418,29 +418,60 @@ var handleUpgrade = ({
 }) => {
   server.on("upgrade", async (request, socket, head) => {
     socket.on("error", onSocketError);
-    const headers = new Headers();
-    const cookie = request.headers.cookie;
-    headers.append("cookie", cookie ?? "");
-    try {
-      const auth = await fetch("http://api.bolt3.local/auth/user", {
-        headers
-      });
-      if (auth.status === 204) {
+    const url = request.url;
+    if (url?.includes("authToken")) {
+      const unparsed = url.replace("/?authToken=", "");
+      const parse = unparsed.split("--");
+      const authToken = unparsed.replace("--", "##_##");
+      try {
+        const headers = new Headers();
+        headers.append("Authorization", `Bearer ${authToken}`);
+        console.log({ authToken });
+        const auth = await fetch("http://api.bolt3.local/auth/user", {
+          headers
+        });
+        if (auth.status === 403) {
+          socket.write("HTTP/1.1 401 Unauthorized\r\n\r\n");
+          socket.destroy();
+          return;
+        }
+        socket.removeListener("error", onSocketError);
+        wss.handleUpgrade(request, socket, head, async function done(ws) {
+          const connection = ws;
+          connection.user = { ...await auth.json(), userId: parse[1] };
+          connection.id = uuid();
+          wss.emit("connection", connection, request);
+        });
+      } catch (error) {
         socket.write("HTTP/1.1 401 Unauthorized\r\n\r\n");
         socket.destroy();
         return;
       }
-      socket.removeListener("error", onSocketError);
-      wss.handleUpgrade(request, socket, head, async function done(ws) {
-        const connection = ws;
-        connection.user = await auth.json();
-        connection.id = uuid();
-        wss.emit("connection", connection, request);
-      });
-    } catch (error) {
-      socket.write("HTTP/1.1 401 Unauthorized\r\n\r\n");
-      socket.destroy();
-      return;
+    } else {
+      const headers = new Headers();
+      const cookie = request.headers.cookie;
+      headers.append("cookie", cookie ?? "");
+      try {
+        const auth = await fetch("http://api.bolt3.local/auth/user", {
+          headers
+        });
+        if (auth.status === 204) {
+          socket.write("HTTP/1.1 401 Unauthorized\r\n\r\n");
+          socket.destroy();
+          return;
+        }
+        socket.removeListener("error", onSocketError);
+        wss.handleUpgrade(request, socket, head, async function done(ws) {
+          const connection = ws;
+          connection.user = await auth.json();
+          connection.id = uuid();
+          wss.emit("connection", connection, request);
+        });
+      } catch (error) {
+        socket.write("HTTP/1.1 401 Unauthorized\r\n\r\n");
+        socket.destroy();
+        return;
+      }
     }
   });
 };
@@ -467,7 +498,6 @@ var messageBroker = ({
   message,
   peer
 }) => {
-  console.log({ message });
   if (message.destination?.length > 0) {
     const check = destinationHandler({ message, ws: peer });
     if (!check)

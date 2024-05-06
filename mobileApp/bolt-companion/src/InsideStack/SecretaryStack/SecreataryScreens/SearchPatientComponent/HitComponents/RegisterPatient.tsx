@@ -1,18 +1,13 @@
 import React, { useCallback } from "react";
 import { FontAwesome5 } from "@expo/vector-icons";
-import {
-  MainSearchPatientInterface,
-  TogglePatientToListInterface,
-} from "../utils/mainSearchPatientInterface";
-import useConsultationStore from "../../../../../../lib/stores/consultationStore";
+import { TogglePatientToListInterface } from "../utils/mainSearchPatientInterface";
 import { ALERT_TYPE, Dialog } from "react-native-alert-notification";
-import useWundergraphStore from "../../../../../../lib/stores/wundergraphStore";
+import { useTheme } from "react-native-paper";
+import { useMobileBoltStore } from "@/lib/stores/mobileBoltStore";
 import {
   ConsultationListRegisterPatientInput,
   ConsultationListRegisterPatientResponse,
-  ConsultationListRegisterPatientResponseData,
-} from "../../../../../../generated/models";
-import { useTheme } from "react-native-paper";
+} from "@/generated/models";
 
 const errorNotification = () =>
   Dialog.show({
@@ -30,14 +25,14 @@ const SuccessNotification = () =>
   });
 
 function RegisterPatient({ id, setRegistered }: TogglePatientToListInterface) {
-  const { appAxios } = useWundergraphStore();
+  const appAxios = useMobileBoltStore((s) => s.appAxios);
   const {
     colors: { primary },
   } = useTheme();
 
   const onPress = useCallback(async () => {
     try {
-      const data: ConsultationListRegisterPatientInput = { patient_id: id };
+      const data: ConsultationListRegisterPatientInput = { patientId: id };
       const result =
         await appAxios.post<ConsultationListRegisterPatientResponse>(
           "/operations/consultationList/registerPatient",
@@ -53,9 +48,9 @@ function RegisterPatient({ id, setRegistered }: TogglePatientToListInterface) {
     } catch (error) {
       errorNotification();
     }
-  }, [setRegistered]);
+  }, [setRegistered, id]);
   return (
-    <FontAwesome5 name="list-ol" size={30} color={primary} onPress={onPress} />
+    <FontAwesome5 name="list-ol" size={20} color={primary} onPress={onPress} />
   );
 }
 

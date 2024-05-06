@@ -72,6 +72,12 @@ import type {
 	ModalityUpdateOneModalityResponse,
 	ModalityUpdateOneModalityInput,
 	ModalityUpdateOneModalityResponseData,
+	PatientScannedDocumentsDeletePatientScannedDocumentsResponse,
+	PatientScannedDocumentsDeletePatientScannedDocumentsInput,
+	PatientScannedDocumentsDeletePatientScannedDocumentsResponseData,
+	PatientScannedDocumentsGetPatientScannedDocumentsResponse,
+	PatientScannedDocumentsGetPatientScannedDocumentsInput,
+	PatientScannedDocumentsGetPatientScannedDocumentsResponseData,
 	WorkingListsCreateOneWorkingListResponse,
 	WorkingListsCreateOneWorkingListInput,
 	WorkingListsCreateOneWorkingListResponseData,
@@ -167,6 +173,9 @@ import type {
 	PatientsGetOnePatientInfoResponseData,
 	PatientsIndex_patientsResponse,
 	PatientsIndex_patientsResponseData,
+	PatientsMobileUpdateOnePatientResponse,
+	PatientsMobileUpdateOnePatientInput,
+	PatientsMobileUpdateOnePatientResponseData,
 	PatientsToggleSelectedTrashPatientResponse,
 	PatientsToggleSelectedTrashPatientInput,
 	PatientsToggleSelectedTrashPatientResponseData,
@@ -266,7 +275,7 @@ export interface AuthProvider {
 }
 
 export const defaultClientConfig: ClientConfig = {
-	applicationHash: "d8215210",
+	applicationHash: "5403d3c8",
 	baseURL: "http://api.bolt3.local",
 	sdkVersion: "0.181.5",
 };
@@ -324,6 +333,12 @@ export const operationMetadata: OperationMetadata = {
 		requiresAuthentication: true,
 	},
 	"Modality/updateOneModality": {
+		requiresAuthentication: true,
+	},
+	"PatientScannedDocuments/deletePatientScannedDocuments": {
+		requiresAuthentication: true,
+	},
+	"PatientScannedDocuments/getPatientScannedDocuments": {
 		requiresAuthentication: true,
 	},
 	"WorkingLists/createOneWorkingList": {
@@ -423,6 +438,9 @@ export const operationMetadata: OperationMetadata = {
 		requiresAuthentication: true,
 	},
 	"patients/index_patients": {
+		requiresAuthentication: true,
+	},
+	"patients/mobileUpdateOnePatient": {
 		requiresAuthentication: true,
 	},
 	"patients/toggleSelectedTrashPatient": {
@@ -558,6 +576,14 @@ export type Queries = {
 		response: { data?: ModalityModalitiesResponse["data"]; error?: ClientOperationErrors };
 		requiresAuthentication: true;
 	};
+	"PatientScannedDocuments/getPatientScannedDocuments": {
+		input: PatientScannedDocumentsGetPatientScannedDocumentsInput;
+		response: {
+			data?: PatientScannedDocumentsGetPatientScannedDocumentsResponse["data"];
+			error?: ClientOperationErrors;
+		};
+		requiresAuthentication: true;
+	};
 	"WorkingLists/patientWorkingLists": {
 		input: WorkingListsPatientWorkingListsInput;
 		response: { data?: WorkingListsPatientWorkingListsResponse["data"]; error?: ClientOperationErrors };
@@ -683,6 +709,14 @@ export type Mutations = {
 		response: { data?: ModalityUpdateOneModalityResponse["data"]; error?: ClientOperationErrors };
 		requiresAuthentication: true;
 	};
+	"PatientScannedDocuments/deletePatientScannedDocuments": {
+		input: PatientScannedDocumentsDeletePatientScannedDocumentsInput;
+		response: {
+			data?: PatientScannedDocumentsDeletePatientScannedDocumentsResponse["data"];
+			error?: ClientOperationErrors;
+		};
+		requiresAuthentication: true;
+	};
 	"WorkingLists/createOneWorkingList": {
 		input: WorkingListsCreateOneWorkingListInput;
 		response: { data?: WorkingListsCreateOneWorkingListResponse["data"]; error?: ClientOperationErrors };
@@ -781,6 +815,11 @@ export type Mutations = {
 	"patients/index_patients": {
 		input?: undefined;
 		response: { data?: PatientsIndex_patientsResponse["data"]; error?: ClientOperationErrors };
+		requiresAuthentication: true;
+	};
+	"patients/mobileUpdateOnePatient": {
+		input: PatientsMobileUpdateOnePatientInput;
+		response: { data?: PatientsMobileUpdateOnePatientResponse["data"]; error?: ClientOperationErrors };
 		requiresAuthentication: true;
 	};
 	"patients/toggleSelectedTrashPatient": {

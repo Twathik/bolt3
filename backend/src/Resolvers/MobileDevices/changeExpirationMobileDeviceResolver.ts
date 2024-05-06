@@ -1,7 +1,5 @@
 import * as TypeGraphQL from 'type-graphql'
 import { MobileDevice } from '../../@generated'
-import { getPrismaFromContext } from '../../@generated/helpers'
-import { PrismaClient } from '@prisma/client'
 import { changeExpirationMobileDeviceArgs } from './Args/changeExpirationMobileDeviceArgs'
 import { addMonths } from 'date-fns'
 import { Context } from '../../context'
@@ -15,13 +13,10 @@ export class ChangeExpirationMobileDeviceResolver {
     nullable: true,
   })
   async changeExpirationMobileDeviceResolver(
-    @TypeGraphQL.Ctx() ctx: Context,
+    @TypeGraphQL.Ctx() { prisma, pubSub }: Context,
     @TypeGraphQL.Args()
     { Months, id }: changeExpirationMobileDeviceArgs,
   ): Promise<Boolean | null> {
-    const prisma = getPrismaFromContext(ctx) as PrismaClient
-    const pubsub = ctx.pubSub
-
     try {
       const mobileDevice = await prisma.mobileDevice.findFirst({
         where: { id: { equals: id } },
@@ -45,11 +40,14 @@ export class ChangeExpirationMobileDeviceResolver {
         subscriptionIds: [],
         payload: {
           operation: 'update',
-          mobileDevice: updatedMobileDevice,
+          mobileDevice: {
+            ...updatedMobileDevice,
+            expireAt: updatedMobileDevice.expireAt.toISOString(),
+          },
         },
       }
 
-      await pubsub.publish(notificationTopic, message)
+      await pubSub.publish(notificationTopic, message)
 
       return true
     } catch (error) {

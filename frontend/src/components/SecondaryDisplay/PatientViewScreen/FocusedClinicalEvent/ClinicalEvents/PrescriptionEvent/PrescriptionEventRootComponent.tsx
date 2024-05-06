@@ -1,7 +1,7 @@
 import { useToast } from "@/components/ui/use-toast";
 import type { PatientsGetOnePatientInfoResponseData } from "@/components/wg-generated/models";
 import { useQuery } from "@/components/wg-generated/nextjs";
-import getClinicalEventContentFromEditor from "@/lib/utils/getClinicalEventContentFromEditor";
+import getClinicalEventContentFromEditor from "@/lib/generalUtils/getClinicalEventContentFromEditor";
 import { useBoltStore } from "@/stores/boltStore";
 import type { TElement } from "@udecode/plate-common";
 import React, { useEffect } from "react";

@@ -340,6 +340,7 @@ export interface mainDb_PatientWhereInput {
 	DocumentStore?: mainDb_DocumentStoreListRelationFilter;
 	NOT?: mainDb_PatientWhereInput[];
 	OR?: mainDb_PatientWhereInput[];
+	PatientScanedDocument?: mainDb_PatientScannedDocumentListRelationFilter;
 	WorkingList?: mainDb_WorkingListListRelationFilter;
 	address?: mainDb_StringNullableFilter;
 	createdAt?: mainDb_DateTimeFilter;
@@ -352,6 +353,7 @@ export interface mainDb_PatientWhereInput {
 	lastName?: mainDb_StringFilter;
 	nTel?: mainDb_StringNullableFilter;
 	onTrash?: mainDb_BoolFilter;
+	patientAvatar?: mainDb_StringNullableFilter;
 	sexe?: mainDb_EnumSexeFilter;
 	updated?: mainDb_DateTimeFilter;
 	weight?: mainDb_FloatNullableFilter;
@@ -428,6 +430,33 @@ export interface mainDb_NestedEnumPatientDocumentTypeFilter {
 	notIn?: mainDb_PatientDocumentTypeValues[];
 }
 
+export interface mainDb_PatientScannedDocumentListRelationFilter {
+	every?: mainDb_PatientScannedDocumentWhereInput;
+	none?: mainDb_PatientScannedDocumentWhereInput;
+	some?: mainDb_PatientScannedDocumentWhereInput;
+}
+
+export interface mainDb_PatientScannedDocumentWhereInput {
+	AND?: mainDb_PatientScannedDocumentWhereInput[];
+	NOT?: mainDb_PatientScannedDocumentWhereInput[];
+	OR?: mainDb_PatientScannedDocumentWhereInput[];
+	createdAt?: mainDb_DateTimeFilter;
+	documentCollectionDate?: mainDb_DateTimeFilter;
+	documentCollectionName?: mainDb_StringFilter;
+	documentCollectionUrls?: mainDb_StringNullableListFilter;
+	id?: mainDb_StringFilter;
+	patient?: mainDb_PatientRelationFilter;
+	patientId?: mainDb_StringFilter;
+}
+
+export interface mainDb_StringNullableListFilter {
+	equals?: string[];
+	has?: string;
+	hasEvery?: string[];
+	hasSome?: string[];
+	isEmpty?: boolean;
+}
+
 export interface mainDb_FloatNullableFilter {
 	equals?: number;
 	gt?: number;
@@ -489,14 +518,6 @@ export interface mainDb_UserWhereInput {
 	searchApiKey?: mainDb_StringFilter;
 	searchApiKeyId?: mainDb_IntNullableFilter;
 	userId?: mainDb_StringFilter;
-}
-
-export interface mainDb_StringNullableListFilter {
-	equals?: string[];
-	has?: string;
-	hasEvery?: string[];
-	hasSome?: string[];
-	isEmpty?: boolean;
 }
 
 export interface mainDb_EnumRoleFilter {
@@ -715,6 +736,7 @@ export interface mainDb_PatientWhereUniqueInput {
 	DocumentStore?: mainDb_DocumentStoreListRelationFilter;
 	NOT?: mainDb_PatientWhereInput[];
 	OR?: mainDb_PatientWhereInput[];
+	PatientScanedDocument?: mainDb_PatientScannedDocumentListRelationFilter;
 	WorkingList?: mainDb_WorkingListListRelationFilter;
 	address?: mainDb_StringNullableFilter;
 	createdAt?: mainDb_DateTimeFilter;
@@ -727,6 +749,7 @@ export interface mainDb_PatientWhereUniqueInput {
 	lastName?: mainDb_StringFilter;
 	nTel?: mainDb_StringNullableFilter;
 	onTrash?: mainDb_BoolFilter;
+	patientAvatar?: mainDb_StringNullableFilter;
 	sexe?: mainDb_EnumSexeFilter;
 	updated?: mainDb_DateTimeFilter;
 	weight?: mainDb_FloatNullableFilter;
@@ -741,6 +764,7 @@ export interface mainDb_PatientCreateWithoutWorkingListInput {
 	ClinicalEvent?: mainDb_ClinicalEventCreateNestedManyWithoutPatientInput;
 	ConsultationList?: mainDb_ConsultationListCreateNestedManyWithoutPatientInput;
 	DocumentStore?: mainDb_DocumentStoreCreateNestedManyWithoutPatientInput;
+	PatientScanedDocument?: mainDb_PatientScannedDocumentCreateNestedManyWithoutPatientInput;
 	address?: string;
 	createdAt?: string;
 	ddn: string;
@@ -752,6 +776,7 @@ export interface mainDb_PatientCreateWithoutWorkingListInput {
 	lastName: string;
 	nTel?: string;
 	onTrash?: boolean;
+	patientAvatar?: string;
 	sexe: mainDb_SexeValues;
 	updated?: string;
 	weight?: number;
@@ -904,6 +929,7 @@ export interface mainDb_PatientCreateOrConnectWithoutClinicalEventInput {
 export interface mainDb_PatientCreateWithoutClinicalEventInput {
 	ConsultationList?: mainDb_ConsultationListCreateNestedManyWithoutPatientInput;
 	DocumentStore?: mainDb_DocumentStoreCreateNestedManyWithoutPatientInput;
+	PatientScanedDocument?: mainDb_PatientScannedDocumentCreateNestedManyWithoutPatientInput;
 	WorkingList?: mainDb_WorkingListCreateNestedManyWithoutPatientInput;
 	address?: string;
 	createdAt?: string;
@@ -916,6 +942,7 @@ export interface mainDb_PatientCreateWithoutClinicalEventInput {
 	lastName: string;
 	nTel?: string;
 	onTrash?: boolean;
+	patientAvatar?: string;
 	sexe: mainDb_SexeValues;
 	updated?: string;
 	weight?: number;
@@ -1020,6 +1047,56 @@ export interface mainDb_DocumentStoreCreateManyPatientInput {
 	id?: string;
 	patientDocumentType: mainDb_PatientDocumentTypeValues;
 	textContent?: string;
+}
+
+export interface mainDb_PatientScannedDocumentCreateNestedManyWithoutPatientInput {
+	connect?: mainDb_PatientScannedDocumentWhereUniqueInput[];
+	connectOrCreate?: mainDb_PatientScannedDocumentCreateOrConnectWithoutPatientInput[];
+	create?: mainDb_PatientScannedDocumentCreateWithoutPatientInput[];
+	createMany?: mainDb_PatientScannedDocumentCreateManyPatientInputEnvelope;
+}
+
+export interface mainDb_PatientScannedDocumentWhereUniqueInput {
+	AND?: mainDb_PatientScannedDocumentWhereInput[];
+	NOT?: mainDb_PatientScannedDocumentWhereInput[];
+	OR?: mainDb_PatientScannedDocumentWhereInput[];
+	createdAt?: mainDb_DateTimeFilter;
+	documentCollectionDate?: mainDb_DateTimeFilter;
+	documentCollectionName?: mainDb_StringFilter;
+	documentCollectionUrls?: mainDb_StringNullableListFilter;
+	id?: string;
+	patient?: mainDb_PatientRelationFilter;
+	patientId?: mainDb_StringFilter;
+}
+
+export interface mainDb_PatientScannedDocumentCreateOrConnectWithoutPatientInput {
+	create: mainDb_PatientScannedDocumentCreateWithoutPatientInput;
+	where: mainDb_PatientScannedDocumentWhereUniqueInput;
+}
+
+export interface mainDb_PatientScannedDocumentCreateWithoutPatientInput {
+	createdAt?: string;
+	documentCollectionDate: string;
+	documentCollectionName: string;
+	documentCollectionUrls?: mainDb_PatientScannedDocumentCreatedocumentCollectionUrlsInput;
+	id?: string;
+}
+
+export interface mainDb_PatientScannedDocumentCreatedocumentCollectionUrlsInput {
+	set?: string[];
+}
+
+export interface mainDb_PatientScannedDocumentCreateManyPatientInputEnvelope {
+	data?: mainDb_PatientScannedDocumentCreateManyPatientInput[];
+	skipDuplicates?: boolean;
+}
+
+export interface mainDb_PatientScannedDocumentCreateManyPatientInput {
+	createdAt?: string;
+	documentCollectionDate: string;
+	documentCollectionName: string;
+	documentCollectionUrls?: mainDb_PatientScannedDocumentCreatedocumentCollectionUrlsInput;
+	id?: string;
 }
 
 export interface mainDb_WorkingListCreateNestedManyWithoutPatientInput {
@@ -1406,6 +1483,7 @@ export interface mainDb_PatientUpdateWithoutWorkingListInput {
 	ClinicalEvent?: mainDb_ClinicalEventUpdateManyWithoutPatientNestedInput;
 	ConsultationList?: mainDb_ConsultationListUpdateManyWithoutPatientNestedInput;
 	DocumentStore?: mainDb_DocumentStoreUpdateManyWithoutPatientNestedInput;
+	PatientScanedDocument?: mainDb_PatientScannedDocumentUpdateManyWithoutPatientNestedInput;
 	address?: mainDb_NullableStringFieldUpdateOperationsInput;
 	createdAt?: mainDb_DateTimeFieldUpdateOperationsInput;
 	ddn?: mainDb_DateTimeFieldUpdateOperationsInput;
@@ -1417,6 +1495,7 @@ export interface mainDb_PatientUpdateWithoutWorkingListInput {
 	lastName?: mainDb_StringFieldUpdateOperationsInput;
 	nTel?: mainDb_NullableStringFieldUpdateOperationsInput;
 	onTrash?: mainDb_BoolFieldUpdateOperationsInput;
+	patientAvatar?: mainDb_NullableStringFieldUpdateOperationsInput;
 	sexe?: mainDb_EnumSexeFieldUpdateOperationsInput;
 	updated?: mainDb_DateTimeFieldUpdateOperationsInput;
 	weight?: mainDb_NullableFloatFieldUpdateOperationsInput;
@@ -1575,6 +1654,7 @@ export interface mainDb_PatientUpdateToOneWithWhereWithoutClinicalEventInput {
 export interface mainDb_PatientUpdateWithoutClinicalEventInput {
 	ConsultationList?: mainDb_ConsultationListUpdateManyWithoutPatientNestedInput;
 	DocumentStore?: mainDb_DocumentStoreUpdateManyWithoutPatientNestedInput;
+	PatientScanedDocument?: mainDb_PatientScannedDocumentUpdateManyWithoutPatientNestedInput;
 	WorkingList?: mainDb_WorkingListUpdateManyWithoutPatientNestedInput;
 	address?: mainDb_NullableStringFieldUpdateOperationsInput;
 	createdAt?: mainDb_DateTimeFieldUpdateOperationsInput;
@@ -1587,6 +1667,7 @@ export interface mainDb_PatientUpdateWithoutClinicalEventInput {
 	lastName?: mainDb_StringFieldUpdateOperationsInput;
 	nTel?: mainDb_NullableStringFieldUpdateOperationsInput;
 	onTrash?: mainDb_BoolFieldUpdateOperationsInput;
+	patientAvatar?: mainDb_NullableStringFieldUpdateOperationsInput;
 	sexe?: mainDb_EnumSexeFieldUpdateOperationsInput;
 	updated?: mainDb_DateTimeFieldUpdateOperationsInput;
 	weight?: mainDb_NullableFloatFieldUpdateOperationsInput;
@@ -1711,6 +1792,69 @@ export interface mainDb_DocumentStoreUpsertWithWhereUniqueWithoutPatientInput {
 	create: mainDb_DocumentStoreCreateWithoutPatientInput;
 	update: mainDb_DocumentStoreUpdateWithoutPatientInput;
 	where: mainDb_DocumentStoreWhereUniqueInput;
+}
+
+export interface mainDb_PatientScannedDocumentUpdateManyWithoutPatientNestedInput {
+	connect?: mainDb_PatientScannedDocumentWhereUniqueInput[];
+	connectOrCreate?: mainDb_PatientScannedDocumentCreateOrConnectWithoutPatientInput[];
+	create?: mainDb_PatientScannedDocumentCreateWithoutPatientInput[];
+	createMany?: mainDb_PatientScannedDocumentCreateManyPatientInputEnvelope;
+	delete?: mainDb_PatientScannedDocumentWhereUniqueInput[];
+	deleteMany?: mainDb_PatientScannedDocumentScalarWhereInput[];
+	disconnect?: mainDb_PatientScannedDocumentWhereUniqueInput[];
+	set?: mainDb_PatientScannedDocumentWhereUniqueInput[];
+	update?: mainDb_PatientScannedDocumentUpdateWithWhereUniqueWithoutPatientInput[];
+	updateMany?: mainDb_PatientScannedDocumentUpdateManyWithWhereWithoutPatientInput[];
+	upsert?: mainDb_PatientScannedDocumentUpsertWithWhereUniqueWithoutPatientInput[];
+}
+
+export interface mainDb_PatientScannedDocumentScalarWhereInput {
+	AND?: mainDb_PatientScannedDocumentScalarWhereInput[];
+	NOT?: mainDb_PatientScannedDocumentScalarWhereInput[];
+	OR?: mainDb_PatientScannedDocumentScalarWhereInput[];
+	createdAt?: mainDb_DateTimeFilter;
+	documentCollectionDate?: mainDb_DateTimeFilter;
+	documentCollectionName?: mainDb_StringFilter;
+	documentCollectionUrls?: mainDb_StringNullableListFilter;
+	id?: mainDb_StringFilter;
+	patientId?: mainDb_StringFilter;
+}
+
+export interface mainDb_PatientScannedDocumentUpdateWithWhereUniqueWithoutPatientInput {
+	data: mainDb_PatientScannedDocumentUpdateWithoutPatientInput;
+	where: mainDb_PatientScannedDocumentWhereUniqueInput;
+}
+
+export interface mainDb_PatientScannedDocumentUpdateWithoutPatientInput {
+	createdAt?: mainDb_DateTimeFieldUpdateOperationsInput;
+	documentCollectionDate?: mainDb_DateTimeFieldUpdateOperationsInput;
+	documentCollectionName?: mainDb_StringFieldUpdateOperationsInput;
+	documentCollectionUrls?: mainDb_PatientScannedDocumentUpdatedocumentCollectionUrlsInput;
+	id?: mainDb_StringFieldUpdateOperationsInput;
+}
+
+export interface mainDb_PatientScannedDocumentUpdatedocumentCollectionUrlsInput {
+	push?: string[];
+	set?: string[];
+}
+
+export interface mainDb_PatientScannedDocumentUpdateManyWithWhereWithoutPatientInput {
+	data: mainDb_PatientScannedDocumentUpdateManyMutationInput;
+	where: mainDb_PatientScannedDocumentScalarWhereInput;
+}
+
+export interface mainDb_PatientScannedDocumentUpdateManyMutationInput {
+	createdAt?: mainDb_DateTimeFieldUpdateOperationsInput;
+	documentCollectionDate?: mainDb_DateTimeFieldUpdateOperationsInput;
+	documentCollectionName?: mainDb_StringFieldUpdateOperationsInput;
+	documentCollectionUrls?: mainDb_PatientScannedDocumentUpdatedocumentCollectionUrlsInput;
+	id?: mainDb_StringFieldUpdateOperationsInput;
+}
+
+export interface mainDb_PatientScannedDocumentUpsertWithWhereUniqueWithoutPatientInput {
+	create: mainDb_PatientScannedDocumentCreateWithoutPatientInput;
+	update: mainDb_PatientScannedDocumentUpdateWithoutPatientInput;
+	where: mainDb_PatientScannedDocumentWhereUniqueInput;
 }
 
 export interface mainDb_WorkingListUpdateManyWithoutPatientNestedInput {
@@ -2138,6 +2282,14 @@ export interface ModalityUpdateOneModalityInput {
 	modalityType: mainDb_ModalityTypeValues;
 }
 
+export interface PatientScannedDocumentsDeletePatientScannedDocumentsInput {
+	id?: string;
+}
+
+export interface PatientScannedDocumentsGetPatientScannedDocumentsInput {
+	patientId?: string;
+}
+
 export interface WorkingListsCreateOneWorkingListInput {
 	clinicalEventId: string;
 	modalityId: string;
@@ -2276,6 +2428,14 @@ export interface PatientsGetOnePatientInfoInput {
 	patientId: string;
 }
 
+export interface PatientsMobileUpdateOnePatientInput {
+	id: string;
+	firstName?: string;
+	lastName?: string;
+	sexe?: mainDb_SexeValues;
+	ddn?: string;
+}
+
 export interface PatientsToggleSelectedTrashPatientInput {
 	id: mainDb_StringFilter;
 	delete: boolean;
@@ -2379,6 +2539,14 @@ export interface ModalityUpdateOneModalityInputInternal {
 	modalityPort: number;
 	modalityType: mainDb_ModalityTypeValues;
 	userId: string;
+}
+
+export interface PatientScannedDocumentsDeletePatientScannedDocumentsInputInternal {
+	id?: string;
+}
+
+export interface PatientScannedDocumentsGetPatientScannedDocumentsInputInternal {
+	patientId?: string;
 }
 
 export interface WorkingListsCreateOneWorkingListInputInternal {
@@ -2533,6 +2701,15 @@ export interface PatientsGetOnePatientInfoInputInternal {
 	patientId: string;
 }
 
+export interface PatientsMobileUpdateOnePatientInputInternal {
+	id: string;
+	firstName?: string;
+	lastName?: string;
+	sexe?: mainDb_SexeValues;
+	ddn?: string;
+	userId: string;
+}
+
 export interface PatientsToggleSelectedTrashPatientInputInternal {
 	id: mainDb_StringFilter;
 	delete: boolean;
@@ -2651,6 +2828,14 @@ export interface ModalityUpdateOneModalityInputInjected {
 	modalityPort: number;
 	modalityType: mainDb_ModalityTypeValues;
 	userId: string;
+}
+
+export interface PatientScannedDocumentsDeletePatientScannedDocumentsInputInjected {
+	id?: string;
+}
+
+export interface PatientScannedDocumentsGetPatientScannedDocumentsInputInjected {
+	patientId?: string;
 }
 
 export interface WorkingListsCreateOneWorkingListInputInjected {
@@ -2805,6 +2990,15 @@ export interface PatientsGetOnePatientInfoInputInjected {
 	patientId: string;
 }
 
+export interface PatientsMobileUpdateOnePatientInputInjected {
+	id: string;
+	firstName?: string;
+	lastName?: string;
+	sexe?: mainDb_SexeValues;
+	ddn?: string;
+	userId: string;
+}
+
 export interface PatientsToggleSelectedTrashPatientInputInjected {
 	id: mainDb_StringFilter;
 	delete: boolean;
@@ -2923,6 +3117,16 @@ export interface ModalitySwitchModalityResponse {
 
 export interface ModalityUpdateOneModalityResponse {
 	data?: ModalityUpdateOneModalityResponseData;
+	errors?: GraphQLError[];
+}
+
+export interface PatientScannedDocumentsDeletePatientScannedDocumentsResponse {
+	data?: PatientScannedDocumentsDeletePatientScannedDocumentsResponseData;
+	errors?: GraphQLError[];
+}
+
+export interface PatientScannedDocumentsGetPatientScannedDocumentsResponse {
+	data?: PatientScannedDocumentsGetPatientScannedDocumentsResponseData;
 	errors?: GraphQLError[];
 }
 
@@ -3088,6 +3292,11 @@ export interface PatientsGetOnePatientInfoResponse {
 
 export interface PatientsIndex_patientsResponse {
 	data?: PatientsIndex_patientsResponseData;
+	errors?: GraphQLError[];
+}
+
+export interface PatientsMobileUpdateOnePatientResponse {
+	data?: PatientsMobileUpdateOnePatientResponseData;
 	errors?: GraphQLError[];
 }
 
@@ -3622,6 +3831,22 @@ export interface ModalityUpdateOneModalityResponseData {
 			| "XC";
 		enabled: boolean;
 	};
+}
+
+export interface PatientScannedDocumentsDeletePatientScannedDocumentsResponseData {
+	mainDb_deleteOnePatientScannedDocument?: {
+		id: string;
+	};
+}
+
+export interface PatientScannedDocumentsGetPatientScannedDocumentsResponseData {
+	mainDb_patientScannedDocuments: {
+		id: string;
+		documentCollectionDate: string;
+		documentCollectionName: string;
+		documentCollectionUrls: string[];
+		patientId: string;
+	}[];
 }
 
 export interface WorkingListsCreateOneWorkingListResponseData {
@@ -4284,6 +4509,7 @@ export interface PatientsGetOnePatientResponseData {
 		informationsConfirmed: boolean;
 		nTel?: string;
 		updated: string;
+		patientAvatar?: string;
 		DocumentStore: {
 			textContent?: string;
 			patientDocumentType: "document" | "folder";
@@ -4325,6 +4551,27 @@ export interface PatientsIndex_patientsResponseData {
 	mainDb_indexPatients?: boolean;
 }
 
+export interface PatientsMobileUpdateOnePatientResponseData {
+	mainDb_updateOnePatient?: {
+		id: string;
+		firstName: string;
+		lastName: string;
+		sexe: "F" | "M";
+		ddn: string;
+		deleted: boolean;
+		onTrash: boolean;
+		patientFullName: string;
+		informationsConfirmed: boolean;
+		nTel?: string;
+		updated: string;
+		patientAvatar?: string;
+		DocumentStore: {
+			textContent?: string;
+			patientDocumentType: "document" | "folder";
+		}[];
+	};
+}
+
 export interface PatientsToggleSelectedTrashPatientResponseData {
 	mainDb_toggleSelectedTrashMutation: {
 		count: number;
@@ -4344,6 +4591,7 @@ export interface PatientsUpdateOnePatientResponseData {
 		informationsConfirmed: boolean;
 		nTel?: string;
 		updated: string;
+		patientAvatar?: string;
 		DocumentStore: {
 			textContent?: string;
 			patientDocumentType: "document" | "folder";

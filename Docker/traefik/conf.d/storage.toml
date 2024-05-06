@@ -4,9 +4,15 @@
 entryPoints = ["web"]
 rule = "Host(`storage.bolt3.local`)"
 service = "storage"
+middlewares = "app-auth"
+
+[http.middlewares]
+[http.middlewares.app-auth.forwardAuth]
+address = "http://bolt3.local/user"
+
 
 [http.services]
 [http.services.storage]
 [http.services.storage.loadBalancer]
 [[http.services.storage.loadBalancer.servers]]
-url = "http://host.docker.internal:9000"
+url = "http://192.168.50.129:9000"

@@ -5,6 +5,7 @@ import { DecimalJSScalar } from "../../scalars";
 import { PatientCountClinicalEventArgs } from "./args/PatientCountClinicalEventArgs";
 import { PatientCountConsultationListArgs } from "./args/PatientCountConsultationListArgs";
 import { PatientCountDocumentStoreArgs } from "./args/PatientCountDocumentStoreArgs";
+import { PatientCountPatientScanedDocumentArgs } from "./args/PatientCountPatientScanedDocumentArgs";
 import { PatientCountWorkingListArgs } from "./args/PatientCountWorkingListArgs";
 
 @TypeGraphQL.ObjectType("PatientCount", {})
@@ -13,6 +14,7 @@ export class PatientCount {
   ClinicalEvent!: number;
   WorkingList!: number;
   DocumentStore!: number;
+  PatientScanedDocument!: number;
 
   @TypeGraphQL.Field(_type => TypeGraphQL.Int, {
     name: "ConsultationList",
@@ -44,5 +46,13 @@ export class PatientCount {
   })
   getDocumentStore(@TypeGraphQL.Root() root: PatientCount, @TypeGraphQL.Args() args: PatientCountDocumentStoreArgs): number {
     return root.DocumentStore;
+  }
+
+  @TypeGraphQL.Field(_type => TypeGraphQL.Int, {
+    name: "PatientScanedDocument",
+    nullable: false
+  })
+  getPatientScanedDocument(@TypeGraphQL.Root() root: PatientCount, @TypeGraphQL.Args() args: PatientCountPatientScanedDocumentArgs): number {
+    return root.PatientScanedDocument;
   }
 }

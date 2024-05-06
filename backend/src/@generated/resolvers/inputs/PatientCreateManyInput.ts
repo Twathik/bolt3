@@ -75,4 +75,9 @@ export class PatientCreateManyInput {
     nullable: true
   })
   informationsConfirmed?: boolean | undefined;
+
+  @TypeGraphQL.Field(_type => String, {
+    nullable: true
+  })
+  patientAvatar?: string | undefined;
 }

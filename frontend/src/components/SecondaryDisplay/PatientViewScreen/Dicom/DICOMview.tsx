@@ -1,7 +1,7 @@
 /* eslint-disable react/no-unescaped-entities */
 import React from "react";
 import Iframe from "react-iframe";
-import { orthancViewerBaseUrl } from "@/lib/utils/OrthancUtils";
+import { orthancViewerBaseUrl } from "@/lib/generalUtils/OrthancUtils";
 import { useBoltStore } from "@/stores/boltStore";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { AlertCircle } from "lucide-react";

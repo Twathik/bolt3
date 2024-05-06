@@ -1,12 +1,7 @@
 import * as TypeGraphQL from 'type-graphql'
-import type { GraphQLResolveInfo } from 'graphql'
 import { MobileDevice } from '../../@generated'
 import { RegisterOneMobileDeviceArgs } from './Args/registerMobileDeviceArgs'
-import {
-  getPrismaFromContext,
-  transformCountFieldIntoSelectRelationsCount,
-  transformInfoIntoPrismaArgs,
-} from '../../@generated/helpers'
+import { getPrismaFromContext } from '../../@generated/helpers'
 import { PrismaClient } from '@prisma/client'
 import { Context } from '../../context'
 import { notificationTopic } from '../../Utils/PubSubInterfaces/MessageTypesInterface'
@@ -20,11 +15,9 @@ export class RegisterOneMobileDeviceResolver {
   })
   async registerOneMobileDevice(
     @TypeGraphQL.Ctx() ctx: Context,
-    @TypeGraphQL.Info() info: GraphQLResolveInfo,
     @TypeGraphQL.Args()
-    { accessToken, uuid }: RegisterOneMobileDeviceArgs,
+    { accessToken }: RegisterOneMobileDeviceArgs,
   ): Promise<MobileDevice | null> {
-    const { _count } = transformInfoIntoPrismaArgs(info)
     const prisma = getPrismaFromContext(ctx) as PrismaClient
     const pubsub = ctx.pubSub
 
@@ -35,15 +28,6 @@ export class RegisterOneMobileDeviceResolver {
       if (!mobileDevice) throw Error()
       if (mobileDevice.expireAt < new Date()) throw Error()
 
-      const updatedMobileDevice = await prisma.mobileDevice.update({
-        where: { accessToken },
-        data: {
-          uuid,
-          connected: true,
-        },
-        ...(_count && transformCountFieldIntoSelectRelationsCount(_count)),
-      })
-
       const message: WebsocketMessageInterface = {
         id: v4(),
         type: 'mobileDevice',
@@ -52,13 +36,16 @@ export class RegisterOneMobileDeviceResolver {
         subscriptionIds: [],
         payload: {
           operation: 'update',
-          mobileDevice: updatedMobileDevice,
+          mobileDevice: {
+            ...mobileDevice,
+            expireAt: mobileDevice.expireAt.toISOString(),
+          },
         },
       }
 
       await pubsub.publish(notificationTopic, message)
 
-      return updatedMobileDevice
+      return mobileDevice
     } catch (error) {
       throw Error("an error occurred, Mobile device isn't registered!")
     }

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import NextTopLoader from "nextjs-toploader";
 import "./globals.css";
-import EndProgress from "@/lib/utils/useAppRouter";
+import EndProgress from "@/lib/generalUtils/useAppRouter";
 import { Suspense } from "react";
 import { WebsocketProvider } from "@/components/Websockets/WebsocketProvider";
 import { Toaster } from "@/components/ui/toaster";

@@ -1,6 +1,6 @@
 import { Label } from "@/components/ui/label";
 import { Slider } from "@/components/ui/slider";
-import { type RawDocumentSettingsInterface } from "@/lib/utils/getDocumentSettings";
+import { type RawDocumentSettingsInterface } from "@/lib/generalUtils/getDocumentSettings";
 import { debounce } from "lodash";
 import React, { useCallback, useEffect, useState } from "react";
 

@@ -61,7 +61,10 @@ export class SwitchMobileDeviceResolver {
         subscriptionIds: [],
         payload: {
           operation: 'update',
-          mobileDevice: updatedMobileDevice,
+          mobileDevice: {
+            ...updatedMobileDevice,
+            expireAt: updatedMobileDevice.expireAt.toISOString(),
+          },
         },
       }
 

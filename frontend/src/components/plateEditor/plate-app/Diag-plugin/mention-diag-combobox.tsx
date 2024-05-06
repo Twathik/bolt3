@@ -7,7 +7,7 @@ import type { MentionPlugin } from "@udecode/plate-mention";
 import { DiagCombobox } from "./diag-combobox";
 import { DIAGNOSTIC_MENTION_KEY } from "./diag-plugin-key";
 import { useCallback } from "react";
-import getMentionOnSelectItemWithMetadata from "@/lib/utils/getMentionOnSelectItemWithMetadata";
+import getMentionOnSelectItemWithMetadata from "@/lib/generalUtils/getMentionOnSelectItemWithMetadata";
 import type { ItemWithMetadata } from "@/lib/interfaces/itemWithMetadata";
 
 export function MentionDiagCombobox({

@@ -1,0 +1,14 @@
+export { AggregatePatientScannedDocumentArgs } from "./AggregatePatientScannedDocumentArgs";
+export { CreateManyPatientScannedDocumentArgs } from "./CreateManyPatientScannedDocumentArgs";
+export { CreateOnePatientScannedDocumentArgs } from "./CreateOnePatientScannedDocumentArgs";
+export { DeleteManyPatientScannedDocumentArgs } from "./DeleteManyPatientScannedDocumentArgs";
+export { DeleteOnePatientScannedDocumentArgs } from "./DeleteOnePatientScannedDocumentArgs";
+export { FindFirstPatientScannedDocumentArgs } from "./FindFirstPatientScannedDocumentArgs";
+export { FindFirstPatientScannedDocumentOrThrowArgs } from "./FindFirstPatientScannedDocumentOrThrowArgs";
+export { FindManyPatientScannedDocumentArgs } from "./FindManyPatientScannedDocumentArgs";
+export { FindUniquePatientScannedDocumentArgs } from "./FindUniquePatientScannedDocumentArgs";
+export { FindUniquePatientScannedDocumentOrThrowArgs } from "./FindUniquePatientScannedDocumentOrThrowArgs";
+export { GroupByPatientScannedDocumentArgs } from "./GroupByPatientScannedDocumentArgs";
+export { UpdateManyPatientScannedDocumentArgs } from "./UpdateManyPatientScannedDocumentArgs";
+export { UpdateOnePatientScannedDocumentArgs } from "./UpdateOnePatientScannedDocumentArgs";
+export { UpsertOnePatientScannedDocumentArgs } from "./UpsertOnePatientScannedDocumentArgs";

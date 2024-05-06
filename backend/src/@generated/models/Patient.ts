@@ -5,6 +5,7 @@ import { DecimalJSScalar } from "../scalars";
 import { ClinicalEvent } from "../models/ClinicalEvent";
 import { ConsultationList } from "../models/ConsultationList";
 import { DocumentStore } from "../models/DocumentStore";
+import { PatientScannedDocument } from "../models/PatientScannedDocument";
 import { WorkingList } from "../models/WorkingList";
 import { Sexe } from "../enums/Sexe";
 import { PatientCount } from "../resolvers/outputs/PatientCount";
@@ -88,6 +89,13 @@ export class Patient {
   WorkingList?: WorkingList[];
 
   DocumentStore?: DocumentStore[];
+
+  @TypeGraphQL.Field(_type => String, {
+    nullable: true
+  })
+  patientAvatar?: string | null;
+
+  PatientScanedDocument?: PatientScannedDocument[];
 
   @TypeGraphQL.Field(_type => PatientCount, {
     nullable: true

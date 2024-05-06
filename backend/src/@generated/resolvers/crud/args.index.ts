@@ -6,6 +6,7 @@ export * from "./Economizer/args";
 export * from "./MobileDevice/args";
 export * from "./Modality/args";
 export * from "./Patient/args";
+export * from "./PatientScannedDocument/args";
 export * from "./Prescription/args";
 export * from "./Setting/args";
 export * from "./User/args";

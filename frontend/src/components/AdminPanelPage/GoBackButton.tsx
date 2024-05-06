@@ -3,7 +3,7 @@
 import React, { useCallback } from "react";
 import { Button } from "../ui/button";
 import { IoChevronBack } from "react-icons/io5";
-import { useAppRouter } from "@/lib/utils/useAppRouter";
+import { useAppRouter } from "@/lib/generalUtils/useAppRouter";
 
 function GoBackButton() {
   const router = useAppRouter();

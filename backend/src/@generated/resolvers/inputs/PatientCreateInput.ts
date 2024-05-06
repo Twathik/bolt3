@@ -5,6 +5,7 @@ import { DecimalJSScalar } from "../../scalars";
 import { ClinicalEventCreateNestedManyWithoutPatientInput } from "../inputs/ClinicalEventCreateNestedManyWithoutPatientInput";
 import { ConsultationListCreateNestedManyWithoutPatientInput } from "../inputs/ConsultationListCreateNestedManyWithoutPatientInput";
 import { DocumentStoreCreateNestedManyWithoutPatientInput } from "../inputs/DocumentStoreCreateNestedManyWithoutPatientInput";
+import { PatientScannedDocumentCreateNestedManyWithoutPatientInput } from "../inputs/PatientScannedDocumentCreateNestedManyWithoutPatientInput";
 import { WorkingListCreateNestedManyWithoutPatientInput } from "../inputs/WorkingListCreateNestedManyWithoutPatientInput";
 import { Sexe } from "../../enums/Sexe";
 
@@ -80,6 +81,11 @@ export class PatientCreateInput {
   })
   informationsConfirmed?: boolean | undefined;
 
+  @TypeGraphQL.Field(_type => String, {
+    nullable: true
+  })
+  patientAvatar?: string | undefined;
+
   @TypeGraphQL.Field(_type => ConsultationListCreateNestedManyWithoutPatientInput, {
     nullable: true
   })
@@ -99,4 +105,9 @@ export class PatientCreateInput {
     nullable: true
   })
   DocumentStore?: DocumentStoreCreateNestedManyWithoutPatientInput | undefined;
+
+  @TypeGraphQL.Field(_type => PatientScannedDocumentCreateNestedManyWithoutPatientInput, {
+    nullable: true
+  })
+  PatientScanedDocument?: PatientScannedDocumentCreateNestedManyWithoutPatientInput | undefined;
 }

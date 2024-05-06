@@ -80,4 +80,9 @@ export class PatientUpdateManyMutationInput {
     nullable: true
   })
   informationsConfirmed?: BoolFieldUpdateOperationsInput | undefined;
+
+  @TypeGraphQL.Field(_type => NullableStringFieldUpdateOperationsInput, {
+    nullable: true
+  })
+  patientAvatar?: NullableStringFieldUpdateOperationsInput | undefined;
 }

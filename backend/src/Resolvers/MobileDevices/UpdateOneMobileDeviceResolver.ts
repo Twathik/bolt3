@@ -3,7 +3,6 @@ import type { GraphQLResolveInfo } from 'graphql'
 import { MobileDevice } from '../../@generated'
 import {
   transformInfoIntoPrismaArgs,
-  getPrismaFromContext,
   transformCountFieldIntoSelectRelationsCount,
 } from '../../@generated/helpers'
 import { UpdateOneMobileDeviceArgs } from './Args/UpdateOneMobileDeviceArgs'
@@ -18,19 +17,16 @@ export class UpdateOneMobileDeviceResolver {
     nullable: true,
   })
   async updateOneMobileDevice(
-    @TypeGraphQL.Ctx() ctx: Context,
+    @TypeGraphQL.Ctx() { prisma, pubSub }: Context,
     @TypeGraphQL.Info() info: GraphQLResolveInfo,
     @TypeGraphQL.Args() { userId, ...args }: UpdateOneMobileDeviceArgs,
   ): Promise<MobileDevice | null> {
     try {
       const { _count } = transformInfoIntoPrismaArgs(info)
-      const updatedMobileDevice = await getPrismaFromContext(
-        ctx,
-      ).mobileDevice.update({
+      const updatedMobileDevice = await prisma.mobileDevice.update({
         ...args,
         ...(_count && transformCountFieldIntoSelectRelationsCount(_count)),
       })
-      const pubsub = ctx.pubSub
 
       const message: WebsocketMessageInterface = {
         id: v4(),
@@ -40,11 +36,14 @@ export class UpdateOneMobileDeviceResolver {
         subscriptionIds: [],
         payload: {
           operation: 'update',
-          mobileDevice: updatedMobileDevice,
+          mobileDevice: {
+            ...updatedMobileDevice,
+            expireAt: updatedMobileDevice.expireAt.toISOString(),
+          },
         },
       }
 
-      await pubsub.publish(notificationTopic, message)
+      await pubSub.publish(notificationTopic, message)
 
       return updatedMobileDevice
     } catch (error) {

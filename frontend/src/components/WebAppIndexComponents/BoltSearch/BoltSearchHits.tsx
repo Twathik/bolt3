@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import parser from "html-react-parser";
 import type { patientHit } from "@/lib/typesense/searchPatient";
 import { useCallback, useMemo } from "react";
-import { useAppRouter } from "@/lib/utils/useAppRouter";
+import { useAppRouter } from "@/lib/generalUtils/useAppRouter";
 import UnregisterButton from "./RegisterButton/UnregisterButton";
 import RegisterButton from "./RegisterButton/RegisterButton";
 import { useBoltStore } from "@/stores/boltStore";

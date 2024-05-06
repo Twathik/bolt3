@@ -2,7 +2,7 @@
 import { useBoltStore } from "@/stores/boltStore";
 import AddNewWorkingListItem from "./Dicom/AddNewWorkingListItem";
 import { useEffect, useMemo } from "react";
-import isDicomAvailable from "../../../../../../lib/utils/DicomUtils";
+import isDicomAvailable from "../../../../../../lib/generalUtils/DicomUtils";
 import WorkingLists from "./Dicom/WorkingLists";
 import { useQuery } from "@/components/wg-generated/nextjs";
 import { useToast } from "@/components/ui/use-toast";

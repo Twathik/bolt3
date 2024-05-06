@@ -23,19 +23,22 @@ const authentication: HooksConfig["authentication"] = {
           }
         }
         const editorKey = uuid();
+
         const { data } = await operations.mutate({
           operationName: "users/internal/UpdateAuthenticatedUser",
           input: {
             create: {
-              userId: user.userId!,
-              email: user.email!,
+              userId: user.userId ?? user.customClaims?.user.accessToken,
+              email: user.email ?? user.customClaims?.user.accessToken,
               searchApiKeyId: apiKey.id,
               searchApiKey: apiKey.value,
               editorKey,
             },
             update: {
-              userId: { set: user.userId! },
-              email: { set: user.email! },
+              userId: {
+                set: user.userId ?? user.customClaims?.user.accessToken,
+              },
+              email: { set: user.email ?? user.customClaims?.user.accessToken },
               searchApiKeyId: { set: apiKey.id },
               searchApiKey: { set: apiKey.value },
               editorKey: { set: editorKey },
@@ -54,7 +57,7 @@ const authentication: HooksConfig["authentication"] = {
             expiresIn: "1000h",
           }
         );
-        console.log({ editorApiKey });
+
         const cookieUser = {
           ...user,
           customClaims: {

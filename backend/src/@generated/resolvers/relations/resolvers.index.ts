@@ -3,6 +3,7 @@ export { ConsultationListRelationsResolver } from "./ConsultationList/Consultati
 export { DocumentStoreRelationsResolver } from "./DocumentStore/DocumentStoreRelationsResolver";
 export { ModalityRelationsResolver } from "./Modality/ModalityRelationsResolver";
 export { PatientRelationsResolver } from "./Patient/PatientRelationsResolver";
+export { PatientScannedDocumentRelationsResolver } from "./PatientScannedDocument/PatientScannedDocumentRelationsResolver";
 export { PrescriptionRelationsResolver } from "./Prescription/PrescriptionRelationsResolver";
 export { UserRelationsResolver } from "./User/UserRelationsResolver";
 export { WorkingListRelationsResolver } from "./WorkingList/WorkingListRelationsResolver";

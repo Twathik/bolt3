@@ -6,7 +6,7 @@ import {
   type FormattedDocumentTemplate,
   type RawDocumentSettingsInterface,
   DefaultDocumentTemplatesSettings,
-} from "@/lib/utils/getDocumentSettings";
+} from "@/lib/generalUtils/getDocumentSettings";
 import type { PageSize } from "@react-pdf/types";
 import React, { useMemo } from "react";
 import { LoremIpsumData } from "./loremIpsum";

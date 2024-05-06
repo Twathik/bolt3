@@ -11,6 +11,7 @@ import type { SubscribedUsersMessageInterface } from "./MessagesTypes/Subscribed
 import type { WelcomeMessageInterface } from "./WelcomeMessageInterface";
 import type { WorkingListMessageInterface } from "./MessagesTypes/WorkingListMessageInterface";
 import type { ConsultationListMessageInterface } from "./MessagesTypes/ConsultationListMessageInterface";
+import type { PatientScannedDocumentMessageInterface } from "./MessagesTypes/PatientScannedDocumentsMessageInterface";
 
 export type WebsocketMessageInterface =
   | SecondaryDisplayMessageInterface
@@ -25,4 +26,5 @@ export type WebsocketMessageInterface =
   | ClinicalEventMessageInterface
   | FocusedClinicalEventMessageInterface
   | PrescriptionMessageInterface
-  | ConsultationListMessageInterface;
+  | ConsultationListMessageInterface
+  | PatientScannedDocumentMessageInterface;

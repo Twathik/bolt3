@@ -1,0 +1,7 @@
+fragment PatientScannedDocumentFragment on mainDb_PatientScannedDocument {
+  id
+  documentCollectionDate
+  documentCollectionName
+  documentCollectionUrls
+  patientId
+}

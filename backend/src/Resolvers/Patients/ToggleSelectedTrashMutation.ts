@@ -14,8 +14,12 @@ import { PrismaClient } from '@prisma/client'
 import { Context } from '../../context'
 import UpsertTypesenseDocument from '../../Utils/typesense/operations/upsertDocument'
 import { WebsocketMessageInterface } from '../../Utils/PubSubInterfaces/WebsocketMessageInterface'
-import { notificationTopic } from '../../Utils/PubSubInterfaces/MessageTypesInterface'
+import {
+  PatientInfoInterface,
+  notificationTopic,
+} from '../../Utils/PubSubInterfaces/MessageTypesInterface'
 import { v4 } from 'uuid'
+import { format } from 'date-fns'
 
 @TypeGraphQL.Resolver((_of) => Patient)
 export class ToggleSelectedTrashMutation {
@@ -26,7 +30,6 @@ export class ToggleSelectedTrashMutation {
     @TypeGraphQL.Ctx() ctx: Context,
     @TypeGraphQL.Info() info: GraphQLResolveInfo,
     @TypeGraphQL.Args() args: UpdateManyPatientArgs,
-    @TypeGraphQL.PubSub('EMPTY_TRASH') publish: TypeGraphQL.Publisher<string>,
   ): Promise<AffectedRowsOutput> {
     const { _count } = transformInfoIntoPrismaArgs(info)
     const prisma = getPrismaFromContext(ctx) as PrismaClient
@@ -60,7 +63,7 @@ export class ToggleSelectedTrashMutation {
         })
       }
       await Promise.all(
-        documents.map((d) => {
+        documents.map((patient) => {
           const message: WebsocketMessageInterface = {
             id: v4(),
             destination: ['trash'],
@@ -69,14 +72,19 @@ export class ToggleSelectedTrashMutation {
             type: 'patient',
             payload: {
               operation: 'onTrash',
-              trashOperation: d.onTrash ? 'addToTrash' : 'restore',
-              patient: d,
+              trashOperation: patient.onTrash ? 'addToTrash' : 'restore',
+              patient: {
+                ...patient,
+                ddn: format(patient.ddn, 'dd-MM-yyyy'),
+                patientFullName: `${patient.lastName} ${patient.firstName}`,
+                updated: patient.updated.toISOString(),
+              } as PatientInfoInterface,
             },
           }
           pubsub.publish(notificationTopic, message)
         }),
       )
-      publish('update')
+
       return trash
     } catch (error) {
       throw Error('Impossible to empty trash')

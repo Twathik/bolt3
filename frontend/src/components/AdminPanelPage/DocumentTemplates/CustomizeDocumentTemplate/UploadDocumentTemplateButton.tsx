@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useFileUpload } from "@/components/wg-generated/nextjs";
-import type { RawDocumentSettingsInterface } from "@/lib/utils/getDocumentSettings";
+import type { RawDocumentSettingsInterface } from "@/lib/generalUtils/getDocumentSettings";
 import React, { useCallback, useEffect, useState } from "react";
 
 function UploadDocumentTemplateButton({

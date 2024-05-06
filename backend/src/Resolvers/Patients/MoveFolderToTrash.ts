@@ -4,9 +4,13 @@ import { Context } from '../../context'
 import { MovePatientFolderToTrash } from './Args/MovePatientFolderToTrash'
 import createTypesenseDocuments from '../../Utils/typesense/operations/createDocuments'
 import RemoveTypesenseDocument from '../../Utils/typesense/operations/removeDocument'
-import { getYear } from 'date-fns'
+import { format, getYear } from 'date-fns'
 import { WebsocketMessageInterface } from '../../Utils/PubSubInterfaces/WebsocketMessageInterface'
-import { notificationTopic } from '../../Utils/PubSubInterfaces/MessageTypesInterface'
+import {
+  PatientInfoInterface,
+  notificationTopic,
+} from '../../Utils/PubSubInterfaces/MessageTypesInterface'
+import { v4 as uuid } from 'uuid'
 
 @TypeGraphQL.Resolver((_of) => Patient)
 export class MoveFolderToTrash {
@@ -46,25 +50,37 @@ export class MoveFolderToTrash {
         })
       }
       const updatePatientNotification: WebsocketMessageInterface = {
+        id: uuid(),
         global: true,
         destination: ['folder'],
         subscriptionIds: [patient.id],
         type: 'patient',
         payload: {
           operation: 'update',
-          patient,
+          patient: {
+            ...patient,
+            ddn: format(patient.ddn, 'dd-MM-yyyy'),
+            patientFullName: `${patient.lastName} ${patient.firstName}`,
+            updated: patient.updated.toISOString(),
+          } as PatientInfoInterface,
         },
       }
       pubSub.publish(notificationTopic, updatePatientNotification)
 
       const onTrashNotification: WebsocketMessageInterface = {
+        id: uuid(),
         global: true,
         destination: ['trash'],
         subscriptionIds: [],
         type: 'patient',
         payload: {
           operation: 'onTrash',
-          patient,
+          patient: {
+            ...patient,
+            ddn: format(patient.ddn, 'dd-MM-yyyy'),
+            patientFullName: `${patient.lastName} ${patient.firstName}`,
+            updated: patient.updated.toISOString(),
+          } as PatientInfoInterface,
           trashOperation: args.onTrash ? 'addToTrash' : 'restore',
         },
       }

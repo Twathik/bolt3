@@ -10,6 +10,7 @@ import { DocumentStoreUpdateManyWithoutPatientNestedInput } from "../inputs/Docu
 import { EnumSexeFieldUpdateOperationsInput } from "../inputs/EnumSexeFieldUpdateOperationsInput";
 import { NullableFloatFieldUpdateOperationsInput } from "../inputs/NullableFloatFieldUpdateOperationsInput";
 import { NullableStringFieldUpdateOperationsInput } from "../inputs/NullableStringFieldUpdateOperationsInput";
+import { PatientScannedDocumentUpdateManyWithoutPatientNestedInput } from "../inputs/PatientScannedDocumentUpdateManyWithoutPatientNestedInput";
 import { StringFieldUpdateOperationsInput } from "../inputs/StringFieldUpdateOperationsInput";
 import { WorkingListUpdateManyWithoutPatientNestedInput } from "../inputs/WorkingListUpdateManyWithoutPatientNestedInput";
 
@@ -85,6 +86,11 @@ export class PatientUpdateInput {
   })
   informationsConfirmed?: BoolFieldUpdateOperationsInput | undefined;
 
+  @TypeGraphQL.Field(_type => NullableStringFieldUpdateOperationsInput, {
+    nullable: true
+  })
+  patientAvatar?: NullableStringFieldUpdateOperationsInput | undefined;
+
   @TypeGraphQL.Field(_type => ConsultationListUpdateManyWithoutPatientNestedInput, {
     nullable: true
   })
@@ -104,4 +110,9 @@ export class PatientUpdateInput {
     nullable: true
   })
   DocumentStore?: DocumentStoreUpdateManyWithoutPatientNestedInput | undefined;
+
+  @TypeGraphQL.Field(_type => PatientScannedDocumentUpdateManyWithoutPatientNestedInput, {
+    nullable: true
+  })
+  PatientScanedDocument?: PatientScannedDocumentUpdateManyWithoutPatientNestedInput | undefined;
 }

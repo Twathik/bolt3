@@ -35,7 +35,8 @@ function MobileDevice({
   return (
     <li
       key={id}
-      className="m-5 flex items-center justify-between gap-x-6 rounded-sm border-l-2 border-solid border-slate-400 bg-slate-50 p-5 py-5 shadow-lg">
+      className="m-5 flex items-center justify-between gap-x-6 rounded-sm border-l-2 border-solid border-slate-400 bg-slate-50 p-5 py-5 shadow-lg"
+    >
       <div className="min-w-0">
         <div className="flex items-start gap-x-3">
           <p className="text-sm font-semibold leading-6 text-gray-900">
@@ -49,7 +50,8 @@ function MobileDevice({
               connected
                 ? "border-green-500 text-green-500"
                 : "border-rose-700 text-rose-700"
-            )}>
+            )}
+          >
             {connected ? "active" : "déconnecté"}
           </p>
         </div>

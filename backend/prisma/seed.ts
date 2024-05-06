@@ -44,6 +44,7 @@ async function main() {
     | 'onTrash'
     | 'historyId'
     | 'diagnosticId'
+    | 'patientAvatar'
   >[] = [
     {
       id: '1',

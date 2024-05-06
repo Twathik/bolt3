@@ -1,17 +1,18 @@
 import React, { useCallback } from "react";
-import { useTheme, Appbar, Switch } from "react-native-paper";
-import useThemeStore from "../../../lib/stores/themeStore";
+import { useTheme, Appbar } from "react-native-paper";
 import { NativeStackHeaderProps } from "@react-navigation/native-stack";
-import { MaterialCommunityIcons } from "@expo/vector-icons";
+import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 import { View } from "react-native";
-import useWundergraphStore from "../../../lib/stores/wundergraphStore";
-import { saveToSecureStore } from "../../../lib/stores/secureStore";
 import AntDesign from "@expo/vector-icons/AntDesign";
+import { useMobileBoltStore } from "@/lib/stores/mobileBoltStore";
+import { saveToSecureStore } from "@/lib/stores/secureStore";
 
 const AppHeader = ({ options, back, navigation }: NativeStackHeaderProps) => {
   const theme = useTheme();
-  const { setUser, setAuthToken } = useWundergraphStore();
-  const { isDarkTheme, setDarkTheme } = useThemeStore();
+  const setUser = useMobileBoltStore((s) => s.setUser);
+  const setAuthToken = useMobileBoltStore((s) => s.setAuthToken);
+  const isDarkTheme = useMobileBoltStore((s) => s.isDarkTheme);
+  const setDarkTheme = useMobileBoltStore((s) => s.setDarkTheme);
 
   const logout = useCallback(async () => {
     await saveToSecureStore("authToken", "");
@@ -30,7 +31,8 @@ const AppHeader = ({ options, back, navigation }: NativeStackHeaderProps) => {
         colors: {
           primary: theme?.colors.surface,
         },
-      }}>
+      }}
+    >
       {back ? <Appbar.BackAction onPress={navigation.goBack} /> : null}
       <Appbar.Content title={options.title} />
       <View className="flex flex-row gap-10 mr-5">

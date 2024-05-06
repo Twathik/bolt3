@@ -1,6 +1,6 @@
 "use client";
 import { useBoltStore } from "@/stores/boltStore";
-import GetSelectedDisplay from "../../lib/utils/getSecondaryDisplay";
+import GetSelectedDisplay from "../../lib/generalUtils/getSecondaryDisplay";
 import type { PublicUser } from "../wg-generated/client";
 import { useEffect } from "react";
 import getUserState from "../plateEditor/lib/getUserState";

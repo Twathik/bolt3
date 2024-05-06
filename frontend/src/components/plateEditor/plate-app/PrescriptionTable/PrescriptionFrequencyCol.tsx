@@ -28,7 +28,8 @@ export function PrescriptionFrequencyCol({
         "col-span-3 border-dotted border-[1px] border-slate-500"
       )}
       {...props}
-      id={element.id}>
+      id={element.id}
+    >
       <div>{children}</div>
     </PlateElement>
   );

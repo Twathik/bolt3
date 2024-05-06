@@ -9,6 +9,7 @@ import { DateTimeFilter } from "../inputs/DateTimeFilter";
 import { DocumentStoreListRelationFilter } from "../inputs/DocumentStoreListRelationFilter";
 import { EnumSexeFilter } from "../inputs/EnumSexeFilter";
 import { FloatNullableFilter } from "../inputs/FloatNullableFilter";
+import { PatientScannedDocumentListRelationFilter } from "../inputs/PatientScannedDocumentListRelationFilter";
 import { StringFilter } from "../inputs/StringFilter";
 import { StringNullableFilter } from "../inputs/StringNullableFilter";
 import { WorkingListListRelationFilter } from "../inputs/WorkingListListRelationFilter";
@@ -100,6 +101,11 @@ export class PatientWhereInput {
   })
   informationsConfirmed?: BoolFilter | undefined;
 
+  @TypeGraphQL.Field(_type => StringNullableFilter, {
+    nullable: true
+  })
+  patientAvatar?: StringNullableFilter | undefined;
+
   @TypeGraphQL.Field(_type => ConsultationListListRelationFilter, {
     nullable: true
   })
@@ -119,4 +125,9 @@ export class PatientWhereInput {
     nullable: true
   })
   DocumentStore?: DocumentStoreListRelationFilter | undefined;
+
+  @TypeGraphQL.Field(_type => PatientScannedDocumentListRelationFilter, {
+    nullable: true
+  })
+  PatientScanedDocument?: PatientScannedDocumentListRelationFilter | undefined;
 }

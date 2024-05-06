@@ -3,14 +3,14 @@ import { getNodesByType } from "@/components/plateEditor/lib/getNodesByType";
 import { useToast } from "@/components/ui/use-toast";
 import type { mainDb_PatientDocumentTypeValues } from "@/components/wg-generated/models";
 import { useQuery } from "@/components/wg-generated/nextjs";
-import type { PngBlobType } from "@/lib/utils/PDFImageUtils";
-import { convertBlob } from "@/lib/utils/PDFImageUtils";
-import getClinicalEventContentFromEditor from "@/lib/utils/getClinicalEventContentFromEditor";
+import type { PngBlobType } from "@/lib/generalUtils/PDFImageUtils";
+import { convertBlob } from "@/lib/generalUtils/PDFImageUtils";
+import getClinicalEventContentFromEditor from "@/lib/generalUtils/getClinicalEventContentFromEditor";
 import {
   getDocumentPaddings,
   type FormattedDocumentTemplate,
   type RawDocumentPaddingsInterface,
-} from "@/lib/utils/getDocumentSettings";
+} from "@/lib/generalUtils/getDocumentSettings";
 import { useBoltStore } from "@/stores/boltStore";
 import type { PageSize } from "@react-pdf/types";
 import type { TDescendant, TElement } from "@udecode/plate-common";

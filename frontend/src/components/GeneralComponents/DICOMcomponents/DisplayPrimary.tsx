@@ -1,7 +1,7 @@
 /* eslint-disable react/no-unescaped-entities */
 import { FaCircleArrowDown } from "react-icons/fa6";
 import Iframe from "react-iframe";
-import { orthancViewerBaseUrl } from "../../../lib/utils/OrthancUtils";
+import { orthancViewerBaseUrl } from "../../../lib/generalUtils/OrthancUtils";
 import {
   Sheet,
   SheetClose,

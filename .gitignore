@@ -28,6 +28,7 @@ node_modules
 
 tests_app
 
+
 # misc
 .DS_Store
 *.pem
@@ -53,6 +54,9 @@ yarn-error.log*
 
 orthanc
 raws
+**/dgraph/
+**/etc-pihole/
+**/etc-dnsmasq.d/
 
 drugsVenv
 __pycache__

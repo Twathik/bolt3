@@ -1,6 +1,6 @@
 "use client";
 
-import type { RawDocumentSettingsInterface } from "@/lib/utils/getDocumentSettings";
+import type { RawDocumentSettingsInterface } from "@/lib/generalUtils/getDocumentSettings";
 import React, { useEffect } from "react";
 import PaddingSlider from "./PaddingSlider";
 import { useMutation } from "@/components/wg-generated/nextjs";

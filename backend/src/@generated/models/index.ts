@@ -6,6 +6,7 @@ export { Economizer } from "./Economizer";
 export { MobileDevice } from "./MobileDevice";
 export { Modality } from "./Modality";
 export { Patient } from "./Patient";
+export { PatientScannedDocument } from "./PatientScannedDocument";
 export { Prescription } from "./Prescription";
 export { Setting } from "./Setting";
 export { User } from "./User";

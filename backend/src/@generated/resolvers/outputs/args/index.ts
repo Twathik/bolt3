@@ -3,6 +3,7 @@ export { ModalityCountWorkingListArgs } from "./ModalityCountWorkingListArgs";
 export { PatientCountClinicalEventArgs } from "./PatientCountClinicalEventArgs";
 export { PatientCountConsultationListArgs } from "./PatientCountConsultationListArgs";
 export { PatientCountDocumentStoreArgs } from "./PatientCountDocumentStoreArgs";
+export { PatientCountPatientScanedDocumentArgs } from "./PatientCountPatientScanedDocumentArgs";
 export { PatientCountWorkingListArgs } from "./PatientCountWorkingListArgs";
 export { UserCountClinicalEventArgs } from "./UserCountClinicalEventArgs";
 export { UserCountWorkingListArgs } from "./UserCountWorkingListArgs";

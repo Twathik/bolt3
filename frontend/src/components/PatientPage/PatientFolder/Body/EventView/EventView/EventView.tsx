@@ -4,7 +4,7 @@ import { v4 as uuid } from "uuid";
 import GetDocumentButton from "./GetDocumentButton";
 import DeleteDocumentButton from "./DeleteDocumentButton";
 import SendEventToSecondaryDisplayButton from "./SendEventToSecondaryDisplayButton";
-import { generateDocumentType } from "@/lib/utils/generateDucumentType";
+import { generateDocumentType } from "@/lib/generalUtils/generateDucumentType";
 import { cn } from "@/lib/utils";
 
 function EventView() {

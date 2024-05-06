@@ -2,7 +2,6 @@ import * as TypeGraphQL from 'type-graphql'
 import type { GraphQLResolveInfo } from 'graphql'
 import { MobileDevice } from '../../@generated'
 import {
-  getPrismaFromContext,
   transformCountFieldIntoSelectRelationsCount,
   transformInfoIntoPrismaArgs,
 } from '../../@generated/helpers'
@@ -18,14 +17,13 @@ export class DeleteOneMobileDeviceResolver {
     nullable: true,
   })
   async deleteOneMobileDevice(
-    @TypeGraphQL.Ctx() ctx: Context,
+    @TypeGraphQL.Ctx() { prisma, pubSub }: Context,
     @TypeGraphQL.Info() info: GraphQLResolveInfo,
     @TypeGraphQL.Args() { userId, ...args }: DeleteOneMobileDeviceArgs,
   ): Promise<MobileDevice | null> {
-    const pubsub = ctx.pubSub
     const { _count } = transformInfoIntoPrismaArgs(info)
     try {
-      const mobileDevice = await getPrismaFromContext(ctx).mobileDevice.delete({
+      const mobileDevice = await prisma.mobileDevice.delete({
         ...args,
         ...(_count && transformCountFieldIntoSelectRelationsCount(_count)),
       })
@@ -38,11 +36,14 @@ export class DeleteOneMobileDeviceResolver {
         subscriptionIds: [],
         payload: {
           operation: 'delete',
-          mobileDevice,
+          mobileDevice: {
+            ...mobileDevice,
+            expireAt: mobileDevice.expireAt.toISOString(),
+          },
         },
       }
 
-      await pubsub.publish(notificationTopic, message)
+      await pubSub.publish(notificationTopic, message)
 
       return mobileDevice
     } catch (error) {

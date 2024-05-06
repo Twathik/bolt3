@@ -1,17 +1,14 @@
 import React, { useCallback, useState } from "react";
 import { FontAwesome } from "@expo/vector-icons";
-import {
-  MainSearchPatientInterface,
-  TogglePatientToListInterface,
-} from "../utils/mainSearchPatientInterface";
+import { TogglePatientToListInterface } from "../utils/mainSearchPatientInterface";
 import { Button, Dialog, Portal, Text, useTheme } from "react-native-paper";
 import { View } from "react-native";
-import useWundergraphStore from "../../../../../../lib/stores/wundergraphStore";
+import { format } from "date-fns";
+import { useMobileBoltStore } from "@/lib/stores/mobileBoltStore";
 import {
   ConsultationListUnregisterPatientInput,
   ConsultationListUnregisterPatientResponse,
-} from "../../../../../../generated/models";
-import useConsultationStore from "../../../../../../lib/stores/consultationStore";
+} from "@/generated/models";
 
 function UnregisterPatient({
   id,
@@ -21,8 +18,7 @@ function UnregisterPatient({
     colors: { error, secondary },
   } = useTheme();
   const [visible, setVisible] = useState(false);
-  const { appAxios } = useWundergraphStore();
-  const { consultationId } = useConsultationStore();
+  const appAxios = useMobileBoltStore((s) => s.appAxios);
 
   const show = useCallback(() => {
     setVisible(true);
@@ -32,30 +28,29 @@ function UnregisterPatient({
   }, []);
 
   const unregister = useCallback(async () => {
-    if (consultationId)
-      try {
-        const data: ConsultationListUnregisterPatientInput = {
-          consultationId,
-          patientId: id,
-        };
-        const result =
-          await appAxios.post<ConsultationListUnregisterPatientResponse>(
-            "operations/consultationList/unregisterPatient",
-            data
-          );
-        console.dir({ result }, { depth: 5, color: true });
-        if (
-          result.status === 200 &&
-          result.data.data?.mainDb_deleteOneConsultationList
-        ) {
-          setRegistered(false);
-          setVisible(false);
-        }
-      } catch (error) {}
-  }, []);
+    try {
+      const data: ConsultationListUnregisterPatientInput = {
+        consultationDate: format(new Date(), "dd-MM-yyy"),
+        patientId: id,
+      };
+      const result =
+        await appAxios.post<ConsultationListUnregisterPatientResponse>(
+          "operations/consultationList/unregisterPatient",
+          data
+        );
+
+      if (
+        result.status === 200 &&
+        result.data.data?.mainDb_deleteOneConsultationList
+      ) {
+        setRegistered(false);
+        setVisible(false);
+      }
+    } catch (error) {}
+  }, [id]);
   return (
     <View>
-      <FontAwesome onPress={show} name="remove" size={30} color={error} />
+      <FontAwesome onPress={show} name="remove" size={20} color={error} />
       <Portal>
         <Dialog visible={visible} onDismiss={hide}>
           <Dialog.Title>Alert</Dialog.Title>

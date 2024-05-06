@@ -6,6 +6,7 @@ export { EconomizerCrudResolver } from "./Economizer/EconomizerCrudResolver";
 export { MobileDeviceCrudResolver } from "./MobileDevice/MobileDeviceCrudResolver";
 export { ModalityCrudResolver } from "./Modality/ModalityCrudResolver";
 export { PatientCrudResolver } from "./Patient/PatientCrudResolver";
+export { PatientScannedDocumentCrudResolver } from "./PatientScannedDocument/PatientScannedDocumentCrudResolver";
 export { PrescriptionCrudResolver } from "./Prescription/PrescriptionCrudResolver";
 export { SettingCrudResolver } from "./Setting/SettingCrudResolver";
 export { UserCrudResolver } from "./User/UserCrudResolver";

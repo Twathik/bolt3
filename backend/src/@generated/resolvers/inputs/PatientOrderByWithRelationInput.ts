@@ -5,6 +5,7 @@ import { DecimalJSScalar } from "../../scalars";
 import { ClinicalEventOrderByRelationAggregateInput } from "../inputs/ClinicalEventOrderByRelationAggregateInput";
 import { ConsultationListOrderByRelationAggregateInput } from "../inputs/ConsultationListOrderByRelationAggregateInput";
 import { DocumentStoreOrderByRelationAggregateInput } from "../inputs/DocumentStoreOrderByRelationAggregateInput";
+import { PatientScannedDocumentOrderByRelationAggregateInput } from "../inputs/PatientScannedDocumentOrderByRelationAggregateInput";
 import { SortOrderInput } from "../inputs/SortOrderInput";
 import { WorkingListOrderByRelationAggregateInput } from "../inputs/WorkingListOrderByRelationAggregateInput";
 import { SortOrder } from "../../enums/SortOrder";
@@ -81,6 +82,11 @@ export class PatientOrderByWithRelationInput {
   })
   informationsConfirmed?: "asc" | "desc" | undefined;
 
+  @TypeGraphQL.Field(_type => SortOrderInput, {
+    nullable: true
+  })
+  patientAvatar?: SortOrderInput | undefined;
+
   @TypeGraphQL.Field(_type => ConsultationListOrderByRelationAggregateInput, {
     nullable: true
   })
@@ -100,4 +106,9 @@ export class PatientOrderByWithRelationInput {
     nullable: true
   })
   DocumentStore?: DocumentStoreOrderByRelationAggregateInput | undefined;
+
+  @TypeGraphQL.Field(_type => PatientScannedDocumentOrderByRelationAggregateInput, {
+    nullable: true
+  })
+  PatientScanedDocument?: PatientScannedDocumentOrderByRelationAggregateInput | undefined;
 }

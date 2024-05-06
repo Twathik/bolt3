@@ -75,4 +75,9 @@ export class PatientMinOrderByAggregateInput {
     nullable: true
   })
   informationsConfirmed?: "asc" | "desc" | undefined;
+
+  @TypeGraphQL.Field(_type => SortOrder, {
+    nullable: true
+  })
+  patientAvatar?: "asc" | "desc" | undefined;
 }

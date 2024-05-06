@@ -95,4 +95,9 @@ export class PatientScalarWhereWithAggregatesInput {
     nullable: true
   })
   informationsConfirmed?: BoolWithAggregatesFilter | undefined;
+
+  @TypeGraphQL.Field(_type => StringNullableWithAggregatesFilter, {
+    nullable: true
+  })
+  patientAvatar?: StringNullableWithAggregatesFilter | undefined;
 }

@@ -226,5 +226,55 @@ services:
       - ./typesense-data:/data
       - ./typesense-config/typesense-server.ini:/etc/typesense/typesense-server.ini
     command: "--config=/etc/typesense/typesense-server.ini"
+
+  pihole:
+    container_name: pihole
+    image: pihole/pihole:latest
+    # For DHCP it is recommended to remove these ports and instead add: network_mode: "host"
+    ports:
+      - "53:53/tcp"
+      - "53:53/udp"
+      # - "67:67/udp" # Only required if you are using Pi-hole as your DHCP server
+      - "8067:80/tcp"
+    environment:
+      TZ: "America/Chicago"
+      WEBPASSWORD: "admin"
+    # Volumes store your data between container upgrades
+    volumes:
+      - "./etc-pihole:/etc/pihole"
+      - "./etc-dnsmasq.d:/etc/dnsmasq.d"
+    #   https://github.com/pi-hole/docker-pi-hole#note-on-capabilities
+    cap_add:
+      - NET_ADMIN # Required if you are using Pi-hole as your DHCP server, else not needed
+    restart: unless-stopped
+  zero:
+    image: dgraph/dgraph:latest
+    volumes:
+      - ./dgraph:/dgraph
+    ports:
+      - 5080:5080
+      - 6080:6080
+    restart: on-failure
+    command: dgraph zero --my=zero:5080
+  alpha:
+    image: dgraph/dgraph:latest
+    volumes:
+      - ./dgraph:/dgraph
+    ports:
+      - 8087:8080
+      - 9080:9080
+    restart: on-failure
+    command: dgraph alpha  --my=alpha:7080 --zero=zero:5080 --security "whitelist=10.0.0.0/8,172.0.0.0/8,192.168.0.0/16"
+    labels:
+      - traefik.enable=true
+      - "traefik.http.routers.dgraph.entrypoints=web"
+      - "traefik.http.routers.dgraph.service=alpha-docker"
+      - "traefik.http.routers.dgraph.rule=Host(`dgraph-alpha.local`)"
+      - "traefik.http.services.alpha-docker.loadbalancer.server.port=8080"
+
 volumes:
   data:
+  postgresql_data:
+    driver: local
+  odoo_data:
+    driver: local

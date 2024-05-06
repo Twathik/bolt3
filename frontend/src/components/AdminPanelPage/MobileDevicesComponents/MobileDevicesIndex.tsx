@@ -1,6 +1,7 @@
 import MobileDevice from "@/components/AdminPanelPage/MobileDevicesComponents/MobileDevice";
 import CreateMobileDevice from "@/components/AdminPanelPage/MobileDevicesComponents/CreateMobileDevice";
 import { useBoltStore } from "@/stores/boltStore";
+import _ from "lodash";
 
 function MobileDevicesIndex() {
   const mobileDevices = useBoltStore((store) => store.mobileDevices);
@@ -13,7 +14,7 @@ function MobileDevicesIndex() {
         </div>
       </div>
       <ul className="">
-        {mobileDevices?.map((mobileDevice) => (
+        {_.uniqBy(mobileDevices, "id")?.map((mobileDevice) => (
           <MobileDevice key={mobileDevice.id} mobileDevice={mobileDevice} />
         ))}
       </ul>

@@ -1,64 +1,74 @@
-import { request as graphqlRequest, gql } from "graphql-request";
 import { headers } from "next/headers";
 import type { NextRequest } from "next/server";
+import prisma from "@/lib/generalUtils/prismaClient";
 
-interface mobileDeviceAuth {
-  authMobileApp: {
-    id: string;
-    accessToken: string;
-    expireAt: string;
-    mobileDeviceType: "DOCTOR" | "SECRETARY";
-    connected: boolean;
-  };
-}
 export const dynamic = "force-dynamic"; // "auto"
 
-export async function GET(_request: NextRequest) {
+export async function GET(request: NextRequest) {
   const headerList = headers();
   const auth = headerList.get("Authorization");
 
-  if (auth === undefined || auth === null)
-    throw new Response("unauthorized", {
-      status: 403,
-      statusText: "unauthorized",
-    });
-  const parse = auth.replace("Bearer ", "").split("##_##");
-  const ignoredGqlTag = gql;
-  const document = ignoredGqlTag`
-    query authMobileApp($uuid: String!, $accessToken: String!) {
-      authMobileApp(uuid: $uuid, accessToken: $accessToken) {
-        id
-        accessToken
-        expireAt
-        mobileDeviceType
-      }
-    }
-  `;
   try {
-    const auth_result: mobileDeviceAuth = await graphqlRequest(
-      "http://localhost:4000/graphql",
-      document,
-      {
-        uuid: parse![0],
-        accessToken: parse![1],
-      }
-    );
-    //
-    if (!auth_result.authMobileApp)
-      throw new Response("unauthorized", {
-        status: 403,
-        statusText: "unauthorized",
+    if (auth !== undefined && auth !== null) {
+      const parse = auth.replace("Bearer ", "").split("##_##");
+      const mobileDevice = await prisma.mobileDevice.findUnique({
+        where: {
+          uuid_accessToken: { uuid: parse![0], accessToken: parse![1] },
+        },
       });
-    return Response.json({
-      user: {
-        accessToken: auth_result.authMobileApp.accessToken,
-        expireAt: auth_result.authMobileApp.expireAt,
-        mobileDeviceType: auth_result.authMobileApp.mobileDeviceType,
-      },
-    });
+
+      if (!mobileDevice) {
+        const getMobileDevice = await prisma.mobileDevice.findFirst({
+          where: { accessToken: { equals: parse![1] } },
+        });
+
+        if (!getMobileDevice) throw Error("No registred app");
+        if (getMobileDevice.expireAt < new Date()) throw Error(" App expired");
+
+        const updatedMobileDevice = await prisma.mobileDevice.update({
+          where: { accessToken: parse![1] },
+          data: {
+            uuid: parse![0],
+            connected: true,
+          },
+        });
+        return Response.json({
+          user: {
+            accessToken: updatedMobileDevice.accessToken,
+            expireAt: updatedMobileDevice.expireAt,
+            mobileDeviceType: updatedMobileDevice.mobileDeviceType,
+          },
+        });
+      }
+
+      return Response.json({
+        user: {
+          accessToken: mobileDevice.accessToken,
+          expireAt: mobileDevice.expireAt,
+          mobileDeviceType: mobileDevice.mobileDeviceType,
+        },
+      });
+    } else {
+      const headers = new Headers();
+      const cookie = request.headers.get("cookie");
+
+      headers.append("cookie", cookie ?? "");
+      const user = await fetch("http://api.bolt3.local/auth/user", {
+        headers,
+      });
+      if (user.status === 204) {
+        throw Response.json("unauthorized", {
+          status: 403,
+          statusText: "unauthorized",
+        });
+      }
+      return Response.json({
+        user,
+      });
+    }
   } catch (error) {
     console.log({ error });
-    throw new Response("unauthorized", {
+    throw Response.json("unauthorized", {
       status: 403,
       statusText: "unauthorized",
     });

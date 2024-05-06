@@ -8,7 +8,7 @@ import { type MentionPlugin } from "@udecode/plate-mention";
 import { DrugCombobox } from "./drug-combobox";
 import { DrugMentionKey } from "./drug-plugin-key";
 import { useCallback } from "react";
-import getMentionOnSelectItemWithMetadata from "@/lib/utils/getMentionOnSelectItemWithMetadata";
+import getMentionOnSelectItemWithMetadata from "@/lib/generalUtils/getMentionOnSelectItemWithMetadata";
 import type { ItemWithMetadata } from "@/lib/interfaces/itemWithMetadata";
 import { useBoltStore } from "@/stores/boltStore";
 import { ReadyState } from "react-use-websocket";

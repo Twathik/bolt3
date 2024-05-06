@@ -10,10 +10,12 @@
     "start": "wunderctl start"
   },
   "dependencies": {
+    "@grpc/grpc-js": "^1.10.7",
     "@wundergraph/nextjs": "^0.15.5",
     "@wundergraph/sdk": "^0.181.5",
     "axios": "^1.6.2",
     "date-fns": "^2.30.0",
+    "dgraph-js": "^21.3.1",
     "graphql": "^16.3.0",
     "jsonwebtoken": "^9.0.2",
     "minio": "^7.1.3",

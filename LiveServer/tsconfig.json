@@ -16,7 +16,8 @@
     "target": "ESNext",
     "rootDir": "./src",
     "outDir": "./dist",
-    "composite": true
+    "composite": true,
+    
   },
   "references": []
 }
